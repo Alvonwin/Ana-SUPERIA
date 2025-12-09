@@ -1,0 +1,246 @@
+{
+  "category": "pdf-generation",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "pdf001",
+      "type": "fundamentals",
+      "name": "PDF Structure",
+      "description": "Document format",
+      "pattern": "Objects, pages, fonts, images, cross-reference table",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pdf002",
+      "type": "fundamentals",
+      "name": "PDF Standards",
+      "description": "Compliance",
+      "pattern": "PDF/A archival, PDF/X print, PDF/UA accessible",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pdf003",
+      "type": "puppeteer",
+      "name": "Puppeteer PDF",
+      "description": "HTML to PDF",
+      "pattern": "page.pdf({path, format: 'A4', printBackground: true})",
+      "example": "Puppeteer usage"
+    },
+    {
+      "id": "pdf004",
+      "type": "puppeteer",
+      "name": "Puppeteer Options",
+      "description": "PDF settings",
+      "pattern": "margin, headerTemplate, footerTemplate, pageRanges",
+      "example": "Puppeteer usage"
+    },
+    {
+      "id": "pdf005",
+      "type": "puppeteer",
+      "name": "Print CSS",
+      "description": "Print styles",
+      "pattern": "@media print, page-break-before, @page size",
+      "example": "Puppeteer usage"
+    },
+    {
+      "id": "pdf006",
+      "type": "playwright",
+      "name": "Playwright PDF",
+      "description": "Alternative to Puppeteer",
+      "pattern": "page.pdf({format, margin, preferCSSPageSize})",
+      "example": "Playwright usage"
+    },
+    {
+      "id": "pdf007",
+      "type": "pdfkit",
+      "name": "PDFKit Basics",
+      "description": "Programmatic PDF",
+      "pattern": "new PDFDocument(), doc.text(), doc.pipe(fs.createWriteStream())",
+      "example": "Pdfkit usage"
+    },
+    {
+      "id": "pdf008",
+      "type": "pdfkit",
+      "name": "PDFKit Layout",
+      "description": "Positioning",
+      "pattern": "doc.text('Hello', x, y), moveDown(), font(), fontSize()",
+      "example": "Pdfkit usage"
+    },
+    {
+      "id": "pdf009",
+      "type": "pdfkit",
+      "name": "PDFKit Tables",
+      "description": "Tabular data",
+      "pattern": "Manual positioning or pdfkit-table plugin",
+      "example": "Pdfkit usage"
+    },
+    {
+      "id": "pdf010",
+      "type": "pdfkit",
+      "name": "PDFKit Images",
+      "description": "Embed images",
+      "pattern": "doc.image(path, {fit: [250, 300], align: 'center'})",
+      "example": "Pdfkit usage"
+    },
+    {
+      "id": "pdf011",
+      "type": "pdfmake",
+      "name": "PDFMake Basics",
+      "description": "Declarative PDF",
+      "pattern": "pdfMake.createPdf(docDefinition).download()",
+      "example": "Pdfmake usage"
+    },
+    {
+      "id": "pdf012",
+      "type": "pdfmake",
+      "name": "PDFMake Tables",
+      "description": "Table definitions",
+      "pattern": "{table: {body: [[cell1, cell2], [cell3, cell4]]}}",
+      "example": "Pdfmake usage"
+    },
+    {
+      "id": "pdf013",
+      "type": "pdfmake",
+      "name": "PDFMake Styles",
+      "description": "Styling system",
+      "pattern": "styles: {header: {fontSize: 18, bold: true}}",
+      "example": "Pdfmake usage"
+    },
+    {
+      "id": "pdf014",
+      "type": "react-pdf",
+      "name": "React-PDF Render",
+      "description": "React to PDF",
+      "pattern": "<Document><Page><Text>Hello</Text></Page></Document>",
+      "example": "React-pdf usage"
+    },
+    {
+      "id": "pdf015",
+      "type": "react-pdf",
+      "name": "React-PDF Styles",
+      "description": "StyleSheet",
+      "pattern": "StyleSheet.create({page: {padding: 30}})",
+      "example": "React-pdf usage"
+    },
+    {
+      "id": "pdf016",
+      "type": "jspdf",
+      "name": "jsPDF",
+      "description": "Client-side PDF",
+      "pattern": "new jsPDF(), doc.text('Hello', 10, 10), doc.save()",
+      "example": "Jspdf usage"
+    },
+    {
+      "id": "pdf017",
+      "type": "jspdf",
+      "name": "jsPDF AutoTable",
+      "description": "Table plugin",
+      "pattern": "doc.autoTable({head: [[...]], body: [[...]]})",
+      "example": "Jspdf usage"
+    },
+    {
+      "id": "pdf018",
+      "type": "parsing",
+      "name": "PDF Parsing",
+      "description": "Read PDF content",
+      "pattern": "pdf-parse, pdf.js, extract text and metadata",
+      "example": "Parsing usage"
+    },
+    {
+      "id": "pdf019",
+      "type": "parsing",
+      "name": "PDF.js Viewer",
+      "description": "Display PDF",
+      "pattern": "Mozilla PDF.js, canvas rendering, text layer",
+      "example": "Parsing usage"
+    },
+    {
+      "id": "pdf020",
+      "type": "manipulation",
+      "name": "PDF Merge",
+      "description": "Combine PDFs",
+      "pattern": "pdf-lib merge, PDFMerger, ghostscript",
+      "example": "Manipulation usage"
+    },
+    {
+      "id": "pdf021",
+      "type": "manipulation",
+      "name": "PDF Split",
+      "description": "Extract pages",
+      "pattern": "pdf-lib copyPages, page extraction",
+      "example": "Manipulation usage"
+    },
+    {
+      "id": "pdf022",
+      "type": "manipulation",
+      "name": "PDF Forms",
+      "description": "Fill forms",
+      "pattern": "pdf-lib getForm(), getTextField(), setText()",
+      "example": "Manipulation usage"
+    },
+    {
+      "id": "pdf023",
+      "type": "manipulation",
+      "name": "PDF Watermark",
+      "description": "Add watermark",
+      "pattern": "Overlay text/image on each page, transparency",
+      "example": "Manipulation usage"
+    },
+    {
+      "id": "pdf024",
+      "type": "security",
+      "name": "PDF Encryption",
+      "description": "Password protect",
+      "pattern": "pdf-lib encrypt, user/owner passwords, permissions",
+      "example": "Security usage"
+    },
+    {
+      "id": "pdf025",
+      "type": "security",
+      "name": "PDF Signatures",
+      "description": "Digital signing",
+      "pattern": "node-signpdf, X.509 certificates, validation",
+      "example": "Security usage"
+    },
+    {
+      "id": "pdf026",
+      "type": "templates",
+      "name": "Template Engines",
+      "description": "Dynamic content",
+      "pattern": "Handlebars + Puppeteer, carbone, docx-templates",
+      "example": "Templates usage"
+    },
+    {
+      "id": "pdf027",
+      "type": "templates",
+      "name": "Invoice Generation",
+      "description": "Common use case",
+      "pattern": "Template with placeholders, itemized tables, totals",
+      "example": "Templates usage"
+    },
+    {
+      "id": "pdf028",
+      "type": "optimization",
+      "name": "PDF Compression",
+      "description": "Reduce size",
+      "pattern": "ghostscript, image downsampling, font subsetting",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "pdf029",
+      "type": "accessibility",
+      "name": "PDF Accessibility",
+      "description": "A11y compliance",
+      "pattern": "Tags, reading order, alt text, language, PDF/UA",
+      "example": "Accessibility usage"
+    },
+    {
+      "id": "pdf030",
+      "type": "services",
+      "name": "PDF APIs",
+      "description": "Cloud services",
+      "pattern": "DocSpring, PDFShift, html2pdf.app, API-based generation",
+      "example": "Services usage"
+    }
+  ]
+}

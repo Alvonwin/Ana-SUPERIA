@@ -1,0 +1,246 @@
+{
+  "category": "ai-llm-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ai001",
+      "type": "prompting",
+      "name": "System Prompt Engineering",
+      "description": "Definir persona et contraintes",
+      "pattern": "Tu es un expert [X]. Regles: 1) ... 2) ... Format: JSON. Ne jamais [Y].",
+      "example": "Prompting usage"
+    },
+    {
+      "id": "ai002",
+      "type": "prompting",
+      "name": "Few-Shot Prompting",
+      "description": "Exemples dans le contexte",
+      "pattern": "Exemple 1: Input: X -> Output: Y. Exemple 2: ... Maintenant: Input: Z -> Output: ?",
+      "example": "Prompting usage"
+    },
+    {
+      "id": "ai003",
+      "type": "prompting",
+      "name": "Chain of Thought",
+      "description": "Raisonnement etape par etape",
+      "pattern": "Reflechis etape par etape. D'abord analyse [X], puis determine [Y], enfin conclus [Z].",
+      "example": "Prompting usage"
+    },
+    {
+      "id": "ai004",
+      "type": "prompting",
+      "name": "Self-Consistency",
+      "description": "Multiple paths, vote",
+      "pattern": "Generer N reponses, prendre la plus frequente ou consensus",
+      "example": "Prompting usage"
+    },
+    {
+      "id": "ai005",
+      "type": "prompting",
+      "name": "ReAct Pattern",
+      "description": "Reasoning + Acting",
+      "pattern": "Thought: Je dois... Action: search(query). Observation: ... Thought: Maintenant...",
+      "example": "Prompting usage"
+    },
+    {
+      "id": "ai006",
+      "type": "rag",
+      "name": "Chunking Strategies",
+      "description": "Decouper documents",
+      "pattern": "Fixed size, semantic (paragraphs), recursive, sentence-based",
+      "example": "Rag usage"
+    },
+    {
+      "id": "ai007",
+      "type": "rag",
+      "name": "Chunk Overlap",
+      "description": "Contexte entre chunks",
+      "pattern": "chunk_size=500, chunk_overlap=50 pour garder contexte",
+      "example": "Rag usage"
+    },
+    {
+      "id": "ai008",
+      "type": "rag",
+      "name": "Hybrid Search",
+      "description": "BM25 + Vector",
+      "pattern": "results = alpha * bm25_score + (1-alpha) * vector_similarity",
+      "example": "Rag usage"
+    },
+    {
+      "id": "ai009",
+      "type": "rag",
+      "name": "Reranking",
+      "description": "Reordonner resultats",
+      "pattern": "Retrieve top-k=20, rerank avec cross-encoder, keep top-n=5",
+      "example": "Rag usage"
+    },
+    {
+      "id": "ai010",
+      "type": "rag",
+      "name": "Query Expansion",
+      "description": "Enrichir la requete",
+      "pattern": "LLM genere synonymes et reformulations de la query",
+      "example": "Rag usage"
+    },
+    {
+      "id": "ai011",
+      "type": "rag",
+      "name": "HyDE",
+      "description": "Hypothetical Document Embeddings",
+      "pattern": "LLM genere reponse hypothetique, embed ca pour chercher",
+      "example": "Rag usage"
+    },
+    {
+      "id": "ai012",
+      "type": "rag",
+      "name": "Parent Document Retrieval",
+      "description": "Chercher petit, retourner grand",
+      "pattern": "Index small chunks, return parent document/section",
+      "example": "Rag usage"
+    },
+    {
+      "id": "ai013",
+      "type": "agents",
+      "name": "Tool Use",
+      "description": "Function calling",
+      "pattern": "tools: [{name: 'search', description: '...', parameters: {...}}]",
+      "example": "Agents usage"
+    },
+    {
+      "id": "ai014",
+      "type": "agents",
+      "name": "Agent Loop",
+      "description": "Observe-Think-Act cycle",
+      "pattern": "while not done: action = llm(state); result = execute(action); state.update(result)",
+      "example": "Agents usage"
+    },
+    {
+      "id": "ai015",
+      "type": "agents",
+      "name": "Planning",
+      "description": "Decomposer en sous-taches",
+      "pattern": "Task -> [subtask1, subtask2, ...] -> execute sequentially or parallel",
+      "example": "Agents usage"
+    },
+    {
+      "id": "ai016",
+      "type": "agents",
+      "name": "Memory Types",
+      "description": "Short-term, long-term, episodic",
+      "pattern": "Conversation buffer, vector store summaries, specific episodes",
+      "example": "Agents usage"
+    },
+    {
+      "id": "ai017",
+      "type": "agents",
+      "name": "Multi-Agent",
+      "description": "Collaboration entre agents",
+      "pattern": "Planner agent -> Worker agents -> Critic agent -> refine",
+      "example": "Agents usage"
+    },
+    {
+      "id": "ai018",
+      "type": "embeddings",
+      "name": "Embedding Models",
+      "description": "Choix du modele",
+      "pattern": "OpenAI ada-002, Cohere embed, sentence-transformers, local (nomic)",
+      "example": "Embeddings usage"
+    },
+    {
+      "id": "ai019",
+      "type": "embeddings",
+      "name": "Embedding Dimensions",
+      "description": "Trade-off taille/qualite",
+      "pattern": "384 (fast), 768 (balanced), 1536 (quality), reduce avec PCA/Matryoshka",
+      "example": "Embeddings usage"
+    },
+    {
+      "id": "ai020",
+      "type": "embeddings",
+      "name": "Similarity Metrics",
+      "description": "Cosine, dot product, euclidean",
+      "pattern": "Cosine pour normalises, dot product pour magnitude, L2 pour clustering",
+      "example": "Embeddings usage"
+    },
+    {
+      "id": "ai021",
+      "type": "vectordb",
+      "name": "Pinecone",
+      "description": "Managed vector DB",
+      "pattern": "index.upsert(vectors); index.query(vector, top_k=10, filter={...})",
+      "example": "Vectordb usage"
+    },
+    {
+      "id": "ai022",
+      "type": "vectordb",
+      "name": "ChromaDB",
+      "description": "Local/embedded vector DB",
+      "pattern": "collection.add(documents, embeddings, metadatas); collection.query(query_embeddings)",
+      "example": "Vectordb usage"
+    },
+    {
+      "id": "ai023",
+      "type": "vectordb",
+      "name": "Weaviate",
+      "description": "Vector + graph hybrid",
+      "pattern": "GraphQL queries + vector search + filters",
+      "example": "Vectordb usage"
+    },
+    {
+      "id": "ai024",
+      "type": "vectordb",
+      "name": "pgvector",
+      "description": "Postgres extension",
+      "pattern": "CREATE EXTENSION vector; CREATE INDEX ON items USING ivfflat (embedding vector_cosine_ops)",
+      "example": "Vectordb usage"
+    },
+    {
+      "id": "ai025",
+      "type": "vectordb",
+      "name": "HNSW vs IVF",
+      "description": "Index types",
+      "pattern": "HNSW: faster query, more memory. IVF: less memory, needs training",
+      "example": "Vectordb usage"
+    },
+    {
+      "id": "ai026",
+      "type": "finetuning",
+      "name": "LoRA",
+      "description": "Low-Rank Adaptation",
+      "pattern": "Freeze base, train small adapter matrices. rank=8, alpha=16",
+      "example": "Finetuning usage"
+    },
+    {
+      "id": "ai027",
+      "type": "finetuning",
+      "name": "QLoRA",
+      "description": "Quantized LoRA",
+      "pattern": "4-bit quantized base + LoRA adapters = fine-tune on consumer GPU",
+      "example": "Finetuning usage"
+    },
+    {
+      "id": "ai028",
+      "type": "finetuning",
+      "name": "Dataset Format",
+      "description": "Instruction tuning format",
+      "pattern": "[{instruction: '...', input: '...', output: '...'}] ou chat format",
+      "example": "Finetuning usage"
+    },
+    {
+      "id": "ai029",
+      "type": "eval",
+      "name": "LLM Evaluation",
+      "description": "Metrics et benchmarks",
+      "pattern": "BLEU, ROUGE pour generation. Accuracy pour classification. Human eval pour quality",
+      "example": "Eval usage"
+    },
+    {
+      "id": "ai030",
+      "type": "eval",
+      "name": "LLM as Judge",
+      "description": "Evaluer avec un LLM",
+      "pattern": "GPT-4 evalue reponses sur criteres: relevance, accuracy, coherence 1-5",
+      "example": "Eval usage"
+    }
+  ]
+}

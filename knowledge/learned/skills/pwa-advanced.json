@@ -1,0 +1,246 @@
+{
+  "category": "pwa-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "pwa001",
+      "type": "fundamentals",
+      "name": "PWA Requirements",
+      "description": "Core requirements",
+      "pattern": "HTTPS, manifest, service worker, responsive",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pwa002",
+      "type": "fundamentals",
+      "name": "PWA Benefits",
+      "description": "Why PWA",
+      "pattern": "Offline, installable, fast, push notifications",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pwa003",
+      "type": "manifest",
+      "name": "Web App Manifest",
+      "description": "App metadata",
+      "pattern": "manifest.json: name, icons, start_url, display",
+      "example": "Manifest usage"
+    },
+    {
+      "id": "pwa004",
+      "type": "manifest",
+      "name": "Display Modes",
+      "description": "App appearance",
+      "pattern": "standalone, fullscreen, minimal-ui, browser",
+      "example": "Manifest usage"
+    },
+    {
+      "id": "pwa005",
+      "type": "manifest",
+      "name": "Icons & Splash",
+      "description": "Visual assets",
+      "pattern": "Multiple sizes, maskable icons, splash screens",
+      "example": "Manifest usage"
+    },
+    {
+      "id": "pwa006",
+      "type": "service-worker",
+      "name": "Service Worker Basics",
+      "description": "Background worker",
+      "pattern": "navigator.serviceWorker.register(), lifecycle",
+      "example": "Service-worker usage"
+    },
+    {
+      "id": "pwa007",
+      "type": "service-worker",
+      "name": "SW Lifecycle",
+      "description": "Install/activate",
+      "pattern": "install, waiting, activate, controlling",
+      "example": "Service-worker usage"
+    },
+    {
+      "id": "pwa008",
+      "type": "service-worker",
+      "name": "SW Update",
+      "description": "New version",
+      "pattern": "skipWaiting(), clients.claim(), update prompt",
+      "example": "Service-worker usage"
+    },
+    {
+      "id": "pwa009",
+      "type": "caching",
+      "name": "Cache API",
+      "description": "Store responses",
+      "pattern": "caches.open(), cache.put(), cache.match()",
+      "example": "Caching usage"
+    },
+    {
+      "id": "pwa010",
+      "type": "caching",
+      "name": "Cache Strategies",
+      "description": "Caching patterns",
+      "pattern": "Cache-first, network-first, stale-while-revalidate",
+      "example": "Caching usage"
+    },
+    {
+      "id": "pwa011",
+      "type": "caching",
+      "name": "Precaching",
+      "description": "Install-time cache",
+      "pattern": "Cache critical assets during install event",
+      "example": "Caching usage"
+    },
+    {
+      "id": "pwa012",
+      "type": "caching",
+      "name": "Runtime Caching",
+      "description": "Dynamic caching",
+      "pattern": "Cache API responses, images on fetch",
+      "example": "Caching usage"
+    },
+    {
+      "id": "pwa013",
+      "type": "offline",
+      "name": "Offline Page",
+      "description": "Fallback content",
+      "pattern": "Cache offline.html, show when network fails",
+      "example": "Offline usage"
+    },
+    {
+      "id": "pwa014",
+      "type": "offline",
+      "name": "Offline Data",
+      "description": "Store data",
+      "pattern": "IndexedDB for structured data, sync later",
+      "example": "Offline usage"
+    },
+    {
+      "id": "pwa015",
+      "type": "workbox",
+      "name": "Workbox",
+      "description": "SW toolkit",
+      "pattern": "workbox-webpack-plugin, precacheAndRoute, strategies",
+      "example": "Workbox usage"
+    },
+    {
+      "id": "pwa016",
+      "type": "workbox",
+      "name": "Workbox Strategies",
+      "description": "Built-in strategies",
+      "pattern": "CacheFirst, NetworkFirst, StaleWhileRevalidate",
+      "example": "Workbox usage"
+    },
+    {
+      "id": "pwa017",
+      "type": "workbox",
+      "name": "Workbox Routing",
+      "description": "Route matching",
+      "pattern": "registerRoute(matchCallback, handlerCallback)",
+      "example": "Workbox usage"
+    },
+    {
+      "id": "pwa018",
+      "type": "push",
+      "name": "Push Notifications",
+      "description": "Server push",
+      "pattern": "PushManager, subscription, VAPID keys",
+      "example": "Push usage"
+    },
+    {
+      "id": "pwa019",
+      "type": "push",
+      "name": "Permission Request",
+      "description": "Ask permission",
+      "pattern": "Notification.requestPermission(), timing matters",
+      "example": "Push usage"
+    },
+    {
+      "id": "pwa020",
+      "type": "push",
+      "name": "Push Server",
+      "description": "Send push",
+      "pattern": "web-push library, subscription endpoint, payload",
+      "example": "Push usage"
+    },
+    {
+      "id": "pwa021",
+      "type": "sync",
+      "name": "Background Sync",
+      "description": "Defer actions",
+      "pattern": "registration.sync.register('sync-data')",
+      "example": "Sync usage"
+    },
+    {
+      "id": "pwa022",
+      "type": "sync",
+      "name": "Periodic Sync",
+      "description": "Regular updates",
+      "pattern": "periodicSync.register(), minInterval",
+      "example": "Sync usage"
+    },
+    {
+      "id": "pwa023",
+      "type": "install",
+      "name": "Install Prompt",
+      "description": "beforeinstallprompt",
+      "pattern": "Capture event, show custom UI, prompt.prompt()",
+      "example": "Install usage"
+    },
+    {
+      "id": "pwa024",
+      "type": "install",
+      "name": "Install Detection",
+      "description": "Check installed",
+      "pattern": "appinstalled event, display-mode: standalone",
+      "example": "Install usage"
+    },
+    {
+      "id": "pwa025",
+      "type": "advanced",
+      "name": "File System Access",
+      "description": "File handling",
+      "pattern": "File System Access API, showOpenFilePicker",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "pwa026",
+      "type": "advanced",
+      "name": "Web Share",
+      "description": "Native sharing",
+      "pattern": "navigator.share({title, url}), share target",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "pwa027",
+      "type": "advanced",
+      "name": "Shortcuts",
+      "description": "App shortcuts",
+      "pattern": "manifest shortcuts array, jump list actions",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "pwa028",
+      "type": "testing",
+      "name": "Lighthouse PWA",
+      "description": "Audit PWA",
+      "pattern": "Lighthouse PWA audit, checklist, scoring",
+      "example": "Testing usage"
+    },
+    {
+      "id": "pwa029",
+      "type": "testing",
+      "name": "Offline Testing",
+      "description": "Test offline",
+      "pattern": "DevTools offline mode, service worker bypass",
+      "example": "Testing usage"
+    },
+    {
+      "id": "pwa030",
+      "type": "frameworks",
+      "name": "Next.js PWA",
+      "description": "Framework integration",
+      "pattern": "next-pwa, serwist, Nuxt PWA module",
+      "example": "Frameworks usage"
+    }
+  ]
+}

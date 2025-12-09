@@ -1,0 +1,246 @@
+{
+  "category": "notification-systems",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ns001",
+      "type": "fundamentals",
+      "name": "Notification Types",
+      "description": "Channels",
+      "pattern": "Email, push, SMS, in-app, Slack, webhooks",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ns002",
+      "type": "fundamentals",
+      "name": "Notification Architecture",
+      "description": "System design",
+      "pattern": "Event -> notification service -> channels -> delivery",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ns003",
+      "type": "fundamentals",
+      "name": "Event-Driven Notifications",
+      "description": "Trigger pattern",
+      "pattern": "Business event triggers notification, decoupled",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ns004",
+      "type": "email",
+      "name": "Email Basics",
+      "description": "Send email",
+      "pattern": "Nodemailer, SendGrid, Mailgun, SES",
+      "example": "Email usage"
+    },
+    {
+      "id": "ns005",
+      "type": "email",
+      "name": "Email Templates",
+      "description": "Template system",
+      "pattern": "MJML, React Email, handlebars, dynamic content",
+      "example": "Email usage"
+    },
+    {
+      "id": "ns006",
+      "type": "email",
+      "name": "Transactional Email",
+      "description": "System emails",
+      "pattern": "Receipts, password reset, notifications",
+      "example": "Email usage"
+    },
+    {
+      "id": "ns007",
+      "type": "email",
+      "name": "Email Deliverability",
+      "description": "Inbox placement",
+      "pattern": "SPF, DKIM, DMARC, reputation, warm-up",
+      "example": "Email usage"
+    },
+    {
+      "id": "ns008",
+      "type": "push",
+      "name": "Web Push",
+      "description": "Browser notifications",
+      "pattern": "Push API, service worker, VAPID keys",
+      "example": "Push usage"
+    },
+    {
+      "id": "ns009",
+      "type": "push",
+      "name": "Mobile Push",
+      "description": "iOS/Android push",
+      "pattern": "APNs, FCM, device tokens, payload",
+      "example": "Push usage"
+    },
+    {
+      "id": "ns010",
+      "type": "push",
+      "name": "Push Service",
+      "description": "Unified push",
+      "pattern": "OneSignal, Pusher, Firebase, expo-notifications",
+      "example": "Push usage"
+    },
+    {
+      "id": "ns011",
+      "type": "sms",
+      "name": "SMS Notifications",
+      "description": "Text messages",
+      "pattern": "Twilio, Vonage, AWS SNS, short codes",
+      "example": "Sms usage"
+    },
+    {
+      "id": "ns012",
+      "type": "sms",
+      "name": "SMS Best Practices",
+      "description": "SMS guidelines",
+      "pattern": "Opt-in required, unsubscribe, character limits",
+      "example": "Sms usage"
+    },
+    {
+      "id": "ns013",
+      "type": "in-app",
+      "name": "In-App Notifications",
+      "description": "App notifications",
+      "pattern": "Notification center, toasts, badges, unread count",
+      "example": "In-app usage"
+    },
+    {
+      "id": "ns014",
+      "type": "in-app",
+      "name": "Real-Time In-App",
+      "description": "Live updates",
+      "pattern": "WebSocket, SSE, push to connected clients",
+      "example": "In-app usage"
+    },
+    {
+      "id": "ns015",
+      "type": "in-app",
+      "name": "Notification Bell",
+      "description": "UI pattern",
+      "pattern": "Bell icon, dropdown, mark as read, paginated",
+      "example": "In-app usage"
+    },
+    {
+      "id": "ns016",
+      "type": "preferences",
+      "name": "User Preferences",
+      "description": "Notification settings",
+      "pattern": "Per-channel opt-in, frequency, digest vs immediate",
+      "example": "Preferences usage"
+    },
+    {
+      "id": "ns017",
+      "type": "preferences",
+      "name": "Preference Center",
+      "description": "Settings UI",
+      "pattern": "User configures channels, types, frequency",
+      "example": "Preferences usage"
+    },
+    {
+      "id": "ns018",
+      "type": "preferences",
+      "name": "Unsubscribe",
+      "description": "Opt-out",
+      "pattern": "One-click unsubscribe, preference link, legal",
+      "example": "Preferences usage"
+    },
+    {
+      "id": "ns019",
+      "type": "delivery",
+      "name": "Delivery Tracking",
+      "description": "Track status",
+      "pattern": "Sent, delivered, opened, clicked, bounced",
+      "example": "Delivery usage"
+    },
+    {
+      "id": "ns020",
+      "type": "delivery",
+      "name": "Retry Logic",
+      "description": "Handle failures",
+      "pattern": "Retry on failure, exponential backoff, dead letter",
+      "example": "Delivery usage"
+    },
+    {
+      "id": "ns021",
+      "type": "delivery",
+      "name": "Rate Limiting",
+      "description": "Throttle sending",
+      "pattern": "Respect provider limits, queue, batch",
+      "example": "Delivery usage"
+    },
+    {
+      "id": "ns022",
+      "type": "aggregation",
+      "name": "Notification Digest",
+      "description": "Batch notifications",
+      "pattern": "Daily/weekly digest, aggregate similar, reduce noise",
+      "example": "Aggregation usage"
+    },
+    {
+      "id": "ns023",
+      "type": "aggregation",
+      "name": "Deduplication",
+      "description": "Avoid duplicates",
+      "pattern": "Dedupe within window, same event same user",
+      "example": "Aggregation usage"
+    },
+    {
+      "id": "ns024",
+      "type": "templates",
+      "name": "Template Management",
+      "description": "Manage templates",
+      "pattern": "Versioned templates, preview, i18n, variables",
+      "example": "Templates usage"
+    },
+    {
+      "id": "ns025",
+      "type": "templates",
+      "name": "Dynamic Content",
+      "description": "Personalization",
+      "pattern": "User name, action details, deep links",
+      "example": "Templates usage"
+    },
+    {
+      "id": "ns026",
+      "type": "platforms",
+      "name": "Novu",
+      "description": "Notification infra",
+      "pattern": "Open source, multi-channel, workflows, digest",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "ns027",
+      "type": "platforms",
+      "name": "Knock",
+      "description": "Notification API",
+      "pattern": "Workflows, preferences, in-app, feeds",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "ns028",
+      "type": "platforms",
+      "name": "Courier",
+      "description": "Orchestration",
+      "pattern": "Designer, multi-channel, routing, analytics",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "ns029",
+      "type": "testing",
+      "name": "Notification Testing",
+      "description": "Test notifications",
+      "pattern": "Preview, sandbox mode, test users, Mailtrap",
+      "example": "Testing usage"
+    },
+    {
+      "id": "ns030",
+      "type": "monitoring",
+      "name": "Notification Analytics",
+      "description": "Track metrics",
+      "pattern": "Delivery rate, open rate, click rate, unsubscribes",
+      "example": "Monitoring usage"
+    }
+  ]
+}

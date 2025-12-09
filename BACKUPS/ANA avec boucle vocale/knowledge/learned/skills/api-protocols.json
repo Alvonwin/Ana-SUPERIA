@@ -1,0 +1,246 @@
+{
+  "category": "api-protocols",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "api001",
+      "type": "rest",
+      "name": "REST Principles",
+      "description": "RESTful design",
+      "pattern": "Stateless, uniform interface, resource-based, HATEOAS",
+      "example": "Rest usage"
+    },
+    {
+      "id": "api002",
+      "type": "rest",
+      "name": "HTTP Methods",
+      "description": "CRUD mapping",
+      "pattern": "GET=read, POST=create, PUT=replace, PATCH=update, DELETE=remove",
+      "example": "Rest usage"
+    },
+    {
+      "id": "api003",
+      "type": "rest",
+      "name": "Status Codes",
+      "description": "Response codes",
+      "pattern": "2xx success, 3xx redirect, 4xx client error, 5xx server error",
+      "example": "Rest usage"
+    },
+    {
+      "id": "api004",
+      "type": "rest",
+      "name": "Resource Naming",
+      "description": "URL design",
+      "pattern": "/users/{id}/posts - nouns, plural, hierarchical",
+      "example": "Rest usage"
+    },
+    {
+      "id": "api005",
+      "type": "rest",
+      "name": "Pagination",
+      "description": "Large result sets",
+      "pattern": "?page=2&limit=20, cursor-based, Link headers",
+      "example": "Rest usage"
+    },
+    {
+      "id": "api006",
+      "type": "rest",
+      "name": "Filtering & Sorting",
+      "description": "Query params",
+      "pattern": "?status=active&sort=-created_at&fields=id,name",
+      "example": "Rest usage"
+    },
+    {
+      "id": "api007",
+      "type": "rest",
+      "name": "Versioning",
+      "description": "API versions",
+      "pattern": "/v1/users, Accept: application/vnd.api+json;version=1",
+      "example": "Rest usage"
+    },
+    {
+      "id": "api008",
+      "type": "rest",
+      "name": "HATEOAS",
+      "description": "Hypermedia links",
+      "pattern": "{data: {...}, links: {self, next, related}}",
+      "example": "Rest usage"
+    },
+    {
+      "id": "api009",
+      "type": "openapi",
+      "name": "OpenAPI/Swagger",
+      "description": "API specification",
+      "pattern": "openapi: 3.0, paths, components, schemas, responses",
+      "example": "Openapi usage"
+    },
+    {
+      "id": "api010",
+      "type": "openapi",
+      "name": "API Documentation",
+      "description": "Interactive docs",
+      "pattern": "Swagger UI, Redoc, Stoplight",
+      "example": "Openapi usage"
+    },
+    {
+      "id": "api011",
+      "type": "openapi",
+      "name": "Code Generation",
+      "description": "Generate from spec",
+      "pattern": "openapi-generator, client SDKs, server stubs",
+      "example": "Openapi usage"
+    },
+    {
+      "id": "api012",
+      "type": "grpc",
+      "name": "gRPC Basics",
+      "description": "RPC framework",
+      "pattern": "Protocol Buffers, HTTP/2, bidirectional streaming",
+      "example": "Grpc usage"
+    },
+    {
+      "id": "api013",
+      "type": "grpc",
+      "name": "Protocol Buffers",
+      "description": "Binary serialization",
+      "pattern": "message User { string name = 1; int32 age = 2; }",
+      "example": "Grpc usage"
+    },
+    {
+      "id": "api014",
+      "type": "grpc",
+      "name": "gRPC Service Definition",
+      "description": "Service proto",
+      "pattern": "service UserService { rpc GetUser(GetUserRequest) returns (User); }",
+      "example": "Grpc usage"
+    },
+    {
+      "id": "api015",
+      "type": "grpc",
+      "name": "gRPC-Web",
+      "description": "Browser support",
+      "pattern": "Envoy proxy, grpc-web client, unary + server streaming",
+      "example": "Grpc usage"
+    },
+    {
+      "id": "api016",
+      "type": "trpc",
+      "name": "tRPC",
+      "description": "TypeScript RPC",
+      "pattern": "End-to-end type safety, no code generation, React Query integration",
+      "example": "Trpc usage"
+    },
+    {
+      "id": "api017",
+      "type": "trpc",
+      "name": "tRPC Router",
+      "description": "Define procedures",
+      "pattern": "router({ getUser: publicProcedure.input(z.string()).query(fn) })",
+      "example": "Trpc usage"
+    },
+    {
+      "id": "api018",
+      "type": "jsonrpc",
+      "name": "JSON-RPC",
+      "description": "Simple RPC",
+      "pattern": "{jsonrpc: '2.0', method: 'subtract', params: [42, 23], id: 1}",
+      "example": "Jsonrpc usage"
+    },
+    {
+      "id": "api019",
+      "type": "websocket",
+      "name": "WebSocket API",
+      "description": "Real-time bidirectional",
+      "pattern": "ws.onopen, ws.onmessage, ws.send(), ws.close()",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "api020",
+      "type": "websocket",
+      "name": "Socket.IO",
+      "description": "Real-time library",
+      "pattern": "Fallback transports, rooms, namespaces, acknowledgements",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "api021",
+      "type": "sse",
+      "name": "Server-Sent Events",
+      "description": "Server push",
+      "pattern": "EventSource API, text/event-stream, auto-reconnect",
+      "example": "Sse usage"
+    },
+    {
+      "id": "api022",
+      "type": "patterns",
+      "name": "Rate Limiting",
+      "description": "Throttle requests",
+      "pattern": "X-RateLimit-Limit, 429 Too Many Requests, token bucket",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "api023",
+      "type": "patterns",
+      "name": "Idempotency Keys",
+      "description": "Safe retries",
+      "pattern": "Idempotency-Key header, store and check before processing",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "api024",
+      "type": "patterns",
+      "name": "Request Validation",
+      "description": "Input validation",
+      "pattern": "JSON Schema, Zod, Joi - validate before processing",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "api025",
+      "type": "patterns",
+      "name": "Error Responses",
+      "description": "Consistent errors",
+      "pattern": "{error: {code: 'VALIDATION_ERROR', message, details: []}}",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "api026",
+      "type": "patterns",
+      "name": "Bulk Operations",
+      "description": "Batch requests",
+      "pattern": "POST /batch, [{method, path, body}], partial success handling",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "api027",
+      "type": "patterns",
+      "name": "Long-Running Operations",
+      "description": "Async patterns",
+      "pattern": "202 Accepted, Location header, polling or webhooks",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "api028",
+      "type": "security",
+      "name": "API Authentication",
+      "description": "Auth methods",
+      "pattern": "API keys, OAuth 2.0, JWT Bearer tokens",
+      "example": "Security usage"
+    },
+    {
+      "id": "api029",
+      "type": "security",
+      "name": "CORS",
+      "description": "Cross-origin",
+      "pattern": "Access-Control-Allow-Origin, preflight OPTIONS, credentials",
+      "example": "Security usage"
+    },
+    {
+      "id": "api030",
+      "type": "testing",
+      "name": "API Testing",
+      "description": "Test strategies",
+      "pattern": "Contract testing, integration tests, Postman, HTTPie",
+      "example": "Testing usage"
+    }
+  ]
+}

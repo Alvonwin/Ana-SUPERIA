@@ -1,0 +1,246 @@
+{
+  "category": "algorithms-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "alg001",
+      "type": "complexity",
+      "name": "Big O Notation",
+      "description": "Time complexity",
+      "pattern": "O(1), O(log n), O(n), O(n log n), O(n²), O(2^n)",
+      "example": "Complexity usage"
+    },
+    {
+      "id": "alg002",
+      "type": "complexity",
+      "name": "Space Complexity",
+      "description": "Memory usage",
+      "pattern": "Auxiliary space, in-place algorithms, recursion stack",
+      "example": "Complexity usage"
+    },
+    {
+      "id": "alg003",
+      "type": "complexity",
+      "name": "Amortized Analysis",
+      "description": "Average over operations",
+      "pattern": "Dynamic array push: O(1) amortized despite occasional O(n)",
+      "example": "Complexity usage"
+    },
+    {
+      "id": "alg004",
+      "type": "sorting",
+      "name": "Quick Sort",
+      "description": "Divide and conquer",
+      "pattern": "Partition around pivot, O(n log n) avg, O(n²) worst",
+      "example": "Sorting usage"
+    },
+    {
+      "id": "alg005",
+      "type": "sorting",
+      "name": "Merge Sort",
+      "description": "Stable sort",
+      "pattern": "Divide, sort halves, merge. O(n log n) guaranteed",
+      "example": "Sorting usage"
+    },
+    {
+      "id": "alg006",
+      "type": "sorting",
+      "name": "Heap Sort",
+      "description": "Heap-based",
+      "pattern": "Build max-heap, extract max. O(n log n), in-place",
+      "example": "Sorting usage"
+    },
+    {
+      "id": "alg007",
+      "type": "sorting",
+      "name": "Counting/Radix Sort",
+      "description": "Linear time sorts",
+      "pattern": "O(n+k) for bounded integers, O(d*(n+k)) for radix",
+      "example": "Sorting usage"
+    },
+    {
+      "id": "alg008",
+      "type": "searching",
+      "name": "Binary Search",
+      "description": "Divide search space",
+      "pattern": "O(log n), requires sorted array, many variations",
+      "example": "Searching usage"
+    },
+    {
+      "id": "alg009",
+      "type": "searching",
+      "name": "Binary Search Variations",
+      "description": "Finding boundaries",
+      "pattern": "First/last occurrence, lower/upper bound, rotated array",
+      "example": "Searching usage"
+    },
+    {
+      "id": "alg010",
+      "type": "graphs",
+      "name": "BFS",
+      "description": "Breadth-first search",
+      "pattern": "Queue, level-order, shortest path in unweighted",
+      "example": "Graphs usage"
+    },
+    {
+      "id": "alg011",
+      "type": "graphs",
+      "name": "DFS",
+      "description": "Depth-first search",
+      "pattern": "Stack/recursion, preorder/postorder, cycle detection",
+      "example": "Graphs usage"
+    },
+    {
+      "id": "alg012",
+      "type": "graphs",
+      "name": "Dijkstra",
+      "description": "Shortest path",
+      "pattern": "Priority queue, greedy, no negative weights, O(E log V)",
+      "example": "Graphs usage"
+    },
+    {
+      "id": "alg013",
+      "type": "graphs",
+      "name": "Bellman-Ford",
+      "description": "Negative weights",
+      "pattern": "Relax all edges V-1 times, detect negative cycles",
+      "example": "Graphs usage"
+    },
+    {
+      "id": "alg014",
+      "type": "graphs",
+      "name": "Topological Sort",
+      "description": "DAG ordering",
+      "pattern": "DFS post-order reverse, or Kahn's algorithm with BFS",
+      "example": "Graphs usage"
+    },
+    {
+      "id": "alg015",
+      "type": "graphs",
+      "name": "Union-Find",
+      "description": "Disjoint sets",
+      "pattern": "Path compression, union by rank. O(α(n)) per op",
+      "example": "Graphs usage"
+    },
+    {
+      "id": "alg016",
+      "type": "graphs",
+      "name": "MST Algorithms",
+      "description": "Minimum spanning tree",
+      "pattern": "Kruskal (edges), Prim (vertices), O(E log V)",
+      "example": "Graphs usage"
+    },
+    {
+      "id": "alg017",
+      "type": "dp",
+      "name": "Dynamic Programming",
+      "description": "Optimal substructure",
+      "pattern": "Overlapping subproblems, memoization or tabulation",
+      "example": "Dp usage"
+    },
+    {
+      "id": "alg018",
+      "type": "dp",
+      "name": "DP Patterns",
+      "description": "Common patterns",
+      "pattern": "Linear, 2D grid, interval, subset, tree DP",
+      "example": "Dp usage"
+    },
+    {
+      "id": "alg019",
+      "type": "dp",
+      "name": "Knapsack Problems",
+      "description": "Optimization",
+      "pattern": "0/1 knapsack, unbounded, fractional variations",
+      "example": "Dp usage"
+    },
+    {
+      "id": "alg020",
+      "type": "dp",
+      "name": "LCS/LIS",
+      "description": "Sequence problems",
+      "pattern": "Longest common subsequence, longest increasing subsequence",
+      "example": "Dp usage"
+    },
+    {
+      "id": "alg021",
+      "type": "trees",
+      "name": "Binary Tree Traversals",
+      "description": "Tree walking",
+      "pattern": "Inorder, preorder, postorder, level-order",
+      "example": "Trees usage"
+    },
+    {
+      "id": "alg022",
+      "type": "trees",
+      "name": "BST Operations",
+      "description": "Binary search tree",
+      "pattern": "Insert, delete, search, predecessor/successor O(h)",
+      "example": "Trees usage"
+    },
+    {
+      "id": "alg023",
+      "type": "trees",
+      "name": "Balanced Trees",
+      "description": "Self-balancing",
+      "pattern": "AVL (strict), Red-Black (relaxed), B-trees (disk)",
+      "example": "Trees usage"
+    },
+    {
+      "id": "alg024",
+      "type": "trees",
+      "name": "Trie",
+      "description": "Prefix tree",
+      "pattern": "String storage, O(m) lookup, autocomplete, spell check",
+      "example": "Trees usage"
+    },
+    {
+      "id": "alg025",
+      "type": "advanced",
+      "name": "Sliding Window",
+      "description": "Subarray problems",
+      "pattern": "Fixed or variable size window, two pointers",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "alg026",
+      "type": "advanced",
+      "name": "Two Pointers",
+      "description": "Array traversal",
+      "pattern": "Start/end, fast/slow, multiple arrays",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "alg027",
+      "type": "advanced",
+      "name": "Backtracking",
+      "description": "Exhaustive search",
+      "pattern": "Try, recurse, undo. Permutations, combinations, sudoku",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "alg028",
+      "type": "advanced",
+      "name": "Greedy Algorithms",
+      "description": "Local optimum",
+      "pattern": "Make locally optimal choice, prove global optimum",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "alg029",
+      "type": "advanced",
+      "name": "Divide and Conquer",
+      "description": "Break down problems",
+      "pattern": "Divide, solve subproblems, combine. Master theorem.",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "alg030",
+      "type": "advanced",
+      "name": "Bit Manipulation",
+      "description": "Bitwise operations",
+      "pattern": "AND, OR, XOR, shifts. O(1) operations on bits.",
+      "example": "Advanced usage"
+    }
+  ]
+}

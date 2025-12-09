@@ -1,0 +1,246 @@
+{
+  "category": "security-offensive",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "sec001",
+      "type": "owasp",
+      "name": "OWASP Top 10",
+      "description": "Common vulnerabilities",
+      "pattern": "Injection, Broken Auth, XSS, Insecure Design, Misconfig, Vulnerable Components",
+      "example": "Owasp usage"
+    },
+    {
+      "id": "sec002",
+      "type": "owasp",
+      "name": "SQL Injection",
+      "description": "Database attacks",
+      "pattern": "' OR '1'='1, parameterized queries, ORM protection",
+      "example": "Owasp usage"
+    },
+    {
+      "id": "sec003",
+      "type": "owasp",
+      "name": "XSS Prevention",
+      "description": "Cross-site scripting",
+      "pattern": "Output encoding, CSP headers, sanitize HTML, HttpOnly cookies",
+      "example": "Owasp usage"
+    },
+    {
+      "id": "sec004",
+      "type": "owasp",
+      "name": "CSRF Protection",
+      "description": "Cross-site request forgery",
+      "pattern": "CSRF tokens, SameSite cookies, verify origin",
+      "example": "Owasp usage"
+    },
+    {
+      "id": "sec005",
+      "type": "owasp",
+      "name": "SSRF",
+      "description": "Server-side request forgery",
+      "pattern": "Validate URLs, allowlist domains, no internal network access",
+      "example": "Owasp usage"
+    },
+    {
+      "id": "sec006",
+      "type": "owasp",
+      "name": "XXE",
+      "description": "XML external entities",
+      "pattern": "Disable external entities, use JSON, validate XML",
+      "example": "Owasp usage"
+    },
+    {
+      "id": "sec007",
+      "type": "owasp",
+      "name": "Insecure Deserialization",
+      "description": "Object injection",
+      "pattern": "Validate input, avoid native serialization, use JSON",
+      "example": "Owasp usage"
+    },
+    {
+      "id": "sec008",
+      "type": "owasp",
+      "name": "Path Traversal",
+      "description": "Directory traversal",
+      "pattern": "../../../etc/passwd - validate paths, chroot, no user input in paths",
+      "example": "Owasp usage"
+    },
+    {
+      "id": "sec009",
+      "type": "testing",
+      "name": "SAST",
+      "description": "Static analysis",
+      "pattern": "SonarQube, Semgrep, CodeQL - analyze source code",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sec010",
+      "type": "testing",
+      "name": "DAST",
+      "description": "Dynamic testing",
+      "pattern": "OWASP ZAP, Burp Suite - test running application",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sec011",
+      "type": "testing",
+      "name": "Dependency Scanning",
+      "description": "Vulnerable packages",
+      "pattern": "npm audit, Snyk, Dependabot - CVE detection",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sec012",
+      "type": "testing",
+      "name": "Secret Scanning",
+      "description": "Exposed credentials",
+      "pattern": "GitLeaks, TruffleHog - detect keys, passwords in code",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sec013",
+      "type": "testing",
+      "name": "Penetration Testing",
+      "description": "Ethical hacking",
+      "pattern": "Reconnaissance, scanning, exploitation, reporting",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sec014",
+      "type": "testing",
+      "name": "Bug Bounty",
+      "description": "Crowdsourced security",
+      "pattern": "HackerOne, Bugcrowd - responsible disclosure programs",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sec015",
+      "type": "web",
+      "name": "Security Headers",
+      "description": "HTTP headers",
+      "pattern": "CSP, HSTS, X-Frame-Options, X-Content-Type-Options",
+      "example": "Web usage"
+    },
+    {
+      "id": "sec016",
+      "type": "web",
+      "name": "Content Security Policy",
+      "description": "XSS mitigation",
+      "pattern": "script-src 'self', style-src, img-src, report-uri",
+      "example": "Web usage"
+    },
+    {
+      "id": "sec017",
+      "type": "web",
+      "name": "CORS Security",
+      "description": "Cross-origin rules",
+      "pattern": "Specific origins, credentials handling, preflight",
+      "example": "Web usage"
+    },
+    {
+      "id": "sec018",
+      "type": "web",
+      "name": "Cookie Security",
+      "description": "Secure cookies",
+      "pattern": "Secure, HttpOnly, SameSite=Strict, __Host- prefix",
+      "example": "Web usage"
+    },
+    {
+      "id": "sec019",
+      "type": "crypto",
+      "name": "Password Hashing",
+      "description": "Secure storage",
+      "pattern": "bcrypt, Argon2, scrypt - salt, cost factor, never MD5/SHA1",
+      "example": "Crypto usage"
+    },
+    {
+      "id": "sec020",
+      "type": "crypto",
+      "name": "Encryption at Rest",
+      "description": "Data protection",
+      "pattern": "AES-256-GCM, envelope encryption, key management",
+      "example": "Crypto usage"
+    },
+    {
+      "id": "sec021",
+      "type": "crypto",
+      "name": "TLS Configuration",
+      "description": "Transport security",
+      "pattern": "TLS 1.3, strong ciphers, certificate management",
+      "example": "Crypto usage"
+    },
+    {
+      "id": "sec022",
+      "type": "crypto",
+      "name": "Key Management",
+      "description": "Secret handling",
+      "pattern": "HSM, Vault, KMS - rotation, access control, audit",
+      "example": "Crypto usage"
+    },
+    {
+      "id": "sec023",
+      "type": "api",
+      "name": "API Security",
+      "description": "API protection",
+      "pattern": "Rate limiting, input validation, authentication, authorization",
+      "example": "Api usage"
+    },
+    {
+      "id": "sec024",
+      "type": "api",
+      "name": "OAuth Security",
+      "description": "Auth vulnerabilities",
+      "pattern": "PKCE, state parameter, token storage, scope validation",
+      "example": "Api usage"
+    },
+    {
+      "id": "sec025",
+      "type": "api",
+      "name": "JWT Security",
+      "description": "Token security",
+      "pattern": "RS256 > HS256, short expiry, refresh tokens, revocation",
+      "example": "Api usage"
+    },
+    {
+      "id": "sec026",
+      "type": "infra",
+      "name": "Network Security",
+      "description": "Infrastructure",
+      "pattern": "Firewalls, VPNs, segmentation, zero trust",
+      "example": "Infra usage"
+    },
+    {
+      "id": "sec027",
+      "type": "infra",
+      "name": "Container Security",
+      "description": "Container hardening",
+      "pattern": "Non-root, read-only, minimal base, scanning",
+      "example": "Infra usage"
+    },
+    {
+      "id": "sec028",
+      "type": "infra",
+      "name": "Cloud Security",
+      "description": "Cloud posture",
+      "pattern": "IAM, security groups, encryption, audit logs",
+      "example": "Infra usage"
+    },
+    {
+      "id": "sec029",
+      "type": "compliance",
+      "name": "Security Compliance",
+      "description": "Standards",
+      "pattern": "SOC 2, ISO 27001, PCI-DSS, GDPR, HIPAA",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "sec030",
+      "type": "response",
+      "name": "Incident Response",
+      "description": "Security incidents",
+      "pattern": "Detection, containment, eradication, recovery, lessons learned",
+      "example": "Response usage"
+    }
+  ]
+}

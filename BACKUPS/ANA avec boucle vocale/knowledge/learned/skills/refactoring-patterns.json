@@ -1,0 +1,246 @@
+{
+  "category": "refactoring-patterns",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ref001",
+      "type": "fundamentals",
+      "name": "Refactoring Definition",
+      "description": "What is refactoring",
+      "pattern": "Change structure without changing behavior, improve maintainability",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ref002",
+      "type": "fundamentals",
+      "name": "When to Refactor",
+      "description": "Refactoring triggers",
+      "pattern": "Code smells, before adding features, during code review",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ref003",
+      "type": "fundamentals",
+      "name": "Safe Refactoring",
+      "description": "Risk mitigation",
+      "pattern": "Tests first, small steps, commit often, use IDE tools",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ref004",
+      "type": "extraction",
+      "name": "Extract Method",
+      "description": "Create new function",
+      "pattern": "Long method -> extract logically related lines into new function",
+      "example": "Extraction usage"
+    },
+    {
+      "id": "ref005",
+      "type": "extraction",
+      "name": "Extract Variable",
+      "description": "Name expressions",
+      "pattern": "Complex expression -> const descriptiveName = expression;",
+      "example": "Extraction usage"
+    },
+    {
+      "id": "ref006",
+      "type": "extraction",
+      "name": "Extract Class",
+      "description": "Separate responsibilities",
+      "pattern": "Large class -> split related fields/methods into new class",
+      "example": "Extraction usage"
+    },
+    {
+      "id": "ref007",
+      "type": "extraction",
+      "name": "Extract Interface",
+      "description": "Abstract common behavior",
+      "pattern": "Similar classes -> extract shared interface",
+      "example": "Extraction usage"
+    },
+    {
+      "id": "ref008",
+      "type": "inlining",
+      "name": "Inline Method",
+      "description": "Remove indirection",
+      "pattern": "Trivial method -> inline body at call sites",
+      "example": "Inlining usage"
+    },
+    {
+      "id": "ref009",
+      "type": "inlining",
+      "name": "Inline Variable",
+      "description": "Remove unnecessary var",
+      "pattern": "Variable used once -> inline the expression",
+      "example": "Inlining usage"
+    },
+    {
+      "id": "ref010",
+      "type": "moving",
+      "name": "Move Method",
+      "description": "Better location",
+      "pattern": "Method uses other class more -> move to that class",
+      "example": "Moving usage"
+    },
+    {
+      "id": "ref011",
+      "type": "moving",
+      "name": "Move Field",
+      "description": "Better ownership",
+      "pattern": "Field used by other class more -> move to that class",
+      "example": "Moving usage"
+    },
+    {
+      "id": "ref012",
+      "type": "renaming",
+      "name": "Rename",
+      "description": "Improve names",
+      "pattern": "Unclear name -> descriptive, intention-revealing name",
+      "example": "Renaming usage"
+    },
+    {
+      "id": "ref013",
+      "type": "renaming",
+      "name": "Rename to Reveal Intent",
+      "description": "Self-documenting",
+      "pattern": "calculateValue() -> calculateDiscountedPrice()",
+      "example": "Renaming usage"
+    },
+    {
+      "id": "ref014",
+      "type": "simplifying",
+      "name": "Replace Conditional with Polymorphism",
+      "description": "OO refactoring",
+      "pattern": "switch/if-else on type -> subclass per type, override method",
+      "example": "Simplifying usage"
+    },
+    {
+      "id": "ref015",
+      "type": "simplifying",
+      "name": "Decompose Conditional",
+      "description": "Clarify conditions",
+      "pattern": "Complex if -> extract condition and branches to methods",
+      "example": "Simplifying usage"
+    },
+    {
+      "id": "ref016",
+      "type": "simplifying",
+      "name": "Consolidate Conditionals",
+      "description": "Merge conditions",
+      "pattern": "Multiple ifs returning same -> combine with OR/AND",
+      "example": "Simplifying usage"
+    },
+    {
+      "id": "ref017",
+      "type": "simplifying",
+      "name": "Replace Nested Conditional with Guard Clauses",
+      "description": "Flatten nesting",
+      "pattern": "Nested ifs -> early returns for edge cases",
+      "example": "Simplifying usage"
+    },
+    {
+      "id": "ref018",
+      "type": "simplifying",
+      "name": "Remove Dead Code",
+      "description": "Delete unused",
+      "pattern": "Unreachable or unused code -> delete it",
+      "example": "Simplifying usage"
+    },
+    {
+      "id": "ref019",
+      "type": "organizing",
+      "name": "Split Loop",
+      "description": "Single responsibility",
+      "pattern": "Loop doing multiple things -> separate loops (may combine after)",
+      "example": "Organizing usage"
+    },
+    {
+      "id": "ref020",
+      "type": "organizing",
+      "name": "Replace Loop with Pipeline",
+      "description": "Functional style",
+      "pattern": "for loop -> map/filter/reduce chain",
+      "example": "Organizing usage"
+    },
+    {
+      "id": "ref021",
+      "type": "organizing",
+      "name": "Introduce Parameter Object",
+      "description": "Group parameters",
+      "pattern": "Many related params -> single object parameter",
+      "example": "Organizing usage"
+    },
+    {
+      "id": "ref022",
+      "type": "organizing",
+      "name": "Preserve Whole Object",
+      "description": "Pass object",
+      "pattern": "Pass object instead of extracting multiple values",
+      "example": "Organizing usage"
+    },
+    {
+      "id": "ref023",
+      "type": "encapsulation",
+      "name": "Encapsulate Field",
+      "description": "Hide data",
+      "pattern": "Public field -> private + getter/setter",
+      "example": "Encapsulation usage"
+    },
+    {
+      "id": "ref024",
+      "type": "encapsulation",
+      "name": "Encapsulate Collection",
+      "description": "Protect collections",
+      "pattern": "Return copy or immutable view, not raw collection",
+      "example": "Encapsulation usage"
+    },
+    {
+      "id": "ref025",
+      "type": "encapsulation",
+      "name": "Replace Primitive with Object",
+      "description": "Value objects",
+      "pattern": "string phoneNumber -> class PhoneNumber",
+      "example": "Encapsulation usage"
+    },
+    {
+      "id": "ref026",
+      "type": "inheritance",
+      "name": "Pull Up Method",
+      "description": "Move to superclass",
+      "pattern": "Duplicate in subclasses -> move to parent",
+      "example": "Inheritance usage"
+    },
+    {
+      "id": "ref027",
+      "type": "inheritance",
+      "name": "Push Down Method",
+      "description": "Move to subclass",
+      "pattern": "Method only used by one subclass -> move down",
+      "example": "Inheritance usage"
+    },
+    {
+      "id": "ref028",
+      "type": "inheritance",
+      "name": "Replace Inheritance with Composition",
+      "description": "Favor composition",
+      "pattern": "IS-A relationship weak -> use HAS-A instead",
+      "example": "Inheritance usage"
+    },
+    {
+      "id": "ref029",
+      "type": "api",
+      "name": "Separate Query from Modifier",
+      "description": "CQS principle",
+      "pattern": "Method that returns and modifies -> split into two",
+      "example": "Api usage"
+    },
+    {
+      "id": "ref030",
+      "type": "api",
+      "name": "Parameterize Method",
+      "description": "Generalize",
+      "pattern": "Similar methods -> one method with parameter",
+      "example": "Api usage"
+    }
+  ]
+}

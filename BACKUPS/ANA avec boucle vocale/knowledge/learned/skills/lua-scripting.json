@@ -1,0 +1,246 @@
+{
+  "category": "lua-scripting",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "lua001",
+      "type": "fundamentals",
+      "name": "Lua Basics",
+      "description": "Lua syntax",
+      "pattern": "variables, functions, control flow",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lua002",
+      "type": "fundamentals",
+      "name": "Data Types",
+      "description": "Lua types",
+      "pattern": "nil, boolean, number, string, table",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lua003",
+      "type": "fundamentals",
+      "name": "Tables",
+      "description": "Lua tables",
+      "pattern": "arrays, dictionaries, mixed tables",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lua004",
+      "type": "fundamentals",
+      "name": "Functions",
+      "description": "Lua functions",
+      "pattern": "first-class, closures, varargs",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lua005",
+      "type": "fundamentals",
+      "name": "Control Structures",
+      "description": "Flow control",
+      "pattern": "if, for, while, repeat",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lua006",
+      "type": "fundamentals",
+      "name": "Strings",
+      "description": "String handling",
+      "pattern": "string.*, patterns, gsub",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lua007",
+      "type": "fundamentals",
+      "name": "Iterators",
+      "description": "Iteration",
+      "pattern": "ipairs, pairs, custom iterators",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lua008",
+      "type": "advanced",
+      "name": "Metatables",
+      "description": "Meta programming",
+      "pattern": "__index, __newindex, __call",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "lua009",
+      "type": "advanced",
+      "name": "Coroutines",
+      "description": "Cooperative threading",
+      "pattern": "coroutine.create, yield, resume",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "lua010",
+      "type": "advanced",
+      "name": "Environments",
+      "description": "Variable scope",
+      "pattern": "_G, _ENV, sandboxing",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "lua011",
+      "type": "modules",
+      "name": "Module System",
+      "description": "Code organization",
+      "pattern": "require, module, package.path",
+      "example": "Modules usage"
+    },
+    {
+      "id": "lua012",
+      "type": "modules",
+      "name": "LuaRocks",
+      "description": "Package manager",
+      "pattern": "luarocks install, rockspec",
+      "example": "Modules usage"
+    },
+    {
+      "id": "lua013",
+      "type": "c-api",
+      "name": "Lua C API",
+      "description": "C integration",
+      "pattern": "lua_State, lua_push*, lua_to*",
+      "example": "C-api usage"
+    },
+    {
+      "id": "lua014",
+      "type": "c-api",
+      "name": "Embedding Lua",
+      "description": "Embed in C",
+      "pattern": "luaL_newstate, luaL_dofile",
+      "example": "C-api usage"
+    },
+    {
+      "id": "lua015",
+      "type": "c-api",
+      "name": "Extending Lua",
+      "description": "C modules",
+      "pattern": "luaL_Reg, luaL_newlib",
+      "example": "C-api usage"
+    },
+    {
+      "id": "lua016",
+      "type": "gamedev",
+      "name": "LÖVE2D",
+      "description": "2D game framework",
+      "pattern": "love.load, love.update, love.draw",
+      "example": "Gamedev usage"
+    },
+    {
+      "id": "lua017",
+      "type": "gamedev",
+      "name": "Defold",
+      "description": "Game engine",
+      "pattern": "scripts, game objects, messages",
+      "example": "Gamedev usage"
+    },
+    {
+      "id": "lua018",
+      "type": "gamedev",
+      "name": "Corona/Solar2D",
+      "description": "Mobile games",
+      "pattern": "display objects, physics, events",
+      "example": "Gamedev usage"
+    },
+    {
+      "id": "lua019",
+      "type": "embedding",
+      "name": "Neovim Lua",
+      "description": "Neovim config",
+      "pattern": "vim.*, lua plugins, lazy.nvim",
+      "example": "Embedding usage"
+    },
+    {
+      "id": "lua020",
+      "type": "embedding",
+      "name": "WoW Addons",
+      "description": "World of Warcraft",
+      "pattern": "frames, events, SavedVariables",
+      "example": "Embedding usage"
+    },
+    {
+      "id": "lua021",
+      "type": "embedding",
+      "name": "Roblox Luau",
+      "description": "Roblox scripting",
+      "pattern": "Luau, typed Lua, Roblox API",
+      "example": "Embedding usage"
+    },
+    {
+      "id": "lua022",
+      "type": "web",
+      "name": "OpenResty",
+      "description": "Nginx + Lua",
+      "pattern": "ngx_lua, content_by_lua, cosocket",
+      "example": "Web usage"
+    },
+    {
+      "id": "lua023",
+      "type": "web",
+      "name": "Lapis",
+      "description": "Web framework",
+      "pattern": "MoonScript, routes, models",
+      "example": "Web usage"
+    },
+    {
+      "id": "lua024",
+      "type": "iot",
+      "name": "NodeMCU",
+      "description": "IoT Lua",
+      "pattern": "ESP8266, wifi, gpio modules",
+      "example": "Iot usage"
+    },
+    {
+      "id": "lua025",
+      "type": "patterns",
+      "name": "OOP in Lua",
+      "description": "Object orientation",
+      "pattern": "prototype, class tables, self",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "lua026",
+      "type": "patterns",
+      "name": "Functional Lua",
+      "description": "Functional patterns",
+      "pattern": "map, filter, reduce, closures",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "lua027",
+      "type": "performance",
+      "name": "LuaJIT",
+      "description": "Just-in-time",
+      "pattern": "LuaJIT, FFI, performance",
+      "example": "Performance usage"
+    },
+    {
+      "id": "lua028",
+      "type": "performance",
+      "name": "Optimization",
+      "description": "Lua optimization",
+      "pattern": "local vars, table reuse, profiling",
+      "example": "Performance usage"
+    },
+    {
+      "id": "lua029",
+      "type": "testing",
+      "name": "Lua Testing",
+      "description": "Test frameworks",
+      "pattern": "busted, luaunit, assertions",
+      "example": "Testing usage"
+    },
+    {
+      "id": "lua030",
+      "type": "tools",
+      "name": "Lua Tools",
+      "description": "Development tools",
+      "pattern": "luacheck, ldoc, mobdebug",
+      "example": "Tools usage"
+    }
+  ]
+}

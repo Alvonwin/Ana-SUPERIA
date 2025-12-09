@@ -1,0 +1,246 @@
+{
+  "category": "langchain-llm",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "lc001",
+      "type": "fundamentals",
+      "name": "LangChain Overview",
+      "description": "LLM application framework",
+      "pattern": "Chains, agents, memory, tools",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lc002",
+      "type": "fundamentals",
+      "name": "LLM Wrappers",
+      "description": "Model interfaces",
+      "pattern": "ChatOpenAI, Anthropic, Ollama, HuggingFace",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lc003",
+      "type": "prompts",
+      "name": "Prompt Templates",
+      "description": "Dynamic prompts",
+      "pattern": "PromptTemplate, ChatPromptTemplate, variables",
+      "example": "Prompts usage"
+    },
+    {
+      "id": "lc004",
+      "type": "prompts",
+      "name": "Few-Shot Prompts",
+      "description": "Example-based prompts",
+      "pattern": "FewShotPromptTemplate, example_selector",
+      "example": "Prompts usage"
+    },
+    {
+      "id": "lc005",
+      "type": "prompts",
+      "name": "Output Parsers",
+      "description": "Structured output",
+      "pattern": "PydanticOutputParser, JSONOutputParser",
+      "example": "Prompts usage"
+    },
+    {
+      "id": "lc006",
+      "type": "chains",
+      "name": "LLMChain",
+      "description": "Basic chain",
+      "pattern": "Chain, invoke, batch, stream",
+      "example": "Chains usage"
+    },
+    {
+      "id": "lc007",
+      "type": "chains",
+      "name": "Sequential Chains",
+      "description": "Multi-step chains",
+      "pattern": "SequentialChain, input/output keys",
+      "example": "Chains usage"
+    },
+    {
+      "id": "lc008",
+      "type": "chains",
+      "name": "LCEL",
+      "description": "Expression language",
+      "pattern": "Runnable, pipe operator, RunnablePassthrough",
+      "example": "Chains usage"
+    },
+    {
+      "id": "lc009",
+      "type": "chains",
+      "name": "Router Chains",
+      "description": "Conditional routing",
+      "pattern": "RouterChain, destination_chains",
+      "example": "Chains usage"
+    },
+    {
+      "id": "lc010",
+      "type": "retrieval",
+      "name": "Document Loaders",
+      "description": "Data ingestion",
+      "pattern": "TextLoader, PDFLoader, WebBaseLoader",
+      "example": "Retrieval usage"
+    },
+    {
+      "id": "lc011",
+      "type": "retrieval",
+      "name": "Text Splitters",
+      "description": "Chunking strategies",
+      "pattern": "RecursiveCharacterTextSplitter, chunk_size",
+      "example": "Retrieval usage"
+    },
+    {
+      "id": "lc012",
+      "type": "retrieval",
+      "name": "Embeddings",
+      "description": "Vector representations",
+      "pattern": "OpenAIEmbeddings, HuggingFaceEmbeddings",
+      "example": "Retrieval usage"
+    },
+    {
+      "id": "lc013",
+      "type": "retrieval",
+      "name": "Vector Stores",
+      "description": "Similarity search",
+      "pattern": "Chroma, Pinecone, FAISS, Weaviate",
+      "example": "Retrieval usage"
+    },
+    {
+      "id": "lc014",
+      "type": "retrieval",
+      "name": "Retrievers",
+      "description": "Document retrieval",
+      "pattern": "VectorStoreRetriever, MultiQueryRetriever",
+      "example": "Retrieval usage"
+    },
+    {
+      "id": "lc015",
+      "type": "rag",
+      "name": "RAG Pattern",
+      "description": "Retrieval-augmented generation",
+      "pattern": "RetrievalQA, stuff, map_reduce, refine",
+      "example": "Rag usage"
+    },
+    {
+      "id": "lc016",
+      "type": "rag",
+      "name": "Conversational RAG",
+      "description": "Chat with documents",
+      "pattern": "ConversationalRetrievalChain, chat_history",
+      "example": "Rag usage"
+    },
+    {
+      "id": "lc017",
+      "type": "memory",
+      "name": "Conversation Memory",
+      "description": "Context retention",
+      "pattern": "ConversationBufferMemory, WindowMemory",
+      "example": "Memory usage"
+    },
+    {
+      "id": "lc018",
+      "type": "memory",
+      "name": "Summary Memory",
+      "description": "Compressed history",
+      "pattern": "ConversationSummaryMemory, token limit",
+      "example": "Memory usage"
+    },
+    {
+      "id": "lc019",
+      "type": "memory",
+      "name": "Entity Memory",
+      "description": "Entity tracking",
+      "pattern": "ConversationEntityMemory, entity store",
+      "example": "Memory usage"
+    },
+    {
+      "id": "lc020",
+      "type": "agents",
+      "name": "Agent Types",
+      "description": "Autonomous agents",
+      "pattern": "ReAct, OpenAI Functions, XML",
+      "example": "Agents usage"
+    },
+    {
+      "id": "lc021",
+      "type": "agents",
+      "name": "Tools",
+      "description": "Agent capabilities",
+      "pattern": "Tool, StructuredTool, @tool decorator",
+      "example": "Agents usage"
+    },
+    {
+      "id": "lc022",
+      "type": "agents",
+      "name": "Agent Executor",
+      "description": "Agent runtime",
+      "pattern": "AgentExecutor, max_iterations, callbacks",
+      "example": "Agents usage"
+    },
+    {
+      "id": "lc023",
+      "type": "agents",
+      "name": "Custom Agents",
+      "description": "Agent development",
+      "pattern": "BaseSingleActionAgent, plan, aplan",
+      "example": "Agents usage"
+    },
+    {
+      "id": "lc024",
+      "type": "callbacks",
+      "name": "Callbacks",
+      "description": "Event handling",
+      "pattern": "CallbackHandler, on_llm_start, on_chain_end",
+      "example": "Callbacks usage"
+    },
+    {
+      "id": "lc025",
+      "type": "callbacks",
+      "name": "Streaming",
+      "description": "Real-time output",
+      "pattern": "StreamingStdOutCallbackHandler, astream",
+      "example": "Callbacks usage"
+    },
+    {
+      "id": "lc026",
+      "type": "evaluation",
+      "name": "Evaluation",
+      "description": "Quality assessment",
+      "pattern": "QAEvalChain, criteria, scoring",
+      "example": "Evaluation usage"
+    },
+    {
+      "id": "lc027",
+      "type": "langgraph",
+      "name": "LangGraph",
+      "description": "Stateful agents",
+      "pattern": "StateGraph, nodes, edges, conditional",
+      "example": "Langgraph usage"
+    },
+    {
+      "id": "lc028",
+      "type": "langsmith",
+      "name": "LangSmith",
+      "description": "Observability",
+      "pattern": "Tracing, datasets, testing, hub",
+      "example": "Langsmith usage"
+    },
+    {
+      "id": "lc029",
+      "type": "langserve",
+      "name": "LangServe",
+      "description": "Deployment",
+      "pattern": "add_routes, RemoteRunnable, playground",
+      "example": "Langserve usage"
+    },
+    {
+      "id": "lc030",
+      "type": "integrations",
+      "name": "Integrations",
+      "description": "Third-party tools",
+      "pattern": "Tavily, Wolfram, Wikipedia, Google",
+      "example": "Integrations usage"
+    }
+  ]
+}

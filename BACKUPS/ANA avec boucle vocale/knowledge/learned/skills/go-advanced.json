@@ -1,0 +1,246 @@
+{
+  "category": "go-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "go001",
+      "type": "core",
+      "name": "Go Basics",
+      "description": "Language fundamentals",
+      "pattern": "Packages, imports, functions, structs, pointers, slices, maps",
+      "example": "Core usage"
+    },
+    {
+      "id": "go002",
+      "type": "core",
+      "name": "Error Handling",
+      "description": "Go errors",
+      "pattern": "if err != nil { return err }; errors.Is, errors.As, fmt.Errorf",
+      "example": "Core usage"
+    },
+    {
+      "id": "go003",
+      "type": "core",
+      "name": "Interfaces",
+      "description": "Duck typing",
+      "pattern": "type Reader interface { Read(p []byte) (n int, err error) }",
+      "example": "Core usage"
+    },
+    {
+      "id": "go004",
+      "type": "core",
+      "name": "Embedding",
+      "description": "Composition",
+      "pattern": "type Manager struct { Employee; department string }",
+      "example": "Core usage"
+    },
+    {
+      "id": "go005",
+      "type": "core",
+      "name": "Defer",
+      "description": "Cleanup actions",
+      "pattern": "defer file.Close() // runs when function returns",
+      "example": "Core usage"
+    },
+    {
+      "id": "go006",
+      "type": "concurrency",
+      "name": "Goroutines",
+      "description": "Lightweight threads",
+      "pattern": "go func() { doWork() }(); runtime.GOMAXPROCS(n)",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "go007",
+      "type": "concurrency",
+      "name": "Channels",
+      "description": "Communication",
+      "pattern": "ch := make(chan int, 10); ch <- value; value := <-ch",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "go008",
+      "type": "concurrency",
+      "name": "Select",
+      "description": "Channel multiplexing",
+      "pattern": "select { case v := <-ch1: ... case ch2 <- v: ... default: }",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "go009",
+      "type": "concurrency",
+      "name": "WaitGroup",
+      "description": "Sync goroutines",
+      "pattern": "var wg sync.WaitGroup; wg.Add(1); go func() { defer wg.Done() }(); wg.Wait()",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "go010",
+      "type": "concurrency",
+      "name": "Mutex",
+      "description": "Lock access",
+      "pattern": "var mu sync.Mutex; mu.Lock(); defer mu.Unlock()",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "go011",
+      "type": "concurrency",
+      "name": "Context",
+      "description": "Cancellation",
+      "pattern": "ctx, cancel := context.WithTimeout(ctx, 5*time.Second); defer cancel()",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "go012",
+      "type": "concurrency",
+      "name": "Worker Pools",
+      "description": "Parallel processing",
+      "pattern": "Jobs channel -> N workers -> Results channel",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "go013",
+      "type": "patterns",
+      "name": "Functional Options",
+      "description": "Config pattern",
+      "pattern": "func WithTimeout(d time.Duration) Option { return func(c *Config) { c.timeout = d } }",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "go014",
+      "type": "patterns",
+      "name": "Builder Pattern",
+      "description": "Fluent API",
+      "pattern": "NewBuilder().WithName('foo').WithSize(100).Build()",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "go015",
+      "type": "patterns",
+      "name": "Error Wrapping",
+      "description": "Error context",
+      "pattern": "fmt.Errorf('parsing config: %w', err)",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "go016",
+      "type": "web",
+      "name": "net/http",
+      "description": "HTTP server",
+      "pattern": "http.HandleFunc('/api', handler); http.ListenAndServe(':8080', nil)",
+      "example": "Web usage"
+    },
+    {
+      "id": "go017",
+      "type": "web",
+      "name": "Gin Framework",
+      "description": "Web framework",
+      "pattern": "r := gin.Default(); r.GET('/users', getUsers); r.Run()",
+      "example": "Web usage"
+    },
+    {
+      "id": "go018",
+      "type": "web",
+      "name": "Middleware",
+      "description": "Request interceptors",
+      "pattern": "func Logger() gin.HandlerFunc { return func(c *gin.Context) {...} }",
+      "example": "Web usage"
+    },
+    {
+      "id": "go019",
+      "type": "testing",
+      "name": "Go Testing",
+      "description": "Test package",
+      "pattern": "func TestXxx(t *testing.T) { if got != want { t.Errorf(...) } }",
+      "example": "Testing usage"
+    },
+    {
+      "id": "go020",
+      "type": "testing",
+      "name": "Table-Driven Tests",
+      "description": "Test patterns",
+      "pattern": "tests := []struct{name, input, want string}{...}; for _, tt := range tests {...}",
+      "example": "Testing usage"
+    },
+    {
+      "id": "go021",
+      "type": "testing",
+      "name": "Benchmarks",
+      "description": "Performance tests",
+      "pattern": "func BenchmarkXxx(b *testing.B) { for i := 0; i < b.N; i++ {...} }",
+      "example": "Testing usage"
+    },
+    {
+      "id": "go022",
+      "type": "tools",
+      "name": "Go Modules",
+      "description": "Dependency management",
+      "pattern": "go mod init, go.mod, go.sum, go get, go mod tidy",
+      "example": "Tools usage"
+    },
+    {
+      "id": "go023",
+      "type": "tools",
+      "name": "Go Generate",
+      "description": "Code generation",
+      "pattern": "//go:generate stringer -type=Status",
+      "example": "Tools usage"
+    },
+    {
+      "id": "go024",
+      "type": "tools",
+      "name": "Go Vet/Lint",
+      "description": "Static analysis",
+      "pattern": "go vet, golangci-lint, staticcheck",
+      "example": "Tools usage"
+    },
+    {
+      "id": "go025",
+      "type": "performance",
+      "name": "Profiling",
+      "description": "pprof",
+      "pattern": "import _ 'net/http/pprof'; go tool pprof http://localhost:6060/debug/pprof/heap",
+      "example": "Performance usage"
+    },
+    {
+      "id": "go026",
+      "type": "performance",
+      "name": "Memory Management",
+      "description": "GC tuning",
+      "pattern": "GOGC, sync.Pool for reuse, escape analysis",
+      "example": "Performance usage"
+    },
+    {
+      "id": "go027",
+      "type": "database",
+      "name": "database/sql",
+      "description": "SQL interface",
+      "pattern": "db.Query, db.Exec, rows.Scan, prepared statements",
+      "example": "Database usage"
+    },
+    {
+      "id": "go028",
+      "type": "database",
+      "name": "GORM",
+      "description": "ORM",
+      "pattern": "db.Create(&user); db.Where('name = ?', name).First(&user)",
+      "example": "Database usage"
+    },
+    {
+      "id": "go029",
+      "type": "grpc",
+      "name": "gRPC",
+      "description": "RPC framework",
+      "pattern": "protobuf, grpc.NewServer(), RegisterXxxServer",
+      "example": "Grpc usage"
+    },
+    {
+      "id": "go030",
+      "type": "deployment",
+      "name": "Go Build",
+      "description": "Compilation",
+      "pattern": "go build -ldflags '-s -w', CGO_ENABLED=0, cross-compilation",
+      "example": "Deployment usage"
+    }
+  ]
+}

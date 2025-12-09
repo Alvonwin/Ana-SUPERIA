@@ -1,0 +1,246 @@
+{
+  "category": "nodejs-internals",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "node001",
+      "type": "core",
+      "name": "Event Loop",
+      "description": "Async foundation",
+      "pattern": "Phases: timers, pending, idle, poll, check, close callbacks",
+      "example": "Core usage"
+    },
+    {
+      "id": "node002",
+      "type": "core",
+      "name": "Event Loop Phases",
+      "description": "Execution order",
+      "pattern": "setTimeout(timers) -> setImmediate(check) -> nextTick(microtask)",
+      "example": "Core usage"
+    },
+    {
+      "id": "node003",
+      "type": "core",
+      "name": "Microtasks vs Macrotasks",
+      "description": "Task queues",
+      "pattern": "Microtasks (Promise, nextTick) run before next macrotask",
+      "example": "Core usage"
+    },
+    {
+      "id": "node004",
+      "type": "core",
+      "name": "Libuv",
+      "description": "Async I/O",
+      "pattern": "Thread pool for blocking ops, epoll/kqueue for I/O",
+      "example": "Core usage"
+    },
+    {
+      "id": "node005",
+      "type": "core",
+      "name": "V8 Engine",
+      "description": "JavaScript runtime",
+      "pattern": "JIT compilation, garbage collection, optimization",
+      "example": "Core usage"
+    },
+    {
+      "id": "node006",
+      "type": "modules",
+      "name": "CommonJS",
+      "description": "Node modules",
+      "pattern": "require(), module.exports, __dirname, __filename",
+      "example": "Modules usage"
+    },
+    {
+      "id": "node007",
+      "type": "modules",
+      "name": "ES Modules",
+      "description": "Modern modules",
+      "pattern": "import/export, .mjs or type: module, top-level await",
+      "example": "Modules usage"
+    },
+    {
+      "id": "node008",
+      "type": "modules",
+      "name": "Module Resolution",
+      "description": "How Node finds modules",
+      "pattern": "node_modules lookup, package.json exports, subpath imports",
+      "example": "Modules usage"
+    },
+    {
+      "id": "node009",
+      "type": "streams",
+      "name": "Stream Types",
+      "description": "Data flow",
+      "pattern": "Readable, Writable, Duplex, Transform streams",
+      "example": "Streams usage"
+    },
+    {
+      "id": "node010",
+      "type": "streams",
+      "name": "Stream Piping",
+      "description": "Connect streams",
+      "pattern": "readable.pipe(transform).pipe(writable)",
+      "example": "Streams usage"
+    },
+    {
+      "id": "node011",
+      "type": "streams",
+      "name": "Backpressure",
+      "description": "Flow control",
+      "pattern": "Handle when consumer slower than producer",
+      "example": "Streams usage"
+    },
+    {
+      "id": "node012",
+      "type": "streams",
+      "name": "Stream Async Iteration",
+      "description": "Modern streams",
+      "pattern": "for await (const chunk of readable) { process(chunk); }",
+      "example": "Streams usage"
+    },
+    {
+      "id": "node013",
+      "type": "async",
+      "name": "Promises",
+      "description": "Async handling",
+      "pattern": "Promise.all, Promise.race, Promise.allSettled, Promise.any",
+      "example": "Async usage"
+    },
+    {
+      "id": "node014",
+      "type": "async",
+      "name": "Async Hooks",
+      "description": "Async tracking",
+      "pattern": "Track async operations, AsyncLocalStorage for context",
+      "example": "Async usage"
+    },
+    {
+      "id": "node015",
+      "type": "async",
+      "name": "AbortController",
+      "description": "Cancel operations",
+      "pattern": "const controller = new AbortController(); fetch(url, {signal})",
+      "example": "Async usage"
+    },
+    {
+      "id": "node016",
+      "type": "perf",
+      "name": "Worker Threads",
+      "description": "Parallel JS",
+      "pattern": "new Worker('./worker.js'); parentPort.postMessage(data);",
+      "example": "Perf usage"
+    },
+    {
+      "id": "node017",
+      "type": "perf",
+      "name": "Cluster Module",
+      "description": "Multi-process",
+      "pattern": "cluster.fork() - utilize multiple CPU cores",
+      "example": "Perf usage"
+    },
+    {
+      "id": "node018",
+      "type": "perf",
+      "name": "Memory Management",
+      "description": "Heap management",
+      "pattern": "--max-old-space-size, process.memoryUsage(), heap snapshots",
+      "example": "Perf usage"
+    },
+    {
+      "id": "node019",
+      "type": "perf",
+      "name": "Profiling",
+      "description": "Performance analysis",
+      "pattern": "node --prof, --inspect, clinic.js, 0x",
+      "example": "Perf usage"
+    },
+    {
+      "id": "node020",
+      "type": "security",
+      "name": "Permission Model",
+      "description": "Restrict capabilities",
+      "pattern": "--experimental-permission, --allow-fs-read",
+      "example": "Security usage"
+    },
+    {
+      "id": "node021",
+      "type": "security",
+      "name": "Security Best Practices",
+      "description": "Secure Node",
+      "pattern": "Helmet, rate limiting, input validation, dependency audit",
+      "example": "Security usage"
+    },
+    {
+      "id": "node022",
+      "type": "native",
+      "name": "N-API",
+      "description": "Native addons",
+      "pattern": "C/C++ addons, node-addon-api, stable ABI",
+      "example": "Native usage"
+    },
+    {
+      "id": "node023",
+      "type": "native",
+      "name": "WASM in Node",
+      "description": "WebAssembly",
+      "pattern": "WebAssembly.instantiate(buffer) - run WASM in Node",
+      "example": "Native usage"
+    },
+    {
+      "id": "node024",
+      "type": "debugging",
+      "name": "Inspector Protocol",
+      "description": "Debug protocol",
+      "pattern": "node --inspect, Chrome DevTools, VS Code debugger",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "node025",
+      "type": "debugging",
+      "name": "Diagnostic Reports",
+      "description": "Crash analysis",
+      "pattern": "--report-on-fatalerror, process.report.writeReport()",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "node026",
+      "type": "fs",
+      "name": "File System APIs",
+      "description": "File operations",
+      "pattern": "fs.promises, fs/promises, streams for large files",
+      "example": "Fs usage"
+    },
+    {
+      "id": "node027",
+      "type": "fs",
+      "name": "File Watching",
+      "description": "Watch changes",
+      "pattern": "fs.watch, chokidar for cross-platform watching",
+      "example": "Fs usage"
+    },
+    {
+      "id": "node028",
+      "type": "net",
+      "name": "HTTP/2",
+      "description": "Modern HTTP",
+      "pattern": "http2.createSecureServer(), multiplexing, server push",
+      "example": "Net usage"
+    },
+    {
+      "id": "node029",
+      "type": "net",
+      "name": "HTTPS/TLS",
+      "description": "Secure connections",
+      "pattern": "https.createServer({key, cert}), TLS options",
+      "example": "Net usage"
+    },
+    {
+      "id": "node030",
+      "type": "net",
+      "name": "DNS",
+      "description": "Name resolution",
+      "pattern": "dns.promises.resolve(), dns.setServers()",
+      "example": "Net usage"
+    }
+  ]
+}

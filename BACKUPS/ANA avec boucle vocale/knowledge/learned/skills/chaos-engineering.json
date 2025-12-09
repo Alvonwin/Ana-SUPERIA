@@ -1,0 +1,246 @@
+{
+  "category": "chaos-engineering",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ch001",
+      "type": "fundamentals",
+      "name": "Chaos Engineering",
+      "description": "Build confidence",
+      "pattern": "Controlled experiments, discover weaknesses, improve resilience",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ch002",
+      "type": "fundamentals",
+      "name": "Chaos Principles",
+      "description": "Core principles",
+      "pattern": "Steady state, hypothesis, real-world events, minimize blast radius",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ch003",
+      "type": "fundamentals",
+      "name": "Chaos vs Testing",
+      "description": "Different goals",
+      "pattern": "Testing: known bugs, Chaos: unknown unknowns",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ch004",
+      "type": "experiments",
+      "name": "Experiment Design",
+      "description": "Plan chaos",
+      "pattern": "Hypothesis, steady state, variables, rollback plan",
+      "example": "Experiments usage"
+    },
+    {
+      "id": "ch005",
+      "type": "experiments",
+      "name": "Blast Radius",
+      "description": "Limit impact",
+      "pattern": "Start small, percentage of traffic, quick abort",
+      "example": "Experiments usage"
+    },
+    {
+      "id": "ch006",
+      "type": "experiments",
+      "name": "Steady State",
+      "description": "Normal behavior",
+      "pattern": "Define metrics baseline, latency, error rate, throughput",
+      "example": "Experiments usage"
+    },
+    {
+      "id": "ch007",
+      "type": "failures",
+      "name": "Network Failures",
+      "description": "Network chaos",
+      "pattern": "Latency, packet loss, partition, DNS failures",
+      "example": "Failures usage"
+    },
+    {
+      "id": "ch008",
+      "type": "failures",
+      "name": "Server Failures",
+      "description": "Instance chaos",
+      "pattern": "Kill processes, restart servers, CPU/memory stress",
+      "example": "Failures usage"
+    },
+    {
+      "id": "ch009",
+      "type": "failures",
+      "name": "Dependency Failures",
+      "description": "External deps",
+      "pattern": "Database down, API timeout, cache failure",
+      "example": "Failures usage"
+    },
+    {
+      "id": "ch010",
+      "type": "failures",
+      "name": "Resource Exhaustion",
+      "description": "Stress test",
+      "pattern": "Memory leak, disk full, file descriptor exhaustion",
+      "example": "Failures usage"
+    },
+    {
+      "id": "ch011",
+      "type": "tools",
+      "name": "Chaos Monkey",
+      "description": "Netflix tool",
+      "pattern": "Random instance termination, Simian Army",
+      "example": "Tools usage"
+    },
+    {
+      "id": "ch012",
+      "type": "tools",
+      "name": "Gremlin",
+      "description": "Chaos platform",
+      "pattern": "SaaS chaos, attack library, safety controls",
+      "example": "Tools usage"
+    },
+    {
+      "id": "ch013",
+      "type": "tools",
+      "name": "Litmus",
+      "description": "K8s chaos",
+      "pattern": "Cloud-native, ChaosHub, Kubernetes native",
+      "example": "Tools usage"
+    },
+    {
+      "id": "ch014",
+      "type": "tools",
+      "name": "Chaos Mesh",
+      "description": "K8s chaos",
+      "pattern": "Pod kill, network chaos, time chaos, IO chaos",
+      "example": "Tools usage"
+    },
+    {
+      "id": "ch015",
+      "type": "tools",
+      "name": "Toxiproxy",
+      "description": "Network chaos",
+      "pattern": "Proxy that injects latency, timeouts, bandwidth limits",
+      "example": "Tools usage"
+    },
+    {
+      "id": "ch016",
+      "type": "kubernetes",
+      "name": "Pod Chaos",
+      "description": "Kill pods",
+      "pattern": "Random pod deletion, test self-healing",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "ch017",
+      "type": "kubernetes",
+      "name": "Node Chaos",
+      "description": "Node failures",
+      "pattern": "Drain node, cordon, test pod rescheduling",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "ch018",
+      "type": "kubernetes",
+      "name": "Network Policies",
+      "description": "Partition chaos",
+      "pattern": "Block traffic between services, test isolation",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "ch019",
+      "type": "application",
+      "name": "Circuit Breaker Test",
+      "description": "Test breakers",
+      "pattern": "Verify circuit opens, fallback works, recovery",
+      "example": "Application usage"
+    },
+    {
+      "id": "ch020",
+      "type": "application",
+      "name": "Retry Test",
+      "description": "Test retries",
+      "pattern": "Inject failures, verify retry logic, backoff",
+      "example": "Application usage"
+    },
+    {
+      "id": "ch021",
+      "type": "application",
+      "name": "Timeout Test",
+      "description": "Test timeouts",
+      "pattern": "Add latency, verify timeout fires, no hangs",
+      "example": "Application usage"
+    },
+    {
+      "id": "ch022",
+      "type": "gamedays",
+      "name": "Game Days",
+      "description": "Team exercises",
+      "pattern": "Scheduled chaos, team response, learning",
+      "example": "Gamedays usage"
+    },
+    {
+      "id": "ch023",
+      "type": "gamedays",
+      "name": "Runbook Validation",
+      "description": "Test procedures",
+      "pattern": "Verify runbooks work, update as needed",
+      "example": "Gamedays usage"
+    },
+    {
+      "id": "ch024",
+      "type": "gamedays",
+      "name": "Incident Simulation",
+      "description": "Practice response",
+      "pattern": "Simulate incidents, practice escalation, comms",
+      "example": "Gamedays usage"
+    },
+    {
+      "id": "ch025",
+      "type": "observability",
+      "name": "Chaos Observability",
+      "description": "Monitor experiments",
+      "pattern": "Metrics during chaos, trace failures, dashboards",
+      "example": "Observability usage"
+    },
+    {
+      "id": "ch026",
+      "type": "observability",
+      "name": "Experiment Results",
+      "description": "Document findings",
+      "pattern": "Record outcomes, action items, improvements",
+      "example": "Observability usage"
+    },
+    {
+      "id": "ch027",
+      "type": "safety",
+      "name": "Safety Controls",
+      "description": "Abort mechanisms",
+      "pattern": "Kill switch, automatic rollback, time limits",
+      "example": "Safety usage"
+    },
+    {
+      "id": "ch028",
+      "type": "safety",
+      "name": "Production Readiness",
+      "description": "Before prod chaos",
+      "pattern": "Start in staging, prove value, gradual rollout",
+      "example": "Safety usage"
+    },
+    {
+      "id": "ch029",
+      "type": "culture",
+      "name": "Chaos Culture",
+      "description": "Team adoption",
+      "pattern": "Blameless, learning focus, regular practice",
+      "example": "Culture usage"
+    },
+    {
+      "id": "ch030",
+      "type": "sre",
+      "name": "SRE Integration",
+      "description": "SRE practices",
+      "pattern": "Error budgets, SLO validation, reliability testing",
+      "example": "Sre usage"
+    }
+  ]
+}

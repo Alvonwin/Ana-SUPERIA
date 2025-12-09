@@ -1,0 +1,246 @@
+{
+  "category": "mobile-dev",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "mob001",
+      "type": "react-native",
+      "name": "RN Components",
+      "description": "View, Text, Image, ScrollView",
+      "pattern": "<View style={styles.container}><Text>Hello</Text></View>",
+      "example": "React-native usage"
+    },
+    {
+      "id": "mob002",
+      "type": "react-native",
+      "name": "RN Navigation",
+      "description": "React Navigation",
+      "pattern": "createStackNavigator(), NavigationContainer, useNavigation()",
+      "example": "React-native usage"
+    },
+    {
+      "id": "mob003",
+      "type": "react-native",
+      "name": "RN Native Modules",
+      "description": "Bridge vers natif",
+      "pattern": "NativeModules.MyModule.doSomething()",
+      "example": "React-native usage"
+    },
+    {
+      "id": "mob004",
+      "type": "react-native",
+      "name": "RN Animations",
+      "description": "Animated, Reanimated",
+      "pattern": "useSharedValue(), withSpring(), useAnimatedStyle()",
+      "example": "React-native usage"
+    },
+    {
+      "id": "mob005",
+      "type": "react-native",
+      "name": "RN Performance",
+      "description": "FlatList, memo, Hermes",
+      "pattern": "FlatList keyExtractor, getItemLayout, windowSize",
+      "example": "React-native usage"
+    },
+    {
+      "id": "mob006",
+      "type": "react-native",
+      "name": "Expo",
+      "description": "Managed workflow",
+      "pattern": "expo start, expo build, EAS Build, expo-router",
+      "example": "React-native usage"
+    },
+    {
+      "id": "mob007",
+      "type": "flutter",
+      "name": "Flutter Widgets",
+      "description": "Everything is a widget",
+      "pattern": "Scaffold(appBar: AppBar(), body: Center(child: Text('Hello')))",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "mob008",
+      "type": "flutter",
+      "name": "Flutter State",
+      "description": "setState, Provider, Riverpod, BLoC",
+      "pattern": "ref.watch(counterProvider); context.read<CounterBloc>().add(Increment())",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "mob009",
+      "type": "flutter",
+      "name": "Flutter Navigation",
+      "description": "Navigator 2.0, GoRouter",
+      "pattern": "GoRouter(routes: [GoRoute(path: '/', builder: (ctx, state) => HomeScreen())])",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "mob010",
+      "type": "flutter",
+      "name": "Flutter Platform Channels",
+      "description": "Native communication",
+      "pattern": "MethodChannel('com.example/native').invokeMethod('getBattery')",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "mob011",
+      "type": "flutter",
+      "name": "Dart Null Safety",
+      "description": "Sound null safety",
+      "pattern": "String? nullable; String nonNull = nullable ?? 'default'; late String lazy;",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "mob012",
+      "type": "flutter",
+      "name": "Flutter Testing",
+      "description": "Widget, integration tests",
+      "pattern": "testWidgets('Counter increments', (tester) async { await tester.tap(find.byIcon(Icons.add)); })",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "mob013",
+      "type": "ios",
+      "name": "SwiftUI Basics",
+      "description": "Declarative UI",
+      "pattern": "struct ContentView: View { var body: some View { Text('Hello') } }",
+      "example": "Ios usage"
+    },
+    {
+      "id": "mob014",
+      "type": "ios",
+      "name": "SwiftUI State",
+      "description": "@State, @Binding, @ObservedObject",
+      "pattern": "@State private var count = 0; @Published var items: [Item] = []",
+      "example": "Ios usage"
+    },
+    {
+      "id": "mob015",
+      "type": "ios",
+      "name": "Combine Framework",
+      "description": "Reactive programming",
+      "pattern": "publisher.sink { value in }.store(in: &cancellables)",
+      "example": "Ios usage"
+    },
+    {
+      "id": "mob016",
+      "type": "ios",
+      "name": "iOS Async/Await",
+      "description": "Swift concurrency",
+      "pattern": "async let user = fetchUser(); await user",
+      "example": "Ios usage"
+    },
+    {
+      "id": "mob017",
+      "type": "ios",
+      "name": "Core Data",
+      "description": "Persistence framework",
+      "pattern": "@FetchRequest(sortDescriptors: []) var items: FetchedResults<Item>",
+      "example": "Ios usage"
+    },
+    {
+      "id": "mob018",
+      "type": "android",
+      "name": "Jetpack Compose",
+      "description": "Modern Android UI",
+      "pattern": "@Composable fun Greeting() { Text('Hello') }",
+      "example": "Android usage"
+    },
+    {
+      "id": "mob019",
+      "type": "android",
+      "name": "Compose State",
+      "description": "remember, mutableStateOf",
+      "pattern": "var count by remember { mutableStateOf(0) }",
+      "example": "Android usage"
+    },
+    {
+      "id": "mob020",
+      "type": "android",
+      "name": "Kotlin Coroutines",
+      "description": "Async Android",
+      "pattern": "viewModelScope.launch { val user = userRepository.getUser() }",
+      "example": "Android usage"
+    },
+    {
+      "id": "mob021",
+      "type": "android",
+      "name": "Room Database",
+      "description": "SQLite abstraction",
+      "pattern": "@Entity data class User(@PrimaryKey val id: Int, val name: String)",
+      "example": "Android usage"
+    },
+    {
+      "id": "mob022",
+      "type": "android",
+      "name": "Hilt DI",
+      "description": "Dependency injection",
+      "pattern": "@HiltViewModel class MyViewModel @Inject constructor(private val repo: UserRepo)",
+      "example": "Android usage"
+    },
+    {
+      "id": "mob023",
+      "type": "pwa",
+      "name": "Service Worker",
+      "description": "Offline support",
+      "pattern": "self.addEventListener('fetch', e => e.respondWith(caches.match(e.request) || fetch(e.request)))",
+      "example": "Pwa usage"
+    },
+    {
+      "id": "mob024",
+      "type": "pwa",
+      "name": "Web App Manifest",
+      "description": "Installable app",
+      "pattern": "{name: 'My App', start_url: '/', display: 'standalone', icons: [...]}",
+      "example": "Pwa usage"
+    },
+    {
+      "id": "mob025",
+      "type": "pwa",
+      "name": "Push Notifications",
+      "description": "Web push API",
+      "pattern": "Notification.requestPermission(); registration.pushManager.subscribe()",
+      "example": "Pwa usage"
+    },
+    {
+      "id": "mob026",
+      "type": "pwa",
+      "name": "Workbox",
+      "description": "Service worker toolkit",
+      "pattern": "precacheAndRoute(self.__WB_MANIFEST); registerRoute(({request}) => ..., new CacheFirst())",
+      "example": "Pwa usage"
+    },
+    {
+      "id": "mob027",
+      "type": "capacitor",
+      "name": "Capacitor Basics",
+      "description": "Web to native",
+      "pattern": "npx cap add ios; npx cap sync; npx cap open ios",
+      "example": "Capacitor usage"
+    },
+    {
+      "id": "mob028",
+      "type": "capacitor",
+      "name": "Capacitor Plugins",
+      "description": "Native features",
+      "pattern": "import { Camera } from '@capacitor/camera'; const photo = await Camera.getPhoto()",
+      "example": "Capacitor usage"
+    },
+    {
+      "id": "mob029",
+      "type": "tauri",
+      "name": "Tauri Desktop",
+      "description": "Rust + Web = desktop",
+      "pattern": "#[tauri::command] fn greet(name: &str) -> String { format!('Hello, {}!', name) }",
+      "example": "Tauri usage"
+    },
+    {
+      "id": "mob030",
+      "type": "electron",
+      "name": "Electron IPC",
+      "description": "Main/Renderer communication",
+      "pattern": "ipcMain.handle('getData', async () => data); await ipcRenderer.invoke('getData')",
+      "example": "Electron usage"
+    }
+  ]
+}

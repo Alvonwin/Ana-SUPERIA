@@ -1,0 +1,246 @@
+{
+  "category": "cloud-serverless",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cld001",
+      "type": "aws",
+      "name": "AWS Lambda",
+      "description": "Serverless functions",
+      "pattern": "exports.handler = async (event, context) => { return {statusCode: 200, body: JSON.stringify(result)}; }",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld002",
+      "type": "aws",
+      "name": "AWS API Gateway",
+      "description": "HTTP endpoints pour Lambda",
+      "pattern": "// REST API ou HTTP API -> Lambda integration",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld003",
+      "type": "aws",
+      "name": "AWS DynamoDB",
+      "description": "NoSQL serverless",
+      "pattern": "await dynamodb.put({TableName: 'users', Item: {pk: id, sk: 'profile', ...data}}).promise();",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld004",
+      "type": "aws",
+      "name": "AWS S3",
+      "description": "Object storage",
+      "pattern": "await s3.putObject({Bucket: 'my-bucket', Key: 'file.json', Body: JSON.stringify(data)}).promise();",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld005",
+      "type": "aws",
+      "name": "AWS SQS",
+      "description": "Message queues",
+      "pattern": "await sqs.sendMessage({QueueUrl: url, MessageBody: JSON.stringify(msg)}).promise();",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld006",
+      "type": "aws",
+      "name": "AWS SNS",
+      "description": "Pub/sub notifications",
+      "pattern": "await sns.publish({TopicArn: arn, Message: JSON.stringify(event)}).promise();",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld007",
+      "type": "aws",
+      "name": "AWS EventBridge",
+      "description": "Event bus serverless",
+      "pattern": "await eventbridge.putEvents({Entries: [{Source: 'myapp', DetailType: 'OrderCreated', Detail: JSON.stringify(order)}]}).promise();",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld008",
+      "type": "aws",
+      "name": "AWS Step Functions",
+      "description": "Orchestration workflows",
+      "pattern": "// State machine: Task -> Choice -> Parallel -> Wait -> Success/Fail",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld009",
+      "type": "aws",
+      "name": "AWS Cognito",
+      "description": "Auth serverless",
+      "pattern": "const user = await Auth.signIn(email, password); const token = user.signInUserSession.idToken.jwtToken;",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld010",
+      "type": "aws",
+      "name": "AWS CloudFormation",
+      "description": "IaC AWS natif",
+      "pattern": "Resources: MyBucket: Type: AWS::S3::Bucket Properties: BucketName: my-bucket",
+      "example": "Aws usage"
+    },
+    {
+      "id": "cld011",
+      "type": "gcp",
+      "name": "Cloud Functions",
+      "description": "Serverless GCP",
+      "pattern": "exports.helloWorld = (req, res) => { res.send('Hello World'); };",
+      "example": "Gcp usage"
+    },
+    {
+      "id": "cld012",
+      "type": "gcp",
+      "name": "Cloud Run",
+      "description": "Containers serverless",
+      "pattern": "// Container qui scale a zero, HTTP triggered",
+      "example": "Gcp usage"
+    },
+    {
+      "id": "cld013",
+      "type": "gcp",
+      "name": "Firestore",
+      "description": "NoSQL temps reel",
+      "pattern": "await db.collection('users').doc(id).set(data); onSnapshot(doc, callback);",
+      "example": "Gcp usage"
+    },
+    {
+      "id": "cld014",
+      "type": "gcp",
+      "name": "Cloud Pub/Sub",
+      "description": "Messaging GCP",
+      "pattern": "await pubsub.topic('events').publish(Buffer.from(JSON.stringify(msg)));",
+      "example": "Gcp usage"
+    },
+    {
+      "id": "cld015",
+      "type": "gcp",
+      "name": "BigQuery",
+      "description": "Data warehouse",
+      "pattern": "const [rows] = await bigquery.query('SELECT * FROM dataset.table WHERE date > @date');",
+      "example": "Gcp usage"
+    },
+    {
+      "id": "cld016",
+      "type": "azure",
+      "name": "Azure Functions",
+      "description": "Serverless Azure",
+      "pattern": "module.exports = async function (context, req) { context.res = {body: 'Hello'}; };",
+      "example": "Azure usage"
+    },
+    {
+      "id": "cld017",
+      "type": "azure",
+      "name": "Cosmos DB",
+      "description": "NoSQL multi-model",
+      "pattern": "const {resource} = await container.items.create(item);",
+      "example": "Azure usage"
+    },
+    {
+      "id": "cld018",
+      "type": "azure",
+      "name": "Azure Service Bus",
+      "description": "Enterprise messaging",
+      "pattern": "await sender.sendMessages({body: JSON.stringify(msg)});",
+      "example": "Azure usage"
+    },
+    {
+      "id": "cld019",
+      "type": "serverless",
+      "name": "Serverless Framework",
+      "description": "IaC multi-cloud",
+      "pattern": "functions: hello: handler: handler.hello events: - http: path: / method: get",
+      "example": "Serverless usage"
+    },
+    {
+      "id": "cld020",
+      "type": "serverless",
+      "name": "SST",
+      "description": "Serverless Stack moderne",
+      "pattern": "new Function(stack, 'MyFunction', {handler: 'src/lambda.handler'});",
+      "example": "Serverless usage"
+    },
+    {
+      "id": "cld021",
+      "type": "serverless",
+      "name": "Cold Starts",
+      "description": "Optimiser temps demarrage",
+      "pattern": "// Provisioned concurrency, lazy init, bundle size reduction",
+      "example": "Serverless usage"
+    },
+    {
+      "id": "cld022",
+      "type": "serverless",
+      "name": "Edge Functions",
+      "description": "CDN edge compute",
+      "pattern": "// Cloudflare Workers, Vercel Edge, Lambda@Edge",
+      "example": "Serverless usage"
+    },
+    {
+      "id": "cld023",
+      "type": "terraform",
+      "name": "Terraform Basics",
+      "description": "IaC declaratif",
+      "pattern": "resource \"aws_instance\" \"web\" { ami = var.ami instance_type = \"t3.micro\" }",
+      "example": "Terraform usage"
+    },
+    {
+      "id": "cld024",
+      "type": "terraform",
+      "name": "Terraform Modules",
+      "description": "Reutiliser configurations",
+      "pattern": "module \"vpc\" { source = \"./modules/vpc\" cidr = \"10.0.0.0/16\" }",
+      "example": "Terraform usage"
+    },
+    {
+      "id": "cld025",
+      "type": "terraform",
+      "name": "Terraform State",
+      "description": "Remote state management",
+      "pattern": "backend \"s3\" { bucket = \"tf-state\" key = \"prod/terraform.tfstate\" }",
+      "example": "Terraform usage"
+    },
+    {
+      "id": "cld026",
+      "type": "terraform",
+      "name": "Terraform Workspaces",
+      "description": "Multi-environnements",
+      "pattern": "terraform workspace new staging; terraform workspace select prod",
+      "example": "Terraform usage"
+    },
+    {
+      "id": "cld027",
+      "type": "terraform",
+      "name": "Terraform Data Sources",
+      "description": "Lire resources existantes",
+      "pattern": "data \"aws_ami\" \"ubuntu\" { most_recent = true filter { name = \"name\" values = [\"ubuntu*\"] } }",
+      "example": "Terraform usage"
+    },
+    {
+      "id": "cld028",
+      "type": "pulumi",
+      "name": "Pulumi Basics",
+      "description": "IaC avec langages reels",
+      "pattern": "const bucket = new aws.s3.Bucket('my-bucket', {acl: 'private'});",
+      "example": "Pulumi usage"
+    },
+    {
+      "id": "cld029",
+      "type": "pulumi",
+      "name": "Pulumi Stacks",
+      "description": "Environnements Pulumi",
+      "pattern": "pulumi stack init dev; pulumi up --stack prod",
+      "example": "Pulumi usage"
+    },
+    {
+      "id": "cld030",
+      "type": "pulumi",
+      "name": "Pulumi Automation API",
+      "description": "IaC programmatique",
+      "pattern": "const stack = await LocalWorkspace.createOrSelectStack({stackName, projectName, program});",
+      "example": "Pulumi usage"
+    }
+  ]
+}

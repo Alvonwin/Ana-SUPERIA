@@ -1,0 +1,261 @@
+{
+  "name": "Ana Agents Monitor & Auto-Restart",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 30
+            }
+          ]
+        }
+      },
+      "id": "schedule-check",
+      "name": "Schedule Every 30s",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:3336/api/agents",
+        "method": "GET",
+        "options": {}
+      },
+      "id": "fetch-agents-status",
+      "name": "Fetch Agents Status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "code": "// Parse agents status and identify failed agents\nconst response = $input.first().json;\nconst agents = response.agents || {};\nconst agentsList = Object.values(agents);\n\nconst failedAgents = agentsList.filter(agent => \n  agent.status === 'ERROR' || agent.status === 'CRASHED'\n);\n\nconst runningAgents = agentsList.filter(agent => \n  agent.status === 'RUNNING' || agent.status === 'IDLE'\n);\n\nreturn {\n  json: {\n    timestamp: new Date().toISOString(),\n    totalAgents: agentsList.length,\n    runningCount: runningAgents.length,\n    failedCount: failedAgents.length,\n    failedAgents: failedAgents.map(a => ({\n      name: a.name,\n      status: a.status,\n      lastCheck: a.lastCheck,\n      checksCount: a.checksCount\n    })),\n    runningAgents: runningAgents.map(a => a.name),\n    healthScore: Math.round((runningAgents.length / agentsList.length) * 100)\n  }\n};"
+      },
+      "id": "analyze-agents",
+      "name": "Analyze Agents Health",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        650,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.failedCount }}",
+              "operation": "largerEqual",
+              "value2": 1
+            }
+          ]
+        }
+      },
+      "id": "check-if-failed",
+      "name": "Has Failed Agents?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        850,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "filePath": "E:\\ANA\\agents\\logs\\monitor_log.json",
+        "options": {
+          "append": true
+        }
+      },
+      "id": "log-to-file",
+      "name": "Log to File",
+      "type": "n8n-nodes-base.writeFile",
+      "typeVersion": 1,
+      "position": [
+        1050,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "command": "node E:\\ANA\\agents\\start_agents.cjs"
+      },
+      "id": "restart-agents",
+      "name": "Restart Agents",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1050,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "content": "🚨 *Ana Agents Alert*\\n\\n❌ *Failed Agents: {{ $json.failedCount }}*\\n\\n📋 Details:\\n{{ $json.failedAgents.map(a => `• ${a.name} - ${a.status}`).join('\\n') }}\\n\\n🔄 Auto-restart initiated...\\n\\n⏰ {{ $json.timestamp }}",
+        "additionalFields": {}
+      },
+      "id": "send-notification",
+      "name": "Send Notification (Webhook)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1050,
+        500
+      ],
+      "notes": "Configure with your Slack/Discord webhook URL"
+    },
+    {
+      "parameters": {
+        "code": "// Wait 5 seconds before checking restart\nawait new Promise(resolve => setTimeout(resolve, 5000));\nreturn $input.all();"
+      },
+      "id": "wait-restart",
+      "name": "Wait 5s",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1250,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:3336/api/agents",
+        "method": "GET"
+      },
+      "id": "verify-restart",
+      "name": "Verify Restart",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1450,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "code": "// Check if all agents are running after restart\nconst response = $input.first().json;\nconst agents = response.agents || {};\nconst agentsList = Object.values(agents);\n\nconst allRunning = agentsList.every(agent => \n  agent.status === 'RUNNING' || agent.status === 'IDLE'\n);\n\nreturn {\n  json: {\n    success: allRunning,\n    message: allRunning ? '✅ All agents restarted successfully' : '⚠️ Some agents still failing',\n    timestamp: new Date().toISOString(),\n    agentsCount: agentsList.length\n  }\n};"
+      },
+      "id": "check-restart-success",
+      "name": "Check Restart Success",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1650,
+        400
+      ]
+    }
+  ],
+  "connections": {
+    "Schedule Every 30s": {
+      "main": [
+        [
+          {
+            "node": "Fetch Agents Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Agents Status": {
+      "main": [
+        [
+          {
+            "node": "Analyze Agents Health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Agents Health": {
+      "main": [
+        [
+          {
+            "node": "Has Failed Agents?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Failed Agents?": {
+      "main": [
+        [
+          {
+            "node": "Log to File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Restart Agents",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Notification (Webhook)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Restart Agents": {
+      "main": [
+        [
+          {
+            "node": "Wait 5s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5s": {
+      "main": [
+        [
+          {
+            "node": "Verify Restart",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify Restart": {
+      "main": [
+        [
+          {
+            "node": "Check Restart Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "name": "Ana",
+      "id": "ana-monitoring"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-23T00:00:00.000Z",
+  "versionId": "1"
+}

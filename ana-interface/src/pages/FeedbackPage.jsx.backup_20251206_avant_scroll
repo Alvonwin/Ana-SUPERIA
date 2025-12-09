@@ -1,0 +1,214 @@
+import { useState, useEffect } from 'react';
+import {
+  IconRefreshCw,
+  IconThumbsUp,
+  IconThumbsDown,
+  IconActivity,
+  IconFilter
+} from '../components/Icons';
+import './FeedbackPage.css';
+
+const API_URL = 'http://localhost:3338';
+
+function FeedbackPage() {
+  const [stats, setStats] = useState(null);
+  const [patterns, setPatterns] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState('all'); // all, positive, negative
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      // Fetch feedback stats
+      const statsRes = await fetch(`${API_URL}/api/feedback/stats`);
+      const statsData = await statsRes.json();
+      if (statsData.success) {
+        setStats(statsData);
+      }
+
+      // Fetch patterns (anti-patterns learned)
+      const patternsRes = await fetch(`${API_URL}/api/skills/intelligence`);
+      const patternsData = await patternsRes.json();
+      if (patternsData.success) {
+        setPatterns(patternsData.patterns || {});
+      }
+    } catch (error) {
+      console.error('Error fetching feedback data:', error);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const formatDate = (timestamp) => {
+    if (!timestamp) return 'N/A';
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('fr-CA') + ' ' + date.toLocaleTimeString('fr-CA', { hour: '2-digit', minute: '2-digit' });
+  };
+
+  const getFilteredRecent = () => {
+    if (!stats?.recent) return [];
+    if (filter === 'all') return stats.recent;
+    return stats.recent.filter(fb => fb.type === filter);
+  };
+
+  return (
+    <div className="feedback-page">
+      <div className="page-header">
+        <h1>Feedback & Apprentissage</h1>
+        <button className="refresh-btn" onClick={fetchData} disabled={loading}>
+          <IconRefreshCw size={18} className={loading ? 'spinning' : ''} />
+          Actualiser
+        </button>
+      </div>
+
+      {loading && !stats ? (
+        <div className="loading-state">Chargement...</div>
+      ) : (
+        <>
+          {/* Stats Overview */}
+          <div className="stats-grid">
+            <div className="stat-card positive">
+              <div className="stat-icon">
+                <IconThumbsUp size={24} />
+              </div>
+              <div className="stat-content">
+                <div className="stat-value">{stats?.positive || 0}</div>
+                <div className="stat-label">Positifs</div>
+              </div>
+            </div>
+
+            <div className="stat-card negative">
+              <div className="stat-icon">
+                <IconThumbsDown size={24} />
+              </div>
+              <div className="stat-content">
+                <div className="stat-value">{stats?.negative || 0}</div>
+                <div className="stat-label">Negatifs</div>
+              </div>
+            </div>
+
+            <div className="stat-card rate">
+              <div className="stat-icon">
+                <IconActivity size={24} />
+              </div>
+              <div className="stat-content">
+                <div className="stat-value">{stats?.positiveRate || 0}%</div>
+                <div className="stat-label">Taux positif</div>
+              </div>
+            </div>
+
+            <div className="stat-card patterns">
+              <div className="stat-icon">
+                <IconFilter size={24} />
+              </div>
+              <div className="stat-content">
+                <div className="stat-value">{patterns?.avoid || 0}</div>
+                <div className="stat-label">Anti-patterns appris</div>
+              </div>
+            </div>
+          </div>
+
+          {/* By Model */}
+          {stats?.byModel && Object.keys(stats.byModel).length > 0 && (
+            <div className="section">
+              <h2>Par Modele LLM</h2>
+              <div className="model-grid">
+                {Object.entries(stats.byModel).map(([model, counts]) => (
+                  <div key={model} className="model-card">
+                    <div className="model-name">{model}</div>
+                    <div className="model-stats">
+                      <span className="positive-count">+{counts.positive || 0}</span>
+                      <span className="negative-count">-{counts.negative || 0}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* By Source */}
+          {stats?.bySource && Object.keys(stats.bySource).length > 0 && (
+            <div className="section">
+              <h2>Par Source</h2>
+              <div className="source-grid">
+                {Object.entries(stats.bySource).map(([source, counts]) => (
+                  <div key={source} className="source-card">
+                    <div className="source-name">{source}</div>
+                    <div className="source-stats">
+                      <span className="positive-count">+{counts.positive || 0}</span>
+                      <span className="negative-count">-{counts.negative || 0}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Recent Feedback */}
+          <div className="section">
+            <div className="section-header">
+              <h2>Feedback Recent</h2>
+              <div className="filter-buttons">
+                <button
+                  className={filter === 'all' ? 'active' : ''}
+                  onClick={() => setFilter('all')}
+                >
+                  Tous
+                </button>
+                <button
+                  className={filter === 'positive' ? 'active' : ''}
+                  onClick={() => setFilter('positive')}
+                >
+                  Positifs
+                </button>
+                <button
+                  className={filter === 'negative' ? 'active' : ''}
+                  onClick={() => setFilter('negative')}
+                >
+                  Negatifs
+                </button>
+              </div>
+            </div>
+
+            <div className="feedback-list">
+              {getFilteredRecent().length === 0 ? (
+                <div className="empty-state">Aucun feedback pour ce filtre</div>
+              ) : (
+                getFilteredRecent().map((fb, idx) => (
+                  <div key={fb.id || idx} className={`feedback-item ${fb.type}`}>
+                    <div className="feedback-icon">
+                      {fb.type === 'positive' ? <IconThumbsUp size={16} /> : <IconThumbsDown size={16} />}
+                    </div>
+                    <div className="feedback-content">
+                      <div className="feedback-meta">
+                        <span className="feedback-time">{formatDate(fb.timestamp)}</span>
+                        {fb.llmModel && <span className="feedback-model">{fb.llmModel}</span>}
+                        {fb.source && <span className="feedback-source">{fb.source}</span>}
+                      </div>
+                      {fb.question && (
+                        <div className="feedback-question">Q: {fb.question.substring(0, 100)}...</div>
+                      )}
+                      {fb.comment && (
+                        <div className="feedback-comment">{fb.comment}</div>
+                      )}
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* Last Updated */}
+          <div className="last-updated">
+            Derniere mise a jour: {formatDate(stats?.lastUpdated)}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default FeedbackPage;

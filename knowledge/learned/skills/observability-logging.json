@@ -1,0 +1,246 @@
+{
+  "category": "observability-logging",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "obs001",
+      "type": "tracing",
+      "name": "OpenTelemetry",
+      "description": "Standard observability",
+      "pattern": "const tracer = trace.getTracer('service'); const span = tracer.startSpan('operation');",
+      "example": "Tracing usage"
+    },
+    {
+      "id": "obs002",
+      "type": "tracing",
+      "name": "Distributed Tracing",
+      "description": "Cross-service traces",
+      "pattern": "Trace ID propagation via headers, parent-child spans, baggage",
+      "example": "Tracing usage"
+    },
+    {
+      "id": "obs003",
+      "type": "tracing",
+      "name": "Jaeger",
+      "description": "Trace visualization",
+      "pattern": "Span collection, service graphs, latency analysis",
+      "example": "Tracing usage"
+    },
+    {
+      "id": "obs004",
+      "type": "tracing",
+      "name": "Zipkin",
+      "description": "Distributed tracing",
+      "pattern": "B3 propagation, dependency diagrams",
+      "example": "Tracing usage"
+    },
+    {
+      "id": "obs005",
+      "type": "logging",
+      "name": "Structured Logging",
+      "description": "JSON logs",
+      "pattern": "logger.info({event: 'user.login', userId, duration, metadata})",
+      "example": "Logging usage"
+    },
+    {
+      "id": "obs006",
+      "type": "logging",
+      "name": "Log Levels",
+      "description": "Severity hierarchy",
+      "pattern": "TRACE < DEBUG < INFO < WARN < ERROR < FATAL",
+      "example": "Logging usage"
+    },
+    {
+      "id": "obs007",
+      "type": "logging",
+      "name": "Correlation IDs",
+      "description": "Request tracking",
+      "pattern": "req.id = uuid(); logger.child({correlationId: req.id})",
+      "example": "Logging usage"
+    },
+    {
+      "id": "obs008",
+      "type": "logging",
+      "name": "ELK Stack",
+      "description": "Log aggregation",
+      "pattern": "Elasticsearch + Logstash + Kibana, index patterns, queries",
+      "example": "Logging usage"
+    },
+    {
+      "id": "obs009",
+      "type": "logging",
+      "name": "Loki",
+      "description": "Log aggregation",
+      "pattern": "Labels-based, LogQL queries, Grafana integration",
+      "example": "Logging usage"
+    },
+    {
+      "id": "obs010",
+      "type": "logging",
+      "name": "Fluentd/Fluent Bit",
+      "description": "Log forwarding",
+      "pattern": "Input -> Filter -> Buffer -> Output pipeline",
+      "example": "Logging usage"
+    },
+    {
+      "id": "obs011",
+      "type": "metrics",
+      "name": "Prometheus Metrics",
+      "description": "Time series metrics",
+      "pattern": "Counter, Gauge, Histogram, Summary types",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "obs012",
+      "type": "metrics",
+      "name": "PromQL",
+      "description": "Query language",
+      "pattern": "rate(http_requests_total[5m]), histogram_quantile(0.95, ...)",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "obs013",
+      "type": "metrics",
+      "name": "Grafana Dashboards",
+      "description": "Visualization",
+      "pattern": "Panels, variables, alerts, annotations",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "obs014",
+      "type": "metrics",
+      "name": "StatsD",
+      "description": "Metrics aggregation",
+      "pattern": "client.increment('api.calls'); client.timing('api.latency', duration)",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "obs015",
+      "type": "metrics",
+      "name": "RED Method",
+      "description": "Service metrics",
+      "pattern": "Rate, Errors, Duration - per endpoint",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "obs016",
+      "type": "metrics",
+      "name": "USE Method",
+      "description": "Resource metrics",
+      "pattern": "Utilization, Saturation, Errors - per resource",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "obs017",
+      "type": "metrics",
+      "name": "Four Golden Signals",
+      "description": "SRE metrics",
+      "pattern": "Latency, Traffic, Errors, Saturation",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "obs018",
+      "type": "apm",
+      "name": "Application Performance",
+      "description": "APM tools",
+      "pattern": "Datadog, New Relic, Dynatrace - auto instrumentation",
+      "example": "Apm usage"
+    },
+    {
+      "id": "obs019",
+      "type": "apm",
+      "name": "Error Tracking",
+      "description": "Exception monitoring",
+      "pattern": "Sentry, Bugsnag - stack traces, breadcrumbs, releases",
+      "example": "Apm usage"
+    },
+    {
+      "id": "obs020",
+      "type": "apm",
+      "name": "Real User Monitoring",
+      "description": "Frontend metrics",
+      "pattern": "Page load, FCP, LCP, CLS, FID measurements",
+      "example": "Apm usage"
+    },
+    {
+      "id": "obs021",
+      "type": "alerting",
+      "name": "Alert Rules",
+      "description": "Threshold alerts",
+      "pattern": "ALERT HighErrorRate IF error_rate > 0.01 FOR 5m",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "obs022",
+      "type": "alerting",
+      "name": "PagerDuty Integration",
+      "description": "Incident management",
+      "pattern": "Escalation policies, on-call schedules, runbooks",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "obs023",
+      "type": "alerting",
+      "name": "Alert Fatigue",
+      "description": "Reduce noise",
+      "pattern": "Actionable alerts only, proper thresholds, grouping",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "obs024",
+      "type": "slo",
+      "name": "SLI/SLO/SLA",
+      "description": "Service levels",
+      "pattern": "SLI: metric, SLO: target (99.9%), SLA: contract",
+      "example": "Slo usage"
+    },
+    {
+      "id": "obs025",
+      "type": "slo",
+      "name": "Error Budgets",
+      "description": "Reliability balance",
+      "pattern": "100% - SLO = error budget, spend on features vs reliability",
+      "example": "Slo usage"
+    },
+    {
+      "id": "obs026",
+      "type": "health",
+      "name": "Health Checks",
+      "description": "Service health",
+      "pattern": "/health/live, /health/ready - liveness vs readiness",
+      "example": "Health usage"
+    },
+    {
+      "id": "obs027",
+      "type": "health",
+      "name": "Dependency Checks",
+      "description": "Deep health",
+      "pattern": "Check DB, cache, external APIs in health endpoint",
+      "example": "Health usage"
+    },
+    {
+      "id": "obs028",
+      "type": "profiling",
+      "name": "Continuous Profiling",
+      "description": "Production profiling",
+      "pattern": "Pyroscope, Parca - CPU, memory, goroutine profiles",
+      "example": "Profiling usage"
+    },
+    {
+      "id": "obs029",
+      "type": "profiling",
+      "name": "Flame Graphs",
+      "description": "CPU visualization",
+      "pattern": "Stack trace sampling, width = time spent",
+      "example": "Profiling usage"
+    },
+    {
+      "id": "obs030",
+      "type": "chaos",
+      "name": "Chaos Engineering",
+      "description": "Resilience testing",
+      "pattern": "Chaos Monkey, Gremlin - inject failures, verify recovery",
+      "example": "Chaos usage"
+    }
+  ]
+}

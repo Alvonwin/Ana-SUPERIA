@@ -1,0 +1,246 @@
+{
+  "category": "scala-spark",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "sca001",
+      "type": "fundamentals",
+      "name": "Scala Basics",
+      "description": "Hybrid language",
+      "pattern": "val/var, case classes, pattern matching, traits",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sca002",
+      "type": "fundamentals",
+      "name": "Case Classes",
+      "description": "Data classes",
+      "pattern": "case class User(name: String, age: Int), copy",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sca003",
+      "type": "fundamentals",
+      "name": "Pattern Matching",
+      "description": "Match expressions",
+      "pattern": "x match { case Some(v) => v case None => default }",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sca004",
+      "type": "fundamentals",
+      "name": "Traits",
+      "description": "Mixins",
+      "pattern": "trait Serializable, with multiple traits, stackable",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sca005",
+      "type": "fundamentals",
+      "name": "Options",
+      "description": "Null safety",
+      "pattern": "Option[T], Some, None, map, flatMap, getOrElse",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sca006",
+      "type": "fundamentals",
+      "name": "Collections",
+      "description": "Rich collections",
+      "pattern": "List, Seq, Map, Set, immutable by default",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sca007",
+      "type": "functional",
+      "name": "Higher-Order Functions",
+      "description": "FP basics",
+      "pattern": "map, filter, fold, reduce, flatMap",
+      "example": "Functional usage"
+    },
+    {
+      "id": "sca008",
+      "type": "functional",
+      "name": "For Comprehensions",
+      "description": "Monadic syntax",
+      "pattern": "for { a <- opt1; b <- opt2 } yield a + b",
+      "example": "Functional usage"
+    },
+    {
+      "id": "sca009",
+      "type": "functional",
+      "name": "Implicits",
+      "description": "Implicit conversions",
+      "pattern": "implicit val, implicit class, given/using (Scala 3)",
+      "example": "Functional usage"
+    },
+    {
+      "id": "sca010",
+      "type": "functional",
+      "name": "Type Classes",
+      "description": "Ad-hoc polymorphism",
+      "pattern": "trait Show[A], implicit instances, syntax",
+      "example": "Functional usage"
+    },
+    {
+      "id": "sca011",
+      "type": "concurrency",
+      "name": "Futures",
+      "description": "Async computation",
+      "pattern": "Future { compute() }, map, flatMap, recover",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "sca012",
+      "type": "concurrency",
+      "name": "Akka Actors",
+      "description": "Actor model",
+      "pattern": "Actor, receive, ActorRef, ask, tell",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "sca013",
+      "type": "concurrency",
+      "name": "Akka Streams",
+      "description": "Reactive streams",
+      "pattern": "Source, Flow, Sink, backpressure",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "sca014",
+      "type": "spark",
+      "name": "Spark Basics",
+      "description": "Distributed computing",
+      "pattern": "SparkSession, RDD, DataFrame, transformations",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca015",
+      "type": "spark",
+      "name": "RDDs",
+      "description": "Resilient datasets",
+      "pattern": "parallelize, map, filter, reduce, collect",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca016",
+      "type": "spark",
+      "name": "DataFrames",
+      "description": "Structured data",
+      "pattern": "spark.read.csv, select, filter, groupBy, join",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca017",
+      "type": "spark",
+      "name": "Spark SQL",
+      "description": "SQL on Spark",
+      "pattern": "spark.sql(), createTempView, SQL queries",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca018",
+      "type": "spark",
+      "name": "Datasets",
+      "description": "Type-safe API",
+      "pattern": "Dataset[T], Encoder, type-safe operations",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca019",
+      "type": "spark",
+      "name": "Spark Streaming",
+      "description": "Real-time",
+      "pattern": "Structured Streaming, readStream, writeStream",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca020",
+      "type": "spark",
+      "name": "MLlib",
+      "description": "Machine learning",
+      "pattern": "Pipeline, Transformer, Estimator, ML algorithms",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca021",
+      "type": "spark",
+      "name": "Partitioning",
+      "description": "Data distribution",
+      "pattern": "repartition, coalesce, partitionBy",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca022",
+      "type": "spark",
+      "name": "Caching",
+      "description": "Performance",
+      "pattern": "cache(), persist(), storage levels",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca023",
+      "type": "spark",
+      "name": "UDFs",
+      "description": "Custom functions",
+      "pattern": "udf(), register, use in SQL/DataFrame",
+      "example": "Spark usage"
+    },
+    {
+      "id": "sca024",
+      "type": "ecosystem",
+      "name": "sbt",
+      "description": "Build tool",
+      "pattern": "build.sbt, libraryDependencies, compile, test",
+      "example": "Ecosystem usage"
+    },
+    {
+      "id": "sca025",
+      "type": "ecosystem",
+      "name": "Cats",
+      "description": "FP library",
+      "pattern": "Monad, Functor, Applicative, type classes",
+      "example": "Ecosystem usage"
+    },
+    {
+      "id": "sca026",
+      "type": "ecosystem",
+      "name": "ZIO",
+      "description": "Effect system",
+      "pattern": "ZIO[R, E, A], for comprehensions, fibers",
+      "example": "Ecosystem usage"
+    },
+    {
+      "id": "sca027",
+      "type": "ecosystem",
+      "name": "Play Framework",
+      "description": "Web framework",
+      "pattern": "Routes, controllers, templates, async",
+      "example": "Ecosystem usage"
+    },
+    {
+      "id": "sca028",
+      "type": "ecosystem",
+      "name": "http4s",
+      "description": "HTTP library",
+      "pattern": "HttpRoutes, client, server, cats-effect",
+      "example": "Ecosystem usage"
+    },
+    {
+      "id": "sca029",
+      "type": "testing",
+      "name": "ScalaTest",
+      "description": "Testing",
+      "pattern": "FunSuite, FlatSpec, should matchers",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sca030",
+      "type": "scala3",
+      "name": "Scala 3",
+      "description": "New features",
+      "pattern": "given/using, extension methods, union types, enums",
+      "example": "Scala3 usage"
+    }
+  ]
+}

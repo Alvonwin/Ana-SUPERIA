@@ -1,0 +1,246 @@
+{
+  "category": "css-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "css001",
+      "type": "layout",
+      "name": "CSS Grid",
+      "description": "2D layout system",
+      "pattern": "display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;",
+      "example": "Layout usage"
+    },
+    {
+      "id": "css002",
+      "type": "layout",
+      "name": "Grid Areas",
+      "description": "Named grid areas",
+      "pattern": "grid-template-areas: 'header header' 'sidebar main' 'footer footer';",
+      "example": "Layout usage"
+    },
+    {
+      "id": "css003",
+      "type": "layout",
+      "name": "Flexbox",
+      "description": "1D layout",
+      "pattern": "display: flex; justify-content: space-between; align-items: center;",
+      "example": "Layout usage"
+    },
+    {
+      "id": "css004",
+      "type": "layout",
+      "name": "Container Queries",
+      "description": "Size-based styles",
+      "pattern": "@container (min-width: 400px) { .card { flex-direction: row; } }",
+      "example": "Layout usage"
+    },
+    {
+      "id": "css005",
+      "type": "layout",
+      "name": "Subgrid",
+      "description": "Nested grid alignment",
+      "pattern": "grid-template-columns: subgrid; grid-template-rows: subgrid;",
+      "example": "Layout usage"
+    },
+    {
+      "id": "css006",
+      "type": "layout",
+      "name": "Multi-column",
+      "description": "Text columns",
+      "pattern": "column-count: 3; column-gap: 2rem; column-rule: 1px solid gray;",
+      "example": "Layout usage"
+    },
+    {
+      "id": "css007",
+      "type": "responsive",
+      "name": "Media Queries",
+      "description": "Responsive breakpoints",
+      "pattern": "@media (min-width: 768px) { .sidebar { display: block; } }",
+      "example": "Responsive usage"
+    },
+    {
+      "id": "css008",
+      "type": "responsive",
+      "name": "Clamp Function",
+      "description": "Fluid sizing",
+      "pattern": "font-size: clamp(1rem, 2.5vw, 2rem); // min, preferred, max",
+      "example": "Responsive usage"
+    },
+    {
+      "id": "css009",
+      "type": "responsive",
+      "name": "Viewport Units",
+      "description": "Relative to viewport",
+      "pattern": "height: 100vh; width: 100vw; min-height: 100dvh;",
+      "example": "Responsive usage"
+    },
+    {
+      "id": "css010",
+      "type": "responsive",
+      "name": "Aspect Ratio",
+      "description": "Maintain proportions",
+      "pattern": "aspect-ratio: 16 / 9; object-fit: cover;",
+      "example": "Responsive usage"
+    },
+    {
+      "id": "css011",
+      "type": "animation",
+      "name": "CSS Transitions",
+      "description": "Property animations",
+      "pattern": "transition: transform 0.3s ease, opacity 0.3s ease;",
+      "example": "Animation usage"
+    },
+    {
+      "id": "css012",
+      "type": "animation",
+      "name": "CSS Keyframes",
+      "description": "Complex animations",
+      "pattern": "@keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(0); } }",
+      "example": "Animation usage"
+    },
+    {
+      "id": "css013",
+      "type": "animation",
+      "name": "Animation Properties",
+      "description": "Control animations",
+      "pattern": "animation: slide 0.5s ease-out forwards; animation-delay: 0.2s;",
+      "example": "Animation usage"
+    },
+    {
+      "id": "css014",
+      "type": "animation",
+      "name": "View Transitions",
+      "description": "Page transitions",
+      "pattern": "document.startViewTransition(() => updateDOM()); ::view-transition-old/new",
+      "example": "Animation usage"
+    },
+    {
+      "id": "css015",
+      "type": "animation",
+      "name": "Scroll-driven Animations",
+      "description": "Scroll-based",
+      "pattern": "animation-timeline: scroll(); animation-range: entry 0% cover 50%;",
+      "example": "Animation usage"
+    },
+    {
+      "id": "css016",
+      "type": "variables",
+      "name": "CSS Custom Properties",
+      "description": "CSS variables",
+      "pattern": ":root { --primary: #007bff; } .btn { color: var(--primary); }",
+      "example": "Variables usage"
+    },
+    {
+      "id": "css017",
+      "type": "variables",
+      "name": "Dynamic Variables",
+      "description": "JS interaction",
+      "pattern": "element.style.setProperty('--x', event.clientX + 'px');",
+      "example": "Variables usage"
+    },
+    {
+      "id": "css018",
+      "type": "selectors",
+      "name": "Modern Selectors",
+      "description": "Advanced selection",
+      "pattern": ":is(), :where(), :has(), :not(), :nth-child(3n+1)",
+      "example": "Selectors usage"
+    },
+    {
+      "id": "css019",
+      "type": "selectors",
+      "name": "Has Selector",
+      "description": "Parent selector",
+      "pattern": ".card:has(img) { padding: 0; } form:has(:invalid) { border-color: red; }",
+      "example": "Selectors usage"
+    },
+    {
+      "id": "css020",
+      "type": "selectors",
+      "name": "Attribute Selectors",
+      "description": "Attr-based",
+      "pattern": "[data-state='active'], [href^='https'], [class*='btn']",
+      "example": "Selectors usage"
+    },
+    {
+      "id": "css021",
+      "type": "effects",
+      "name": "Filters",
+      "description": "Visual filters",
+      "pattern": "filter: blur(5px) brightness(1.2) contrast(1.1);",
+      "example": "Effects usage"
+    },
+    {
+      "id": "css022",
+      "type": "effects",
+      "name": "Backdrop Filter",
+      "description": "Behind element",
+      "pattern": "backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);",
+      "example": "Effects usage"
+    },
+    {
+      "id": "css023",
+      "type": "effects",
+      "name": "Mix Blend Mode",
+      "description": "Color blending",
+      "pattern": "mix-blend-mode: multiply; isolation: isolate;",
+      "example": "Effects usage"
+    },
+    {
+      "id": "css024",
+      "type": "effects",
+      "name": "Clip Path",
+      "description": "Custom shapes",
+      "pattern": "clip-path: polygon(50% 0%, 100% 100%, 0% 100%);",
+      "example": "Effects usage"
+    },
+    {
+      "id": "css025",
+      "type": "effects",
+      "name": "Mask Image",
+      "description": "Alpha masking",
+      "pattern": "mask-image: linear-gradient(to bottom, black 80%, transparent);",
+      "example": "Effects usage"
+    },
+    {
+      "id": "css026",
+      "type": "typography",
+      "name": "Variable Fonts",
+      "description": "Adjustable fonts",
+      "pattern": "font-variation-settings: 'wght' 600, 'wdth' 75;",
+      "example": "Typography usage"
+    },
+    {
+      "id": "css027",
+      "type": "typography",
+      "name": "Text Wrap Balance",
+      "description": "Better headlines",
+      "pattern": "text-wrap: balance; text-wrap: pretty;",
+      "example": "Typography usage"
+    },
+    {
+      "id": "css028",
+      "type": "methodology",
+      "name": "BEM",
+      "description": "Naming convention",
+      "pattern": ".block__element--modifier, .card__title--large",
+      "example": "Methodology usage"
+    },
+    {
+      "id": "css029",
+      "type": "methodology",
+      "name": "CSS-in-JS",
+      "description": "Scoped styles",
+      "pattern": "styled-components, Emotion, vanilla-extract",
+      "example": "Methodology usage"
+    },
+    {
+      "id": "css030",
+      "type": "methodology",
+      "name": "Tailwind CSS",
+      "description": "Utility-first",
+      "pattern": "class='flex items-center gap-4 p-4 bg-blue-500 text-white rounded-lg'",
+      "example": "Methodology usage"
+    }
+  ]
+}

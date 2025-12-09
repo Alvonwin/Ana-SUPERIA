@@ -1,0 +1,246 @@
+{
+  "category": "graphql-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "gql001",
+      "type": "schema",
+      "name": "Schema Design",
+      "description": "Types, inputs, interfaces",
+      "pattern": "type User { id: ID! name: String! posts: [Post!]! } interface Node { id: ID! }",
+      "example": "Schema usage"
+    },
+    {
+      "id": "gql002",
+      "type": "schema",
+      "name": "Connections Pattern",
+      "description": "Relay-style pagination",
+      "pattern": "type UserConnection { edges: [UserEdge!]! pageInfo: PageInfo! } type UserEdge { node: User! cursor: String! }",
+      "example": "Schema usage"
+    },
+    {
+      "id": "gql003",
+      "type": "schema",
+      "name": "Input Types",
+      "description": "Mutations input",
+      "pattern": "input CreateUserInput { name: String! email: String! } mutation { createUser(input: CreateUserInput!): User! }",
+      "example": "Schema usage"
+    },
+    {
+      "id": "gql004",
+      "type": "schema",
+      "name": "Enums",
+      "description": "Typed constants",
+      "pattern": "enum Status { PENDING ACTIVE COMPLETED } type Task { status: Status! }",
+      "example": "Schema usage"
+    },
+    {
+      "id": "gql005",
+      "type": "schema",
+      "name": "Custom Scalars",
+      "description": "DateTime, JSON, URL",
+      "pattern": "scalar DateTime type Event { startsAt: DateTime! }",
+      "example": "Schema usage"
+    },
+    {
+      "id": "gql006",
+      "type": "resolvers",
+      "name": "Field Resolvers",
+      "description": "Nested resolution",
+      "pattern": "User: { posts: (parent) => db.posts.findByUserId(parent.id) }",
+      "example": "Resolvers usage"
+    },
+    {
+      "id": "gql007",
+      "type": "resolvers",
+      "name": "DataLoader",
+      "description": "Batch N+1",
+      "pattern": "const userLoader = new DataLoader(ids => db.users.findByIds(ids)); userLoader.load(id)",
+      "example": "Resolvers usage"
+    },
+    {
+      "id": "gql008",
+      "type": "resolvers",
+      "name": "Context",
+      "description": "Request-scoped data",
+      "pattern": "context: ({req}) => ({user: getUser(req), dataSources: {...}})",
+      "example": "Resolvers usage"
+    },
+    {
+      "id": "gql009",
+      "type": "resolvers",
+      "name": "Subscriptions",
+      "description": "Real-time updates",
+      "pattern": "Subscription: { messageAdded: { subscribe: () => pubsub.asyncIterator(['MESSAGE_ADDED']) } }",
+      "example": "Resolvers usage"
+    },
+    {
+      "id": "gql010",
+      "type": "performance",
+      "name": "Query Complexity",
+      "description": "Limit expensive queries",
+      "pattern": "validationRules: [createComplexityLimitRule(1000)]",
+      "example": "Performance usage"
+    },
+    {
+      "id": "gql011",
+      "type": "performance",
+      "name": "Query Depth",
+      "description": "Prevent deep nesting",
+      "pattern": "validationRules: [depthLimit(10)]",
+      "example": "Performance usage"
+    },
+    {
+      "id": "gql012",
+      "type": "performance",
+      "name": "Persisted Queries",
+      "description": "Cache query strings",
+      "pattern": "extensions: {persistedQuery: {sha256Hash: '...'}}",
+      "example": "Performance usage"
+    },
+    {
+      "id": "gql013",
+      "type": "federation",
+      "name": "Apollo Federation",
+      "description": "Distributed schemas",
+      "pattern": "@key(fields: 'id') extend type User @key(fields: 'id') { id: ID! @external }",
+      "example": "Federation usage"
+    },
+    {
+      "id": "gql014",
+      "type": "federation",
+      "name": "Subgraphs",
+      "description": "Service schemas",
+      "pattern": "buildSubgraphSchema([{typeDefs, resolvers}])",
+      "example": "Federation usage"
+    },
+    {
+      "id": "gql015",
+      "type": "federation",
+      "name": "Gateway",
+      "description": "Compose subgraphs",
+      "pattern": "ApolloGateway({supergraphSdl: ...})",
+      "example": "Federation usage"
+    },
+    {
+      "id": "gql016",
+      "type": "clients",
+      "name": "Apollo Client",
+      "description": "React GraphQL client",
+      "pattern": "const {data, loading, error} = useQuery(GET_USER, {variables: {id}})",
+      "example": "Clients usage"
+    },
+    {
+      "id": "gql017",
+      "type": "clients",
+      "name": "Apollo Cache",
+      "description": "Normalized cache",
+      "pattern": "cache.modify({fields: {users(existing) { return [...existing, newUser]; }}})",
+      "example": "Clients usage"
+    },
+    {
+      "id": "gql018",
+      "type": "clients",
+      "name": "Optimistic Updates",
+      "description": "Instant UI feedback",
+      "pattern": "optimisticResponse: {__typename: 'Mutation', createUser: {__typename: 'User', id: 'temp', ...}}",
+      "example": "Clients usage"
+    },
+    {
+      "id": "gql019",
+      "type": "clients",
+      "name": "URQL",
+      "description": "Lightweight alternative",
+      "pattern": "const [result] = useQuery({query: UserQuery, variables: {id}})",
+      "example": "Clients usage"
+    },
+    {
+      "id": "gql020",
+      "type": "codegen",
+      "name": "GraphQL Codegen",
+      "description": "Type generation",
+      "pattern": "npx graphql-codegen --generates types.ts, hooks.tsx",
+      "example": "Codegen usage"
+    },
+    {
+      "id": "gql021",
+      "type": "codegen",
+      "name": "Type-safe Operations",
+      "description": "Generated hooks",
+      "pattern": "const {data} = useGetUserQuery({variables: {id}}); // data is typed",
+      "example": "Codegen usage"
+    },
+    {
+      "id": "gql022",
+      "type": "security",
+      "name": "Auth Directives",
+      "description": "Field-level auth",
+      "pattern": "@auth(requires: ADMIN) type AdminData { secret: String! }",
+      "example": "Security usage"
+    },
+    {
+      "id": "gql023",
+      "type": "security",
+      "name": "Rate Limiting",
+      "description": "Per-field limits",
+      "pattern": "@rateLimit(limit: 100, duration: 60)",
+      "example": "Security usage"
+    },
+    {
+      "id": "gql024",
+      "type": "security",
+      "name": "Input Validation",
+      "description": "Validate args",
+      "pattern": "@constraint(minLength: 1, maxLength: 100) name: String!",
+      "example": "Security usage"
+    },
+    {
+      "id": "gql025",
+      "type": "tools",
+      "name": "GraphQL Playground",
+      "description": "IDE in browser",
+      "pattern": "Introspection, docs, history, prettify",
+      "example": "Tools usage"
+    },
+    {
+      "id": "gql026",
+      "type": "tools",
+      "name": "Apollo Studio",
+      "description": "Schema management",
+      "pattern": "Schema registry, metrics, traces, breaking change detection",
+      "example": "Tools usage"
+    },
+    {
+      "id": "gql027",
+      "type": "testing",
+      "name": "MockedProvider",
+      "description": "Test components",
+      "pattern": "<MockedProvider mocks={[{request: {query}, result: {data}}]}><Component/></MockedProvider>",
+      "example": "Testing usage"
+    },
+    {
+      "id": "gql028",
+      "type": "testing",
+      "name": "Integration Tests",
+      "description": "Test resolvers",
+      "pattern": "const {query} = createTestClient(server); const res = await query({query: GET_USER})",
+      "example": "Testing usage"
+    },
+    {
+      "id": "gql029",
+      "type": "patterns",
+      "name": "Error Handling",
+      "description": "Union errors",
+      "pattern": "union CreateUserResult = User | ValidationError | AuthError",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "gql030",
+      "type": "patterns",
+      "name": "Nullability",
+      "description": "Strategic nulls",
+      "pattern": "Non-null (!) pour required, nullable pour resilience aux erreurs partielles",
+      "example": "Patterns usage"
+    }
+  ]
+}

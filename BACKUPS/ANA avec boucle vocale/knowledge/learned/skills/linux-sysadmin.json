@@ -1,0 +1,246 @@
+{
+  "category": "linux-sysadmin",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "lnx001",
+      "type": "files",
+      "name": "File Permissions",
+      "description": "Access control",
+      "pattern": "chmod 755, chown user:group, rwx for user/group/other",
+      "example": "Files usage"
+    },
+    {
+      "id": "lnx002",
+      "type": "files",
+      "name": "ACLs",
+      "description": "Extended permissions",
+      "pattern": "setfacl -m u:user:rwx file, getfacl file",
+      "example": "Files usage"
+    },
+    {
+      "id": "lnx003",
+      "type": "files",
+      "name": "Links",
+      "description": "Hard and soft links",
+      "pattern": "ln target link (hard), ln -s target link (soft)",
+      "example": "Files usage"
+    },
+    {
+      "id": "lnx004",
+      "type": "files",
+      "name": "Find Command",
+      "description": "Search files",
+      "pattern": "find /path -name '*.log' -mtime +7 -exec rm {} \\;",
+      "example": "Files usage"
+    },
+    {
+      "id": "lnx005",
+      "type": "text",
+      "name": "grep/ripgrep",
+      "description": "Text search",
+      "pattern": "grep -r 'pattern' ., rg 'pattern' --type py",
+      "example": "Text usage"
+    },
+    {
+      "id": "lnx006",
+      "type": "text",
+      "name": "sed",
+      "description": "Stream editor",
+      "pattern": "sed -i 's/old/new/g' file, sed -n '10,20p' file",
+      "example": "Text usage"
+    },
+    {
+      "id": "lnx007",
+      "type": "text",
+      "name": "awk",
+      "description": "Text processing",
+      "pattern": "awk '{print $1, $3}' file, awk -F: '{sum+=$3} END{print sum}'",
+      "example": "Text usage"
+    },
+    {
+      "id": "lnx008",
+      "type": "text",
+      "name": "jq",
+      "description": "JSON processor",
+      "pattern": "cat file.json | jq '.items[] | .name'",
+      "example": "Text usage"
+    },
+    {
+      "id": "lnx009",
+      "type": "process",
+      "name": "Process Management",
+      "description": "Control processes",
+      "pattern": "ps aux, top/htop, kill -9 PID, nice, nohup",
+      "example": "Process usage"
+    },
+    {
+      "id": "lnx010",
+      "type": "process",
+      "name": "systemd",
+      "description": "Service management",
+      "pattern": "systemctl start/stop/enable/status service",
+      "example": "Process usage"
+    },
+    {
+      "id": "lnx011",
+      "type": "process",
+      "name": "journalctl",
+      "description": "System logs",
+      "pattern": "journalctl -u service -f, --since '1 hour ago'",
+      "example": "Process usage"
+    },
+    {
+      "id": "lnx012",
+      "type": "process",
+      "name": "cron",
+      "description": "Scheduled tasks",
+      "pattern": "crontab -e, */5 * * * * /script.sh (every 5 min)",
+      "example": "Process usage"
+    },
+    {
+      "id": "lnx013",
+      "type": "network",
+      "name": "Network Commands",
+      "description": "Network tools",
+      "pattern": "ip addr, ss -tulpn, netstat, ping, traceroute, dig",
+      "example": "Network usage"
+    },
+    {
+      "id": "lnx014",
+      "type": "network",
+      "name": "iptables/nftables",
+      "description": "Firewall rules",
+      "pattern": "iptables -A INPUT -p tcp --dport 80 -j ACCEPT",
+      "example": "Network usage"
+    },
+    {
+      "id": "lnx015",
+      "type": "network",
+      "name": "SSH",
+      "description": "Secure shell",
+      "pattern": "ssh-keygen, ssh-copy-id, ~/.ssh/config, tunneling",
+      "example": "Network usage"
+    },
+    {
+      "id": "lnx016",
+      "type": "network",
+      "name": "curl/wget",
+      "description": "HTTP clients",
+      "pattern": "curl -X POST -d 'data' url, wget -r url",
+      "example": "Network usage"
+    },
+    {
+      "id": "lnx017",
+      "type": "disk",
+      "name": "Disk Management",
+      "description": "Storage",
+      "pattern": "df -h, du -sh *, lsblk, fdisk, mount/umount",
+      "example": "Disk usage"
+    },
+    {
+      "id": "lnx018",
+      "type": "disk",
+      "name": "LVM",
+      "description": "Volume management",
+      "pattern": "pvcreate, vgcreate, lvcreate - flexible partitioning",
+      "example": "Disk usage"
+    },
+    {
+      "id": "lnx019",
+      "type": "disk",
+      "name": "RAID",
+      "description": "Disk redundancy",
+      "pattern": "mdadm --create /dev/md0 --level=1 --raid-devices=2",
+      "example": "Disk usage"
+    },
+    {
+      "id": "lnx020",
+      "type": "memory",
+      "name": "Memory Analysis",
+      "description": "RAM usage",
+      "pattern": "free -h, vmstat, /proc/meminfo, swap management",
+      "example": "Memory usage"
+    },
+    {
+      "id": "lnx021",
+      "type": "perf",
+      "name": "Performance Tools",
+      "description": "System monitoring",
+      "pattern": "sar, iostat, mpstat, perf, strace, ltrace",
+      "example": "Perf usage"
+    },
+    {
+      "id": "lnx022",
+      "type": "perf",
+      "name": "Load Average",
+      "description": "System load",
+      "pattern": "uptime, top - 1/5/15 min averages, compare to CPU count",
+      "example": "Perf usage"
+    },
+    {
+      "id": "lnx023",
+      "type": "security",
+      "name": "User Management",
+      "description": "Users and groups",
+      "pattern": "useradd, usermod, passwd, /etc/passwd, /etc/shadow",
+      "example": "Security usage"
+    },
+    {
+      "id": "lnx024",
+      "type": "security",
+      "name": "sudo",
+      "description": "Privilege escalation",
+      "pattern": "/etc/sudoers, visudo, sudo -u user command",
+      "example": "Security usage"
+    },
+    {
+      "id": "lnx025",
+      "type": "security",
+      "name": "SELinux/AppArmor",
+      "description": "Mandatory access control",
+      "pattern": "getenforce, setenforce, aa-status, security policies",
+      "example": "Security usage"
+    },
+    {
+      "id": "lnx026",
+      "type": "packages",
+      "name": "Package Management",
+      "description": "Software installation",
+      "pattern": "apt/yum/dnf install, dpkg -i, rpm -ivh",
+      "example": "Packages usage"
+    },
+    {
+      "id": "lnx027",
+      "type": "shell",
+      "name": "Bash Scripting",
+      "description": "Shell automation",
+      "pattern": "Variables, loops, conditionals, functions, exit codes",
+      "example": "Shell usage"
+    },
+    {
+      "id": "lnx028",
+      "type": "shell",
+      "name": "Environment",
+      "description": "Shell environment",
+      "pattern": "export VAR=value, .bashrc, .profile, PATH",
+      "example": "Shell usage"
+    },
+    {
+      "id": "lnx029",
+      "type": "containers",
+      "name": "Namespaces/Cgroups",
+      "description": "Container primitives",
+      "pattern": "Process isolation (namespaces), resource limits (cgroups)",
+      "example": "Containers usage"
+    },
+    {
+      "id": "lnx030",
+      "type": "kernel",
+      "name": "Kernel Parameters",
+      "description": "System tuning",
+      "pattern": "sysctl -w param=value, /etc/sysctl.conf, /proc/sys/",
+      "example": "Kernel usage"
+    }
+  ]
+}

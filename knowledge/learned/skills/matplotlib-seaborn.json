@@ -1,0 +1,246 @@
+{
+  "category": "matplotlib-seaborn",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "plt001",
+      "type": "fundamentals",
+      "name": "Matplotlib Basics",
+      "description": "Plotting library",
+      "pattern": "plt.plot(), plt.show(), figure, axes",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "plt002",
+      "type": "fundamentals",
+      "name": "Figure & Axes",
+      "description": "Plot structure",
+      "pattern": "fig, ax = plt.subplots(), object-oriented API",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "plt003",
+      "type": "fundamentals",
+      "name": "Subplots",
+      "description": "Multiple plots",
+      "pattern": "plt.subplots(2, 2), fig.add_subplot()",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "plt004",
+      "type": "plots",
+      "name": "Line Plot",
+      "description": "Plot lines",
+      "pattern": "ax.plot(x, y, 'r--', label='line')",
+      "example": "Plots usage"
+    },
+    {
+      "id": "plt005",
+      "type": "plots",
+      "name": "Scatter Plot",
+      "description": "Point plot",
+      "pattern": "ax.scatter(x, y, c=colors, s=sizes)",
+      "example": "Plots usage"
+    },
+    {
+      "id": "plt006",
+      "type": "plots",
+      "name": "Bar Plot",
+      "description": "Bar chart",
+      "pattern": "ax.bar(x, height), ax.barh() horizontal",
+      "example": "Plots usage"
+    },
+    {
+      "id": "plt007",
+      "type": "plots",
+      "name": "Histogram",
+      "description": "Distribution",
+      "pattern": "ax.hist(data, bins=30, density=True)",
+      "example": "Plots usage"
+    },
+    {
+      "id": "plt008",
+      "type": "plots",
+      "name": "Box Plot",
+      "description": "Statistics",
+      "pattern": "ax.boxplot(data), quartiles, outliers",
+      "example": "Plots usage"
+    },
+    {
+      "id": "plt009",
+      "type": "plots",
+      "name": "Pie Chart",
+      "description": "Parts of whole",
+      "pattern": "ax.pie(sizes, labels=labels, autopct='%1.1f%%')",
+      "example": "Plots usage"
+    },
+    {
+      "id": "plt010",
+      "type": "plots",
+      "name": "Heatmap",
+      "description": "2D color grid",
+      "pattern": "ax.imshow(data), plt.colorbar()",
+      "example": "Plots usage"
+    },
+    {
+      "id": "plt011",
+      "type": "customization",
+      "name": "Labels & Title",
+      "description": "Text elements",
+      "pattern": "ax.set_xlabel(), set_ylabel(), set_title()",
+      "example": "Customization usage"
+    },
+    {
+      "id": "plt012",
+      "type": "customization",
+      "name": "Legend",
+      "description": "Plot legend",
+      "pattern": "ax.legend(), loc='best', frameon=False",
+      "example": "Customization usage"
+    },
+    {
+      "id": "plt013",
+      "type": "customization",
+      "name": "Axis Limits",
+      "description": "Range",
+      "pattern": "ax.set_xlim(), set_ylim(), axis('equal')",
+      "example": "Customization usage"
+    },
+    {
+      "id": "plt014",
+      "type": "customization",
+      "name": "Ticks",
+      "description": "Tick marks",
+      "pattern": "ax.set_xticks(), set_xticklabels(), tick_params",
+      "example": "Customization usage"
+    },
+    {
+      "id": "plt015",
+      "type": "customization",
+      "name": "Grid",
+      "description": "Grid lines",
+      "pattern": "ax.grid(True), which='major', linestyle='--'",
+      "example": "Customization usage"
+    },
+    {
+      "id": "plt016",
+      "type": "customization",
+      "name": "Colors",
+      "description": "Color specification",
+      "pattern": "Named, hex, RGB, colormap, cmap",
+      "example": "Customization usage"
+    },
+    {
+      "id": "plt017",
+      "type": "customization",
+      "name": "Styles",
+      "description": "Plot styles",
+      "pattern": "plt.style.use('seaborn'), plt.rcParams",
+      "example": "Customization usage"
+    },
+    {
+      "id": "plt018",
+      "type": "seaborn",
+      "name": "Seaborn Basics",
+      "description": "Statistical plots",
+      "pattern": "import seaborn as sns, built on matplotlib",
+      "example": "Seaborn usage"
+    },
+    {
+      "id": "plt019",
+      "type": "seaborn",
+      "name": "Distribution Plots",
+      "description": "Distribution viz",
+      "pattern": "sns.histplot, kdeplot, rugplot, ecdfplot",
+      "example": "Seaborn usage"
+    },
+    {
+      "id": "plt020",
+      "type": "seaborn",
+      "name": "Categorical Plots",
+      "description": "Category viz",
+      "pattern": "sns.barplot, boxplot, violinplot, swarmplot",
+      "example": "Seaborn usage"
+    },
+    {
+      "id": "plt021",
+      "type": "seaborn",
+      "name": "Relational Plots",
+      "description": "Relationship viz",
+      "pattern": "sns.scatterplot, lineplot, relplot",
+      "example": "Seaborn usage"
+    },
+    {
+      "id": "plt022",
+      "type": "seaborn",
+      "name": "Regression Plots",
+      "description": "Trend lines",
+      "pattern": "sns.regplot, lmplot, residplot",
+      "example": "Seaborn usage"
+    },
+    {
+      "id": "plt023",
+      "type": "seaborn",
+      "name": "Heatmaps",
+      "description": "Correlation viz",
+      "pattern": "sns.heatmap(corr, annot=True, cmap='coolwarm')",
+      "example": "Seaborn usage"
+    },
+    {
+      "id": "plt024",
+      "type": "seaborn",
+      "name": "Pair Plot",
+      "description": "Pairwise relationships",
+      "pattern": "sns.pairplot(df, hue='category')",
+      "example": "Seaborn usage"
+    },
+    {
+      "id": "plt025",
+      "type": "seaborn",
+      "name": "FacetGrid",
+      "description": "Multiple plots",
+      "pattern": "g = sns.FacetGrid(df, col='cat'); g.map(...)",
+      "example": "Seaborn usage"
+    },
+    {
+      "id": "plt026",
+      "type": "seaborn",
+      "name": "Themes",
+      "description": "Visual styles",
+      "pattern": "sns.set_theme(), set_palette(), set_context()",
+      "example": "Seaborn usage"
+    },
+    {
+      "id": "plt027",
+      "type": "advanced",
+      "name": "Annotations",
+      "description": "Add text/arrows",
+      "pattern": "ax.annotate('text', xy, xytext, arrowprops)",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "plt028",
+      "type": "advanced",
+      "name": "3D Plots",
+      "description": "Three dimensions",
+      "pattern": "from mpl_toolkits.mplot3d, Axes3D",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "plt029",
+      "type": "output",
+      "name": "Save Figures",
+      "description": "Export plots",
+      "pattern": "fig.savefig('plot.png', dpi=300, bbox_inches='tight')",
+      "example": "Output usage"
+    },
+    {
+      "id": "plt030",
+      "type": "output",
+      "name": "Interactive",
+      "description": "Jupyter integration",
+      "pattern": "%matplotlib inline/widget, interactive plots",
+      "example": "Output usage"
+    }
+  ]
+}

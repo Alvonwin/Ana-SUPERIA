@@ -1,0 +1,531 @@
+import { useState, useEffect, useRef } from 'react';
+import { Send, Upload, Brain, Zap, RotateCcw, Play, Pause } from 'lucide-react';
+import io from 'socket.io-client';
+import soundSystem from '../utils/soundSystem';
+import VoiceInput from '../components/VoiceInput';
+import './ChatPage.css';
+
+const BACKEND_URL = 'http://localhost:3338';
+
+function ChatPage() {
+  const [messages, setMessages] = useState([]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [activeModel, setActiveModel] = useState(null);
+  const [memoryStats, setMemoryStats] = useState({ sizeKB: 0, lines: 0 });
+  const [socket, setSocket] = useState(null);
+  const [playingAudio, setPlayingAudio] = useState(null);
+  const [availableVoices, setAvailableVoices] = useState([]);
+  const [selectedVoice, setSelectedVoice] = useState(null);
+  const [playbackRate, setPlaybackRate] = useState(1.0);
+  const messagesEndRef = useRef(null);
+  const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    // Connect to WebSocket
+    console.log('🔌 Tentative de connexion WebSocket à:', BACKEND_URL);
+    const newSocket = io(BACKEND_URL, {
+      withCredentials: true,
+      transports: ['websocket', 'polling']
+    });
+    setSocket(newSocket);
+
+    // Load memory stats
+    fetchMemoryStats();
+
+    // Socket events
+    newSocket.on('connect', () => {
+      console.log('✅ WebSocket connecté!', newSocket.id);
+    });
+
+    newSocket.on('connect_error', (error) => {
+      console.error('❌ Erreur connexion WebSocket:', error);
+      addSystemMessage(`❌ Erreur connexion: ${error.message}`, 'error');
+    });
+
+    newSocket.on('chat:model_selected', (data) => {
+      setActiveModel(data.model);
+      addSystemMessage(`🧠 ${data.reason}`);
+      soundSystem.play('llm-start');
+    });
+
+    newSocket.on('chat:chunk', (data) => {
+      // Update last message with streaming chunk
+      console.log('📥 Frontend reçoit chunk:', data);
+
+      // Vérification stricte: data doit être un objet avec une clé chunk non vide
+      if (typeof data === 'object' && data.chunk && typeof data.chunk === 'string') {
+        setMessages(prev => {
+          // Chercher le dernier message Ana avec streaming:true
+          const lastAnaIndex = prev.slice().reverse().findIndex(msg => msg.sender === 'ana' && msg.streaming);
+
+          if (lastAnaIndex !== -1) {
+            const index = prev.length - 1 - lastAnaIndex;
+            const anaMessage = prev[index];
+            const currentText = anaMessage.text || '';
+
+            if (currentText === '') {
+              soundSystem.play('message-received');
+            }
+
+            console.log('✅ ACCUM chunk dans message Ana index', index);
+
+            return prev.map((msg, i) =>
+              i === index ? { ...msg, text: currentText + data.chunk } : msg
+            );
+          }
+
+          console.warn('⚠️ Aucun message Ana en streaming trouvé');
+          return prev;
+        });
+      } else {
+        console.warn('⚠️ Chunk incorrect reçu:', data);
+      }
+    });
+
+    newSocket.on('chat:complete', (data) => {
+      setMessages(prev => {
+        const lastAnaIndex = prev.slice().reverse().findIndex(msg => msg.sender === 'ana' && msg.streaming);
+
+        if (lastAnaIndex !== -1) {
+          const index = prev.length - 1 - lastAnaIndex;
+          const anaMessage = prev[index];
+
+          // Auto-play audio après réponse complète
+          if (anaMessage.text && window.speechSynthesis) {
+            setTimeout(() => {
+              const utterance = new SpeechSynthesisUtterance(anaMessage.text);
+              utterance.lang = 'fr-FR';
+              utterance.rate = playbackRate;
+              if (selectedVoice) utterance.voice = selectedVoice;
+              window.speechSynthesis.speak(utterance);
+              setPlayingAudio(anaMessage.id);
+
+              utterance.onend = () => setPlayingAudio(null);
+            }, 300);
+          }
+
+          return prev.map((msg, i) =>
+            i === index ? { ...msg, streaming: false } : msg
+          );
+        }
+        return prev;
+      });
+      setIsLoading(false);
+      fetchMemoryStats();
+      soundSystem.play('llm-complete');
+    });
+
+    newSocket.on('chat:error', (data) => {
+      addSystemMessage(`❌ Erreur: ${data.error}`, 'error');
+      setIsLoading(false);
+      soundSystem.play('error');
+    });
+
+    return () => {
+      newSocket.close();
+    };
+  }, []);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Load voices and preferences
+  useEffect(() => {
+    // Load preferences from localStorage
+    const savedVoice = localStorage.getItem('ana_tts_voice');
+    const savedRate = localStorage.getItem('ana_tts_rate');
+
+    if (savedRate) {
+      setPlaybackRate(parseFloat(savedRate));
+    }
+
+    // Load available voices
+    const loadVoices = () => {
+      if (!window.speechSynthesis) return;
+
+      const voices = window.speechSynthesis.getVoices();
+      // Filter French voices
+      const frenchVoices = voices.filter(voice => voice.lang.startsWith('fr'));
+
+      setAvailableVoices(frenchVoices);
+      console.log(`🎤 ${frenchVoices.length} voix françaises disponibles`);
+
+      // Set saved or default voice
+      if (savedVoice) {
+        const voice = frenchVoices.find(v => v.name === savedVoice);
+        if (voice) {
+          setSelectedVoice(voice);
+        }
+      } else if (frenchVoices.length > 0) {
+        // Select first French voice as default
+        setSelectedVoice(frenchVoices[0]);
+      }
+    };
+
+    // Initial load
+    loadVoices();
+
+    // Handle async voice loading (some browsers load voices asynchronously)
+    if (window.speechSynthesis) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    return () => {
+      if (window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = null;
+      }
+    };
+  }, []);
+
+  const fetchMemoryStats = async () => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/stats`);
+      const data = await response.json();
+      setMemoryStats(data.memory);
+    } catch (error) {
+      console.error('Error fetching stats:', error);
+    }
+  };
+
+  const addSystemMessage = (text, type = 'info') => {
+    setMessages(prev => [...prev, {
+      id: Date.now(),
+      sender: 'system',
+      text,
+      type,
+      timestamp: new Date()
+    }]);
+  };
+
+  const sendMessage = async (messageOverride = null) => {
+    const messageToSend = messageOverride || inputMessage;
+    if (!messageToSend.trim() || isLoading) return;
+
+    const userMessage = {
+      id: Date.now(),
+      sender: 'user',
+      text: messageToSend,
+      timestamp: new Date()
+    };
+
+    // Ajouter message utilisateur ET message Ana vide EN MÊME TEMPS
+    const anaMessage = {
+      id: Date.now() + 1,
+      sender: 'ana',
+      text: '',
+      timestamp: new Date(),
+      streaming: true
+    };
+
+    setMessages(prev => [...prev, userMessage, anaMessage]);
+    console.log('🟢 Message Ana créé avec streaming:true', anaMessage);
+
+    setInputMessage('');
+    setIsLoading(true);
+    soundSystem.play('message-sent');
+
+    // Send via WebSocket for streaming
+    if (socket) {
+      socket.emit('chat:message', { message: messageToSend });
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      addSystemMessage(`📎 Fichier uploadé: ${file.name}`);
+      // TODO: Handle file upload
+    }
+  };
+
+  const handleRepeat = (text) => {
+    setInputMessage(text);
+    addSystemMessage('📝 Message copié dans le champ de saisie');
+  };
+
+  const handlePlayPause = (messageId, text) => {
+    // Browser compatibility check
+    if (!window.speechSynthesis) {
+      addSystemMessage('❌ Synthèse vocale non supportée par ce navigateur', 'error');
+      return;
+    }
+
+    if (playingAudio === messageId) {
+      // Stop audio proprement
+      window.speechSynthesis.cancel();
+      setPlayingAudio(null);
+      return;
+    }
+
+    // Cancel toute lecture en cours
+    window.speechSynthesis.cancel();
+
+    try {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'fr-FR';
+      utterance.rate = playbackRate;
+      utterance.pitch = 1.0;
+      utterance.volume = 1.0;
+
+      // Use selected voice if available
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
+      }
+
+      // Event: Démarrage lecture
+      utterance.onstart = () => {
+        console.log('🔊 Lecture audio démarrée');
+      };
+
+      // Event: Fin lecture
+      utterance.onend = () => {
+        setPlayingAudio(null);
+        console.log('✅ Lecture audio terminée');
+      };
+
+      // Event: Erreur
+      utterance.onerror = (event) => {
+        console.error('❌ Erreur synthèse vocale:', event.error);
+        setPlayingAudio(null);
+
+        // Messages erreur utilisateur
+        const errorMessages = {
+          'canceled': 'Lecture annulée',
+          'interrupted': 'Lecture interrompue',
+          'audio-busy': 'Audio occupé',
+          'audio-hardware': 'Problème matériel audio',
+          'network': 'Erreur réseau',
+          'synthesis-unavailable': 'Synthèse vocale indisponible',
+          'synthesis-failed': 'Échec synthèse vocale',
+          'language-unavailable': 'Langue non disponible',
+          'voice-unavailable': 'Voix non disponible',
+          'text-too-long': 'Texte trop long',
+          'invalid-argument': 'Argument invalide',
+          'not-allowed': 'Lecture non autorisée'
+        };
+
+        const userMessage = errorMessages[event.error] || `Erreur: ${event.error}`;
+        addSystemMessage(`🔊 ${userMessage}`, 'error');
+      };
+
+      // Démarrer lecture
+      window.speechSynthesis.speak(utterance);
+      setPlayingAudio(messageId);
+
+    } catch (error) {
+      console.error('❌ Exception synthèse vocale:', error);
+      addSystemMessage('❌ Erreur lors du démarrage de la lecture audio', 'error');
+      setPlayingAudio(null);
+    }
+  };
+
+  const handleVoiceTranscript = (transcript) => {
+    setInputMessage(transcript);
+    addSystemMessage(`🎤 Transcription: "${transcript}"`);
+  };
+
+  const handleVoiceChange = (voiceName) => {
+    const voice = availableVoices.find(v => v.name === voiceName);
+    if (voice) {
+      setSelectedVoice(voice);
+      localStorage.setItem('ana_tts_voice', voiceName);
+      console.log('🎤 Voix changée:', voiceName);
+    }
+  };
+
+  const handleRateChange = (rate) => {
+    setPlaybackRate(rate);
+    localStorage.setItem('ana_tts_rate', rate.toString());
+    console.log('⚡ Vitesse changée:', rate + 'x');
+  };
+
+  return (
+    <div className="chat-page">
+      <div className="chat-header">
+        <div className="header-left">
+          <h2>💬 Chat avec Ana</h2>
+          <span className="subtitle">Conversation avec mémoire persistante</span>
+        </div>
+        <div className="header-right">
+          <div className="memory-info">
+            <Brain size={16} />
+            <span>Mémoire: {memoryStats.sizeKB} KB • {memoryStats.lines} lignes</span>
+          </div>
+          {activeModel && (
+            <div className="active-model">
+              <Zap size={16} />
+              <span>{activeModel}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="chat-messages">
+        {messages.length === 0 && (
+          <div className="welcome-message">
+            <h3>👋 Bonjour! Je suis Ana</h3>
+            <p>Une SUPER IA locale avec mémoire infinie. Pose-moi n'importe quelle question!</p>
+            <div className="suggestions">
+              <button onClick={() => setInputMessage("Explique-moi comment tu fonctionnes")}>
+                Comment tu fonctionnes?
+              </button>
+              <button onClick={() => setInputMessage("Aide-moi à coder une fonction JavaScript")}>
+                Aide-moi à coder
+              </button>
+              <button onClick={() => setInputMessage("De quoi on a parlé hier?")}>
+                Recherche mémoire
+              </button>
+            </div>
+          </div>
+        )}
+
+        {messages.map((message) => (
+          <div key={message.id} className={`message message-${message.sender}`}>
+            {message.sender === 'user' && (
+              <div className="message-avatar">👤</div>
+            )}
+            {message.sender === 'ana' && (
+              <div className="message-avatar">🤖</div>
+            )}
+            <div className="message-content">
+              <div className="message-header">
+                <span className="message-sender">
+                  {message.sender === 'user' ? 'Toi' : message.sender === 'ana' ? 'Ana' : 'Système'}
+                </span>
+                <span className="message-time">
+                  {message.timestamp.toLocaleTimeString()}
+                </span>
+              </div>
+              <div className="message-text">
+                {message.text}
+                {message.streaming && <span className="cursor">▊</span>}
+              </div>
+              {message.sender === 'ana' && message.text && (
+                <div className="message-actions">
+                  <button
+                    className="btn-action"
+                    onClick={() => handleRepeat(message.text)}
+                    title="Répéter ce message"
+                  >
+                    <RotateCcw size={14} />
+                    <span>Répéter</span>
+                  </button>
+                  <button
+                    className={`btn-action ${playingAudio === message.id ? 'playing' : ''}`}
+                    onClick={() => handlePlayPause(message.id, message.text)}
+                    title={playingAudio === message.id ? "Arrêter la lecture" : "Lire à voix haute"}
+                  >
+                    {playingAudio === message.id ? (
+                      <>
+                        <Pause size={14} />
+                        <span>Pause</span>
+                      </>
+                    ) : (
+                      <>
+                        <Play size={14} />
+                        <span>Lire</span>
+                      </>
+                    )}
+                  </button>
+
+                  {/* Voice selection */}
+                  {availableVoices.length > 0 && (
+                    <select
+                      className="voice-select"
+                      value={selectedVoice?.name || ''}
+                      onChange={(e) => handleVoiceChange(e.target.value)}
+                      title="Sélectionner une voix"
+                    >
+                      {availableVoices.map(voice => (
+                        <option key={voice.name} value={voice.name}>
+                          {voice.name.split(' ')[0]}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+
+                  {/* Speed control */}
+                  <div className="speed-controls">
+                    <button
+                      className={`btn-speed ${playbackRate === 0.8 ? 'active' : ''}`}
+                      onClick={() => handleRateChange(0.8)}
+                      title="Vitesse lente"
+                    >
+                      0.8x
+                    </button>
+                    <button
+                      className={`btn-speed ${playbackRate === 1.0 ? 'active' : ''}`}
+                      onClick={() => handleRateChange(1.0)}
+                      title="Vitesse normale"
+                    >
+                      1x
+                    </button>
+                    <button
+                      className={`btn-speed ${playbackRate === 1.2 ? 'active' : ''}`}
+                      onClick={() => handleRateChange(1.2)}
+                      title="Vitesse rapide"
+                    >
+                      1.2x
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
+
+      <div className="chat-input-container">
+        <div className="chat-input-wrapper">
+          <VoiceInput
+            onTranscript={handleVoiceTranscript}
+            onAutoSubmit={sendMessage}
+            disabled={isLoading}
+          />
+          <button
+            className="btn-icon"
+            onClick={() => fileInputRef.current?.click()}
+            title="Upload file or image"
+          >
+            <Upload size={20} />
+          </button>
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileUpload}
+            style={{ display: 'none' }}
+            accept="image/*,.pdf,.txt,.md,.doc,.docx"
+          />
+          <textarea
+            className="chat-input"
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Message Ana... (Shift+Enter pour nouvelle ligne)"
+            rows={1}
+            disabled={isLoading}
+          />
+          <button
+            className="btn-send"
+            onClick={sendMessage}
+            disabled={!inputMessage.trim() || isLoading}
+          >
+            <Send size={20} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ChatPage;

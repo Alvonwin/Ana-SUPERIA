@@ -1,0 +1,246 @@
+{
+  "category": "cloud-native-patterns",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cnp001",
+      "type": "fundamentals",
+      "name": "12-Factor App",
+      "description": "Methodology for building SaaS apps",
+      "pattern": "Codebase, dependencies, config, backing services",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cnp002",
+      "type": "fundamentals",
+      "name": "Cloud Native Definition",
+      "description": "CNCF cloud native principles",
+      "pattern": "Containers, microservices, declarative",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cnp003",
+      "type": "fundamentals",
+      "name": "Immutable Infrastructure",
+      "description": "Never modify, always replace",
+      "pattern": "Golden images, blue-green, immutable",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cnp004",
+      "type": "resilience",
+      "name": "Circuit Breaker",
+      "description": "Fail fast pattern",
+      "pattern": "Open, closed, half-open states",
+      "example": "Resilience usage"
+    },
+    {
+      "id": "cnp005",
+      "type": "resilience",
+      "name": "Bulkhead",
+      "description": "Isolate failures",
+      "pattern": "Thread pools, connection pools, partitions",
+      "example": "Resilience usage"
+    },
+    {
+      "id": "cnp006",
+      "type": "resilience",
+      "name": "Retry Pattern",
+      "description": "Handle transient failures",
+      "pattern": "Exponential backoff, jitter, max retries",
+      "example": "Resilience usage"
+    },
+    {
+      "id": "cnp007",
+      "type": "resilience",
+      "name": "Timeout Pattern",
+      "description": "Bounded wait times",
+      "pattern": "Connection timeout, read timeout, deadline",
+      "example": "Resilience usage"
+    },
+    {
+      "id": "cnp008",
+      "type": "resilience",
+      "name": "Fallback Pattern",
+      "description": "Graceful degradation",
+      "pattern": "Default values, cached responses, alternatives",
+      "example": "Resilience usage"
+    },
+    {
+      "id": "cnp009",
+      "type": "communication",
+      "name": "Sidecar Pattern",
+      "description": "Co-located helper container",
+      "pattern": "Logging, proxy, config sidecars",
+      "example": "Communication usage"
+    },
+    {
+      "id": "cnp010",
+      "type": "communication",
+      "name": "Ambassador Pattern",
+      "description": "Proxy for outbound connections",
+      "pattern": "API gateway, connection pooling, routing",
+      "example": "Communication usage"
+    },
+    {
+      "id": "cnp011",
+      "type": "communication",
+      "name": "Adapter Pattern",
+      "description": "Standardize interfaces",
+      "pattern": "Protocol translation, format conversion",
+      "example": "Communication usage"
+    },
+    {
+      "id": "cnp012",
+      "type": "data",
+      "name": "Saga Pattern",
+      "description": "Distributed transactions",
+      "pattern": "Choreography, orchestration, compensation",
+      "example": "Data usage"
+    },
+    {
+      "id": "cnp013",
+      "type": "data",
+      "name": "CQRS",
+      "description": "Command Query Responsibility Segregation",
+      "pattern": "Read model, write model, eventual consistency",
+      "example": "Data usage"
+    },
+    {
+      "id": "cnp014",
+      "type": "data",
+      "name": "Event Sourcing",
+      "description": "Store events not state",
+      "pattern": "Event store, projections, replay",
+      "example": "Data usage"
+    },
+    {
+      "id": "cnp015",
+      "type": "data",
+      "name": "Outbox Pattern",
+      "description": "Reliable event publishing",
+      "pattern": "Transactional outbox, CDC, polling",
+      "example": "Data usage"
+    },
+    {
+      "id": "cnp016",
+      "type": "discovery",
+      "name": "Service Discovery",
+      "description": "Find service instances",
+      "pattern": "Client-side, server-side, DNS-based",
+      "example": "Discovery usage"
+    },
+    {
+      "id": "cnp017",
+      "type": "discovery",
+      "name": "Service Mesh",
+      "description": "Infrastructure layer",
+      "pattern": "Istio, Linkerd, sidecar proxies",
+      "example": "Discovery usage"
+    },
+    {
+      "id": "cnp018",
+      "type": "discovery",
+      "name": "API Gateway",
+      "description": "Single entry point",
+      "pattern": "Routing, auth, rate limiting, aggregation",
+      "example": "Discovery usage"
+    },
+    {
+      "id": "cnp019",
+      "type": "deployment",
+      "name": "Blue-Green Deployment",
+      "description": "Zero-downtime releases",
+      "pattern": "Two environments, instant switch",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "cnp020",
+      "type": "deployment",
+      "name": "Canary Deployment",
+      "description": "Gradual rollout",
+      "pattern": "Traffic splitting, metrics, rollback",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "cnp021",
+      "type": "deployment",
+      "name": "Rolling Deployment",
+      "description": "Progressive updates",
+      "pattern": "MaxSurge, maxUnavailable, health checks",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "cnp022",
+      "type": "config",
+      "name": "Externalized Config",
+      "description": "Config outside code",
+      "pattern": "ConfigMaps, Secrets, env vars",
+      "example": "Config usage"
+    },
+    {
+      "id": "cnp023",
+      "type": "config",
+      "name": "Feature Flags",
+      "description": "Runtime feature toggle",
+      "pattern": "LaunchDarkly, Unleash, ConfigCat",
+      "example": "Config usage"
+    },
+    {
+      "id": "cnp024",
+      "type": "observability",
+      "name": "Health Check Pattern",
+      "description": "Service health endpoints",
+      "pattern": "Liveness, readiness, startup probes",
+      "example": "Observability usage"
+    },
+    {
+      "id": "cnp025",
+      "type": "observability",
+      "name": "Log Aggregation",
+      "description": "Centralized logging",
+      "pattern": "ELK, Loki, structured logs",
+      "example": "Observability usage"
+    },
+    {
+      "id": "cnp026",
+      "type": "observability",
+      "name": "Distributed Tracing",
+      "description": "Request flow tracking",
+      "pattern": "OpenTelemetry, Jaeger, trace context",
+      "example": "Observability usage"
+    },
+    {
+      "id": "cnp027",
+      "type": "security",
+      "name": "Zero Trust",
+      "description": "Never trust always verify",
+      "pattern": "mTLS, identity-based, least privilege",
+      "example": "Security usage"
+    },
+    {
+      "id": "cnp028",
+      "type": "security",
+      "name": "Secrets Management",
+      "description": "Secure secret handling",
+      "pattern": "Vault, sealed secrets, rotation",
+      "example": "Security usage"
+    },
+    {
+      "id": "cnp029",
+      "type": "scaling",
+      "name": "Horizontal Pod Autoscaler",
+      "description": "Auto-scale on metrics",
+      "pattern": "CPU, memory, custom metrics",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "cnp030",
+      "type": "scaling",
+      "name": "Vertical Pod Autoscaler",
+      "description": "Right-size resources",
+      "pattern": "Resource recommendations, auto-update",
+      "example": "Scaling usage"
+    }
+  ]
+}

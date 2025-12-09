@@ -1,0 +1,246 @@
+{
+  "category": "error-handling",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "err001",
+      "type": "fundamentals",
+      "name": "Error vs Exception",
+      "description": "Terminology",
+      "pattern": "Error: unrecoverable. Exception: recoverable. (varies by language)",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "err002",
+      "type": "fundamentals",
+      "name": "Fail Fast",
+      "description": "Early detection",
+      "pattern": "Validate input immediately, fail before side effects",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "err003",
+      "type": "fundamentals",
+      "name": "Graceful Degradation",
+      "description": "Partial functionality",
+      "pattern": "Feature fails but app continues, fallback behavior",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "err004",
+      "type": "js",
+      "name": "try/catch/finally",
+      "description": "JS error handling",
+      "pattern": "try { risky(); } catch (e) { handle(e); } finally { cleanup(); }",
+      "example": "Js usage"
+    },
+    {
+      "id": "err005",
+      "type": "js",
+      "name": "Custom Errors",
+      "description": "Error subclasses",
+      "pattern": "class ValidationError extends Error { constructor(msg) { super(msg); } }",
+      "example": "Js usage"
+    },
+    {
+      "id": "err006",
+      "type": "js",
+      "name": "Error Cause",
+      "description": "Error chaining",
+      "pattern": "new Error('Failed', { cause: originalError }); e.cause",
+      "example": "Js usage"
+    },
+    {
+      "id": "err007",
+      "type": "js",
+      "name": "Promise Rejection",
+      "description": "Async errors",
+      "pattern": "promise.catch(handleError); async/await with try/catch",
+      "example": "Js usage"
+    },
+    {
+      "id": "err008",
+      "type": "js",
+      "name": "Unhandled Rejection",
+      "description": "Global handler",
+      "pattern": "process.on('unhandledRejection', handler); window.onunhandledrejection",
+      "example": "Js usage"
+    },
+    {
+      "id": "err009",
+      "type": "patterns",
+      "name": "Result Type",
+      "description": "Explicit errors",
+      "pattern": "type Result<T,E> = {ok: true, value: T} | {ok: false, error: E}",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "err010",
+      "type": "patterns",
+      "name": "Either Monad",
+      "description": "Left/Right pattern",
+      "pattern": "Either<Error, Success> - chain operations, handle error at end",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "err011",
+      "type": "patterns",
+      "name": "Option/Maybe",
+      "description": "Null safety",
+      "pattern": "Option<T> = Some(T) | None - explicit absence handling",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "err012",
+      "type": "patterns",
+      "name": "Railway Oriented",
+      "description": "Functional errors",
+      "pattern": "Happy path rail, error rail - switch on failure",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "err013",
+      "type": "patterns",
+      "name": "Error Codes",
+      "description": "Machine-readable",
+      "pattern": "{code: 'USER_NOT_FOUND', message: '...', details: {...}}",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "err014",
+      "type": "patterns",
+      "name": "Error Boundaries",
+      "description": "React error handling",
+      "pattern": "componentDidCatch, getDerivedStateFromError - catch render errors",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "err015",
+      "type": "api",
+      "name": "HTTP Error Responses",
+      "description": "API errors",
+      "pattern": "4xx client errors, 5xx server errors, consistent error format",
+      "example": "Api usage"
+    },
+    {
+      "id": "err016",
+      "type": "api",
+      "name": "Problem Details",
+      "description": "RFC 7807",
+      "pattern": "{type, title, status, detail, instance} standard format",
+      "example": "Api usage"
+    },
+    {
+      "id": "err017",
+      "type": "api",
+      "name": "GraphQL Errors",
+      "description": "GQL error handling",
+      "pattern": "errors array, extensions for details, partial data + errors",
+      "example": "Api usage"
+    },
+    {
+      "id": "err018",
+      "type": "validation",
+      "name": "Input Validation",
+      "description": "User input",
+      "pattern": "Validate at boundaries, whitelist approach, sanitize output",
+      "example": "Validation usage"
+    },
+    {
+      "id": "err019",
+      "type": "validation",
+      "name": "Schema Validation",
+      "description": "Data validation",
+      "pattern": "Zod, Joi, Yup - validate shape, provide detailed errors",
+      "example": "Validation usage"
+    },
+    {
+      "id": "err020",
+      "type": "validation",
+      "name": "Validation Messages",
+      "description": "User-friendly",
+      "pattern": "Field-level errors, actionable messages, i18n support",
+      "example": "Validation usage"
+    },
+    {
+      "id": "err021",
+      "type": "logging",
+      "name": "Error Logging",
+      "description": "Capture errors",
+      "pattern": "Stack trace, context, user info, request details",
+      "example": "Logging usage"
+    },
+    {
+      "id": "err022",
+      "type": "logging",
+      "name": "Error Tracking",
+      "description": "Monitoring tools",
+      "pattern": "Sentry, Bugsnag, Rollbar - aggregate, alert, triage",
+      "example": "Logging usage"
+    },
+    {
+      "id": "err023",
+      "type": "logging",
+      "name": "Breadcrumbs",
+      "description": "Error context",
+      "pattern": "Trail of events leading to error, helps debugging",
+      "example": "Logging usage"
+    },
+    {
+      "id": "err024",
+      "type": "retry",
+      "name": "Retry Logic",
+      "description": "Transient failures",
+      "pattern": "Exponential backoff, max retries, jitter",
+      "example": "Retry usage"
+    },
+    {
+      "id": "err025",
+      "type": "retry",
+      "name": "Idempotency",
+      "description": "Safe retries",
+      "pattern": "Same request = same result, idempotency keys",
+      "example": "Retry usage"
+    },
+    {
+      "id": "err026",
+      "type": "retry",
+      "name": "Circuit Breaker",
+      "description": "Prevent cascade",
+      "pattern": "Open after failures, half-open to test, close on success",
+      "example": "Retry usage"
+    },
+    {
+      "id": "err027",
+      "type": "recovery",
+      "name": "Fallback Values",
+      "description": "Default on error",
+      "pattern": "cache ?? fetchData().catch(() => defaultValue)",
+      "example": "Recovery usage"
+    },
+    {
+      "id": "err028",
+      "type": "recovery",
+      "name": "Timeout Handling",
+      "description": "Bound waiting",
+      "pattern": "Promise.race([fetch, timeout]), AbortController",
+      "example": "Recovery usage"
+    },
+    {
+      "id": "err029",
+      "type": "testing",
+      "name": "Error Testing",
+      "description": "Test error paths",
+      "pattern": "expect(() => fn()).toThrow(); test error scenarios",
+      "example": "Testing usage"
+    },
+    {
+      "id": "err030",
+      "type": "ux",
+      "name": "User Error Messages",
+      "description": "UX for errors",
+      "pattern": "Clear, actionable, non-technical, recovery options",
+      "example": "Ux usage"
+    }
+  ]
+}

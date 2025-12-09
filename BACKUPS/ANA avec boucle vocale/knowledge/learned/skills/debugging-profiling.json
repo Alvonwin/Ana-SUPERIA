@@ -1,0 +1,246 @@
+{
+  "category": "debugging-profiling",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "dbg001",
+      "type": "chrome",
+      "name": "Chrome DevTools",
+      "description": "Browser debugging",
+      "pattern": "Elements, Console, Network, Sources, Performance, Memory tabs",
+      "example": "Chrome usage"
+    },
+    {
+      "id": "dbg002",
+      "type": "chrome",
+      "name": "Breakpoints",
+      "description": "Pause execution",
+      "pattern": "Line, conditional, DOM, XHR, event listener breakpoints",
+      "example": "Chrome usage"
+    },
+    {
+      "id": "dbg003",
+      "type": "chrome",
+      "name": "Console Methods",
+      "description": "Debug output",
+      "pattern": "console.log, .table, .group, .time, .trace, .assert",
+      "example": "Chrome usage"
+    },
+    {
+      "id": "dbg004",
+      "type": "chrome",
+      "name": "Network Panel",
+      "description": "Request inspection",
+      "pattern": "Timing, headers, payload, preview, filter by type",
+      "example": "Chrome usage"
+    },
+    {
+      "id": "dbg005",
+      "type": "chrome",
+      "name": "Source Maps",
+      "description": "Debug original code",
+      "pattern": "Map minified/transpiled code to source",
+      "example": "Chrome usage"
+    },
+    {
+      "id": "dbg006",
+      "type": "node",
+      "name": "Node Inspector",
+      "description": "Node.js debugging",
+      "pattern": "node --inspect app.js, chrome://inspect",
+      "example": "Node usage"
+    },
+    {
+      "id": "dbg007",
+      "type": "node",
+      "name": "VS Code Debugger",
+      "description": "IDE debugging",
+      "pattern": "launch.json, breakpoints, watch, call stack",
+      "example": "Node usage"
+    },
+    {
+      "id": "dbg008",
+      "type": "node",
+      "name": "Debug Module",
+      "description": "Conditional logging",
+      "pattern": "DEBUG=app:* node app.js, namespace-based logging",
+      "example": "Node usage"
+    },
+    {
+      "id": "dbg009",
+      "type": "techniques",
+      "name": "Binary Search Debug",
+      "description": "Isolate bug",
+      "pattern": "Comment half the code, narrow down to bug location",
+      "example": "Techniques usage"
+    },
+    {
+      "id": "dbg010",
+      "type": "techniques",
+      "name": "Rubber Duck Debugging",
+      "description": "Explain to understand",
+      "pattern": "Verbally explain code line by line, find logical gaps",
+      "example": "Techniques usage"
+    },
+    {
+      "id": "dbg011",
+      "type": "techniques",
+      "name": "Git Bisect",
+      "description": "Find regression",
+      "pattern": "git bisect start/good/bad - binary search commits",
+      "example": "Techniques usage"
+    },
+    {
+      "id": "dbg012",
+      "type": "techniques",
+      "name": "Print Debugging",
+      "description": "Strategic logging",
+      "pattern": "Log inputs, outputs, state at key points",
+      "example": "Techniques usage"
+    },
+    {
+      "id": "dbg013",
+      "type": "techniques",
+      "name": "Reproduce First",
+      "description": "Debug methodology",
+      "pattern": "Reliable repro -> Isolate -> Understand -> Fix -> Verify",
+      "example": "Techniques usage"
+    },
+    {
+      "id": "dbg014",
+      "type": "profiling",
+      "name": "Chrome Performance",
+      "description": "Runtime profiling",
+      "pattern": "Record, flame chart, main thread activity, FPS",
+      "example": "Profiling usage"
+    },
+    {
+      "id": "dbg015",
+      "type": "profiling",
+      "name": "Lighthouse",
+      "description": "Page audit",
+      "pattern": "Performance, accessibility, SEO, best practices scores",
+      "example": "Profiling usage"
+    },
+    {
+      "id": "dbg016",
+      "type": "profiling",
+      "name": "Memory Profiling",
+      "description": "Heap analysis",
+      "pattern": "Heap snapshots, allocation timeline, detect memory leaks",
+      "example": "Profiling usage"
+    },
+    {
+      "id": "dbg017",
+      "type": "profiling",
+      "name": "Node Profiling",
+      "description": "Node.js performance",
+      "pattern": "node --prof, clinic.js, 0x flame graphs",
+      "example": "Profiling usage"
+    },
+    {
+      "id": "dbg018",
+      "type": "profiling",
+      "name": "CPU Profiling",
+      "description": "Find bottlenecks",
+      "pattern": "Sample stack traces, find hot functions",
+      "example": "Profiling usage"
+    },
+    {
+      "id": "dbg019",
+      "type": "profiling",
+      "name": "Flame Graphs",
+      "description": "Visualize profiling",
+      "pattern": "Width = time spent, stack depth = call hierarchy",
+      "example": "Profiling usage"
+    },
+    {
+      "id": "dbg020",
+      "type": "memory",
+      "name": "Memory Leaks",
+      "description": "Detect leaks",
+      "pattern": "Growing heap, detached DOM, closures holding references",
+      "example": "Memory usage"
+    },
+    {
+      "id": "dbg021",
+      "type": "memory",
+      "name": "Heap Snapshots",
+      "description": "Memory inspection",
+      "pattern": "Compare snapshots, find retained objects",
+      "example": "Memory usage"
+    },
+    {
+      "id": "dbg022",
+      "type": "memory",
+      "name": "Garbage Collection",
+      "description": "GC behavior",
+      "pattern": "Mark-sweep, generational GC, GC pauses",
+      "example": "Memory usage"
+    },
+    {
+      "id": "dbg023",
+      "type": "network",
+      "name": "Network Debugging",
+      "description": "Request issues",
+      "pattern": "Status codes, CORS errors, timing breakdown",
+      "example": "Network usage"
+    },
+    {
+      "id": "dbg024",
+      "type": "network",
+      "name": "Charles/Fiddler",
+      "description": "HTTP proxy",
+      "pattern": "Inspect, modify, mock HTTP traffic",
+      "example": "Network usage"
+    },
+    {
+      "id": "dbg025",
+      "type": "react",
+      "name": "React DevTools",
+      "description": "React debugging",
+      "pattern": "Component tree, props, state, profiler",
+      "example": "React usage"
+    },
+    {
+      "id": "dbg026",
+      "type": "react",
+      "name": "React Profiler",
+      "description": "Render performance",
+      "pattern": "Why did this render? Commit timing, ranked chart",
+      "example": "React usage"
+    },
+    {
+      "id": "dbg027",
+      "type": "redux",
+      "name": "Redux DevTools",
+      "description": "State debugging",
+      "pattern": "Action log, state diff, time travel, export/import",
+      "example": "Redux usage"
+    },
+    {
+      "id": "dbg028",
+      "type": "api",
+      "name": "API Debugging",
+      "description": "Backend issues",
+      "pattern": "Postman/Insomnia, curl, request replay",
+      "example": "Api usage"
+    },
+    {
+      "id": "dbg029",
+      "type": "production",
+      "name": "Production Debugging",
+      "description": "Debug in prod",
+      "pattern": "Structured logs, correlation IDs, feature flags, canary",
+      "example": "Production usage"
+    },
+    {
+      "id": "dbg030",
+      "type": "tools",
+      "name": "Debugging Tools",
+      "description": "Tool ecosystem",
+      "pattern": "ndb, why-is-node-running, leakage, autocannon",
+      "example": "Tools usage"
+    }
+  ]
+}

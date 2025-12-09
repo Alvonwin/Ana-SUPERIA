@@ -1,0 +1,247 @@
+{
+  "category": "azure-cloud-services",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "az01",
+      "type": "vm",
+      "name": "Azure VMs",
+      "description": "Virtual machines",
+      "pattern": "az vm create --resource-group rg --name vm",
+      "example": "Scale sets for auto-scaling"
+    },
+    {
+      "id": "az02",
+      "type": "blob",
+      "name": "Blob Storage",
+      "description": "Object storage",
+      "pattern": "az storage blob upload --container --file",
+      "example": "Hot, cool, archive tiers"
+    },
+    {
+      "id": "az03",
+      "type": "functions",
+      "name": "Azure Functions",
+      "description": "Serverless compute",
+      "pattern": "module.exports = async function (context, req)",
+      "example": "Durable Functions for workflows"
+    },
+    {
+      "id": "az04",
+      "type": "sql",
+      "name": "Azure SQL",
+      "description": "Managed SQL Server",
+      "pattern": "Elastic pools, serverless tier",
+      "example": "Automatic tuning"
+    },
+    {
+      "id": "az05",
+      "type": "cosmos",
+      "name": "Cosmos DB",
+      "description": "Multi-model database",
+      "pattern": "SQL API, MongoDB API, Cassandra",
+      "example": "Global distribution"
+    },
+    {
+      "id": "az06",
+      "type": "api-mgmt",
+      "name": "API Management",
+      "description": "API gateway",
+      "pattern": "Policies, Products, Subscriptions",
+      "example": "Developer portal"
+    },
+    {
+      "id": "az07",
+      "type": "cdn",
+      "name": "Azure CDN",
+      "description": "Content delivery",
+      "pattern": "Profiles, Endpoints, Origins",
+      "example": "Microsoft, Verizon, Akamai"
+    },
+    {
+      "id": "az08",
+      "type": "ad",
+      "name": "Azure AD / Entra ID",
+      "description": "Identity management",
+      "pattern": "App registrations, Service principals",
+      "example": "Conditional access, MFA"
+    },
+    {
+      "id": "az09",
+      "type": "vnet",
+      "name": "Virtual Network",
+      "description": "Networking",
+      "pattern": "Subnets, NSGs, VNet peering",
+      "example": "Private endpoints"
+    },
+    {
+      "id": "az10",
+      "type": "aks",
+      "name": "AKS Kubernetes",
+      "description": "Managed Kubernetes",
+      "pattern": "az aks create --resource-group --name",
+      "example": "Node pools, KEDA autoscaling"
+    },
+    {
+      "id": "az11",
+      "type": "container-apps",
+      "name": "Container Apps",
+      "description": "Serverless containers",
+      "pattern": "Dapr integration, revisions",
+      "example": "Scale to zero"
+    },
+    {
+      "id": "az12",
+      "type": "service-bus",
+      "name": "Service Bus",
+      "description": "Message broker",
+      "pattern": "Queues, Topics, Subscriptions",
+      "example": "Sessions, dead-lettering"
+    },
+    {
+      "id": "az13",
+      "type": "event-hub",
+      "name": "Event Hubs",
+      "description": "Event streaming",
+      "pattern": "Kafka protocol compatible",
+      "example": "Capture to storage"
+    },
+    {
+      "id": "az14",
+      "type": "monitor",
+      "name": "Azure Monitor",
+      "description": "Observability",
+      "pattern": "Log Analytics, Application Insights",
+      "example": "KQL queries, workbooks"
+    },
+    {
+      "id": "az15",
+      "type": "key-vault",
+      "name": "Key Vault",
+      "description": "Secrets management",
+      "pattern": "Secrets, Keys, Certificates",
+      "example": "Managed identities"
+    },
+    {
+      "id": "az16",
+      "type": "b2c",
+      "name": "Azure AD B2C",
+      "description": "Customer identity",
+      "pattern": "User flows, Custom policies",
+      "example": "Social login providers"
+    },
+    {
+      "id": "az17",
+      "type": "logic-apps",
+      "name": "Logic Apps",
+      "description": "Workflow automation",
+      "pattern": "Connectors, triggers, actions",
+      "example": "Low-code integration"
+    },
+    {
+      "id": "az18",
+      "type": "event-grid",
+      "name": "Event Grid",
+      "description": "Event routing",
+      "pattern": "Topics, Subscriptions, Handlers",
+      "example": "Serverless event-driven"
+    },
+    {
+      "id": "az19",
+      "type": "redis",
+      "name": "Azure Cache for Redis",
+      "description": "In-memory cache",
+      "pattern": "Basic, Standard, Premium tiers",
+      "example": "Geo-replication"
+    },
+    {
+      "id": "az20",
+      "type": "dns",
+      "name": "Azure DNS",
+      "description": "DNS hosting",
+      "pattern": "Zones, Record sets",
+      "example": "Private DNS zones"
+    },
+    {
+      "id": "az21",
+      "type": "arm",
+      "name": "ARM Templates",
+      "description": "Infrastructure as Code",
+      "pattern": "JSON templates, deployments",
+      "example": "Template specs, Bicep"
+    },
+    {
+      "id": "az22",
+      "type": "bicep",
+      "name": "Bicep IaC",
+      "description": "DSL for ARM",
+      "pattern": "resource storageAccount Microsoft.Storage",
+      "example": "Modules, parameters"
+    },
+    {
+      "id": "az23",
+      "type": "synapse",
+      "name": "Synapse Analytics",
+      "description": "Data analytics",
+      "pattern": "SQL pools, Spark pools, Pipelines",
+      "example": "Serverless SQL"
+    },
+    {
+      "id": "az24",
+      "type": "databricks",
+      "name": "Azure Databricks",
+      "description": "Spark analytics",
+      "pattern": "Notebooks, Clusters, Jobs",
+      "example": "Unity Catalog, MLflow"
+    },
+    {
+      "id": "az25",
+      "type": "openai",
+      "name": "Azure OpenAI",
+      "description": "AI models",
+      "pattern": "GPT-4, DALL-E, Whisper",
+      "example": "Content filtering, PTU"
+    },
+    {
+      "id": "az26",
+      "type": "ai-search",
+      "name": "AI Search",
+      "description": "Enterprise search",
+      "pattern": "Indexes, Indexers, Skillsets",
+      "example": "Vector search, RAG"
+    },
+    {
+      "id": "az27",
+      "type": "ml",
+      "name": "Azure ML",
+      "description": "Machine learning",
+      "pattern": "Workspaces, Experiments, Endpoints",
+      "example": "AutoML, Designer"
+    },
+    {
+      "id": "az28",
+      "type": "front-door",
+      "name": "Front Door",
+      "description": "Global load balancer",
+      "pattern": "WAF, routing rules, caching",
+      "example": "DDoS protection"
+    },
+    {
+      "id": "az29",
+      "type": "devops",
+      "name": "Azure DevOps",
+      "description": "CI/CD platform",
+      "pattern": "Pipelines, Repos, Boards",
+      "example": "YAML pipelines"
+    },
+    {
+      "id": "az30",
+      "type": "cost-mgmt",
+      "name": "Cost Management",
+      "description": "FinOps",
+      "pattern": "Budgets, Recommendations, Exports",
+      "example": "Reserved instances"
+    }
+  ]
+}

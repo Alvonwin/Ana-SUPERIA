@@ -1,0 +1,246 @@
+{
+  "category": "temporal-workflows",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "temp001",
+      "type": "fundamentals",
+      "name": "Temporal Overview",
+      "description": "Durable execution platform",
+      "pattern": "Workflows, activities, workers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "temp002",
+      "type": "fundamentals",
+      "name": "Durability",
+      "description": "Execution guarantee",
+      "pattern": "Event sourcing, replay, persistence",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "temp003",
+      "type": "workflows",
+      "name": "Workflow Definition",
+      "description": "Business logic",
+      "pattern": "Deterministic, long-running, stateful",
+      "example": "Workflows usage"
+    },
+    {
+      "id": "temp004",
+      "type": "workflows",
+      "name": "Workflow Types",
+      "description": "Execution patterns",
+      "pattern": "Child workflows, continue-as-new",
+      "example": "Workflows usage"
+    },
+    {
+      "id": "temp005",
+      "type": "workflows",
+      "name": "Determinism",
+      "description": "Replay safety",
+      "pattern": "No I/O, no random, versioning",
+      "example": "Workflows usage"
+    },
+    {
+      "id": "temp006",
+      "type": "workflows",
+      "name": "Signals",
+      "description": "External input",
+      "pattern": "Signal handlers, async signals",
+      "example": "Workflows usage"
+    },
+    {
+      "id": "temp007",
+      "type": "workflows",
+      "name": "Queries",
+      "description": "State inspection",
+      "pattern": "Query handlers, sync queries",
+      "example": "Workflows usage"
+    },
+    {
+      "id": "temp008",
+      "type": "workflows",
+      "name": "Updates",
+      "description": "Validated mutations",
+      "pattern": "Update handlers, validators",
+      "example": "Workflows usage"
+    },
+    {
+      "id": "temp009",
+      "type": "activities",
+      "name": "Activity Definition",
+      "description": "Side effects",
+      "pattern": "I/O operations, external calls",
+      "example": "Activities usage"
+    },
+    {
+      "id": "temp010",
+      "type": "activities",
+      "name": "Activity Options",
+      "description": "Execution config",
+      "pattern": "Timeouts, retries, heartbeat",
+      "example": "Activities usage"
+    },
+    {
+      "id": "temp011",
+      "type": "activities",
+      "name": "Local Activities",
+      "description": "Fast activities",
+      "pattern": "Short operations, no retry",
+      "example": "Activities usage"
+    },
+    {
+      "id": "temp012",
+      "type": "activities",
+      "name": "Heartbeating",
+      "description": "Long activity progress",
+      "pattern": "Heartbeat, progress reporting",
+      "example": "Activities usage"
+    },
+    {
+      "id": "temp013",
+      "type": "workers",
+      "name": "Worker Setup",
+      "description": "Task processing",
+      "pattern": "Task queue, worker options",
+      "example": "Workers usage"
+    },
+    {
+      "id": "temp014",
+      "type": "workers",
+      "name": "Task Queues",
+      "description": "Work distribution",
+      "pattern": "Queue routing, sticky queues",
+      "example": "Workers usage"
+    },
+    {
+      "id": "temp015",
+      "type": "workers",
+      "name": "Worker Scaling",
+      "description": "Horizontal scaling",
+      "pattern": "Concurrent workflows, activities",
+      "example": "Workers usage"
+    },
+    {
+      "id": "temp016",
+      "type": "error",
+      "name": "Error Handling",
+      "description": "Failure management",
+      "pattern": "Retries, timeouts, cancellation",
+      "example": "Error usage"
+    },
+    {
+      "id": "temp017",
+      "type": "error",
+      "name": "Retry Policies",
+      "description": "Automatic retries",
+      "pattern": "Backoff, max attempts, non-retryable",
+      "example": "Error usage"
+    },
+    {
+      "id": "temp018",
+      "type": "error",
+      "name": "Cancellation",
+      "description": "Workflow cancellation",
+      "pattern": "Cancel scope, cleanup",
+      "example": "Error usage"
+    },
+    {
+      "id": "temp019",
+      "type": "patterns",
+      "name": "Saga Pattern",
+      "description": "Distributed transactions",
+      "pattern": "Compensating activities",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "temp020",
+      "type": "patterns",
+      "name": "Async Patterns",
+      "description": "Async operations",
+      "pattern": "Promise.all, Promise.race, selectors",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "temp021",
+      "type": "patterns",
+      "name": "Schedules",
+      "description": "Recurring workflows",
+      "pattern": "Cron, intervals, backfill",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "temp022",
+      "type": "versioning",
+      "name": "Workflow Versioning",
+      "description": "Safe updates",
+      "pattern": "GetVersion, patches, deprecation",
+      "example": "Versioning usage"
+    },
+    {
+      "id": "temp023",
+      "type": "versioning",
+      "name": "Worker Versioning",
+      "description": "Build IDs",
+      "pattern": "Version sets, task queue routing",
+      "example": "Versioning usage"
+    },
+    {
+      "id": "temp024",
+      "type": "testing",
+      "name": "Testing Workflows",
+      "description": "Test strategies",
+      "pattern": "Test environment, time skipping",
+      "example": "Testing usage"
+    },
+    {
+      "id": "temp025",
+      "type": "testing",
+      "name": "Replay Testing",
+      "description": "History replay",
+      "pattern": "Replay from history, determinism check",
+      "example": "Testing usage"
+    },
+    {
+      "id": "temp026",
+      "type": "observability",
+      "name": "Visibility",
+      "description": "Workflow discovery",
+      "pattern": "List, search attributes, queries",
+      "example": "Observability usage"
+    },
+    {
+      "id": "temp027",
+      "type": "observability",
+      "name": "Metrics",
+      "description": "Performance monitoring",
+      "pattern": "SDK metrics, Prometheus",
+      "example": "Observability usage"
+    },
+    {
+      "id": "temp028",
+      "type": "client",
+      "name": "Temporal Client",
+      "description": "Workflow interaction",
+      "pattern": "Start, signal, query, cancel",
+      "example": "Client usage"
+    },
+    {
+      "id": "temp029",
+      "type": "deployment",
+      "name": "Temporal Server",
+      "description": "Self-hosted deployment",
+      "pattern": "Cluster, Cassandra/Postgres, ES",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "temp030",
+      "type": "deployment",
+      "name": "Temporal Cloud",
+      "description": "Managed service",
+      "pattern": "Namespaces, mTLS, observability",
+      "example": "Deployment usage"
+    }
+  ]
+}

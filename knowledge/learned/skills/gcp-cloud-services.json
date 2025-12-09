@@ -1,0 +1,247 @@
+{
+  "category": "gcp-cloud-services",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "gcp01",
+      "type": "compute",
+      "name": "Compute Engine",
+      "description": "Virtual machines",
+      "pattern": "gcloud compute instances create",
+      "example": "Preemptible VMs for cost savings"
+    },
+    {
+      "id": "gcp02",
+      "type": "storage",
+      "name": "Cloud Storage",
+      "description": "Object storage",
+      "pattern": "gsutil cp file gs://bucket/",
+      "example": "Standard, Nearline, Coldline, Archive"
+    },
+    {
+      "id": "gcp03",
+      "type": "functions",
+      "name": "Cloud Functions",
+      "description": "Serverless compute",
+      "pattern": "exports.handler = (req, res) => res.send()",
+      "example": "Gen 2 with Cloud Run"
+    },
+    {
+      "id": "gcp04",
+      "type": "sql",
+      "name": "Cloud SQL",
+      "description": "Managed databases",
+      "pattern": "MySQL, PostgreSQL, SQL Server",
+      "example": "High availability, replicas"
+    },
+    {
+      "id": "gcp05",
+      "type": "firestore",
+      "name": "Firestore",
+      "description": "NoSQL document database",
+      "pattern": "db.collection().doc().set()",
+      "example": "Real-time listeners"
+    },
+    {
+      "id": "gcp06",
+      "type": "endpoints",
+      "name": "Cloud Endpoints",
+      "description": "API management",
+      "pattern": "OpenAPI spec, gRPC",
+      "example": "Authentication, quotas"
+    },
+    {
+      "id": "gcp07",
+      "type": "cdn",
+      "name": "Cloud CDN",
+      "description": "Content delivery",
+      "pattern": "Backend buckets, backend services",
+      "example": "Cache invalidation"
+    },
+    {
+      "id": "gcp08",
+      "type": "iam",
+      "name": "Cloud IAM",
+      "description": "Identity management",
+      "pattern": "Roles, Service accounts, Workload identity",
+      "example": "Predefined vs custom roles"
+    },
+    {
+      "id": "gcp09",
+      "type": "vpc",
+      "name": "VPC Networking",
+      "description": "Virtual networking",
+      "pattern": "Subnets, Firewall rules, VPC peering",
+      "example": "Shared VPC, Private Google Access"
+    },
+    {
+      "id": "gcp10",
+      "type": "gke",
+      "name": "GKE Kubernetes",
+      "description": "Managed Kubernetes",
+      "pattern": "gcloud container clusters create",
+      "example": "Autopilot mode"
+    },
+    {
+      "id": "gcp11",
+      "type": "run",
+      "name": "Cloud Run",
+      "description": "Serverless containers",
+      "pattern": "gcloud run deploy --image",
+      "example": "Scale to zero, traffic splitting"
+    },
+    {
+      "id": "gcp12",
+      "type": "pubsub",
+      "name": "Pub/Sub",
+      "description": "Message queue",
+      "pattern": "pubsub.topic().publish()",
+      "example": "Push and pull subscriptions"
+    },
+    {
+      "id": "gcp13",
+      "type": "logging",
+      "name": "Cloud Logging",
+      "description": "Centralized logging",
+      "pattern": "Log Explorer, Log-based metrics",
+      "example": "Structured logging"
+    },
+    {
+      "id": "gcp14",
+      "type": "monitoring",
+      "name": "Cloud Monitoring",
+      "description": "Metrics and alerting",
+      "pattern": "Dashboards, Uptime checks, SLOs",
+      "example": "Custom metrics"
+    },
+    {
+      "id": "gcp15",
+      "type": "secrets",
+      "name": "Secret Manager",
+      "description": "Secrets storage",
+      "pattern": "secretmanager.accessSecretVersion()",
+      "example": "Automatic rotation"
+    },
+    {
+      "id": "gcp16",
+      "type": "identity",
+      "name": "Identity Platform",
+      "description": "User authentication",
+      "pattern": "Firebase Auth compatible",
+      "example": "Multi-tenancy"
+    },
+    {
+      "id": "gcp17",
+      "type": "workflows",
+      "name": "Workflows",
+      "description": "Serverless orchestration",
+      "pattern": "YAML workflow definitions",
+      "example": "Connectors, callbacks"
+    },
+    {
+      "id": "gcp18",
+      "type": "eventarc",
+      "name": "Eventarc",
+      "description": "Event routing",
+      "pattern": "Triggers, Channels, Providers",
+      "example": "Cloud Audit Logs triggers"
+    },
+    {
+      "id": "gcp19",
+      "type": "memorystore",
+      "name": "Memorystore",
+      "description": "Managed Redis/Memcached",
+      "pattern": "Standard and High availability tiers",
+      "example": "VPC peering required"
+    },
+    {
+      "id": "gcp20",
+      "type": "dns",
+      "name": "Cloud DNS",
+      "description": "DNS hosting",
+      "pattern": "Managed zones, Record sets",
+      "example": "DNSSEC support"
+    },
+    {
+      "id": "gcp21",
+      "type": "deployment",
+      "name": "Deployment Manager",
+      "description": "Infrastructure as Code",
+      "pattern": "YAML/Jinja2 templates",
+      "example": "Config, deployment"
+    },
+    {
+      "id": "gcp22",
+      "type": "terraform",
+      "name": "Terraform on GCP",
+      "description": "IaC with Terraform",
+      "pattern": "google provider resources",
+      "example": "State in GCS"
+    },
+    {
+      "id": "gcp23",
+      "type": "bigquery",
+      "name": "BigQuery",
+      "description": "Data warehouse",
+      "pattern": "SELECT * FROM dataset.table",
+      "example": "Serverless, ML built-in"
+    },
+    {
+      "id": "gcp24",
+      "type": "dataflow",
+      "name": "Dataflow",
+      "description": "Stream/batch processing",
+      "pattern": "Apache Beam pipelines",
+      "example": "Auto-scaling"
+    },
+    {
+      "id": "gcp25",
+      "type": "vertex",
+      "name": "Vertex AI",
+      "description": "ML platform",
+      "pattern": "Training, Prediction, Pipelines",
+      "example": "AutoML, Model Garden"
+    },
+    {
+      "id": "gcp26",
+      "type": "gemini",
+      "name": "Gemini API",
+      "description": "Foundation models",
+      "pattern": "Gemini Pro, Gemini Ultra",
+      "example": "Multimodal capabilities"
+    },
+    {
+      "id": "gcp27",
+      "type": "aiplatform",
+      "name": "AI Platform",
+      "description": "ML operations",
+      "pattern": "Notebooks, Feature Store",
+      "example": "MLOps pipelines"
+    },
+    {
+      "id": "gcp28",
+      "type": "armor",
+      "name": "Cloud Armor",
+      "description": "DDoS protection",
+      "pattern": "Security policies, WAF rules",
+      "example": "Adaptive protection"
+    },
+    {
+      "id": "gcp29",
+      "type": "build",
+      "name": "Cloud Build",
+      "description": "CI/CD",
+      "pattern": "cloudbuild.yaml steps",
+      "example": "Triggers, artifact registry"
+    },
+    {
+      "id": "gcp30",
+      "type": "billing",
+      "name": "Billing & Cost",
+      "description": "Cost management",
+      "pattern": "Budgets, Exports to BigQuery",
+      "example": "Committed use discounts"
+    }
+  ]
+}

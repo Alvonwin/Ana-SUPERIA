@@ -1,0 +1,246 @@
+{
+  "category": "advanced-testing",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "tst001",
+      "type": "playwright",
+      "name": "Playwright Basics",
+      "description": "E2E testing moderne",
+      "pattern": "await page.goto('/'); await page.click('button'); await expect(page.locator('h1')).toHaveText('Welcome');",
+      "example": "Playwright usage"
+    },
+    {
+      "id": "tst002",
+      "type": "playwright",
+      "name": "Playwright Selectors",
+      "description": "Locators robustes",
+      "pattern": "page.getByRole('button', {name: 'Submit'}); page.getByTestId('submit-btn');",
+      "example": "Playwright usage"
+    },
+    {
+      "id": "tst003",
+      "type": "playwright",
+      "name": "Playwright Network",
+      "description": "Mock API responses",
+      "pattern": "await page.route('**/api/users', route => route.fulfill({json: mockUsers}));",
+      "example": "Playwright usage"
+    },
+    {
+      "id": "tst004",
+      "type": "playwright",
+      "name": "Playwright Fixtures",
+      "description": "Setup/teardown reutilisables",
+      "pattern": "test.beforeEach(async ({page}) => { await page.goto('/'); });",
+      "example": "Playwright usage"
+    },
+    {
+      "id": "tst005",
+      "type": "playwright",
+      "name": "Playwright Screenshots",
+      "description": "Visual comparison",
+      "pattern": "await expect(page).toHaveScreenshot('homepage.png');",
+      "example": "Playwright usage"
+    },
+    {
+      "id": "tst006",
+      "type": "cypress",
+      "name": "Cypress Commands",
+      "description": "Chainable commands",
+      "pattern": "cy.visit('/').get('button').click().get('.result').should('contain', 'Success');",
+      "example": "Cypress usage"
+    },
+    {
+      "id": "tst007",
+      "type": "cypress",
+      "name": "Cypress Intercept",
+      "description": "Network stubbing",
+      "pattern": "cy.intercept('GET', '/api/users', {fixture: 'users.json'}).as('getUsers');",
+      "example": "Cypress usage"
+    },
+    {
+      "id": "tst008",
+      "type": "cypress",
+      "name": "Cypress Custom Commands",
+      "description": "Etendre Cypress",
+      "pattern": "Cypress.Commands.add('login', (email, pw) => { cy.request('POST', '/login', {email, pw}); });",
+      "example": "Cypress usage"
+    },
+    {
+      "id": "tst009",
+      "type": "cypress",
+      "name": "Cypress Component Testing",
+      "description": "Test composants isoles",
+      "pattern": "cy.mount(<Button onClick={spy}>Click</Button>); cy.get('button').click(); expect(spy).to.be.called;",
+      "example": "Cypress usage"
+    },
+    {
+      "id": "tst010",
+      "type": "vitest",
+      "name": "Vitest Basics",
+      "description": "Test runner rapide",
+      "pattern": "import {describe, it, expect} from 'vitest'; it('adds', () => expect(add(1,2)).toBe(3));",
+      "example": "Vitest usage"
+    },
+    {
+      "id": "tst011",
+      "type": "vitest",
+      "name": "Vitest Mocking",
+      "description": "vi.fn, vi.mock, vi.spyOn",
+      "pattern": "const fn = vi.fn(); vi.mock('./module'); vi.spyOn(obj, 'method');",
+      "example": "Vitest usage"
+    },
+    {
+      "id": "tst012",
+      "type": "vitest",
+      "name": "Vitest Coverage",
+      "description": "Istanbul/C8 coverage",
+      "pattern": "vitest run --coverage",
+      "example": "Vitest usage"
+    },
+    {
+      "id": "tst013",
+      "type": "vitest",
+      "name": "Vitest UI",
+      "description": "Interface visuelle",
+      "pattern": "vitest --ui",
+      "example": "Vitest usage"
+    },
+    {
+      "id": "tst014",
+      "type": "jest",
+      "name": "Jest Matchers",
+      "description": "Assertions riches",
+      "pattern": "expect(obj).toMatchObject({key: expect.any(String)}); expect(arr).toContainEqual({id: 1});",
+      "example": "Jest usage"
+    },
+    {
+      "id": "tst015",
+      "type": "jest",
+      "name": "Jest Async",
+      "description": "Tester code async",
+      "pattern": "await expect(asyncFn()).resolves.toBe(value); await expect(failFn()).rejects.toThrow();",
+      "example": "Jest usage"
+    },
+    {
+      "id": "tst016",
+      "type": "jest",
+      "name": "Jest Timers",
+      "description": "Controler temps",
+      "pattern": "jest.useFakeTimers(); jest.advanceTimersByTime(1000); jest.runAllTimers();",
+      "example": "Jest usage"
+    },
+    {
+      "id": "tst017",
+      "type": "jest",
+      "name": "Jest Snapshots",
+      "description": "Snapshot testing",
+      "pattern": "expect(component).toMatchSnapshot(); expect(data).toMatchInlineSnapshot();",
+      "example": "Jest usage"
+    },
+    {
+      "id": "tst018",
+      "type": "testing-library",
+      "name": "RTL Queries",
+      "description": "Query par accessibilite",
+      "pattern": "getByRole('button'); getByLabelText('Email'); getByText(/submit/i);",
+      "example": "Testing-library usage"
+    },
+    {
+      "id": "tst019",
+      "type": "testing-library",
+      "name": "RTL User Events",
+      "description": "Simuler interactions",
+      "pattern": "await userEvent.click(button); await userEvent.type(input, 'hello');",
+      "example": "Testing-library usage"
+    },
+    {
+      "id": "tst020",
+      "type": "testing-library",
+      "name": "RTL Async",
+      "description": "Attendre elements",
+      "pattern": "await waitFor(() => expect(getByText('Loaded')).toBeInTheDocument());",
+      "example": "Testing-library usage"
+    },
+    {
+      "id": "tst021",
+      "type": "testing-library",
+      "name": "RTL Debug",
+      "description": "Debugger DOM",
+      "pattern": "screen.debug(); screen.logTestingPlaygroundURL();",
+      "example": "Testing-library usage"
+    },
+    {
+      "id": "tst022",
+      "type": "msw",
+      "name": "MSW Handlers",
+      "description": "Mock Service Worker",
+      "pattern": "rest.get('/api/user', (req, res, ctx) => res(ctx.json({id: 1, name: 'John'})))",
+      "example": "Msw usage"
+    },
+    {
+      "id": "tst023",
+      "type": "msw",
+      "name": "MSW Server",
+      "description": "Setup pour tests",
+      "pattern": "const server = setupServer(...handlers); beforeAll(() => server.listen()); afterAll(() => server.close());",
+      "example": "Msw usage"
+    },
+    {
+      "id": "tst024",
+      "type": "msw",
+      "name": "MSW Browser",
+      "description": "Dev avec mocks",
+      "pattern": "const worker = setupWorker(...handlers); worker.start();",
+      "example": "Msw usage"
+    },
+    {
+      "id": "tst025",
+      "type": "storybook",
+      "name": "Storybook Stories",
+      "description": "Documentation composants",
+      "pattern": "export default {title: 'Button', component: Button}; export const Primary = {args: {primary: true}};",
+      "example": "Storybook usage"
+    },
+    {
+      "id": "tst026",
+      "type": "storybook",
+      "name": "Storybook Interactions",
+      "description": "Test dans Storybook",
+      "pattern": "Primary.play = async ({canvasElement}) => { await userEvent.click(within(canvasElement).getByRole('button')); };",
+      "example": "Storybook usage"
+    },
+    {
+      "id": "tst027",
+      "type": "storybook",
+      "name": "Storybook Controls",
+      "description": "Props dynamiques",
+      "pattern": "argTypes: {backgroundColor: {control: 'color'}, size: {control: {type: 'select', options: ['sm', 'md', 'lg']}}}",
+      "example": "Storybook usage"
+    },
+    {
+      "id": "tst028",
+      "type": "k6",
+      "name": "K6 Load Test",
+      "description": "Performance testing",
+      "pattern": "export default function() { http.get('http://test.k6.io'); check(res, {'status 200': r => r.status === 200}); }",
+      "example": "K6 usage"
+    },
+    {
+      "id": "tst029",
+      "type": "k6",
+      "name": "K6 Scenarios",
+      "description": "Patterns de charge",
+      "pattern": "scenarios: {ramping: {executor: 'ramping-vus', startVUs: 0, stages: [{duration: '1m', target: 100}]}}",
+      "example": "K6 usage"
+    },
+    {
+      "id": "tst030",
+      "type": "k6",
+      "name": "K6 Thresholds",
+      "description": "Criteres de succes",
+      "pattern": "thresholds: {'http_req_duration': ['p(95)<200'], 'http_req_failed': ['rate<0.01']}",
+      "example": "K6 usage"
+    }
+  ]
+}

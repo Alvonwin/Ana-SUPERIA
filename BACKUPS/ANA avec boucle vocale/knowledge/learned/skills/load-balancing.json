@@ -1,0 +1,246 @@
+{
+  "category": "load-balancing",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "lb001",
+      "type": "fundamentals",
+      "name": "Load Balancing Concept",
+      "description": "Distribute traffic",
+      "pattern": "Spread requests across servers, improve availability",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lb002",
+      "type": "fundamentals",
+      "name": "Why Load Balance",
+      "description": "Benefits",
+      "pattern": "High availability, scalability, fault tolerance",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lb003",
+      "type": "fundamentals",
+      "name": "L4 vs L7",
+      "description": "OSI layers",
+      "pattern": "L4: TCP/UDP, L7: HTTP, application-aware routing",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lb004",
+      "type": "algorithms",
+      "name": "Round Robin",
+      "description": "Basic algorithm",
+      "pattern": "Rotate through servers sequentially, simple",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "lb005",
+      "type": "algorithms",
+      "name": "Weighted Round Robin",
+      "description": "Server weights",
+      "pattern": "More powerful servers get more traffic",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "lb006",
+      "type": "algorithms",
+      "name": "Least Connections",
+      "description": "Current load",
+      "pattern": "Route to server with fewest active connections",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "lb007",
+      "type": "algorithms",
+      "name": "Least Response Time",
+      "description": "Performance-based",
+      "pattern": "Route to fastest responding server",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "lb008",
+      "type": "algorithms",
+      "name": "IP Hash",
+      "description": "Session affinity",
+      "pattern": "Same client IP to same server, sticky sessions",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "lb009",
+      "type": "algorithms",
+      "name": "Random",
+      "description": "Simple random",
+      "pattern": "Random server selection, surprisingly effective",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "lb010",
+      "type": "nginx",
+      "name": "Nginx Load Balancer",
+      "description": "Nginx upstream",
+      "pattern": "upstream backend { server app1; server app2; }",
+      "example": "Nginx usage"
+    },
+    {
+      "id": "lb011",
+      "type": "nginx",
+      "name": "Nginx Health Checks",
+      "description": "Backend health",
+      "pattern": "max_fails=3 fail_timeout=30s, passive checks",
+      "example": "Nginx usage"
+    },
+    {
+      "id": "lb012",
+      "type": "nginx",
+      "name": "Nginx Plus",
+      "description": "Commercial features",
+      "pattern": "Active health checks, session persistence, dynamic config",
+      "example": "Nginx usage"
+    },
+    {
+      "id": "lb013",
+      "type": "haproxy",
+      "name": "HAProxy",
+      "description": "High performance LB",
+      "pattern": "TCP/HTTP, ACLs, stats dashboard, battle-tested",
+      "example": "Haproxy usage"
+    },
+    {
+      "id": "lb014",
+      "type": "haproxy",
+      "name": "HAProxy Config",
+      "description": "Configuration",
+      "pattern": "frontend, backend, server definitions, options",
+      "example": "Haproxy usage"
+    },
+    {
+      "id": "lb015",
+      "type": "haproxy",
+      "name": "HAProxy ACLs",
+      "description": "Request routing",
+      "pattern": "Route by path, header, cookie, complex rules",
+      "example": "Haproxy usage"
+    },
+    {
+      "id": "lb016",
+      "type": "cloud",
+      "name": "AWS ALB",
+      "description": "Application LB",
+      "pattern": "L7, path routing, host routing, target groups",
+      "example": "Cloud usage"
+    },
+    {
+      "id": "lb017",
+      "type": "cloud",
+      "name": "AWS NLB",
+      "description": "Network LB",
+      "pattern": "L4, ultra-low latency, static IPs, TCP/UDP",
+      "example": "Cloud usage"
+    },
+    {
+      "id": "lb018",
+      "type": "cloud",
+      "name": "GCP Load Balancing",
+      "description": "Google Cloud LB",
+      "pattern": "Global, regional, HTTP(S), TCP/UDP, CDN integrated",
+      "example": "Cloud usage"
+    },
+    {
+      "id": "lb019",
+      "type": "cloud",
+      "name": "Azure Load Balancer",
+      "description": "Azure LB",
+      "pattern": "L4, Application Gateway for L7, Traffic Manager",
+      "example": "Cloud usage"
+    },
+    {
+      "id": "lb020",
+      "type": "kubernetes",
+      "name": "K8s Service",
+      "description": "In-cluster LB",
+      "pattern": "ClusterIP, kube-proxy, iptables/IPVS rules",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "lb021",
+      "type": "kubernetes",
+      "name": "K8s Ingress",
+      "description": "HTTP routing",
+      "pattern": "Ingress controller, nginx-ingress, traefik",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "lb022",
+      "type": "kubernetes",
+      "name": "K8s LoadBalancer",
+      "description": "External LB",
+      "pattern": "type: LoadBalancer, cloud provider integration",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "lb023",
+      "type": "health",
+      "name": "Health Checks",
+      "description": "Monitor backends",
+      "pattern": "Active probes, passive detection, intervals",
+      "example": "Health usage"
+    },
+    {
+      "id": "lb024",
+      "type": "health",
+      "name": "Graceful Degradation",
+      "description": "Handle failures",
+      "pattern": "Remove unhealthy, drain connections, failover",
+      "example": "Health usage"
+    },
+    {
+      "id": "lb025",
+      "type": "patterns",
+      "name": "Session Persistence",
+      "description": "Sticky sessions",
+      "pattern": "Cookie-based, IP-based, consistent hashing",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "lb026",
+      "type": "patterns",
+      "name": "SSL Termination",
+      "description": "TLS offload",
+      "pattern": "Decrypt at LB, HTTP to backends, certificate management",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "lb027",
+      "type": "patterns",
+      "name": "Connection Draining",
+      "description": "Graceful removal",
+      "pattern": "Finish existing requests before removing backend",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "lb028",
+      "type": "dns",
+      "name": "DNS Load Balancing",
+      "description": "DNS-based",
+      "pattern": "Multiple A records, Route 53, GeoDNS",
+      "example": "Dns usage"
+    },
+    {
+      "id": "lb029",
+      "type": "dns",
+      "name": "Global Server Load Balancing",
+      "description": "GSLB",
+      "pattern": "Multi-region, latency-based, health-aware DNS",
+      "example": "Dns usage"
+    },
+    {
+      "id": "lb030",
+      "type": "monitoring",
+      "name": "LB Monitoring",
+      "description": "Observe LB",
+      "pattern": "Request rate, latency, 5xx errors, backend health",
+      "example": "Monitoring usage"
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "category": "n8n-workflow-automation",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "n8n workflow automation platform skills",
+  "skills": [
+    {
+      "id": "n8n01",
+      "type": "installation",
+      "name": "n8n Self-Hosted",
+      "description": "Run n8n locally",
+      "pattern": "npm install -g n8n && n8n start",
+      "example": "http://localhost:5678"
+    },
+    {
+      "id": "n8n02",
+      "type": "installation",
+      "name": "n8n Docker",
+      "description": "Docker deployment",
+      "pattern": "docker run -it --rm -p 5678:5678 n8nio/n8n",
+      "example": "Persistent: mount /home/node/.n8n"
+    },
+    {
+      "id": "n8n03",
+      "type": "concept",
+      "name": "Workflow Structure",
+      "description": "Node-based visual automation",
+      "pattern": "Trigger -> Process -> Output nodes",
+      "example": "Drag and connect nodes"
+    },
+    {
+      "id": "n8n04",
+      "type": "trigger",
+      "name": "Webhook Trigger",
+      "description": "Start workflow via HTTP",
+      "pattern": "POST /webhook/{path}",
+      "example": "Receive external events"
+    },
+    {
+      "id": "n8n05",
+      "type": "trigger",
+      "name": "Schedule Trigger",
+      "description": "Time-based execution",
+      "pattern": "Cron expression or interval",
+      "example": "Every 5 minutes, daily at 9am"
+    },
+    {
+      "id": "n8n06",
+      "type": "trigger",
+      "name": "Manual Trigger",
+      "description": "Execute on demand",
+      "pattern": "Click Execute or API call",
+      "example": "Testing and debugging"
+    },
+    {
+      "id": "n8n07",
+      "type": "node",
+      "name": "HTTP Request Node",
+      "description": "Make API calls",
+      "pattern": "GET, POST, PUT, DELETE with auth",
+      "example": "Call external APIs"
+    },
+    {
+      "id": "n8n08",
+      "type": "node",
+      "name": "Code Node",
+      "description": "Run JavaScript/Python",
+      "pattern": "return items.map(i => ({ json: {...} }))",
+      "example": "Custom data transformation"
+    },
+    {
+      "id": "n8n09",
+      "type": "node",
+      "name": "IF Node",
+      "description": "Conditional branching",
+      "pattern": "condition: value == 'test'",
+      "example": "Route based on data"
+    },
+    {
+      "id": "n8n10",
+      "type": "node",
+      "name": "Switch Node",
+      "description": "Multiple branch routing",
+      "pattern": "Multiple output branches",
+      "example": "Like switch/case statement"
+    },
+    {
+      "id": "n8n11",
+      "type": "node",
+      "name": "Set Node",
+      "description": "Modify data fields",
+      "pattern": "Add, modify, or remove fields",
+      "example": "Transform JSON structure"
+    },
+    {
+      "id": "n8n12",
+      "type": "node",
+      "name": "Merge Node",
+      "description": "Combine multiple inputs",
+      "pattern": "Append, merge by key, wait",
+      "example": "Join data from branches"
+    },
+    {
+      "id": "n8n13",
+      "type": "node",
+      "name": "Loop Over Items",
+      "description": "Process items individually",
+      "pattern": "SplitInBatches node",
+      "example": "Handle one item at a time"
+    },
+    {
+      "id": "n8n14",
+      "type": "integration",
+      "name": "Slack Integration",
+      "description": "Send Slack messages",
+      "pattern": "Slack node with OAuth",
+      "example": "Post to channels, DMs"
+    },
+    {
+      "id": "n8n15",
+      "type": "integration",
+      "name": "Email Integration",
+      "description": "Send emails",
+      "pattern": "SMTP, Gmail, Outlook nodes",
+      "example": "Notifications and alerts"
+    },
+    {
+      "id": "n8n16",
+      "type": "integration",
+      "name": "Database Nodes",
+      "description": "Database operations",
+      "pattern": "PostgreSQL, MySQL, MongoDB nodes",
+      "example": "CRUD operations"
+    },
+    {
+      "id": "n8n17",
+      "type": "integration",
+      "name": "Google Sheets",
+      "description": "Spreadsheet automation",
+      "pattern": "Read, append, update rows",
+      "example": "Simple database alternative"
+    },
+    {
+      "id": "n8n18",
+      "type": "integration",
+      "name": "AI Nodes",
+      "description": "LLM integrations",
+      "pattern": "OpenAI, Anthropic, Ollama nodes",
+      "example": "AI-powered workflows"
+    },
+    {
+      "id": "n8n19",
+      "type": "data",
+      "name": "Expression Syntax",
+      "description": "Access workflow data",
+      "pattern": "{{ $json.field }}, {{ $node.name.json }}",
+      "example": "Reference previous nodes"
+    },
+    {
+      "id": "n8n20",
+      "type": "data",
+      "name": "Built-in Functions",
+      "description": "Data manipulation helpers",
+      "pattern": "$if(), $now(), $jmespath()",
+      "example": "Transform data inline"
+    },
+    {
+      "id": "n8n21",
+      "type": "error",
+      "name": "Error Handling",
+      "description": "Handle workflow errors",
+      "pattern": "Error Trigger, Continue On Fail",
+      "example": "Graceful degradation"
+    },
+    {
+      "id": "n8n22",
+      "type": "execution",
+      "name": "Execution Modes",
+      "description": "Run mode options",
+      "pattern": "Normal, Manual, Wait",
+      "example": "Wait for webhook response"
+    },
+    {
+      "id": "n8n23",
+      "type": "api",
+      "name": "n8n API",
+      "description": "Programmatic control",
+      "pattern": "GET/POST /api/v1/workflows",
+      "example": "Manage workflows via API"
+    },
+    {
+      "id": "n8n24",
+      "type": "api",
+      "name": "Execute Workflow API",
+      "description": "Trigger via API",
+      "pattern": "POST /api/v1/workflows/{id}/activate",
+      "example": "External workflow triggering"
+    },
+    {
+      "id": "n8n25",
+      "type": "credentials",
+      "name": "Credential Management",
+      "description": "Store API keys securely",
+      "pattern": "Encrypted credential storage",
+      "example": "Reuse across workflows"
+    },
+    {
+      "id": "n8n26",
+      "type": "debug",
+      "name": "Debugging Workflows",
+      "description": "Test and debug",
+      "pattern": "Execute step by step, view output",
+      "example": "Pin data for testing"
+    },
+    {
+      "id": "n8n27",
+      "type": "performance",
+      "name": "Parallel Execution",
+      "description": "Run nodes in parallel",
+      "pattern": "Multiple branches execute simultaneously",
+      "example": "Faster workflow completion"
+    },
+    {
+      "id": "n8n28",
+      "type": "backup",
+      "name": "Export/Import",
+      "description": "Backup workflows",
+      "pattern": "Export as JSON, import to restore",
+      "example": "Version control workflows"
+    },
+    {
+      "id": "n8n29",
+      "type": "community",
+      "name": "Community Nodes",
+      "description": "Third-party integrations",
+      "pattern": "npm install n8n-nodes-xxx",
+      "example": "Extend n8n capabilities"
+    },
+    {
+      "id": "n8n30",
+      "type": "ana",
+      "name": "Ana Integration",
+      "description": "Connect n8n to Ana",
+      "pattern": "Webhook to /api/n8n/trigger",
+      "example": "Automate Ana actions"
+    }
+  ]
+}

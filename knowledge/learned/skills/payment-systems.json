@@ -1,0 +1,246 @@
+{
+  "category": "payment-systems",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "pay001",
+      "type": "fundamentals",
+      "name": "Payment Flow",
+      "description": "How payments work",
+      "pattern": "Customer -> Merchant -> Gateway -> Processor -> Bank -> Network",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pay002",
+      "type": "fundamentals",
+      "name": "Authorization vs Capture",
+      "description": "Two-step payments",
+      "pattern": "Authorize (hold funds), Capture (collect funds)",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pay003",
+      "type": "fundamentals",
+      "name": "Refunds vs Voids",
+      "description": "Reversals",
+      "pattern": "Void (before settlement), Refund (after settlement)",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pay004",
+      "type": "fundamentals",
+      "name": "Chargebacks",
+      "description": "Disputes",
+      "pattern": "Customer disputes, merchant must prove, fees apply",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pay005",
+      "type": "stripe",
+      "name": "Stripe Checkout",
+      "description": "Hosted payments",
+      "pattern": "Redirect to Stripe-hosted page, handle webhooks",
+      "example": "Stripe usage"
+    },
+    {
+      "id": "pay006",
+      "type": "stripe",
+      "name": "Stripe Elements",
+      "description": "Embedded UI",
+      "pattern": "Card Element, Payment Element - customizable UI",
+      "example": "Stripe usage"
+    },
+    {
+      "id": "pay007",
+      "type": "stripe",
+      "name": "Payment Intents",
+      "description": "Modern API",
+      "pattern": "Create intent, confirm client-side, handle 3DS",
+      "example": "Stripe usage"
+    },
+    {
+      "id": "pay008",
+      "type": "stripe",
+      "name": "Setup Intents",
+      "description": "Save cards",
+      "pattern": "Collect card for future use without charging",
+      "example": "Stripe usage"
+    },
+    {
+      "id": "pay009",
+      "type": "stripe",
+      "name": "Stripe Webhooks",
+      "description": "Event notifications",
+      "pattern": "payment_intent.succeeded, invoice.paid - verify signature",
+      "example": "Stripe usage"
+    },
+    {
+      "id": "pay010",
+      "type": "stripe",
+      "name": "Stripe Connect",
+      "description": "Marketplaces",
+      "pattern": "Platform payments, split payments, managed accounts",
+      "example": "Stripe usage"
+    },
+    {
+      "id": "pay011",
+      "type": "stripe",
+      "name": "Stripe Subscriptions",
+      "description": "Recurring billing",
+      "pattern": "Products, Prices, Subscriptions, proration, trials",
+      "example": "Stripe usage"
+    },
+    {
+      "id": "pay012",
+      "type": "methods",
+      "name": "Credit Cards",
+      "description": "Card payments",
+      "pattern": "PAN, expiry, CVV, 3D Secure authentication",
+      "example": "Methods usage"
+    },
+    {
+      "id": "pay013",
+      "type": "methods",
+      "name": "Digital Wallets",
+      "description": "Apple/Google Pay",
+      "pattern": "Tokenized cards, biometric auth, better conversion",
+      "example": "Methods usage"
+    },
+    {
+      "id": "pay014",
+      "type": "methods",
+      "name": "Bank Transfers",
+      "description": "ACH, SEPA",
+      "pattern": "Lower fees, slower settlement, verification needed",
+      "example": "Methods usage"
+    },
+    {
+      "id": "pay015",
+      "type": "methods",
+      "name": "Buy Now Pay Later",
+      "description": "BNPL",
+      "pattern": "Klarna, Affirm, Afterpay - installments at checkout",
+      "example": "Methods usage"
+    },
+    {
+      "id": "pay016",
+      "type": "security",
+      "name": "PCI Compliance",
+      "description": "Card data security",
+      "pattern": "PCI-DSS levels, SAQ, tokenization, hosted fields",
+      "example": "Security usage"
+    },
+    {
+      "id": "pay017",
+      "type": "security",
+      "name": "Tokenization",
+      "description": "Secure card storage",
+      "pattern": "Replace PAN with token, token vault, reduce scope",
+      "example": "Security usage"
+    },
+    {
+      "id": "pay018",
+      "type": "security",
+      "name": "3D Secure",
+      "description": "Strong authentication",
+      "pattern": "3DS2, issuer authentication, liability shift",
+      "example": "Security usage"
+    },
+    {
+      "id": "pay019",
+      "type": "security",
+      "name": "Fraud Detection",
+      "description": "Risk management",
+      "pattern": "Radar rules, velocity checks, device fingerprinting",
+      "example": "Security usage"
+    },
+    {
+      "id": "pay020",
+      "type": "international",
+      "name": "Multi-currency",
+      "description": "Global payments",
+      "pattern": "Present in local currency, settle in base currency",
+      "example": "International usage"
+    },
+    {
+      "id": "pay021",
+      "type": "international",
+      "name": "Local Payment Methods",
+      "description": "Regional options",
+      "pattern": "iDEAL (NL), Bancontact (BE), PIX (BR) - boost conversion",
+      "example": "International usage"
+    },
+    {
+      "id": "pay022",
+      "type": "international",
+      "name": "Tax Handling",
+      "description": "VAT, GST, Sales Tax",
+      "pattern": "Stripe Tax, tax calculations, invoicing requirements",
+      "example": "International usage"
+    },
+    {
+      "id": "pay023",
+      "type": "subscriptions",
+      "name": "Subscription Lifecycle",
+      "description": "Recurring states",
+      "pattern": "Active, Past Due, Canceled, Paused, trial periods",
+      "example": "Subscriptions usage"
+    },
+    {
+      "id": "pay024",
+      "type": "subscriptions",
+      "name": "Dunning",
+      "description": "Failed payment recovery",
+      "pattern": "Retry logic, email sequences, card updater",
+      "example": "Subscriptions usage"
+    },
+    {
+      "id": "pay025",
+      "type": "subscriptions",
+      "name": "Proration",
+      "description": "Plan changes",
+      "pattern": "Upgrade/downgrade mid-cycle, credit/charge difference",
+      "example": "Subscriptions usage"
+    },
+    {
+      "id": "pay026",
+      "type": "subscriptions",
+      "name": "Usage-based Billing",
+      "description": "Metered pricing",
+      "pattern": "Track usage, report to Stripe, invoice at period end",
+      "example": "Subscriptions usage"
+    },
+    {
+      "id": "pay027",
+      "type": "invoicing",
+      "name": "Invoice Generation",
+      "description": "Billing documents",
+      "pattern": "Line items, tax, PDF generation, email delivery",
+      "example": "Invoicing usage"
+    },
+    {
+      "id": "pay028",
+      "type": "invoicing",
+      "name": "Payment Links",
+      "description": "No-code payments",
+      "pattern": "Generate shareable payment URL, no integration needed",
+      "example": "Invoicing usage"
+    },
+    {
+      "id": "pay029",
+      "type": "testing",
+      "name": "Test Cards",
+      "description": "Development testing",
+      "pattern": "4242... success, 4000... declines, 3DS test cards",
+      "example": "Testing usage"
+    },
+    {
+      "id": "pay030",
+      "type": "architecture",
+      "name": "Idempotency",
+      "description": "Safe retries",
+      "pattern": "Idempotency-Key header, prevent duplicate charges",
+      "example": "Architecture usage"
+    }
+  ]
+}

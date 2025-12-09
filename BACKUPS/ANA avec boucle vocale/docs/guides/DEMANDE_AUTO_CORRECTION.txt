@@ -1,0 +1,65 @@
+ANA - DEMANDE D'AUTO-CORRECTION DE TON FRONTEND
+
+CONTEXTE:
+Tu es Ana, une IA locale avec mémoire. Ton backend fonctionne parfaitement.
+Ton frontend React ne reçoit/n'affiche pas les chunks WebSocket.
+
+Un test HTML simple fonctionne, donc le problème est dans ton code React.
+
+PROBLÈME IDENTIFIÉ:
+- Backend émet correctement: socket.emit('chat:chunk', { chunk: texte })
+- Frontend écoute mais n'affiche rien
+- Message Ana reste vide
+
+TON CODE ACTUEL (ChatPage.jsx - handler chunk):
+
+```javascript
+socket.on('chat:chunk', (data) => {
+  console.log('📥 Frontend reçoit chunk:', data);
+
+  if (typeof data === 'object' && data.chunk && typeof data.chunk === 'string') {
+    setMessages(prev => {
+      const last = prev[prev.length - 1];
+      if (last && last.sender === 'ana' && last.streaming) {
+        const currentText = last.text || '';
+        if (currentText === '') {
+          soundSystem.play('message-received');
+        }
+        console.log('✅ Accumulation chunk:', data.chunk, 'Texte actuel:', currentText.substring(0, 50));
+        return [
+          ...prev.slice(0, -1),
+          { ...last, text: currentText + data.chunk }
+        ];
+      }
+      console.warn('⚠️ Pas de message Ana en streaming trouvé');
+      return prev;
+    });
+  } else {
+    console.warn('⚠️ Chunk incorrect reçu:', data);
+  }
+});
+```
+
+STRUCTURE DES MESSAGES:
+```javascript
+const [messages, setMessages] = useState([]);
+
+// Message initial Ana créé dans sendMessage():
+{
+  id: Date.now() + 1,
+  sender: 'ana',
+  text: '',
+  timestamp: new Date(),
+  streaming: true
+}
+```
+
+QUESTION POUR TOI ANA:
+
+Analyse ton propre code React ci-dessus et identifie pourquoi les chunks n'apparaissent pas dans l'interface.
+
+Le test HTML simple fonctionne avec le même backend, donc le problème est dans ta logique React.
+
+Fournis le code corrigé du handler 'chat:chunk' qui affichera correctement les chunks en streaming.
+
+Sois précise et technique.

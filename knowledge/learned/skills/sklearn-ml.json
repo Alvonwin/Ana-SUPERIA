@@ -1,0 +1,246 @@
+{
+  "category": "sklearn-ml",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "skl001",
+      "type": "fundamentals",
+      "name": "Scikit-learn Basics",
+      "description": "ML library",
+      "pattern": "Estimator API: fit, predict, transform",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "skl002",
+      "type": "fundamentals",
+      "name": "Train-Test Split",
+      "description": "Data splitting",
+      "pattern": "train_test_split(X, y, test_size=0.2, random_state=42)",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "skl003",
+      "type": "fundamentals",
+      "name": "Cross-Validation",
+      "description": "Model validation",
+      "pattern": "cross_val_score, KFold, StratifiedKFold",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "skl004",
+      "type": "preprocessing",
+      "name": "Scaling",
+      "description": "Feature scaling",
+      "pattern": "StandardScaler, MinMaxScaler, fit_transform",
+      "example": "Preprocessing usage"
+    },
+    {
+      "id": "skl005",
+      "type": "preprocessing",
+      "name": "Encoding",
+      "description": "Categorical encoding",
+      "pattern": "LabelEncoder, OneHotEncoder, OrdinalEncoder",
+      "example": "Preprocessing usage"
+    },
+    {
+      "id": "skl006",
+      "type": "preprocessing",
+      "name": "Missing Values",
+      "description": "Imputation",
+      "pattern": "SimpleImputer, strategy='mean'/'median'/'most_frequent'",
+      "example": "Preprocessing usage"
+    },
+    {
+      "id": "skl007",
+      "type": "preprocessing",
+      "name": "Feature Selection",
+      "description": "Select features",
+      "pattern": "SelectKBest, RFE, feature_importances_",
+      "example": "Preprocessing usage"
+    },
+    {
+      "id": "skl008",
+      "type": "classification",
+      "name": "Logistic Regression",
+      "description": "Linear classifier",
+      "pattern": "LogisticRegression(), binary/multiclass",
+      "example": "Classification usage"
+    },
+    {
+      "id": "skl009",
+      "type": "classification",
+      "name": "Decision Tree",
+      "description": "Tree classifier",
+      "pattern": "DecisionTreeClassifier(), max_depth, min_samples",
+      "example": "Classification usage"
+    },
+    {
+      "id": "skl010",
+      "type": "classification",
+      "name": "Random Forest",
+      "description": "Ensemble trees",
+      "pattern": "RandomForestClassifier(n_estimators=100)",
+      "example": "Classification usage"
+    },
+    {
+      "id": "skl011",
+      "type": "classification",
+      "name": "SVM",
+      "description": "Support vectors",
+      "pattern": "SVC(kernel='rbf'), margin maximization",
+      "example": "Classification usage"
+    },
+    {
+      "id": "skl012",
+      "type": "classification",
+      "name": "KNN",
+      "description": "Nearest neighbors",
+      "pattern": "KNeighborsClassifier(n_neighbors=5)",
+      "example": "Classification usage"
+    },
+    {
+      "id": "skl013",
+      "type": "classification",
+      "name": "Naive Bayes",
+      "description": "Probabilistic",
+      "pattern": "GaussianNB, MultinomialNB for text",
+      "example": "Classification usage"
+    },
+    {
+      "id": "skl014",
+      "type": "regression",
+      "name": "Linear Regression",
+      "description": "Linear model",
+      "pattern": "LinearRegression(), coef_, intercept_",
+      "example": "Regression usage"
+    },
+    {
+      "id": "skl015",
+      "type": "regression",
+      "name": "Ridge/Lasso",
+      "description": "Regularized regression",
+      "pattern": "Ridge(alpha=1.0), Lasso, ElasticNet",
+      "example": "Regression usage"
+    },
+    {
+      "id": "skl016",
+      "type": "regression",
+      "name": "Random Forest Regressor",
+      "description": "Tree ensemble",
+      "pattern": "RandomForestRegressor(n_estimators=100)",
+      "example": "Regression usage"
+    },
+    {
+      "id": "skl017",
+      "type": "regression",
+      "name": "Gradient Boosting",
+      "description": "Boosted trees",
+      "pattern": "GradientBoostingRegressor(), XGBoost, LightGBM",
+      "example": "Regression usage"
+    },
+    {
+      "id": "skl018",
+      "type": "clustering",
+      "name": "K-Means",
+      "description": "Centroid clustering",
+      "pattern": "KMeans(n_clusters=3), fit_predict",
+      "example": "Clustering usage"
+    },
+    {
+      "id": "skl019",
+      "type": "clustering",
+      "name": "Hierarchical",
+      "description": "Agglomerative",
+      "pattern": "AgglomerativeClustering, dendrogram",
+      "example": "Clustering usage"
+    },
+    {
+      "id": "skl020",
+      "type": "clustering",
+      "name": "DBSCAN",
+      "description": "Density clustering",
+      "pattern": "DBSCAN(eps=0.5, min_samples=5)",
+      "example": "Clustering usage"
+    },
+    {
+      "id": "skl021",
+      "type": "reduction",
+      "name": "PCA",
+      "description": "Dimensionality reduction",
+      "pattern": "PCA(n_components=2), explained_variance_ratio_",
+      "example": "Reduction usage"
+    },
+    {
+      "id": "skl022",
+      "type": "reduction",
+      "name": "t-SNE",
+      "description": "Visualization",
+      "pattern": "TSNE(n_components=2), perplexity",
+      "example": "Reduction usage"
+    },
+    {
+      "id": "skl023",
+      "type": "metrics",
+      "name": "Classification Metrics",
+      "description": "Evaluate classifier",
+      "pattern": "accuracy, precision, recall, f1, confusion_matrix",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "skl024",
+      "type": "metrics",
+      "name": "Regression Metrics",
+      "description": "Evaluate regressor",
+      "pattern": "MSE, RMSE, MAE, R2_score",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "skl025",
+      "type": "metrics",
+      "name": "ROC-AUC",
+      "description": "Ranking metric",
+      "pattern": "roc_curve, auc, roc_auc_score",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "skl026",
+      "type": "tuning",
+      "name": "Grid Search",
+      "description": "Hyperparameter tuning",
+      "pattern": "GridSearchCV(estimator, param_grid, cv=5)",
+      "example": "Tuning usage"
+    },
+    {
+      "id": "skl027",
+      "type": "tuning",
+      "name": "Random Search",
+      "description": "Random sampling",
+      "pattern": "RandomizedSearchCV, faster than grid",
+      "example": "Tuning usage"
+    },
+    {
+      "id": "skl028",
+      "type": "pipeline",
+      "name": "Pipeline",
+      "description": "Chain transforms",
+      "pattern": "Pipeline([('scaler', StandardScaler()), ('clf', SVC())])",
+      "example": "Pipeline usage"
+    },
+    {
+      "id": "skl029",
+      "type": "pipeline",
+      "name": "Column Transformer",
+      "description": "Different transforms",
+      "pattern": "ColumnTransformer, numeric vs categorical",
+      "example": "Pipeline usage"
+    },
+    {
+      "id": "skl030",
+      "type": "model",
+      "name": "Model Persistence",
+      "description": "Save models",
+      "pattern": "joblib.dump(model), joblib.load(), pickle",
+      "example": "Model usage"
+    }
+  ]
+}

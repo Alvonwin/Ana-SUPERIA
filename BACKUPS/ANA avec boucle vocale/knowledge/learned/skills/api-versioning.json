@@ -1,0 +1,246 @@
+{
+  "category": "api-versioning",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "av001",
+      "type": "fundamentals",
+      "name": "Why Version APIs",
+      "description": "Breaking changes",
+      "pattern": "Evolve without breaking clients, backward compatibility",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "av002",
+      "type": "fundamentals",
+      "name": "Versioning Strategies",
+      "description": "Approaches",
+      "pattern": "URL path, query param, header, content negotiation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "av003",
+      "type": "fundamentals",
+      "name": "Semantic Versioning",
+      "description": "Version numbers",
+      "pattern": "MAJOR.MINOR.PATCH, breaking.feature.fix",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "av004",
+      "type": "url",
+      "name": "URL Path Versioning",
+      "description": "In path",
+      "pattern": "/api/v1/users, /api/v2/users, explicit, cacheable",
+      "example": "Url usage"
+    },
+    {
+      "id": "av005",
+      "type": "url",
+      "name": "Version in Subdomain",
+      "description": "Subdomain",
+      "pattern": "v1.api.example.com, infrastructure complexity",
+      "example": "Url usage"
+    },
+    {
+      "id": "av006",
+      "type": "header",
+      "name": "Header Versioning",
+      "description": "Custom header",
+      "pattern": "X-API-Version: 2, cleaner URLs, less visible",
+      "example": "Header usage"
+    },
+    {
+      "id": "av007",
+      "type": "header",
+      "name": "Accept Header",
+      "description": "Content negotiation",
+      "pattern": "Accept: application/vnd.api+json;version=2",
+      "example": "Header usage"
+    },
+    {
+      "id": "av008",
+      "type": "query",
+      "name": "Query Parameter",
+      "description": "URL param",
+      "pattern": "/api/users?version=2, simple but URL pollution",
+      "example": "Query usage"
+    },
+    {
+      "id": "av009",
+      "type": "breaking",
+      "name": "Breaking Changes",
+      "description": "What breaks",
+      "pattern": "Remove field, change type, remove endpoint, rename",
+      "example": "Breaking usage"
+    },
+    {
+      "id": "av010",
+      "type": "breaking",
+      "name": "Non-Breaking Changes",
+      "description": "Safe changes",
+      "pattern": "Add optional field, add endpoint, add enum value",
+      "example": "Breaking usage"
+    },
+    {
+      "id": "av011",
+      "type": "compatibility",
+      "name": "Backward Compatibility",
+      "description": "Old clients work",
+      "pattern": "Old requests still work, don't remove fields",
+      "example": "Compatibility usage"
+    },
+    {
+      "id": "av012",
+      "type": "compatibility",
+      "name": "Forward Compatibility",
+      "description": "Future-proof",
+      "pattern": "Ignore unknown fields, flexible parsing",
+      "example": "Compatibility usage"
+    },
+    {
+      "id": "av013",
+      "type": "evolution",
+      "name": "Additive Changes",
+      "description": "Grow API",
+      "pattern": "Add fields, add endpoints, extend enums safely",
+      "example": "Evolution usage"
+    },
+    {
+      "id": "av014",
+      "type": "evolution",
+      "name": "Deprecation",
+      "description": "Phase out",
+      "pattern": "Sunset header, deprecation notice, migration period",
+      "example": "Evolution usage"
+    },
+    {
+      "id": "av015",
+      "type": "evolution",
+      "name": "Migration Guides",
+      "description": "Help upgrade",
+      "pattern": "Document changes, code examples, breaking changes list",
+      "example": "Evolution usage"
+    },
+    {
+      "id": "av016",
+      "type": "patterns",
+      "name": "Version in Response",
+      "description": "Tell clients",
+      "pattern": "Include API version in response, X-API-Version header",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "av017",
+      "type": "patterns",
+      "name": "Default Version",
+      "description": "No version specified",
+      "pattern": "Default to latest stable, or require explicit version",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "av018",
+      "type": "patterns",
+      "name": "Multiple Versions",
+      "description": "Support old",
+      "pattern": "Run multiple versions, shared code, adapters",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "av019",
+      "type": "implementation",
+      "name": "Version Routing",
+      "description": "Route to handler",
+      "pattern": "Middleware extracts version, routes to correct controller",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "av020",
+      "type": "implementation",
+      "name": "Controller per Version",
+      "description": "Separate code",
+      "pattern": "UsersV1Controller, UsersV2Controller, clear separation",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "av021",
+      "type": "implementation",
+      "name": "Shared Logic",
+      "description": "DRY versions",
+      "pattern": "Share business logic, different serialization",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "av022",
+      "type": "graphql",
+      "name": "GraphQL Versioning",
+      "description": "Schema evolution",
+      "pattern": "No versions, deprecate fields, additive changes",
+      "example": "Graphql usage"
+    },
+    {
+      "id": "av023",
+      "type": "graphql",
+      "name": "Field Deprecation",
+      "description": "Deprecate in schema",
+      "pattern": "@deprecated(reason: \"Use newField\")",
+      "example": "Graphql usage"
+    },
+    {
+      "id": "av024",
+      "type": "documentation",
+      "name": "Version Documentation",
+      "description": "Doc per version",
+      "pattern": "Separate docs, version selector, changelog",
+      "example": "Documentation usage"
+    },
+    {
+      "id": "av025",
+      "type": "documentation",
+      "name": "Changelog",
+      "description": "Track changes",
+      "pattern": "API changelog, breaking changes highlighted",
+      "example": "Documentation usage"
+    },
+    {
+      "id": "av026",
+      "type": "testing",
+      "name": "Version Testing",
+      "description": "Test all versions",
+      "pattern": "Test matrix, ensure old versions work",
+      "example": "Testing usage"
+    },
+    {
+      "id": "av027",
+      "type": "testing",
+      "name": "Contract Testing",
+      "description": "Compatibility tests",
+      "pattern": "Pact, ensure no accidental breaks",
+      "example": "Testing usage"
+    },
+    {
+      "id": "av028",
+      "type": "lifecycle",
+      "name": "Version Lifecycle",
+      "description": "End of life",
+      "pattern": "Announce EOL, sunset date, force migration",
+      "example": "Lifecycle usage"
+    },
+    {
+      "id": "av029",
+      "type": "lifecycle",
+      "name": "Support Policy",
+      "description": "How long",
+      "pattern": "Support N-1 versions, 12 month deprecation",
+      "example": "Lifecycle usage"
+    },
+    {
+      "id": "av030",
+      "type": "tools",
+      "name": "OpenAPI Versioning",
+      "description": "Spec per version",
+      "pattern": "Separate specs, or version in spec, tooling",
+      "example": "Tools usage"
+    }
+  ]
+}

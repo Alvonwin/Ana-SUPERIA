@@ -1,0 +1,246 @@
+{
+  "category": "groovy-gradle",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "grv001",
+      "type": "fundamentals",
+      "name": "Groovy Basics",
+      "description": "Groovy syntax",
+      "pattern": "Dynamic typing, closures, GStrings",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "grv002",
+      "type": "fundamentals",
+      "name": "Dynamic Features",
+      "description": "Metaprogramming",
+      "pattern": "methodMissing, propertyMissing",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "grv003",
+      "type": "fundamentals",
+      "name": "Closures",
+      "description": "Lambda-like",
+      "pattern": "Closures, delegate, owner, this",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "grv004",
+      "type": "collections",
+      "name": "Collections",
+      "description": "Enhanced collections",
+      "pattern": "each, collect, find, findAll",
+      "example": "Collections usage"
+    },
+    {
+      "id": "grv005",
+      "type": "collections",
+      "name": "Operators",
+      "description": "Operator overloading",
+      "pattern": "<<, *, ?, ?., spread",
+      "example": "Collections usage"
+    },
+    {
+      "id": "grv006",
+      "type": "collections",
+      "name": "Builders",
+      "description": "DSL building",
+      "pattern": "MarkupBuilder, JsonBuilder",
+      "example": "Collections usage"
+    },
+    {
+      "id": "grv007",
+      "type": "oop",
+      "name": "Classes",
+      "description": "OOP in Groovy",
+      "pattern": "class, trait, @Delegate",
+      "example": "Oop usage"
+    },
+    {
+      "id": "grv008",
+      "type": "oop",
+      "name": "Traits",
+      "description": "Mixins",
+      "pattern": "trait, implements, composition",
+      "example": "Oop usage"
+    },
+    {
+      "id": "grv009",
+      "type": "oop",
+      "name": "AST Transforms",
+      "description": "Compile-time",
+      "pattern": "@Canonical, @Builder, @Immutable",
+      "example": "Oop usage"
+    },
+    {
+      "id": "grv010",
+      "type": "gradle",
+      "name": "Gradle Basics",
+      "description": "Build tool",
+      "pattern": "build.gradle, tasks, plugins",
+      "example": "Gradle usage"
+    },
+    {
+      "id": "grv011",
+      "type": "gradle",
+      "name": "Gradle DSL",
+      "description": "Build DSL",
+      "pattern": "Groovy DSL, Kotlin DSL",
+      "example": "Gradle usage"
+    },
+    {
+      "id": "grv012",
+      "type": "gradle",
+      "name": "Dependencies",
+      "description": "Dependency management",
+      "pattern": "implementation, api, testImplementation",
+      "example": "Gradle usage"
+    },
+    {
+      "id": "grv013",
+      "type": "gradle",
+      "name": "Tasks",
+      "description": "Custom tasks",
+      "pattern": "task, doFirst, doLast, dependsOn",
+      "example": "Gradle usage"
+    },
+    {
+      "id": "grv014",
+      "type": "gradle",
+      "name": "Plugins",
+      "description": "Plugin development",
+      "pattern": "Plugin interface, extensions",
+      "example": "Gradle usage"
+    },
+    {
+      "id": "grv015",
+      "type": "gradle",
+      "name": "Multi-Project",
+      "description": "Multi-module builds",
+      "pattern": "settings.gradle, subprojects",
+      "example": "Gradle usage"
+    },
+    {
+      "id": "grv016",
+      "type": "gradle",
+      "name": "Build Cache",
+      "description": "Caching",
+      "pattern": "Build cache, incremental builds",
+      "example": "Gradle usage"
+    },
+    {
+      "id": "grv017",
+      "type": "gradle",
+      "name": "Gradle Wrapper",
+      "description": "Version management",
+      "pattern": "gradlew, gradle-wrapper.properties",
+      "example": "Gradle usage"
+    },
+    {
+      "id": "grv018",
+      "type": "testing",
+      "name": "Spock Framework",
+      "description": "Testing",
+      "pattern": "Specification, given-when-then",
+      "example": "Testing usage"
+    },
+    {
+      "id": "grv019",
+      "type": "testing",
+      "name": "Mocking in Spock",
+      "description": "Test doubles",
+      "pattern": "Mock, Stub, Spy, interactions",
+      "example": "Testing usage"
+    },
+    {
+      "id": "grv020",
+      "type": "testing",
+      "name": "Data-Driven Tests",
+      "description": "Parameterized",
+      "pattern": "where, @Unroll, data tables",
+      "example": "Testing usage"
+    },
+    {
+      "id": "grv021",
+      "type": "web",
+      "name": "Grails",
+      "description": "Web framework",
+      "pattern": "Controllers, GSP, GORM",
+      "example": "Web usage"
+    },
+    {
+      "id": "grv022",
+      "type": "web",
+      "name": "GORM",
+      "description": "ORM",
+      "pattern": "Domain classes, queries, criteria",
+      "example": "Web usage"
+    },
+    {
+      "id": "grv023",
+      "type": "scripting",
+      "name": "Groovy Scripts",
+      "description": "Scripting",
+      "pattern": "Scripts, binding, evaluate",
+      "example": "Scripting usage"
+    },
+    {
+      "id": "grv024",
+      "type": "scripting",
+      "name": "Shell Integration",
+      "description": "System scripting",
+      "pattern": "execute, ProcessBuilder, pipes",
+      "example": "Scripting usage"
+    },
+    {
+      "id": "grv025",
+      "type": "xml-json",
+      "name": "XML Processing",
+      "description": "XML handling",
+      "pattern": "XmlSlurper, XmlParser, GPath",
+      "example": "Xml-json usage"
+    },
+    {
+      "id": "grv026",
+      "type": "xml-json",
+      "name": "JSON Processing",
+      "description": "JSON handling",
+      "pattern": "JsonSlurper, JsonOutput",
+      "example": "Xml-json usage"
+    },
+    {
+      "id": "grv027",
+      "type": "dsl",
+      "name": "DSL Creation",
+      "description": "Domain languages",
+      "pattern": "CommandChain, methodMissing",
+      "example": "Dsl usage"
+    },
+    {
+      "id": "grv028",
+      "type": "jenkins",
+      "name": "Jenkins Pipeline",
+      "description": "CI/CD",
+      "pattern": "Jenkinsfile, declarative, scripted",
+      "example": "Jenkins usage"
+    },
+    {
+      "id": "grv029",
+      "type": "jenkins",
+      "name": "Shared Libraries",
+      "description": "Pipeline libs",
+      "pattern": "vars, src, resources",
+      "example": "Jenkins usage"
+    },
+    {
+      "id": "grv030",
+      "type": "interop",
+      "name": "Java Interop",
+      "description": "Java integration",
+      "pattern": "Seamless Java calls, annotations",
+      "example": "Interop usage"
+    }
+  ]
+}

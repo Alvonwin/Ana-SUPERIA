@@ -1,0 +1,246 @@
+{
+  "category": "databases-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "db001",
+      "type": "postgres",
+      "name": "PG Window Functions",
+      "description": "Calculs sur partitions",
+      "pattern": "ROW_NUMBER() OVER (PARTITION BY cat ORDER BY date DESC)",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db002",
+      "type": "postgres",
+      "name": "PG CTEs",
+      "description": "Common Table Expressions",
+      "pattern": "WITH ranked AS (SELECT *, RANK() OVER(...) FROM t) SELECT * FROM ranked WHERE rank = 1",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db003",
+      "type": "postgres",
+      "name": "PG Recursive CTE",
+      "description": "Hierarchies et graphes",
+      "pattern": "WITH RECURSIVE tree AS (SELECT * FROM nodes WHERE parent IS NULL UNION ALL SELECT n.* FROM nodes n JOIN tree t ON n.parent = t.id)",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db004",
+      "type": "postgres",
+      "name": "PG JSONB Operators",
+      "description": "Requetes JSON avancees",
+      "pattern": "WHERE data @> '{\"active\": true}' AND data->'tags' ? 'urgent'",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db005",
+      "type": "postgres",
+      "name": "PG Array Operations",
+      "description": "Arrays natifs",
+      "pattern": "WHERE 'admin' = ANY(roles); SELECT unnest(tags) FROM posts;",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db006",
+      "type": "postgres",
+      "name": "PG Triggers",
+      "description": "Actions automatiques",
+      "pattern": "CREATE TRIGGER audit AFTER UPDATE ON users FOR EACH ROW EXECUTE FUNCTION log_change();",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db007",
+      "type": "postgres",
+      "name": "PG Partitioning",
+      "description": "Range, list, hash partitions",
+      "pattern": "CREATE TABLE logs (...) PARTITION BY RANGE (created_at);",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db008",
+      "type": "postgres",
+      "name": "PG EXPLAIN ANALYZE",
+      "description": "Query plan analysis",
+      "pattern": "EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT ...",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db009",
+      "type": "postgres",
+      "name": "PG Vacuum",
+      "description": "Maintenance et bloat",
+      "pattern": "VACUUM ANALYZE table; -- autovacuum settings",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db010",
+      "type": "postgres",
+      "name": "PG Extensions",
+      "description": "pg_trgm, PostGIS, pgvector",
+      "pattern": "CREATE EXTENSION pg_trgm; CREATE INDEX idx ON t USING GIN(name gin_trgm_ops);",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "db011",
+      "type": "mongodb",
+      "name": "Mongo Aggregation",
+      "description": "Pipeline stages",
+      "pattern": "[{$match: {}}, {$group: {_id: '$cat', total: {$sum: '$amount'}}}, {$sort: {total: -1}}]",
+      "example": "Mongodb usage"
+    },
+    {
+      "id": "db012",
+      "type": "mongodb",
+      "name": "Mongo Indexes",
+      "description": "Compound, text, geospatial",
+      "pattern": "createIndex({userId: 1, createdAt: -1}); createIndex({location: '2dsphere'})",
+      "example": "Mongodb usage"
+    },
+    {
+      "id": "db013",
+      "type": "mongodb",
+      "name": "Mongo Transactions",
+      "description": "Multi-document ACID",
+      "pattern": "session.withTransaction(async () => { await coll1.insertOne(); await coll2.updateOne(); })",
+      "example": "Mongodb usage"
+    },
+    {
+      "id": "db014",
+      "type": "mongodb",
+      "name": "Mongo Change Streams",
+      "description": "Real-time changes",
+      "pattern": "collection.watch().on('change', change => handle(change));",
+      "example": "Mongodb usage"
+    },
+    {
+      "id": "db015",
+      "type": "mongodb",
+      "name": "Mongo Schema Validation",
+      "description": "JSON Schema validation",
+      "pattern": "validator: {$jsonSchema: {required: ['name'], properties: {name: {bsonType: 'string'}}}}",
+      "example": "Mongodb usage"
+    },
+    {
+      "id": "db016",
+      "type": "redis",
+      "name": "Redis Data Types",
+      "description": "String, Hash, List, Set, ZSet, Stream",
+      "pattern": "HSET user:1 name John; ZADD leaderboard 100 player1; XADD stream * field value",
+      "example": "Redis usage"
+    },
+    {
+      "id": "db017",
+      "type": "redis",
+      "name": "Redis Pub/Sub",
+      "description": "Messaging simple",
+      "pattern": "SUBSCRIBE channel; PUBLISH channel message",
+      "example": "Redis usage"
+    },
+    {
+      "id": "db018",
+      "type": "redis",
+      "name": "Redis Streams",
+      "description": "Log-like data structure",
+      "pattern": "XREAD BLOCK 0 STREAMS mystream $; XACK mystream group msgid",
+      "example": "Redis usage"
+    },
+    {
+      "id": "db019",
+      "type": "redis",
+      "name": "Redis Lua Scripts",
+      "description": "Atomicite complexe",
+      "pattern": "EVAL 'if redis.call(\"get\",KEYS[1]) == ARGV[1] then return redis.call(\"del\",KEYS[1]) end' 1 lock token",
+      "example": "Redis usage"
+    },
+    {
+      "id": "db020",
+      "type": "redis",
+      "name": "Redis Cluster",
+      "description": "Sharding automatique",
+      "pattern": "16384 hash slots, CRC16(key) mod 16384",
+      "example": "Redis usage"
+    },
+    {
+      "id": "db021",
+      "type": "elasticsearch",
+      "name": "ES Mappings",
+      "description": "Schema definition",
+      "pattern": "mappings: {properties: {title: {type: 'text', analyzer: 'french'}, date: {type: 'date'}}}",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "db022",
+      "type": "elasticsearch",
+      "name": "ES Query DSL",
+      "description": "Bool, match, range queries",
+      "pattern": "query: {bool: {must: [{match: {title: 'search'}}], filter: [{range: {date: {gte: 'now-1d'}}}]}}",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "db023",
+      "type": "elasticsearch",
+      "name": "ES Aggregations",
+      "description": "Analytics queries",
+      "pattern": "aggs: {by_category: {terms: {field: 'category'}, aggs: {avg_price: {avg: {field: 'price'}}}}}",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "db024",
+      "type": "elasticsearch",
+      "name": "ES Analyzers",
+      "description": "Tokenization et filtering",
+      "pattern": "analysis: {analyzer: {my_analyzer: {tokenizer: 'standard', filter: ['lowercase', 'stemmer']}}}",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "db025",
+      "type": "timeseries",
+      "name": "InfluxDB Basics",
+      "description": "Time series database",
+      "pattern": "INSERT cpu,host=server01 value=0.64 1465839830100400200",
+      "example": "Timeseries usage"
+    },
+    {
+      "id": "db026",
+      "type": "timeseries",
+      "name": "TimescaleDB",
+      "description": "PG pour time series",
+      "pattern": "SELECT time_bucket('1 hour', time) AS hour, avg(value) FROM metrics GROUP BY hour",
+      "example": "Timeseries usage"
+    },
+    {
+      "id": "db027",
+      "type": "timeseries",
+      "name": "Retention Policies",
+      "description": "Expiration auto des donnees",
+      "pattern": "CREATE RETENTION POLICY one_year ON mydb DURATION 365d REPLICATION 1",
+      "example": "Timeseries usage"
+    },
+    {
+      "id": "db028",
+      "type": "graph",
+      "name": "Neo4j Cypher",
+      "description": "Query language graphe",
+      "pattern": "MATCH (u:User)-[:FOLLOWS]->(f:User) WHERE u.name = 'Alice' RETURN f.name",
+      "example": "Graph usage"
+    },
+    {
+      "id": "db029",
+      "type": "graph",
+      "name": "Graph Traversal",
+      "description": "Shortest path, patterns",
+      "pattern": "MATCH path = shortestPath((a)-[*]-(b)) WHERE a.name = 'Alice' AND b.name = 'Bob' RETURN path",
+      "example": "Graph usage"
+    },
+    {
+      "id": "db030",
+      "type": "graph",
+      "name": "Graph Indexes",
+      "description": "Optimiser lookups",
+      "pattern": "CREATE INDEX FOR (n:Person) ON (n.email)",
+      "example": "Graph usage"
+    }
+  ]
+}

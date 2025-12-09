@@ -1,0 +1,246 @@
+{
+  "category": "configuration-management",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cfg001",
+      "type": "fundamentals",
+      "name": "Config Principles",
+      "description": "Best practices",
+      "pattern": "12-factor: store config in environment, not code",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cfg002",
+      "type": "fundamentals",
+      "name": "Config Sources",
+      "description": "Where config lives",
+      "pattern": "Environment vars, files, remote config, secrets managers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cfg003",
+      "type": "fundamentals",
+      "name": "Config Precedence",
+      "description": "Override order",
+      "pattern": "CLI args > env vars > config file > defaults",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cfg004",
+      "type": "environment",
+      "name": "Environment Variables",
+      "description": "Env vars",
+      "pattern": "process.env.DATABASE_URL, dotenv for local dev",
+      "example": "Environment usage"
+    },
+    {
+      "id": "cfg005",
+      "type": "environment",
+      "name": "dotenv",
+      "description": "Local env files",
+      "pattern": ".env, .env.local, .env.production, don't commit secrets",
+      "example": "Environment usage"
+    },
+    {
+      "id": "cfg006",
+      "type": "environment",
+      "name": "Per-Environment Config",
+      "description": "Env-specific",
+      "pattern": "Development, staging, production configs, feature flags",
+      "example": "Environment usage"
+    },
+    {
+      "id": "cfg007",
+      "type": "files",
+      "name": "Config File Formats",
+      "description": "File types",
+      "pattern": "JSON, YAML, TOML, INI, environment-specific files",
+      "example": "Files usage"
+    },
+    {
+      "id": "cfg008",
+      "type": "files",
+      "name": "Config Validation",
+      "description": "Validate config",
+      "pattern": "Schema validation, fail fast on invalid config",
+      "example": "Files usage"
+    },
+    {
+      "id": "cfg009",
+      "type": "files",
+      "name": "Config Libraries",
+      "description": "Node.js config",
+      "pattern": "node-config, convict, dotenv, cosmiconfig",
+      "example": "Files usage"
+    },
+    {
+      "id": "cfg010",
+      "type": "secrets",
+      "name": "Secret Management",
+      "description": "Protect secrets",
+      "pattern": "Never commit secrets, use secret managers, rotate regularly",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "cfg011",
+      "type": "secrets",
+      "name": "HashiCorp Vault",
+      "description": "Secrets manager",
+      "pattern": "Dynamic secrets, encryption, access policies, audit log",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "cfg012",
+      "type": "secrets",
+      "name": "AWS Secrets Manager",
+      "description": "AWS secrets",
+      "pattern": "Store secrets, automatic rotation, IAM access control",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "cfg013",
+      "type": "secrets",
+      "name": "AWS Parameter Store",
+      "description": "SSM parameters",
+      "pattern": "Hierarchical config, SecureString for secrets, versioning",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "cfg014",
+      "type": "secrets",
+      "name": "Environment Injection",
+      "description": "Runtime secrets",
+      "pattern": "Inject secrets at deploy time, not build time",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "cfg015",
+      "type": "kubernetes",
+      "name": "ConfigMaps",
+      "description": "K8s config",
+      "pattern": "Non-sensitive config, mount as files or env vars",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "cfg016",
+      "type": "kubernetes",
+      "name": "K8s Secrets",
+      "description": "K8s secrets",
+      "pattern": "Base64 encoded, mount as files, external secrets operator",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "cfg017",
+      "type": "kubernetes",
+      "name": "External Secrets",
+      "description": "Sync secrets",
+      "pattern": "External Secrets Operator, sync from Vault/AWS to K8s",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "cfg018",
+      "type": "remote",
+      "name": "Remote Config",
+      "description": "Dynamic config",
+      "pattern": "Change config without deploy, feature flags, A/B testing",
+      "example": "Remote usage"
+    },
+    {
+      "id": "cfg019",
+      "type": "remote",
+      "name": "Config Servers",
+      "description": "Centralized config",
+      "pattern": "Spring Cloud Config, Consul, etcd",
+      "example": "Remote usage"
+    },
+    {
+      "id": "cfg020",
+      "type": "remote",
+      "name": "Hot Reload",
+      "description": "Live config updates",
+      "pattern": "Watch for changes, reload without restart",
+      "example": "Remote usage"
+    },
+    {
+      "id": "cfg021",
+      "type": "gitops",
+      "name": "GitOps Config",
+      "description": "Config as code",
+      "pattern": "Config in Git, PR for changes, audit trail",
+      "example": "Gitops usage"
+    },
+    {
+      "id": "cfg022",
+      "type": "gitops",
+      "name": "Sealed Secrets",
+      "description": "Encrypted in Git",
+      "pattern": "Encrypt secrets for Git storage, decrypt in cluster",
+      "example": "Gitops usage"
+    },
+    {
+      "id": "cfg023",
+      "type": "gitops",
+      "name": "SOPS",
+      "description": "Secret encryption",
+      "pattern": "Encrypt files with KMS/PGP, decrypt at runtime",
+      "example": "Gitops usage"
+    },
+    {
+      "id": "cfg024",
+      "type": "patterns",
+      "name": "Config as Code",
+      "description": "Version config",
+      "pattern": "Treat config like code, review, test, version",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "cfg025",
+      "type": "patterns",
+      "name": "Immutable Config",
+      "description": "No runtime changes",
+      "pattern": "Config set at deploy, restart to change",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "cfg026",
+      "type": "patterns",
+      "name": "Feature Toggles",
+      "description": "Dynamic features",
+      "pattern": "Enable/disable features via config, gradual rollout",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "cfg027",
+      "type": "security",
+      "name": "Secret Rotation",
+      "description": "Regular rotation",
+      "pattern": "Automated rotation, zero-downtime rotation",
+      "example": "Security usage"
+    },
+    {
+      "id": "cfg028",
+      "type": "security",
+      "name": "Least Privilege",
+      "description": "Access control",
+      "pattern": "Only access needed secrets, scoped permissions",
+      "example": "Security usage"
+    },
+    {
+      "id": "cfg029",
+      "type": "security",
+      "name": "Audit Logging",
+      "description": "Track access",
+      "pattern": "Log secret access, detect anomalies, compliance",
+      "example": "Security usage"
+    },
+    {
+      "id": "cfg030",
+      "type": "testing",
+      "name": "Config Testing",
+      "description": "Validate config",
+      "pattern": "Test different configs, mock external config, dry run",
+      "example": "Testing usage"
+    }
+  ]
+}

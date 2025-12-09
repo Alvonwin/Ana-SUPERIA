@@ -1,0 +1,246 @@
+{
+  "category": "spark-dataeng",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "spark001",
+      "type": "fundamentals",
+      "name": "Spark Architecture",
+      "description": "Distributed computing",
+      "pattern": "Driver, executors, cluster manager, DAG",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spark002",
+      "type": "fundamentals",
+      "name": "RDD",
+      "description": "Resilient Distributed Dataset",
+      "pattern": "Transformations, actions, partitions, lineage",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spark003",
+      "type": "fundamentals",
+      "name": "DataFrame API",
+      "description": "Structured data",
+      "pattern": "Schema, columns, select, filter, join",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spark004",
+      "type": "fundamentals",
+      "name": "Dataset API",
+      "description": "Type-safe API",
+      "pattern": "Encoders, case classes, typed operations",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spark005",
+      "type": "sql",
+      "name": "Spark SQL",
+      "description": "SQL interface",
+      "pattern": "spark.sql, createTempView, catalog",
+      "example": "Sql usage"
+    },
+    {
+      "id": "spark006",
+      "type": "sql",
+      "name": "SQL Functions",
+      "description": "Built-in functions",
+      "pattern": "col, lit, when, coalesce, expr",
+      "example": "Sql usage"
+    },
+    {
+      "id": "spark007",
+      "type": "sql",
+      "name": "Window Functions",
+      "description": "Analytics",
+      "pattern": "Window, partitionBy, orderBy, rowsBetween",
+      "example": "Sql usage"
+    },
+    {
+      "id": "spark008",
+      "type": "sql",
+      "name": "UDFs",
+      "description": "User-defined functions",
+      "pattern": "udf, pandas_udf, vectorized",
+      "example": "Sql usage"
+    },
+    {
+      "id": "spark009",
+      "type": "io",
+      "name": "Data Sources",
+      "description": "Read/write formats",
+      "pattern": "Parquet, Delta, JSON, CSV, JDBC",
+      "example": "Io usage"
+    },
+    {
+      "id": "spark010",
+      "type": "io",
+      "name": "Partitioning",
+      "description": "Data organization",
+      "pattern": "partitionBy, bucketBy, repartition",
+      "example": "Io usage"
+    },
+    {
+      "id": "spark011",
+      "type": "io",
+      "name": "Delta Lake",
+      "description": "ACID tables",
+      "pattern": "MERGE, time travel, vacuum, optimize",
+      "example": "Io usage"
+    },
+    {
+      "id": "spark012",
+      "type": "streaming",
+      "name": "Structured Streaming",
+      "description": "Stream processing",
+      "pattern": "readStream, writeStream, trigger",
+      "example": "Streaming usage"
+    },
+    {
+      "id": "spark013",
+      "type": "streaming",
+      "name": "Watermarks",
+      "description": "Late data handling",
+      "pattern": "withWatermark, append, update, complete",
+      "example": "Streaming usage"
+    },
+    {
+      "id": "spark014",
+      "type": "streaming",
+      "name": "Stateful Processing",
+      "description": "State management",
+      "pattern": "groupByKey, mapGroupsWithState, flatMapGroupsWithState",
+      "example": "Streaming usage"
+    },
+    {
+      "id": "spark015",
+      "type": "optimization",
+      "name": "Catalyst Optimizer",
+      "description": "Query optimization",
+      "pattern": "Logical plan, physical plan, explain",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "spark016",
+      "type": "optimization",
+      "name": "Tungsten",
+      "description": "Memory optimization",
+      "pattern": "Whole-stage codegen, off-heap memory",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "spark017",
+      "type": "optimization",
+      "name": "AQE",
+      "description": "Adaptive Query Execution",
+      "pattern": "Coalesce shuffle, skew join, dynamic pruning",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "spark018",
+      "type": "optimization",
+      "name": "Performance Tuning",
+      "description": "Configuration",
+      "pattern": "Shuffle partitions, broadcast, cache/persist",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "spark019",
+      "type": "ml",
+      "name": "MLlib",
+      "description": "Machine learning",
+      "pattern": "Transformers, estimators, pipelines",
+      "example": "Ml usage"
+    },
+    {
+      "id": "spark020",
+      "type": "ml",
+      "name": "Feature Engineering",
+      "description": "Data preparation",
+      "pattern": "VectorAssembler, StringIndexer, OneHotEncoder",
+      "example": "Ml usage"
+    },
+    {
+      "id": "spark021",
+      "type": "ml",
+      "name": "ML Algorithms",
+      "description": "Built-in models",
+      "pattern": "LogisticRegression, RandomForest, KMeans",
+      "example": "Ml usage"
+    },
+    {
+      "id": "spark022",
+      "type": "graph",
+      "name": "GraphX",
+      "description": "Graph processing",
+      "pattern": "Graph, vertices, edges, Pregel",
+      "example": "Graph usage"
+    },
+    {
+      "id": "spark023",
+      "type": "graph",
+      "name": "GraphFrames",
+      "description": "DataFrame graphs",
+      "pattern": "Motif finding, BFS, connected components",
+      "example": "Graph usage"
+    },
+    {
+      "id": "spark024",
+      "type": "deployment",
+      "name": "Cluster Modes",
+      "description": "Deployment options",
+      "pattern": "Local, standalone, YARN, Kubernetes",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "spark025",
+      "type": "deployment",
+      "name": "Databricks",
+      "description": "Managed Spark",
+      "pattern": "Notebooks, clusters, jobs, Unity Catalog",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "spark026",
+      "type": "deployment",
+      "name": "EMR",
+      "description": "AWS Spark",
+      "pattern": "EMR clusters, EMR Serverless, notebooks",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "spark027",
+      "type": "monitoring",
+      "name": "Spark UI",
+      "description": "Web interface",
+      "pattern": "Jobs, stages, storage, executors",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "spark028",
+      "type": "monitoring",
+      "name": "Metrics",
+      "description": "Observability",
+      "pattern": "Prometheus, Ganglia, event logs",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "spark029",
+      "type": "testing",
+      "name": "Testing Spark",
+      "description": "Test strategies",
+      "pattern": "SparkSession local, DataFrameAssertions",
+      "example": "Testing usage"
+    },
+    {
+      "id": "spark030",
+      "type": "connect",
+      "name": "Spark Connect",
+      "description": "Remote connectivity",
+      "pattern": "Thin client, server mode, gRPC",
+      "example": "Connect usage"
+    }
+  ]
+}

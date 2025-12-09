@@ -1,0 +1,33 @@
+{
+  "category": "backend-nodejs-patterns",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "Node.js Backend Patterns and Best Practices",
+  "skills": [
+    {"id": "bnp01", "type": "architecture", "name": "Layered Architecture", "description": "Separate concerns", "pattern": "Controller → Service → Repository", "example": "Clean structure"},
+    {"id": "bnp02", "type": "middleware", "name": "Middleware Pattern", "description": "Request pipeline", "pattern": "next() chain", "example": "Auth, logging"},
+    {"id": "bnp03", "type": "errorhandling", "name": "Centralized Errors", "description": "Global error handler", "pattern": "app.use((err, req, res, next))", "example": "Consistent errors"},
+    {"id": "bnp04", "type": "validation", "name": "Request Validation", "description": "Validate inputs", "pattern": "Zod, Joi schemas", "example": "API safety"},
+    {"id": "bnp05", "type": "async", "name": "Async/Await Patterns", "description": "Handle promises", "pattern": "try/catch, Promise.all", "example": "Clean async"},
+    {"id": "bnp06", "type": "streaming", "name": "Stream Processing", "description": "Handle large data", "pattern": "pipe(), Transform", "example": "File uploads"},
+    {"id": "bnp07", "type": "events", "name": "Event Emitter", "description": "Pub/sub pattern", "pattern": "EventEmitter class", "example": "Decoupled logic"},
+    {"id": "bnp08", "type": "workers", "name": "Worker Threads", "description": "CPU-intensive tasks", "pattern": "new Worker()", "example": "Parallel processing"},
+    {"id": "bnp09", "type": "cluster", "name": "Cluster Mode", "description": "Multi-process", "pattern": "cluster.fork()", "example": "Use all CPUs"},
+    {"id": "bnp10", "type": "graceful", "name": "Graceful Shutdown", "description": "Clean exit", "pattern": "SIGTERM handler", "example": "Zero downtime"},
+    {"id": "bnp11", "type": "healthcheck", "name": "Health Checks", "description": "Liveness/readiness", "pattern": "/health endpoint", "example": "K8s probes"},
+    {"id": "bnp12", "type": "ratelimit", "name": "Rate Limiting", "description": "Prevent abuse", "pattern": "Token bucket", "example": "API protection"},
+    {"id": "bnp13", "type": "caching", "name": "Response Caching", "description": "Speed up responses", "pattern": "Redis, in-memory", "example": "Reduce DB load"},
+    {"id": "bnp14", "type": "queue", "name": "Job Queues", "description": "Background tasks", "pattern": "BullMQ, Agenda", "example": "Email sending"},
+    {"id": "bnp15", "type": "circuit", "name": "Circuit Breaker", "description": "Fail fast", "pattern": "Open/Closed/Half-Open", "example": "External services"},
+    {"id": "bnp16", "type": "retry", "name": "Retry Pattern", "description": "Handle transient errors", "pattern": "Exponential backoff", "example": "Network failures"},
+    {"id": "bnp17", "type": "bulkhead", "name": "Bulkhead Pattern", "description": "Isolate failures", "pattern": "Separate pools", "example": "Resource limits"},
+    {"id": "bnp18", "type": "saga", "name": "Saga Pattern", "description": "Distributed transactions", "pattern": "Compensating actions", "example": "Multi-service ops"},
+    {"id": "bnp19", "type": "outbox", "name": "Outbox Pattern", "description": "Reliable events", "pattern": "DB + Message queue", "example": "Event sourcing"},
+    {"id": "bnp20", "type": "idempotency", "name": "Idempotency", "description": "Safe retries", "pattern": "Idempotency key", "example": "Payment APIs"},
+    {"id": "bnp21", "type": "pagination", "name": "Cursor Pagination", "description": "Efficient paging", "pattern": "after: cursor", "example": "Large datasets"},
+    {"id": "bnp22", "type": "batch", "name": "Batch Processing", "description": "Process in chunks", "pattern": "Batch size, parallel", "example": "Data migrations"},
+    {"id": "bnp23", "type": "dependency", "name": "Dependency Injection", "description": "Invert control", "pattern": "Container, factories", "example": "Testable code"},
+    {"id": "bnp24", "type": "config", "name": "Config Management", "description": "External config", "pattern": "env vars, secrets", "example": "12-factor app"},
+    {"id": "bnp25", "type": "logging", "name": "Structured Logging", "description": "JSON logs", "pattern": "Winston, Pino", "example": "Searchable logs"}
+  ]
+}

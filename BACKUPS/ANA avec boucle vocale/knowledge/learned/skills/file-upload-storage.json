@@ -1,0 +1,246 @@
+{
+  "category": "file-upload-storage",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "fu001",
+      "type": "fundamentals",
+      "name": "Upload Methods",
+      "description": "How to upload",
+      "pattern": "Form multipart, Base64, chunked, presigned URLs",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fu002",
+      "type": "fundamentals",
+      "name": "Multipart Form",
+      "description": "Standard upload",
+      "pattern": "enctype='multipart/form-data', FormData API",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fu003",
+      "type": "fundamentals",
+      "name": "File Validation",
+      "description": "Security checks",
+      "pattern": "Check type, size, extension, magic bytes, virus scan",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fu004",
+      "type": "server",
+      "name": "Multer",
+      "description": "Express uploads",
+      "pattern": "multer({dest, limits, fileFilter}), upload.single()",
+      "example": "Server usage"
+    },
+    {
+      "id": "fu005",
+      "type": "server",
+      "name": "Multer Storage",
+      "description": "Storage engines",
+      "pattern": "diskStorage, memoryStorage, multer-s3",
+      "example": "Server usage"
+    },
+    {
+      "id": "fu006",
+      "type": "server",
+      "name": "Busboy",
+      "description": "Streaming parser",
+      "pattern": "Low-level multipart, stream to storage directly",
+      "example": "Server usage"
+    },
+    {
+      "id": "fu007",
+      "type": "server",
+      "name": "Formidable",
+      "description": "Form parsing",
+      "pattern": "formidable.parse(), file events, progress",
+      "example": "Server usage"
+    },
+    {
+      "id": "fu008",
+      "type": "client",
+      "name": "File Input",
+      "description": "HTML input",
+      "pattern": "<input type='file' accept='.jpg,.png' multiple>",
+      "example": "Client usage"
+    },
+    {
+      "id": "fu009",
+      "type": "client",
+      "name": "Drag and Drop",
+      "description": "DnD upload",
+      "pattern": "ondragover, ondrop, e.dataTransfer.files",
+      "example": "Client usage"
+    },
+    {
+      "id": "fu010",
+      "type": "client",
+      "name": "Upload Progress",
+      "description": "Track progress",
+      "pattern": "XMLHttpRequest.upload.onprogress, percentage",
+      "example": "Client usage"
+    },
+    {
+      "id": "fu011",
+      "type": "client",
+      "name": "Preview",
+      "description": "Show before upload",
+      "pattern": "FileReader.readAsDataURL(), URL.createObjectURL()",
+      "example": "Client usage"
+    },
+    {
+      "id": "fu012",
+      "type": "chunked",
+      "name": "Chunked Upload",
+      "description": "Large files",
+      "pattern": "Split file, upload chunks, resume on failure",
+      "example": "Chunked usage"
+    },
+    {
+      "id": "fu013",
+      "type": "chunked",
+      "name": "Tus Protocol",
+      "description": "Resumable uploads",
+      "pattern": "tus-js-client, tusdy, resume interrupted uploads",
+      "example": "Chunked usage"
+    },
+    {
+      "id": "fu014",
+      "type": "s3",
+      "name": "S3 Direct Upload",
+      "description": "Upload to S3",
+      "pattern": "Presigned POST/PUT, browser uploads directly",
+      "example": "S3 usage"
+    },
+    {
+      "id": "fu015",
+      "type": "s3",
+      "name": "S3 Multipart",
+      "description": "Large S3 uploads",
+      "pattern": "createMultipartUpload, uploadPart, complete",
+      "example": "S3 usage"
+    },
+    {
+      "id": "fu016",
+      "type": "s3",
+      "name": "S3 Presigned URLs",
+      "description": "Secure access",
+      "pattern": "getSignedUrl for upload/download, expiry time",
+      "example": "S3 usage"
+    },
+    {
+      "id": "fu017",
+      "type": "storage",
+      "name": "Storage Structure",
+      "description": "Organize files",
+      "pattern": "user/year/month/uuid.ext, avoid conflicts",
+      "example": "Storage usage"
+    },
+    {
+      "id": "fu018",
+      "type": "storage",
+      "name": "File Naming",
+      "description": "Secure names",
+      "pattern": "UUID, sanitize original name, preserve extension",
+      "example": "Storage usage"
+    },
+    {
+      "id": "fu019",
+      "type": "storage",
+      "name": "Metadata Storage",
+      "description": "Track files",
+      "pattern": "DB record: id, name, size, type, path, created_at",
+      "example": "Storage usage"
+    },
+    {
+      "id": "fu020",
+      "type": "services",
+      "name": "Cloudinary",
+      "description": "Media management",
+      "pattern": "Upload API, transformations, CDN delivery",
+      "example": "Services usage"
+    },
+    {
+      "id": "fu021",
+      "type": "services",
+      "name": "Uploadthing",
+      "description": "Modern uploads",
+      "pattern": "Type-safe, presigned, React/Next.js integration",
+      "example": "Services usage"
+    },
+    {
+      "id": "fu022",
+      "type": "services",
+      "name": "Vercel Blob",
+      "description": "Edge storage",
+      "pattern": "put(), del(), list(), CDN-backed",
+      "example": "Services usage"
+    },
+    {
+      "id": "fu023",
+      "type": "security",
+      "name": "Content-Type Validation",
+      "description": "Real type check",
+      "pattern": "file-type library, magic bytes, not just extension",
+      "example": "Security usage"
+    },
+    {
+      "id": "fu024",
+      "type": "security",
+      "name": "Size Limits",
+      "description": "Prevent abuse",
+      "pattern": "Enforce max size, streaming check, 413 error",
+      "example": "Security usage"
+    },
+    {
+      "id": "fu025",
+      "type": "security",
+      "name": "Virus Scanning",
+      "description": "Malware check",
+      "pattern": "ClamAV, VirusTotal API, scan before storage",
+      "example": "Security usage"
+    },
+    {
+      "id": "fu026",
+      "type": "security",
+      "name": "Access Control",
+      "description": "Secure access",
+      "pattern": "Signed URLs, authentication, private buckets",
+      "example": "Security usage"
+    },
+    {
+      "id": "fu027",
+      "type": "optimization",
+      "name": "Image Optimization",
+      "description": "Compress on upload",
+      "pattern": "Sharp resize, WebP conversion, quality adjustment",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "fu028",
+      "type": "optimization",
+      "name": "CDN Delivery",
+      "description": "Fast delivery",
+      "pattern": "CloudFront, Cloudflare, cache headers",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "fu029",
+      "type": "cleanup",
+      "name": "File Cleanup",
+      "description": "Remove unused",
+      "pattern": "Orphan detection, scheduled cleanup, soft delete",
+      "example": "Cleanup usage"
+    },
+    {
+      "id": "fu030",
+      "type": "testing",
+      "name": "Upload Testing",
+      "description": "Test uploads",
+      "pattern": "Mock multer, test validation, integration tests",
+      "example": "Testing usage"
+    }
+  ]
+}

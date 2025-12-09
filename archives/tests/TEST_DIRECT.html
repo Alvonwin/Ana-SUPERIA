@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TEST BOUTONS AUDIO</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #1a1a1a; color: #fff; }
+        .message-actions { display: flex; gap: 8px; margin: 20px 0; padding: 12px; background: #2c3e50; border-radius: 8px; }
+        .btn-action, .btn-speed { padding: 8px 15px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: #fff; cursor: pointer; }
+        .btn-action:hover, .btn-speed:hover { background: rgba(255,255,255,0.2); }
+        .btn-speed.active { background: #3498db; font-weight: 600; }
+        .voice-select { padding: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: #fff; }
+        .speed-controls { display: flex; gap: 4px; }
+        h1 { color: #3498db; }
+        .result { margin: 20px 0; padding: 10px; background: #2ecc71; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🔊 TEST DIRECT - Contrôles Audio Ana</h1>
+    <p>Si vous voyez les boutons ci-dessous, le code CSS/HTML fonctionne.</p>
+
+    <div class="message-actions">
+        <button class="btn-action" onclick="test('Répéter')">↻ Répéter</button>
+        <button class="btn-action" onclick="test('Play')">▶ Lire</button>
+
+        <select class="voice-select" onchange="test('Voix: ' + this.value)">
+            <option>Voix 1</option>
+            <option>Voix 2</option>
+        </select>
+
+        <div class="speed-controls">
+            <button class="btn-speed" onclick="test('0.8x')">0.8x</button>
+            <button class="btn-speed active" onclick="test('1x')">1x</button>
+            <button class="btn-speed" onclick="test('1.2x')">1.2x</button>
+        </div>
+    </div>
+
+    <div id="result" style="display:none;" class="result"></div>
+
+    <hr>
+    <h2>Test Synthèse Vocale</h2>
+    <button class="btn-action" onclick="testAudio()">🔊 Tester la voix</button>
+    <div id="voiceInfo"></div>
+
+    <script>
+        function test(action) {
+            const result = document.getElementById('result');
+            result.textContent = '✅ Bouton cliqué: ' + action;
+            result.style.display = 'block';
+            setTimeout(() => result.style.display = 'none', 2000);
+        }
+
+        function testAudio() {
+            if (!window.speechSynthesis) {
+                alert('❌ Synthèse vocale non supportée');
+                return;
+            }
+
+            const voices = window.speechSynthesis.getVoices();
+            const frenchVoices = voices.filter(v => v.lang.startsWith('fr'));
+
+            document.getElementById('voiceInfo').innerHTML =
+                `<p>Voix françaises disponibles: ${frenchVoices.length}</p>` +
+                frenchVoices.map(v => `<div>• ${v.name} (${v.lang})</div>`).join('');
+
+            const utterance = new SpeechSynthesisUtterance('Bonjour, je suis Ana.');
+            utterance.lang = 'fr-FR';
+            if (frenchVoices.length > 0) {
+                utterance.voice = frenchVoices[0];
+            }
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Load voices
+        window.speechSynthesis.onvoiceschanged = () => {
+            const voices = window.speechSynthesis.getVoices();
+            console.log('Voix chargées:', voices.length);
+        };
+    </script>
+</body>
+</html>

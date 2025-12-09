@@ -1,0 +1,246 @@
+{
+  "category": "cpp-systems",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cpp001",
+      "type": "fundamentals",
+      "name": "C++ Basics",
+      "description": "Core language",
+      "pattern": "Variables, types, control flow, functions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cpp002",
+      "type": "fundamentals",
+      "name": "Pointers & References",
+      "description": "Memory addresses",
+      "pattern": "*, &, nullptr, dereferencing",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cpp003",
+      "type": "fundamentals",
+      "name": "Memory Management",
+      "description": "Manual memory",
+      "pattern": "new, delete, RAII, smart pointers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cpp004",
+      "type": "fundamentals",
+      "name": "OOP C++",
+      "description": "Object-oriented",
+      "pattern": "Classes, inheritance, polymorphism, virtual",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cpp005",
+      "type": "fundamentals",
+      "name": "Templates",
+      "description": "Generic programming",
+      "pattern": "template<typename T>, specialization",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cpp006",
+      "type": "modern",
+      "name": "Modern C++11/14",
+      "description": "C++11 features",
+      "pattern": "auto, lambdas, move semantics, nullptr",
+      "example": "Modern usage"
+    },
+    {
+      "id": "cpp007",
+      "type": "modern",
+      "name": "C++17 Features",
+      "description": "C++17",
+      "pattern": "std::optional, variant, if constexpr",
+      "example": "Modern usage"
+    },
+    {
+      "id": "cpp008",
+      "type": "modern",
+      "name": "C++20 Features",
+      "description": "C++20",
+      "pattern": "Concepts, ranges, coroutines, modules",
+      "example": "Modern usage"
+    },
+    {
+      "id": "cpp009",
+      "type": "modern",
+      "name": "C++23 Features",
+      "description": "Latest C++",
+      "pattern": "std::expected, deducing this, mdspan",
+      "example": "Modern usage"
+    },
+    {
+      "id": "cpp010",
+      "type": "modern",
+      "name": "Smart Pointers",
+      "description": "RAII pointers",
+      "pattern": "unique_ptr, shared_ptr, weak_ptr",
+      "example": "Modern usage"
+    },
+    {
+      "id": "cpp011",
+      "type": "stl",
+      "name": "STL Containers",
+      "description": "Standard containers",
+      "pattern": "vector, map, set, unordered_map",
+      "example": "Stl usage"
+    },
+    {
+      "id": "cpp012",
+      "type": "stl",
+      "name": "STL Algorithms",
+      "description": "Algorithms",
+      "pattern": "sort, find, transform, accumulate",
+      "example": "Stl usage"
+    },
+    {
+      "id": "cpp013",
+      "type": "stl",
+      "name": "Iterators",
+      "description": "Iterator pattern",
+      "pattern": "begin, end, iterator categories",
+      "example": "Stl usage"
+    },
+    {
+      "id": "cpp014",
+      "type": "stl",
+      "name": "String Handling",
+      "description": "std::string",
+      "pattern": "string, string_view, c_str()",
+      "example": "Stl usage"
+    },
+    {
+      "id": "cpp015",
+      "type": "concurrency",
+      "name": "C++ Threads",
+      "description": "Multi-threading",
+      "pattern": "std::thread, join, detach",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "cpp016",
+      "type": "concurrency",
+      "name": "Mutex & Locks",
+      "description": "Synchronization",
+      "pattern": "mutex, lock_guard, unique_lock",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "cpp017",
+      "type": "concurrency",
+      "name": "Condition Variables",
+      "description": "Thread signaling",
+      "pattern": "condition_variable, wait, notify",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "cpp018",
+      "type": "concurrency",
+      "name": "Atomics",
+      "description": "Lock-free",
+      "pattern": "atomic, memory_order, compare_exchange",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "cpp019",
+      "type": "concurrency",
+      "name": "Async & Futures",
+      "description": "Async programming",
+      "pattern": "async, future, promise, packaged_task",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "cpp020",
+      "type": "build",
+      "name": "CMake",
+      "description": "Build system",
+      "pattern": "CMakeLists.txt, targets, find_package",
+      "example": "Build usage"
+    },
+    {
+      "id": "cpp021",
+      "type": "build",
+      "name": "Make & Ninja",
+      "description": "Build tools",
+      "pattern": "Makefile, ninja, compilation",
+      "example": "Build usage"
+    },
+    {
+      "id": "cpp022",
+      "type": "build",
+      "name": "Package Management",
+      "description": "Dependencies",
+      "pattern": "Conan, vcpkg, FetchContent",
+      "example": "Build usage"
+    },
+    {
+      "id": "cpp023",
+      "type": "debugging",
+      "name": "GDB/LLDB",
+      "description": "Debuggers",
+      "pattern": "Breakpoints, stepping, watchpoints",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "cpp024",
+      "type": "debugging",
+      "name": "Valgrind",
+      "description": "Memory analysis",
+      "pattern": "memcheck, leaks, undefined behavior",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "cpp025",
+      "type": "debugging",
+      "name": "Sanitizers",
+      "description": "Runtime checks",
+      "pattern": "ASan, TSan, UBSan, MSan",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "cpp026",
+      "type": "performance",
+      "name": "C++ Performance",
+      "description": "Optimization",
+      "pattern": "Cache, inlining, vectorization",
+      "example": "Performance usage"
+    },
+    {
+      "id": "cpp027",
+      "type": "performance",
+      "name": "Profiling C++",
+      "description": "Performance analysis",
+      "pattern": "perf, VTune, callgrind",
+      "example": "Performance usage"
+    },
+    {
+      "id": "cpp028",
+      "type": "libraries",
+      "name": "Boost",
+      "description": "Boost libraries",
+      "pattern": "Asio, Beast, Spirit, Filesystem",
+      "example": "Libraries usage"
+    },
+    {
+      "id": "cpp029",
+      "type": "libraries",
+      "name": "Qt Framework",
+      "description": "GUI framework",
+      "pattern": "Widgets, QML, signals/slots",
+      "example": "Libraries usage"
+    },
+    {
+      "id": "cpp030",
+      "type": "libraries",
+      "name": "OpenCV C++",
+      "description": "Computer vision",
+      "pattern": "Mat, imread, image processing",
+      "example": "Libraries usage"
+    }
+  ]
+}

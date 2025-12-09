@@ -1,0 +1,246 @@
+{
+  "category": "webhooks",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "wh001",
+      "type": "fundamentals",
+      "name": "Webhook Concept",
+      "description": "HTTP callbacks",
+      "pattern": "Push events to URL, reverse API, real-time notifications",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "wh002",
+      "type": "fundamentals",
+      "name": "Webhooks vs Polling",
+      "description": "Push vs pull",
+      "pattern": "Webhook: instant, efficient. Polling: delay, waste",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "wh003",
+      "type": "fundamentals",
+      "name": "Webhook Events",
+      "description": "Event types",
+      "pattern": "user.created, payment.completed, order.shipped",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "wh004",
+      "type": "sending",
+      "name": "Webhook Payload",
+      "description": "Event data",
+      "pattern": "{event, data, timestamp, id}, JSON body",
+      "example": "Sending usage"
+    },
+    {
+      "id": "wh005",
+      "type": "sending",
+      "name": "Event Envelope",
+      "description": "Standard structure",
+      "pattern": "{type, id, created_at, data: {...}}",
+      "example": "Sending usage"
+    },
+    {
+      "id": "wh006",
+      "type": "sending",
+      "name": "Idempotency",
+      "description": "Safe retries",
+      "pattern": "Include event ID, receivers track processed IDs",
+      "example": "Sending usage"
+    },
+    {
+      "id": "wh007",
+      "type": "sending",
+      "name": "Retry Logic",
+      "description": "Handle failures",
+      "pattern": "Exponential backoff, max retries, dead letter",
+      "example": "Sending usage"
+    },
+    {
+      "id": "wh008",
+      "type": "sending",
+      "name": "Timeout Handling",
+      "description": "Slow receivers",
+      "pattern": "5-30 second timeout, retry on timeout",
+      "example": "Sending usage"
+    },
+    {
+      "id": "wh009",
+      "type": "security",
+      "name": "Webhook Signatures",
+      "description": "Verify authenticity",
+      "pattern": "HMAC-SHA256, shared secret, X-Signature header",
+      "example": "Security usage"
+    },
+    {
+      "id": "wh010",
+      "type": "security",
+      "name": "Verify Signature",
+      "description": "Receiver validation",
+      "pattern": "Compute HMAC, compare with header, reject mismatch",
+      "example": "Security usage"
+    },
+    {
+      "id": "wh011",
+      "type": "security",
+      "name": "Timestamp Validation",
+      "description": "Replay prevention",
+      "pattern": "Include timestamp, reject old webhooks, 5 min tolerance",
+      "example": "Security usage"
+    },
+    {
+      "id": "wh012",
+      "type": "security",
+      "name": "IP Allowlisting",
+      "description": "Source validation",
+      "pattern": "Only accept from known IPs, document IP ranges",
+      "example": "Security usage"
+    },
+    {
+      "id": "wh013",
+      "type": "receiving",
+      "name": "Webhook Endpoint",
+      "description": "Receive webhooks",
+      "pattern": "POST endpoint, parse body, verify signature, respond 200",
+      "example": "Receiving usage"
+    },
+    {
+      "id": "wh014",
+      "type": "receiving",
+      "name": "Quick Response",
+      "description": "Respond fast",
+      "pattern": "Return 200 immediately, process async, avoid timeout",
+      "example": "Receiving usage"
+    },
+    {
+      "id": "wh015",
+      "type": "receiving",
+      "name": "Idempotent Processing",
+      "description": "Handle duplicates",
+      "pattern": "Store processed event IDs, skip duplicates",
+      "example": "Receiving usage"
+    },
+    {
+      "id": "wh016",
+      "type": "receiving",
+      "name": "Queue Processing",
+      "description": "Async handling",
+      "pattern": "Queue webhook, background job processes, reliable",
+      "example": "Receiving usage"
+    },
+    {
+      "id": "wh017",
+      "type": "management",
+      "name": "Webhook Registration",
+      "description": "Subscribe to events",
+      "pattern": "API to register URL, select events, test endpoint",
+      "example": "Management usage"
+    },
+    {
+      "id": "wh018",
+      "type": "management",
+      "name": "Webhook Dashboard",
+      "description": "Manage webhooks",
+      "pattern": "List registered, delivery status, retry, logs",
+      "example": "Management usage"
+    },
+    {
+      "id": "wh019",
+      "type": "management",
+      "name": "Event Filtering",
+      "description": "Subscribe subset",
+      "pattern": "Choose specific events, reduce noise",
+      "example": "Management usage"
+    },
+    {
+      "id": "wh020",
+      "type": "reliability",
+      "name": "Delivery Status",
+      "description": "Track delivery",
+      "pattern": "Log attempts, status codes, retry count",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "wh021",
+      "type": "reliability",
+      "name": "Failed Webhooks",
+      "description": "Handle failures",
+      "pattern": "Retry queue, exponential backoff, alert on repeated failure",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "wh022",
+      "type": "reliability",
+      "name": "Replay Capability",
+      "description": "Resend events",
+      "pattern": "Manual replay, webhook logs, recovery",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "wh023",
+      "type": "testing",
+      "name": "Testing Webhooks",
+      "description": "Test locally",
+      "pattern": "ngrok, localtunnel, Stripe CLI, mock events",
+      "example": "Testing usage"
+    },
+    {
+      "id": "wh024",
+      "type": "testing",
+      "name": "Webhook Testing Tools",
+      "description": "Debug tools",
+      "pattern": "webhook.site, RequestBin, Hookdeck",
+      "example": "Testing usage"
+    },
+    {
+      "id": "wh025",
+      "type": "implementation",
+      "name": "Stripe Webhooks",
+      "description": "Payment webhooks",
+      "pattern": "stripe.webhooks.constructEvent(), signature verify",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "wh026",
+      "type": "implementation",
+      "name": "GitHub Webhooks",
+      "description": "Git events",
+      "pattern": "Push, PR, issues, X-Hub-Signature-256",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "wh027",
+      "type": "implementation",
+      "name": "Svix",
+      "description": "Webhook infrastructure",
+      "pattern": "Webhook service, retries, signatures, dashboard",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "wh028",
+      "type": "patterns",
+      "name": "Fan-Out",
+      "description": "Multiple receivers",
+      "pattern": "One event to multiple endpoints, parallel delivery",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "wh029",
+      "type": "patterns",
+      "name": "Webhook Gateway",
+      "description": "Centralized handling",
+      "pattern": "Single entry point, routing, transformation",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "wh030",
+      "type": "documentation",
+      "name": "Webhook Documentation",
+      "description": "Document webhooks",
+      "pattern": "Event catalog, payload schemas, examples, testing",
+      "example": "Documentation usage"
+    }
+  ]
+}

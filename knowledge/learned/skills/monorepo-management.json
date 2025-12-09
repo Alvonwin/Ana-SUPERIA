@@ -1,0 +1,246 @@
+{
+  "category": "monorepo-management",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "mono001",
+      "type": "basics",
+      "name": "Monorepo Benefits",
+      "description": "Why monorepo",
+      "pattern": "Code sharing, atomic changes, unified tooling, single source of truth",
+      "example": "Basics usage"
+    },
+    {
+      "id": "mono002",
+      "type": "basics",
+      "name": "Monorepo Challenges",
+      "description": "Considerations",
+      "pattern": "Build times, complexity, tooling requirements, permissions",
+      "example": "Basics usage"
+    },
+    {
+      "id": "mono003",
+      "type": "basics",
+      "name": "Monorepo vs Polyrepo",
+      "description": "Tradeoffs",
+      "pattern": "Monorepo: coupling. Polyrepo: independence. Hybrid possible.",
+      "example": "Basics usage"
+    },
+    {
+      "id": "mono004",
+      "type": "tools",
+      "name": "Nx",
+      "description": "Full-featured monorepo",
+      "pattern": "nx generate, affected commands, computation caching, plugins",
+      "example": "Tools usage"
+    },
+    {
+      "id": "mono005",
+      "type": "tools",
+      "name": "Nx Generators",
+      "description": "Code scaffolding",
+      "pattern": "nx g @nx/react:app myapp, custom generators",
+      "example": "Tools usage"
+    },
+    {
+      "id": "mono006",
+      "type": "tools",
+      "name": "Nx Graph",
+      "description": "Dependency visualization",
+      "pattern": "nx graph - interactive project dependency view",
+      "example": "Tools usage"
+    },
+    {
+      "id": "mono007",
+      "type": "tools",
+      "name": "Turborepo",
+      "description": "Build system",
+      "pattern": "turbo run build, pipeline config, remote caching",
+      "example": "Tools usage"
+    },
+    {
+      "id": "mono008",
+      "type": "tools",
+      "name": "Turbo Pipeline",
+      "description": "Task orchestration",
+      "pattern": "turbo.json: pipeline, dependsOn, outputs, cache",
+      "example": "Tools usage"
+    },
+    {
+      "id": "mono009",
+      "type": "tools",
+      "name": "Lerna",
+      "description": "Multi-package repos",
+      "pattern": "lerna publish, version management, changelog generation",
+      "example": "Tools usage"
+    },
+    {
+      "id": "mono010",
+      "type": "tools",
+      "name": "pnpm Workspaces",
+      "description": "Fast package manager",
+      "pattern": "pnpm-workspace.yaml, pnpm -r run build, filtering",
+      "example": "Tools usage"
+    },
+    {
+      "id": "mono011",
+      "type": "tools",
+      "name": "Yarn Workspaces",
+      "description": "Yarn monorepo",
+      "pattern": "workspaces field in package.json, yarn workspace cmd",
+      "example": "Tools usage"
+    },
+    {
+      "id": "mono012",
+      "type": "tools",
+      "name": "npm Workspaces",
+      "description": "npm 7+ monorepo",
+      "pattern": "workspaces array, npm run -ws build",
+      "example": "Tools usage"
+    },
+    {
+      "id": "mono013",
+      "type": "structure",
+      "name": "Package Structure",
+      "description": "Folder organization",
+      "pattern": "packages/, apps/, libs/, tools/ common structures",
+      "example": "Structure usage"
+    },
+    {
+      "id": "mono014",
+      "type": "structure",
+      "name": "Shared Configs",
+      "description": "Config packages",
+      "pattern": "@company/eslint-config, @company/tsconfig - shared configs",
+      "example": "Structure usage"
+    },
+    {
+      "id": "mono015",
+      "type": "structure",
+      "name": "Internal Packages",
+      "description": "Private packages",
+      "pattern": "\"private\": true, workspace: protocol dependencies",
+      "example": "Structure usage"
+    },
+    {
+      "id": "mono016",
+      "type": "caching",
+      "name": "Local Caching",
+      "description": "Build cache",
+      "pattern": "Hash inputs, skip unchanged, restore outputs",
+      "example": "Caching usage"
+    },
+    {
+      "id": "mono017",
+      "type": "caching",
+      "name": "Remote Caching",
+      "description": "Shared cache",
+      "pattern": "Nx Cloud, Turborepo Remote Cache - team-wide caching",
+      "example": "Caching usage"
+    },
+    {
+      "id": "mono018",
+      "type": "caching",
+      "name": "Cache Invalidation",
+      "description": "When to rebuild",
+      "pattern": "Input hashing, dependency changes, env variables",
+      "example": "Caching usage"
+    },
+    {
+      "id": "mono019",
+      "type": "affected",
+      "name": "Affected Commands",
+      "description": "Changed packages",
+      "pattern": "nx affected:build, only build what changed + dependents",
+      "example": "Affected usage"
+    },
+    {
+      "id": "mono020",
+      "type": "affected",
+      "name": "Change Detection",
+      "description": "Git-based detection",
+      "pattern": "Compare to base branch, find affected projects",
+      "example": "Affected usage"
+    },
+    {
+      "id": "mono021",
+      "type": "versioning",
+      "name": "Independent Versioning",
+      "description": "Per-package versions",
+      "pattern": "Each package has own version, independent releases",
+      "example": "Versioning usage"
+    },
+    {
+      "id": "mono022",
+      "type": "versioning",
+      "name": "Fixed Versioning",
+      "description": "Unified versions",
+      "pattern": "All packages same version, release together",
+      "example": "Versioning usage"
+    },
+    {
+      "id": "mono023",
+      "type": "versioning",
+      "name": "Changesets",
+      "description": "Version management",
+      "pattern": "changeset add, changeset version, changeset publish",
+      "example": "Versioning usage"
+    },
+    {
+      "id": "mono024",
+      "type": "ci",
+      "name": "Monorepo CI",
+      "description": "CI optimization",
+      "pattern": "Only test affected, parallel jobs, caching",
+      "example": "Ci usage"
+    },
+    {
+      "id": "mono025",
+      "type": "ci",
+      "name": "CI Matrix",
+      "description": "Parallel package builds",
+      "pattern": "Dynamic matrix from affected packages",
+      "example": "Ci usage"
+    },
+    {
+      "id": "mono026",
+      "type": "boundaries",
+      "name": "Module Boundaries",
+      "description": "Import rules",
+      "pattern": "nx enforce-module-boundaries, prevent bad imports",
+      "example": "Boundaries usage"
+    },
+    {
+      "id": "mono027",
+      "type": "boundaries",
+      "name": "Tags",
+      "description": "Project categorization",
+      "pattern": "tags: ['scope:shared', 'type:lib'], constraint rules",
+      "example": "Boundaries usage"
+    },
+    {
+      "id": "mono028",
+      "type": "publishing",
+      "name": "Package Publishing",
+      "description": "npm publish",
+      "pattern": "Build, version, publish - automation with changesets",
+      "example": "Publishing usage"
+    },
+    {
+      "id": "mono029",
+      "type": "publishing",
+      "name": "Private Registry",
+      "description": "Internal packages",
+      "pattern": "Verdaccio, npm Enterprise, GitHub Packages",
+      "example": "Publishing usage"
+    },
+    {
+      "id": "mono030",
+      "type": "migration",
+      "name": "Monorepo Migration",
+      "description": "Moving to monorepo",
+      "pattern": "Gradual migration, git history preservation, tooling setup",
+      "example": "Migration usage"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "category": "advanced-frameworks",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "fw001",
+      "type": "vue",
+      "name": "Vue Composition API",
+      "description": "ref, reactive, computed, watch",
+      "pattern": "const count = ref(0); const doubled = computed(() => count.value * 2);",
+      "example": "Vue usage"
+    },
+    {
+      "id": "fw002",
+      "type": "vue",
+      "name": "Vue Reactivity",
+      "description": "Systeme de reactivite Vue 3",
+      "pattern": "const state = reactive({count: 0}); watchEffect(() => console.log(state.count));",
+      "example": "Vue usage"
+    },
+    {
+      "id": "fw003",
+      "type": "vue",
+      "name": "Pinia Store",
+      "description": "State management Vue moderne",
+      "pattern": "defineStore('counter', { state: () => ({count: 0}), actions: {inc() {this.count++}} })",
+      "example": "Vue usage"
+    },
+    {
+      "id": "fw004",
+      "type": "vue",
+      "name": "Vue Router",
+      "description": "Navigation SPA Vue",
+      "pattern": "createRouter({ routes: [{path: '/', component: Home}], history: createWebHistory() })",
+      "example": "Vue usage"
+    },
+    {
+      "id": "fw005",
+      "type": "vue",
+      "name": "Vue Slots",
+      "description": "Content distribution",
+      "pattern": "<slot name='header'/> <slot :item='item'/> // scoped slot",
+      "example": "Vue usage"
+    },
+    {
+      "id": "fw006",
+      "type": "vue",
+      "name": "Vue Directives",
+      "description": "v-if, v-for, v-model, custom",
+      "pattern": "app.directive('focus', {mounted(el) { el.focus() }})",
+      "example": "Vue usage"
+    },
+    {
+      "id": "fw007",
+      "type": "vue",
+      "name": "Vue Teleport",
+      "description": "Render hors du parent DOM",
+      "pattern": "<Teleport to='#modal-container'><Modal/></Teleport>",
+      "example": "Vue usage"
+    },
+    {
+      "id": "fw008",
+      "type": "vue",
+      "name": "Vue Provide/Inject",
+      "description": "Dependency injection",
+      "pattern": "provide('key', value); const val = inject('key');",
+      "example": "Vue usage"
+    },
+    {
+      "id": "fw009",
+      "type": "nextjs",
+      "name": "Next.js App Router",
+      "description": "File-based routing moderne",
+      "pattern": "app/page.tsx, app/about/page.tsx, app/[id]/page.tsx",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "fw010",
+      "type": "nextjs",
+      "name": "Next.js Server Actions",
+      "description": "Mutations serveur",
+      "pattern": "'use server'; async function createPost(formData) { await db.insert(...) }",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "fw011",
+      "type": "nextjs",
+      "name": "Next.js Middleware",
+      "description": "Edge middleware",
+      "pattern": "export function middleware(req) { return NextResponse.rewrite(...) }",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "fw012",
+      "type": "nextjs",
+      "name": "Next.js ISR",
+      "description": "Incremental Static Regeneration",
+      "pattern": "export const revalidate = 60; // revalider toutes les 60s",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "fw013",
+      "type": "nextjs",
+      "name": "Next.js Image",
+      "description": "Optimisation images auto",
+      "pattern": "<Image src={img} width={300} height={200} placeholder='blur'/>",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "fw014",
+      "type": "nextjs",
+      "name": "Next.js Metadata",
+      "description": "SEO et meta tags",
+      "pattern": "export const metadata = { title: 'Page', description: '...' };",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "fw015",
+      "type": "nextjs",
+      "name": "Next.js Loading UI",
+      "description": "Streaming et loading states",
+      "pattern": "app/loading.tsx -> <Skeleton/> pendant chargement",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "fw016",
+      "type": "nextjs",
+      "name": "Next.js Parallel Routes",
+      "description": "Layouts paralleles",
+      "pattern": "app/@modal/page.tsx, app/@sidebar/page.tsx",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "fw017",
+      "type": "svelte",
+      "name": "Svelte Reactivity",
+      "description": "Reactivite sans virtual DOM",
+      "pattern": "$: doubled = count * 2; // reactive statement",
+      "example": "Svelte usage"
+    },
+    {
+      "id": "fw018",
+      "type": "svelte",
+      "name": "Svelte Stores",
+      "description": "State management simple",
+      "pattern": "const count = writable(0); $count; count.update(n => n+1);",
+      "example": "Svelte usage"
+    },
+    {
+      "id": "fw019",
+      "type": "svelte",
+      "name": "SvelteKit",
+      "description": "Framework full-stack Svelte",
+      "pattern": "+page.svelte, +page.server.ts, +layout.svelte",
+      "example": "Svelte usage"
+    },
+    {
+      "id": "fw020",
+      "type": "svelte",
+      "name": "Svelte Actions",
+      "description": "Directives DOM reutilisables",
+      "pattern": "export function tooltip(node, text) { ... return {destroy() {...}} }",
+      "example": "Svelte usage"
+    },
+    {
+      "id": "fw021",
+      "type": "angular",
+      "name": "Angular Signals",
+      "description": "Reactivite Angular 16+",
+      "pattern": "count = signal(0); doubled = computed(() => count() * 2);",
+      "example": "Angular usage"
+    },
+    {
+      "id": "fw022",
+      "type": "angular",
+      "name": "Angular Standalone",
+      "description": "Components sans modules",
+      "pattern": "@Component({standalone: true, imports: [CommonModule]})",
+      "example": "Angular usage"
+    },
+    {
+      "id": "fw023",
+      "type": "angular",
+      "name": "Angular Inject",
+      "description": "Injection moderne",
+      "pattern": "private http = inject(HttpClient);",
+      "example": "Angular usage"
+    },
+    {
+      "id": "fw024",
+      "type": "angular",
+      "name": "Angular Defer",
+      "description": "Lazy loading templates",
+      "pattern": "@defer (on viewport) { <HeavyComponent/> } @placeholder { <Skeleton/> }",
+      "example": "Angular usage"
+    },
+    {
+      "id": "fw025",
+      "type": "astro",
+      "name": "Astro Islands",
+      "description": "Partial hydration",
+      "pattern": "<ReactComponent client:load/> <VueComponent client:visible/>",
+      "example": "Astro usage"
+    },
+    {
+      "id": "fw026",
+      "type": "astro",
+      "name": "Astro Content Collections",
+      "description": "Type-safe content",
+      "pattern": "const posts = await getCollection('blog');",
+      "example": "Astro usage"
+    },
+    {
+      "id": "fw027",
+      "type": "remix",
+      "name": "Remix Loaders",
+      "description": "Data loading serveur",
+      "pattern": "export async function loader({params}) { return json(await db.get(params.id)); }",
+      "example": "Remix usage"
+    },
+    {
+      "id": "fw028",
+      "type": "remix",
+      "name": "Remix Actions",
+      "description": "Form handling serveur",
+      "pattern": "export async function action({request}) { const form = await request.formData(); }",
+      "example": "Remix usage"
+    },
+    {
+      "id": "fw029",
+      "type": "remix",
+      "name": "Remix Error Boundaries",
+      "description": "Gestion erreurs par route",
+      "pattern": "export function ErrorBoundary() { const error = useRouteError(); }",
+      "example": "Remix usage"
+    },
+    {
+      "id": "fw030",
+      "type": "solid",
+      "name": "SolidJS Signals",
+      "description": "Fine-grained reactivity",
+      "pattern": "const [count, setCount] = createSignal(0); createEffect(() => console.log(count()));",
+      "example": "Solid usage"
+    }
+  ]
+}

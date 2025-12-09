@@ -1,0 +1,5 @@
+{
+  "pattern": "*.cjs",
+  "basePath": "E:\\ANA\\server",
+  "limit": 100
+}

@@ -1,0 +1,246 @@
+{
+  "category": "foodtech",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "fod001",
+      "type": "fundamentals",
+      "name": "FoodTech Basics",
+      "description": "Food technology",
+      "pattern": "Delivery, production, innovation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fod002",
+      "type": "fundamentals",
+      "name": "Restaurant Tech",
+      "description": "F&B technology",
+      "pattern": "POS, kitchen, operations",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fod003",
+      "type": "fundamentals",
+      "name": "Food Data",
+      "description": "Industry data",
+      "pattern": "Nutrition, inventory, sales",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fod004",
+      "type": "delivery",
+      "name": "Food Delivery",
+      "description": "Delivery platforms",
+      "pattern": "Marketplace, logistics, dispatch",
+      "example": "Delivery usage"
+    },
+    {
+      "id": "fod005",
+      "type": "delivery",
+      "name": "Last Mile Food",
+      "description": "Food logistics",
+      "pattern": "Routing, temperature, speed",
+      "example": "Delivery usage"
+    },
+    {
+      "id": "fod006",
+      "type": "delivery",
+      "name": "Ghost Kitchens",
+      "description": "Cloud kitchens",
+      "pattern": "Virtual brands, multi-brand",
+      "example": "Delivery usage"
+    },
+    {
+      "id": "fod007",
+      "type": "restaurant",
+      "name": "POS Systems",
+      "description": "Point of sale",
+      "pattern": "Orders, payments, inventory",
+      "example": "Restaurant usage"
+    },
+    {
+      "id": "fod008",
+      "type": "restaurant",
+      "name": "Kitchen Display",
+      "description": "KDS systems",
+      "pattern": "Order flow, timing, prep",
+      "example": "Restaurant usage"
+    },
+    {
+      "id": "fod009",
+      "type": "restaurant",
+      "name": "Reservation Systems",
+      "description": "Table management",
+      "pattern": "OpenTable, waitlist, CRM",
+      "example": "Restaurant usage"
+    },
+    {
+      "id": "fod010",
+      "type": "restaurant",
+      "name": "Menu Engineering",
+      "description": "Menu optimization",
+      "pattern": "Pricing, profitability, design",
+      "example": "Restaurant usage"
+    },
+    {
+      "id": "fod011",
+      "type": "ordering",
+      "name": "Online Ordering",
+      "description": "Digital ordering",
+      "pattern": "Web, app, integration",
+      "example": "Ordering usage"
+    },
+    {
+      "id": "fod012",
+      "type": "ordering",
+      "name": "Kiosk Systems",
+      "description": "Self-service",
+      "pattern": "Ordering kiosks, customization",
+      "example": "Ordering usage"
+    },
+    {
+      "id": "fod013",
+      "type": "ordering",
+      "name": "QR Ordering",
+      "description": "Contactless ordering",
+      "pattern": "Scan to order, pay at table",
+      "example": "Ordering usage"
+    },
+    {
+      "id": "fod014",
+      "type": "automation",
+      "name": "Kitchen Automation",
+      "description": "Automated cooking",
+      "pattern": "Robots, automated lines",
+      "example": "Automation usage"
+    },
+    {
+      "id": "fod015",
+      "type": "automation",
+      "name": "Food Robots",
+      "description": "Food robotics",
+      "pattern": "Prep, cooking, serving",
+      "example": "Automation usage"
+    },
+    {
+      "id": "fod016",
+      "type": "automation",
+      "name": "Vending Tech",
+      "description": "Smart vending",
+      "pattern": "Automated retail, fresh food",
+      "example": "Automation usage"
+    },
+    {
+      "id": "fod017",
+      "type": "grocery",
+      "name": "Online Grocery",
+      "description": "E-grocery",
+      "pattern": "Delivery, pickup, fulfillment",
+      "example": "Grocery usage"
+    },
+    {
+      "id": "fod018",
+      "type": "grocery",
+      "name": "Grocery Tech",
+      "description": "Store technology",
+      "pattern": "Inventory, pricing, checkout",
+      "example": "Grocery usage"
+    },
+    {
+      "id": "fod019",
+      "type": "grocery",
+      "name": "Meal Kits",
+      "description": "Meal kit tech",
+      "pattern": "Subscriptions, recipes, logistics",
+      "example": "Grocery usage"
+    },
+    {
+      "id": "fod020",
+      "type": "production",
+      "name": "Food Manufacturing",
+      "description": "Production tech",
+      "pattern": "Automation, traceability, quality",
+      "example": "Production usage"
+    },
+    {
+      "id": "fod021",
+      "type": "production",
+      "name": "Alt Protein",
+      "description": "Alternative proteins",
+      "pattern": "Plant-based, cultivated, fermentation",
+      "example": "Production usage"
+    },
+    {
+      "id": "fod022",
+      "type": "production",
+      "name": "Food Science",
+      "description": "R&D tech",
+      "pattern": "Formulation, testing, scale-up",
+      "example": "Production usage"
+    },
+    {
+      "id": "fod023",
+      "type": "safety",
+      "name": "Food Safety",
+      "description": "Safety tech",
+      "pattern": "HACCP, traceability, recalls",
+      "example": "Safety usage"
+    },
+    {
+      "id": "fod024",
+      "type": "safety",
+      "name": "Traceability",
+      "description": "Track and trace",
+      "pattern": "Blockchain, serialization, origin",
+      "example": "Safety usage"
+    },
+    {
+      "id": "fod025",
+      "type": "nutrition",
+      "name": "Nutrition Tech",
+      "description": "Nutrition apps",
+      "pattern": "Tracking, analysis, recommendations",
+      "example": "Nutrition usage"
+    },
+    {
+      "id": "fod026",
+      "type": "nutrition",
+      "name": "Personalized Nutrition",
+      "description": "Custom nutrition",
+      "pattern": "DNA, microbiome, preferences",
+      "example": "Nutrition usage"
+    },
+    {
+      "id": "fod027",
+      "type": "waste",
+      "name": "Food Waste Tech",
+      "description": "Waste reduction",
+      "pattern": "Surplus, donation, upcycling",
+      "example": "Waste usage"
+    },
+    {
+      "id": "fod028",
+      "type": "analytics",
+      "name": "Restaurant Analytics",
+      "description": "F&B analytics",
+      "pattern": "Sales, labor, inventory",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "fod029",
+      "type": "analytics",
+      "name": "Consumer Insights",
+      "description": "Food trends",
+      "pattern": "Preferences, behaviors, trends",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "fod030",
+      "type": "loyalty",
+      "name": "F&B Loyalty",
+      "description": "Loyalty programs",
+      "pattern": "Points, rewards, CRM",
+      "example": "Loyalty usage"
+    }
+  ]
+}

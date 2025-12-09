@@ -1,0 +1,246 @@
+{
+  "category": "perl-scripting",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "perl001",
+      "type": "fundamentals",
+      "name": "Perl Basics",
+      "description": "Perl syntax",
+      "pattern": "scalars, arrays, hashes, sigils",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "perl002",
+      "type": "fundamentals",
+      "name": "Regular Expressions",
+      "description": "Perl regex",
+      "pattern": "=~, s///, qr//, modifiers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "perl003",
+      "type": "fundamentals",
+      "name": "Data Structures",
+      "description": "Perl data",
+      "pattern": "@arrays, %hashes, references",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "perl004",
+      "type": "fundamentals",
+      "name": "File Handling",
+      "description": "File I/O",
+      "pattern": "open, read, write, close",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "perl005",
+      "type": "fundamentals",
+      "name": "Control Flow",
+      "description": "Flow control",
+      "pattern": "if, unless, foreach, while",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "perl006",
+      "type": "fundamentals",
+      "name": "Subroutines",
+      "description": "Functions",
+      "pattern": "sub, @_, return, prototypes",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "perl007",
+      "type": "fundamentals",
+      "name": "References",
+      "description": "Pointers",
+      "pattern": "\\$ref, @$ref, $$ref, dereferencing",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "perl008",
+      "type": "fundamentals",
+      "name": "Special Variables",
+      "description": "Built-in vars",
+      "pattern": "$_, @ARGV, %ENV, $!",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "perl009",
+      "type": "text",
+      "name": "Text Processing",
+      "description": "String manipulation",
+      "pattern": "split, join, substr, index",
+      "example": "Text usage"
+    },
+    {
+      "id": "perl010",
+      "type": "text",
+      "name": "One-Liners",
+      "description": "Command line",
+      "pattern": "perl -e, -n, -p, -i",
+      "example": "Text usage"
+    },
+    {
+      "id": "perl011",
+      "type": "modules",
+      "name": "CPAN Modules",
+      "description": "Package manager",
+      "pattern": "cpan, cpanm, use, require",
+      "example": "Modules usage"
+    },
+    {
+      "id": "perl012",
+      "type": "modules",
+      "name": "Module Creation",
+      "description": "Creating modules",
+      "pattern": "package, Exporter, bless",
+      "example": "Modules usage"
+    },
+    {
+      "id": "perl013",
+      "type": "modules",
+      "name": "DBI/DBD",
+      "description": "Database access",
+      "pattern": "DBI->connect, prepare, execute",
+      "example": "Modules usage"
+    },
+    {
+      "id": "perl014",
+      "type": "modules",
+      "name": "LWP/HTTP",
+      "description": "Web requests",
+      "pattern": "LWP::UserAgent, HTTP::Request",
+      "example": "Modules usage"
+    },
+    {
+      "id": "perl015",
+      "type": "modules",
+      "name": "Moose/Moo",
+      "description": "OOP framework",
+      "pattern": "has, extends, roles, types",
+      "example": "Modules usage"
+    },
+    {
+      "id": "perl016",
+      "type": "oop",
+      "name": "Perl OOP",
+      "description": "Object orientation",
+      "pattern": "bless, new, method calls",
+      "example": "Oop usage"
+    },
+    {
+      "id": "perl017",
+      "type": "oop",
+      "name": "Inheritance",
+      "description": "Class inheritance",
+      "pattern": "@ISA, SUPER::, use parent",
+      "example": "Oop usage"
+    },
+    {
+      "id": "perl018",
+      "type": "web",
+      "name": "CGI Programming",
+      "description": "Web CGI",
+      "pattern": "CGI.pm, param, header",
+      "example": "Web usage"
+    },
+    {
+      "id": "perl019",
+      "type": "web",
+      "name": "Mojolicious",
+      "description": "Modern web framework",
+      "pattern": "Mojo, routes, templates",
+      "example": "Web usage"
+    },
+    {
+      "id": "perl020",
+      "type": "web",
+      "name": "Dancer/Catalyst",
+      "description": "Web frameworks",
+      "pattern": "Dancer2, Catalyst, PSGI",
+      "example": "Web usage"
+    },
+    {
+      "id": "perl021",
+      "type": "testing",
+      "name": "Perl Testing",
+      "description": "Test frameworks",
+      "pattern": "Test::More, prove, TAP",
+      "example": "Testing usage"
+    },
+    {
+      "id": "perl022",
+      "type": "testing",
+      "name": "Test::Class",
+      "description": "OO testing",
+      "pattern": "Test::Class, setup, teardown",
+      "example": "Testing usage"
+    },
+    {
+      "id": "perl023",
+      "type": "advanced",
+      "name": "Closures",
+      "description": "Anonymous subs",
+      "pattern": "sub { }, closures, callbacks",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "perl024",
+      "type": "advanced",
+      "name": "Tied Variables",
+      "description": "Magic variables",
+      "pattern": "tie, TIESCALAR, FETCH, STORE",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "perl025",
+      "type": "advanced",
+      "name": "XS Programming",
+      "description": "C extensions",
+      "pattern": "XS, Inline::C, performance",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "perl026",
+      "type": "sysadmin",
+      "name": "System Admin",
+      "description": "Sysadmin scripts",
+      "pattern": "system, backticks, IPC",
+      "example": "Sysadmin usage"
+    },
+    {
+      "id": "perl027",
+      "type": "sysadmin",
+      "name": "Log Parsing",
+      "description": "Log analysis",
+      "pattern": "parsing, regex, reports",
+      "example": "Sysadmin usage"
+    },
+    {
+      "id": "perl028",
+      "type": "sysadmin",
+      "name": "Automation",
+      "description": "Task automation",
+      "pattern": "cron, batch, monitoring",
+      "example": "Sysadmin usage"
+    },
+    {
+      "id": "perl029",
+      "type": "bioinformatics",
+      "name": "BioPerl",
+      "description": "Bio computing",
+      "pattern": "BioPerl, sequences, BLAST",
+      "example": "Bioinformatics usage"
+    },
+    {
+      "id": "perl030",
+      "type": "modern",
+      "name": "Modern Perl",
+      "description": "Best practices",
+      "pattern": "strict, warnings, Modern::Perl",
+      "example": "Modern usage"
+    }
+  ]
+}

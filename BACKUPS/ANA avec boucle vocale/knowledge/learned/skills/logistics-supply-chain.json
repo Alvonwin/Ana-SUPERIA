@@ -1,0 +1,246 @@
+{
+  "category": "logistics-supply-chain",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "log001",
+      "type": "fundamentals",
+      "name": "Supply Chain Basics",
+      "description": "SCM fundamentals",
+      "pattern": "Planning, sourcing, logistics",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "log002",
+      "type": "fundamentals",
+      "name": "Logistics Operations",
+      "description": "Movement of goods",
+      "pattern": "Transportation, warehousing, fulfillment",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "log003",
+      "type": "fundamentals",
+      "name": "Inventory Management",
+      "description": "Stock control",
+      "pattern": "SKU, safety stock, reorder",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "log004",
+      "type": "systems",
+      "name": "WMS",
+      "description": "Warehouse management",
+      "pattern": "Picking, packing, inventory",
+      "example": "Systems usage"
+    },
+    {
+      "id": "log005",
+      "type": "systems",
+      "name": "TMS",
+      "description": "Transportation management",
+      "pattern": "Routing, carriers, optimization",
+      "example": "Systems usage"
+    },
+    {
+      "id": "log006",
+      "type": "systems",
+      "name": "OMS",
+      "description": "Order management",
+      "pattern": "Orders, fulfillment, returns",
+      "example": "Systems usage"
+    },
+    {
+      "id": "log007",
+      "type": "systems",
+      "name": "ERP Integration",
+      "description": "Enterprise systems",
+      "pattern": "SAP, Oracle, integration",
+      "example": "Systems usage"
+    },
+    {
+      "id": "log008",
+      "type": "tracking",
+      "name": "Shipment Tracking",
+      "description": "Track & trace",
+      "pattern": "GPS, events, visibility",
+      "example": "Tracking usage"
+    },
+    {
+      "id": "log009",
+      "type": "tracking",
+      "name": "IoT Tracking",
+      "description": "Asset tracking",
+      "pattern": "Sensors, RFID, BLE",
+      "example": "Tracking usage"
+    },
+    {
+      "id": "log010",
+      "type": "tracking",
+      "name": "Supply Chain Visibility",
+      "description": "End-to-end visibility",
+      "pattern": "Control tower, real-time",
+      "example": "Tracking usage"
+    },
+    {
+      "id": "log011",
+      "type": "optimization",
+      "name": "Route Optimization",
+      "description": "Routing algorithms",
+      "pattern": "TSP, VRP, constraints",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "log012",
+      "type": "optimization",
+      "name": "Load Planning",
+      "description": "Load optimization",
+      "pattern": "Bin packing, utilization",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "log013",
+      "type": "optimization",
+      "name": "Network Design",
+      "description": "Distribution network",
+      "pattern": "Facilities, flow, cost",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "log014",
+      "type": "lastmile",
+      "name": "Last Mile Delivery",
+      "description": "Final delivery",
+      "pattern": "Routing, crowdsourcing, lockers",
+      "example": "Lastmile usage"
+    },
+    {
+      "id": "log015",
+      "type": "lastmile",
+      "name": "Delivery Management",
+      "description": "Delivery ops",
+      "pattern": "Dispatch, proof of delivery",
+      "example": "Lastmile usage"
+    },
+    {
+      "id": "log016",
+      "type": "lastmile",
+      "name": "Delivery Experience",
+      "description": "Customer delivery",
+      "pattern": "Tracking, notifications, ETA",
+      "example": "Lastmile usage"
+    },
+    {
+      "id": "log017",
+      "type": "automation",
+      "name": "Warehouse Automation",
+      "description": "Automated warehouse",
+      "pattern": "AS/RS, conveyors, sorters",
+      "example": "Automation usage"
+    },
+    {
+      "id": "log018",
+      "type": "automation",
+      "name": "Robotics Logistics",
+      "description": "Warehouse robots",
+      "pattern": "AMR, picking robots, cobots",
+      "example": "Automation usage"
+    },
+    {
+      "id": "log019",
+      "type": "automation",
+      "name": "Autonomous Vehicles",
+      "description": "Self-driving logistics",
+      "pattern": "Trucks, drones, AGV",
+      "example": "Automation usage"
+    },
+    {
+      "id": "log020",
+      "type": "demand",
+      "name": "Demand Forecasting",
+      "description": "Demand prediction",
+      "pattern": "ML, time series, planning",
+      "example": "Demand usage"
+    },
+    {
+      "id": "log021",
+      "type": "demand",
+      "name": "S&OP",
+      "description": "Sales & operations",
+      "pattern": "Planning, alignment, consensus",
+      "example": "Demand usage"
+    },
+    {
+      "id": "log022",
+      "type": "demand",
+      "name": "Inventory Optimization",
+      "description": "Stock optimization",
+      "pattern": "Multi-echelon, safety stock",
+      "example": "Demand usage"
+    },
+    {
+      "id": "log023",
+      "type": "procurement",
+      "name": "Procurement Tech",
+      "description": "Sourcing platforms",
+      "pattern": "RFQ, supplier management",
+      "example": "Procurement usage"
+    },
+    {
+      "id": "log024",
+      "type": "procurement",
+      "name": "Supplier Management",
+      "description": "Vendor management",
+      "pattern": "Onboarding, performance, risk",
+      "example": "Procurement usage"
+    },
+    {
+      "id": "log025",
+      "type": "returns",
+      "name": "Returns Management",
+      "description": "Reverse logistics",
+      "pattern": "RMA, processing, refurbishment",
+      "example": "Returns usage"
+    },
+    {
+      "id": "log026",
+      "type": "returns",
+      "name": "Circular Economy",
+      "description": "Sustainability",
+      "pattern": "Recycling, reuse, lifecycle",
+      "example": "Returns usage"
+    },
+    {
+      "id": "log027",
+      "type": "international",
+      "name": "Global Trade",
+      "description": "International logistics",
+      "pattern": "Customs, compliance, documentation",
+      "example": "International usage"
+    },
+    {
+      "id": "log028",
+      "type": "international",
+      "name": "Freight Forwarding",
+      "description": "International shipping",
+      "pattern": "Ocean, air, multimodal",
+      "example": "International usage"
+    },
+    {
+      "id": "log029",
+      "type": "analytics",
+      "name": "Supply Chain Analytics",
+      "description": "SCM analytics",
+      "pattern": "KPIs, dashboards, optimization",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "log030",
+      "type": "blockchain",
+      "name": "Supply Chain Blockchain",
+      "description": "Traceability",
+      "pattern": "Provenance, transparency, trust",
+      "example": "Blockchain usage"
+    }
+  ]
+}

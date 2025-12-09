@@ -1,0 +1,33 @@
+{
+  "category": "ai-video-generation",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "AI Video Generation - Runway, Pika, AnimateDiff",
+  "skills": [
+    {"id": "avg01", "type": "basics", "name": "Video Diffusion", "description": "Diffusion for video", "pattern": "Frame consistency", "example": "Temporal coherence"},
+    {"id": "avg02", "type": "txt2vid", "name": "Text to Video", "description": "Generate from text", "pattern": "Prompt → Video", "example": "Runway Gen-2"},
+    {"id": "avg03", "type": "img2vid", "name": "Image to Video", "description": "Animate still image", "pattern": "Image → Motion", "example": "Stable Video Diffusion"},
+    {"id": "avg04", "type": "animatediff", "name": "AnimateDiff", "description": "SD video extension", "pattern": "Motion modules", "example": "Animate checkpoints"},
+    {"id": "avg05", "type": "runway", "name": "Runway ML", "description": "Professional video AI", "pattern": "Gen-1, Gen-2, Gen-3", "example": "Commercial quality"},
+    {"id": "avg06", "type": "pika", "name": "Pika Labs", "description": "Discord video gen", "pattern": "/create command", "example": "Quick videos"},
+    {"id": "avg07", "type": "sora", "name": "Sora", "description": "OpenAI video model", "pattern": "Long-form video", "example": "60s+ generation"},
+    {"id": "avg08", "type": "kling", "name": "Kling", "description": "Kuaishou video AI", "pattern": "Chinese model", "example": "5s clips"},
+    {"id": "avg09", "type": "motion", "name": "Motion Modules", "description": "Animation patterns", "pattern": "Pan, zoom, rotate", "example": "Camera movement"},
+    {"id": "avg10", "type": "frames", "name": "Frame Rate", "description": "FPS settings", "pattern": "8-30 fps typical", "example": "24fps cinema"},
+    {"id": "avg11", "type": "duration", "name": "Video Duration", "description": "Length limits", "pattern": "2-10s common", "example": "4s default"},
+    {"id": "avg12", "type": "interpolation", "name": "Frame Interpolation", "description": "Smooth motion", "pattern": "RIFE, FILM", "example": "60fps output"},
+    {"id": "avg13", "type": "consistency", "name": "Temporal Consistency", "description": "Frame coherence", "pattern": "Reduce flickering", "example": "Stable subjects"},
+    {"id": "avg14", "type": "vid2vid", "name": "Video to Video", "description": "Style transfer video", "pattern": "Transform existing", "example": "Restyle footage"},
+    {"id": "avg15", "type": "deforum", "name": "Deforum", "description": "2D/3D animations", "pattern": "Keyframe animation", "example": "Zoom journeys"},
+    {"id": "avg16", "type": "ebsynth", "name": "EbSynth", "description": "Style propagation", "pattern": "Keyframe painting", "example": "Rotoscope style"},
+    {"id": "avg17", "type": "svd", "name": "Stable Video Diffusion", "description": "Official SD video", "pattern": "14-25 frames", "example": "Open source"},
+    {"id": "avg18", "type": "cog", "name": "CogVideoX", "description": "Open source video", "pattern": "6s generation", "example": "Local video gen"},
+    {"id": "avg19", "type": "mochi", "name": "Mochi", "description": "Genmo video model", "pattern": "High quality", "example": "Free tier"},
+    {"id": "avg20", "type": "luma", "name": "Luma Dream Machine", "description": "Fast video gen", "pattern": "Quick iterations", "example": "120 credits free"},
+    {"id": "avg21", "type": "control", "name": "Video ControlNet", "description": "Guided video gen", "pattern": "Motion guidance", "example": "Pose-driven"},
+    {"id": "avg22", "type": "loop", "name": "Looping Videos", "description": "Seamless loops", "pattern": "Start/end match", "example": "GIF creation"},
+    {"id": "avg23", "type": "upscale", "name": "Video Upscaling", "description": "Increase resolution", "pattern": "Topaz, ESRGAN", "example": "4K output"},
+    {"id": "avg24", "type": "audio", "name": "Audio Sync", "description": "Add audio track", "pattern": "Lip sync, music", "example": "Voice dubbing"},
+    {"id": "avg25", "type": "extend", "name": "Video Extension", "description": "Extend duration", "pattern": "Continue generation", "example": "Longer clips"}
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "name": "Agent Health Monitor",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "*/5 * * * *"
+            }
+          ]
+        }
+      },
+      "name": "Every 5 minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 300],
+      "id": "agent-health-trigger"
+    },
+    {
+      "parameters": {
+        "command": "cd \"E:/Mémoire Claude/agents\" && for /d %d in (*) do @echo %~nd"
+      },
+      "name": "List All Agents",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [450, 300],
+      "id": "list-agents"
+    },
+    {
+      "parameters": {
+        "jsCode": "const agents = $input.first().json.stdout.split('\\n').filter(a => a.trim());\n\nconst results = [];\nfor (const agent of agents) {\n  const agentPath = `E:/Mémoire Claude/agents/${agent}`;\n  results.push({\n    name: agent,\n    path: agentPath,\n    timestamp: new Date().toISOString()\n  });\n}\n\nreturn results.map(r => ({json: r}));"
+      },
+      "name": "Parse Agent List",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300],
+      "id": "parse-agents"
+    },
+    {
+      "parameters": {
+        "command": "=node \"{{$json.path}}/{{$json.name}}.cjs\" --health-check 2>&1 || echo \"NOT_RUNNING\"",
+        "timeout": 5000
+      },
+      "name": "Check Agent Status",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [850, 300],
+      "id": "check-status"
+    },
+    {
+      "parameters": {
+        "jsCode": "const agentName = $input.item.json.name;\nconst output = $input.item.json.stdout || $input.item.json.stderr || '';\n\nconst isRunning = !output.includes('NOT_RUNNING') && !output.includes('ENOENT') && !output.includes('cannot find');\nconst status = isRunning ? 'healthy' : 'down';\n\nreturn {\n  json: {\n    agent: agentName,\n    status: status,\n    output: output.substring(0, 200),\n    timestamp: new Date().toISOString(),\n    path: $input.item.json.path\n  }\n};"
+      },
+      "name": "Analyze Status",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1050, 300],
+      "id": "analyze-status"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.status}}",
+              "value2": "down"
+            }
+          ]
+        }
+      },
+      "name": "Agent Down?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1250, 300],
+      "id": "check-down"
+    },
+    {
+      "parameters": {
+        "content": "=⚠️ AGENT DOWN: {{$json.agent}}\nPath: {{$json.path}}\nTime: {{$json.timestamp}}",
+        "filePath": "E:/ANA/logs/agent_alerts.log",
+        "options": {
+          "append": true
+        }
+      },
+      "name": "Log Alert",
+      "type": "n8n-nodes-base.writeFile",
+      "typeVersion": 1,
+      "position": [1450, 200],
+      "id": "log-alert"
+    },
+    {
+      "parameters": {
+        "jsCode": "const allAgents = $input.all();\n\nconst summary = {\n  total: allAgents.length,\n  healthy: allAgents.filter(a => a.json.status === 'healthy').length,\n  down: allAgents.filter(a => a.json.status === 'down').length,\n  timestamp: new Date().toISOString(),\n  agents: allAgents.map(a => ({\n    name: a.json.agent,\n    status: a.json.status\n  }))\n};\n\nreturn [{json: summary}];"
+      },
+      "name": "Create Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1450, 400],
+      "id": "create-summary"
+    },
+    {
+      "parameters": {
+        "content": "={{JSON.stringify($json, null, 2)}}",
+        "filePath": "E:/ANA/logs/agent_health_latest.json",
+        "options": {}
+      },
+      "name": "Save Health Status",
+      "type": "n8n-nodes-base.writeFile",
+      "typeVersion": 1,
+      "position": [1650, 400],
+      "id": "save-status"
+    }
+  ],
+  "connections": {
+    "Every 5 minutes": {
+      "main": [
+        [
+          {
+            "node": "List All Agents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List All Agents": {
+      "main": [
+        [
+          {
+            "node": "Parse Agent List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Agent List": {
+      "main": [
+        [
+          {
+            "node": "Check Agent Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Agent Status": {
+      "main": [
+        [
+          {
+            "node": "Analyze Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Status": {
+      "main": [
+        [
+          {
+            "node": "Agent Down?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Down?": {
+      "main": [
+        [
+          {
+            "node": "Log Alert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Alert": {
+      "main": [
+        [
+          {
+            "node": "Create Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Summary": {
+      "main": [
+        [
+          {
+            "node": "Save Health Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "name": "Infrastructure",
+      "id": "infra-001"
+    },
+    {
+      "name": "Monitoring",
+      "id": "monitor-001"
+    }
+  ],
+  "meta": {
+    "instanceId": "ana-001"
+  }
+}

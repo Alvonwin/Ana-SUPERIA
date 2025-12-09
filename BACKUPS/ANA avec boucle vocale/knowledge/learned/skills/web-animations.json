@@ -1,0 +1,246 @@
+{
+  "category": "web-animations",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "anim001",
+      "type": "css",
+      "name": "CSS Transitions",
+      "description": "Property animations",
+      "pattern": "transition: property duration timing-function delay;",
+      "example": "Css usage"
+    },
+    {
+      "id": "anim002",
+      "type": "css",
+      "name": "Transition Timing",
+      "description": "Easing functions",
+      "pattern": "ease, ease-in, ease-out, ease-in-out, cubic-bezier(x1,y1,x2,y2)",
+      "example": "Css usage"
+    },
+    {
+      "id": "anim003",
+      "type": "css",
+      "name": "CSS Keyframes",
+      "description": "Multi-step animations",
+      "pattern": "@keyframes name { 0% {...} 50% {...} 100% {...} }",
+      "example": "Css usage"
+    },
+    {
+      "id": "anim004",
+      "type": "css",
+      "name": "Animation Properties",
+      "description": "Control animations",
+      "pattern": "animation: name duration timing iterations direction fill-mode;",
+      "example": "Css usage"
+    },
+    {
+      "id": "anim005",
+      "type": "css",
+      "name": "Transform",
+      "description": "GPU-accelerated",
+      "pattern": "transform: translateX() rotate() scale() skew();",
+      "example": "Css usage"
+    },
+    {
+      "id": "anim006",
+      "type": "css",
+      "name": "Will-change",
+      "description": "Optimization hint",
+      "pattern": "will-change: transform; - prepare browser for animation",
+      "example": "Css usage"
+    },
+    {
+      "id": "anim007",
+      "type": "css",
+      "name": "Animation Performance",
+      "description": "60fps animations",
+      "pattern": "Only animate transform/opacity, avoid layout thrashing",
+      "example": "Css usage"
+    },
+    {
+      "id": "anim008",
+      "type": "css",
+      "name": "Scroll Animations",
+      "description": "CSS scroll-driven",
+      "pattern": "animation-timeline: scroll(); animation-range: entry cover;",
+      "example": "Css usage"
+    },
+    {
+      "id": "anim009",
+      "type": "css",
+      "name": "View Transitions API",
+      "description": "Page transitions",
+      "pattern": "document.startViewTransition(() => updateDOM());",
+      "example": "Css usage"
+    },
+    {
+      "id": "anim010",
+      "type": "js",
+      "name": "Web Animations API",
+      "description": "JS animation control",
+      "pattern": "element.animate([keyframes], {duration, easing, iterations})",
+      "example": "Js usage"
+    },
+    {
+      "id": "anim011",
+      "type": "js",
+      "name": "requestAnimationFrame",
+      "description": "Frame-based animation",
+      "pattern": "function animate() { update(); requestAnimationFrame(animate); }",
+      "example": "Js usage"
+    },
+    {
+      "id": "anim012",
+      "type": "js",
+      "name": "Animation Timing",
+      "description": "Delta time",
+      "pattern": "const delta = timestamp - lastTime; position += speed * delta;",
+      "example": "Js usage"
+    },
+    {
+      "id": "anim013",
+      "type": "framer",
+      "name": "Framer Motion Basics",
+      "description": "React animations",
+      "pattern": "<motion.div animate={{x: 100}} transition={{duration: 0.5}} />",
+      "example": "Framer usage"
+    },
+    {
+      "id": "anim014",
+      "type": "framer",
+      "name": "Framer Variants",
+      "description": "Animation states",
+      "pattern": "variants={{hidden: {...}, visible: {...}}} initial='hidden' animate='visible'",
+      "example": "Framer usage"
+    },
+    {
+      "id": "anim015",
+      "type": "framer",
+      "name": "Framer Gestures",
+      "description": "Interaction animations",
+      "pattern": "whileHover={{scale: 1.1}} whileTap={{scale: 0.95}} drag",
+      "example": "Framer usage"
+    },
+    {
+      "id": "anim016",
+      "type": "framer",
+      "name": "AnimatePresence",
+      "description": "Exit animations",
+      "pattern": "<AnimatePresence>{show && <motion.div exit={{opacity: 0}}/>}</AnimatePresence>",
+      "example": "Framer usage"
+    },
+    {
+      "id": "anim017",
+      "type": "framer",
+      "name": "Layout Animations",
+      "description": "Auto-animate layout",
+      "pattern": "<motion.div layout /> - animate layout changes automatically",
+      "example": "Framer usage"
+    },
+    {
+      "id": "anim018",
+      "type": "gsap",
+      "name": "GSAP Basics",
+      "description": "Professional animations",
+      "pattern": "gsap.to('.box', {x: 100, duration: 1, ease: 'power2.out'})",
+      "example": "Gsap usage"
+    },
+    {
+      "id": "anim019",
+      "type": "gsap",
+      "name": "GSAP Timeline",
+      "description": "Sequence animations",
+      "pattern": "const tl = gsap.timeline(); tl.to(...).to(...).from(...)",
+      "example": "Gsap usage"
+    },
+    {
+      "id": "anim020",
+      "type": "gsap",
+      "name": "GSAP ScrollTrigger",
+      "description": "Scroll animations",
+      "pattern": "ScrollTrigger.create({trigger: '.section', start: 'top center'})",
+      "example": "Gsap usage"
+    },
+    {
+      "id": "anim021",
+      "type": "spring",
+      "name": "Spring Physics",
+      "description": "Natural motion",
+      "pattern": "Stiffness, damping, mass - physics-based animations",
+      "example": "Spring usage"
+    },
+    {
+      "id": "anim022",
+      "type": "spring",
+      "name": "React Spring",
+      "description": "Spring animations",
+      "pattern": "useSpring({from: {x: 0}, to: {x: 100}})",
+      "example": "Spring usage"
+    },
+    {
+      "id": "anim023",
+      "type": "lottie",
+      "name": "Lottie",
+      "description": "After Effects animations",
+      "pattern": "JSON animation format, LottiePlayer, interactive animations",
+      "example": "Lottie usage"
+    },
+    {
+      "id": "anim024",
+      "type": "svg",
+      "name": "SVG Animation",
+      "description": "Vector animations",
+      "pattern": "SMIL, CSS on SVG elements, path morphing",
+      "example": "Svg usage"
+    },
+    {
+      "id": "anim025",
+      "type": "svg",
+      "name": "Path Animation",
+      "description": "Draw SVG paths",
+      "pattern": "stroke-dasharray, stroke-dashoffset animation",
+      "example": "Svg usage"
+    },
+    {
+      "id": "anim026",
+      "type": "3d",
+      "name": "CSS 3D Transforms",
+      "description": "3D effects",
+      "pattern": "perspective, rotateX/Y/Z, preserve-3d, backface-visibility",
+      "example": "3d usage"
+    },
+    {
+      "id": "anim027",
+      "type": "3d",
+      "name": "Three.js Basics",
+      "description": "3D graphics",
+      "pattern": "Scene, Camera, Renderer, Mesh, animate loop",
+      "example": "3d usage"
+    },
+    {
+      "id": "anim028",
+      "type": "ux",
+      "name": "Animation Principles",
+      "description": "Good animation",
+      "pattern": "Timing, easing, anticipation, follow-through, secondary action",
+      "example": "Ux usage"
+    },
+    {
+      "id": "anim029",
+      "type": "ux",
+      "name": "Reduced Motion",
+      "description": "Accessibility",
+      "pattern": "@media (prefers-reduced-motion: reduce) { animation: none; }",
+      "example": "Ux usage"
+    },
+    {
+      "id": "anim030",
+      "type": "ux",
+      "name": "Animation Purpose",
+      "description": "Meaningful motion",
+      "pattern": "Guide attention, show relationships, provide feedback",
+      "example": "Ux usage"
+    }
+  ]
+}

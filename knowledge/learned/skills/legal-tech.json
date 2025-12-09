@@ -1,0 +1,246 @@
+{
+  "category": "legal-tech",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "leg001",
+      "type": "fundamentals",
+      "name": "LegalTech Basics",
+      "description": "Legal technology",
+      "pattern": "Automation, access, efficiency",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "leg002",
+      "type": "fundamentals",
+      "name": "Legal Documents",
+      "description": "Document types",
+      "pattern": "Contracts, agreements, filings",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "leg003",
+      "type": "fundamentals",
+      "name": "Legal Data",
+      "description": "Legal information",
+      "pattern": "Case law, statutes, regulations",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "leg004",
+      "type": "contracts",
+      "name": "Contract Management",
+      "description": "CLM systems",
+      "pattern": "Lifecycle, repository, workflow",
+      "example": "Contracts usage"
+    },
+    {
+      "id": "leg005",
+      "type": "contracts",
+      "name": "Contract Analysis",
+      "description": "AI contract review",
+      "pattern": "Extraction, risk, comparison",
+      "example": "Contracts usage"
+    },
+    {
+      "id": "leg006",
+      "type": "contracts",
+      "name": "E-Signatures",
+      "description": "Digital signing",
+      "pattern": "DocuSign, Adobe Sign, validity",
+      "example": "Contracts usage"
+    },
+    {
+      "id": "leg007",
+      "type": "contracts",
+      "name": "Smart Contracts",
+      "description": "Blockchain contracts",
+      "pattern": "Solidity, execution, enforcement",
+      "example": "Contracts usage"
+    },
+    {
+      "id": "leg008",
+      "type": "ediscovery",
+      "name": "eDiscovery",
+      "description": "Electronic discovery",
+      "pattern": "Collection, processing, review",
+      "example": "Ediscovery usage"
+    },
+    {
+      "id": "leg009",
+      "type": "ediscovery",
+      "name": "Legal Hold",
+      "description": "Preservation",
+      "pattern": "Litigation hold, custodians",
+      "example": "Ediscovery usage"
+    },
+    {
+      "id": "leg010",
+      "type": "ediscovery",
+      "name": "TAR/CAL",
+      "description": "Technology assisted",
+      "pattern": "Predictive coding, continuous learning",
+      "example": "Ediscovery usage"
+    },
+    {
+      "id": "leg011",
+      "type": "research",
+      "name": "Legal Research",
+      "description": "Case research",
+      "pattern": "Westlaw, LexisNexis, search",
+      "example": "Research usage"
+    },
+    {
+      "id": "leg012",
+      "type": "research",
+      "name": "Legal AI Search",
+      "description": "AI-powered search",
+      "pattern": "Natural language, semantic search",
+      "example": "Research usage"
+    },
+    {
+      "id": "leg013",
+      "type": "research",
+      "name": "Citation Analysis",
+      "description": "Legal citations",
+      "pattern": "Shepardizing, KeyCite, authority",
+      "example": "Research usage"
+    },
+    {
+      "id": "leg014",
+      "type": "compliance",
+      "name": "Compliance Management",
+      "description": "Regulatory compliance",
+      "pattern": "Obligations, tracking, reporting",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "leg015",
+      "type": "compliance",
+      "name": "Privacy Compliance",
+      "description": "Data privacy",
+      "pattern": "GDPR, CCPA, consent",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "leg016",
+      "type": "compliance",
+      "name": "RegTech",
+      "description": "Regulatory tech",
+      "pattern": "Automation, reporting, monitoring",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "leg017",
+      "type": "practice",
+      "name": "Practice Management",
+      "description": "Law firm software",
+      "pattern": "Clio, matter management, billing",
+      "example": "Practice usage"
+    },
+    {
+      "id": "leg018",
+      "type": "practice",
+      "name": "Time & Billing",
+      "description": "Legal billing",
+      "pattern": "Time tracking, invoicing, LEDES",
+      "example": "Practice usage"
+    },
+    {
+      "id": "leg019",
+      "type": "practice",
+      "name": "Document Management",
+      "description": "DMS",
+      "pattern": "iManage, NetDocuments, versioning",
+      "example": "Practice usage"
+    },
+    {
+      "id": "leg020",
+      "type": "ai",
+      "name": "Legal AI",
+      "description": "AI for law",
+      "pattern": "NLP, prediction, automation",
+      "example": "Ai usage"
+    },
+    {
+      "id": "leg021",
+      "type": "ai",
+      "name": "Legal LLMs",
+      "description": "Legal language models",
+      "pattern": "Harvey, CoCounsel, prompting",
+      "example": "Ai usage"
+    },
+    {
+      "id": "leg022",
+      "type": "ai",
+      "name": "Document Automation",
+      "description": "Doc generation",
+      "pattern": "Templates, assembly, variables",
+      "example": "Ai usage"
+    },
+    {
+      "id": "leg023",
+      "type": "ip",
+      "name": "IP Management",
+      "description": "Intellectual property",
+      "pattern": "Patents, trademarks, portfolios",
+      "example": "Ip usage"
+    },
+    {
+      "id": "leg024",
+      "type": "ip",
+      "name": "Patent Analytics",
+      "description": "Patent analysis",
+      "pattern": "Landscapes, prior art, valuation",
+      "example": "Ip usage"
+    },
+    {
+      "id": "leg025",
+      "type": "court",
+      "name": "Court Technology",
+      "description": "eCourt systems",
+      "pattern": "eFiling, case management",
+      "example": "Court usage"
+    },
+    {
+      "id": "leg026",
+      "type": "court",
+      "name": "ODR",
+      "description": "Online dispute resolution",
+      "pattern": "Mediation, arbitration, platforms",
+      "example": "Court usage"
+    },
+    {
+      "id": "leg027",
+      "type": "access",
+      "name": "Access to Justice",
+      "description": "Legal access",
+      "pattern": "Self-help, chatbots, forms",
+      "example": "Access usage"
+    },
+    {
+      "id": "leg028",
+      "type": "access",
+      "name": "Legal Chatbots",
+      "description": "Legal assistance",
+      "pattern": "Intake, guidance, triage",
+      "example": "Access usage"
+    },
+    {
+      "id": "leg029",
+      "type": "data",
+      "name": "Legal Analytics",
+      "description": "Legal data analysis",
+      "pattern": "Outcomes, judges, trends",
+      "example": "Data usage"
+    },
+    {
+      "id": "leg030",
+      "type": "data",
+      "name": "Legal Data Extraction",
+      "description": "Information extraction",
+      "pattern": "NER, clauses, entities",
+      "example": "Data usage"
+    }
+  ]
+}

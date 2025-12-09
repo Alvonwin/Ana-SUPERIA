@@ -1,0 +1,246 @@
+{
+  "category": "flutter-dart",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "flu001",
+      "type": "dart",
+      "name": "Dart Basics",
+      "description": "Language fundamentals",
+      "pattern": "var, final, const, null safety, classes",
+      "example": "Dart usage"
+    },
+    {
+      "id": "flu002",
+      "type": "dart",
+      "name": "Null Safety",
+      "description": "Sound null safety",
+      "pattern": "String?, !, ??, ?., late, required",
+      "example": "Dart usage"
+    },
+    {
+      "id": "flu003",
+      "type": "dart",
+      "name": "Async Dart",
+      "description": "Async programming",
+      "pattern": "Future, async/await, Stream, StreamController",
+      "example": "Dart usage"
+    },
+    {
+      "id": "flu004",
+      "type": "dart",
+      "name": "Collections",
+      "description": "Data structures",
+      "pattern": "List, Map, Set, spread operator, collection if/for",
+      "example": "Dart usage"
+    },
+    {
+      "id": "flu005",
+      "type": "dart",
+      "name": "Classes",
+      "description": "OOP in Dart",
+      "pattern": "class, extends, implements, mixin, factory",
+      "example": "Dart usage"
+    },
+    {
+      "id": "flu006",
+      "type": "flutter",
+      "name": "Widget Basics",
+      "description": "UI building blocks",
+      "pattern": "StatelessWidget, StatefulWidget, build method",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "flu007",
+      "type": "flutter",
+      "name": "Stateful Widgets",
+      "description": "Mutable state",
+      "pattern": "State class, setState(), initState, dispose",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "flu008",
+      "type": "flutter",
+      "name": "Layout Widgets",
+      "description": "Arrange widgets",
+      "pattern": "Row, Column, Stack, Container, Expanded, Flexible",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "flu009",
+      "type": "flutter",
+      "name": "Material Widgets",
+      "description": "Material Design",
+      "pattern": "Scaffold, AppBar, FloatingActionButton, Drawer",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "flu010",
+      "type": "flutter",
+      "name": "Cupertino Widgets",
+      "description": "iOS style",
+      "pattern": "CupertinoApp, CupertinoNavigationBar, CupertinoButton",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "flu011",
+      "type": "flutter",
+      "name": "Lists",
+      "description": "Scrollable lists",
+      "pattern": "ListView, ListView.builder, GridView, SliverList",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "flu012",
+      "type": "flutter",
+      "name": "Navigation",
+      "description": "Screen navigation",
+      "pattern": "Navigator.push, named routes, GoRouter, auto_route",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "flu013",
+      "type": "flutter",
+      "name": "Forms",
+      "description": "Input handling",
+      "pattern": "Form, TextFormField, validators, FormState",
+      "example": "Flutter usage"
+    },
+    {
+      "id": "flu014",
+      "type": "state",
+      "name": "Provider",
+      "description": "State management",
+      "pattern": "ChangeNotifier, Provider, Consumer, context.watch",
+      "example": "State usage"
+    },
+    {
+      "id": "flu015",
+      "type": "state",
+      "name": "Riverpod",
+      "description": "Modern state",
+      "pattern": "Provider, StateNotifier, ref.watch, code generation",
+      "example": "State usage"
+    },
+    {
+      "id": "flu016",
+      "type": "state",
+      "name": "Bloc",
+      "description": "Business logic",
+      "pattern": "Bloc, Cubit, BlocProvider, BlocBuilder, events",
+      "example": "State usage"
+    },
+    {
+      "id": "flu017",
+      "type": "state",
+      "name": "GetX",
+      "description": "Lightweight state",
+      "pattern": "GetxController, Obx, Get.put, reactive state",
+      "example": "State usage"
+    },
+    {
+      "id": "flu018",
+      "type": "networking",
+      "name": "HTTP",
+      "description": "Network requests",
+      "pattern": "http package, dio, Future<Response>, JSON parsing",
+      "example": "Networking usage"
+    },
+    {
+      "id": "flu019",
+      "type": "networking",
+      "name": "Dio",
+      "description": "HTTP client",
+      "pattern": "Dio(), interceptors, FormData, cancellation",
+      "example": "Networking usage"
+    },
+    {
+      "id": "flu020",
+      "type": "data",
+      "name": "SharedPreferences",
+      "description": "Key-value storage",
+      "pattern": "SharedPreferences.getInstance(), getString, setString",
+      "example": "Data usage"
+    },
+    {
+      "id": "flu021",
+      "type": "data",
+      "name": "SQLite",
+      "description": "Local database",
+      "pattern": "sqflite, openDatabase, rawQuery, CRUD operations",
+      "example": "Data usage"
+    },
+    {
+      "id": "flu022",
+      "type": "data",
+      "name": "Hive",
+      "description": "NoSQL storage",
+      "pattern": "Hive.box, TypeAdapter, fast key-value store",
+      "example": "Data usage"
+    },
+    {
+      "id": "flu023",
+      "type": "firebase",
+      "name": "Firebase Flutter",
+      "description": "Firebase SDK",
+      "pattern": "firebase_core, auth, firestore, messaging",
+      "example": "Firebase usage"
+    },
+    {
+      "id": "flu024",
+      "type": "testing",
+      "name": "Widget Testing",
+      "description": "Test widgets",
+      "pattern": "testWidgets, WidgetTester, find.byType, pumpWidget",
+      "example": "Testing usage"
+    },
+    {
+      "id": "flu025",
+      "type": "testing",
+      "name": "Integration Testing",
+      "description": "E2E tests",
+      "pattern": "integration_test, patrol, device testing",
+      "example": "Testing usage"
+    },
+    {
+      "id": "flu026",
+      "type": "architecture",
+      "name": "Clean Architecture",
+      "description": "Layer separation",
+      "pattern": "Domain, Data, Presentation, use cases, repositories",
+      "example": "Architecture usage"
+    },
+    {
+      "id": "flu027",
+      "type": "tools",
+      "name": "Flutter CLI",
+      "description": "Command line",
+      "pattern": "flutter run, build, pub get, doctor, analyze",
+      "example": "Tools usage"
+    },
+    {
+      "id": "flu028",
+      "type": "tools",
+      "name": "DevTools",
+      "description": "Debugging",
+      "pattern": "Flutter Inspector, performance, memory, network",
+      "example": "Tools usage"
+    },
+    {
+      "id": "flu029",
+      "type": "platform",
+      "name": "Platform Channels",
+      "description": "Native code",
+      "pattern": "MethodChannel, native iOS/Android communication",
+      "example": "Platform usage"
+    },
+    {
+      "id": "flu030",
+      "type": "deployment",
+      "name": "App Deployment",
+      "description": "Release builds",
+      "pattern": "flutter build apk/ios, signing, flavors, fastlane",
+      "example": "Deployment usage"
+    }
+  ]
+}

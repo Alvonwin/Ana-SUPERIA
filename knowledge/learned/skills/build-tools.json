@@ -1,0 +1,246 @@
+{
+  "category": "build-tools",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "bld001",
+      "type": "vite",
+      "name": "Vite Config",
+      "description": "Build tool rapide",
+      "pattern": "export default defineConfig({plugins: [react()], build: {target: 'esnext'}});",
+      "example": "Vite usage"
+    },
+    {
+      "id": "bld002",
+      "type": "vite",
+      "name": "Vite Plugins",
+      "description": "Ecosystem plugins",
+      "pattern": "@vitejs/plugin-react, vite-plugin-pwa, vite-plugin-compression",
+      "example": "Vite usage"
+    },
+    {
+      "id": "bld003",
+      "type": "vite",
+      "name": "Vite Env",
+      "description": "Variables environnement",
+      "pattern": "import.meta.env.VITE_API_URL; // .env.development, .env.production",
+      "example": "Vite usage"
+    },
+    {
+      "id": "bld004",
+      "type": "vite",
+      "name": "Vite HMR",
+      "description": "Hot Module Replacement",
+      "pattern": "if (import.meta.hot) { import.meta.hot.accept(); }",
+      "example": "Vite usage"
+    },
+    {
+      "id": "bld005",
+      "type": "vite",
+      "name": "Vite SSR",
+      "description": "Server-side rendering",
+      "pattern": "vite.ssrLoadModule('/src/entry-server.js');",
+      "example": "Vite usage"
+    },
+    {
+      "id": "bld006",
+      "type": "webpack",
+      "name": "Webpack Config",
+      "description": "Bundler configurable",
+      "pattern": "module.exports = {entry: './src/index.js', output: {path: path.resolve(__dirname, 'dist')}};",
+      "example": "Webpack usage"
+    },
+    {
+      "id": "bld007",
+      "type": "webpack",
+      "name": "Webpack Loaders",
+      "description": "Transformer fichiers",
+      "pattern": "module: {rules: [{test: /\\.css$/, use: ['style-loader', 'css-loader']}]}",
+      "example": "Webpack usage"
+    },
+    {
+      "id": "bld008",
+      "type": "webpack",
+      "name": "Webpack Plugins",
+      "description": "Etendre fonctionnalites",
+      "pattern": "plugins: [new HtmlWebpackPlugin(), new MiniCssExtractPlugin()]",
+      "example": "Webpack usage"
+    },
+    {
+      "id": "bld009",
+      "type": "webpack",
+      "name": "Webpack Code Splitting",
+      "description": "Chunks dynamiques",
+      "pattern": "optimization: {splitChunks: {chunks: 'all'}}",
+      "example": "Webpack usage"
+    },
+    {
+      "id": "bld010",
+      "type": "webpack",
+      "name": "Webpack Module Federation",
+      "description": "Micro-frontends",
+      "pattern": "new ModuleFederationPlugin({name: 'app', remotes: {shop: 'shop@http://localhost:3001/remoteEntry.js'}})",
+      "example": "Webpack usage"
+    },
+    {
+      "id": "bld011",
+      "type": "esbuild",
+      "name": "esbuild Basics",
+      "description": "Build ultra-rapide",
+      "pattern": "esbuild.build({entryPoints: ['src/index.ts'], bundle: true, outfile: 'dist/out.js'});",
+      "example": "Esbuild usage"
+    },
+    {
+      "id": "bld012",
+      "type": "esbuild",
+      "name": "esbuild Plugins",
+      "description": "Extensibilite",
+      "pattern": "plugins: [{name: 'example', setup(build) { build.onLoad({filter: /\\.txt$/}, loadTxt); }}]",
+      "example": "Esbuild usage"
+    },
+    {
+      "id": "bld013",
+      "type": "esbuild",
+      "name": "esbuild Watch",
+      "description": "Incremental builds",
+      "pattern": "const ctx = await esbuild.context(options); await ctx.watch();",
+      "example": "Esbuild usage"
+    },
+    {
+      "id": "bld014",
+      "type": "rollup",
+      "name": "Rollup Config",
+      "description": "ES modules bundler",
+      "pattern": "export default {input: 'src/index.js', output: {file: 'dist/bundle.js', format: 'esm'}};",
+      "example": "Rollup usage"
+    },
+    {
+      "id": "bld015",
+      "type": "rollup",
+      "name": "Rollup Plugins",
+      "description": "Ecosystem plugins",
+      "pattern": "@rollup/plugin-node-resolve, @rollup/plugin-commonjs, @rollup/plugin-typescript",
+      "example": "Rollup usage"
+    },
+    {
+      "id": "bld016",
+      "type": "rollup",
+      "name": "Rollup Tree Shaking",
+      "description": "Dead code elimination",
+      "pattern": "// ES modules = automatic tree shaking",
+      "example": "Rollup usage"
+    },
+    {
+      "id": "bld017",
+      "type": "turbopack",
+      "name": "Turbopack Basics",
+      "description": "Successor Webpack",
+      "pattern": "next dev --turbo",
+      "example": "Turbopack usage"
+    },
+    {
+      "id": "bld018",
+      "type": "turborepo",
+      "name": "Turborepo",
+      "description": "Monorepo build system",
+      "pattern": "turbo run build --filter=@myorg/web",
+      "example": "Turborepo usage"
+    },
+    {
+      "id": "bld019",
+      "type": "nx",
+      "name": "Nx Workspace",
+      "description": "Monorepo toolkit",
+      "pattern": "npx nx generate @nx/react:app myapp; nx serve myapp",
+      "example": "Nx usage"
+    },
+    {
+      "id": "bld020",
+      "type": "nx",
+      "name": "Nx Graph",
+      "description": "Visualiser dependances",
+      "pattern": "nx graph",
+      "example": "Nx usage"
+    },
+    {
+      "id": "bld021",
+      "type": "nx",
+      "name": "Nx Affected",
+      "description": "Build seulement changes",
+      "pattern": "nx affected:build --base=main",
+      "example": "Nx usage"
+    },
+    {
+      "id": "bld022",
+      "type": "pnpm",
+      "name": "pnpm Workspace",
+      "description": "Monorepo packages",
+      "pattern": "pnpm-workspace.yaml: packages: ['packages/*']",
+      "example": "Pnpm usage"
+    },
+    {
+      "id": "bld023",
+      "type": "pnpm",
+      "name": "pnpm Performance",
+      "description": "Symlinks et cache",
+      "pattern": "pnpm install --frozen-lockfile",
+      "example": "Pnpm usage"
+    },
+    {
+      "id": "bld024",
+      "type": "changesets",
+      "name": "Changesets",
+      "description": "Versioning monorepo",
+      "pattern": "pnpm changeset; pnpm changeset version; pnpm changeset publish",
+      "example": "Changesets usage"
+    },
+    {
+      "id": "bld025",
+      "type": "swc",
+      "name": "SWC Compiler",
+      "description": "Rust-based transpiler",
+      "pattern": "@swc/core, @swc/cli - 20x faster than Babel",
+      "example": "Swc usage"
+    },
+    {
+      "id": "bld026",
+      "type": "swc",
+      "name": "SWC Config",
+      "description": ".swcrc configuration",
+      "pattern": "{\"jsc\": {\"parser\": {\"syntax\": \"typescript\"}, \"target\": \"es2020\"}}",
+      "example": "Swc usage"
+    },
+    {
+      "id": "bld027",
+      "type": "babel",
+      "name": "Babel Presets",
+      "description": "Transpilation config",
+      "pattern": "presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']",
+      "example": "Babel usage"
+    },
+    {
+      "id": "bld028",
+      "type": "babel",
+      "name": "Babel Plugins",
+      "description": "Transformations custom",
+      "pattern": "plugins: ['@babel/plugin-proposal-decorators', 'babel-plugin-styled-components']",
+      "example": "Babel usage"
+    },
+    {
+      "id": "bld029",
+      "type": "tsup",
+      "name": "tsup Basics",
+      "description": "Build TS libs",
+      "pattern": "tsup src/index.ts --format cjs,esm --dts",
+      "example": "Tsup usage"
+    },
+    {
+      "id": "bld030",
+      "type": "unbuild",
+      "name": "unbuild",
+      "description": "Universal builder",
+      "pattern": "build.config.ts: export default {entries: ['./src/index']}",
+      "example": "Unbuild usage"
+    }
+  ]
+}

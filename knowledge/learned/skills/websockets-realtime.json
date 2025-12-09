@@ -1,0 +1,247 @@
+{
+  "category": "websockets-realtime",
+  "version": "1.0.0",
+  "generatedBy": "Ana SUPERIA (DeepSeek Coder) - Supervisé et complété par Claude",
+  "skills": [
+    {
+      "id": "ws01",
+      "type": "api",
+      "name": "Connection",
+      "description": "Establish WebSocket connection",
+      "pattern": "const ws = new WebSocket('ws://localhost:8080')",
+      "example": "Api usage"
+    },
+    {
+      "id": "ws02",
+      "type": "api",
+      "name": "Send Message",
+      "description": "Send data to server",
+      "pattern": "ws.send(JSON.stringify({ type: 'message', data: payload }))",
+      "example": "Api usage"
+    },
+    {
+      "id": "ws03",
+      "type": "api",
+      "name": "Close Connection",
+      "description": "Close WebSocket gracefully",
+      "pattern": "ws.close(1000, 'Normal closure')",
+      "example": "Api usage"
+    },
+    {
+      "id": "ws04",
+      "type": "events",
+      "name": "onopen Handler",
+      "description": "Handle connection open",
+      "pattern": "ws.onopen = () => console.log('Connected')",
+      "example": "Events usage"
+    },
+    {
+      "id": "ws05",
+      "type": "events",
+      "name": "onmessage Handler",
+      "description": "Handle incoming messages",
+      "pattern": "ws.onmessage = (event) => JSON.parse(event.data)",
+      "example": "Events usage"
+    },
+    {
+      "id": "ws06",
+      "type": "events",
+      "name": "onerror Handler",
+      "description": "Handle connection errors",
+      "pattern": "ws.onerror = (error) => console.error('WebSocket error:', error)",
+      "example": "Events usage"
+    },
+    {
+      "id": "ws07",
+      "type": "events",
+      "name": "onclose Handler",
+      "description": "Handle connection close",
+      "pattern": "ws.onclose = (event) => console.log('Closed:', event.code, event.reason)",
+      "example": "Events usage"
+    },
+    {
+      "id": "ws08",
+      "type": "binary",
+      "name": "Binary Data",
+      "description": "Send/receive ArrayBuffer or Blob",
+      "pattern": "ws.binaryType = 'arraybuffer'; ws.send(new Uint8Array([1,2,3]))",
+      "example": "Binary usage"
+    },
+    {
+      "id": "ws09",
+      "type": "keepalive",
+      "name": "Ping-Pong",
+      "description": "Heartbeat mechanism",
+      "pattern": "setInterval(() => ws.send(JSON.stringify({type: 'ping'})), 30000)",
+      "example": "Keepalive usage"
+    },
+    {
+      "id": "ws10",
+      "type": "resilience",
+      "name": "Reconnection",
+      "description": "Auto-reconnect on disconnect",
+      "pattern": "ws.onclose = () => setTimeout(connect, 5000)",
+      "example": "Resilience usage"
+    },
+    {
+      "id": "ws11",
+      "type": "socketio",
+      "name": "Socket.IO Rooms",
+      "description": "Join and leave chat rooms",
+      "pattern": "socket.join('room1'); io.to('room1').emit('message', data)",
+      "example": "Socketio usage"
+    },
+    {
+      "id": "ws12",
+      "type": "socketio",
+      "name": "Namespaces",
+      "description": "Segment socket connections",
+      "pattern": "const adminNsp = io.of('/admin'); adminNsp.emit('notification', msg)",
+      "example": "Socketio usage"
+    },
+    {
+      "id": "ws13",
+      "type": "socketio",
+      "name": "Acknowledgements",
+      "description": "Confirm message delivery",
+      "pattern": "socket.emit('save', data, (response) => console.log('Saved:', response))",
+      "example": "Socketio usage"
+    },
+    {
+      "id": "ws14",
+      "type": "server",
+      "name": "ws Library",
+      "description": "Node.js WebSocket server",
+      "pattern": "const wss = new WebSocket.Server({ port: 8080 })",
+      "example": "Server usage"
+    },
+    {
+      "id": "ws15",
+      "type": "scaling",
+      "name": "Redis Adapter",
+      "description": "Scale with Redis pub/sub",
+      "pattern": "io.adapter(createAdapter(pubClient, subClient))",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "ws16",
+      "type": "security",
+      "name": "Auth Handshake",
+      "description": "Authenticate on connect",
+      "pattern": "wss.on('connection', (ws, req) => { const token = req.headers.authorization })",
+      "example": "Security usage"
+    },
+    {
+      "id": "ws17",
+      "type": "broadcast",
+      "name": "Message Broadcast",
+      "description": "Send to all clients",
+      "pattern": "wss.clients.forEach(client => client.send(message))",
+      "example": "Broadcast usage"
+    },
+    {
+      "id": "ws18",
+      "type": "presence",
+      "name": "Presence Detection",
+      "description": "Track online users",
+      "pattern": "const users = new Map(); ws.on('close', () => users.delete(userId))",
+      "example": "Presence usage"
+    },
+    {
+      "id": "ws19",
+      "type": "security",
+      "name": "Rate Limiting",
+      "description": "Limit message frequency",
+      "pattern": "if (messageCount > 100) return ws.close(1008, 'Rate limited')",
+      "example": "Security usage"
+    },
+    {
+      "id": "ws20",
+      "type": "subprotocols",
+      "name": "Subprotocols",
+      "description": "Extended protocol negotiation",
+      "pattern": "new WebSocket(url, ['graphql-ws', 'subscriptions-transport-ws'])",
+      "example": "Subprotocols usage"
+    },
+    {
+      "id": "ws21",
+      "type": "security",
+      "name": "Secure WebSocket",
+      "description": "TLS encrypted connection",
+      "pattern": "const ws = new WebSocket('wss://secure.example.com')",
+      "example": "Security usage"
+    },
+    {
+      "id": "ws22",
+      "type": "queuing",
+      "name": "Message Queue",
+      "description": "Buffer messages when disconnected",
+      "pattern": "messageQueue.push(msg); if (ws.readyState === 1) flush()",
+      "example": "Queuing usage"
+    },
+    {
+      "id": "ws23",
+      "type": "performance",
+      "name": "Connection Pool",
+      "description": "Reuse connections efficiently",
+      "pattern": "const pool = new WebSocketPool({ maxConnections: 10 })",
+      "example": "Performance usage"
+    },
+    {
+      "id": "ws24",
+      "type": "scaling",
+      "name": "Sticky Sessions",
+      "description": "Route client to same server",
+      "pattern": "nginx: ip_hash; // or sticky cookie",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "ws25",
+      "type": "patterns",
+      "name": "Event Emitter",
+      "description": "Custom event handling",
+      "pattern": "class WsClient extends EventEmitter { emit('custom', data) }",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ws26",
+      "type": "patterns",
+      "name": "Middleware",
+      "description": "Message processing pipeline",
+      "pattern": "io.use((socket, next) => { if (isValid(socket)) next() })",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ws27",
+      "type": "binary",
+      "name": "Message Framing",
+      "description": "Structure binary messages",
+      "pattern": "const frame = Buffer.concat([header, payload])",
+      "example": "Binary usage"
+    },
+    {
+      "id": "ws28",
+      "type": "lifecycle",
+      "name": "Graceful Shutdown",
+      "description": "Clean server shutdown",
+      "pattern": "wss.clients.forEach(ws => ws.close(1001, 'Server shutdown'))",
+      "example": "Lifecycle usage"
+    },
+    {
+      "id": "ws29",
+      "type": "timeouts",
+      "name": "Connection Timeout",
+      "description": "Handle slow connections",
+      "pattern": "setTimeout(() => { if (ws.readyState !== 1) ws.terminate() }, 10000)",
+      "example": "Timeouts usage"
+    },
+    {
+      "id": "ws30",
+      "type": "cors",
+      "name": "Cross-Origin",
+      "description": "Allow cross-domain connections",
+      "pattern": "wss.on('headers', (headers) => headers.push('Access-Control-Allow-Origin: *'))",
+      "example": "Cors usage"
+    }
+  ]
+}

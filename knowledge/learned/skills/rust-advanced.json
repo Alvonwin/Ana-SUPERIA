@@ -1,0 +1,246 @@
+{
+  "category": "rust-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "rs001",
+      "type": "ownership",
+      "name": "Ownership",
+      "description": "Memory management",
+      "pattern": "Each value has one owner, value dropped when owner goes out of scope",
+      "example": "Ownership usage"
+    },
+    {
+      "id": "rs002",
+      "type": "ownership",
+      "name": "Borrowing",
+      "description": "References",
+      "pattern": "&T (shared), &mut T (exclusive), borrow checker",
+      "example": "Ownership usage"
+    },
+    {
+      "id": "rs003",
+      "type": "ownership",
+      "name": "Lifetimes",
+      "description": "Reference validity",
+      "pattern": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str",
+      "example": "Ownership usage"
+    },
+    {
+      "id": "rs004",
+      "type": "ownership",
+      "name": "Move Semantics",
+      "description": "Transfer ownership",
+      "pattern": "let s2 = s1; // s1 no longer valid (unless Copy)",
+      "example": "Ownership usage"
+    },
+    {
+      "id": "rs005",
+      "type": "ownership",
+      "name": "Clone vs Copy",
+      "description": "Duplication",
+      "pattern": "Copy: implicit copy, Clone: explicit .clone()",
+      "example": "Ownership usage"
+    },
+    {
+      "id": "rs006",
+      "type": "types",
+      "name": "Enums",
+      "description": "Algebraic types",
+      "pattern": "enum Result<T, E> { Ok(T), Err(E) }; match result {...}",
+      "example": "Types usage"
+    },
+    {
+      "id": "rs007",
+      "type": "types",
+      "name": "Option",
+      "description": "Null safety",
+      "pattern": "Option<T> = Some(T) | None; .map(), .unwrap_or(), ?",
+      "example": "Types usage"
+    },
+    {
+      "id": "rs008",
+      "type": "types",
+      "name": "Result",
+      "description": "Error handling",
+      "pattern": "Result<T, E>; ? operator for propagation, .map_err()",
+      "example": "Types usage"
+    },
+    {
+      "id": "rs009",
+      "type": "types",
+      "name": "Structs",
+      "description": "Data structures",
+      "pattern": "struct Point { x: i32, y: i32 }; impl Point { fn new() -> Self {...} }",
+      "example": "Types usage"
+    },
+    {
+      "id": "rs010",
+      "type": "types",
+      "name": "Traits",
+      "description": "Shared behavior",
+      "pattern": "trait Draw { fn draw(&self); }; impl Draw for Circle {...}",
+      "example": "Types usage"
+    },
+    {
+      "id": "rs011",
+      "type": "traits",
+      "name": "Trait Bounds",
+      "description": "Generic constraints",
+      "pattern": "fn print<T: Display>(item: T); fn process<T: Clone + Debug>(x: T)",
+      "example": "Traits usage"
+    },
+    {
+      "id": "rs012",
+      "type": "traits",
+      "name": "Derive Macros",
+      "description": "Auto-implement",
+      "pattern": "#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]",
+      "example": "Traits usage"
+    },
+    {
+      "id": "rs013",
+      "type": "traits",
+      "name": "Common Traits",
+      "description": "Standard traits",
+      "pattern": "From, Into, Default, Iterator, Drop, Deref",
+      "example": "Traits usage"
+    },
+    {
+      "id": "rs014",
+      "type": "concurrency",
+      "name": "Threads",
+      "description": "OS threads",
+      "pattern": "thread::spawn(|| {...}); handle.join()",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "rs015",
+      "type": "concurrency",
+      "name": "Channels",
+      "description": "Message passing",
+      "pattern": "let (tx, rx) = mpsc::channel(); tx.send(value); rx.recv()",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "rs016",
+      "type": "concurrency",
+      "name": "Mutex",
+      "description": "Shared state",
+      "pattern": "Arc<Mutex<T>>; let data = mutex.lock().unwrap();",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "rs017",
+      "type": "concurrency",
+      "name": "Send + Sync",
+      "description": "Thread safety",
+      "pattern": "Send: transfer between threads, Sync: shared between threads",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "rs018",
+      "type": "async",
+      "name": "async/await",
+      "description": "Async programming",
+      "pattern": "async fn fetch() -> Result<T> {...}; let result = fetch().await;",
+      "example": "Async usage"
+    },
+    {
+      "id": "rs019",
+      "type": "async",
+      "name": "Tokio",
+      "description": "Async runtime",
+      "pattern": "#[tokio::main] async fn main() {...}; tokio::spawn()",
+      "example": "Async usage"
+    },
+    {
+      "id": "rs020",
+      "type": "async",
+      "name": "Futures",
+      "description": "Async primitives",
+      "pattern": "Future trait, join!, select!, Stream",
+      "example": "Async usage"
+    },
+    {
+      "id": "rs021",
+      "type": "memory",
+      "name": "Smart Pointers",
+      "description": "Heap allocation",
+      "pattern": "Box<T>, Rc<T>, Arc<T>, RefCell<T>, Weak<T>",
+      "example": "Memory usage"
+    },
+    {
+      "id": "rs022",
+      "type": "memory",
+      "name": "Interior Mutability",
+      "description": "Mutate through &",
+      "pattern": "Cell<T>, RefCell<T> - runtime borrow checking",
+      "example": "Memory usage"
+    },
+    {
+      "id": "rs023",
+      "type": "unsafe",
+      "name": "Unsafe Rust",
+      "description": "Escape hatch",
+      "pattern": "unsafe { raw pointers, FFI, transmute }",
+      "example": "Unsafe usage"
+    },
+    {
+      "id": "rs024",
+      "type": "macros",
+      "name": "Declarative Macros",
+      "description": "macro_rules!",
+      "pattern": "macro_rules! vec { ($($x:expr),*) => {...}; }",
+      "example": "Macros usage"
+    },
+    {
+      "id": "rs025",
+      "type": "macros",
+      "name": "Procedural Macros",
+      "description": "Code generation",
+      "pattern": "#[proc_macro_derive(MyTrait)] pub fn my_derive(input: TokenStream)",
+      "example": "Macros usage"
+    },
+    {
+      "id": "rs026",
+      "type": "tools",
+      "name": "Cargo",
+      "description": "Build system",
+      "pattern": "cargo build/run/test, Cargo.toml, workspaces",
+      "example": "Tools usage"
+    },
+    {
+      "id": "rs027",
+      "type": "tools",
+      "name": "Clippy",
+      "description": "Linter",
+      "pattern": "cargo clippy -- -D warnings, #[allow(clippy::xxx)]",
+      "example": "Tools usage"
+    },
+    {
+      "id": "rs028",
+      "type": "web",
+      "name": "Actix Web",
+      "description": "Web framework",
+      "pattern": "#[get('/')] async fn index() -> impl Responder {...}",
+      "example": "Web usage"
+    },
+    {
+      "id": "rs029",
+      "type": "web",
+      "name": "Axum",
+      "description": "Web framework",
+      "pattern": "Router::new().route('/', get(handler)); axum::Server::bind()",
+      "example": "Web usage"
+    },
+    {
+      "id": "rs030",
+      "type": "serde",
+      "name": "Serde",
+      "description": "Serialization",
+      "pattern": "#[derive(Serialize, Deserialize)] struct Data {...}",
+      "example": "Serde usage"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "category": "threejs-graphics",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "three001",
+      "type": "fundamentals",
+      "name": "Three.js Overview",
+      "description": "WebGL library",
+      "pattern": "Scene, camera, renderer, mesh",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "three002",
+      "type": "fundamentals",
+      "name": "Scene Graph",
+      "description": "Object hierarchy",
+      "pattern": "Scene, Object3D, Group, parent/child",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "three003",
+      "type": "fundamentals",
+      "name": "Renderer",
+      "description": "WebGL rendering",
+      "pattern": "WebGLRenderer, canvas, antialias, pixelRatio",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "three004",
+      "type": "camera",
+      "name": "Cameras",
+      "description": "View projection",
+      "pattern": "PerspectiveCamera, OrthographicCamera, fov",
+      "example": "Camera usage"
+    },
+    {
+      "id": "three005",
+      "type": "camera",
+      "name": "Camera Controls",
+      "description": "User interaction",
+      "pattern": "OrbitControls, FlyControls, PointerLockControls",
+      "example": "Camera usage"
+    },
+    {
+      "id": "three006",
+      "type": "geometry",
+      "name": "Geometries",
+      "description": "3D shapes",
+      "pattern": "BoxGeometry, SphereGeometry, PlaneGeometry",
+      "example": "Geometry usage"
+    },
+    {
+      "id": "three007",
+      "type": "geometry",
+      "name": "BufferGeometry",
+      "description": "Custom geometry",
+      "pattern": "Attributes, positions, normals, uvs",
+      "example": "Geometry usage"
+    },
+    {
+      "id": "three008",
+      "type": "geometry",
+      "name": "Custom Shapes",
+      "description": "Procedural geometry",
+      "pattern": "Shape, ExtrudeGeometry, LatheGeometry",
+      "example": "Geometry usage"
+    },
+    {
+      "id": "three009",
+      "type": "materials",
+      "name": "Basic Materials",
+      "description": "Surface appearance",
+      "pattern": "MeshBasicMaterial, MeshStandardMaterial",
+      "example": "Materials usage"
+    },
+    {
+      "id": "three010",
+      "type": "materials",
+      "name": "PBR Materials",
+      "description": "Physical rendering",
+      "pattern": "Metalness, roughness, envMap, normalMap",
+      "example": "Materials usage"
+    },
+    {
+      "id": "three011",
+      "type": "materials",
+      "name": "Shaders",
+      "description": "Custom materials",
+      "pattern": "ShaderMaterial, uniforms, GLSL",
+      "example": "Materials usage"
+    },
+    {
+      "id": "three012",
+      "type": "lighting",
+      "name": "Light Types",
+      "description": "Scene lighting",
+      "pattern": "AmbientLight, DirectionalLight, PointLight, SpotLight",
+      "example": "Lighting usage"
+    },
+    {
+      "id": "three013",
+      "type": "lighting",
+      "name": "Shadows",
+      "description": "Shadow mapping",
+      "pattern": "castShadow, receiveShadow, shadowMap",
+      "example": "Lighting usage"
+    },
+    {
+      "id": "three014",
+      "type": "lighting",
+      "name": "Environment Maps",
+      "description": "Reflections",
+      "pattern": "CubeTexture, HDR, PMREMGenerator",
+      "example": "Lighting usage"
+    },
+    {
+      "id": "three015",
+      "type": "textures",
+      "name": "Texture Loading",
+      "description": "Image textures",
+      "pattern": "TextureLoader, map, normalMap, aoMap",
+      "example": "Textures usage"
+    },
+    {
+      "id": "three016",
+      "type": "textures",
+      "name": "Texture Settings",
+      "description": "Texture config",
+      "pattern": "Repeat, wrap, filtering, mipmaps",
+      "example": "Textures usage"
+    },
+    {
+      "id": "three017",
+      "type": "loading",
+      "name": "Model Loading",
+      "description": "3D assets",
+      "pattern": "GLTFLoader, DRACOLoader, FBXLoader",
+      "example": "Loading usage"
+    },
+    {
+      "id": "three018",
+      "type": "loading",
+      "name": "Asset Management",
+      "description": "Resource handling",
+      "pattern": "LoadingManager, cache, dispose",
+      "example": "Loading usage"
+    },
+    {
+      "id": "three019",
+      "type": "animation",
+      "name": "Animation System",
+      "description": "Keyframe animation",
+      "pattern": "AnimationMixer, AnimationClip, AnimationAction",
+      "example": "Animation usage"
+    },
+    {
+      "id": "three020",
+      "type": "animation",
+      "name": "Morph Targets",
+      "description": "Shape animation",
+      "pattern": "MorphTargetInfluences, blendshapes",
+      "example": "Animation usage"
+    },
+    {
+      "id": "three021",
+      "type": "animation",
+      "name": "Skeletal Animation",
+      "description": "Bone animation",
+      "pattern": "SkinnedMesh, Skeleton, Bone",
+      "example": "Animation usage"
+    },
+    {
+      "id": "three022",
+      "type": "postprocessing",
+      "name": "Post-Processing",
+      "description": "Screen effects",
+      "pattern": "EffectComposer, RenderPass, ShaderPass",
+      "example": "Postprocessing usage"
+    },
+    {
+      "id": "three023",
+      "type": "postprocessing",
+      "name": "Effects",
+      "description": "Visual effects",
+      "pattern": "BloomPass, SSAOPass, OutlinePass",
+      "example": "Postprocessing usage"
+    },
+    {
+      "id": "three024",
+      "type": "physics",
+      "name": "Physics Integration",
+      "description": "Physics engines",
+      "pattern": "Cannon.js, Rapier, Ammo.js",
+      "example": "Physics usage"
+    },
+    {
+      "id": "three025",
+      "type": "interaction",
+      "name": "Raycasting",
+      "description": "Object picking",
+      "pattern": "Raycaster, intersectObjects, mouse coords",
+      "example": "Interaction usage"
+    },
+    {
+      "id": "three026",
+      "type": "interaction",
+      "name": "Events",
+      "description": "User input",
+      "pattern": "Pointer events, drag controls, transform",
+      "example": "Interaction usage"
+    },
+    {
+      "id": "three027",
+      "type": "optimization",
+      "name": "Performance",
+      "description": "Optimization",
+      "pattern": "Instancing, LOD, frustum culling, merge",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "three028",
+      "type": "optimization",
+      "name": "Memory Management",
+      "description": "Resource cleanup",
+      "pattern": "Dispose geometry, material, texture",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "three029",
+      "type": "react",
+      "name": "React Three Fiber",
+      "description": "React renderer",
+      "pattern": "Canvas, useFrame, useThree, drei",
+      "example": "React usage"
+    },
+    {
+      "id": "three030",
+      "type": "xr",
+      "name": "WebXR",
+      "description": "VR/AR support",
+      "pattern": "XRSession, XRController, immersive-vr",
+      "example": "Xr usage"
+    }
+  ]
+}

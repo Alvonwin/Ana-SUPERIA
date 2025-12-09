@@ -1,0 +1,61 @@
+{
+  "name": "Agent Health Monitor",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "*/5 * * * *"
+            }
+          ]
+        }
+      },
+      "name": "Every 5 minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd \"E:/Mémoire Claude/agents\" && dir /b /ad"
+      },
+      "name": "List All Agents",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = $input.first().json.stdout || '';\nconst agents = output.split('\\n').filter(a => a.trim());\n\nconst timestamp = new Date().toISOString();\nconst summary = {\n  timestamp,\n  total: agents.length,\n  agents: agents.map(name => ({\n    name,\n    status: 'checked',\n    path: `E:/Mémoire Claude/agents/${name}`\n  }))\n};\n\nreturn [{json: summary}];"
+      },
+      "name": "Create Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "command": "=echo {{JSON.stringify($json)}} > \"E:/ANA/logs/agent_health_latest.json\""
+      },
+      "name": "Save Status",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Every 5 minutes": {
+      "main": [[{"node": "List All Agents", "type": "main", "index": 0}]]
+    },
+    "List All Agents": {
+      "main": [[{"node": "Create Summary", "type": "main", "index": 0}]]
+    },
+    "Create Summary": {
+      "main": [[{"node": "Save Status", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {"executionOrder": "v1"},
+  "tags": []
+}

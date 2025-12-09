@@ -1,0 +1,246 @@
+{
+  "category": "sql-mastery",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "sql001",
+      "type": "basics",
+      "name": "SELECT Fundamentals",
+      "description": "Query basics",
+      "pattern": "SELECT col1, col2 FROM table WHERE condition ORDER BY col LIMIT n",
+      "example": "Basics usage"
+    },
+    {
+      "id": "sql002",
+      "type": "basics",
+      "name": "JOINs",
+      "description": "Combine tables",
+      "pattern": "INNER, LEFT, RIGHT, FULL OUTER, CROSS JOIN - ON condition",
+      "example": "Basics usage"
+    },
+    {
+      "id": "sql003",
+      "type": "basics",
+      "name": "Aggregations",
+      "description": "Aggregate functions",
+      "pattern": "COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING",
+      "example": "Basics usage"
+    },
+    {
+      "id": "sql004",
+      "type": "basics",
+      "name": "Subqueries",
+      "description": "Nested queries",
+      "pattern": "SELECT * FROM t WHERE col IN (SELECT col FROM t2)",
+      "example": "Basics usage"
+    },
+    {
+      "id": "sql005",
+      "type": "advanced",
+      "name": "Window Functions",
+      "description": "Analytics",
+      "pattern": "ROW_NUMBER(), RANK(), DENSE_RANK(), LAG(), LEAD() OVER (PARTITION BY)",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "sql006",
+      "type": "advanced",
+      "name": "CTEs",
+      "description": "Common Table Expressions",
+      "pattern": "WITH cte AS (SELECT ...) SELECT * FROM cte WHERE ...",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "sql007",
+      "type": "advanced",
+      "name": "Recursive CTEs",
+      "description": "Hierarchical queries",
+      "pattern": "WITH RECURSIVE cte AS (base UNION ALL recursive) SELECT * FROM cte",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "sql008",
+      "type": "advanced",
+      "name": "PIVOT/UNPIVOT",
+      "description": "Reshape data",
+      "pattern": "Rows to columns (PIVOT), columns to rows (UNPIVOT)",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "sql009",
+      "type": "advanced",
+      "name": "LATERAL JOIN",
+      "description": "Correlated subquery join",
+      "pattern": "FROM t1, LATERAL (SELECT ... WHERE t1.id = ...) t2",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "sql010",
+      "type": "advanced",
+      "name": "MERGE/UPSERT",
+      "description": "Insert or update",
+      "pattern": "MERGE INTO target USING source ON ... WHEN MATCHED/NOT MATCHED",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "sql011",
+      "type": "optimization",
+      "name": "EXPLAIN ANALYZE",
+      "description": "Query plan",
+      "pattern": "EXPLAIN (ANALYZE, BUFFERS) SELECT ... - understand execution",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "sql012",
+      "type": "optimization",
+      "name": "Index Types",
+      "description": "B-tree, Hash, GIN, GiST",
+      "pattern": "B-tree (default), Hash (equality), GIN (arrays), GiST (spatial)",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "sql013",
+      "type": "optimization",
+      "name": "Composite Indexes",
+      "description": "Multi-column",
+      "pattern": "CREATE INDEX idx ON t(a, b) - leftmost prefix rule",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "sql014",
+      "type": "optimization",
+      "name": "Covering Indexes",
+      "description": "Index-only scans",
+      "pattern": "INCLUDE (col) - add columns to index for index-only scan",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "sql015",
+      "type": "optimization",
+      "name": "Partial Indexes",
+      "description": "Filtered indexes",
+      "pattern": "CREATE INDEX idx ON t(col) WHERE status = 'active'",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "sql016",
+      "type": "optimization",
+      "name": "Query Optimization Tips",
+      "description": "Performance",
+      "pattern": "Avoid SELECT *, use indexes, limit results, avoid functions on indexed cols",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "sql017",
+      "type": "optimization",
+      "name": "N+1 Problem",
+      "description": "Query explosion",
+      "pattern": "Use JOINs or batch queries instead of loop queries",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "sql018",
+      "type": "transactions",
+      "name": "ACID Properties",
+      "description": "Transaction guarantees",
+      "pattern": "Atomicity, Consistency, Isolation, Durability",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "sql019",
+      "type": "transactions",
+      "name": "Isolation Levels",
+      "description": "Concurrency control",
+      "pattern": "READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "sql020",
+      "type": "transactions",
+      "name": "Deadlock Prevention",
+      "description": "Avoid deadlocks",
+      "pattern": "Consistent ordering, short transactions, proper indexing",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "sql021",
+      "type": "modeling",
+      "name": "Normalization",
+      "description": "Data organization",
+      "pattern": "1NF, 2NF, 3NF, BCNF - reduce redundancy",
+      "example": "Modeling usage"
+    },
+    {
+      "id": "sql022",
+      "type": "modeling",
+      "name": "Denormalization",
+      "description": "Performance tradeoff",
+      "pattern": "Strategic redundancy for read performance",
+      "example": "Modeling usage"
+    },
+    {
+      "id": "sql023",
+      "type": "modeling",
+      "name": "Foreign Keys",
+      "description": "Referential integrity",
+      "pattern": "REFERENCES table(col) ON DELETE CASCADE/SET NULL/RESTRICT",
+      "example": "Modeling usage"
+    },
+    {
+      "id": "sql024",
+      "type": "modeling",
+      "name": "Constraints",
+      "description": "Data validation",
+      "pattern": "NOT NULL, UNIQUE, CHECK, PRIMARY KEY, FOREIGN KEY",
+      "example": "Modeling usage"
+    },
+    {
+      "id": "sql025",
+      "type": "postgres",
+      "name": "PostgreSQL JSONB",
+      "description": "JSON operations",
+      "pattern": "jsonb_col->>'key', @> containment, jsonb_agg, jsonb_set",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "sql026",
+      "type": "postgres",
+      "name": "PostgreSQL Arrays",
+      "description": "Array operations",
+      "pattern": "array_agg, ANY(), ALL(), array_length, unnest",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "sql027",
+      "type": "postgres",
+      "name": "PostgreSQL Full-Text",
+      "description": "Text search",
+      "pattern": "to_tsvector, to_tsquery, @@ operator, GIN indexes",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "sql028",
+      "type": "postgres",
+      "name": "PostgreSQL Extensions",
+      "description": "Extra features",
+      "pattern": "pg_trgm (fuzzy), PostGIS (spatial), uuid-ossp, pgcrypto",
+      "example": "Postgres usage"
+    },
+    {
+      "id": "sql029",
+      "type": "admin",
+      "name": "Partitioning",
+      "description": "Table splitting",
+      "pattern": "PARTITION BY RANGE/LIST/HASH - large table management",
+      "example": "Admin usage"
+    },
+    {
+      "id": "sql030",
+      "type": "admin",
+      "name": "Vacuuming",
+      "description": "Maintenance",
+      "pattern": "VACUUM ANALYZE - reclaim space, update statistics",
+      "example": "Admin usage"
+    }
+  ]
+}

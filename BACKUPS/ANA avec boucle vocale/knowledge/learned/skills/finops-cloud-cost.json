@@ -1,0 +1,246 @@
+{
+  "category": "finops-cloud-cost",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "fo001",
+      "type": "fundamentals",
+      "name": "FinOps Definition",
+      "description": "Cloud financial management",
+      "pattern": "Maximize cloud value, engineering + finance + business",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fo002",
+      "type": "fundamentals",
+      "name": "FinOps Lifecycle",
+      "description": "Three phases",
+      "pattern": "Inform, Optimize, Operate - continuous cycle",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fo003",
+      "type": "fundamentals",
+      "name": "Unit Economics",
+      "description": "Cost per unit",
+      "pattern": "Cost per request, per user, per transaction",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fo004",
+      "type": "visibility",
+      "name": "Cost Allocation",
+      "description": "Tag everything",
+      "pattern": "Team, project, environment tags, chargeback",
+      "example": "Visibility usage"
+    },
+    {
+      "id": "fo005",
+      "type": "visibility",
+      "name": "Cost Explorer",
+      "description": "AWS cost analysis",
+      "pattern": "AWS Cost Explorer, filter by service/tag, trends",
+      "example": "Visibility usage"
+    },
+    {
+      "id": "fo006",
+      "type": "visibility",
+      "name": "Billing Alerts",
+      "description": "Budget monitoring",
+      "pattern": "AWS Budgets, threshold alerts, forecast alerts",
+      "example": "Visibility usage"
+    },
+    {
+      "id": "fo007",
+      "type": "visibility",
+      "name": "Cost Dashboards",
+      "description": "Visualize costs",
+      "pattern": "Grafana, custom dashboards, team visibility",
+      "example": "Visibility usage"
+    },
+    {
+      "id": "fo008",
+      "type": "optimization",
+      "name": "Right-Sizing",
+      "description": "Fit resources",
+      "pattern": "Analyze usage, downsize over-provisioned, recommendations",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "fo009",
+      "type": "optimization",
+      "name": "Reserved Instances",
+      "description": "Commit to save",
+      "pattern": "1-3 year commit, up to 72% savings, steady workloads",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "fo010",
+      "type": "optimization",
+      "name": "Savings Plans",
+      "description": "Flexible commitment",
+      "pattern": "Compute Savings Plans, more flexible than RI",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "fo011",
+      "type": "optimization",
+      "name": "Spot Instances",
+      "description": "Spare capacity",
+      "pattern": "Up to 90% discount, interruption handling, fault-tolerant",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "fo012",
+      "type": "optimization",
+      "name": "Auto-Scaling",
+      "description": "Scale to demand",
+      "pattern": "Scale down when idle, match capacity to load",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "fo013",
+      "type": "optimization",
+      "name": "Scheduled Scaling",
+      "description": "Predictable patterns",
+      "pattern": "Scale down nights/weekends, dev environments",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "fo014",
+      "type": "compute",
+      "name": "Instance Selection",
+      "description": "Right instance type",
+      "pattern": "Graviton/ARM cheaper, burstable vs dedicated",
+      "example": "Compute usage"
+    },
+    {
+      "id": "fo015",
+      "type": "compute",
+      "name": "Serverless Economics",
+      "description": "Pay per use",
+      "pattern": "Lambda pricing, cost at scale, cold starts",
+      "example": "Compute usage"
+    },
+    {
+      "id": "fo016",
+      "type": "compute",
+      "name": "Container Efficiency",
+      "description": "K8s cost",
+      "pattern": "Resource requests/limits, bin packing, Karpenter",
+      "example": "Compute usage"
+    },
+    {
+      "id": "fo017",
+      "type": "storage",
+      "name": "Storage Tiers",
+      "description": "Right storage class",
+      "pattern": "S3 IA, Glacier, lifecycle policies, auto-tiering",
+      "example": "Storage usage"
+    },
+    {
+      "id": "fo018",
+      "type": "storage",
+      "name": "EBS Optimization",
+      "description": "Volume costs",
+      "pattern": "gp3 vs gp2, delete unattached, snapshots cleanup",
+      "example": "Storage usage"
+    },
+    {
+      "id": "fo019",
+      "type": "storage",
+      "name": "Data Transfer",
+      "description": "Egress costs",
+      "pattern": "VPC endpoints, CDN caching, regional optimization",
+      "example": "Storage usage"
+    },
+    {
+      "id": "fo020",
+      "type": "database",
+      "name": "RDS Cost",
+      "description": "Database sizing",
+      "pattern": "Right instance, Reserved Instances, Aurora Serverless",
+      "example": "Database usage"
+    },
+    {
+      "id": "fo021",
+      "type": "database",
+      "name": "DynamoDB Cost",
+      "description": "NoSQL pricing",
+      "pattern": "On-demand vs provisioned, reserved capacity",
+      "example": "Database usage"
+    },
+    {
+      "id": "fo022",
+      "type": "tools",
+      "name": "Cost Tools",
+      "description": "FinOps tools",
+      "pattern": "Kubecost, Infracost, CloudHealth, Spot.io",
+      "example": "Tools usage"
+    },
+    {
+      "id": "fo023",
+      "type": "tools",
+      "name": "Infracost",
+      "description": "IaC cost",
+      "pattern": "Cost estimates in PRs, Terraform cost analysis",
+      "example": "Tools usage"
+    },
+    {
+      "id": "fo024",
+      "type": "tools",
+      "name": "Kubecost",
+      "description": "K8s cost",
+      "pattern": "Namespace/pod costs, allocation, recommendations",
+      "example": "Tools usage"
+    },
+    {
+      "id": "fo025",
+      "type": "governance",
+      "name": "Cost Policies",
+      "description": "Guardrails",
+      "pattern": "Max instance size, required tags, approval workflows",
+      "example": "Governance usage"
+    },
+    {
+      "id": "fo026",
+      "type": "governance",
+      "name": "Showback/Chargeback",
+      "description": "Cost attribution",
+      "pattern": "Show teams their costs, internal billing",
+      "example": "Governance usage"
+    },
+    {
+      "id": "fo027",
+      "type": "governance",
+      "name": "Anomaly Detection",
+      "description": "Catch spikes",
+      "pattern": "AWS Cost Anomaly Detection, alert on unusual spend",
+      "example": "Governance usage"
+    },
+    {
+      "id": "fo028",
+      "type": "culture",
+      "name": "Cost-Aware Engineering",
+      "description": "Developer responsibility",
+      "pattern": "Engineers own cost, visibility, optimization",
+      "example": "Culture usage"
+    },
+    {
+      "id": "fo029",
+      "type": "culture",
+      "name": "Architecture Reviews",
+      "description": "Cost in design",
+      "pattern": "Consider cost in architecture decisions, tradeoffs",
+      "example": "Culture usage"
+    },
+    {
+      "id": "fo030",
+      "type": "reporting",
+      "name": "Cost Reporting",
+      "description": "Regular reviews",
+      "pattern": "Weekly cost reviews, trend analysis, forecasting",
+      "example": "Reporting usage"
+    }
+  ]
+}

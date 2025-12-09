@@ -1,0 +1,246 @@
+{
+  "category": "data-visualization",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "dv001",
+      "type": "fundamentals",
+      "name": "Chart Types",
+      "description": "Right chart for data",
+      "pattern": "Bar for comparison, line for trends, pie for parts of whole, scatter for correlation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dv002",
+      "type": "fundamentals",
+      "name": "Data-Ink Ratio",
+      "description": "Tufte principle",
+      "pattern": "Maximize data, minimize non-data ink, remove chartjunk",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dv003",
+      "type": "fundamentals",
+      "name": "Color Theory",
+      "description": "Effective colors",
+      "pattern": "Sequential, diverging, categorical palettes, colorblind-safe",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dv004",
+      "type": "fundamentals",
+      "name": "Axes Design",
+      "description": "Clear scales",
+      "pattern": "Start at zero for bars, appropriate tick marks, clear labels",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dv005",
+      "type": "d3",
+      "name": "D3.js Basics",
+      "description": "Data-driven docs",
+      "pattern": "d3.select().data().enter().append(), bindning data to DOM",
+      "example": "D3 usage"
+    },
+    {
+      "id": "dv006",
+      "type": "d3",
+      "name": "D3 Scales",
+      "description": "Map data to visual",
+      "pattern": "scaleLinear, scaleTime, scaleOrdinal, scaleBand for axes",
+      "example": "D3 usage"
+    },
+    {
+      "id": "dv007",
+      "type": "d3",
+      "name": "D3 Axes",
+      "description": "Generate axes",
+      "pattern": "axisBottom(scale), axisLeft(scale), tickFormat, tickValues",
+      "example": "D3 usage"
+    },
+    {
+      "id": "dv008",
+      "type": "d3",
+      "name": "D3 Shapes",
+      "description": "SVG generators",
+      "pattern": "d3.line(), d3.area(), d3.arc() for paths",
+      "example": "D3 usage"
+    },
+    {
+      "id": "dv009",
+      "type": "d3",
+      "name": "D3 Transitions",
+      "description": "Animate changes",
+      "pattern": "selection.transition().duration(500).attr('x', newX)",
+      "example": "D3 usage"
+    },
+    {
+      "id": "dv010",
+      "type": "d3",
+      "name": "D3 Layouts",
+      "description": "Complex arrangements",
+      "pattern": "d3.hierarchy, d3.treemap, d3.pack, d3.force for networks",
+      "example": "D3 usage"
+    },
+    {
+      "id": "dv011",
+      "type": "chartjs",
+      "name": "Chart.js Basics",
+      "description": "Simple charts",
+      "pattern": "new Chart(ctx, {type: 'bar', data, options})",
+      "example": "Chartjs usage"
+    },
+    {
+      "id": "dv012",
+      "type": "chartjs",
+      "name": "Chart.js Datasets",
+      "description": "Multiple series",
+      "pattern": "datasets: [{label, data, backgroundColor}]",
+      "example": "Chartjs usage"
+    },
+    {
+      "id": "dv013",
+      "type": "chartjs",
+      "name": "Chart.js Plugins",
+      "description": "Extend functionality",
+      "pattern": "plugins: [customPlugin], beforeDraw, afterDraw hooks",
+      "example": "Chartjs usage"
+    },
+    {
+      "id": "dv014",
+      "type": "recharts",
+      "name": "Recharts",
+      "description": "React charts",
+      "pattern": "<LineChart><Line dataKey='value'/><XAxis/></LineChart>",
+      "example": "Recharts usage"
+    },
+    {
+      "id": "dv015",
+      "type": "recharts",
+      "name": "Recharts Responsive",
+      "description": "Responsive containers",
+      "pattern": "<ResponsiveContainer width='100%' height={300}>",
+      "example": "Recharts usage"
+    },
+    {
+      "id": "dv016",
+      "type": "visx",
+      "name": "Visx Library",
+      "description": "Low-level React viz",
+      "pattern": "Airbnb's modular D3 + React, @visx/shape, @visx/scale",
+      "example": "Visx usage"
+    },
+    {
+      "id": "dv017",
+      "type": "plotly",
+      "name": "Plotly.js",
+      "description": "Interactive plots",
+      "pattern": "Plotly.newPlot(div, data, layout), 3D charts, animations",
+      "example": "Plotly usage"
+    },
+    {
+      "id": "dv018",
+      "type": "echarts",
+      "name": "Apache ECharts",
+      "description": "Enterprise charts",
+      "pattern": "echarts.init(dom).setOption({xAxis, yAxis, series})",
+      "example": "Echarts usage"
+    },
+    {
+      "id": "dv019",
+      "type": "maps",
+      "name": "Choropleth Maps",
+      "description": "Geographic data",
+      "pattern": "Color regions by value, GeoJSON boundaries, legends",
+      "example": "Maps usage"
+    },
+    {
+      "id": "dv020",
+      "type": "maps",
+      "name": "Point Maps",
+      "description": "Location data",
+      "pattern": "Markers, clusters, heatmaps for geographic points",
+      "example": "Maps usage"
+    },
+    {
+      "id": "dv021",
+      "type": "dashboards",
+      "name": "Dashboard Design",
+      "description": "Layout principles",
+      "pattern": "KPIs at top, details below, consistent spacing, filters",
+      "example": "Dashboards usage"
+    },
+    {
+      "id": "dv022",
+      "type": "dashboards",
+      "name": "Real-time Updates",
+      "description": "Live data",
+      "pattern": "WebSocket updates, smooth transitions, rate limiting",
+      "example": "Dashboards usage"
+    },
+    {
+      "id": "dv023",
+      "type": "advanced",
+      "name": "Canvas vs SVG",
+      "description": "Rendering choice",
+      "pattern": "SVG for <1000 elements, Canvas for large datasets",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "dv024",
+      "type": "advanced",
+      "name": "WebGL Viz",
+      "description": "GPU rendering",
+      "pattern": "deck.gl, regl for millions of points",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "dv025",
+      "type": "advanced",
+      "name": "Streaming Data",
+      "description": "Continuous updates",
+      "pattern": "Rolling window, append-only, efficient DOM updates",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "dv026",
+      "type": "accessibility",
+      "name": "Chart Accessibility",
+      "description": "A11y for viz",
+      "pattern": "Alt text, data tables, keyboard navigation, ARIA",
+      "example": "Accessibility usage"
+    },
+    {
+      "id": "dv027",
+      "type": "tables",
+      "name": "Data Tables",
+      "description": "Tabular display",
+      "pattern": "AG Grid, TanStack Table, sorting, filtering, pagination",
+      "example": "Tables usage"
+    },
+    {
+      "id": "dv028",
+      "type": "tables",
+      "name": "Virtual Scrolling",
+      "description": "Large tables",
+      "pattern": "Only render visible rows, react-window, react-virtualized",
+      "example": "Tables usage"
+    },
+    {
+      "id": "dv029",
+      "type": "export",
+      "name": "Chart Export",
+      "description": "Save charts",
+      "pattern": "SVG download, PNG via canvas, PDF generation",
+      "example": "Export usage"
+    },
+    {
+      "id": "dv030",
+      "type": "testing",
+      "name": "Visual Regression",
+      "description": "Test charts",
+      "pattern": "Snapshot testing, Percy, Chromatic for visual diffs",
+      "example": "Testing usage"
+    }
+  ]
+}

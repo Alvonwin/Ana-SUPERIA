@@ -1,0 +1,246 @@
+{
+  "category": "legacy-code",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "leg001",
+      "type": "understanding",
+      "name": "Legacy Definition",
+      "description": "What is legacy",
+      "pattern": "Code without tests, unclear ownership, fear to change",
+      "example": "Understanding usage"
+    },
+    {
+      "id": "leg002",
+      "type": "understanding",
+      "name": "Code Archaeology",
+      "description": "Understand history",
+      "pattern": "Git blame, commit history, documentation, ask people",
+      "example": "Understanding usage"
+    },
+    {
+      "id": "leg003",
+      "type": "understanding",
+      "name": "System Mapping",
+      "description": "Document structure",
+      "pattern": "Create diagrams, identify components, trace data flow",
+      "example": "Understanding usage"
+    },
+    {
+      "id": "leg004",
+      "type": "understanding",
+      "name": "Dependency Analysis",
+      "description": "Find dependencies",
+      "pattern": "Map internal/external dependencies, coupling analysis",
+      "example": "Understanding usage"
+    },
+    {
+      "id": "leg005",
+      "type": "testing",
+      "name": "Characterization Tests",
+      "description": "Capture behavior",
+      "pattern": "Write tests that document current behavior, not spec",
+      "example": "Testing usage"
+    },
+    {
+      "id": "leg006",
+      "type": "testing",
+      "name": "Golden Master Testing",
+      "description": "Approval tests",
+      "pattern": "Capture output, compare against approved baseline",
+      "example": "Testing usage"
+    },
+    {
+      "id": "leg007",
+      "type": "testing",
+      "name": "Seams",
+      "description": "Testable points",
+      "pattern": "Find places to inject test doubles without changing code",
+      "example": "Testing usage"
+    },
+    {
+      "id": "leg008",
+      "type": "testing",
+      "name": "Object Seams",
+      "description": "OO seams",
+      "pattern": "Subclass and override, dependency injection points",
+      "example": "Testing usage"
+    },
+    {
+      "id": "leg009",
+      "type": "testing",
+      "name": "Integration Tests First",
+      "description": "Safety net",
+      "pattern": "High-level tests before refactoring, catch regressions",
+      "example": "Testing usage"
+    },
+    {
+      "id": "leg010",
+      "type": "refactoring",
+      "name": "Safe Refactoring",
+      "description": "Minimize risk",
+      "pattern": "Small steps, run tests frequently, version control",
+      "example": "Refactoring usage"
+    },
+    {
+      "id": "leg011",
+      "type": "refactoring",
+      "name": "Sprout Method",
+      "description": "Add new code safely",
+      "pattern": "Create new method for new code, call from existing",
+      "example": "Refactoring usage"
+    },
+    {
+      "id": "leg012",
+      "type": "refactoring",
+      "name": "Sprout Class",
+      "description": "New class for feature",
+      "pattern": "Create class for new functionality, minimal changes to old",
+      "example": "Refactoring usage"
+    },
+    {
+      "id": "leg013",
+      "type": "refactoring",
+      "name": "Wrap Method",
+      "description": "Add behavior",
+      "pattern": "Rename old method, create new with same name that calls old",
+      "example": "Refactoring usage"
+    },
+    {
+      "id": "leg014",
+      "type": "refactoring",
+      "name": "Wrap Class",
+      "description": "Decorator pattern",
+      "pattern": "Wrap existing class, add behavior without modification",
+      "example": "Refactoring usage"
+    },
+    {
+      "id": "leg015",
+      "type": "refactoring",
+      "name": "Extract Interface",
+      "description": "Decouple",
+      "pattern": "Create interface for class, program to interface",
+      "example": "Refactoring usage"
+    },
+    {
+      "id": "leg016",
+      "type": "refactoring",
+      "name": "Break Dependencies",
+      "description": "Enable testing",
+      "pattern": "Introduce interfaces, dependency injection, seams",
+      "example": "Refactoring usage"
+    },
+    {
+      "id": "leg017",
+      "type": "strategies",
+      "name": "Strangler Fig Pattern",
+      "description": "Gradual replacement",
+      "pattern": "Build new around old, route traffic, retire old",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "leg018",
+      "type": "strategies",
+      "name": "Branch by Abstraction",
+      "description": "Parallel implementation",
+      "pattern": "Create abstraction, build new impl, switch over",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "leg019",
+      "type": "strategies",
+      "name": "Parallel Change",
+      "description": "Expand-contract",
+      "pattern": "Add new, migrate callers, remove old",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "leg020",
+      "type": "strategies",
+      "name": "Feature Toggles",
+      "description": "Safe deployment",
+      "pattern": "Deploy dark, enable gradually, quick rollback",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "leg021",
+      "type": "challenges",
+      "name": "Hidden Dependencies",
+      "description": "Implicit coupling",
+      "pattern": "Global state, singletons, hidden database calls",
+      "example": "Challenges usage"
+    },
+    {
+      "id": "leg022",
+      "type": "challenges",
+      "name": "Long Methods",
+      "description": "God methods",
+      "pattern": "Extract methods, introduce explaining variables",
+      "example": "Challenges usage"
+    },
+    {
+      "id": "leg023",
+      "type": "challenges",
+      "name": "Large Classes",
+      "description": "God classes",
+      "pattern": "Single responsibility, extract classes, facades",
+      "example": "Challenges usage"
+    },
+    {
+      "id": "leg024",
+      "type": "challenges",
+      "name": "No Documentation",
+      "description": "Tribal knowledge",
+      "pattern": "Document as you learn, capture in tests",
+      "example": "Challenges usage"
+    },
+    {
+      "id": "leg025",
+      "type": "prioritization",
+      "name": "Where to Start",
+      "description": "Pick battles",
+      "pattern": "High change frequency, high business value, high risk",
+      "example": "Prioritization usage"
+    },
+    {
+      "id": "leg026",
+      "type": "prioritization",
+      "name": "Leave it Better",
+      "description": "Boy Scout Rule",
+      "pattern": "Small improvements each touch, compound effect",
+      "example": "Prioritization usage"
+    },
+    {
+      "id": "leg027",
+      "type": "prioritization",
+      "name": "Don't Over-Refactor",
+      "description": "Right amount",
+      "pattern": "Refactor what you need to change, not everything",
+      "example": "Prioritization usage"
+    },
+    {
+      "id": "leg028",
+      "type": "team",
+      "name": "Knowledge Sharing",
+      "description": "Spread understanding",
+      "pattern": "Pair programming, code reviews, documentation",
+      "example": "Team usage"
+    },
+    {
+      "id": "leg029",
+      "type": "team",
+      "name": "Building Consensus",
+      "description": "Team buy-in",
+      "pattern": "Show value, demonstrate safety, incremental wins",
+      "example": "Team usage"
+    },
+    {
+      "id": "leg030",
+      "type": "tools",
+      "name": "Legacy Tools",
+      "description": "Helpful tools",
+      "pattern": "IDE refactoring, static analysis, code coverage, dependency graphs",
+      "example": "Tools usage"
+    }
+  ]
+}

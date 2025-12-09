@@ -1,0 +1,246 @@
+{
+  "category": "quantum-computing",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "qc001",
+      "type": "fundamentals",
+      "name": "Quantum Basics",
+      "description": "Quantum principles",
+      "pattern": "Superposition, entanglement, interference",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "qc002",
+      "type": "fundamentals",
+      "name": "Qubits",
+      "description": "Quantum bits",
+      "pattern": "|0⟩, |1⟩, Bloch sphere, measurement",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "qc003",
+      "type": "fundamentals",
+      "name": "Quantum Gates",
+      "description": "Operations",
+      "pattern": "Hadamard, CNOT, Pauli-X/Y/Z, rotation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "qc004",
+      "type": "fundamentals",
+      "name": "Quantum Circuits",
+      "description": "Circuit model",
+      "pattern": "Gate sequence, depth, width",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "qc005",
+      "type": "fundamentals",
+      "name": "Quantum Measurement",
+      "description": "State collapse",
+      "pattern": "Projective measurement, probabilities",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "qc006",
+      "type": "fundamentals",
+      "name": "Quantum Entanglement",
+      "description": "Bell states",
+      "pattern": "EPR pairs, correlation, teleportation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "qc007",
+      "type": "algorithms",
+      "name": "Grover's Algorithm",
+      "description": "Search",
+      "pattern": "Quadratic speedup, oracle, amplitude",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "qc008",
+      "type": "algorithms",
+      "name": "Shor's Algorithm",
+      "description": "Factoring",
+      "pattern": "Period finding, RSA breaking",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "qc009",
+      "type": "algorithms",
+      "name": "VQE",
+      "description": "Variational quantum",
+      "pattern": "Ansatz, optimizer, chemistry",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "qc010",
+      "type": "algorithms",
+      "name": "QAOA",
+      "description": "Optimization",
+      "pattern": "Combinatorial, MaxCut, parameters",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "qc011",
+      "type": "algorithms",
+      "name": "Quantum ML",
+      "description": "QML",
+      "pattern": "Quantum kernel, variational classifier",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "qc012",
+      "type": "qiskit",
+      "name": "Qiskit Basics",
+      "description": "IBM framework",
+      "pattern": "QuantumCircuit, transpile, execute",
+      "example": "Qiskit usage"
+    },
+    {
+      "id": "qc013",
+      "type": "qiskit",
+      "name": "Qiskit Runtime",
+      "description": "Cloud execution",
+      "pattern": "Primitives, Sampler, Estimator",
+      "example": "Qiskit usage"
+    },
+    {
+      "id": "qc014",
+      "type": "qiskit",
+      "name": "Qiskit Aer",
+      "description": "Simulators",
+      "pattern": "statevector, qasm, noise model",
+      "example": "Qiskit usage"
+    },
+    {
+      "id": "qc015",
+      "type": "qiskit",
+      "name": "Qiskit Nature",
+      "description": "Chemistry",
+      "pattern": "Molecular simulations, VQE",
+      "example": "Qiskit usage"
+    },
+    {
+      "id": "qc016",
+      "type": "cirq",
+      "name": "Cirq Basics",
+      "description": "Google framework",
+      "pattern": "cirq.Circuit, moments, devices",
+      "example": "Cirq usage"
+    },
+    {
+      "id": "qc017",
+      "type": "cirq",
+      "name": "Cirq Simulators",
+      "description": "Simulation",
+      "pattern": "Simulator, density matrix",
+      "example": "Cirq usage"
+    },
+    {
+      "id": "qc018",
+      "type": "pennylane",
+      "name": "PennyLane",
+      "description": "QML framework",
+      "pattern": "qml.qnode, gradients, optimization",
+      "example": "Pennylane usage"
+    },
+    {
+      "id": "qc019",
+      "type": "pennylane",
+      "name": "Quantum Gradients",
+      "description": "Differentiation",
+      "pattern": "Parameter-shift, backprop",
+      "example": "Pennylane usage"
+    },
+    {
+      "id": "qc020",
+      "type": "hardware",
+      "name": "Superconducting Qubits",
+      "description": "IBM/Google",
+      "pattern": "Transmon, coherence, T1/T2",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "qc021",
+      "type": "hardware",
+      "name": "Trapped Ions",
+      "description": "IonQ/Honeywell",
+      "pattern": "Ion traps, laser gates",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "qc022",
+      "type": "hardware",
+      "name": "Photonic QC",
+      "description": "Xanadu",
+      "pattern": "Photons, linear optics, GBS",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "qc023",
+      "type": "hardware",
+      "name": "Neutral Atoms",
+      "description": "QuEra",
+      "pattern": "Rydberg atoms, analog QC",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "qc024",
+      "type": "error",
+      "name": "Quantum Error",
+      "description": "Noise",
+      "pattern": "Decoherence, gate errors, SPAM",
+      "example": "Error usage"
+    },
+    {
+      "id": "qc025",
+      "type": "error",
+      "name": "Error Correction",
+      "description": "QEC",
+      "pattern": "Surface code, logical qubits",
+      "example": "Error usage"
+    },
+    {
+      "id": "qc026",
+      "type": "error",
+      "name": "Error Mitigation",
+      "description": "NISQ techniques",
+      "pattern": "ZNE, PEC, readout mitigation",
+      "example": "Error usage"
+    },
+    {
+      "id": "qc027",
+      "type": "applications",
+      "name": "Quantum Chemistry",
+      "description": "Molecular simulation",
+      "pattern": "Drug discovery, materials",
+      "example": "Applications usage"
+    },
+    {
+      "id": "qc028",
+      "type": "applications",
+      "name": "Quantum Finance",
+      "description": "Financial QC",
+      "pattern": "Portfolio, risk, Monte Carlo",
+      "example": "Applications usage"
+    },
+    {
+      "id": "qc029",
+      "type": "applications",
+      "name": "Quantum Cryptography",
+      "description": "QKD",
+      "pattern": "BB84, secure communication",
+      "example": "Applications usage"
+    },
+    {
+      "id": "qc030",
+      "type": "applications",
+      "name": "Quantum Simulation",
+      "description": "Physics simulation",
+      "pattern": "Many-body, condensed matter",
+      "example": "Applications usage"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "name": "Daily Art Generation",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hour": 8
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Daily 8AM Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:3338/api/art/generate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "id": "http-request-ana",
+      "name": "Trigger Ana Art Generation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "content": "=🎨 Daily Art Generated!\n\nTime: {{ $now.format('yyyy-MM-dd HH:mm') }}\nStatus: {{ $json.success ? 'Success' : 'Failed' }}\nMessage: {{ $json.message }}",
+        "fileName": "daily_art_log.txt",
+        "options": {
+          "append": true
+        }
+      },
+      "id": "write-log",
+      "name": "Write Log",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [750, 300]
+    }
+  ],
+  "connections": {
+    "Daily 8AM Trigger": {
+      "main": [
+        [
+          {
+            "node": "Trigger Ana Art Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trigger Ana Art Generation": {
+      "main": [
+        [
+          {
+            "node": "Write Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "instanceId": "ana-local",
+    "description": "Génère automatiquement de l'art chaque jour à 8h via ComfyUI",
+    "createdBy": "Ana SUPERIA",
+    "createdAt": "2025-11-25T15:30:00.000Z"
+  }
+}

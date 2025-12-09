@@ -1,0 +1,247 @@
+{
+  "category": "tailwind-css-v4",
+  "version": "1.0.0",
+  "generatedBy": "Ana SUPERIA + Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "tw01",
+      "type": "config",
+      "name": "CSS-First Config",
+      "description": "No tailwind.config.js",
+      "pattern": "@theme { --color-primary: oklch(0.7 0.15 200); }",
+      "example": "CSS variables"
+    },
+    {
+      "id": "tw02",
+      "type": "theme",
+      "name": "@theme Directive",
+      "description": "Define theme in CSS",
+      "pattern": "@theme { --font-sans: Inter, sans-serif; }",
+      "example": "Custom tokens"
+    },
+    {
+      "id": "tw03",
+      "type": "import",
+      "name": "CSS Imports",
+      "description": "Import Tailwind",
+      "pattern": "@import 'tailwindcss';",
+      "example": "Single import"
+    },
+    {
+      "id": "tw04",
+      "type": "container",
+      "name": "Container Queries",
+      "description": "Size-based styling",
+      "pattern": "@container (min-width: 400px) { .card { ... } }",
+      "example": "Component responsive"
+    },
+    {
+      "id": "tw05",
+      "type": "containerQuery",
+      "name": "@container Classes",
+      "description": "Utility containers",
+      "pattern": "@container, @lg:grid-cols-2",
+      "example": "Inline container"
+    },
+    {
+      "id": "tw06",
+      "type": "3d",
+      "name": "3D Transforms",
+      "description": "Perspective transforms",
+      "pattern": "perspective-500 rotate-x-45 translate-z-10",
+      "example": "3D effects"
+    },
+    {
+      "id": "tw07",
+      "type": "colorMix",
+      "name": "color-mix()",
+      "description": "Blend colors",
+      "pattern": "bg-[color-mix(in_oklch,var(--primary)_50%,white)]",
+      "example": "Dynamic colors"
+    },
+    {
+      "id": "tw08",
+      "type": "oklch",
+      "name": "OKLCH Colors",
+      "description": "Perceptual color space",
+      "pattern": "bg-[oklch(0.7_0.15_200)]",
+      "example": "Better contrast"
+    },
+    {
+      "id": "tw09",
+      "type": "startingStyle",
+      "name": "@starting-style",
+      "description": "Entry animations",
+      "pattern": "@starting-style { opacity: 0; }",
+      "example": "Animate on appear"
+    },
+    {
+      "id": "tw10",
+      "type": "anchor",
+      "name": "Anchor Positioning",
+      "description": "CSS anchors",
+      "pattern": "anchor-name-[--tooltip] position-anchor-[--trigger]",
+      "example": "Tooltips, dropdowns"
+    },
+    {
+      "id": "tw11",
+      "type": "textWrap",
+      "name": "Text Wrap Balance",
+      "description": "Balanced text",
+      "pattern": "text-wrap-balance, text-wrap-pretty",
+      "example": "Headlines"
+    },
+    {
+      "id": "tw12",
+      "type": "subgrid",
+      "name": "Subgrid",
+      "description": "Inherit grid",
+      "pattern": "grid-cols-subgrid, grid-rows-subgrid",
+      "example": "Aligned children"
+    },
+    {
+      "id": "tw13",
+      "type": "logical",
+      "name": "Logical Properties",
+      "description": "RTL support",
+      "pattern": "ms-4, me-4, ps-2, pe-2",
+      "example": "Margin/padding start/end"
+    },
+    {
+      "id": "tw14",
+      "type": "has",
+      "name": ":has() Selector",
+      "description": "Parent selector",
+      "pattern": "has-[:checked]:bg-blue-500",
+      "example": "Style based on children"
+    },
+    {
+      "id": "tw15",
+      "type": "not",
+      "name": ":not() Selector",
+      "description": "Exclusion styling",
+      "pattern": "not-first:border-t",
+      "example": "Except first"
+    },
+    {
+      "id": "tw16",
+      "type": "group",
+      "name": "Named Groups",
+      "description": "Multiple groups",
+      "pattern": "group/card, group-hover/card:scale-105",
+      "example": "Nested groups"
+    },
+    {
+      "id": "tw17",
+      "type": "peer",
+      "name": "Named Peers",
+      "description": "Multiple peers",
+      "pattern": "peer/email, peer-invalid/email:text-red-500",
+      "example": "Form validation"
+    },
+    {
+      "id": "tw18",
+      "type": "variant",
+      "name": "Custom Variants",
+      "description": "Define variants",
+      "pattern": "@variant hocus (&:hover, &:focus)",
+      "example": "Combined states"
+    },
+    {
+      "id": "tw19",
+      "type": "utility",
+      "name": "Custom Utilities",
+      "description": "Add utilities",
+      "pattern": "@utility content-auto { content-visibility: auto; }",
+      "example": "New classes"
+    },
+    {
+      "id": "tw20",
+      "type": "animate",
+      "name": "Built-in Animations",
+      "description": "Animation classes",
+      "pattern": "animate-spin, animate-pulse, animate-bounce",
+      "example": "No keyframes needed"
+    },
+    {
+      "id": "tw21",
+      "type": "gradient",
+      "name": "Gradient Utilities",
+      "description": "Complex gradients",
+      "pattern": "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500",
+      "example": "Multi-stop"
+    },
+    {
+      "id": "tw22",
+      "type": "shadow",
+      "name": "Shadow Colors",
+      "description": "Colored shadows",
+      "pattern": "shadow-lg shadow-blue-500/50",
+      "example": "Brand shadows"
+    },
+    {
+      "id": "tw23",
+      "type": "ring",
+      "name": "Ring Utilities",
+      "description": "Focus rings",
+      "pattern": "ring-2 ring-offset-2 ring-blue-500",
+      "example": "Focus states"
+    },
+    {
+      "id": "tw24",
+      "type": "divide",
+      "name": "Divide Utilities",
+      "description": "Child borders",
+      "pattern": "divide-y divide-gray-200",
+      "example": "List separators"
+    },
+    {
+      "id": "tw25",
+      "type": "prose",
+      "name": "Typography Plugin",
+      "description": "Rich text styling",
+      "pattern": "prose prose-lg dark:prose-invert",
+      "example": "Markdown content"
+    },
+    {
+      "id": "tw26",
+      "type": "forms",
+      "name": "Forms Plugin",
+      "description": "Form reset",
+      "pattern": "form-input, form-select, form-checkbox",
+      "example": "Consistent forms"
+    },
+    {
+      "id": "tw27",
+      "type": "aspect",
+      "name": "Aspect Ratio",
+      "description": "Fixed ratios",
+      "pattern": "aspect-video, aspect-square, aspect-[4/3]",
+      "example": "Media embeds"
+    },
+    {
+      "id": "tw28",
+      "type": "scroll",
+      "name": "Scroll Snap",
+      "description": "Scroll behavior",
+      "pattern": "snap-x snap-mandatory snap-center",
+      "example": "Carousels"
+    },
+    {
+      "id": "tw29",
+      "type": "dark",
+      "name": "Dark Mode",
+      "description": "Theme switching",
+      "pattern": "dark:bg-gray-900 dark:text-white",
+      "example": "Class or media"
+    },
+    {
+      "id": "tw30",
+      "type": "jit",
+      "name": "JIT Engine v4",
+      "description": "Lightning CSS",
+      "pattern": "Rust-based compiler, faster builds",
+      "example": "10x faster"
+    }
+  ]
+}

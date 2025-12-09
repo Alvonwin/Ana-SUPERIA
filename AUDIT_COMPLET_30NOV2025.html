@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Ana SUPERIA - 30 Nov 2025</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --text-muted: #8b949e;
+            --green: #3fb950;
+            --red: #f85149;
+            --yellow: #d29922;
+            --blue: #58a6ff;
+            --purple: #a371f7;
+            --cyan: #39c5cf;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1f35 0%, #0d1117 100%);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header .score {
+            font-size: 4em;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--green), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .date { color: var(--text-muted); margin-top: 10px; }
+
+        /* Score Cards */
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .score-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .score-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--green);
+        }
+        .score-card .label {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .score-card.warning .value { color: var(--yellow); }
+
+        /* Sections */
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section h3 {
+            color: var(--purple);
+            margin: 20px 0 15px 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--blue);
+            font-weight: 600;
+        }
+        tr:hover { background: rgba(255,255,255,0.02); }
+
+        /* Status badges */
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .status.ok { background: rgba(63, 185, 80, 0.2); color: var(--green); }
+        .status.warning { background: rgba(210, 153, 34, 0.2); color: var(--yellow); }
+        .status.error { background: rgba(248, 81, 73, 0.2); color: var(--red); }
+
+        /* Architecture tree */
+        .tree {
+            font-family: 'Fira Code', monospace;
+            background: #0d1117;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .tree .level-0 { color: #ffd700; }
+        .tree .level-1 { color: var(--cyan); }
+        .tree .level-2 { color: var(--green); }
+        .tree .level-strict { color: var(--red); }
+
+        /* Progress bars */
+        .progress-bar {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--green), var(--cyan));
+            border-radius: 4px;
+        }
+
+        /* Fixes section */
+        .fix-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(63, 185, 80, 0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--green);
+        }
+        .fix-item .number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--green);
+            margin-right: 15px;
+            min-width: 40px;
+        }
+        .fix-item .details { flex: 1; }
+        .fix-item .endpoint { color: var(--cyan); font-family: monospace; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .header .score { font-size: 3em; }
+            .score-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>AUDIT COMPLET - ANA SUPERIA</h1>
+            <div class="score">92%</div>
+            <p>Score Global - Excellent</p>
+            <p class="date">30 Novembre 2025 - Auditeur: Claude Opus 4.5</p>
+        </div>
+
+        <!-- Score Cards -->
+        <div class="score-grid">
+            <div class="score-card">
+                <div class="value">68/70+</div>
+                <div class="label">APIs Fonctionnelles</div>
+            </div>
+            <div class="score-card">
+                <div class="value">16/16</div>
+                <div class="label">Agents Actifs</div>
+            </div>
+            <div class="score-card">
+                <div class="value">11/11</div>
+                <div class="label">Pages Frontend</div>
+            </div>
+            <div class="score-card">
+                <div class="value">4/5</div>
+                <div class="label">Services Externes</div>
+            </div>
+            <div class="score-card">
+                <div class="value">6/6</div>
+                <div class="label">Fixes Validés</div>
+            </div>
+            <div class="score-card">
+                <div class="value">569</div>
+                <div class="label">Skills Enregistrés</div>
+            </div>
+        </div>
+
+        <!-- Services Status -->
+        <div class="section">
+            <h2>Services & Ports</h2>
+            <table>
+                <tr><th>Service</th><th>Port</th><th>Status</th></tr>
+                <tr><td>Ana Backend</td><td>3338</td><td><span class="status ok">Actif</span></td></tr>
+                <tr><td>Agents Dashboard</td><td>3336</td><td><span class="status ok">Actif</span></td></tr>
+                <tr><td>ChromaDB</td><td>8000</td><td><span class="status ok">Actif (96 docs)</span></td></tr>
+                <tr><td>Ollama</td><td>11434</td><td><span class="status ok">Actif (7 modèles)</span></td></tr>
+                <tr><td>n8n</td><td>5678</td><td><span class="status ok">Actif</span></td></tr>
+                <tr><td>ComfyUI</td><td>8188</td><td><span class="status error">Non détecté</span></td></tr>
+            </table>
+        </div>
+
+        <!-- Agents Hierarchy -->
+        <div class="section">
+            <h2>Architecture des Agents (16 actifs)</h2>
+            <div class="tree">
+<pre>
+<span class="level-0">👑 Master Coordinator</span>
+├── <span class="level-1">🎯 Operations Manager</span>
+│   ├── <span class="level-2">💾 Memory Manager</span> (244 checks)
+│   ├── <span class="level-2">🔍 System Monitor</span> (122 checks, disk 73% free)
+│   └── <span class="level-2">🔔 Alain Notifier</span> (22 notifications, 2 urgentes)
+├── <span class="level-1">🧠 Cognitive Manager</span>
+│   ├── <span class="level-2">🎭 Emotion Analyzer</span>
+│   ├── <span class="level-2">📚 Learning Monitor</span>
+│   ├── <span class="level-2">✅ Truth Checker</span>
+│   ├── <span class="level-2">🧠 Long-Term Memory</span>
+│   ├── <span class="level-strict">🚨 Assumption Detector (STRICT)</span>
+│   ├── <span class="level-strict">🔍 Research Reminder (STRICT)</span>
+│   ├── <span class="level-strict">📋 Methodology Checker (STRICT)</span>
+│   ├── <span class="level-strict">👁️ Action Monitor (STRICT)</span>
+│   └── <span class="level-strict">🚨 Backup Enforcer (STRICT)</span>
+└── <span class="level-1">📚 Knowledge Manager</span>
+    ├── <span class="level-2">📝 Synthesis Engine</span>
+    ├── <span class="level-2">🔍 Research Agent</span> (49 gaps détectés)
+    ├── <span class="level-2">🔬 Code Analyzer</span> (24 issues trouvées)
+    └── <span class="level-2">📝 Doc Updater</span> (21 agents trackés)
+</pre>
+            </div>
+        </div>
+
+        <!-- APIs Core -->
+        <div class="section">
+            <h2>APIs Backend (ana-core.cjs)</h2>
+
+            <h3>Core & Status</h3>
+            <table>
+                <tr><th>Endpoint</th><th>Méthode</th><th>Status</th></tr>
+                <tr><td><code>/api/health</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/status</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/stats</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/llms</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/brains/status</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+            </table>
+
+            <h3>Mémoire</h3>
+            <table>
+                <tr><th>Endpoint</th><th>Méthode</th><th>Status</th></tr>
+                <tr><td><code>/api/memory/search</code></td><td>POST</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/memory/tiered/search</code></td><td>POST</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/memory/tiered/stats</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/memory/semantic/stats</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+            </table>
+
+            <h3>Skills</h3>
+            <table>
+                <tr><th>Endpoint</th><th>Méthode</th><th>Status</th></tr>
+                <tr><td><code>/api/skills/stats</code></td><td>GET</td><td><span class="status ok">OK - 569 skills</span></td></tr>
+                <tr><td><code>/api/skills/list</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/skills/feedback</code></td><td>POST</td><td><span class="status ok">OK</span></td></tr>
+            </table>
+
+            <h3>Fichiers & Tools</h3>
+            <table>
+                <tr><th>Endpoint</th><th>Méthode</th><th>Status</th></tr>
+                <tr><td><code>/api/file/list</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/file/read</code></td><td>GET</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/file/write</code></td><td>POST</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td><code>/api/code/execute</code></td><td>POST</td><td><span class="status ok">OK - Sandbox JS</span></td></tr>
+            </table>
+        </div>
+
+        <!-- Fixes Validés -->
+        <div class="section">
+            <h2>Fixes Validés (Session 30 Nov 2025)</h2>
+
+            <div class="fix-item">
+                <div class="number">#1</div>
+                <div class="details">
+                    <strong>Protection undefined</strong><br>
+                    <span class="endpoint">/api/skills/stats</span> - Ajout vérification null/undefined
+                </div>
+                <span class="status ok">Validé</span>
+            </div>
+
+            <div class="fix-item">
+                <div class="number">#2</div>
+                <div class="details">
+                    <strong>Système de logging JSONL</strong><br>
+                    <span class="endpoint">/api/logs</span> - 31 entrées enregistrées
+                </div>
+                <span class="status ok">Validé</span>
+            </div>
+
+            <div class="fix-item">
+                <div class="number">#3</div>
+                <div class="details">
+                    <strong>Exécution Code JS Sandbox</strong><br>
+                    <span class="endpoint">/api/code/execute</span> - VM sandbox, timeout 3s, sécurité
+                </div>
+                <span class="status ok">Validé</span>
+            </div>
+
+            <div class="fix-item">
+                <div class="number">#4</div>
+                <div class="details">
+                    <strong>ChromaDB + TieredMemory</strong><br>
+                    <span class="endpoint">Collection ana_memory_recent</span> - 96 documents
+                </div>
+                <span class="status ok">Validé</span>
+            </div>
+
+            <div class="fix-item">
+                <div class="number">#5</div>
+                <div class="details">
+                    <strong>Historique Vocal</strong><br>
+                    <span class="endpoint">/api/voice/history</span> - GET/POST fonctionnel
+                </div>
+                <span class="status ok">Validé</span>
+            </div>
+
+            <div class="fix-item">
+                <div class="number">#6</div>
+                <div class="details">
+                    <strong>Settings API + Sync Frontend</strong><br>
+                    <span class="endpoint">/api/settings</span> - GET/PUT + SettingsPage.jsx
+                </div>
+                <span class="status ok">Validé</span>
+            </div>
+        </div>
+
+        <!-- LLM Models -->
+        <div class="section">
+            <h2>Modèles LLM Disponibles</h2>
+
+            <h3>Ollama (Local)</h3>
+            <table>
+                <tr><th>Modèle</th><th>Taille</th><th>Rôle</th></tr>
+                <tr><td>phi3:mini-128k</td><td>2.1 GB</td><td>Défaut, rapide</td></tr>
+                <tr><td>deepseek-coder-v2:16b</td><td>10.3 GB</td><td>Code spécialisé</td></tr>
+                <tr><td>qwen2.5-coder:7b</td><td>4.6 GB</td><td>Code alternatif</td></tr>
+                <tr><td>llama3.2-vision:11b</td><td>7.8 GB</td><td>Vision/Images</td></tr>
+                <tr><td>mistral:latest</td><td>4.3 GB</td><td>Général</td></tr>
+                <tr><td>nomic-embed-text</td><td>274 MB</td><td>Embeddings</td></tr>
+            </table>
+
+            <h3>Cloud APIs</h3>
+            <table>
+                <tr><th>Service</th><th>Modèles</th><th>Vitesse</th></tr>
+                <tr><td>Groq</td><td>llama-3.3-70b, mixtral-8x7b</td><td>~300 tok/s</td></tr>
+                <tr><td>Cerebras</td><td>llama3.1-8b, llama3.1-70b</td><td>~1000 tok/s</td></tr>
+            </table>
+        </div>
+
+        <!-- Frontend Pages -->
+        <div class="section">
+            <h2>Frontend - 11 Pages</h2>
+            <table>
+                <tr><th>Page</th><th>Route</th><th>Description</th><th>Status</th></tr>
+                <tr><td>ChatPage</td><td>/</td><td>Chat principal multi-LLM</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td>BrainsPage</td><td>/brains</td><td>Gestion cerveaux LLM</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td>CodingPage</td><td>/coding</td><td>Éditeur Monaco + Exécution JS</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td>MemorySearchPage</td><td>/memory</td><td>Recherche mémoire vectorielle</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td>DashboardPage</td><td>/dashboard</td><td>Tableau de bord système</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td>ManualPage</td><td>/manual</td><td>Documentation interactive</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td>SettingsPage</td><td>/settings</td><td>Paramètres (sync API)</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td>n8nPage</td><td>/workflows</td><td>Interface n8n</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td>ComfyUIPage</td><td>/images</td><td>Génération images</td><td><span class="status warning">ComfyUI non actif</span></td></tr>
+                <tr><td>LogsPage</td><td>/logs</td><td>Logs système JSONL</td><td><span class="status ok">OK</span></td></tr>
+                <tr><td>VoicePage</td><td>/voice</td><td>Interface vocale</td><td><span class="status ok">OK</span></td></tr>
+            </table>
+        </div>
+
+        <!-- Points d'amélioration -->
+        <div class="section">
+            <h2>Points d'Amélioration</h2>
+
+            <h3>Priorité Haute</h3>
+            <table>
+                <tr><th>#</th><th>Issue</th><th>Action</th></tr>
+                <tr><td>1</td><td>ComfyUI non détecté sur port 8188</td><td>Démarrer le service ou vérifier configuration</td></tr>
+                <tr><td>2</td><td>Collection ana_memory vide</td><td>Migrer vers TieredMemory ou synchroniser</td></tr>
+            </table>
+
+            <h3>Priorité Moyenne</h3>
+            <table>
+                <tr><th>#</th><th>Suggestion</th></tr>
+                <tr><td>1</td><td>Ajouter /api/agents/status au backend principal (3338)</td></tr>
+                <tr><td>2</td><td>Ajouter /api/comfyui/status quand ComfyUI actif</td></tr>
+                <tr><td>3</td><td>Support Python dans /api/code/execute (Phase 2)</td></tr>
+            </table>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="section">
+            <h2>Conclusion</h2>
+            <div style="text-align: center; padding: 30px;">
+                <div style="font-size: 3em; margin-bottom: 20px;">92%</div>
+                <div style="font-size: 1.5em; color: var(--green); margin-bottom: 20px;">Ana SUPERIA est Opérationnelle</div>
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                    <div>
+                        <h4 style="color: var(--green);">Forces</h4>
+                        <ul style="text-align: left; list-style: none;">
+                            <li>✅ Backend robuste (126KB, 70+ endpoints)</li>
+                            <li>✅ 16 agents autonomes hiérarchiques</li>
+                            <li>✅ Mémoire vectorielle 3-tiers</li>
+                            <li>✅ Multi-LLM (local + cloud)</li>
+                            <li>✅ Interface complète (11 pages)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--yellow);">À surveiller</h4>
+                        <ul style="text-align: left; list-style: none;">
+                            <li>⚠️ ComfyUI non actif</li>
+                            <li>⚠️ Collection principale vide</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Audit généré par Claude Opus 4.5</p>
+            <p>30 Novembre 2025 - Ana SUPERIA v2.0.0</p>
+        </div>
+    </div>
+</body>
+</html>

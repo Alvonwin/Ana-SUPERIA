@@ -1,0 +1,3 @@
+@echo off
+echo Test 1: Ouverture simple cmd...
+%SystemRoot%\System32\cmd.exe /k "echo FENETRE TEST OUVERTE - Si tu vois ceci, ca marche! && pause"

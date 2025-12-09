@@ -1,0 +1,246 @@
+{
+  "category": "zig-systems",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "zig001",
+      "type": "fundamentals",
+      "name": "Zig Basics",
+      "description": "Zig syntax",
+      "pattern": "Variables, types, functions, control",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "zig002",
+      "type": "fundamentals",
+      "name": "Comptime",
+      "description": "Compile-time execution",
+      "pattern": "comptime, type functions, generics",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "zig003",
+      "type": "fundamentals",
+      "name": "Error Handling",
+      "description": "Error unions",
+      "pattern": "error union, try, catch, errdefer",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "zig004",
+      "type": "memory",
+      "name": "Manual Memory",
+      "description": "Memory management",
+      "pattern": "Allocators, alloc, free",
+      "example": "Memory usage"
+    },
+    {
+      "id": "zig005",
+      "type": "memory",
+      "name": "Allocators",
+      "description": "Allocation strategies",
+      "pattern": "GeneralPurposeAllocator, Arena, FixedBuffer",
+      "example": "Memory usage"
+    },
+    {
+      "id": "zig006",
+      "type": "memory",
+      "name": "Slices",
+      "description": "Array views",
+      "pattern": "Slices, pointers, bounds",
+      "example": "Memory usage"
+    },
+    {
+      "id": "zig007",
+      "type": "types",
+      "name": "Optional Types",
+      "description": "Null safety",
+      "pattern": "?T, orelse, if unwrap",
+      "example": "Types usage"
+    },
+    {
+      "id": "zig008",
+      "type": "types",
+      "name": "Packed Structs",
+      "description": "Memory layout",
+      "pattern": "packed struct, bit fields",
+      "example": "Types usage"
+    },
+    {
+      "id": "zig009",
+      "type": "types",
+      "name": "Unions",
+      "description": "Tagged unions",
+      "pattern": "union(enum), switch",
+      "example": "Types usage"
+    },
+    {
+      "id": "zig010",
+      "type": "async",
+      "name": "Async/Await",
+      "description": "Async programming",
+      "pattern": "async, await, suspend, resume",
+      "example": "Async usage"
+    },
+    {
+      "id": "zig011",
+      "type": "async",
+      "name": "Event Loop",
+      "description": "I/O multiplexing",
+      "pattern": "std.event, io_uring, kqueue",
+      "example": "Async usage"
+    },
+    {
+      "id": "zig012",
+      "type": "interop",
+      "name": "C Interop",
+      "description": "C compatibility",
+      "pattern": "@cImport, extern, calling conventions",
+      "example": "Interop usage"
+    },
+    {
+      "id": "zig013",
+      "type": "interop",
+      "name": "Cross Compilation",
+      "description": "Multi-platform",
+      "pattern": "Target triples, libc, cross",
+      "example": "Interop usage"
+    },
+    {
+      "id": "zig014",
+      "type": "interop",
+      "name": "C Headers",
+      "description": "Header translation",
+      "pattern": "@cImport, @cInclude, translate-c",
+      "example": "Interop usage"
+    },
+    {
+      "id": "zig015",
+      "type": "stdlib",
+      "name": "Standard Library",
+      "description": "std usage",
+      "pattern": "std.fs, std.mem, std.json",
+      "example": "Stdlib usage"
+    },
+    {
+      "id": "zig016",
+      "type": "stdlib",
+      "name": "File I/O",
+      "description": "File operations",
+      "pattern": "std.fs.File, read, write",
+      "example": "Stdlib usage"
+    },
+    {
+      "id": "zig017",
+      "type": "stdlib",
+      "name": "Networking",
+      "description": "Network I/O",
+      "pattern": "std.net, TCP, UDP",
+      "example": "Stdlib usage"
+    },
+    {
+      "id": "zig018",
+      "type": "build",
+      "name": "Build System",
+      "description": "build.zig",
+      "pattern": "Build steps, dependencies, artifacts",
+      "example": "Build usage"
+    },
+    {
+      "id": "zig019",
+      "type": "build",
+      "name": "Package Manager",
+      "description": "Dependencies",
+      "pattern": "build.zig.zon, fetch, dependencies",
+      "example": "Build usage"
+    },
+    {
+      "id": "zig020",
+      "type": "testing",
+      "name": "Testing",
+      "description": "Built-in tests",
+      "pattern": "test blocks, expect, testing allocator",
+      "example": "Testing usage"
+    },
+    {
+      "id": "zig021",
+      "type": "safety",
+      "name": "Safety Features",
+      "description": "Runtime safety",
+      "pattern": "Bounds checking, undefined, ReleaseSafe",
+      "example": "Safety usage"
+    },
+    {
+      "id": "zig022",
+      "type": "safety",
+      "name": "Debug Mode",
+      "description": "Development builds",
+      "pattern": "Debug symbols, stack traces",
+      "example": "Safety usage"
+    },
+    {
+      "id": "zig023",
+      "type": "performance",
+      "name": "SIMD",
+      "description": "Vector operations",
+      "pattern": "@Vector, SIMD intrinsics",
+      "example": "Performance usage"
+    },
+    {
+      "id": "zig024",
+      "type": "performance",
+      "name": "Inline Assembly",
+      "description": "Low-level control",
+      "pattern": "asm, constraints, volatile",
+      "example": "Performance usage"
+    },
+    {
+      "id": "zig025",
+      "type": "applications",
+      "name": "Systems Programming",
+      "description": "Low-level apps",
+      "pattern": "OS development, drivers, embedded",
+      "example": "Applications usage"
+    },
+    {
+      "id": "zig026",
+      "type": "applications",
+      "name": "Game Development",
+      "description": "Game engines",
+      "pattern": "Raylib, SDL bindings, graphics",
+      "example": "Applications usage"
+    },
+    {
+      "id": "zig027",
+      "type": "applications",
+      "name": "Web Assembly",
+      "description": "WASM target",
+      "pattern": "wasm32, wasi, browser",
+      "example": "Applications usage"
+    },
+    {
+      "id": "zig028",
+      "type": "ecosystem",
+      "name": "Zig Libraries",
+      "description": "Package ecosystem",
+      "pattern": "zigmod, gyro, community libs",
+      "example": "Ecosystem usage"
+    },
+    {
+      "id": "zig029",
+      "type": "advanced",
+      "name": "Compile-Time Reflection",
+      "description": "Type introspection",
+      "pattern": "@TypeInfo, @Type, metaprogramming",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "zig030",
+      "type": "advanced",
+      "name": "Custom Allocators",
+      "description": "Allocator implementation",
+      "pattern": "Allocator interface, custom strategies",
+      "example": "Advanced usage"
+    }
+  ]
+}

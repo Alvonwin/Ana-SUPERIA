@@ -1,0 +1,246 @@
+{
+  "category": "istio-servicemesh",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "istio001",
+      "type": "fundamentals",
+      "name": "Istio Architecture",
+      "description": "Service mesh",
+      "pattern": "Data plane, control plane, Envoy sidecars",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "istio002",
+      "type": "fundamentals",
+      "name": "Envoy Proxy",
+      "description": "Sidecar proxy",
+      "pattern": "Listeners, clusters, routes, filters",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "istio003",
+      "type": "fundamentals",
+      "name": "Installation",
+      "description": "Mesh setup",
+      "pattern": "istioctl, profiles, Helm, operator",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "istio004",
+      "type": "traffic",
+      "name": "VirtualService",
+      "description": "Traffic routing",
+      "pattern": "Match, route, destination, weight",
+      "example": "Traffic usage"
+    },
+    {
+      "id": "istio005",
+      "type": "traffic",
+      "name": "DestinationRule",
+      "description": "Traffic policy",
+      "pattern": "Subsets, loadBalancer, connectionPool",
+      "example": "Traffic usage"
+    },
+    {
+      "id": "istio006",
+      "type": "traffic",
+      "name": "Gateway",
+      "description": "Ingress/egress",
+      "pattern": "Servers, hosts, TLS, port",
+      "example": "Traffic usage"
+    },
+    {
+      "id": "istio007",
+      "type": "traffic",
+      "name": "ServiceEntry",
+      "description": "External services",
+      "pattern": "Hosts, ports, resolution, endpoints",
+      "example": "Traffic usage"
+    },
+    {
+      "id": "istio008",
+      "type": "traffic",
+      "name": "Traffic Shifting",
+      "description": "Canary releases",
+      "pattern": "Weight-based, header-based, mirror",
+      "example": "Traffic usage"
+    },
+    {
+      "id": "istio009",
+      "type": "resiliency",
+      "name": "Retries",
+      "description": "Automatic retry",
+      "pattern": "attempts, perTryTimeout, retryOn",
+      "example": "Resiliency usage"
+    },
+    {
+      "id": "istio010",
+      "type": "resiliency",
+      "name": "Timeouts",
+      "description": "Request timeout",
+      "pattern": "timeout, idle, connect timeout",
+      "example": "Resiliency usage"
+    },
+    {
+      "id": "istio011",
+      "type": "resiliency",
+      "name": "Circuit Breaker",
+      "description": "Outlier detection",
+      "pattern": "consecutiveErrors, interval, ejection",
+      "example": "Resiliency usage"
+    },
+    {
+      "id": "istio012",
+      "type": "resiliency",
+      "name": "Fault Injection",
+      "description": "Chaos testing",
+      "pattern": "delay, abort, percentage",
+      "example": "Resiliency usage"
+    },
+    {
+      "id": "istio013",
+      "type": "security",
+      "name": "mTLS",
+      "description": "Mutual TLS",
+      "pattern": "PeerAuthentication, STRICT, PERMISSIVE",
+      "example": "Security usage"
+    },
+    {
+      "id": "istio014",
+      "type": "security",
+      "name": "AuthorizationPolicy",
+      "description": "Access control",
+      "pattern": "ALLOW, DENY, rules, principals",
+      "example": "Security usage"
+    },
+    {
+      "id": "istio015",
+      "type": "security",
+      "name": "RequestAuthentication",
+      "description": "JWT validation",
+      "pattern": "issuer, jwksUri, audiences",
+      "example": "Security usage"
+    },
+    {
+      "id": "istio016",
+      "type": "security",
+      "name": "Workload Identity",
+      "description": "SPIFFE",
+      "pattern": "SPIFFE ID, X.509 certificates",
+      "example": "Security usage"
+    },
+    {
+      "id": "istio017",
+      "type": "observability",
+      "name": "Distributed Tracing",
+      "description": "Request tracing",
+      "pattern": "Jaeger, Zipkin, trace context",
+      "example": "Observability usage"
+    },
+    {
+      "id": "istio018",
+      "type": "observability",
+      "name": "Metrics",
+      "description": "Telemetry",
+      "pattern": "Prometheus, Grafana, request metrics",
+      "example": "Observability usage"
+    },
+    {
+      "id": "istio019",
+      "type": "observability",
+      "name": "Access Logs",
+      "description": "Request logging",
+      "pattern": "Envoy access logs, Telemetry API",
+      "example": "Observability usage"
+    },
+    {
+      "id": "istio020",
+      "type": "observability",
+      "name": "Kiali",
+      "description": "Mesh visualization",
+      "pattern": "Service graph, traffic flow, config",
+      "example": "Observability usage"
+    },
+    {
+      "id": "istio021",
+      "type": "sidecar",
+      "name": "Sidecar Resource",
+      "description": "Proxy config",
+      "pattern": "Workload selector, egress, ingress",
+      "example": "Sidecar usage"
+    },
+    {
+      "id": "istio022",
+      "type": "sidecar",
+      "name": "Injection",
+      "description": "Automatic injection",
+      "pattern": "Namespace label, annotation, webhook",
+      "example": "Sidecar usage"
+    },
+    {
+      "id": "istio023",
+      "type": "sidecar",
+      "name": "Ambient Mesh",
+      "description": "Sidecar-less",
+      "pattern": "ztunnel, waypoint proxy, L4/L7",
+      "example": "Sidecar usage"
+    },
+    {
+      "id": "istio024",
+      "type": "config",
+      "name": "EnvoyFilter",
+      "description": "Advanced config",
+      "pattern": "Patch, insert, remove, match",
+      "example": "Config usage"
+    },
+    {
+      "id": "istio025",
+      "type": "config",
+      "name": "Telemetry API",
+      "description": "Observability config",
+      "pattern": "Access logging, tracing, metrics",
+      "example": "Config usage"
+    },
+    {
+      "id": "istio026",
+      "type": "config",
+      "name": "WasmPlugin",
+      "description": "Wasm extensions",
+      "pattern": "Custom filters, plugin config",
+      "example": "Config usage"
+    },
+    {
+      "id": "istio027",
+      "type": "multicluster",
+      "name": "Multi-Cluster",
+      "description": "Cross-cluster",
+      "pattern": "Primary-remote, multi-primary",
+      "example": "Multicluster usage"
+    },
+    {
+      "id": "istio028",
+      "type": "multicluster",
+      "name": "Multi-Network",
+      "description": "Network isolation",
+      "pattern": "East-west gateway, network labels",
+      "example": "Multicluster usage"
+    },
+    {
+      "id": "istio029",
+      "type": "operations",
+      "name": "Upgrades",
+      "description": "Version management",
+      "pattern": "Canary upgrade, revision tags",
+      "example": "Operations usage"
+    },
+    {
+      "id": "istio030",
+      "type": "operations",
+      "name": "Troubleshooting",
+      "description": "Debug tools",
+      "pattern": "istioctl analyze, proxy-status, logs",
+      "example": "Operations usage"
+    }
+  ]
+}

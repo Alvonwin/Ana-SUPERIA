@@ -1,0 +1,246 @@
+{
+  "category": "email-systems",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "eml001",
+      "type": "fundamentals",
+      "name": "Email Protocols",
+      "description": "Core protocols",
+      "pattern": "SMTP (send), IMAP (receive), POP3 (download)",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "eml002",
+      "type": "fundamentals",
+      "name": "Email Architecture",
+      "description": "System components",
+      "pattern": "MUA -> MSA -> MTA -> MDA -> Mailbox",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "eml003",
+      "type": "fundamentals",
+      "name": "Email Headers",
+      "description": "Message metadata",
+      "pattern": "From, To, Subject, Date, Message-ID, MIME headers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "eml004",
+      "type": "sending",
+      "name": "SMTP Basics",
+      "description": "Send protocol",
+      "pattern": "HELO, MAIL FROM, RCPT TO, DATA, QUIT commands",
+      "example": "Sending usage"
+    },
+    {
+      "id": "eml005",
+      "type": "sending",
+      "name": "Transactional Email",
+      "description": "App-triggered",
+      "pattern": "SendGrid, Mailgun, SES, Postmark - API or SMTP",
+      "example": "Sending usage"
+    },
+    {
+      "id": "eml006",
+      "type": "sending",
+      "name": "Bulk Email",
+      "description": "Marketing email",
+      "pattern": "Mailchimp, Campaign Monitor, list management",
+      "example": "Sending usage"
+    },
+    {
+      "id": "eml007",
+      "type": "sending",
+      "name": "Email Queuing",
+      "description": "Async sending",
+      "pattern": "Queue emails, retry failed, rate limiting",
+      "example": "Sending usage"
+    },
+    {
+      "id": "eml008",
+      "type": "templates",
+      "name": "HTML Email",
+      "description": "Rich email",
+      "pattern": "Table-based layout, inline CSS, limited CSS support",
+      "example": "Templates usage"
+    },
+    {
+      "id": "eml009",
+      "type": "templates",
+      "name": "Email Templates",
+      "description": "Reusable templates",
+      "pattern": "MJML, Foundation for Emails, responsive design",
+      "example": "Templates usage"
+    },
+    {
+      "id": "eml010",
+      "type": "templates",
+      "name": "Template Engines",
+      "description": "Dynamic content",
+      "pattern": "Handlebars, Liquid, variable substitution",
+      "example": "Templates usage"
+    },
+    {
+      "id": "eml011",
+      "type": "templates",
+      "name": "Email Testing",
+      "description": "Preview email",
+      "pattern": "Litmus, Email on Acid, test across clients",
+      "example": "Templates usage"
+    },
+    {
+      "id": "eml012",
+      "type": "deliverability",
+      "name": "SPF",
+      "description": "Sender Policy Framework",
+      "pattern": "DNS TXT record listing authorized senders",
+      "example": "Deliverability usage"
+    },
+    {
+      "id": "eml013",
+      "type": "deliverability",
+      "name": "DKIM",
+      "description": "DomainKeys",
+      "pattern": "Cryptographic signature, verify sender authenticity",
+      "example": "Deliverability usage"
+    },
+    {
+      "id": "eml014",
+      "type": "deliverability",
+      "name": "DMARC",
+      "description": "Policy framework",
+      "pattern": "Alignment policy, reporting, p=none/quarantine/reject",
+      "example": "Deliverability usage"
+    },
+    {
+      "id": "eml015",
+      "type": "deliverability",
+      "name": "Email Reputation",
+      "description": "Sender score",
+      "pattern": "IP reputation, domain reputation, engagement metrics",
+      "example": "Deliverability usage"
+    },
+    {
+      "id": "eml016",
+      "type": "deliverability",
+      "name": "Bounce Handling",
+      "description": "Failed delivery",
+      "pattern": "Hard bounce (remove), soft bounce (retry), bounce rate",
+      "example": "Deliverability usage"
+    },
+    {
+      "id": "eml017",
+      "type": "deliverability",
+      "name": "Spam Filters",
+      "description": "Avoid spam folder",
+      "pattern": "SpamAssassin, content analysis, reputation, authentication",
+      "example": "Deliverability usage"
+    },
+    {
+      "id": "eml018",
+      "type": "deliverability",
+      "name": "Warm-up",
+      "description": "New IP/domain",
+      "pattern": "Gradual volume increase, build reputation",
+      "example": "Deliverability usage"
+    },
+    {
+      "id": "eml019",
+      "type": "compliance",
+      "name": "CAN-SPAM",
+      "description": "US email law",
+      "pattern": "Unsubscribe link, physical address, no deceptive headers",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "eml020",
+      "type": "compliance",
+      "name": "GDPR Email",
+      "description": "EU compliance",
+      "pattern": "Consent required, data portability, right to erasure",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "eml021",
+      "type": "compliance",
+      "name": "Unsubscribe",
+      "description": "Opt-out mechanism",
+      "pattern": "List-Unsubscribe header, one-click unsubscribe",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "eml022",
+      "type": "tracking",
+      "name": "Open Tracking",
+      "description": "Detect opens",
+      "pattern": "Tracking pixel, privacy concerns, Apple MPP impact",
+      "example": "Tracking usage"
+    },
+    {
+      "id": "eml023",
+      "type": "tracking",
+      "name": "Click Tracking",
+      "description": "Link clicks",
+      "pattern": "URL rewriting, redirect through tracking server",
+      "example": "Tracking usage"
+    },
+    {
+      "id": "eml024",
+      "type": "tracking",
+      "name": "Email Analytics",
+      "description": "Performance metrics",
+      "pattern": "Open rate, click rate, conversion, unsubscribe rate",
+      "example": "Tracking usage"
+    },
+    {
+      "id": "eml025",
+      "type": "automation",
+      "name": "Email Automation",
+      "description": "Triggered emails",
+      "pattern": "Welcome series, drip campaigns, behavior triggers",
+      "example": "Automation usage"
+    },
+    {
+      "id": "eml026",
+      "type": "automation",
+      "name": "Personalization",
+      "description": "Custom content",
+      "pattern": "Merge tags, dynamic content, segmentation",
+      "example": "Automation usage"
+    },
+    {
+      "id": "eml027",
+      "type": "inbound",
+      "name": "Inbound Email",
+      "description": "Receive email",
+      "pattern": "Webhook parsing, mailbox polling, reply handling",
+      "example": "Inbound usage"
+    },
+    {
+      "id": "eml028",
+      "type": "inbound",
+      "name": "Email Parsing",
+      "description": "Extract content",
+      "pattern": "MIME parsing, attachments, plain text extraction",
+      "example": "Inbound usage"
+    },
+    {
+      "id": "eml029",
+      "type": "testing",
+      "name": "Email Development",
+      "description": "Local testing",
+      "pattern": "Mailhog, Mailtrap, catch outgoing emails",
+      "example": "Testing usage"
+    },
+    {
+      "id": "eml030",
+      "type": "providers",
+      "name": "Email Providers",
+      "description": "Service comparison",
+      "pattern": "SendGrid, Mailgun, SES, Postmark - features, pricing",
+      "example": "Providers usage"
+    }
+  ]
+}

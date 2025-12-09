@@ -1,0 +1,51 @@
+{
+  "id": "plan_1765101633703",
+  "title": "Test",
+  "description": "Test",
+  "status": "active",
+  "createdAt": "2025-12-07T10:00:33.703Z",
+  "updatedAt": "2025-12-07T10:00:33.703Z",
+  "steps": [
+    {
+      "id": 0,
+      "action": "First",
+      "status": "pending",
+      "tools": [],
+      "validation": "",
+      "critical": false,
+      "dependencies": [],
+      "result": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "id": 1,
+      "action": "Second",
+      "status": "pending",
+      "tools": [],
+      "validation": "",
+      "critical": false,
+      "dependencies": [],
+      "result": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "id": 2,
+      "action": "Third",
+      "status": "pending",
+      "tools": [],
+      "validation": "",
+      "critical": false,
+      "dependencies": [],
+      "result": null,
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "risks": [],
+  "dependencies": [],
+  "estimatedDuration": null,
+  "actualDuration": null,
+  "metadata": {}
+}

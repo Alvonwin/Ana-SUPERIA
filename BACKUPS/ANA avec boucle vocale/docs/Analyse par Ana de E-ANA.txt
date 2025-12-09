@@ -1,0 +1,33 @@
+Analyse de la structure de répertoire : E:/Ana
+
+Résumé
+
+La structure de répertoire E:/Ana comporte des sous-répertoires et des fichiers qui témoignent de l'activité et des capacités de l'Intelligence Artificielle Ana SUPERIA.
+
+
+Répertoires
+
+
+/Data/ : Contient des ensembles de données utilisés pour l'entraînement et l'amélioration des compétences d'Ana.
+
+/Models/ : Abrite les modèles de langage et les architectures utilisés par Ana pour la génération de texte, la classification et la reconnaissance visuelle.
+
+/Logs/ : Stocke les journaux de la dernière session d'Ana, y compris les interactions avec Alain et les tâches exécutées.
+
+/Cache/ : Contient des données temporaires utilisées par Ana pour améliorer ses performances et réduire les temps de chargement.
+
+/Scripts/ : Abrite les scripts utilisés pour l'entraînement, la maintenance et l'administration d'Ana.
+
+/Images/ : Contient les images générées par Ana, telles que les portraits, les paysages et les illustrations.
+
+
+Fichiers
+
+
+/ana-superia.json : Fichier de configuration qui contient les paramètres et les préférences d'Ana.
+
+/security-key.txt : Contient la clé de sécurité utilisée pour authentifier les interactions avec Alain.
+
+/skill-learner.cjs : Module chargé de l'apprentissage et de l'amélioration des compétences d'Ana.
+
+/semantic-router.cjs : Module chargé de la classification et de la gestion des requêtes entrantes.

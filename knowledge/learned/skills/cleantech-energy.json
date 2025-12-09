@@ -1,0 +1,246 @@
+{
+  "category": "cleantech-energy",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cln001",
+      "type": "fundamentals",
+      "name": "CleanTech Basics",
+      "description": "Clean technology",
+      "pattern": "Sustainability, decarbonization",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cln002",
+      "type": "fundamentals",
+      "name": "Energy Systems",
+      "description": "Power systems",
+      "pattern": "Grid, generation, distribution",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cln003",
+      "type": "fundamentals",
+      "name": "Energy Data",
+      "description": "Energy metrics",
+      "pattern": "kWh, demand, load curves",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cln004",
+      "type": "solar",
+      "name": "Solar Tech",
+      "description": "Solar energy",
+      "pattern": "PV, inverters, monitoring",
+      "example": "Solar usage"
+    },
+    {
+      "id": "cln005",
+      "type": "solar",
+      "name": "Solar Analytics",
+      "description": "PV performance",
+      "pattern": "Production, degradation, forecasting",
+      "example": "Solar usage"
+    },
+    {
+      "id": "cln006",
+      "type": "solar",
+      "name": "Solar Design",
+      "description": "System design",
+      "pattern": "Sizing, shading, layout",
+      "example": "Solar usage"
+    },
+    {
+      "id": "cln007",
+      "type": "wind",
+      "name": "Wind Energy",
+      "description": "Wind power",
+      "pattern": "Turbines, SCADA, maintenance",
+      "example": "Wind usage"
+    },
+    {
+      "id": "cln008",
+      "type": "wind",
+      "name": "Wind Analytics",
+      "description": "Wind performance",
+      "pattern": "Resource assessment, forecasting",
+      "example": "Wind usage"
+    },
+    {
+      "id": "cln009",
+      "type": "storage",
+      "name": "Energy Storage",
+      "description": "Batteries",
+      "pattern": "Li-ion, BMS, cycling",
+      "example": "Storage usage"
+    },
+    {
+      "id": "cln010",
+      "type": "storage",
+      "name": "Battery Management",
+      "description": "BMS systems",
+      "pattern": "SOC, SOH, balancing",
+      "example": "Storage usage"
+    },
+    {
+      "id": "cln011",
+      "type": "storage",
+      "name": "Grid Storage",
+      "description": "Utility storage",
+      "pattern": "Peak shaving, frequency, arbitrage",
+      "example": "Storage usage"
+    },
+    {
+      "id": "cln012",
+      "type": "grid",
+      "name": "Smart Grid",
+      "description": "Grid modernization",
+      "pattern": "AMI, DER, automation",
+      "example": "Grid usage"
+    },
+    {
+      "id": "cln013",
+      "type": "grid",
+      "name": "Grid Analytics",
+      "description": "Grid intelligence",
+      "pattern": "Load forecasting, outages",
+      "example": "Grid usage"
+    },
+    {
+      "id": "cln014",
+      "type": "grid",
+      "name": "DERMS",
+      "description": "DER management",
+      "pattern": "Distributed resources, orchestration",
+      "example": "Grid usage"
+    },
+    {
+      "id": "cln015",
+      "type": "ev",
+      "name": "EV Charging",
+      "description": "Electric vehicles",
+      "pattern": "Chargers, networks, protocols",
+      "example": "Ev usage"
+    },
+    {
+      "id": "cln016",
+      "type": "ev",
+      "name": "OCPP",
+      "description": "Charging protocol",
+      "pattern": "OCPP 1.6/2.0, backend",
+      "example": "Ev usage"
+    },
+    {
+      "id": "cln017",
+      "type": "ev",
+      "name": "Fleet Electrification",
+      "description": "EV fleets",
+      "pattern": "Planning, infrastructure, TCO",
+      "example": "Ev usage"
+    },
+    {
+      "id": "cln018",
+      "type": "efficiency",
+      "name": "Energy Efficiency",
+      "description": "Efficiency tech",
+      "pattern": "Audits, retrofits, monitoring",
+      "example": "Efficiency usage"
+    },
+    {
+      "id": "cln019",
+      "type": "efficiency",
+      "name": "Building Energy",
+      "description": "Building efficiency",
+      "pattern": "HVAC, lighting, controls",
+      "example": "Efficiency usage"
+    },
+    {
+      "id": "cln020",
+      "type": "efficiency",
+      "name": "Industrial Energy",
+      "description": "Industrial efficiency",
+      "pattern": "Process, motors, heat",
+      "example": "Efficiency usage"
+    },
+    {
+      "id": "cln021",
+      "type": "carbon",
+      "name": "Carbon Tracking",
+      "description": "Emissions tracking",
+      "pattern": "Scope 1/2/3, inventory",
+      "example": "Carbon usage"
+    },
+    {
+      "id": "cln022",
+      "type": "carbon",
+      "name": "Carbon Markets",
+      "description": "Carbon trading",
+      "pattern": "Credits, offsets, verification",
+      "example": "Carbon usage"
+    },
+    {
+      "id": "cln023",
+      "type": "carbon",
+      "name": "ESG Reporting",
+      "description": "Sustainability reporting",
+      "pattern": "GRI, SASB, TCFD",
+      "example": "Carbon usage"
+    },
+    {
+      "id": "cln024",
+      "type": "hydrogen",
+      "name": "Hydrogen Tech",
+      "description": "Green hydrogen",
+      "pattern": "Electrolysis, fuel cells, storage",
+      "example": "Hydrogen usage"
+    },
+    {
+      "id": "cln025",
+      "type": "water",
+      "name": "Water Tech",
+      "description": "Water management",
+      "pattern": "Treatment, monitoring, conservation",
+      "example": "Water usage"
+    },
+    {
+      "id": "cln026",
+      "type": "waste",
+      "name": "Waste Tech",
+      "description": "Waste management",
+      "pattern": "Recycling, circular, tracking",
+      "example": "Waste usage"
+    },
+    {
+      "id": "cln027",
+      "type": "trading",
+      "name": "Energy Trading",
+      "description": "Power markets",
+      "pattern": "Wholesale, scheduling, hedging",
+      "example": "Trading usage"
+    },
+    {
+      "id": "cln028",
+      "type": "trading",
+      "name": "VPP",
+      "description": "Virtual power plants",
+      "pattern": "Aggregation, dispatch, optimization",
+      "example": "Trading usage"
+    },
+    {
+      "id": "cln029",
+      "type": "analytics",
+      "name": "Energy AI",
+      "description": "AI for energy",
+      "pattern": "Forecasting, optimization, anomalies",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "cln030",
+      "type": "analytics",
+      "name": "Digital Twin Energy",
+      "description": "Energy digital twins",
+      "pattern": "Simulation, optimization",
+      "example": "Analytics usage"
+    }
+  ]
+}

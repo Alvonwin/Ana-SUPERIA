@@ -1,0 +1,246 @@
+{
+  "category": "low-code-no-code",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "lc001",
+      "type": "fundamentals",
+      "name": "Low-Code Concepts",
+      "description": "Visual development",
+      "pattern": "Drag-drop, visual programming, abstraction",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lc002",
+      "type": "fundamentals",
+      "name": "No-Code Platforms",
+      "description": "Zero code",
+      "pattern": "Templates, integrations, workflows",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lc003",
+      "type": "fundamentals",
+      "name": "Citizen Development",
+      "description": "Business users",
+      "pattern": "Self-service, governance, training",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "lc004",
+      "type": "apps",
+      "name": "Bubble",
+      "description": "No-code web apps",
+      "pattern": "Visual editor, workflows, database",
+      "example": "Apps usage"
+    },
+    {
+      "id": "lc005",
+      "type": "apps",
+      "name": "Webflow",
+      "description": "Visual web design",
+      "pattern": "Designer, CMS, hosting",
+      "example": "Apps usage"
+    },
+    {
+      "id": "lc006",
+      "type": "apps",
+      "name": "Glide",
+      "description": "Mobile from sheets",
+      "pattern": "Google Sheets, PWA, components",
+      "example": "Apps usage"
+    },
+    {
+      "id": "lc007",
+      "type": "apps",
+      "name": "Adalo",
+      "description": "Mobile apps",
+      "pattern": "Components, actions, database",
+      "example": "Apps usage"
+    },
+    {
+      "id": "lc008",
+      "type": "apps",
+      "name": "OutSystems",
+      "description": "Enterprise low-code",
+      "pattern": "Visual models, integration, lifecycle",
+      "example": "Apps usage"
+    },
+    {
+      "id": "lc009",
+      "type": "apps",
+      "name": "Mendix",
+      "description": "Enterprise apps",
+      "pattern": "Studio Pro, microflows, Atlas",
+      "example": "Apps usage"
+    },
+    {
+      "id": "lc010",
+      "type": "apps",
+      "name": "Appian",
+      "description": "Process automation",
+      "pattern": "Process models, records, AI",
+      "example": "Apps usage"
+    },
+    {
+      "id": "lc011",
+      "type": "automation",
+      "name": "Zapier",
+      "description": "Workflow automation",
+      "pattern": "Zaps, triggers, actions, filters",
+      "example": "Automation usage"
+    },
+    {
+      "id": "lc012",
+      "type": "automation",
+      "name": "Make (Integromat)",
+      "description": "Visual automation",
+      "pattern": "Scenarios, modules, routers",
+      "example": "Automation usage"
+    },
+    {
+      "id": "lc013",
+      "type": "automation",
+      "name": "n8n",
+      "description": "Open source automation",
+      "pattern": "Workflows, nodes, self-hosted",
+      "example": "Automation usage"
+    },
+    {
+      "id": "lc014",
+      "type": "automation",
+      "name": "Power Automate",
+      "description": "Microsoft automation",
+      "pattern": "Flows, connectors, AI Builder",
+      "example": "Automation usage"
+    },
+    {
+      "id": "lc015",
+      "type": "automation",
+      "name": "Tray.io",
+      "description": "Enterprise automation",
+      "pattern": "Workflows, connectors, universal",
+      "example": "Automation usage"
+    },
+    {
+      "id": "lc016",
+      "type": "data",
+      "name": "Airtable",
+      "description": "Spreadsheet-database",
+      "pattern": "Bases, views, automations, apps",
+      "example": "Data usage"
+    },
+    {
+      "id": "lc017",
+      "type": "data",
+      "name": "Notion",
+      "description": "All-in-one workspace",
+      "pattern": "Databases, templates, API",
+      "example": "Data usage"
+    },
+    {
+      "id": "lc018",
+      "type": "data",
+      "name": "Coda",
+      "description": "Doc-database hybrid",
+      "pattern": "Docs, tables, packs, formulas",
+      "example": "Data usage"
+    },
+    {
+      "id": "lc019",
+      "type": "data",
+      "name": "Retool",
+      "description": "Internal tools",
+      "pattern": "Components, queries, JS",
+      "example": "Data usage"
+    },
+    {
+      "id": "lc020",
+      "type": "data",
+      "name": "Appsmith",
+      "description": "Open source internal",
+      "pattern": "Widgets, datasources, JS",
+      "example": "Data usage"
+    },
+    {
+      "id": "lc021",
+      "type": "forms",
+      "name": "Typeform",
+      "description": "Interactive forms",
+      "pattern": "Logic jumps, integrations, design",
+      "example": "Forms usage"
+    },
+    {
+      "id": "lc022",
+      "type": "forms",
+      "name": "JotForm",
+      "description": "Form builder",
+      "pattern": "Widgets, payments, approvals",
+      "example": "Forms usage"
+    },
+    {
+      "id": "lc023",
+      "type": "forms",
+      "name": "Tally",
+      "description": "Simple forms",
+      "pattern": "Notion-like, free, blocks",
+      "example": "Forms usage"
+    },
+    {
+      "id": "lc024",
+      "type": "ecommerce",
+      "name": "Shopify (No-Code)",
+      "description": "Store builder",
+      "pattern": "Themes, apps, Shopify Flow",
+      "example": "Ecommerce usage"
+    },
+    {
+      "id": "lc025",
+      "type": "ecommerce",
+      "name": "Squarespace",
+      "description": "Website builder",
+      "pattern": "Templates, commerce, scheduling",
+      "example": "Ecommerce usage"
+    },
+    {
+      "id": "lc026",
+      "type": "ecommerce",
+      "name": "Wix",
+      "description": "Website builder",
+      "pattern": "Editor X, Velo, databases",
+      "example": "Ecommerce usage"
+    },
+    {
+      "id": "lc027",
+      "type": "ai",
+      "name": "AI No-Code Tools",
+      "description": "AI without code",
+      "pattern": "ChatGPT plugins, Jasper, copy.ai",
+      "example": "Ai usage"
+    },
+    {
+      "id": "lc028",
+      "type": "ai",
+      "name": "ML No-Code",
+      "description": "ML platforms",
+      "pattern": "Obviously.ai, Teachable Machine",
+      "example": "Ai usage"
+    },
+    {
+      "id": "lc029",
+      "type": "advanced",
+      "name": "Custom Code in Low-Code",
+      "description": "Extensibility",
+      "pattern": "JavaScript, custom functions, API",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "lc030",
+      "type": "advanced",
+      "name": "Low-Code Governance",
+      "description": "Enterprise control",
+      "pattern": "Security, compliance, versioning",
+      "example": "Advanced usage"
+    }
+  ]
+}

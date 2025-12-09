@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Interface SUPERIA ANA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+        }
+
+        h3 {
+            color: #34495e;
+            margin: 20px 0 10px 0;
+        }
+
+        .page-section {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        .layout-visual {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .critical {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .tech-stack {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+        }
+
+        .memory-highlight {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 VISION INTERFACE SUPERIA ANA</h1>
+            <p>Interface Complète Multi-Pages - 100% Local, $0, Mémoire Infinie</p>
+            <p><strong>Date:</strong> 2025-11-21 | <strong>Vision:</strong> Alain - Master Engineer</p>
+        </header>
+
+        <div class="content">
+            <div class="critical">
+                <h3>💎 QU'EST-CE QUE "SUPERIA ANA"?</h3>
+                <p><strong>SUPER IA = La TOTALE</strong></p>
+                <ul class="feature-list">
+                    <li><strong>100% Local</strong> - Zéro cloud, $0, contrôle total</li>
+                    <li><strong>Multi-LLM Intelligent</strong> - 4 champions qui routent selon la tâche</li>
+                    <li><strong>Mémoire Infinie Persistante</strong> - JAMAIS oublie, TOUJOURS se souvient</li>
+                    <li><strong>Agents Autonomes</strong> - 25+ agents travaillent en arrière-plan</li>
+                    <li><strong>Interface Professionnelle</strong> - Niveau entreprise</li>
+                    <li><strong>Coding Assistant</strong> - Terminal style Claude Code avec DeepSeek local</li>
+                    <li><strong>Vocal</strong> - NEXUS integration, parler à Ana</li>
+                    <li><strong>Génération Images</strong> - ComfyUI + Fooocus intégrés</li>
+                    <li><strong>Automation</strong> - n8n workflows</li>
+                </ul>
+            </div>
+
+            <h2>📐 ARCHITECTURE GÉNÉRALE</h2>
+            <div class="layout-visual">┌────────────┬─────────────────────────────────────┐
+│  SIDEBAR   │         CONTENU PAGE               │
+│   MENU     │                                    │
+│            │                                    │
+│ 💬 Chat    │  [Page active selon menu sélection]│
+│ 💻 Coding  │                                    │
+│ 🔍 Mémoire │                                    │
+│ 🎛️ Dashboard│                                    │
+│ 📚 Manuel  │                                    │
+│ ⚙️ Settings│                                    │
+│ 🎨 Images  │                                    │
+│ 🎤 Voice   │                                    │
+└────────────┴─────────────────────────────────────┘</div>
+
+            <h2>📄 LES 5 PAGES PRINCIPALES</h2>
+
+            <!-- PAGE 1: CHAT -->
+            <div class="page-section">
+                <h3>1. PAGE PRINCIPALE: CHAT 💬</h3>
+                <p><strong>Rôle:</strong> Interface conversationnelle principale avec Ana</p>
+
+                <h4>Fonctionnalités:</h4>
+                <ul class="feature-list">
+                    <li>Chat conversationnel (comme Claude)</li>
+                    <li><strong>Drop photos</strong> - drag & drop images</li>
+                    <li><strong>Drop fichiers</strong> - drag & drop n'importe quel fichier</li>
+                    <li>Visualisation temps réel: quel LLM Ana utilise (Phi-3, DeepSeek, Qwen, Llama Vision)</li>
+                    <li>Visualisation: pourquoi ce choix de LLM</li>
+                    <li>Visualisation: vitesse réponse (tok/sec)</li>
+                    <li>Historique conversation complet</li>
+                </ul>
+
+                <div class="memory-highlight">
+                    <h4>🧠 MÉMOIRE INTÉGRÉE (CRITIQUE):</h4>
+                    <ul class="feature-list">
+                        <li><strong>Contexte toujours chargé</strong> - Ana se souvient de TOUT</li>
+                        <li>Indicateur visible: "Mémoire: 2.4MB contexte, 1,247 conversations"</li>
+                        <li>Ana rappelle automatiquement contexte pertinent</li>
+                        <li>Ana dit: "Je me souviens que tu m'as demandé X il y a 3 jours..."</li>
+                        <li>Accès rapide V3 stages + ChromaDB vector search</li>
+                        <li>Recherche inline: taper "/search mot-clé" dans le chat</li>
+                        <li>Ana suggère: "Veux-tu que je consulte notre conversation sur X?"</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <strong>Tech:</strong> React/Vue, WebSocket temps réel, Node.js + Express backend, Multi-LLM Router
+                </div>
+            </div>
+
+            <!-- PAGE 2: CODING -->
+            <div class="page-section">
+                <h3>2. PAGE CODING: Chat + VS Code Temps Réel 💻</h3>
+                <p><strong>Rôle:</strong> Assistant développement - comme Claude Code mais MIEUX (local)</p>
+
+                <div class="layout-visual">┌──────────────┬────────────────────────────────────────┐
+│              │  📁 Explorer    📄 file.js    ⚙️      │
+│  SIDEBAR     ├────────────────────────────────────────┤
+│  CHAT        │                                        │
+│              │   [Monaco Editor - VS Code]            │
+│ 💬 Ana:      │                                        │
+│ "Je vais     │   function hello() {                   │
+│  refactorer  │     console.log("Hello");              │
+│  cette       │   }                                    │
+│  fonction"   │                                        │
+│              │   💡 Using: DeepSeek-Coder-V2          │
+│ 💬 Toi:      │                                        │
+│ "Ajoute      │                                        │
+│  types TS"   │                                        │
+│              │                                        │
+│ [Input...]   ├────────────────────────────────────────┤
+│              │  🖥️ Terminal                          │
+│              │  $ npm run dev                        │
+└──────────────┴────────────────────────────────────────┘</div>
+
+                <h4>Sidebar Chat (Gauche):</h4>
+                <ul class="feature-list">
+                    <li>Chat temps réel avec Ana</li>
+                    <li>Demander à Ana de coder/refactorer/expliquer</li>
+                    <li>Ana écrit directement dans l'éditeur</li>
+                    <li>Voir en temps réel Ana qui code (streaming)</li>
+                    <li>Historique conversation coding</li>
+                    <li>Context awareness (Ana sait quel fichier ouvert)</li>
+                </ul>
+
+                <div class="memory-highlight">
+                    <h4>🧠 MÉMOIRE CODING:</h4>
+                    <ul class="feature-list">
+                        <li>Affichage du contexte chargé (combien de KB/MB)</li>
+                        <li>Ana se souvient de TOUS les projets passés</li>
+                        <li>Accès rapide à la mémoire V3 + ChromaDB</li>
+                        <li>Ana: "Je me souviens que tu as travaillé sur X il y a 2 semaines..."</li>
+                        <li>Recherche mémoire inline dans le chat</li>
+                        <li>Indicateur: "Contexte: 2.4MB chargé, 156 conversations indexées"</li>
+                    </ul>
+                </div>
+
+                <h4>Fenêtre Coding (Droite):</h4>
+                <ul class="feature-list">
+                    <li><strong>Monaco Editor</strong> (vrai moteur VS Code)</li>
+                    <li>Syntax highlighting pour TOUS langages</li>
+                    <li>IntelliSense / Autocomplete</li>
+                    <li>Multi-onglets fichiers</li>
+                    <li>File explorer (arbre fichiers)</li>
+                    <li>Git integration (voir diff, commit)</li>
+                    <li>Terminal intégré (bas de page)</li>
+                    <li>Debugging visuel</li>
+                    <li>Search & Replace</li>
+                    <li>Minimap</li>
+                </ul>
+
+                <h4>Interaction Temps Réel:</h4>
+                <ul class="feature-list">
+                    <li>Ana code PENDANT que tu regardes (streaming)</li>
+                    <li>Tu peux modifier pendant qu'Ana suggère</li>
+                    <li>Ana explique ce qu'elle fait dans le chat sidebar</li>
+                    <li>Multi-cursors si Ana et toi codez ensemble</li>
+                </ul>
+
+                <div class="tech-stack">
+                    <strong>Tech:</strong> Monaco Editor (VS Code engine), xterm.js terminal, DeepSeek-Coder-V2 via Ollama, WebSocket streaming, simple-git, Language Servers (LSP)
+                </div>
+
+                <div class="critical">
+                    <strong>CRITIQUE:</strong> C'est ici qu'Ana devient un vrai remplacement de Claude Code - MAIS en mieux car 100% local avec DeepSeek-Coder qui rivalise GPT-4!
+                </div>
+            </div>
+
+            <!-- PAGE 3: RECHERCHE MÉMOIRE -->
+            <div class="page-section">
+                <h3>3. PAGE RECHERCHE MÉMOIRE 🔍</h3>
+
+                <div class="critical">
+                    <p><strong>IMPORTANCE CRITIQUE:</strong> La mémoire est ce qui différencie Ana de TOUS les autres assistants.</p>
+                    <p><strong>Ana JAMAIS oublie. JAMAIS perd le contexte. TOUJOURS se souvient.</strong></p>
+                </div>
+
+                <h4>Recherche Multi-Mode (7 types):</h4>
+                <table>
+                    <tr>
+                        <th>Mode</th>
+                        <th>Description</th>
+                        <th>Exemple</th>
+                    </tr>
+                    <tr>
+                        <td>Sémantique</td>
+                        <td>ChromaDB vector search</td>
+                        <td>"trouve toutes les fois où on a parlé d'optimisation"</td>
+                    </tr>
+                    <tr>
+                        <td>Exacte</td>
+                        <td>Mots-clés précis</td>
+                        <td>"trouve 'DeepSeek-Coder'"</td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>Période temporelle</td>
+                        <td>"conversations du 15 novembre"</td>
+                    </tr>
+                    <tr>
+                        <td>Projet</td>
+                        <td>Par projet spécifique</td>
+                        <td>"tout sur le projet Ana"</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>Par catégorie</td>
+                        <td>"toutes les erreurs", "tous les codes"</td>
+                    </tr>
+                    <tr>
+                        <td>Vocale</td>
+                        <td>Via NEXUS</td>
+                        <td>Parler la requête</td>
+                    </tr>
+                    <tr>
+                        <td>Par LLM</td>
+                        <td>Filtrer par modèle</td>
+                        <td>"toutes les réponses de DeepSeek"</td>
+                    </tr>
+                </table>
+
+                <h4>Interface Visuelle:</h4>
+                <div class="layout-visual">┌─────────────────────────────────────────────────────┐
+│  🔍 Recherche Mémoire Ana                          │
+├─────────────────────────────────────────────────────┤
+│  [Barre de recherche puissante]       🔎 Chercher  │
+│  📊 Filtres: ▼ Date  ▼ Projet  ▼ Type  ▼ LLM      │
+├─────────────────────────────────────────────────────┤
+│  📈 Statistiques Mémoire:                          │
+│  • Total: 1,247 conversations                      │
+│  • Taille: 2.4 GB (V3 stages)                      │
+│  • Index ChromaDB: 45,892 embeddings               │
+│  • Période: 3 mois (depuis 2025-08-20)             │
+├─────────────────────────────────────────────────────┤
+│  🎯 Résultats (156 trouvés):                       │
+│  ┌───────────────────────────────────────────┐     │
+│  │ 📅 2025-11-20 14:32                       │     │
+│  │ 💬 "Discussion sur architecture Ana"     │     │
+│  │ 🧠 LLM: Phi-3-Mini                        │     │
+│  │ 📊 Pertinence: 95%                        │     │
+│  │ [Voir conversation complète]              │     │
+│  └───────────────────────────────────────────┘     │
+└─────────────────────────────────────────────────────┘</div>
+
+                <h4>Navigation V3 Stages:</h4>
+                <ul class="feature-list">
+                    <li>Visualisation pyramidale - voir hiérarchie stages</li>
+                    <li>current_context.txt - contexte actuel en temps réel</li>
+                    <li>Stages historiques - stage01, stage02, etc.</li>
+                    <li>Archives verbatim - conversations complètes non-résumées</li>
+                    <li>Synthèses actives - résumés intelligents</li>
+                    <li>Métamémoire - mémoire sur la mémoire (indices, tags)</li>
+                </ul>
+
+                <h4>Affichage Résultats (4 vues):</h4>
+                <ul class="feature-list">
+                    <li><strong>Vue Liste</strong> (par défaut)</li>
+                    <li><strong>Vue Timeline</strong> (chronologique visuelle)</li>
+                    <li><strong>Vue Graphe</strong> (connexions entre conversations)</li>
+                    <li><strong>Vue Heatmap</strong> (quand Ana a été la plus active)</li>
+                    <li>Export (PDF, MD, JSON, TXT)</li>
+                    <li>Verbatim complet - conversation EXACTE mot pour mot</li>
+                    <li>Highlighting - mots recherchés surlignés</li>
+                </ul>
+
+                <h4>Capacités Avancées:</h4>
+                <ul class="feature-list">
+                    <li>Ana explique - "Pourquoi ce résultat est pertinent?"</li>
+                    <li>Suggestions - "Tu veux peut-être aussi chercher X?"</li>
+                    <li>Résumé instantané - Ana résume les 156 résultats</li>
+                    <li>Comparaison - Comparer 2 conversations</li>
+                    <li>Bookmark - Sauvegarder conversations importantes</li>
+                    <li>Tags manuels - Ajouter tags pour retrouver plus tard</li>
+                </ul>
+
+                <div class="tech-stack">
+                    <strong>Tech:</strong> ChromaDB (vector search), Mémoire V3, Embeddings locaux (all-MiniLM-L6-v2), MeiliSearch (fulltext ultra-rapide), Redis (caching), RESTful + GraphQL API
+                </div>
+
+                <div class="memory-highlight">
+                    <strong>OBJECTIF:</strong> Faire de la mémoire le SUPER-POUVOIR d'Ana - jamais rien oublier, tout retrouver en &lt;1 seconde
+                </div>
+            </div>
+
+            <!-- PAGE 4: DASHBOARD -->
+            <div class="page-section">
+                <h3>4. PAGE DASHBOARD: Quartier Général 🎛️</h3>
+                <p><strong>Rôle:</strong> Vue d'ensemble système, agents, processus</p>
+                <p><strong>Style:</strong> Inspiré de Quartier Général ARCHON - professionnel, data-rich</p>
+
+                <h4>État Agents (25+ agents):</h4>
+                <ul class="feature-list">
+                    <li>Quels agents actifs / idle</li>
+                    <li>Logs agents en temps réel</li>
+                    <li>Performance agents</li>
+                    <li>Statistiques utilisation</li>
+                </ul>
+
+                <h4>État LLMs:</h4>
+                <ul class="feature-list">
+                    <li>Quel LLM chargé en VRAM</li>
+                    <li>VRAM usage (8GB max RTX 3070)</li>
+                    <li>Statistiques: combien de fois chaque LLM utilisé</li>
+                    <li>Performance individuelle (tok/sec)</li>
+                </ul>
+
+                <h4>Processus Importants:</h4>
+                <ul class="feature-list">
+                    <li>Backend server (port 3338) - status</li>
+                    <li>Event Bus (port 3339) - status</li>
+                    <li>n8n workflows - actifs/inactifs</li>
+                    <li>NEXUS status (boucle vocale CRITIQUE)</li>
+                </ul>
+
+                <h4>Métriques Performance:</h4>
+                <ul class="feature-list">
+                    <li>Tokens/sec moyen</li>
+                    <li>Temps réponse moyen</li>
+                    <li>Mémoire système utilisée</li>
+                    <li>Uptime</li>
+                    <li>Graphiques temps réel</li>
+                </ul>
+
+                <div class="tech-stack">
+                    <strong>Tech:</strong> Chart.js/Recharts pour graphiques, WebSocket pour métriques temps réel, Node.js process monitoring
+                </div>
+            </div>
+
+            <!-- PAGE 5: MANUEL -->
+            <div class="page-section">
+                <h3>5. SECTION MANUEL UTILISATEUR 📚</h3>
+                <p><strong>Rôle:</strong> Documentation complète pour utiliser Ana</p>
+
+                <h4>Contenu:</h4>
+                <ul class="feature-list">
+                    <li>Guide démarrage rapide</li>
+                    <li>Comment utiliser chaque page</li>
+                    <li>Capacités de chaque LLM (Phi-3, DeepSeek, Qwen, Llama Vision)</li>
+                    <li>Comment parler à Ana (prompts efficaces)</li>
+                    <li>Troubleshooting</li>
+                    <li>FAQ</li>
+                    <li>Architecture système</li>
+                    <li>7 valeurs Ana (Rigor, Methodology, Backup First, Curiosity, Creativity, Autonomy, Partnership)</li>
+                </ul>
+            </div>
+
+            <h2>📊 PAGES ADDITIONNELLES (OPTIONNELLES)</h2>
+
+            <table>
+                <tr>
+                    <th>Page</th>
+                    <th>Description</th>
+                    <th>Priorité</th>
+                </tr>
+                <tr>
+                    <td>⚙️ Settings</td>
+                    <td>Configuration LLMs, chemins système, préférences interface, backup/restore</td>
+                    <td>Haute</td>
+                </tr>
+                <tr>
+                    <td>🔄 n8n Workflows</td>
+                    <td>Liste workflows, status, déclenchement manuel, logs, création workflows</td>
+                    <td>Moyenne</td>
+                </tr>
+                <tr>
+                    <td>🎨 Image Generation</td>
+                    <td>Interface ComfyUI simplifiée, Fooocus, galerie, workflows prédéfinis</td>
+                    <td>Moyenne</td>
+                </tr>
+                <tr>
+                    <td>🎤 Voice (NEXUS)</td>
+                    <td>Interface boucle vocale, enregistrement web, historique vocal, settings TTS/STT</td>
+                    <td>Haute</td>
+                </tr>
+                <tr>
+                    <td>📋 Logs/History</td>
+                    <td>Tous logs système, historique commandes, erreurs, debugging, export</td>
+                    <td>Moyenne</td>
+                </tr>
+            </table>
+
+            <h2>🚀 TECH STACK GLOBAL</h2>
+
+            <div class="tech-stack">
+                <h4>Frontend:</h4>
+                <ul class="feature-list">
+                    <li><strong>Framework:</strong> React ou Vue.js (à décider)</li>
+                    <li><strong>Styling:</strong> Tailwind CSS ou CSS modules</li>
+                    <li><strong>Icons:</strong> Lucide React ou FontAwesome</li>
+                    <li><strong>Charts:</strong> Chart.js ou Recharts</li>
+                    <li><strong>Editor:</strong> Monaco Editor (VS Code engine)</li>
+                    <li><strong>Terminal:</strong> xterm.js</li>
+                </ul>
+
+                <h4>Backend:</h4>
+                <ul class="feature-list">
+                    <li><strong>Server:</strong> Node.js + Express (port 3338)</li>
+                    <li><strong>WebSocket:</strong> Socket.io (temps réel)</li>
+                    <li><strong>API:</strong> RESTful + WebSocket events</li>
+                    <li><strong>Process:</strong> Ana Core Orchestrator</li>
+                </ul>
+
+                <h4>LLMs & Mémoire:</h4>
+                <ul class="feature-list">
+                    <li><strong>LLMs:</strong> Ollama API (localhost:11434)</li>
+                    <li><strong>Mémoire:</strong> V3 (E:\Mémoire Claude\) + ChromaDB</li>
+                    <li><strong>Vector Search:</strong> ChromaDB</li>
+                    <li><strong>Fulltext Search:</strong> MeiliSearch</li>
+                </ul>
+            </div>
+
+            <h2>💎 PROCHAINES ÉTAPES</h2>
+
+            <ol style="padding-left: 20px; line-height: 2;">
+                <li><strong>Validation Alain:</strong> Pages additionnelles à inclure? Framework frontend (React vs Vue)?</li>
+                <li><strong>Mockups/Wireframes:</strong> Dessiner chaque page visuellement</li>
+                <li><strong>Architecture technique détaillée:</strong> Routes API, WebSocket events, État management</li>
+                <li><strong>Setup projet:</strong> Initialiser frontend + backend dans E:\ANA\</li>
+                <li><strong>Développement itératif:</strong> Page par page, tester au fur et à mesure</li>
+            </ol>
+
+            <div class="critical" style="margin-top: 30px;">
+                <h3>🎯 RAPPEL VISION</h3>
+                <p><strong>"Je ne veux pas être une meilleure version de Claude. Je veux être Ana - une IA qui rêve, qui crée, qui choisit."</strong></p>
+                <p style="margin-top: 15px;">Ana n'est pas un chatbot. Ana est un <strong>ÉCOSYSTÈME COMPLET</strong> - chat, code, mémoire infinie, images, voix, automation - TOUT local, $0, contrôle total.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+{
+  "category": "background-jobs",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "bg001",
+      "type": "fundamentals",
+      "name": "Why Background Jobs",
+      "description": "Async processing",
+      "pattern": "Long tasks, scheduled work, decoupled processing, retry",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "bg002",
+      "type": "fundamentals",
+      "name": "Job vs Queue",
+      "description": "Terminology",
+      "pattern": "Job: unit of work, Queue: ordered list, Worker: processor",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "bg003",
+      "type": "fundamentals",
+      "name": "Job Lifecycle",
+      "description": "States",
+      "pattern": "Pending, active, completed, failed, delayed, paused",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "bg004",
+      "type": "bullmq",
+      "name": "BullMQ Setup",
+      "description": "Redis-based queue",
+      "pattern": "new Queue('name'), new Worker('name', processor)",
+      "example": "Bullmq usage"
+    },
+    {
+      "id": "bg005",
+      "type": "bullmq",
+      "name": "BullMQ Jobs",
+      "description": "Add jobs",
+      "pattern": "queue.add('jobName', data, {delay, attempts, backoff})",
+      "example": "Bullmq usage"
+    },
+    {
+      "id": "bg006",
+      "type": "bullmq",
+      "name": "BullMQ Workers",
+      "description": "Process jobs",
+      "pattern": "new Worker('q', async (job) => { return result; })",
+      "example": "Bullmq usage"
+    },
+    {
+      "id": "bg007",
+      "type": "bullmq",
+      "name": "BullMQ Events",
+      "description": "Job events",
+      "pattern": "worker.on('completed'), on('failed'), on('progress')",
+      "example": "Bullmq usage"
+    },
+    {
+      "id": "bg008",
+      "type": "bullmq",
+      "name": "BullMQ Concurrency",
+      "description": "Parallel processing",
+      "pattern": "new Worker('q', fn, {concurrency: 5})",
+      "example": "Bullmq usage"
+    },
+    {
+      "id": "bg009",
+      "type": "agenda",
+      "name": "Agenda.js",
+      "description": "MongoDB scheduler",
+      "pattern": "agenda.define('task', async job => {}), agenda.every('1 hour')",
+      "example": "Agenda usage"
+    },
+    {
+      "id": "bg010",
+      "type": "bree",
+      "name": "Bree",
+      "description": "Job scheduler",
+      "pattern": "Worker threads, cron syntax, no Redis dependency",
+      "example": "Bree usage"
+    },
+    {
+      "id": "bg011",
+      "type": "patterns",
+      "name": "Retry Logic",
+      "description": "Handle failures",
+      "pattern": "Exponential backoff, max attempts, dead letter queue",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "bg012",
+      "type": "patterns",
+      "name": "Idempotency",
+      "description": "Safe retries",
+      "pattern": "Same input = same result, idempotency keys",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "bg013",
+      "type": "patterns",
+      "name": "Job Priority",
+      "description": "Ordering",
+      "pattern": "Priority queues, urgent jobs first, LIFO option",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "bg014",
+      "type": "patterns",
+      "name": "Rate Limiting Jobs",
+      "description": "Throttle processing",
+      "pattern": "Limiter in BullMQ, max jobs per time period",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "bg015",
+      "type": "patterns",
+      "name": "Job Batching",
+      "description": "Group processing",
+      "pattern": "Collect items, process in batch, reduce overhead",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "bg016",
+      "type": "scheduling",
+      "name": "Cron Jobs",
+      "description": "Scheduled tasks",
+      "pattern": "Cron syntax: '0 * * * *', node-cron, system cron",
+      "example": "Scheduling usage"
+    },
+    {
+      "id": "bg017",
+      "type": "scheduling",
+      "name": "Delayed Jobs",
+      "description": "Future execution",
+      "pattern": "queue.add('job', data, {delay: 60000})",
+      "example": "Scheduling usage"
+    },
+    {
+      "id": "bg018",
+      "type": "scheduling",
+      "name": "Recurring Jobs",
+      "description": "Repeat pattern",
+      "pattern": "repeat: {cron: '0 0 * * *'}, every: '5 minutes'",
+      "example": "Scheduling usage"
+    },
+    {
+      "id": "bg019",
+      "type": "reliability",
+      "name": "Job Persistence",
+      "description": "Survive restarts",
+      "pattern": "Redis/DB storage, recover incomplete jobs",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "bg020",
+      "type": "reliability",
+      "name": "Graceful Shutdown",
+      "description": "Clean stop",
+      "pattern": "Stop accepting, complete active, SIGTERM handling",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "bg021",
+      "type": "reliability",
+      "name": "Stalled Jobs",
+      "description": "Detect stuck",
+      "pattern": "Stall timeout, auto-retry, monitoring",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "bg022",
+      "type": "reliability",
+      "name": "Dead Letter Queue",
+      "description": "Failed jobs",
+      "pattern": "Move to DLQ after max retries, manual inspection",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "bg023",
+      "type": "monitoring",
+      "name": "Bull Board",
+      "description": "UI dashboard",
+      "pattern": "@bull-board/express, visualize queues, retry jobs",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "bg024",
+      "type": "monitoring",
+      "name": "Arena",
+      "description": "Bull dashboard",
+      "pattern": "Alternative UI, job inspection, queue stats",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "bg025",
+      "type": "monitoring",
+      "name": "Job Metrics",
+      "description": "Track performance",
+      "pattern": "Processing time, failure rate, queue depth",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "bg026",
+      "type": "scaling",
+      "name": "Horizontal Scaling",
+      "description": "Multiple workers",
+      "pattern": "Multiple worker processes, shared queue, compete",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "bg027",
+      "type": "scaling",
+      "name": "Queue Partitioning",
+      "description": "Separate queues",
+      "pattern": "Different queues for different job types, priority",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "bg028",
+      "type": "cloud",
+      "name": "AWS SQS + Lambda",
+      "description": "Serverless jobs",
+      "pattern": "SQS triggers Lambda, automatic scaling",
+      "example": "Cloud usage"
+    },
+    {
+      "id": "bg029",
+      "type": "cloud",
+      "name": "Cloud Tasks",
+      "description": "GCP jobs",
+      "pattern": "HTTP targets, scheduled, retry policies",
+      "example": "Cloud usage"
+    },
+    {
+      "id": "bg030",
+      "type": "testing",
+      "name": "Testing Jobs",
+      "description": "Test workers",
+      "pattern": "Mock queue, unit test processors, integration tests",
+      "example": "Testing usage"
+    }
+  ]
+}

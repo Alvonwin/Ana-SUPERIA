@@ -1,0 +1,158 @@
+{
+  "title": "Ana SUPERIA - Continue.dev Configuration",
+  "models": [
+    {
+      "title": "DeepSeek Coder (Ana Primary)",
+      "provider": "ollama",
+      "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M",
+      "apiBase": "http://localhost:11434",
+      "contextLength": 16000,
+      "template": "### Instruction:\n{{{input}}}\n### Response:",
+      "completionOptions": {
+        "temperature": 0.3,
+        "top_p": 0.95,
+        "maxTokens": 4000
+      }
+    },
+    {
+      "title": "Qwen 2.5 Coder (Ana Math)",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:7b",
+      "apiBase": "http://localhost:11434",
+      "contextLength": 8000,
+      "template": "{{{input}}}",
+      "completionOptions": {
+        "temperature": 0.2,
+        "top_p": 0.9,
+        "maxTokens": 2000
+      }
+    },
+    {
+      "title": "Phi-3 Mini (Ana Chat)",
+      "provider": "ollama",
+      "model": "phi3:mini-128k",
+      "apiBase": "http://localhost:11434",
+      "contextLength": 128000,
+      "template": "{{{input}}}",
+      "completionOptions": {
+        "temperature": 0.7,
+        "top_p": 0.95,
+        "maxTokens": 2000
+      }
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "DeepSeek Fast Complete",
+    "provider": "ollama",
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M",
+    "apiBase": "http://localhost:11434",
+    "completionOptions": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "maxTokens": 500
+    }
+  },
+  "embeddingsProvider": {
+    "provider": "transformers.js"
+  },
+  "reranker": {
+    "name": "voyage"
+  },
+  "contextProviders": [
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {}
+    },
+    {
+      "name": "codebase",
+      "params": {
+        "nRetrieve": 25,
+        "nFinal": 10,
+        "useReranking": true
+      }
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "edit",
+      "description": "Edit code with Ana's intelligence"
+    },
+    {
+      "name": "comment",
+      "description": "Add comments explaining code"
+    },
+    {
+      "name": "share",
+      "description": "Share code context with Ana"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate shell commands"
+    },
+    {
+      "name": "commit",
+      "description": "Generate commit message"
+    }
+  ],
+  "customCommands": [
+    {
+      "name": "test",
+      "prompt": "Write comprehensive unit tests for this code using best practices",
+      "description": "Generate unit tests"
+    },
+    {
+      "name": "optimize",
+      "prompt": "Optimize this code for performance while maintaining readability",
+      "description": "Optimize performance"
+    },
+    {
+      "name": "document",
+      "prompt": "Add comprehensive JSDoc documentation to this code",
+      "description": "Add documentation"
+    },
+    {
+      "name": "refactor",
+      "prompt": "Refactor this code following clean code principles and best practices",
+      "description": "Refactor code"
+    },
+    {
+      "name": "security",
+      "prompt": "Review this code for security vulnerabilities and suggest fixes",
+      "description": "Security review"
+    }
+  ],
+  "allowAnonymousTelemetry": false,
+  "docs": [
+    {
+      "name": "Ana Documentation",
+      "startUrl": "file:///E:/ANA/docs/"
+    },
+    {
+      "name": "Node.js",
+      "startUrl": "https://nodejs.org/docs/latest/api/"
+    },
+    {
+      "name": "React",
+      "startUrl": "https://react.dev/reference/react"
+    }
+  ],
+  "experimental": {
+    "promptPath": true,
+    "autocompleteMultilineCompletions": true,
+    "hoveredCodeBlockActions": true,
+    "quickActions": true
+  },
+  "ui": {
+    "fontSize": 14,
+    "theme": "dark",
+    "displayRawMarkdown": false,
+    "showChatScrollbar": true
+  },
+  "analytics": {
+    "provider": "none"
+  }
+}

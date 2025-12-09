@@ -1,0 +1,246 @@
+{
+  "category": "julia-computing",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "jul001",
+      "type": "fundamentals",
+      "name": "Julia Basics",
+      "description": "Julia syntax",
+      "pattern": "Variables, types, functions, control",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "jul002",
+      "type": "fundamentals",
+      "name": "Type System",
+      "description": "Julia types",
+      "pattern": "Abstract types, parametric, multiple dispatch",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "jul003",
+      "type": "fundamentals",
+      "name": "Multiple Dispatch",
+      "description": "Core paradigm",
+      "pattern": "Methods, specialization, generic",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "jul004",
+      "type": "arrays",
+      "name": "Arrays",
+      "description": "Array operations",
+      "pattern": "Broadcasting, comprehensions, views",
+      "example": "Arrays usage"
+    },
+    {
+      "id": "jul005",
+      "type": "arrays",
+      "name": "Linear Algebra",
+      "description": "LinearAlgebra.jl",
+      "pattern": "Matrix ops, factorizations, BLAS",
+      "example": "Arrays usage"
+    },
+    {
+      "id": "jul006",
+      "type": "packages",
+      "name": "Package Management",
+      "description": "Pkg.jl",
+      "pattern": "add, rm, update, environments",
+      "example": "Packages usage"
+    },
+    {
+      "id": "jul007",
+      "type": "packages",
+      "name": "DataFrames.jl",
+      "description": "Data manipulation",
+      "pattern": "DataFrame, select, filter, groupby",
+      "example": "Packages usage"
+    },
+    {
+      "id": "jul008",
+      "type": "packages",
+      "name": "Plots.jl",
+      "description": "Visualization",
+      "pattern": "plot, scatter, heatmap, backends",
+      "example": "Packages usage"
+    },
+    {
+      "id": "jul009",
+      "type": "packages",
+      "name": "Flux.jl",
+      "description": "Deep learning",
+      "pattern": "Dense, Conv, train!, gradient",
+      "example": "Packages usage"
+    },
+    {
+      "id": "jul010",
+      "type": "packages",
+      "name": "DifferentialEquations.jl",
+      "description": "ODE/PDE solving",
+      "pattern": "ODEProblem, solve, callbacks",
+      "example": "Packages usage"
+    },
+    {
+      "id": "jul011",
+      "type": "packages",
+      "name": "JuMP.jl",
+      "description": "Optimization",
+      "pattern": "Model, @variable, @constraint, optimize!",
+      "example": "Packages usage"
+    },
+    {
+      "id": "jul012",
+      "type": "packages",
+      "name": "Distributions.jl",
+      "description": "Probability",
+      "pattern": "Normal, pdf, cdf, rand",
+      "example": "Packages usage"
+    },
+    {
+      "id": "jul013",
+      "type": "packages",
+      "name": "Turing.jl",
+      "description": "Probabilistic programming",
+      "pattern": "Bayesian, MCMC, inference",
+      "example": "Packages usage"
+    },
+    {
+      "id": "jul014",
+      "type": "performance",
+      "name": "Performance Tips",
+      "description": "Optimization",
+      "pattern": "Type stability, allocation, @inbounds",
+      "example": "Performance usage"
+    },
+    {
+      "id": "jul015",
+      "type": "performance",
+      "name": "Profiling",
+      "description": "Performance analysis",
+      "pattern": "@time, @benchmark, Profile.jl",
+      "example": "Performance usage"
+    },
+    {
+      "id": "jul016",
+      "type": "performance",
+      "name": "SIMD",
+      "description": "Vectorization",
+      "pattern": "@simd, LoopVectorization.jl",
+      "example": "Performance usage"
+    },
+    {
+      "id": "jul017",
+      "type": "parallel",
+      "name": "Multithreading",
+      "description": "Threads",
+      "pattern": "Threads.@threads, @spawn, locks",
+      "example": "Parallel usage"
+    },
+    {
+      "id": "jul018",
+      "type": "parallel",
+      "name": "Distributed Computing",
+      "description": "Distributed.jl",
+      "pattern": "@distributed, pmap, remotecall",
+      "example": "Parallel usage"
+    },
+    {
+      "id": "jul019",
+      "type": "parallel",
+      "name": "GPU Computing",
+      "description": "CUDA.jl",
+      "pattern": "CuArray, @cuda, GPU kernels",
+      "example": "Parallel usage"
+    },
+    {
+      "id": "jul020",
+      "type": "metaprogramming",
+      "name": "Macros",
+      "description": "Metaprogramming",
+      "pattern": "@macro, Expr, quote, eval",
+      "example": "Metaprogramming usage"
+    },
+    {
+      "id": "jul021",
+      "type": "metaprogramming",
+      "name": "Generated Functions",
+      "description": "Code generation",
+      "pattern": "@generated, staged programming",
+      "example": "Metaprogramming usage"
+    },
+    {
+      "id": "jul022",
+      "type": "interop",
+      "name": "C Calling",
+      "description": "C interop",
+      "pattern": "ccall, @ccall, Cstring",
+      "example": "Interop usage"
+    },
+    {
+      "id": "jul023",
+      "type": "interop",
+      "name": "Python Interop",
+      "description": "PyCall.jl",
+      "pattern": "pyimport, pycall, conversion",
+      "example": "Interop usage"
+    },
+    {
+      "id": "jul024",
+      "type": "interop",
+      "name": "R Interop",
+      "description": "RCall.jl",
+      "pattern": "R strings, data exchange",
+      "example": "Interop usage"
+    },
+    {
+      "id": "jul025",
+      "type": "web",
+      "name": "Web Development",
+      "description": "Genie.jl",
+      "pattern": "Routes, controllers, ORM",
+      "example": "Web usage"
+    },
+    {
+      "id": "jul026",
+      "type": "web",
+      "name": "HTTP.jl",
+      "description": "HTTP client/server",
+      "pattern": "HTTP.get, HTTP.serve, requests",
+      "example": "Web usage"
+    },
+    {
+      "id": "jul027",
+      "type": "scientific",
+      "name": "Scientific Computing",
+      "description": "SciML",
+      "pattern": "Modeling, simulation, inverse",
+      "example": "Scientific usage"
+    },
+    {
+      "id": "jul028",
+      "type": "scientific",
+      "name": "Symbolics.jl",
+      "description": "Symbolic math",
+      "pattern": "Symbolic variables, simplify, solve",
+      "example": "Scientific usage"
+    },
+    {
+      "id": "jul029",
+      "type": "testing",
+      "name": "Testing",
+      "description": "Test.jl",
+      "pattern": "@test, @testset, assertions",
+      "example": "Testing usage"
+    },
+    {
+      "id": "jul030",
+      "type": "docs",
+      "name": "Documentation",
+      "description": "Documenter.jl",
+      "pattern": "Docstrings, makedocs, deploydocs",
+      "example": "Docs usage"
+    }
+  ]
+}

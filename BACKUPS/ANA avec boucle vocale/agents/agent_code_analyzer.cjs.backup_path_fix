@@ -1,0 +1,586 @@
+const EventEmitter = require('events')
+const fs = require('fs')
+const path = require('path')
+const { execSync } = require('child_process')
+const eventBus = require('./shared_event_bus.cjs')
+
+/**
+ * 🔬 CODE ANALYZER AGENT - Auto-Amélioration Continue
+ *
+ * Raison d'être:
+ * Analyser automatiquement le code que je crée/modifie pour détecter
+ * patterns problématiques et suggérer améliorations.
+ *
+ * Au lieu d'attendre qu'Alain review mon code, je le fais moi-même.
+ *
+ * Fonctionnalités:
+ * - Analyse agents créés (mon propre code)
+ * - Détecte code smells communs
+ * - Identifie opportunités d'optimisation
+ * - Vérifie bonnes pratiques Node.js
+ * - Crée rapports d'amélioration avec suggestions
+ * - Apprend de mes patterns de code
+ *
+ * Fréquence: Toutes les 6 heures
+ * Événements émis: code:analysis_started, code:issues_found, code:report_saved
+ */
+class CodeAnalyzer extends EventEmitter {
+  constructor() {
+    super()
+    this.running = false
+    this.checkInterval = 6 * 60 * 60 * 1000 // 6 heures
+    this.intervalId = null
+
+    // Chemins
+    this.memoryBase = 'E:\\Mémoire Ana'
+    this.agentsDir = path.join(this.memoryBase, 'agents')
+    this.reportsDir = path.join(this.memoryBase, 'CODE_REVIEWS')
+
+    // Cache des fichiers déjà analysés (mtime)
+    this.analyzedFiles = new Map()
+
+    // Patterns de code smells
+    this.codeSmells = this.initializeCodeSmells()
+
+    // Stats
+    this.stats = {
+      filesAnalyzed: 0,
+      issuesFound: 0,
+      reportsCreated: 0,
+      lastCheck: null,
+      startTime: null
+    }
+
+    console.log('🔬 Code Analyzer initialisé')
+  }
+
+  /**
+   * Initialise les patterns de code smells
+   */
+  initializeCodeSmells() {
+    return {
+      // Memory leaks potentiels
+      memoryLeaks: [
+        {
+          pattern: /setInterval\([^)]+\)(?!.*clearInterval)/s,
+          severity: 'high',
+          message: 'setInterval sans clearInterval - risque de memory leak',
+          suggestion: 'Sauvegarder intervalId et appeler clearInterval() dans stop()'
+        },
+        {
+          pattern: /new\s+Map\(\)(?!.*\.clear\(\))/s,
+          severity: 'medium',
+          message: 'Map créé mais jamais cleared',
+          suggestion: 'Implémenter méthode de nettoyage avec map.clear()'
+        }
+      ],
+
+      // Error handling
+      errorHandling: [
+        {
+          pattern: /catch\s*\([^)]+\)\s*\{\s*\}/,
+          severity: 'high',
+          message: 'Catch block vide - erreurs silencieuses',
+          suggestion: 'Au minimum logger l\'erreur: console.error(error)'
+        },
+        {
+          pattern: /\.readFileSync\([^)]+\)(?!.*try)/s,
+          severity: 'medium',
+          message: 'readFileSync sans try/catch',
+          suggestion: 'Wrapper dans try/catch ou utiliser existsSync() avant'
+        }
+      ],
+
+      // Performance
+      performance: [
+        {
+          pattern: /for\s*\([^)]+\)\s*\{[^}]*fs\.readFileSync/s,
+          severity: 'high',
+          message: 'Lecture synchrone dans boucle - très lent',
+          suggestion: 'Utiliser Promise.all() avec readFile() asynchrone'
+        },
+        {
+          pattern: /JSON\.parse\(fs\.readFileSync/,
+          severity: 'low',
+          message: 'Parse JSON synchrone - bloquant',
+          suggestion: 'Utiliser async/await avec fs.promises.readFile()'
+        }
+      ],
+
+      // Best practices
+      bestPractices: [
+        {
+          pattern: /console\.log\([^)]*password[^)]*\)/i,
+          severity: 'critical',
+          message: 'Log potentiel de données sensibles',
+          suggestion: 'Ne jamais logger passwords, tokens, ou API keys'
+        },
+        {
+          pattern: /setTimeout\([^,]+,\s*0\)/,
+          severity: 'low',
+          message: 'setTimeout(..., 0) - utiliser setImmediate() à la place',
+          suggestion: 'setImmediate() est plus approprié pour déférer exécution'
+        },
+        {
+          pattern: /==(?!=)/g,
+          severity: 'low',
+          message: 'Égalité faible (==) au lieu de stricte (===)',
+          suggestion: 'Toujours utiliser === pour éviter coercion implicite'
+        }
+      ],
+
+      // Code complexity
+      complexity: [
+        {
+          pattern: /function[^{]*\{(?:[^{}]*\{[^{}]*\}){4,}/s,
+          severity: 'medium',
+          message: 'Fonction avec forte imbrication (>4 niveaux)',
+          suggestion: 'Extraire sous-fonctions pour réduire complexité'
+        },
+        {
+          pattern: /if\s*\([^)]{100,}\)/,
+          severity: 'medium',
+          message: 'Condition très longue - difficile à lire',
+          suggestion: 'Extraire en variable booléenne avec nom explicite'
+        }
+      ]
+    }
+  }
+
+  /**
+   * Démarre l'agent
+   */
+  async start() {
+    if (this.running) {
+      console.log('⚠️ Code Analyzer déjà démarré')
+      return
+    }
+
+    this.running = true
+    this.stats.startTime = Date.now()
+
+    console.log('🔬 Code Analyzer démarré')
+    console.log(`   - Surveillance: ${this.agentsDir}`)
+    console.log(`   - Fréquence: toutes les 6 heures`)
+    console.log(`   - Rapports: ${this.reportsDir}`)
+
+    // Créer dossier rapports si n'existe pas
+    if (!fs.existsSync(this.reportsDir)) {
+      fs.mkdirSync(this.reportsDir, { recursive: true })
+      console.log(`   ✅ Dossier créé: ${this.reportsDir}`)
+    }
+
+    // Première analyse après 30s (laisser temps aux autres agents de démarrer)
+    setTimeout(() => this.analyzeCode(), 30000)
+
+    // Analyses périodiques
+    this.intervalId = setInterval(() => {
+      this.analyzeCode()
+    }, this.checkInterval)
+
+    this.emit('started')
+    eventBus.emit('agent:started', { name: 'code_analyzer' })
+  }
+
+  /**
+   * Arrête l'agent
+   */
+  async stop() {
+    if (!this.running) {
+      console.log('⚠️ Code Analyzer déjà arrêté')
+      return
+    }
+
+    console.log('🛑 Code Analyzer en cours d\'arrêt...')
+
+    if (this.intervalId) {
+      clearInterval(this.intervalId)
+      this.intervalId = null
+    }
+
+    this.running = false
+    console.log('🔬 Code Analyzer arrêté')
+
+    this.emit('stopped')
+    eventBus.emit('agent:stopped', { name: 'code_analyzer' })
+  }
+
+  /**
+   * Analyse le code
+   */
+  async analyzeCode() {
+    this.stats.lastCheck = Date.now()
+    console.log('🔬 [Code Analyzer] Début analyse...')
+
+    try {
+      // Trouver tous les fichiers .cjs dans agents/
+      const files = this.getCodeFiles()
+
+      if (files.length === 0) {
+        console.log('ℹ️ [Code Analyzer] Aucun fichier à analyser')
+        return
+      }
+
+      console.log(`📋 [Code Analyzer] ${files.length} fichiers trouvés`)
+
+      eventBus.emit('code:analysis_started', {
+        fileCount: files.length,
+        timestamp: Date.now()
+      })
+
+      // Analyser chaque fichier modifié
+      const allIssues = []
+
+      for (const file of files) {
+        const issues = await this.analyzeFile(file)
+        if (issues.length > 0) {
+          allIssues.push({
+            file: path.basename(file),
+            path: file,
+            issues
+          })
+        }
+      }
+
+      if (allIssues.length > 0) {
+        console.log(`⚠️ [Code Analyzer] ${allIssues.length} fichiers avec issues`)
+
+        const totalIssues = allIssues.reduce((sum, f) => sum + f.issues.length, 0)
+        this.stats.issuesFound += totalIssues
+
+        eventBus.emit('code:issues_found', {
+          fileCount: allIssues.length,
+          issueCount: totalIssues,
+          timestamp: Date.now()
+        })
+
+        // Créer rapport
+        await this.createReport(allIssues)
+      } else {
+        console.log('✅ [Code Analyzer] Aucune issue détectée')
+      }
+
+    } catch (error) {
+      console.error('❌ [Code Analyzer] Erreur analyse:', error.message)
+    }
+  }
+
+  /**
+   * Récupère la liste des fichiers de code à analyser
+   */
+  getCodeFiles() {
+    if (!fs.existsSync(this.agentsDir)) {
+      return []
+    }
+
+    const files = fs.readdirSync(this.agentsDir)
+      .filter(f => f.endsWith('.cjs') && f.startsWith('agent_'))
+      .map(f => path.join(this.agentsDir, f))
+
+    return files
+  }
+
+  /**
+   * Analyse un fichier spécifique
+   */
+  async analyzeFile(filepath) {
+    const stats = fs.statSync(filepath)
+    const mtime = stats.mtime.getTime()
+
+    // Vérifier si fichier déjà analysé (même mtime)
+    const cached = this.analyzedFiles.get(filepath)
+    if (cached && cached === mtime) {
+      return [] // Pas changé depuis dernière analyse
+    }
+
+    console.log(`   🔍 Analyse: ${path.basename(filepath)}`)
+
+    const content = fs.readFileSync(filepath, 'utf-8')
+    const issues = []
+
+    // Analyser avec chaque catégorie de code smells
+    for (const [category, patterns] of Object.entries(this.codeSmells)) {
+      for (const smell of patterns) {
+        const matches = this.findMatches(content, smell.pattern)
+
+        if (matches.length > 0) {
+          issues.push({
+            category,
+            severity: smell.severity,
+            message: smell.message,
+            suggestion: smell.suggestion,
+            occurrences: matches.length,
+            lines: matches.map(m => m.line)
+          })
+        }
+      }
+    }
+
+    // Analyses supplémentaires
+    issues.push(...this.analyzeCodeMetrics(content, filepath))
+
+    // Mettre à jour cache
+    this.analyzedFiles.set(filepath, mtime)
+    this.stats.filesAnalyzed++
+
+    return issues
+  }
+
+  /**
+   * Trouve les correspondances d'un pattern dans le code
+   */
+  findMatches(content, pattern) {
+    const matches = []
+    const lines = content.split('\n')
+
+    // Pour patterns multilignes, analyser tout le contenu
+    if (pattern.flags && pattern.flags.includes('s')) {
+      const match = content.match(pattern)
+      if (match) {
+        // Trouver ligne approximative
+        const index = match.index
+        const lineNum = content.substring(0, index).split('\n').length
+        matches.push({ line: lineNum })
+      }
+    } else {
+      // Pour patterns single-line, analyser ligne par ligne
+      lines.forEach((line, index) => {
+        if (pattern.test(line)) {
+          matches.push({ line: index + 1 })
+        }
+      })
+    }
+
+    return matches
+  }
+
+  /**
+   * Analyse métriques de code
+   */
+  analyzeCodeMetrics(content, filepath) {
+    const issues = []
+    const lines = content.split('\n')
+
+    // Complexité: nombre de lignes
+    if (lines.length > 800) {
+      issues.push({
+        category: 'metrics',
+        severity: 'medium',
+        message: `Fichier très long (${lines.length} lignes)`,
+        suggestion: 'Considérer split en modules plus petits',
+        occurrences: 1,
+        lines: [1]
+      })
+    }
+
+    // Complexité: nombre de fonctions
+    const functionCount = (content.match(/\bfunction\b|\=\>/g) || []).length
+    if (functionCount > 25) {
+      issues.push({
+        category: 'metrics',
+        severity: 'low',
+        message: `Beaucoup de fonctions (${functionCount})`,
+        suggestion: 'OK si bien organisé, sinon split module',
+        occurrences: 1,
+        lines: [1]
+      })
+    }
+
+    // TODOs non résolus
+    const todos = content.match(/TODO:?[^\n]+/gi)
+    if (todos && todos.length > 0) {
+      issues.push({
+        category: 'maintenance',
+        severity: 'low',
+        message: `${todos.length} TODO(s) dans le code`,
+        suggestion: 'Créer issues GitHub ou résoudre TODOs',
+        occurrences: todos.length,
+        lines: this.findTodoLines(content)
+      })
+    }
+
+    return issues
+  }
+
+  /**
+   * Trouve les lignes contenant TODO
+   */
+  findTodoLines(content) {
+    const lines = content.split('\n')
+    const todoLines = []
+
+    lines.forEach((line, index) => {
+      if (/TODO:?/i.test(line)) {
+        todoLines.push(index + 1)
+      }
+    })
+
+    return todoLines
+  }
+
+  /**
+   * Crée un rapport d'analyse
+   */
+  async createReport(filesWithIssues) {
+    const date = new Date().toISOString().split('T')[0]
+    const time = new Date().toISOString().split('T')[1].split('.')[0].replace(/:/g, '-')
+    const filename = `code_review_${date}_${time}.md`
+    const filepath = path.join(this.reportsDir, filename)
+
+    const report = this.formatReport(filesWithIssues)
+
+    fs.writeFileSync(filepath, report, 'utf-8')
+    console.log(`   💾 Rapport sauvegardé: ${filename}`)
+
+    this.stats.reportsCreated++
+
+    eventBus.emit('code:report_saved', {
+      filepath,
+      fileCount: filesWithIssues.length,
+      timestamp: Date.now()
+    })
+  }
+
+  /**
+   * Formate un rapport d'analyse
+   */
+  formatReport(filesWithIssues) {
+    const totalIssues = filesWithIssues.reduce((sum, f) => sum + f.issues.length, 0)
+
+    // Compter par sévérité
+    const bySeverity = { critical: 0, high: 0, medium: 0, low: 0 }
+    filesWithIssues.forEach(f => {
+      f.issues.forEach(issue => {
+        bySeverity[issue.severity]++
+      })
+    })
+
+    let report = `# 🔬 CODE REVIEW - Auto-Analyse\n\n`
+    report += `**Date**: ${new Date().toLocaleString('fr-FR')}\n`
+    report += `**Fichiers analysés**: ${filesWithIssues.length}\n`
+    report += `**Issues trouvées**: ${totalIssues}\n\n`
+
+    // Résumé par sévérité
+    report += `## 📊 Résumé par Sévérité\n\n`
+    report += `- 🔴 **Critical**: ${bySeverity.critical}\n`
+    report += `- 🟠 **High**: ${bySeverity.high}\n`
+    report += `- 🟡 **Medium**: ${bySeverity.medium}\n`
+    report += `- 🟢 **Low**: ${bySeverity.low}\n\n`
+    report += `---\n\n`
+
+    // Détails par fichier
+    filesWithIssues.forEach(fileData => {
+      report += `## 📄 ${fileData.file}\n\n`
+      report += `**Path**: \`${fileData.path}\`\n`
+      report += `**Issues**: ${fileData.issues.length}\n\n`
+
+      // Grouper par sévérité
+      const critical = fileData.issues.filter(i => i.severity === 'critical')
+      const high = fileData.issues.filter(i => i.severity === 'high')
+      const medium = fileData.issues.filter(i => i.severity === 'medium')
+      const low = fileData.issues.filter(i => i.severity === 'low')
+
+      const groups = [
+        { name: 'Critical', icon: '🔴', issues: critical },
+        { name: 'High', icon: '🟠', issues: high },
+        { name: 'Medium', icon: '🟡', issues: medium },
+        { name: 'Low', icon: '🟢', issues: low }
+      ]
+
+      groups.forEach(group => {
+        if (group.issues.length > 0) {
+          report += `### ${group.icon} ${group.name} (${group.issues.length})\n\n`
+
+          group.issues.forEach((issue, index) => {
+            report += `#### ${index + 1}. ${issue.message}\n\n`
+            report += `**Catégorie**: ${issue.category}\n`
+            report += `**Occurrences**: ${issue.occurrences}\n`
+
+            if (issue.lines && issue.lines.length > 0) {
+              const lineStr = issue.lines.length > 5
+                ? `${issue.lines.slice(0, 5).join(', ')}... (${issue.lines.length} total)`
+                : issue.lines.join(', ')
+              report += `**Lignes**: ${lineStr}\n`
+            }
+
+            report += `\n💡 **Suggestion**: ${issue.suggestion}\n\n`
+          })
+        }
+      })
+
+      report += `---\n\n`
+    })
+
+    // Recommandations générales
+    report += `## 🎯 Recommandations Générales\n\n`
+
+    if (bySeverity.critical > 0) {
+      report += `### ⚠️ URGENT - Issues Critiques\n\n`
+      report += `${bySeverity.critical} issue(s) critique(s) détectée(s). Résoudre en priorité.\n\n`
+    }
+
+    if (bySeverity.high > 0) {
+      report += `### 🔧 Priorité Haute\n\n`
+      report += `${bySeverity.high} issue(s) haute priorité. Résoudre cette semaine.\n\n`
+    }
+
+    if (totalIssues === 0) {
+      report += `✅ **Code impeccable!** Aucune issue détectée.\n\n`
+    } else if (totalIssues < 5) {
+      report += `✅ **Très bon!** Peu d'issues, code de qualité.\n\n`
+    } else if (totalIssues < 15) {
+      report += `🟡 **Correct.** Quelques améliorations possibles.\n\n`
+    } else {
+      report += `🟠 **À améliorer.** Plusieurs issues détectées.\n\n`
+    }
+
+    report += `---\n\n`
+    report += `## 💡 Philosophie\n\n`
+    report += `**"Le meilleur code est celui qu'on améliore continuellement."**\n\n`
+    report += `Ces analyses ne sont pas des critiques, mais des opportunités d'apprentissage.\n\n`
+    report += `Chaque issue résolue me rend meilleure développeuse. 💙\n\n`
+    report += `---\n\n`
+    report += `*Généré automatiquement par Code Analyzer*\n`
+
+    return report
+  }
+
+  /**
+   * Récupère les statistiques de l'agent
+   */
+  getStats() {
+    const uptime = this.stats.startTime
+      ? Date.now() - this.stats.startTime
+      : 0
+
+    return {
+      running: this.running,
+      uptime: this._formatDuration(uptime),
+      filesAnalyzed: this.stats.filesAnalyzed,
+      issuesFound: this.stats.issuesFound,
+      reportsCreated: this.stats.reportsCreated,
+      lastCheck: this.stats.lastCheck
+        ? new Date(this.stats.lastCheck).toLocaleString('fr-FR')
+        : 'Jamais',
+      checkIntervalHours: this.checkInterval / (60 * 60 * 1000)
+    }
+  }
+
+  /**
+   * Formate une durée
+   */
+  _formatDuration(ms) {
+    const seconds = Math.floor(ms / 1000)
+    const minutes = Math.floor(seconds / 60)
+    const hours = Math.floor(minutes / 60)
+    const days = Math.floor(hours / 24)
+
+    if (days > 0) return `${days}j ${hours % 24}h`
+    if (hours > 0) return `${hours}h ${minutes % 60}m`
+    if (minutes > 0) return `${minutes}m ${seconds % 60}s`
+    return `${seconds}s`
+  }
+}
+
+// Export instance singleton
+module.exports = new CodeAnalyzer()

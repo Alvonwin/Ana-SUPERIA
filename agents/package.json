@@ -1,0 +1,15 @@
+{
+  "name": "ana-agents",
+  "version": "1.0.0",
+  "description": "Système d'agents autonomes pour Ana",
+  "main": "start_agents.cjs",
+  "scripts": {
+    "start": "node start_agents.cjs"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "author": "Alain & Claude",
+  "license": "MIT"
+}

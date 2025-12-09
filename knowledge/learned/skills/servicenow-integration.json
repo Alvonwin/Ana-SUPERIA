@@ -1,0 +1,246 @@
+{
+  "category": "servicenow-integration",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "snw001",
+      "type": "fundamentals",
+      "name": "ServiceNow Basics",
+      "description": "Platform overview",
+      "pattern": "Tables, records, forms, lists",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "snw002",
+      "type": "fundamentals",
+      "name": "Application Navigator",
+      "description": "Navigation",
+      "pattern": "Modules, applications, favorites",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "snw003",
+      "type": "fundamentals",
+      "name": "ServiceNow Tables",
+      "description": "Data model",
+      "pattern": "sys_id, inheritance, extensions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "snw004",
+      "type": "scripting",
+      "name": "Server-Side Scripting",
+      "description": "GlideRecord",
+      "pattern": "GlideRecord, queries, CRUD",
+      "example": "Scripting usage"
+    },
+    {
+      "id": "snw005",
+      "type": "scripting",
+      "name": "Client-Side Scripting",
+      "description": "Client scripts",
+      "pattern": "onChange, onLoad, onSubmit",
+      "example": "Scripting usage"
+    },
+    {
+      "id": "snw006",
+      "type": "scripting",
+      "name": "Business Rules",
+      "description": "Automation",
+      "pattern": "before, after, async, query",
+      "example": "Scripting usage"
+    },
+    {
+      "id": "snw007",
+      "type": "scripting",
+      "name": "Script Includes",
+      "description": "Reusable code",
+      "pattern": "Classes, API, GlideSystem",
+      "example": "Scripting usage"
+    },
+    {
+      "id": "snw008",
+      "type": "scripting",
+      "name": "UI Policies",
+      "description": "Form behavior",
+      "pattern": "Conditions, actions, reverse",
+      "example": "Scripting usage"
+    },
+    {
+      "id": "snw009",
+      "type": "scripting",
+      "name": "UI Actions",
+      "description": "Buttons/links",
+      "pattern": "Client, server, conditions",
+      "example": "Scripting usage"
+    },
+    {
+      "id": "snw010",
+      "type": "workflows",
+      "name": "Flow Designer",
+      "description": "Low-code flows",
+      "pattern": "Triggers, actions, subflows",
+      "example": "Workflows usage"
+    },
+    {
+      "id": "snw011",
+      "type": "workflows",
+      "name": "Workflow Editor",
+      "description": "Classic workflows",
+      "pattern": "Activities, conditions, timers",
+      "example": "Workflows usage"
+    },
+    {
+      "id": "snw012",
+      "type": "workflows",
+      "name": "Scheduled Jobs",
+      "description": "Automation",
+      "pattern": "Scheduled scripts, triggers",
+      "example": "Workflows usage"
+    },
+    {
+      "id": "snw013",
+      "type": "integration",
+      "name": "REST API",
+      "description": "Inbound/Outbound",
+      "pattern": "Table API, Scripted REST",
+      "example": "Integration usage"
+    },
+    {
+      "id": "snw014",
+      "type": "integration",
+      "name": "SOAP Web Services",
+      "description": "Legacy integration",
+      "pattern": "WSDL, import sets",
+      "example": "Integration usage"
+    },
+    {
+      "id": "snw015",
+      "type": "integration",
+      "name": "IntegrationHub",
+      "description": "Spoke connections",
+      "pattern": "Spokes, actions, credentials",
+      "example": "Integration usage"
+    },
+    {
+      "id": "snw016",
+      "type": "integration",
+      "name": "Import Sets",
+      "description": "Data import",
+      "pattern": "Transform maps, coalesce",
+      "example": "Integration usage"
+    },
+    {
+      "id": "snw017",
+      "type": "integration",
+      "name": "MID Server",
+      "description": "On-premise link",
+      "pattern": "Discovery, orchestration, integration",
+      "example": "Integration usage"
+    },
+    {
+      "id": "snw018",
+      "type": "itsm",
+      "name": "Incident Management",
+      "description": "ITSM process",
+      "pattern": "Incident, SLA, assignment",
+      "example": "Itsm usage"
+    },
+    {
+      "id": "snw019",
+      "type": "itsm",
+      "name": "Change Management",
+      "description": "Change control",
+      "pattern": "Change requests, CAB, risk",
+      "example": "Itsm usage"
+    },
+    {
+      "id": "snw020",
+      "type": "itsm",
+      "name": "Service Catalog",
+      "description": "Request fulfillment",
+      "pattern": "Items, variables, workflows",
+      "example": "Itsm usage"
+    },
+    {
+      "id": "snw021",
+      "type": "itsm",
+      "name": "CMDB",
+      "description": "Configuration management",
+      "pattern": "CIs, relationships, discovery",
+      "example": "Itsm usage"
+    },
+    {
+      "id": "snw022",
+      "type": "portal",
+      "name": "Service Portal",
+      "description": "Self-service",
+      "pattern": "Widgets, pages, themes",
+      "example": "Portal usage"
+    },
+    {
+      "id": "snw023",
+      "type": "portal",
+      "name": "Widget Development",
+      "description": "Custom widgets",
+      "pattern": "HTML, CSS, client/server scripts",
+      "example": "Portal usage"
+    },
+    {
+      "id": "snw024",
+      "type": "portal",
+      "name": "Angular in ServiceNow",
+      "description": "Frontend framework",
+      "pattern": "AngularJS, directives, scope",
+      "example": "Portal usage"
+    },
+    {
+      "id": "snw025",
+      "type": "admin",
+      "name": "Access Control",
+      "description": "Security",
+      "pattern": "ACLs, roles, conditions",
+      "example": "Admin usage"
+    },
+    {
+      "id": "snw026",
+      "type": "admin",
+      "name": "Update Sets",
+      "description": "Deployment",
+      "pattern": "Capture, preview, commit",
+      "example": "Admin usage"
+    },
+    {
+      "id": "snw027",
+      "type": "admin",
+      "name": "Instance Management",
+      "description": "Administration",
+      "pattern": "Cloning, upgrades, plugins",
+      "example": "Admin usage"
+    },
+    {
+      "id": "snw028",
+      "type": "app-engine",
+      "name": "App Engine Studio",
+      "description": "Low-code dev",
+      "pattern": "Tables, forms, logic, portal",
+      "example": "App-engine usage"
+    },
+    {
+      "id": "snw029",
+      "type": "app-engine",
+      "name": "Scoped Applications",
+      "description": "App isolation",
+      "pattern": "Scopes, namespaces, dependencies",
+      "example": "App-engine usage"
+    },
+    {
+      "id": "snw030",
+      "type": "testing",
+      "name": "ATF",
+      "description": "Automated testing",
+      "pattern": "Test suites, steps, assertions",
+      "example": "Testing usage"
+    }
+  ]
+}

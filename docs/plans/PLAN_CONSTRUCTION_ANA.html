@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Construction Ana - Point par Point</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 5px solid #3498db;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .point {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid #3498db;
+        }
+
+        .point strong {
+            color: #2c3e50;
+        }
+
+        .sub-point {
+            margin-left: 30px;
+            margin-top: 8px;
+            padding: 8px;
+            background: white;
+            border-left: 2px solid #95a5a6;
+        }
+
+        .code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .critical {
+            background: #ffebee;
+            border-left-color: #e74c3c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .success {
+            background: #e8f5e9;
+            border-left-color: #27ae60;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .meta {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .meta p {
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 PLAN CONSTRUCTION ANA - Point par Point</h1>
+
+        <div class="meta">
+            <p><strong>Version:</strong> 2.0.0</p>
+            <p><strong>Date:</strong> 22 Novembre 2025</p>
+            <p><strong>Base:</strong> STACK_OPTIMALE_ANA_2025.json</p>
+            <p><strong>Timeline:</strong> 6 semaines (4 dev + 2 test)</p>
+            <p><strong>Objectif:</strong> Ana autonome, locale, gratuite, qui code/crée/pense</p>
+        </div>
+
+        <h2>1. STACK TECHNIQUE (Base: STACK_OPTIMALE_ANA_2025.json)</h2>
+
+        <h3>1.1. LLMs Multi-Spécialisés (4 Champions)</h3>
+
+        <div class="point">
+            <strong>1.1.1. DeepSeek-Coder-V2-Lite 16B (Coding Champion)</strong>
+            <div class="sub-point">
+                <strong>Rôle:</strong> Coding principal (write, debug, refactor code)<br>
+                <strong>Quantization:</strong> Q4_K_M<br>
+                <strong>VRAM:</strong> ~5-6GB<br>
+                <strong>Performance:</strong> Niveau GPT-4 Turbo pour coding<br>
+                <strong>Vitesse:</strong> Très rapide (MoE architecture)<br>
+                <strong>Installation:</strong> <span class="highlight">ollama pull deepseek-coder-v2:16b-lite-instruct-q4_K_M</span><br>
+                <strong>Usage:</strong> TOUTES tâches coding (priorité #1)
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>1.1.2. Phi-3-Mini 3.8B (Conversation & Thinking)</strong>
+            <div class="sub-point">
+                <strong>Rôle:</strong> Conversation rapide, raisonnement, thinking autonome Ana<br>
+                <strong>Quantization:</strong> Q8_0<br>
+                <strong>VRAM:</strong> ~3GB<br>
+                <strong>Performance:</strong> 130-150 tokens/sec<br>
+                <strong>Vitesse:</strong> Ultra-rapide<br>
+                <strong>Installation:</strong> <span class="highlight">ollama pull phi3:mini-128k</span><br>
+                <strong>Usage:</strong> Conversation, Ana Core autonomous thinking<br>
+                <strong>Remplace:</strong> mistral-claude-v2 (obsolète)
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>1.1.3. Qwen2.5-Coder 7B (Backup Coding & Math)</strong>
+            <div class="sub-point">
+                <strong>Rôle:</strong> Backup coding si DeepSeek busy, mathématiques<br>
+                <strong>Quantization:</strong> Q4_0<br>
+                <strong>VRAM:</strong> ~3.4GB<br>
+                <strong>Performance:</strong> HumanEval 85%, MATH 80%<br>
+                <strong>Installation:</strong> <span class="highlight">ollama pull qwen2.5-coder:7b</span><br>
+                <strong>Usage:</strong> Fallback coding, math problems
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>1.1.4. Llama 3.2 Vision 11B (Vision & Général)</strong>
+            <div class="sub-point">
+                <strong>Rôle:</strong> Analyse images, vision, tâches générales lourdes<br>
+                <strong>Quantization:</strong> Q4_0<br>
+                <strong>VRAM:</strong> ~5GB<br>
+                <strong>Performance:</strong> Multimodal (text + images)<br>
+                <strong>Installation:</strong> <span class="highlight">ollama pull llama3.2-vision:11b</span><br>
+                <strong>Usage:</strong> TOUTE analyse d'images, screenshots, photos
+            </div>
+        </div>
+
+        <h3>1.2. Stratégie Multi-LLM</h3>
+
+        <div class="point">
+            <strong>1.2.1. Routing Automatique</strong>
+            <div class="sub-point">
+                <strong>Classification:</strong> Analyze prompt → Déterminer type (coding/conversation/vision/math)<br>
+                <strong>Routing:</strong>
+                <ul>
+                    <li>Coding → DeepSeek-Coder-V2</li>
+                    <li>Conversation → Phi-3-Mini</li>
+                    <li>Vision → Llama 3.2 Vision</li>
+                    <li>Math → Qwen2.5-Coder</li>
+                </ul>
+                <strong>Fallback:</strong> Si primary échoue → secondary (DeepSeek fail → Qwen2.5-Coder)<br>
+                <strong>Latence routing:</strong> < 50ms
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>1.2.2. Gestion VRAM (RTX 3070 8GB)</strong>
+            <div class="sub-point">
+                <strong>Limite:</strong> Maximum 2 LLMs chargés simultanément<br>
+                <strong>Auto-unload:</strong> Décharge LLM idle > 5 minutes<br>
+                <strong>Monitoring:</strong> Track VRAM usage temps réel<br>
+                <strong>Quantization:</strong> Q4 pour tous = 2-3 modèles possibles
+            </div>
+        </div>
+
+        <h3>1.3. Frameworks & Outils</h3>
+
+        <table>
+            <tr>
+                <th>Catégorie</th>
+                <th>Outil</th>
+                <th>Status</th>
+                <th>Rôle</th>
+            </tr>
+            <tr>
+                <td>Automation</td>
+                <td>n8n v1.120.3</td>
+                <td>✅ Opérationnel (Premium)</td>
+                <td>Workflows, automation, self-improvement</td>
+            </tr>
+            <tr>
+                <td>Orchestration Vocale</td>
+                <td>NEXUS</td>
+                <td>✅ CRITIQUE (Ne PAS toucher)</td>
+                <td>Boucle vocale ARCHON (Voix → NEXUS → Voix)</td>
+            </tr>
+            <tr>
+                <td>Orchestration Générale</td>
+                <td>LangChain</td>
+                <td>✅ Installé (COEXISTE avec NEXUS)</td>
+                <td>Orchestration tâches Ana (NOT boucle vocale)</td>
+            </tr>
+            <tr>
+                <td>Mémoire</td>
+                <td>V3 + ChromaDB</td>
+                <td>✅ Hybride</td>
+                <td>V3 = context.txt, ChromaDB = vector search</td>
+            </tr>
+            <tr>
+                <td>Images</td>
+                <td>ComfyUI</td>
+                <td>✅ Opérationnel (SDXL Base 1.0)</td>
+                <td>Génération images (contrôle total workflows)</td>
+            </tr>
+            <tr>
+                <td>Images Simple</td>
+                <td>Fooocus</td>
+                <td>⏳ À installer</td>
+                <td>Génération rapide quotidienne (complémentaire)</td>
+            </tr>
+            <tr>
+                <td>Coding Assistant</td>
+                <td>Continue.dev</td>
+                <td>⏳ À installer</td>
+                <td>VS Code extension pour DeepSeek local</td>
+            </tr>
+            <tr>
+                <td>Coding Backup</td>
+                <td>Codeium</td>
+                <td>✅ Installé</td>
+                <td>Backup coding assistant</td>
+            </tr>
+        </table>
+
+        <h2>2. ARCHITECTURE SYSTÈME ANA</h2>
+
+        <h3>2.1. Ana Core Orchestrator</h3>
+
+        <div class="point">
+            <strong>2.1.1. Définition</strong>
+            <div class="sub-point">
+                Module principal d'orchestration qui coordonne tous sous-systèmes. Implémente cycle complet de traitement requêtes.
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.1.2. Responsabilités</strong>
+            <div class="sub-point">
+                <strong>1. Initialisation (initialize())</strong>
+                <ul>
+                    <li>Charge config (E:\ANA\config\system_config.json)</li>
+                    <li>Vérifie 4 LLMs via Ollama (localhost:11434)</li>
+                    <li>Initialise Memory Manager (charge current_context.txt)</li>
+                    <li>Démarre Agent Coordinator (lance 25 agents)</li>
+                    <li>Initialise Tool Executor (bash, file, code)</li>
+                    <li>Temps max: <strong>5 secondes</strong></li>
+                </ul>
+
+                <strong>2. Traitement Requête (processRequest())</strong>
+                <ul>
+                    <li>a. Load context from Memory</li>
+                    <li>b. Classify task type (coding/conversation/vision/math)</li>
+                    <li>c. Route to appropriate LLM</li>
+                    <li>d. Execute tools if needed</li>
+                    <li>e. Store results in memory</li>
+                    <li>f. Emit event to Agent Bus</li>
+                    <li>Temps max: <strong>10 secondes</strong> (moyenne)</li>
+                </ul>
+
+                <strong>3. API REST (port 3338)</strong>
+                <ul>
+                    <li>POST /api/chat - Conversation</li>
+                    <li>POST /api/think - Autonomous thinking</li>
+                    <li>GET /api/status - System health</li>
+                    <li>GET /api/metrics - Performance</li>
+                </ul>
+
+                <strong>4. Logging (winston)</strong>
+                <ul>
+                    <li>evolution_log.jsonl - Toutes actions</li>
+                    <li>error.log - Erreurs</li>
+                    <li>performance.json - Métriques temps réel</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.1.3. Tech Stack</strong>
+            <div class="sub-point">
+                <strong>Runtime:</strong> Node.js 22.20.0<br>
+                <strong>Framework:</strong> Express.js 4.18.x<br>
+                <strong>Logging:</strong> winston 3.x<br>
+                <strong>Process Manager:</strong> PM2 (production)
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.1.4. Critères Acceptation</strong>
+            <div class="sub-point">
+                <ul>
+                    <li>✅ Initialisation < 5s</li>
+                    <li>✅ Process request < 10s moyenne (100 requêtes)</li>
+                    <li>✅ Charge contexte automatiquement au démarrage</li>
+                    <li>✅ Log toutes actions (JSONL valide)</li>
+                    <li>✅ Graceful shutdown (sauvegarde état)</li>
+                    <li>✅ Recovery auto si crash (PM2, max 3 tentatives/min)</li>
+                    <li>✅ Memory usage < 512MB après 1000 requêtes</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2.2. Intelligence Router (Multi-LLM)</h3>
+
+        <div class="point">
+            <strong>2.2.1. Classification Automatique</strong>
+            <div class="sub-point">
+                <strong>Fonction:</strong> classifyTask(prompt) → 'coding' | 'conversation' | 'vision' | 'math'<br>
+                <strong>Méthode:</strong> Regex patterns matching<br>
+                <strong>Latence:</strong> < 50ms<br>
+                <strong>Accuracy:</strong> >= 95%
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.2.2. Patterns Classification</strong>
+            <div class="code">
+coding:
+  - /write|create|implement.*code|function/i
+  - /javascript|python|java|typescript/i
+  - /fix|debug.*error|bug/i
+
+conversation:
+  - Default (aucun autre pattern match)
+
+vision:
+  - /analyze|describe.*image|photo/i
+  - /<image_data>/ (base64 detection)
+
+math:
+  - /calculate|solve|compute/i
+  - /equation|integral|derivative/i
+  - /\d+\s*[+\-*/]\s*\d+/
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.2.3. Routing Strategy</strong>
+            <table>
+                <tr>
+                    <th>Task Type</th>
+                    <th>Primary LLM</th>
+                    <th>Fallback LLM</th>
+                    <th>VRAM</th>
+                </tr>
+                <tr>
+                    <td>coding</td>
+                    <td>deepseek-coder-v2:16b</td>
+                    <td>qwen2.5-coder:7b</td>
+                    <td>5-6GB</td>
+                </tr>
+                <tr>
+                    <td>conversation</td>
+                    <td>phi3:mini-128k</td>
+                    <td>-</td>
+                    <td>3GB</td>
+                </tr>
+                <tr>
+                    <td>vision</td>
+                    <td>llama3.2-vision:11b</td>
+                    <td>-</td>
+                    <td>5GB</td>
+                </tr>
+                <tr>
+                    <td>math</td>
+                    <td>qwen2.5-coder:7b</td>
+                    <td>phi3:mini-128k</td>
+                    <td>3.4GB</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="point">
+            <strong>2.2.4. VRAM Manager</strong>
+            <div class="sub-point">
+                <strong>Max concurrent:</strong> 2 LLMs (8GB RTX 3070 limit)<br>
+                <strong>Idle timeout:</strong> 5 minutes<br>
+                <strong>Unload strategy:</strong> LRU (Least Recently Used)<br>
+                <strong>Monitoring:</strong> nvidia-smi si disponible<br>
+                <strong>Safety:</strong> JAMAIS > 8GB VRAM
+            </div>
+        </div>
+
+        <h3>2.3. Memory System (V3 + ChromaDB Hybride)</h3>
+
+        <div class="point">
+            <strong>2.3.1. Mémoire Court Terme (current_context.txt)</strong>
+            <div class="sub-point">
+                <strong>Fichier:</strong> E:\ANA\memory\current_context.txt<br>
+                <strong>Format:</strong> Texte structuré avec sections<br>
+                <strong>Sections:</strong>
+                <ul>
+                    <li>USER PROFILE (Alain, preferences)</li>
+                    <li>CONVERSATION HISTORY (last 20 messages)</li>
+                    <li>CURRENT TASK (status, progress)</li>
+                    <li>KEY FACTS (permanent)</li>
+                    <li>RECENT DECISIONS</li>
+                    <li>ACTIVE METRICS</li>
+                    <li>NEXT ACTIONS</li>
+                </ul>
+                <strong>Operations:</strong>
+                <ul>
+                    <li>loadContext() - < 500ms</li>
+                    <li>saveContext() - < 200ms</li>
+                    <li>appendContext(section, text)</li>
+                </ul>
+                <strong>Max size:</strong> 5000 lignes (~500KB)
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.3.2. Mémoire Long Terme (ChromaDB)</strong>
+            <div class="sub-point">
+                <strong>Database:</strong> E:\ANA\memory\long_term\chromadb<br>
+                <strong>Collection:</strong> ana_memories<br>
+                <strong>Embeddings:</strong> 384 dimensions (nomic-embed-text via Ollama)<br>
+                <strong>Operations:</strong>
+                <ul>
+                    <li>store(text, metadata) - Stocke avec embedding</li>
+                    <li>recall(query, n) - Recherche sémantique top-n</li>
+                </ul>
+                <strong>Performance:</strong> Recall < 1s<br>
+                <strong>Accuracy:</strong> Recall >= 90%
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.3.3. Mémoire Travail (working_memory.json)</strong>
+            <div class="sub-point">
+                <strong>Fichier:</strong> E:\ANA\memory\working_memory.json<br>
+                <strong>Format:</strong> {key: value} JSON<br>
+                <strong>Operations:</strong>
+                <ul>
+                    <li>set(key, value) - Écriture</li>
+                    <li>get(key) - Lecture</li>
+                </ul>
+                <strong>Persist:</strong> Sur disque à chaque modification
+            </div>
+        </div>
+
+        <h3>2.4. Agent System (25+ Agents Autonomes)</h3>
+
+        <div class="point">
+            <strong>2.4.1. Event Bus</strong>
+            <div class="sub-point">
+                <strong>Architecture:</strong> Event-driven communication<br>
+                <strong>Port:</strong> 3339<br>
+                <strong>Events:</strong>
+                <ul>
+                    <li>memory:stored, memory:recalled</li>
+                    <li>system:started, system:shutdown</li>
+                    <li>task:started, task:completed, task:failed</li>
+                    <li>agent:started, agent:stopped, agent:alert</li>
+                    <li>creative:art_generated</li>
+                </ul>
+                <strong>Performance:</strong> 1000+ events/sec
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.4.2. Agent Coordinator</strong>
+            <div class="sub-point">
+                <strong>Rôle:</strong> Démarrage, arrêt, health checks, monitoring<br>
+                <strong>Health Check:</strong> Toutes les 5 minutes<br>
+                <strong>Auto-restart:</strong> Si agent critique down (max 3 tentatives)<br>
+                <strong>Dashboard:</strong> Port 3338 (temps réel)
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.4.3. Catégories Agents</strong>
+            <div class="sub-point">
+                <strong>STRICT (Gardiens valeurs):</strong>
+                <ul>
+                    <li>assumption_detector - Détecte suppositions</li>
+                    <li>backup_enforcer - Force backup avant modif</li>
+                    <li>methodology_checker - Vérifie méthodologie</li>
+                </ul>
+                <strong>COGNITIVE:</strong>
+                <ul>
+                    <li>memory_manager - Gère stockage/rappel</li>
+                    <li>system_monitor - Surveille performance</li>
+                    <li>emotion_analyzer - Analyse émotions</li>
+                </ul>
+                <strong>CREATIVE:</strong>
+                <ul>
+                    <li>artist_agent - Génère art quotidien</li>
+                    <li>composer_agent - Compose musique (Phase 2)</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2.5. Tool Executor</h3>
+
+        <div class="point">
+            <strong>2.5.1. Bash Executor</strong>
+            <div class="sub-point">
+                <strong>Fonction:</strong> Exécute commandes shell sécurisées<br>
+                <strong>Timeout:</strong> 2 minutes (configurable)<br>
+                <strong>Blacklist:</strong> Commandes dangereuses bloquées (rm -rf /, format, shutdown)<br>
+                <strong>Logging:</strong> Toutes exécutions loggées<br>
+                <strong>Background:</strong> Support exécution background
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.5.2. File Manager</strong>
+            <div class="sub-point">
+                <strong>Operations:</strong> read, write, append, delete<br>
+                <strong>Protection:</strong> Chemins critiques bloqués:
+                <ul>
+                    <li>E:\Claude_Autonome\ (NEXUS)</li>
+                    <li>E:\Quartier_General\archon-v3\</li>
+                    <li>E:\Mémoire Claude\current_conversation.txt</li>
+                </ul>
+                <strong>Backup:</strong> TOUJOURS backup avant modification fichier existant<br>
+                <strong>Search:</strong> Support regex search
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>2.5.3. Code Editor</strong>
+            <div class="sub-point">
+                <strong>Fonction:</strong> Wrapper FileManager spécialisé code<br>
+                <strong>Features:</strong> Syntax validation, formatting<br>
+                <strong>Integration:</strong> Continue.dev pour autocomplete
+            </div>
+        </div>
+
+        <h2>3. IMPLÉMENTATION PHASE PAR PHASE</h2>
+
+        <div class="critical">
+            <strong>⚠️ RÈGLE ABSOLUE:</strong> Travail UNIQUEMENT dans E:\ANA\<br>
+            NE JAMAIS modifier E:\Claude_Autonome\ (NEXUS) ou E:\Quartier_General\archon-v3\
+        </div>
+
+        <h3>3.1. Phase 1: Installation LLMs (Jour 1)</h3>
+
+        <div class="point">
+            <strong>3.1.1. Installer 4 LLMs Champions</strong>
+            <div class="code">
+# Priorité 1 (Jour 1)
+ollama pull deepseek-coder-v2:16b-lite-instruct-q4_K_M
+ollama pull phi3:mini-128k
+ollama pull qwen2.5-coder:7b
+
+# Priorité 2 (Jour 1)
+ollama pull llama3.2-vision:11b
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>3.1.2. Vérifier Installation</strong>
+            <div class="code">
+ollama list
+# Devrait montrer les 4 nouveaux modèles
+
+# Tester chaque modèle
+ollama run deepseek-coder-v2:16b-lite-instruct-q4_K_M "Write hello world in JS"
+ollama run phi3:mini-128k "Hello, test conversation"
+ollama run qwen2.5-coder:7b "Calculate 15 * 23"
+ollama run llama3.2-vision:11b "Describe: A sunset"
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>3.1.3. Retirer Modèles Obsolètes (Jour 1)</strong>
+            <div class="code">
+ollama rm mistral-claude-v2
+ollama rm mistral-claude
+ollama rm qwen2.5-coder:14b
+            </div>
+        </div>
+
+        <h3>3.2. Phase 2: Continue.dev (Jour 2)</h3>
+
+        <div class="point">
+            <strong>3.2.1. Installer Extension VS Code</strong>
+            <div class="code">
+code --install-extension continue.continue
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>3.2.2. Configuration Continue.dev</strong>
+            <div class="sub-point">
+                <strong>Fichier:</strong> E:\ANA\config\continue_config.json
+                <div class="code">
+{
+  "models": [
+    {
+      "title": "Ana Coding Brain",
+      "provider": "ollama",
+      "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M",
+      "apiBase": "http://localhost:11434"
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "Ana Fast Complete",
+    "provider": "ollama",
+    "model": "phi3:mini-128k"
+  }
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>3.2.3. Tester Continue.dev</strong>
+            <div class="sub-point">
+                1. Ouvrir VS Code dans E:\ANA\<br>
+                2. Créer test.js<br>
+                3. Taper "function sort" + Tab<br>
+                4. Vérifier autocomplete fonctionne
+            </div>
+        </div>
+
+        <h3>3.3. Phase 3: Multi-LLM Router (Jours 3-4)</h3>
+
+        <div class="point">
+            <strong>3.3.1. Créer Structure</strong>
+            <div class="code">
+mkdir E:\ANA\intelligence
+mkdir E:\ANA\intelligence\coding
+mkdir E:\ANA\intelligence\conversation
+mkdir E:\ANA\intelligence\vision
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>3.3.2. Implémenter Orchestrator</strong>
+            <div class="sub-point">
+                <strong>Fichier:</strong> E:\ANA\intelligence\orchestrator.cjs<br>
+                <strong>Classes:</strong>
+                <ul>
+                    <li>IntelligenceRouter - Main router</li>
+                    <li>VRAMManager - VRAM gestion</li>
+                </ul>
+                <strong>Méthodes:</strong>
+                <ul>
+                    <li>classifyTask(prompt)</li>
+                    <li>route(request)</li>
+                    <li>callOllama(model, request)</li>
+                    <li>healthCheck()</li>
+                    <li>getStats()</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>3.3.3. Tests Unitaires</strong>
+            <div class="sub-point">
+                <strong>Fichier:</strong> E:\ANA\test\intelligence_router.test.js<br>
+                <strong>Tests:</strong>
+                <ul>
+                    <li>Classification accuracy >= 95%</li>
+                    <li>Route coding → DeepSeek</li>
+                    <li>Route conversation → Phi3</li>
+                    <li>Route vision → Llama</li>
+                    <li>Fallback fonctionne</li>
+                    <li>VRAM limite à 2 LLMs</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>3.4. Phase 4: Memory System (Jours 5-6)</h3>
+
+        <div class="point">
+            <strong>3.4.1. Installer ChromaDB</strong>
+            <div class="code">
+cd E:\ANA
+python -m pip install chromadb
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>3.4.2. Implémenter Memory Manager</strong>
+            <div class="sub-point">
+                <strong>Fichiers:</strong>
+                <ul>
+                    <li>E:\ANA\memory\chromadb_manager.cjs</li>
+                    <li>E:\ANA\memory\memory_manager.cjs</li>
+                </ul>
+                <strong>Features:</strong>
+                <ul>
+                    <li>loadContext() - Court terme</li>
+                    <li>store() + recall() - Long terme ChromaDB</li>
+                    <li>set/getWorkingMemory() - Variables runtime</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>3.4.3. Tests Memory</strong>
+            <div class="sub-point">
+                <ul>
+                    <li>Store → Recall accuracy >= 90%</li>
+                    <li>Recall latency < 1s</li>
+                    <li>Context persist entre sessions</li>
+                    <li>Working memory synchronized</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>3.5. Phase 5: Ana Core Integration (Jour 7)</h3>
+
+        <div class="point">
+            <strong>3.5.1. Créer Ana Core</strong>
+            <div class="sub-point">
+                <strong>Fichier:</strong> E:\ANA\core\ana_core.cjs<br>
+                <strong>Remplacer:</strong> mistral-claude-v2 → Phi-3-Mini (thinking autonome)<br>
+                <strong>Integration:</strong>
+                <ul>
+                    <li>Intelligence Router</li>
+                    <li>Memory Manager</li>
+                    <li>Event Bus</li>
+                    <li>Tool Executor</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="point">
+            <strong>3.5.2. Test End-to-End</strong>
+            <div class="sub-point">
+                User message → LLM → Memory → Response<br>
+                Vérifier:
+                <ul>
+                    <li>Routing correct</li>
+                    <li>Mémoire stockée</li>
+                    <li>Context mis à jour</li>
+                    <li>Events émis</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>4. CRITÈRES DE SUCCÈS FINAUX</h2>
+
+        <div class="point success">
+            <strong>4.1. Performance</strong>
+            <ul>
+                <li>✅ Initialisation système < 5s</li>
+                <li>✅ Classification task < 50ms</li>
+                <li>✅ Process request < 10s moyenne</li>
+                <li>✅ Memory recall < 1s</li>
+                <li>✅ VRAM jamais > 8GB</li>
+            </ul>
+        </div>
+
+        <div class="point success">
+            <strong>4.2. Qualité</strong>
+            <ul>
+                <li>✅ Classification accuracy >= 95%</li>
+                <li>✅ Memory recall accuracy >= 90%</li>
+                <li>✅ Zéro bugs critiques</li>
+                <li>✅ Code coverage >= 70%</li>
+                <li>✅ Tous tests passent</li>
+            </ul>
+        </div>
+
+        <div class="point success">
+            <strong>4.3. Fonctionnel</strong>
+            <ul>
+                <li>✅ Ana code fonction JS simple</li>
+                <li>✅ Ana se souvient entre sessions</li>
+                <li>✅ Ana route vers bon LLM (4 types)</li>
+                <li>✅ Backup automatique avant modif</li>
+                <li>✅ Protection chemins critiques</li>
+            </ul>
+        </div>
+
+        <div class="point success">
+            <strong>4.4. Gains vs Ancien Système</strong>
+            <ul>
+                <li>✅ +200% performance coding (DeepSeek vs mistral-claude-v2)</li>
+                <li>✅ +150% vitesse conversation (Phi-3 ultra-rapide)</li>
+                <li>✅ Vision support ajouté (Llama 3.2 Vision)</li>
+                <li>✅ Continue.dev = GPT-4 niveau local</li>
+                <li>✅ Multi-LLM spécialisés vs 1 seul générique</li>
+            </ul>
+        </div>
+
+        <h2>5. COMMANDES RAPIDES</h2>
+
+        <div class="code">
+# Vérifier LLMs installés
+ollama list
+
+# Tester un LLM
+ollama run deepseek-coder-v2:16b-lite-instruct-q4_K_M "Write quicksort"
+
+# Démarrer Ana
+cd E:\ANA
+node core/ana_core.cjs
+
+# Lancer tests
+npm test
+
+# Check VRAM usage
+nvidia-smi
+
+# Check Ollama status
+curl http://localhost:11434/api/tags
+        </div>
+
+        <h2>6. CHECKLIST VALIDATION FINALE</h2>
+
+        <div class="point">
+            <strong>Avant de dire "Ana est prête"</strong>
+            <ul>
+                <li>☐ 4 LLMs installés et fonctionnels</li>
+                <li>☐ Continue.dev opérationnel avec DeepSeek</li>
+                <li>☐ Multi-LLM Router route correctement</li>
+                <li>☐ Memory système (V3 + ChromaDB) fonctionne</li>
+                <li>☐ Ana code fonction simple sans erreur</li>
+                <li>☐ Ana se souvient entre 2 sessions</li>
+                <li>☐ VRAM jamais > 8GB (vérifié nvidia-smi)</li>
+                <li>☐ Tous tests passent (npm test)</li>
+                <li>☐ NEXUS toujours intact et fonctionnel</li>
+                <li>☐ ARCHON toujours intact et fonctionnel</li>
+                <li>☐ Documentation complète</li>
+            </ul>
+        </div>
+
+        <div class="meta" style="margin-top: 40px; background: #e8f5e9;">
+            <h3 style="color: #27ae60;">✅ Plan Basé Sur STACK_OPTIMALE_ANA_2025.json</h3>
+            <p><strong>Créé:</strong> 22 Novembre 2025</p>
+            <p><strong>Par:</strong> Équipe Ana Engineering</p>
+            <p><strong>Status:</strong> Prêt pour exécution</p>
+            <p><strong>Timeline:</strong> 7 jours pour Phase 1 (Core infrastructure)</p>
+        </div>
+    </div>
+</body>
+</html>

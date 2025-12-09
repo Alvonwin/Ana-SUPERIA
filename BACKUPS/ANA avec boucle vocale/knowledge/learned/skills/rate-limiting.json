@@ -1,0 +1,246 @@
+{
+  "category": "rate-limiting",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "rl001",
+      "type": "fundamentals",
+      "name": "Why Rate Limit",
+      "description": "Protection",
+      "pattern": "Prevent abuse, ensure fairness, protect resources, DoS defense",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rl002",
+      "type": "fundamentals",
+      "name": "Rate vs Throttle",
+      "description": "Terminology",
+      "pattern": "Rate limit: reject excess, Throttle: slow down, Queue: delay",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rl003",
+      "type": "fundamentals",
+      "name": "Limit Types",
+      "description": "What to limit",
+      "pattern": "Requests/sec, bandwidth, concurrent connections, CPU time",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rl004",
+      "type": "algorithms",
+      "name": "Fixed Window",
+      "description": "Simple counter",
+      "pattern": "Count per time window, reset at boundary, burst at edges",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "rl005",
+      "type": "algorithms",
+      "name": "Sliding Window Log",
+      "description": "Request timestamps",
+      "pattern": "Store each request time, count in sliding window, memory heavy",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "rl006",
+      "type": "algorithms",
+      "name": "Sliding Window Counter",
+      "description": "Weighted windows",
+      "pattern": "Combine current + previous window weighted by time",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "rl007",
+      "type": "algorithms",
+      "name": "Token Bucket",
+      "description": "Tokens refill",
+      "pattern": "Bucket holds tokens, refill rate, allows bursts up to bucket size",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "rl008",
+      "type": "algorithms",
+      "name": "Leaky Bucket",
+      "description": "Constant rate",
+      "pattern": "Queue requests, process at constant rate, smooth output",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "rl009",
+      "type": "algorithms",
+      "name": "GCRA",
+      "description": "Generic cell rate",
+      "pattern": "Used by Stripe, combines token bucket precision",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "rl010",
+      "type": "identification",
+      "name": "Rate Limit Keys",
+      "description": "Identify clients",
+      "pattern": "IP address, API key, user ID, combination",
+      "example": "Identification usage"
+    },
+    {
+      "id": "rl011",
+      "type": "identification",
+      "name": "IP-Based Limits",
+      "description": "By IP",
+      "pattern": "X-Forwarded-For, X-Real-IP, proxy considerations",
+      "example": "Identification usage"
+    },
+    {
+      "id": "rl012",
+      "type": "identification",
+      "name": "User-Based Limits",
+      "description": "Authenticated users",
+      "pattern": "Limit per user account, different tiers",
+      "example": "Identification usage"
+    },
+    {
+      "id": "rl013",
+      "type": "implementation",
+      "name": "Redis Rate Limiting",
+      "description": "Distributed counter",
+      "pattern": "INCR + EXPIRE, Lua scripts for atomicity",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "rl014",
+      "type": "implementation",
+      "name": "In-Memory Limiting",
+      "description": "Single server",
+      "pattern": "Map structure, cleanup expired, no distribution",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "rl015",
+      "type": "implementation",
+      "name": "Express Rate Limit",
+      "description": "Node.js middleware",
+      "pattern": "express-rate-limit, windowMs, max, store",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "rl016",
+      "type": "implementation",
+      "name": "Upstash Ratelimit",
+      "description": "Serverless limiter",
+      "pattern": "Redis-based, Vercel Edge, sliding window",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "rl017",
+      "type": "responses",
+      "name": "429 Response",
+      "description": "Too Many Requests",
+      "pattern": "HTTP 429, Retry-After header, error message",
+      "example": "Responses usage"
+    },
+    {
+      "id": "rl018",
+      "type": "responses",
+      "name": "Rate Limit Headers",
+      "description": "Communicate limits",
+      "pattern": "X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset",
+      "example": "Responses usage"
+    },
+    {
+      "id": "rl019",
+      "type": "responses",
+      "name": "Retry-After",
+      "description": "When to retry",
+      "pattern": "Seconds or HTTP-date, clients should respect",
+      "example": "Responses usage"
+    },
+    {
+      "id": "rl020",
+      "type": "strategies",
+      "name": "Tiered Limits",
+      "description": "User tiers",
+      "pattern": "Free: 100/hour, Pro: 1000/hour, Enterprise: custom",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "rl021",
+      "type": "strategies",
+      "name": "Endpoint Limits",
+      "description": "Per-route limits",
+      "pattern": "Expensive endpoints lower limits, health checks excluded",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "rl022",
+      "type": "strategies",
+      "name": "Burst Allowance",
+      "description": "Allow spikes",
+      "pattern": "Token bucket with burst capacity, smooth average",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "rl023",
+      "type": "strategies",
+      "name": "Graceful Degradation",
+      "description": "Under pressure",
+      "pattern": "Queue requests, shed load, priority queues",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "rl024",
+      "type": "api-gateway",
+      "name": "Gateway Rate Limits",
+      "description": "Edge limiting",
+      "pattern": "AWS API Gateway, Kong, Nginx limit_req",
+      "example": "Api-gateway usage"
+    },
+    {
+      "id": "rl025",
+      "type": "api-gateway",
+      "name": "CDN Rate Limits",
+      "description": "CDN protection",
+      "pattern": "Cloudflare Rate Limiting, AWS WAF",
+      "example": "Api-gateway usage"
+    },
+    {
+      "id": "rl026",
+      "type": "client-side",
+      "name": "Client Backoff",
+      "description": "Handle 429",
+      "pattern": "Exponential backoff, respect Retry-After, jitter",
+      "example": "Client-side usage"
+    },
+    {
+      "id": "rl027",
+      "type": "client-side",
+      "name": "Request Queuing",
+      "description": "Client throttle",
+      "pattern": "Queue requests, rate limit outgoing, bottleneck library",
+      "example": "Client-side usage"
+    },
+    {
+      "id": "rl028",
+      "type": "monitoring",
+      "name": "Rate Limit Metrics",
+      "description": "Observe usage",
+      "pattern": "Track hits, rejections, by key, by endpoint",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "rl029",
+      "type": "monitoring",
+      "name": "Alerting",
+      "description": "Detect issues",
+      "pattern": "Alert on spike in 429s, abuse detection",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "rl030",
+      "type": "testing",
+      "name": "Load Testing",
+      "description": "Verify limits",
+      "pattern": "k6, artillery, verify limits work, measure capacity",
+      "example": "Testing usage"
+    }
+  ]
+}

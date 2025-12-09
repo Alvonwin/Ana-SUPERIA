@@ -1,0 +1,246 @@
+{
+  "category": "frontend-performance",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "fp001",
+      "type": "metrics",
+      "name": "Core Web Vitals",
+      "description": "Google metrics",
+      "pattern": "LCP < 2.5s, FID < 100ms, CLS < 0.1",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "fp002",
+      "type": "metrics",
+      "name": "Largest Contentful Paint",
+      "description": "Load performance",
+      "pattern": "Optimize hero image, preload critical resources, fast server",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "fp003",
+      "type": "metrics",
+      "name": "First Input Delay",
+      "description": "Interactivity",
+      "pattern": "Break up long tasks, defer non-critical JS, use web workers",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "fp004",
+      "type": "metrics",
+      "name": "Cumulative Layout Shift",
+      "description": "Visual stability",
+      "pattern": "Set dimensions on images, reserve space, avoid dynamic content injection",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "fp005",
+      "type": "metrics",
+      "name": "Time to First Byte",
+      "description": "Server response",
+      "pattern": "CDN, caching, optimize backend, edge computing",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "fp006",
+      "type": "metrics",
+      "name": "First Contentful Paint",
+      "description": "First render",
+      "pattern": "Inline critical CSS, preconnect, eliminate render-blocking",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "fp007",
+      "type": "metrics",
+      "name": "Time to Interactive",
+      "description": "Full interactivity",
+      "pattern": "Code splitting, lazy loading, minimize main thread work",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "fp008",
+      "type": "tools",
+      "name": "Lighthouse",
+      "description": "Audit tool",
+      "pattern": "Performance, Accessibility, Best Practices, SEO scores",
+      "example": "Tools usage"
+    },
+    {
+      "id": "fp009",
+      "type": "tools",
+      "name": "Chrome DevTools Performance",
+      "description": "Profiling",
+      "pattern": "Timeline, flame chart, main thread analysis",
+      "example": "Tools usage"
+    },
+    {
+      "id": "fp010",
+      "type": "tools",
+      "name": "WebPageTest",
+      "description": "Real-world testing",
+      "pattern": "Multiple locations, connection speeds, filmstrip view",
+      "example": "Tools usage"
+    },
+    {
+      "id": "fp011",
+      "type": "loading",
+      "name": "Lazy Loading Images",
+      "description": "Defer offscreen",
+      "pattern": "<img loading='lazy'>, Intersection Observer API",
+      "example": "Loading usage"
+    },
+    {
+      "id": "fp012",
+      "type": "loading",
+      "name": "Preloading",
+      "description": "Hint critical resources",
+      "pattern": "<link rel='preload' as='font' href='font.woff2' crossorigin>",
+      "example": "Loading usage"
+    },
+    {
+      "id": "fp013",
+      "type": "loading",
+      "name": "Prefetching",
+      "description": "Next page resources",
+      "pattern": "<link rel='prefetch' href='next-page.js'>",
+      "example": "Loading usage"
+    },
+    {
+      "id": "fp014",
+      "type": "loading",
+      "name": "Preconnect",
+      "description": "Early connections",
+      "pattern": "<link rel='preconnect' href='https://api.example.com'>",
+      "example": "Loading usage"
+    },
+    {
+      "id": "fp015",
+      "type": "bundle",
+      "name": "Code Splitting",
+      "description": "Smaller chunks",
+      "pattern": "Dynamic import(), route-based splitting, React.lazy",
+      "example": "Bundle usage"
+    },
+    {
+      "id": "fp016",
+      "type": "bundle",
+      "name": "Tree Shaking",
+      "description": "Dead code elimination",
+      "pattern": "ES modules, sideEffects: false, named imports",
+      "example": "Bundle usage"
+    },
+    {
+      "id": "fp017",
+      "type": "bundle",
+      "name": "Bundle Analysis",
+      "description": "Size visualization",
+      "pattern": "webpack-bundle-analyzer, source-map-explorer",
+      "example": "Bundle usage"
+    },
+    {
+      "id": "fp018",
+      "type": "bundle",
+      "name": "Compression",
+      "description": "Reduce transfer size",
+      "pattern": "gzip, Brotli compression, Content-Encoding header",
+      "example": "Bundle usage"
+    },
+    {
+      "id": "fp019",
+      "type": "images",
+      "name": "Image Optimization",
+      "description": "Reduce image size",
+      "pattern": "WebP/AVIF, responsive images, srcset, sizes",
+      "example": "Images usage"
+    },
+    {
+      "id": "fp020",
+      "type": "images",
+      "name": "Image CDN",
+      "description": "Dynamic optimization",
+      "pattern": "Cloudinary, imgix - resize, format on the fly",
+      "example": "Images usage"
+    },
+    {
+      "id": "fp021",
+      "type": "images",
+      "name": "SVG Optimization",
+      "description": "Vector graphics",
+      "pattern": "SVGO, inline critical SVGs, sprite sheets",
+      "example": "Images usage"
+    },
+    {
+      "id": "fp022",
+      "type": "caching",
+      "name": "Browser Caching",
+      "description": "Cache headers",
+      "pattern": "Cache-Control: max-age=31536000, immutable for hashed assets",
+      "example": "Caching usage"
+    },
+    {
+      "id": "fp023",
+      "type": "caching",
+      "name": "Service Workers",
+      "description": "Offline caching",
+      "pattern": "Cache-first, network-first, stale-while-revalidate strategies",
+      "example": "Caching usage"
+    },
+    {
+      "id": "fp024",
+      "type": "caching",
+      "name": "CDN Caching",
+      "description": "Edge caching",
+      "pattern": "Cloudflare, Fastly - cache rules, purging, edge functions",
+      "example": "Caching usage"
+    },
+    {
+      "id": "fp025",
+      "type": "rendering",
+      "name": "SSR",
+      "description": "Server-side rendering",
+      "pattern": "HTML on server, hydration on client, faster FCP",
+      "example": "Rendering usage"
+    },
+    {
+      "id": "fp026",
+      "type": "rendering",
+      "name": "SSG",
+      "description": "Static generation",
+      "pattern": "Pre-render at build time, CDN distribution",
+      "example": "Rendering usage"
+    },
+    {
+      "id": "fp027",
+      "type": "rendering",
+      "name": "ISR",
+      "description": "Incremental Static Regen",
+      "pattern": "revalidate: 60, on-demand revalidation",
+      "example": "Rendering usage"
+    },
+    {
+      "id": "fp028",
+      "type": "rendering",
+      "name": "Streaming SSR",
+      "description": "Progressive rendering",
+      "pattern": "React 18 Suspense, streaming HTML chunks",
+      "example": "Rendering usage"
+    },
+    {
+      "id": "fp029",
+      "type": "css",
+      "name": "Critical CSS",
+      "description": "Inline above-fold",
+      "pattern": "Extract critical path CSS, defer rest",
+      "example": "Css usage"
+    },
+    {
+      "id": "fp030",
+      "type": "css",
+      "name": "CSS Containment",
+      "description": "Isolate rendering",
+      "pattern": "contain: layout paint, content-visibility: auto",
+      "example": "Css usage"
+    }
+  ]
+}

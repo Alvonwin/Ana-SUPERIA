@@ -1,0 +1,246 @@
+{
+  "category": "salesforce-apex",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "sf001",
+      "type": "fundamentals",
+      "name": "Apex Basics",
+      "description": "Apex language",
+      "pattern": "Variables, classes, methods, SOQL",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sf002",
+      "type": "fundamentals",
+      "name": "SOQL",
+      "description": "Query language",
+      "pattern": "SELECT, WHERE, LIMIT, relationships",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sf003",
+      "type": "fundamentals",
+      "name": "SOSL",
+      "description": "Search language",
+      "pattern": "FIND, IN, RETURNING, search",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sf004",
+      "type": "fundamentals",
+      "name": "DML Operations",
+      "description": "Data manipulation",
+      "pattern": "insert, update, delete, upsert",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sf005",
+      "type": "triggers",
+      "name": "Apex Triggers",
+      "description": "Database triggers",
+      "pattern": "before/after insert/update/delete",
+      "example": "Triggers usage"
+    },
+    {
+      "id": "sf006",
+      "type": "triggers",
+      "name": "Trigger Context",
+      "description": "Trigger variables",
+      "pattern": "Trigger.new, Trigger.old, isInsert",
+      "example": "Triggers usage"
+    },
+    {
+      "id": "sf007",
+      "type": "triggers",
+      "name": "Trigger Best Practices",
+      "description": "Trigger patterns",
+      "pattern": "One trigger per object, handler pattern",
+      "example": "Triggers usage"
+    },
+    {
+      "id": "sf008",
+      "type": "classes",
+      "name": "Apex Classes",
+      "description": "OOP in Apex",
+      "pattern": "Classes, interfaces, inheritance",
+      "example": "Classes usage"
+    },
+    {
+      "id": "sf009",
+      "type": "classes",
+      "name": "Batch Apex",
+      "description": "Large data processing",
+      "pattern": "Database.Batchable, start/execute/finish",
+      "example": "Classes usage"
+    },
+    {
+      "id": "sf010",
+      "type": "classes",
+      "name": "Scheduled Apex",
+      "description": "Scheduled jobs",
+      "pattern": "Schedulable, cron expression",
+      "example": "Classes usage"
+    },
+    {
+      "id": "sf011",
+      "type": "classes",
+      "name": "Queueable Apex",
+      "description": "Async processing",
+      "pattern": "Queueable, System.enqueueJob",
+      "example": "Classes usage"
+    },
+    {
+      "id": "sf012",
+      "type": "classes",
+      "name": "Future Methods",
+      "description": "Async callouts",
+      "pattern": "@future, callout=true",
+      "example": "Classes usage"
+    },
+    {
+      "id": "sf013",
+      "type": "lwc",
+      "name": "Lightning Web Components",
+      "description": "Modern UI",
+      "pattern": "HTML, JS, CSS, wire, apex",
+      "example": "Lwc usage"
+    },
+    {
+      "id": "sf014",
+      "type": "lwc",
+      "name": "LWC JavaScript",
+      "description": "Component logic",
+      "pattern": "@api, @track, @wire, lifecycle",
+      "example": "Lwc usage"
+    },
+    {
+      "id": "sf015",
+      "type": "lwc",
+      "name": "LWC Apex Integration",
+      "description": "Server calls",
+      "pattern": "@AuraEnabled, wire, imperative",
+      "example": "Lwc usage"
+    },
+    {
+      "id": "sf016",
+      "type": "aura",
+      "name": "Aura Components",
+      "description": "Legacy UI",
+      "pattern": "Component, controller, helper",
+      "example": "Aura usage"
+    },
+    {
+      "id": "sf017",
+      "type": "visualforce",
+      "name": "Visualforce",
+      "description": "Classic UI",
+      "pattern": "VF pages, controllers, expressions",
+      "example": "Visualforce usage"
+    },
+    {
+      "id": "sf018",
+      "type": "integration",
+      "name": "REST API",
+      "description": "REST integration",
+      "pattern": "HttpRequest, HttpResponse, callout",
+      "example": "Integration usage"
+    },
+    {
+      "id": "sf019",
+      "type": "integration",
+      "name": "SOAP API",
+      "description": "SOAP integration",
+      "pattern": "WSDL2Apex, webservice keyword",
+      "example": "Integration usage"
+    },
+    {
+      "id": "sf020",
+      "type": "integration",
+      "name": "Platform Events",
+      "description": "Event-driven",
+      "pattern": "Publish, subscribe, EventBus",
+      "example": "Integration usage"
+    },
+    {
+      "id": "sf021",
+      "type": "security",
+      "name": "Security Model",
+      "description": "Data security",
+      "pattern": "Profiles, permission sets, sharing",
+      "example": "Security usage"
+    },
+    {
+      "id": "sf022",
+      "type": "security",
+      "name": "Field-Level Security",
+      "description": "FLS checks",
+      "pattern": "isAccessible, isUpdateable",
+      "example": "Security usage"
+    },
+    {
+      "id": "sf023",
+      "type": "security",
+      "name": "Sharing Rules",
+      "description": "Record access",
+      "pattern": "with/without sharing, manual sharing",
+      "example": "Security usage"
+    },
+    {
+      "id": "sf024",
+      "type": "testing",
+      "name": "Apex Testing",
+      "description": "Unit tests",
+      "pattern": "@isTest, Test.startTest, assertions",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sf025",
+      "type": "testing",
+      "name": "Test Data",
+      "description": "Test factories",
+      "pattern": "@TestSetup, Test.loadData",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sf026",
+      "type": "testing",
+      "name": "Mocking",
+      "description": "Mock callouts",
+      "pattern": "HttpCalloutMock, WebServiceMock",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sf027",
+      "type": "deployment",
+      "name": "Metadata API",
+      "description": "Deployment",
+      "pattern": "Change sets, SFDX, CI/CD",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "sf028",
+      "type": "deployment",
+      "name": "SFDX CLI",
+      "description": "Dev tools",
+      "pattern": "sfdx force, scratch orgs, source",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "sf029",
+      "type": "governance",
+      "name": "Governor Limits",
+      "description": "Platform limits",
+      "pattern": "SOQL limits, DML limits, CPU time",
+      "example": "Governance usage"
+    },
+    {
+      "id": "sf030",
+      "type": "governance",
+      "name": "Bulkification",
+      "description": "Bulk patterns",
+      "pattern": "Collections, maps, avoid loops",
+      "example": "Governance usage"
+    }
+  ]
+}

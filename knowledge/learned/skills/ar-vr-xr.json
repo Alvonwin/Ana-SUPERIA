@@ -1,0 +1,246 @@
+{
+  "category": "ar-vr-xr",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "xr001",
+      "type": "fundamentals",
+      "name": "XR Concepts",
+      "description": "Extended reality",
+      "pattern": "AR, VR, MR, spatial computing",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "xr002",
+      "type": "fundamentals",
+      "name": "3D Math for XR",
+      "description": "Spatial math",
+      "pattern": "Quaternions, transforms, projections",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "xr003",
+      "type": "fundamentals",
+      "name": "Stereoscopic Rendering",
+      "description": "3D display",
+      "pattern": "Left/right eye, IPD, depth",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "xr004",
+      "type": "fundamentals",
+      "name": "Tracking Systems",
+      "description": "Position tracking",
+      "pattern": "Inside-out, outside-in, 6DoF",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "xr005",
+      "type": "fundamentals",
+      "name": "XR Input",
+      "description": "Controllers",
+      "pattern": "Hand tracking, gestures, eye tracking",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "xr006",
+      "type": "vr",
+      "name": "VR Development",
+      "description": "Virtual reality",
+      "pattern": "Immersion, presence, locomotion",
+      "example": "Vr usage"
+    },
+    {
+      "id": "xr007",
+      "type": "vr",
+      "name": "Oculus/Meta Quest",
+      "description": "Quest development",
+      "pattern": "Quest SDK, hand tracking, passthrough",
+      "example": "Vr usage"
+    },
+    {
+      "id": "xr008",
+      "type": "vr",
+      "name": "SteamVR",
+      "description": "PC VR",
+      "pattern": "OpenVR, Lighthouse, controllers",
+      "example": "Vr usage"
+    },
+    {
+      "id": "xr009",
+      "type": "vr",
+      "name": "VR Locomotion",
+      "description": "Movement in VR",
+      "pattern": "Teleport, smooth, snap turn",
+      "example": "Vr usage"
+    },
+    {
+      "id": "xr010",
+      "type": "vr",
+      "name": "VR UI/UX",
+      "description": "VR interfaces",
+      "pattern": "Diegetic UI, gaze, world-space",
+      "example": "Vr usage"
+    },
+    {
+      "id": "xr011",
+      "type": "ar",
+      "name": "AR Development",
+      "description": "Augmented reality",
+      "pattern": "Overlay, anchors, occlusion",
+      "example": "Ar usage"
+    },
+    {
+      "id": "xr012",
+      "type": "ar",
+      "name": "ARKit",
+      "description": "Apple AR",
+      "pattern": "World tracking, face, LiDAR",
+      "example": "Ar usage"
+    },
+    {
+      "id": "xr013",
+      "type": "ar",
+      "name": "ARCore",
+      "description": "Google AR",
+      "pattern": "Motion tracking, environmental",
+      "example": "Ar usage"
+    },
+    {
+      "id": "xr014",
+      "type": "ar",
+      "name": "AR Foundation",
+      "description": "Unity cross-platform",
+      "pattern": "XR plugin, subsystems",
+      "example": "Ar usage"
+    },
+    {
+      "id": "xr015",
+      "type": "ar",
+      "name": "WebXR",
+      "description": "Web-based XR",
+      "pattern": "WebXR API, A-Frame, Three.js",
+      "example": "Ar usage"
+    },
+    {
+      "id": "xr016",
+      "type": "ar",
+      "name": "Image Tracking",
+      "description": "Marker AR",
+      "pattern": "Vuforia, AR markers, detection",
+      "example": "Ar usage"
+    },
+    {
+      "id": "xr017",
+      "type": "ar",
+      "name": "Plane Detection",
+      "description": "Surface AR",
+      "pattern": "Horizontal, vertical, mesh",
+      "example": "Ar usage"
+    },
+    {
+      "id": "xr018",
+      "type": "mr",
+      "name": "Mixed Reality",
+      "description": "MR concepts",
+      "pattern": "Holograms, spatial mapping",
+      "example": "Mr usage"
+    },
+    {
+      "id": "xr019",
+      "type": "mr",
+      "name": "HoloLens",
+      "description": "Microsoft MR",
+      "pattern": "MRTK, spatial anchors, mesh",
+      "example": "Mr usage"
+    },
+    {
+      "id": "xr020",
+      "type": "mr",
+      "name": "Apple Vision Pro",
+      "description": "Spatial computing",
+      "pattern": "visionOS, RealityKit, SwiftUI",
+      "example": "Mr usage"
+    },
+    {
+      "id": "xr021",
+      "type": "tools",
+      "name": "Unity XR",
+      "description": "Unity for XR",
+      "pattern": "XR Interaction Toolkit, XR Plugin",
+      "example": "Tools usage"
+    },
+    {
+      "id": "xr022",
+      "type": "tools",
+      "name": "Unreal XR",
+      "description": "Unreal for XR",
+      "pattern": "VR Template, Motion Controllers",
+      "example": "Tools usage"
+    },
+    {
+      "id": "xr023",
+      "type": "tools",
+      "name": "Blender for XR",
+      "description": "3D modeling",
+      "pattern": "Low-poly, UV, export formats",
+      "example": "Tools usage"
+    },
+    {
+      "id": "xr024",
+      "type": "tools",
+      "name": "Substance",
+      "description": "XR textures",
+      "pattern": "PBR materials, baking",
+      "example": "Tools usage"
+    },
+    {
+      "id": "xr025",
+      "type": "performance",
+      "name": "XR Optimization",
+      "description": "Performance",
+      "pattern": "Draw calls, LOD, foveated rendering",
+      "example": "Performance usage"
+    },
+    {
+      "id": "xr026",
+      "type": "performance",
+      "name": "Frame Rate",
+      "description": "Smooth XR",
+      "pattern": "90fps, ASW, reprojection",
+      "example": "Performance usage"
+    },
+    {
+      "id": "xr027",
+      "type": "social",
+      "name": "Multiplayer XR",
+      "description": "Social VR",
+      "pattern": "Avatars, voice, networking",
+      "example": "Social usage"
+    },
+    {
+      "id": "xr028",
+      "type": "social",
+      "name": "Metaverse Platforms",
+      "description": "Social spaces",
+      "pattern": "VRChat, Rec Room, Horizon",
+      "example": "Social usage"
+    },
+    {
+      "id": "xr029",
+      "type": "enterprise",
+      "name": "Enterprise XR",
+      "description": "Business XR",
+      "pattern": "Training, visualization, remote",
+      "example": "Enterprise usage"
+    },
+    {
+      "id": "xr030",
+      "type": "enterprise",
+      "name": "XR Analytics",
+      "description": "User analytics",
+      "pattern": "Gaze heatmaps, interaction data",
+      "example": "Enterprise usage"
+    }
+  ]
+}

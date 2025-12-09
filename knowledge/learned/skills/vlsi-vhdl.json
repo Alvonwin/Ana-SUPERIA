@@ -1,0 +1,246 @@
+{
+  "category": "vlsi-vhdl",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "hdl001",
+      "type": "fundamentals",
+      "name": "VHDL Basics",
+      "description": "VHDL syntax",
+      "pattern": "Entities, architectures, signals",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "hdl002",
+      "type": "fundamentals",
+      "name": "Verilog Basics",
+      "description": "Verilog syntax",
+      "pattern": "Modules, wires, regs, always",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "hdl003",
+      "type": "fundamentals",
+      "name": "SystemVerilog",
+      "description": "Modern HDL",
+      "pattern": "Classes, interfaces, assertions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "hdl004",
+      "type": "design",
+      "name": "Combinational Logic",
+      "description": "Combinational circuits",
+      "pattern": "Mux, decoder, encoder, ALU",
+      "example": "Design usage"
+    },
+    {
+      "id": "hdl005",
+      "type": "design",
+      "name": "Sequential Logic",
+      "description": "Sequential circuits",
+      "pattern": "Flip-flops, counters, registers",
+      "example": "Design usage"
+    },
+    {
+      "id": "hdl006",
+      "type": "design",
+      "name": "FSM Design",
+      "description": "State machines",
+      "pattern": "Mealy, Moore, state encoding",
+      "example": "Design usage"
+    },
+    {
+      "id": "hdl007",
+      "type": "design",
+      "name": "RTL Design",
+      "description": "Register transfer",
+      "pattern": "Datapath, control, pipelining",
+      "example": "Design usage"
+    },
+    {
+      "id": "hdl008",
+      "type": "design",
+      "name": "Memory Design",
+      "description": "Memory structures",
+      "pattern": "RAM, ROM, FIFO, caches",
+      "example": "Design usage"
+    },
+    {
+      "id": "hdl009",
+      "type": "verification",
+      "name": "Testbench Writing",
+      "description": "Simulation tests",
+      "pattern": "Stimulus, assertions, coverage",
+      "example": "Verification usage"
+    },
+    {
+      "id": "hdl010",
+      "type": "verification",
+      "name": "UVM",
+      "description": "Verification methodology",
+      "pattern": "Agents, sequences, scoreboards",
+      "example": "Verification usage"
+    },
+    {
+      "id": "hdl011",
+      "type": "verification",
+      "name": "Formal Verification",
+      "description": "Formal methods",
+      "pattern": "Assertions, properties, proofs",
+      "example": "Verification usage"
+    },
+    {
+      "id": "hdl012",
+      "type": "verification",
+      "name": "Code Coverage",
+      "description": "Coverage metrics",
+      "pattern": "Line, branch, toggle, FSM",
+      "example": "Verification usage"
+    },
+    {
+      "id": "hdl013",
+      "type": "synthesis",
+      "name": "Logic Synthesis",
+      "description": "RTL to gates",
+      "pattern": "Synthesis tools, constraints",
+      "example": "Synthesis usage"
+    },
+    {
+      "id": "hdl014",
+      "type": "synthesis",
+      "name": "Timing Constraints",
+      "description": "SDC constraints",
+      "pattern": "Clocks, false paths, multicycle",
+      "example": "Synthesis usage"
+    },
+    {
+      "id": "hdl015",
+      "type": "synthesis",
+      "name": "Timing Analysis",
+      "description": "STA",
+      "pattern": "Setup, hold, slack, critical path",
+      "example": "Synthesis usage"
+    },
+    {
+      "id": "hdl016",
+      "type": "physical",
+      "name": "Place and Route",
+      "description": "Physical design",
+      "pattern": "Floorplanning, placement, routing",
+      "example": "Physical usage"
+    },
+    {
+      "id": "hdl017",
+      "type": "physical",
+      "name": "DRC/LVS",
+      "description": "Physical verification",
+      "pattern": "Design rules, layout vs schematic",
+      "example": "Physical usage"
+    },
+    {
+      "id": "hdl018",
+      "type": "physical",
+      "name": "Power Analysis",
+      "description": "Power estimation",
+      "pattern": "Dynamic, static, leakage",
+      "example": "Physical usage"
+    },
+    {
+      "id": "hdl019",
+      "type": "fpga",
+      "name": "FPGA Design",
+      "description": "FPGA development",
+      "pattern": "LUTs, BRAMs, DSPs, IOBs",
+      "example": "Fpga usage"
+    },
+    {
+      "id": "hdl020",
+      "type": "fpga",
+      "name": "Xilinx Tools",
+      "description": "Vivado/ISE",
+      "pattern": "Vivado, IP integrator, ILA",
+      "example": "Fpga usage"
+    },
+    {
+      "id": "hdl021",
+      "type": "fpga",
+      "name": "Intel FPGA",
+      "description": "Quartus",
+      "pattern": "Quartus, Platform Designer",
+      "example": "Fpga usage"
+    },
+    {
+      "id": "hdl022",
+      "type": "protocols",
+      "name": "AXI Protocol",
+      "description": "AMBA AXI",
+      "pattern": "AXI4, AXI-Lite, AXI-Stream",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "hdl023",
+      "type": "protocols",
+      "name": "PCIe",
+      "description": "PCI Express",
+      "pattern": "Lanes, TLP, configuration",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "hdl024",
+      "type": "protocols",
+      "name": "DDR Memory",
+      "description": "DDR interface",
+      "pattern": "DDR3/4/5, PHY, controller",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "hdl025",
+      "type": "soc",
+      "name": "SoC Design",
+      "description": "System on chip",
+      "pattern": "CPU cores, peripherals, bus",
+      "example": "Soc usage"
+    },
+    {
+      "id": "hdl026",
+      "type": "soc",
+      "name": "RISC-V",
+      "description": "Open ISA",
+      "pattern": "RISC-V cores, extensions",
+      "example": "Soc usage"
+    },
+    {
+      "id": "hdl027",
+      "type": "soc",
+      "name": "ARM Integration",
+      "description": "ARM cores",
+      "pattern": "Cortex, AMBA, trustzone",
+      "example": "Soc usage"
+    },
+    {
+      "id": "hdl028",
+      "type": "hls",
+      "name": "High-Level Synthesis",
+      "description": "C to RTL",
+      "pattern": "Vivado HLS, directives, pragmas",
+      "example": "Hls usage"
+    },
+    {
+      "id": "hdl029",
+      "type": "hls",
+      "name": "Chisel",
+      "description": "Scala HDL",
+      "pattern": "Chisel3, FIRRTL, generators",
+      "example": "Hls usage"
+    },
+    {
+      "id": "hdl030",
+      "type": "emerging",
+      "name": "Hardware Security",
+      "description": "Secure hardware",
+      "pattern": "Side-channel, PUF, secure boot",
+      "example": "Emerging usage"
+    }
+  ]
+}

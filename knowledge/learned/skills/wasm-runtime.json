@@ -1,0 +1,246 @@
+{
+  "category": "wasm-runtime",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "wasm001",
+      "type": "fundamentals",
+      "name": "WebAssembly Overview",
+      "description": "Binary instruction format",
+      "pattern": "Portable, fast, safe, language-agnostic",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "wasm002",
+      "type": "fundamentals",
+      "name": "Wasm Module",
+      "description": "Code unit",
+      "pattern": "Binary format, sections, imports, exports",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "wasm003",
+      "type": "fundamentals",
+      "name": "Linear Memory",
+      "description": "Memory model",
+      "pattern": "ArrayBuffer, grow, shared memory",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "wasm004",
+      "type": "fundamentals",
+      "name": "Value Types",
+      "description": "Data types",
+      "pattern": "i32, i64, f32, f64, v128, funcref, externref",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "wasm005",
+      "type": "browser",
+      "name": "Browser APIs",
+      "description": "JS integration",
+      "pattern": "WebAssembly.compile, instantiate, Module, Instance",
+      "example": "Browser usage"
+    },
+    {
+      "id": "wasm006",
+      "type": "browser",
+      "name": "JS Interop",
+      "description": "JavaScript bridge",
+      "pattern": "Imports, exports, memory sharing",
+      "example": "Browser usage"
+    },
+    {
+      "id": "wasm007",
+      "type": "browser",
+      "name": "Streaming Compilation",
+      "description": "Progressive loading",
+      "pattern": "compileStreaming, instantiateStreaming",
+      "example": "Browser usage"
+    },
+    {
+      "id": "wasm008",
+      "type": "languages",
+      "name": "Rust to Wasm",
+      "description": "Rust compilation",
+      "pattern": "wasm32 target, wasm-pack, wasm-bindgen",
+      "example": "Languages usage"
+    },
+    {
+      "id": "wasm009",
+      "type": "languages",
+      "name": "C/C++ to Wasm",
+      "description": "Emscripten",
+      "pattern": "emcc, side modules, runtime",
+      "example": "Languages usage"
+    },
+    {
+      "id": "wasm010",
+      "type": "languages",
+      "name": "AssemblyScript",
+      "description": "TypeScript-like",
+      "pattern": "Strict types, optimized output",
+      "example": "Languages usage"
+    },
+    {
+      "id": "wasm011",
+      "type": "languages",
+      "name": "Go to Wasm",
+      "description": "Go compilation",
+      "pattern": "GOOS=js GOARCH=wasm, syscall/js",
+      "example": "Languages usage"
+    },
+    {
+      "id": "wasm012",
+      "type": "tools",
+      "name": "wasm-bindgen",
+      "description": "JS bindings",
+      "pattern": "High-level types, DOM access",
+      "example": "Tools usage"
+    },
+    {
+      "id": "wasm013",
+      "type": "tools",
+      "name": "wasm-pack",
+      "description": "Rust packaging",
+      "pattern": "npm publish, bundle, test",
+      "example": "Tools usage"
+    },
+    {
+      "id": "wasm014",
+      "type": "tools",
+      "name": "wabt",
+      "description": "Binary toolkit",
+      "pattern": "wat2wasm, wasm2wat, wasm-objdump",
+      "example": "Tools usage"
+    },
+    {
+      "id": "wasm015",
+      "type": "tools",
+      "name": "Binaryen",
+      "description": "Optimizer",
+      "pattern": "wasm-opt, size reduction",
+      "example": "Tools usage"
+    },
+    {
+      "id": "wasm016",
+      "type": "wasi",
+      "name": "WASI Overview",
+      "description": "System interface",
+      "pattern": "Portable system calls, capabilities",
+      "example": "Wasi usage"
+    },
+    {
+      "id": "wasm017",
+      "type": "wasi",
+      "name": "WASI Preview 2",
+      "description": "Component model",
+      "pattern": "Wit, interfaces, worlds",
+      "example": "Wasi usage"
+    },
+    {
+      "id": "wasm018",
+      "type": "wasi",
+      "name": "Filesystem",
+      "description": "File operations",
+      "pattern": "Preopened dirs, path_open",
+      "example": "Wasi usage"
+    },
+    {
+      "id": "wasm019",
+      "type": "runtime",
+      "name": "Wasmtime",
+      "description": "Bytecode Alliance",
+      "pattern": "Cranelift, AOT, component model",
+      "example": "Runtime usage"
+    },
+    {
+      "id": "wasm020",
+      "type": "runtime",
+      "name": "Wasmer",
+      "description": "Universal runtime",
+      "pattern": "LLVM, Singlepass, JavaScript",
+      "example": "Runtime usage"
+    },
+    {
+      "id": "wasm021",
+      "type": "runtime",
+      "name": "WasmEdge",
+      "description": "Cloud-native runtime",
+      "pattern": "AI inference, networking",
+      "example": "Runtime usage"
+    },
+    {
+      "id": "wasm022",
+      "type": "runtime",
+      "name": "wazero",
+      "description": "Go runtime",
+      "pattern": "Zero dependencies, pure Go",
+      "example": "Runtime usage"
+    },
+    {
+      "id": "wasm023",
+      "type": "component",
+      "name": "Component Model",
+      "description": "Module composition",
+      "pattern": "WIT, interfaces, composition",
+      "example": "Component usage"
+    },
+    {
+      "id": "wasm024",
+      "type": "component",
+      "name": "WIT",
+      "description": "Interface types",
+      "pattern": "Records, variants, resources",
+      "example": "Component usage"
+    },
+    {
+      "id": "wasm025",
+      "type": "serverless",
+      "name": "Spin",
+      "description": "Fermyon serverless",
+      "pattern": "Triggers, components, KV store",
+      "example": "Serverless usage"
+    },
+    {
+      "id": "wasm026",
+      "type": "serverless",
+      "name": "Wasmcloud",
+      "description": "Distributed platform",
+      "pattern": "Actors, capabilities, lattice",
+      "example": "Serverless usage"
+    },
+    {
+      "id": "wasm027",
+      "type": "edge",
+      "name": "Cloudflare Workers",
+      "description": "Edge compute",
+      "pattern": "V8 isolates, KV, Durable Objects",
+      "example": "Edge usage"
+    },
+    {
+      "id": "wasm028",
+      "type": "edge",
+      "name": "Fastly Compute",
+      "description": "Edge Wasm",
+      "pattern": "Viceroy, cache, geolocation",
+      "example": "Edge usage"
+    },
+    {
+      "id": "wasm029",
+      "type": "plugins",
+      "name": "Plugin Systems",
+      "description": "Extensibility",
+      "pattern": "Extism, Wasm plugins, sandboxing",
+      "example": "Plugins usage"
+    },
+    {
+      "id": "wasm030",
+      "type": "debugging",
+      "name": "Debugging Wasm",
+      "description": "Debug tools",
+      "pattern": "DWARF, source maps, Chrome DevTools",
+      "example": "Debugging usage"
+    }
+  ]
+}

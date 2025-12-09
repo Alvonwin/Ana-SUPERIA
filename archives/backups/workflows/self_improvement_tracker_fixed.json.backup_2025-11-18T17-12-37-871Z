@@ -1,0 +1,61 @@
+{
+  "name": "Self-Improvement Tracker",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 23 * * *"
+            }
+          ]
+        }
+      },
+      "name": "Daily at 23:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "command": "node \"E:/ANA/core/evolution/self_improver.cjs\""
+      },
+      "name": "Run Self Improver",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = $input.first().json.stdout || '';\nconst timestamp = new Date().toISOString();\nconst date = timestamp.split('T')[0];\n\nconst report = {\n  timestamp,\n  date,\n  output: output.substring(0, 500),\n  success: !output.includes('error')\n};\n\nreturn [{json: report}];"
+      },
+      "name": "Create Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "command": "=echo {{JSON.stringify($json)}} > \"E:/ANA/metrics/daily_evolution_report.json\""
+      },
+      "name": "Save Report",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Daily at 23:00": {
+      "main": [[{"node": "Run Self Improver", "type": "main", "index": 0}]]
+    },
+    "Run Self Improver": {
+      "main": [[{"node": "Create Report", "type": "main", "index": 0}]]
+    },
+    "Create Report": {
+      "main": [[{"node": "Save Report", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {"executionOrder": "v1"},
+  "tags": []
+}

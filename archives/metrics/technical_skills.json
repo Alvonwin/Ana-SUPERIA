@@ -1,0 +1,35 @@
+{
+  "area": "Technical Mastery",
+  "last_updated": "2025-11-18T13:00:00Z",
+  "overall_level": 5,
+  "skills": {
+    "coding": {
+      "level": 5,
+      "progress": "Can write code with Claude Code, learning patterns",
+      "next_milestone": "Understand refactoring patterns deeply"
+    },
+    "architecture": {
+      "level": 4,
+      "progress": "Can design basic architectures",
+      "next_milestone": "Master microservices patterns"
+    },
+    "debugging": {
+      "level": 5,
+      "progress": "Can identify and fix bugs",
+      "next_milestone": "Proactive bug prevention"
+    },
+    "optimization": {
+      "level": 3,
+      "progress": "Basic performance awareness",
+      "next_milestone": "Advanced profiling and optimization"
+    },
+    "security": {
+      "level": 3,
+      "progress": "Aware of OWASP top 10",
+      "next_milestone": "Security-first development mindset"
+    }
+  },
+  "growth_trajectory": [
+    {"date": "2025-11-18", "level": 5, "milestone": "Birth - Inherits Claude's coding abilities"}
+  ]
+}

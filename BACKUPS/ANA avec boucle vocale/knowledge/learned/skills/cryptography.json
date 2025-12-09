@@ -1,0 +1,246 @@
+{
+  "category": "cryptography",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cry001",
+      "type": "fundamentals",
+      "name": "Encryption Types",
+      "description": "Symmetric vs asymmetric",
+      "pattern": "Symmetric: same key, Asymmetric: public/private pair",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cry002",
+      "type": "fundamentals",
+      "name": "Hash Functions",
+      "description": "One-way digest",
+      "pattern": "SHA-256, SHA-3, bcrypt for passwords, no decryption",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cry003",
+      "type": "fundamentals",
+      "name": "Random Generation",
+      "description": "Secure random",
+      "pattern": "crypto.randomBytes(), CSPRNG, never Math.random()",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cry004",
+      "type": "symmetric",
+      "name": "AES Encryption",
+      "description": "Block cipher",
+      "pattern": "AES-256-GCM, includes authentication, 256-bit key",
+      "example": "Symmetric usage"
+    },
+    {
+      "id": "cry005",
+      "type": "symmetric",
+      "name": "Encryption Modes",
+      "description": "Block modes",
+      "pattern": "GCM (authenticated), CBC (needs HMAC), avoid ECB",
+      "example": "Symmetric usage"
+    },
+    {
+      "id": "cry006",
+      "type": "symmetric",
+      "name": "IV/Nonce",
+      "description": "Initialization",
+      "pattern": "Unique per encryption, random 12-16 bytes, never reuse",
+      "example": "Symmetric usage"
+    },
+    {
+      "id": "cry007",
+      "type": "asymmetric",
+      "name": "RSA",
+      "description": "Public key crypto",
+      "pattern": "2048+ bits, encrypt with public, decrypt with private",
+      "example": "Asymmetric usage"
+    },
+    {
+      "id": "cry008",
+      "type": "asymmetric",
+      "name": "Elliptic Curves",
+      "description": "Modern asymmetric",
+      "pattern": "ECDSA, ECDH, Ed25519, smaller keys, faster",
+      "example": "Asymmetric usage"
+    },
+    {
+      "id": "cry009",
+      "type": "asymmetric",
+      "name": "Key Exchange",
+      "description": "Secure key sharing",
+      "pattern": "Diffie-Hellman, ECDH, derive shared secret",
+      "example": "Asymmetric usage"
+    },
+    {
+      "id": "cry010",
+      "type": "signing",
+      "name": "Digital Signatures",
+      "description": "Authenticity",
+      "pattern": "Sign with private, verify with public, RSA/ECDSA",
+      "example": "Signing usage"
+    },
+    {
+      "id": "cry011",
+      "type": "signing",
+      "name": "HMAC",
+      "description": "Message auth",
+      "pattern": "HMAC-SHA256, verify integrity and authenticity",
+      "example": "Signing usage"
+    },
+    {
+      "id": "cry012",
+      "type": "passwords",
+      "name": "Password Hashing",
+      "description": "Secure storage",
+      "pattern": "bcrypt, scrypt, Argon2, never plain SHA",
+      "example": "Passwords usage"
+    },
+    {
+      "id": "cry013",
+      "type": "passwords",
+      "name": "Salt",
+      "description": "Rainbow table defense",
+      "pattern": "Unique random salt per password, stored with hash",
+      "example": "Passwords usage"
+    },
+    {
+      "id": "cry014",
+      "type": "passwords",
+      "name": "Key Derivation",
+      "description": "Password to key",
+      "pattern": "PBKDF2, scrypt, Argon2, high iteration count",
+      "example": "Passwords usage"
+    },
+    {
+      "id": "cry015",
+      "type": "node",
+      "name": "Node Crypto",
+      "description": "Built-in module",
+      "pattern": "crypto.createCipheriv(), createHash(), randomBytes()",
+      "example": "Node usage"
+    },
+    {
+      "id": "cry016",
+      "type": "node",
+      "name": "Web Crypto API",
+      "description": "Browser crypto",
+      "pattern": "crypto.subtle.encrypt(), generateKey(), digest()",
+      "example": "Node usage"
+    },
+    {
+      "id": "cry017",
+      "type": "tls",
+      "name": "TLS/SSL",
+      "description": "Transport security",
+      "pattern": "TLS 1.3, certificate validation, HTTPS",
+      "example": "Tls usage"
+    },
+    {
+      "id": "cry018",
+      "type": "tls",
+      "name": "Certificates",
+      "description": "X.509 certs",
+      "pattern": "CA signed, Let's Encrypt, certificate chains",
+      "example": "Tls usage"
+    },
+    {
+      "id": "cry019",
+      "type": "tls",
+      "name": "Certificate Pinning",
+      "description": "Trust specific cert",
+      "pattern": "Pin public key or cert, prevent MITM",
+      "example": "Tls usage"
+    },
+    {
+      "id": "cry020",
+      "type": "jwt",
+      "name": "JWT Signing",
+      "description": "Token signatures",
+      "pattern": "HS256 (symmetric), RS256 (asymmetric), verify issuer",
+      "example": "Jwt usage"
+    },
+    {
+      "id": "cry021",
+      "type": "jwt",
+      "name": "JWT Encryption",
+      "description": "JWE",
+      "pattern": "Encrypted payload, A256GCM, RSA-OAEP",
+      "example": "Jwt usage"
+    },
+    {
+      "id": "cry022",
+      "type": "secrets",
+      "name": "Secrets Management",
+      "description": "Store secrets",
+      "pattern": "Vault, AWS Secrets Manager, never in code",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "cry023",
+      "type": "secrets",
+      "name": "Key Rotation",
+      "description": "Regular rotation",
+      "pattern": "Rotate keys periodically, re-encrypt data",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "cry024",
+      "type": "attacks",
+      "name": "Timing Attacks",
+      "description": "Side channel",
+      "pattern": "crypto.timingSafeEqual(), constant-time comparison",
+      "example": "Attacks usage"
+    },
+    {
+      "id": "cry025",
+      "type": "attacks",
+      "name": "Padding Oracle",
+      "description": "CBC attack",
+      "pattern": "Use authenticated encryption (GCM), not CBC",
+      "example": "Attacks usage"
+    },
+    {
+      "id": "cry026",
+      "type": "encoding",
+      "name": "Base64",
+      "description": "Binary to text",
+      "pattern": "Buffer.from(str).toString('base64'), URL-safe variant",
+      "example": "Encoding usage"
+    },
+    {
+      "id": "cry027",
+      "type": "encoding",
+      "name": "Hex Encoding",
+      "description": "Binary representation",
+      "pattern": "buffer.toString('hex'), 2 chars per byte",
+      "example": "Encoding usage"
+    },
+    {
+      "id": "cry028",
+      "type": "best-practices",
+      "name": "Don't Roll Your Own",
+      "description": "Use established libs",
+      "pattern": "Use libsodium, NaCl, established libraries",
+      "example": "Best-practices usage"
+    },
+    {
+      "id": "cry029",
+      "type": "best-practices",
+      "name": "Algorithm Selection",
+      "description": "Modern choices",
+      "pattern": "AES-GCM, ChaCha20-Poly1305, Ed25519, SHA-256+",
+      "example": "Best-practices usage"
+    },
+    {
+      "id": "cry030",
+      "type": "compliance",
+      "name": "Crypto Compliance",
+      "description": "Standards",
+      "pattern": "FIPS 140-2, PCI-DSS requirements, audit logging",
+      "example": "Compliance usage"
+    }
+  ]
+}

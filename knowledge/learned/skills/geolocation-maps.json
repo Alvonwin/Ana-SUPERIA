@@ -1,0 +1,246 @@
+{
+  "category": "geolocation-maps",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "geo001",
+      "type": "fundamentals",
+      "name": "Coordinates",
+      "description": "Location basics",
+      "pattern": "Latitude (-90 to 90), Longitude (-180 to 180), altitude",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "geo002",
+      "type": "fundamentals",
+      "name": "Coordinate Systems",
+      "description": "Projections",
+      "pattern": "WGS84, EPSG:4326 (GPS), EPSG:3857 (Web Mercator)",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "geo003",
+      "type": "fundamentals",
+      "name": "GeoJSON",
+      "description": "Geo data format",
+      "pattern": "Point, LineString, Polygon, Feature, FeatureCollection",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "geo004",
+      "type": "fundamentals",
+      "name": "Distance Calculation",
+      "description": "Geo math",
+      "pattern": "Haversine formula, Vincenty formula, great circle distance",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "geo005",
+      "type": "browser",
+      "name": "Geolocation API",
+      "description": "Browser location",
+      "pattern": "navigator.geolocation.getCurrentPosition(success, error, options)",
+      "example": "Browser usage"
+    },
+    {
+      "id": "geo006",
+      "type": "browser",
+      "name": "Position Watching",
+      "description": "Track movement",
+      "pattern": "watchPosition(), clearWatch(), high accuracy option",
+      "example": "Browser usage"
+    },
+    {
+      "id": "geo007",
+      "type": "maps",
+      "name": "Google Maps",
+      "description": "Google Maps API",
+      "pattern": "new google.maps.Map(), Marker, InfoWindow, directions",
+      "example": "Maps usage"
+    },
+    {
+      "id": "geo008",
+      "type": "maps",
+      "name": "Mapbox",
+      "description": "Custom maps",
+      "pattern": "mapboxgl.Map, custom styles, vector tiles, GL JS",
+      "example": "Maps usage"
+    },
+    {
+      "id": "geo009",
+      "type": "maps",
+      "name": "Leaflet",
+      "description": "Open source maps",
+      "pattern": "L.map(), L.marker(), L.tileLayer(), plugins ecosystem",
+      "example": "Maps usage"
+    },
+    {
+      "id": "geo010",
+      "type": "maps",
+      "name": "OpenStreetMap",
+      "description": "Free map data",
+      "pattern": "OSM tiles, Overpass API, community-driven data",
+      "example": "Maps usage"
+    },
+    {
+      "id": "geo011",
+      "type": "maps",
+      "name": "Map Tiles",
+      "description": "Tile systems",
+      "pattern": "Z/X/Y tile coordinates, raster vs vector tiles",
+      "example": "Maps usage"
+    },
+    {
+      "id": "geo012",
+      "type": "maps",
+      "name": "Custom Markers",
+      "description": "Map markers",
+      "pattern": "Custom icons, clustering, popups, tooltips",
+      "example": "Maps usage"
+    },
+    {
+      "id": "geo013",
+      "type": "maps",
+      "name": "Drawing on Maps",
+      "description": "Shapes & overlays",
+      "pattern": "Polygons, polylines, circles, heatmaps, GeoJSON layers",
+      "example": "Maps usage"
+    },
+    {
+      "id": "geo014",
+      "type": "geocoding",
+      "name": "Geocoding",
+      "description": "Address to coords",
+      "pattern": "Google Geocoding API, Mapbox Geocoding, Nominatim",
+      "example": "Geocoding usage"
+    },
+    {
+      "id": "geo015",
+      "type": "geocoding",
+      "name": "Reverse Geocoding",
+      "description": "Coords to address",
+      "pattern": "Convert lat/lng to human-readable address",
+      "example": "Geocoding usage"
+    },
+    {
+      "id": "geo016",
+      "type": "geocoding",
+      "name": "Autocomplete",
+      "description": "Address search",
+      "pattern": "Places Autocomplete, address suggestions, debounce",
+      "example": "Geocoding usage"
+    },
+    {
+      "id": "geo017",
+      "type": "routing",
+      "name": "Directions API",
+      "description": "Route calculation",
+      "pattern": "Waypoints, alternatives, travel modes, traffic",
+      "example": "Routing usage"
+    },
+    {
+      "id": "geo018",
+      "type": "routing",
+      "name": "Distance Matrix",
+      "description": "Travel times",
+      "pattern": "Many origins to many destinations, optimization",
+      "example": "Routing usage"
+    },
+    {
+      "id": "geo019",
+      "type": "routing",
+      "name": "Isochrones",
+      "description": "Reachability",
+      "pattern": "Areas reachable within time/distance from point",
+      "example": "Routing usage"
+    },
+    {
+      "id": "geo020",
+      "type": "spatial",
+      "name": "PostGIS",
+      "description": "Spatial database",
+      "pattern": "GEOMETRY type, ST_Distance, ST_Within, ST_Intersects",
+      "example": "Spatial usage"
+    },
+    {
+      "id": "geo021",
+      "type": "spatial",
+      "name": "Spatial Indexing",
+      "description": "Geo queries",
+      "pattern": "R-tree, GiST index, bounding box queries",
+      "example": "Spatial usage"
+    },
+    {
+      "id": "geo022",
+      "type": "spatial",
+      "name": "Geofencing",
+      "description": "Location triggers",
+      "pattern": "Define boundaries, trigger on enter/exit",
+      "example": "Spatial usage"
+    },
+    {
+      "id": "geo023",
+      "type": "spatial",
+      "name": "Spatial Joins",
+      "description": "Geo relationships",
+      "pattern": "Points in polygon, nearest neighbor, intersection",
+      "example": "Spatial usage"
+    },
+    {
+      "id": "geo024",
+      "type": "search",
+      "name": "Nearby Search",
+      "description": "Find nearby",
+      "pattern": "Radius search, places API, category filters",
+      "example": "Search usage"
+    },
+    {
+      "id": "geo025",
+      "type": "search",
+      "name": "Bounding Box",
+      "description": "Area search",
+      "pattern": "Search within visible map bounds, viewport queries",
+      "example": "Search usage"
+    },
+    {
+      "id": "geo026",
+      "type": "visualization",
+      "name": "Choropleth Maps",
+      "description": "Thematic maps",
+      "pattern": "Color regions by data values, legends",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "geo027",
+      "type": "visualization",
+      "name": "Heatmaps",
+      "description": "Density visualization",
+      "pattern": "Point density, intensity gradients, clustering",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "geo028",
+      "type": "visualization",
+      "name": "3D Maps",
+      "description": "Terrain & buildings",
+      "pattern": "Mapbox GL 3D, Google 3D tiles, elevation data",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "geo029",
+      "type": "mobile",
+      "name": "Mobile Location",
+      "description": "Native location",
+      "pattern": "GPS, WiFi, cell tower triangulation, battery impact",
+      "example": "Mobile usage"
+    },
+    {
+      "id": "geo030",
+      "type": "privacy",
+      "name": "Location Privacy",
+      "description": "Privacy concerns",
+      "pattern": "Permission requests, data minimization, anonymization",
+      "example": "Privacy usage"
+    }
+  ]
+}

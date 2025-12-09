@@ -1,0 +1,247 @@
+{
+  "category": "vue3-nuxt3",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "vue01",
+      "type": "composition-api",
+      "name": "Composition API",
+      "description": "Vue 3 reactive programming",
+      "pattern": "const count = ref(0); const doubled = computed(() => count.value * 2)",
+      "example": "setup() or <script setup>"
+    },
+    {
+      "id": "vue02",
+      "type": "script-setup",
+      "name": "Script Setup",
+      "description": "Compile-time sugar",
+      "pattern": "<script setup lang='ts'>",
+      "example": "Auto imports, less boilerplate"
+    },
+    {
+      "id": "vue03",
+      "type": "reactivity",
+      "name": "Reactivity System",
+      "description": "Proxy-based reactivity",
+      "pattern": "ref(), reactive(), toRef(), toRefs()",
+      "example": "Deep reactivity tracking"
+    },
+    {
+      "id": "vue04",
+      "type": "computed",
+      "name": "Computed Properties",
+      "description": "Derived reactive state",
+      "pattern": "const full = computed(() => first.value + last.value)",
+      "example": "Automatic caching"
+    },
+    {
+      "id": "vue05",
+      "type": "watch",
+      "name": "Watchers",
+      "description": "React to state changes",
+      "pattern": "watch(source, callback), watchEffect()",
+      "example": "Immediate, deep options"
+    },
+    {
+      "id": "vue06",
+      "type": "lifecycle",
+      "name": "Lifecycle Hooks",
+      "description": "Component lifecycle",
+      "pattern": "onMounted(), onUpdated(), onUnmounted()",
+      "example": "Setup-based hooks"
+    },
+    {
+      "id": "vue07",
+      "type": "props",
+      "name": "Props & Emits",
+      "description": "Component communication",
+      "pattern": "defineProps<{msg: string}>(), defineEmits<{click: [id: number]}>()",
+      "example": "Type-safe props"
+    },
+    {
+      "id": "vue08",
+      "type": "slots",
+      "name": "Slots",
+      "description": "Content distribution",
+      "pattern": "<slot name='header'/>, v-slot:header",
+      "example": "Scoped slots"
+    },
+    {
+      "id": "vue09",
+      "type": "provide-inject",
+      "name": "Provide/Inject",
+      "description": "Dependency injection",
+      "pattern": "provide('key', value), inject('key')",
+      "example": "App-wide state"
+    },
+    {
+      "id": "vue10",
+      "type": "composables",
+      "name": "Composables",
+      "description": "Reusable logic",
+      "pattern": "export function useCounter() { return { count, increment } }",
+      "example": "VueUse library"
+    },
+    {
+      "id": "vue11",
+      "type": "pinia",
+      "name": "Pinia Store",
+      "description": "State management",
+      "pattern": "defineStore('counter', { state, getters, actions })",
+      "example": "Type-safe, devtools"
+    },
+    {
+      "id": "vue12",
+      "type": "vue-router",
+      "name": "Vue Router 4",
+      "description": "Client-side routing",
+      "pattern": "createRouter({ history, routes })",
+      "example": "Navigation guards"
+    },
+    {
+      "id": "vue13",
+      "type": "suspense",
+      "name": "Suspense",
+      "description": "Async dependencies",
+      "pattern": "<Suspense><AsyncComponent/></Suspense>",
+      "example": "fallback slot"
+    },
+    {
+      "id": "vue14",
+      "type": "teleport",
+      "name": "Teleport",
+      "description": "Portal rendering",
+      "pattern": "<Teleport to='body'><Modal/></Teleport>",
+      "example": "Modals, tooltips"
+    },
+    {
+      "id": "vue15",
+      "type": "transition",
+      "name": "Transitions",
+      "description": "Animation system",
+      "pattern": "<Transition name='fade'>, <TransitionGroup>",
+      "example": "CSS and JS hooks"
+    },
+    {
+      "id": "vue16",
+      "type": "nuxt-server",
+      "name": "Nuxt Server Routes",
+      "description": "API endpoints",
+      "pattern": "server/api/users.ts: defineEventHandler()",
+      "example": "Nitro server"
+    },
+    {
+      "id": "vue17",
+      "type": "nuxt-data",
+      "name": "Nuxt Data Fetching",
+      "description": "SSR data",
+      "pattern": "useFetch(), useAsyncData(), $fetch",
+      "example": "Auto-deduplication"
+    },
+    {
+      "id": "vue18",
+      "type": "nuxt-state",
+      "name": "Nuxt State",
+      "description": "SSR state",
+      "pattern": "useState('key', () => initialValue)",
+      "example": "Hydration-safe"
+    },
+    {
+      "id": "vue19",
+      "type": "nuxt-middleware",
+      "name": "Nuxt Middleware",
+      "description": "Route middleware",
+      "pattern": "middleware/auth.ts: defineNuxtRouteMiddleware()",
+      "example": "Global or per-route"
+    },
+    {
+      "id": "vue20",
+      "type": "nuxt-plugins",
+      "name": "Nuxt Plugins",
+      "description": "App plugins",
+      "pattern": "plugins/myPlugin.ts: defineNuxtPlugin()",
+      "example": "provide(), inject()"
+    },
+    {
+      "id": "vue21",
+      "type": "nuxt-modules",
+      "name": "Nuxt Modules",
+      "description": "Extend Nuxt",
+      "pattern": "@nuxt/image, @nuxtjs/tailwindcss",
+      "example": "Auto-imports"
+    },
+    {
+      "id": "vue22",
+      "type": "nuxt-layers",
+      "name": "Nuxt Layers",
+      "description": "Extend projects",
+      "pattern": "extends: ['../base']",
+      "example": "Share components, config"
+    },
+    {
+      "id": "vue23",
+      "type": "nuxt-content",
+      "name": "Nuxt Content",
+      "description": "CMS for Nuxt",
+      "pattern": "queryContent().where().find()",
+      "example": "Markdown, MDC"
+    },
+    {
+      "id": "vue24",
+      "type": "vite-vue",
+      "name": "Vite + Vue",
+      "description": "Fast development",
+      "pattern": "vite.config.ts with vue plugin",
+      "example": "HMR, ESM"
+    },
+    {
+      "id": "vue25",
+      "type": "vitest",
+      "name": "Vitest Testing",
+      "description": "Unit testing",
+      "pattern": "describe, it, expect, vi.mock()",
+      "example": "Jest-compatible"
+    },
+    {
+      "id": "vue26",
+      "type": "typescript",
+      "name": "Vue TypeScript",
+      "description": "Type safety",
+      "pattern": "defineComponent(), PropType<T>",
+      "example": "Volar extension"
+    },
+    {
+      "id": "vue27",
+      "type": "sfc",
+      "name": "Single File Components",
+      "description": "SFC features",
+      "pattern": "<style scoped>, <style module>",
+      "example": "CSS v-bind()"
+    },
+    {
+      "id": "vue28",
+      "type": "custom-directives",
+      "name": "Custom Directives",
+      "description": "DOM manipulation",
+      "pattern": "app.directive('focus', { mounted(el) })",
+      "example": "v-focus, v-click-outside"
+    },
+    {
+      "id": "vue29",
+      "type": "render-functions",
+      "name": "Render Functions",
+      "description": "Programmatic UI",
+      "pattern": "h('div', { class: 'box' }, children)",
+      "example": "JSX support"
+    },
+    {
+      "id": "vue30",
+      "type": "devtools",
+      "name": "Vue DevTools",
+      "description": "Debugging",
+      "pattern": "Chrome extension, Pinia integration",
+      "example": "Time-travel debugging"
+    }
+  ]
+}

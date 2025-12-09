@@ -1,0 +1,246 @@
+{
+  "category": "state-management",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "stm001",
+      "type": "redux",
+      "name": "Redux Toolkit",
+      "description": "Redux moderne simplifie",
+      "pattern": "const slice = createSlice({name: 'counter', initialState: 0, reducers: {inc: s => s+1}});",
+      "example": "Redux usage"
+    },
+    {
+      "id": "stm002",
+      "type": "redux",
+      "name": "RTK Query",
+      "description": "Data fetching Redux",
+      "pattern": "const api = createApi({endpoints: b => ({getUsers: b.query({query: () => '/users'})})});",
+      "example": "Redux usage"
+    },
+    {
+      "id": "stm003",
+      "type": "redux",
+      "name": "Redux Selectors",
+      "description": "Memoized selectors",
+      "pattern": "const selectTotal = createSelector([selectItems], items => items.reduce((a,b) => a+b.price, 0));",
+      "example": "Redux usage"
+    },
+    {
+      "id": "stm004",
+      "type": "redux",
+      "name": "Redux Middleware",
+      "description": "Intercepter actions",
+      "pattern": "const logger = store => next => action => { console.log(action); return next(action); };",
+      "example": "Redux usage"
+    },
+    {
+      "id": "stm005",
+      "type": "redux",
+      "name": "Redux DevTools",
+      "description": "Time travel debugging",
+      "pattern": "// Browser extension pour inspecter state et actions",
+      "example": "Redux usage"
+    },
+    {
+      "id": "stm006",
+      "type": "zustand",
+      "name": "Zustand Store",
+      "description": "State minimal",
+      "pattern": "const useStore = create(set => ({count: 0, inc: () => set(s => ({count: s.count+1}))}));",
+      "example": "Zustand usage"
+    },
+    {
+      "id": "stm007",
+      "type": "zustand",
+      "name": "Zustand Selectors",
+      "description": "Eviter re-renders",
+      "pattern": "const count = useStore(s => s.count); // re-render seulement si count change",
+      "example": "Zustand usage"
+    },
+    {
+      "id": "stm008",
+      "type": "zustand",
+      "name": "Zustand Middleware",
+      "description": "persist, devtools, immer",
+      "pattern": "create(persist(devtools(immer(set => ({...}))), {name: 'store'}))",
+      "example": "Zustand usage"
+    },
+    {
+      "id": "stm009",
+      "type": "zustand",
+      "name": "Zustand Actions",
+      "description": "Actions async",
+      "pattern": "fetchUser: async (id) => { set({loading: true}); const user = await api.get(id); set({user, loading: false}); }",
+      "example": "Zustand usage"
+    },
+    {
+      "id": "stm010",
+      "type": "jotai",
+      "name": "Jotai Atoms",
+      "description": "Atomic state",
+      "pattern": "const countAtom = atom(0); const [count, setCount] = useAtom(countAtom);",
+      "example": "Jotai usage"
+    },
+    {
+      "id": "stm011",
+      "type": "jotai",
+      "name": "Jotai Derived",
+      "description": "Computed atoms",
+      "pattern": "const doubledAtom = atom(get => get(countAtom) * 2);",
+      "example": "Jotai usage"
+    },
+    {
+      "id": "stm012",
+      "type": "jotai",
+      "name": "Jotai Async",
+      "description": "Atoms async",
+      "pattern": "const userAtom = atom(async get => { const id = get(idAtom); return await fetchUser(id); });",
+      "example": "Jotai usage"
+    },
+    {
+      "id": "stm013",
+      "type": "jotai",
+      "name": "Jotai Utils",
+      "description": "atomWithStorage, loadable",
+      "pattern": "const themeAtom = atomWithStorage('theme', 'light');",
+      "example": "Jotai usage"
+    },
+    {
+      "id": "stm014",
+      "type": "recoil",
+      "name": "Recoil Atoms",
+      "description": "State granulaire",
+      "pattern": "const textState = atom({key: 'textState', default: ''});",
+      "example": "Recoil usage"
+    },
+    {
+      "id": "stm015",
+      "type": "recoil",
+      "name": "Recoil Selectors",
+      "description": "Derived state",
+      "pattern": "const charCount = selector({key: 'charCount', get: ({get}) => get(textState).length});",
+      "example": "Recoil usage"
+    },
+    {
+      "id": "stm016",
+      "type": "recoil",
+      "name": "Recoil Families",
+      "description": "Atoms parametres",
+      "pattern": "const itemState = atomFamily({key: 'item', default: id => fetchItem(id)});",
+      "example": "Recoil usage"
+    },
+    {
+      "id": "stm017",
+      "type": "mobx",
+      "name": "MobX Observable",
+      "description": "State observable",
+      "pattern": "class Store { count = 0; constructor() { makeAutoObservable(this); } inc() { this.count++; } }",
+      "example": "Mobx usage"
+    },
+    {
+      "id": "stm018",
+      "type": "mobx",
+      "name": "MobX Computed",
+      "description": "Valeurs derivees",
+      "pattern": "get doubled() { return this.count * 2; } // recalcule auto",
+      "example": "Mobx usage"
+    },
+    {
+      "id": "stm019",
+      "type": "mobx",
+      "name": "MobX Actions",
+      "description": "Mutations explicites",
+      "pattern": "action setUser(user) { this.user = user; this.loading = false; }",
+      "example": "Mobx usage"
+    },
+    {
+      "id": "stm020",
+      "type": "mobx",
+      "name": "MobX Observer",
+      "description": "React integration",
+      "pattern": "const Counter = observer(() => <div>{store.count}</div>);",
+      "example": "Mobx usage"
+    },
+    {
+      "id": "stm021",
+      "type": "xstate",
+      "name": "XState Machines",
+      "description": "State machines",
+      "pattern": "createMachine({initial: 'idle', states: {idle: {on: {FETCH: 'loading'}}, loading: {...}}});",
+      "example": "Xstate usage"
+    },
+    {
+      "id": "stm022",
+      "type": "xstate",
+      "name": "XState Context",
+      "description": "Extended state",
+      "pattern": "context: {count: 0}, on: {INC: {actions: assign({count: ctx => ctx.count + 1})}}",
+      "example": "Xstate usage"
+    },
+    {
+      "id": "stm023",
+      "type": "xstate",
+      "name": "XState Guards",
+      "description": "Transitions conditionnelles",
+      "pattern": "on: {SUBMIT: {target: 'submitting', cond: 'isValid'}}",
+      "example": "Xstate usage"
+    },
+    {
+      "id": "stm024",
+      "type": "xstate",
+      "name": "XState Services",
+      "description": "Invoke async",
+      "pattern": "invoke: {src: 'fetchUser', onDone: {target: 'success', actions: 'setUser'}, onError: 'failure'}",
+      "example": "Xstate usage"
+    },
+    {
+      "id": "stm025",
+      "type": "tanstack",
+      "name": "TanStack Query",
+      "description": "Server state",
+      "pattern": "const {data, isLoading, error} = useQuery({queryKey: ['users'], queryFn: fetchUsers});",
+      "example": "Tanstack usage"
+    },
+    {
+      "id": "stm026",
+      "type": "tanstack",
+      "name": "Query Mutations",
+      "description": "Mutations optimistes",
+      "pattern": "const mutation = useMutation({mutationFn: createUser, onSuccess: () => queryClient.invalidateQueries(['users'])});",
+      "example": "Tanstack usage"
+    },
+    {
+      "id": "stm027",
+      "type": "tanstack",
+      "name": "Query Prefetching",
+      "description": "Prefetch data",
+      "pattern": "await queryClient.prefetchQuery({queryKey: ['user', id], queryFn: () => fetchUser(id)});",
+      "example": "Tanstack usage"
+    },
+    {
+      "id": "stm028",
+      "type": "tanstack",
+      "name": "Query Infinite",
+      "description": "Pagination infinie",
+      "pattern": "useInfiniteQuery({queryKey: ['posts'], queryFn: ({pageParam = 0}) => fetchPosts(pageParam), getNextPageParam: (last) => last.nextCursor});",
+      "example": "Tanstack usage"
+    },
+    {
+      "id": "stm029",
+      "type": "swr",
+      "name": "SWR Basics",
+      "description": "Stale-while-revalidate",
+      "pattern": "const {data, error, isLoading} = useSWR('/api/user', fetcher);",
+      "example": "Swr usage"
+    },
+    {
+      "id": "stm030",
+      "type": "swr",
+      "name": "SWR Mutation",
+      "description": "Mutate et revalidate",
+      "pattern": "const {trigger} = useSWRMutation('/api/user', updateUser); await trigger(newData);",
+      "example": "Swr usage"
+    }
+  ]
+}

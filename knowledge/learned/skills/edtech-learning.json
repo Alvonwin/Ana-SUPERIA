@@ -1,0 +1,246 @@
+{
+  "category": "edtech-learning",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "edu001",
+      "type": "fundamentals",
+      "name": "EdTech Basics",
+      "description": "Education technology",
+      "pattern": "Digital learning, platforms, content",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "edu002",
+      "type": "fundamentals",
+      "name": "Learning Management",
+      "description": "LMS systems",
+      "pattern": "Canvas, Moodle, Blackboard",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "edu003",
+      "type": "fundamentals",
+      "name": "SCORM/xAPI",
+      "description": "Learning standards",
+      "pattern": "Content packaging, tracking",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "edu004",
+      "type": "content",
+      "name": "Course Design",
+      "description": "Instructional design",
+      "pattern": "Objectives, assessment, engagement",
+      "example": "Content usage"
+    },
+    {
+      "id": "edu005",
+      "type": "content",
+      "name": "Video Learning",
+      "description": "Educational video",
+      "pattern": "Lectures, production, streaming",
+      "example": "Content usage"
+    },
+    {
+      "id": "edu006",
+      "type": "content",
+      "name": "Interactive Content",
+      "description": "Engaging content",
+      "pattern": "H5P, simulations, exercises",
+      "example": "Content usage"
+    },
+    {
+      "id": "edu007",
+      "type": "content",
+      "name": "E-Learning Authoring",
+      "description": "Course creation",
+      "pattern": "Articulate, Captivate, tools",
+      "example": "Content usage"
+    },
+    {
+      "id": "edu008",
+      "type": "assessment",
+      "name": "Online Assessment",
+      "description": "Digital testing",
+      "pattern": "Quizzes, exams, proctoring",
+      "example": "Assessment usage"
+    },
+    {
+      "id": "edu009",
+      "type": "assessment",
+      "name": "Adaptive Learning",
+      "description": "Personalized paths",
+      "pattern": "IRT, mastery, recommendations",
+      "example": "Assessment usage"
+    },
+    {
+      "id": "edu010",
+      "type": "assessment",
+      "name": "Competency-Based",
+      "description": "CBE",
+      "pattern": "Skills, badges, micro-credentials",
+      "example": "Assessment usage"
+    },
+    {
+      "id": "edu011",
+      "type": "engagement",
+      "name": "Gamification",
+      "description": "Game elements",
+      "pattern": "Points, badges, leaderboards",
+      "example": "Engagement usage"
+    },
+    {
+      "id": "edu012",
+      "type": "engagement",
+      "name": "Social Learning",
+      "description": "Collaborative",
+      "pattern": "Discussion, peer review, groups",
+      "example": "Engagement usage"
+    },
+    {
+      "id": "edu013",
+      "type": "engagement",
+      "name": "Mobile Learning",
+      "description": "mLearning",
+      "pattern": "Responsive, apps, offline",
+      "example": "Engagement usage"
+    },
+    {
+      "id": "edu014",
+      "type": "ai",
+      "name": "AI Tutoring",
+      "description": "Intelligent tutoring",
+      "pattern": "Personalization, feedback, hints",
+      "example": "Ai usage"
+    },
+    {
+      "id": "edu015",
+      "type": "ai",
+      "name": "AI Content Generation",
+      "description": "Automated content",
+      "pattern": "Questions, explanations, summaries",
+      "example": "Ai usage"
+    },
+    {
+      "id": "edu016",
+      "type": "ai",
+      "name": "Learning Analytics",
+      "description": "Educational data",
+      "pattern": "Progress, prediction, intervention",
+      "example": "Ai usage"
+    },
+    {
+      "id": "edu017",
+      "type": "ai",
+      "name": "AI Grading",
+      "description": "Automated assessment",
+      "pattern": "Essays, code, rubrics",
+      "example": "Ai usage"
+    },
+    {
+      "id": "edu018",
+      "type": "k12",
+      "name": "K-12 EdTech",
+      "description": "School technology",
+      "pattern": "SIS, classroom, parents",
+      "example": "K12 usage"
+    },
+    {
+      "id": "edu019",
+      "type": "k12",
+      "name": "Coding Education",
+      "description": "Programming learning",
+      "pattern": "Scratch, blocks, progression",
+      "example": "K12 usage"
+    },
+    {
+      "id": "edu020",
+      "type": "higher",
+      "name": "Higher Ed Systems",
+      "description": "University tech",
+      "pattern": "SIS, registration, degrees",
+      "example": "Higher usage"
+    },
+    {
+      "id": "edu021",
+      "type": "higher",
+      "name": "MOOC Platforms",
+      "description": "Online courses",
+      "pattern": "Coursera, edX, Udemy",
+      "example": "Higher usage"
+    },
+    {
+      "id": "edu022",
+      "type": "corporate",
+      "name": "Corporate Training",
+      "description": "Workplace learning",
+      "pattern": "Onboarding, compliance, skills",
+      "example": "Corporate usage"
+    },
+    {
+      "id": "edu023",
+      "type": "corporate",
+      "name": "Skills Management",
+      "description": "Competency tracking",
+      "pattern": "Skills gap, development, mapping",
+      "example": "Corporate usage"
+    },
+    {
+      "id": "edu024",
+      "type": "immersive",
+      "name": "VR/AR Learning",
+      "description": "Immersive education",
+      "pattern": "Simulations, training, labs",
+      "example": "Immersive usage"
+    },
+    {
+      "id": "edu025",
+      "type": "immersive",
+      "name": "Virtual Labs",
+      "description": "Online labs",
+      "pattern": "Science, engineering, practice",
+      "example": "Immersive usage"
+    },
+    {
+      "id": "edu026",
+      "type": "accessibility",
+      "name": "Accessible Learning",
+      "description": "Inclusive design",
+      "pattern": "WCAG, captions, screen readers",
+      "example": "Accessibility usage"
+    },
+    {
+      "id": "edu027",
+      "type": "accessibility",
+      "name": "Universal Design",
+      "description": "UDL",
+      "pattern": "Multiple means, flexibility",
+      "example": "Accessibility usage"
+    },
+    {
+      "id": "edu028",
+      "type": "ecosystem",
+      "name": "EdTech Integration",
+      "description": "LTI/API",
+      "pattern": "LTI, rostering, SSO",
+      "example": "Ecosystem usage"
+    },
+    {
+      "id": "edu029",
+      "type": "ecosystem",
+      "name": "Student Data Privacy",
+      "description": "FERPA/COPPA",
+      "pattern": "Privacy, consent, protection",
+      "example": "Ecosystem usage"
+    },
+    {
+      "id": "edu030",
+      "type": "ecosystem",
+      "name": "Open Educational Resources",
+      "description": "OER",
+      "pattern": "Open content, Creative Commons",
+      "example": "Ecosystem usage"
+    }
+  ]
+}

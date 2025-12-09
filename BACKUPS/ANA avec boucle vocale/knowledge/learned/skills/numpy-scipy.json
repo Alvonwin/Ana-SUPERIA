@@ -1,0 +1,246 @@
+{
+  "category": "numpy-scipy",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "np001",
+      "type": "fundamentals",
+      "name": "NumPy Arrays",
+      "description": "N-dimensional arrays",
+      "pattern": "np.array([1,2,3]), ndarray, dtype",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "np002",
+      "type": "fundamentals",
+      "name": "Array Creation",
+      "description": "Create arrays",
+      "pattern": "np.zeros, ones, arange, linspace, random",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "np003",
+      "type": "fundamentals",
+      "name": "Array Shape",
+      "description": "Dimensions",
+      "pattern": "shape, reshape, flatten, ravel, transpose",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "np004",
+      "type": "fundamentals",
+      "name": "Data Types",
+      "description": "dtypes",
+      "pattern": "int32, float64, bool, complex, astype",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "np005",
+      "type": "indexing",
+      "name": "Basic Indexing",
+      "description": "Access elements",
+      "pattern": "arr[0], arr[1:5], arr[-1], arr[::2]",
+      "example": "Indexing usage"
+    },
+    {
+      "id": "np006",
+      "type": "indexing",
+      "name": "Fancy Indexing",
+      "description": "Array indexing",
+      "pattern": "arr[[0,2,4]], arr[arr > 0]",
+      "example": "Indexing usage"
+    },
+    {
+      "id": "np007",
+      "type": "indexing",
+      "name": "Boolean Indexing",
+      "description": "Mask arrays",
+      "pattern": "arr[arr > 0], np.where(condition, x, y)",
+      "example": "Indexing usage"
+    },
+    {
+      "id": "np008",
+      "type": "operations",
+      "name": "Element-wise Operations",
+      "description": "Vectorized math",
+      "pattern": "arr + 1, arr * 2, np.sin(arr)",
+      "example": "Operations usage"
+    },
+    {
+      "id": "np009",
+      "type": "operations",
+      "name": "Broadcasting",
+      "description": "Shape compatibility",
+      "pattern": "Automatic expansion, (3,1) + (1,4) = (3,4)",
+      "example": "Operations usage"
+    },
+    {
+      "id": "np010",
+      "type": "operations",
+      "name": "Aggregations",
+      "description": "Reduce operations",
+      "pattern": "sum, mean, std, min, max, argmax, axis",
+      "example": "Operations usage"
+    },
+    {
+      "id": "np011",
+      "type": "operations",
+      "name": "Matrix Operations",
+      "description": "Linear algebra",
+      "pattern": "dot, @, matmul, transpose, inv",
+      "example": "Operations usage"
+    },
+    {
+      "id": "np012",
+      "type": "linalg",
+      "name": "Linear Algebra",
+      "description": "np.linalg",
+      "pattern": "inv, det, eig, svd, solve, norm",
+      "example": "Linalg usage"
+    },
+    {
+      "id": "np013",
+      "type": "linalg",
+      "name": "Eigenvalues",
+      "description": "Decomposition",
+      "pattern": "np.linalg.eig(A), eigenvalues, eigenvectors",
+      "example": "Linalg usage"
+    },
+    {
+      "id": "np014",
+      "type": "linalg",
+      "name": "SVD",
+      "description": "Singular value",
+      "pattern": "np.linalg.svd(A), U, S, Vt decomposition",
+      "example": "Linalg usage"
+    },
+    {
+      "id": "np015",
+      "type": "random",
+      "name": "Random Numbers",
+      "description": "np.random",
+      "pattern": "rand, randn, randint, choice, seed",
+      "example": "Random usage"
+    },
+    {
+      "id": "np016",
+      "type": "random",
+      "name": "Distributions",
+      "description": "Statistical dists",
+      "pattern": "normal, uniform, binomial, poisson",
+      "example": "Random usage"
+    },
+    {
+      "id": "np017",
+      "type": "stacking",
+      "name": "Stacking Arrays",
+      "description": "Combine arrays",
+      "pattern": "vstack, hstack, concatenate, stack",
+      "example": "Stacking usage"
+    },
+    {
+      "id": "np018",
+      "type": "stacking",
+      "name": "Splitting Arrays",
+      "description": "Divide arrays",
+      "pattern": "split, vsplit, hsplit, array_split",
+      "example": "Stacking usage"
+    },
+    {
+      "id": "np019",
+      "type": "scipy",
+      "name": "SciPy Basics",
+      "description": "Scientific computing",
+      "pattern": "scipy.stats, optimize, interpolate, integrate",
+      "example": "Scipy usage"
+    },
+    {
+      "id": "np020",
+      "type": "scipy",
+      "name": "Statistics",
+      "description": "scipy.stats",
+      "pattern": "ttest, pearsonr, normaltest, distributions",
+      "example": "Scipy usage"
+    },
+    {
+      "id": "np021",
+      "type": "scipy",
+      "name": "Optimization",
+      "description": "scipy.optimize",
+      "pattern": "minimize, curve_fit, root, least_squares",
+      "example": "Scipy usage"
+    },
+    {
+      "id": "np022",
+      "type": "scipy",
+      "name": "Interpolation",
+      "description": "scipy.interpolate",
+      "pattern": "interp1d, griddata, spline, RBF",
+      "example": "Scipy usage"
+    },
+    {
+      "id": "np023",
+      "type": "scipy",
+      "name": "Integration",
+      "description": "scipy.integrate",
+      "pattern": "quad, dblquad, odeint, solve_ivp",
+      "example": "Scipy usage"
+    },
+    {
+      "id": "np024",
+      "type": "scipy",
+      "name": "Signal Processing",
+      "description": "scipy.signal",
+      "pattern": "convolve, fft, filter design, peaks",
+      "example": "Scipy usage"
+    },
+    {
+      "id": "np025",
+      "type": "scipy",
+      "name": "Sparse Matrices",
+      "description": "scipy.sparse",
+      "pattern": "csr_matrix, csc_matrix, sparse operations",
+      "example": "Scipy usage"
+    },
+    {
+      "id": "np026",
+      "type": "scipy",
+      "name": "Spatial",
+      "description": "scipy.spatial",
+      "pattern": "distance, KDTree, Delaunay, ConvexHull",
+      "example": "Scipy usage"
+    },
+    {
+      "id": "np027",
+      "type": "performance",
+      "name": "Vectorization",
+      "description": "Avoid loops",
+      "pattern": "Replace loops with array ops, ufuncs",
+      "example": "Performance usage"
+    },
+    {
+      "id": "np028",
+      "type": "performance",
+      "name": "Memory Layout",
+      "description": "C vs Fortran",
+      "pattern": "C-contiguous, F-contiguous, cache efficiency",
+      "example": "Performance usage"
+    },
+    {
+      "id": "np029",
+      "type": "io",
+      "name": "Save/Load",
+      "description": "File I/O",
+      "pattern": "np.save, load, savez, savetxt, loadtxt",
+      "example": "Io usage"
+    },
+    {
+      "id": "np030",
+      "type": "advanced",
+      "name": "Structured Arrays",
+      "description": "Record arrays",
+      "pattern": "dtype with fields, recarray, named columns",
+      "example": "Advanced usage"
+    }
+  ]
+}

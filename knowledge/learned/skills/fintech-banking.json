@@ -1,0 +1,246 @@
+{
+  "category": "fintech-banking",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "fin001",
+      "type": "fundamentals",
+      "name": "FinTech Basics",
+      "description": "Financial technology",
+      "pattern": "Digital finance, disruption, regulation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fin002",
+      "type": "fundamentals",
+      "name": "Banking Systems",
+      "description": "Core banking",
+      "pattern": "Accounts, transactions, ledgers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fin003",
+      "type": "fundamentals",
+      "name": "Financial Instruments",
+      "description": "Products",
+      "pattern": "Stocks, bonds, derivatives, options",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fin004",
+      "type": "fundamentals",
+      "name": "Risk Management",
+      "description": "Financial risk",
+      "pattern": "Credit, market, operational risk",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "fin005",
+      "type": "payments",
+      "name": "Payment Systems",
+      "description": "Money movement",
+      "pattern": "ACH, SWIFT, wire, cards",
+      "example": "Payments usage"
+    },
+    {
+      "id": "fin006",
+      "type": "payments",
+      "name": "Card Processing",
+      "description": "Card payments",
+      "pattern": "Authorization, settlement, interchange",
+      "example": "Payments usage"
+    },
+    {
+      "id": "fin007",
+      "type": "payments",
+      "name": "Real-Time Payments",
+      "description": "Instant payments",
+      "pattern": "RTP, FedNow, SEPA Instant",
+      "example": "Payments usage"
+    },
+    {
+      "id": "fin008",
+      "type": "payments",
+      "name": "Digital Wallets",
+      "description": "E-wallets",
+      "pattern": "Apple Pay, Google Pay, tokenization",
+      "example": "Payments usage"
+    },
+    {
+      "id": "fin009",
+      "type": "payments",
+      "name": "Cross-Border Payments",
+      "description": "International",
+      "pattern": "FX, correspondent banking, remittance",
+      "example": "Payments usage"
+    },
+    {
+      "id": "fin010",
+      "type": "api",
+      "name": "Open Banking",
+      "description": "Banking APIs",
+      "pattern": "PSD2, account access, consent",
+      "example": "Api usage"
+    },
+    {
+      "id": "fin011",
+      "type": "api",
+      "name": "Plaid Integration",
+      "description": "Bank connectivity",
+      "pattern": "Link, transactions, identity",
+      "example": "Api usage"
+    },
+    {
+      "id": "fin012",
+      "type": "api",
+      "name": "Banking APIs",
+      "description": "Financial APIs",
+      "pattern": "Balance, transactions, payments",
+      "example": "Api usage"
+    },
+    {
+      "id": "fin013",
+      "type": "trading",
+      "name": "Trading Systems",
+      "description": "Trading platforms",
+      "pattern": "Order management, execution",
+      "example": "Trading usage"
+    },
+    {
+      "id": "fin014",
+      "type": "trading",
+      "name": "Algorithmic Trading",
+      "description": "Algo trading",
+      "pattern": "Strategies, backtesting, execution",
+      "example": "Trading usage"
+    },
+    {
+      "id": "fin015",
+      "type": "trading",
+      "name": "Market Data",
+      "description": "Financial data",
+      "pattern": "Quotes, order book, time series",
+      "example": "Trading usage"
+    },
+    {
+      "id": "fin016",
+      "type": "trading",
+      "name": "FIX Protocol",
+      "description": "Trading protocol",
+      "pattern": "Messages, sessions, execution",
+      "example": "Trading usage"
+    },
+    {
+      "id": "fin017",
+      "type": "lending",
+      "name": "Digital Lending",
+      "description": "Online loans",
+      "pattern": "Origination, underwriting, servicing",
+      "example": "Lending usage"
+    },
+    {
+      "id": "fin018",
+      "type": "lending",
+      "name": "Credit Scoring",
+      "description": "Risk assessment",
+      "pattern": "Models, bureau data, ML",
+      "example": "Lending usage"
+    },
+    {
+      "id": "fin019",
+      "type": "lending",
+      "name": "Buy Now Pay Later",
+      "description": "BNPL",
+      "pattern": "Installments, merchant integration",
+      "example": "Lending usage"
+    },
+    {
+      "id": "fin020",
+      "type": "compliance",
+      "name": "KYC/AML",
+      "description": "Identity verification",
+      "pattern": "Know Your Customer, sanctions",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "fin021",
+      "type": "compliance",
+      "name": "Fraud Detection",
+      "description": "Fraud prevention",
+      "pattern": "Rules, ML, anomaly detection",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "fin022",
+      "type": "compliance",
+      "name": "Financial Regulations",
+      "description": "Regulatory compliance",
+      "pattern": "PCI-DSS, SOX, Basel",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "fin023",
+      "type": "infrastructure",
+      "name": "Core Banking Systems",
+      "description": "Bank software",
+      "pattern": "Temenos, Finastra, Mambu",
+      "example": "Infrastructure usage"
+    },
+    {
+      "id": "fin024",
+      "type": "infrastructure",
+      "name": "Banking as a Service",
+      "description": "BaaS",
+      "pattern": "Embedded finance, white-label",
+      "example": "Infrastructure usage"
+    },
+    {
+      "id": "fin025",
+      "type": "infrastructure",
+      "name": "Card Issuing",
+      "description": "Card programs",
+      "pattern": "Virtual cards, programs, BIN",
+      "example": "Infrastructure usage"
+    },
+    {
+      "id": "fin026",
+      "type": "crypto",
+      "name": "Crypto Integration",
+      "description": "Digital assets",
+      "pattern": "Custody, trading, stablecoins",
+      "example": "Crypto usage"
+    },
+    {
+      "id": "fin027",
+      "type": "crypto",
+      "name": "CBDC",
+      "description": "Central bank digital",
+      "pattern": "Digital currency, wholesale, retail",
+      "example": "Crypto usage"
+    },
+    {
+      "id": "fin028",
+      "type": "analytics",
+      "name": "Financial Analytics",
+      "description": "Finance insights",
+      "pattern": "Dashboards, reporting, forecasting",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "fin029",
+      "type": "analytics",
+      "name": "Quantitative Finance",
+      "description": "Quant methods",
+      "pattern": "Monte Carlo, Black-Scholes, VaR",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "fin030",
+      "type": "analytics",
+      "name": "Personal Finance AI",
+      "description": "PFM AI",
+      "pattern": "Budgeting, categorization, insights",
+      "example": "Analytics usage"
+    }
+  ]
+}

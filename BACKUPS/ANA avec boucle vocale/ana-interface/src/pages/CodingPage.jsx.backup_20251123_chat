@@ -1,0 +1,131 @@
+import { useState } from 'react';
+import Editor from '@monaco-editor/react';
+import { Play, Save, FolderOpen, Terminal as TerminalIcon } from 'lucide-react';
+import './CodingPage.css';
+
+function CodingPage() {
+  const [code, setCode] = useState('// Bienvenue dans l\'éditeur Ana\n// Codons ensemble!\n\nfunction hello() {\n  console.log("Hello from Ana!");\n}\n');
+  const [language, setLanguage] = useState('javascript');
+  const [chatMessages, setChatMessages] = useState([]);
+  const [chatInput, setChatInput] = useState('');
+
+  const handleEditorChange = (value) => {
+    setCode(value);
+  };
+
+  const sendChatMessage = () => {
+    if (!chatInput.trim()) return;
+
+    setChatMessages(prev => [...prev, {
+      id: Date.now(),
+      sender: 'user',
+      text: chatInput
+    }]);
+
+    // TODO: Send to Ana for code assistance
+    setChatInput('');
+  };
+
+  return (
+    <div className="coding-page">
+      {/* Sidebar Chat */}
+      <div className="coding-sidebar">
+        <div className="sidebar-header">
+          <h3>💬 Chat Ana</h3>
+          <span className="model-badge">DeepSeek-Coder</span>
+        </div>
+
+        <div className="chat-messages-coding">
+          {chatMessages.length === 0 && (
+            <div className="chat-placeholder">
+              <p>Demande à Ana de coder, refactorer, debugger...</p>
+            </div>
+          )}
+          {chatMessages.map(msg => (
+            <div key={msg.id} className={`chat-msg ${msg.sender}`}>
+              {msg.text}
+            </div>
+          ))}
+        </div>
+
+        <div className="chat-input-coding">
+          <input
+            type="text"
+            value={chatInput}
+            onChange={(e) => setChatInput(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && sendChatMessage()}
+            placeholder="Demande à Ana..."
+          />
+        </div>
+
+        <div className="memory-indicator-coding">
+          <span>💾 Contexte: 2.4MB chargé</span>
+        </div>
+      </div>
+
+      {/* Main Editor Area */}
+      <div className="editor-area">
+        <div className="editor-toolbar">
+          <div className="toolbar-left">
+            <button className="btn-icon" title="Ouvrir fichier">
+              <FolderOpen size={18} />
+            </button>
+            <button className="btn-icon" title="Sauvegarder">
+              <Save size={18} />
+            </button>
+            <button className="btn-icon btn-primary" title="Exécuter">
+              <Play size={18} />
+              Exécuter
+            </button>
+          </div>
+          <div className="toolbar-right">
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="language-select"
+            >
+              <option value="javascript">JavaScript</option>
+              <option value="typescript">TypeScript</option>
+              <option value="python">Python</option>
+              <option value="java">Java</option>
+              <option value="cpp">C++</option>
+              <option value="csharp">C#</option>
+              <option value="go">Go</option>
+              <option value="rust">Rust</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="editor-container">
+          <Editor
+            height="70vh"
+            language={language}
+            value={code}
+            onChange={handleEditorChange}
+            theme="vs-dark"
+            options={{
+              fontSize: 14,
+              minimap: { enabled: true },
+              scrollBeyondLastLine: false,
+              automaticLayout: true,
+              tabSize: 2,
+            }}
+          />
+        </div>
+
+        <div className="terminal-section">
+          <div className="terminal-header">
+            <TerminalIcon size={16} />
+            <span>Terminal</span>
+          </div>
+          <div className="terminal-content">
+            <div className="terminal-line">$ npm run dev</div>
+            <div className="terminal-line">Prêt pour l'exécution...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CodingPage;

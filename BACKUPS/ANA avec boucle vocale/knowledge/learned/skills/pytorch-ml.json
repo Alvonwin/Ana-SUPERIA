@@ -1,0 +1,246 @@
+{
+  "category": "pytorch-ml",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "torch001",
+      "type": "fundamentals",
+      "name": "PyTorch Tensors",
+      "description": "Core data structure",
+      "pattern": "torch.tensor, dtype, device, requires_grad",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "torch002",
+      "type": "fundamentals",
+      "name": "Tensor Operations",
+      "description": "Math operations",
+      "pattern": "matmul, reshape, transpose, broadcasting",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "torch003",
+      "type": "fundamentals",
+      "name": "Autograd",
+      "description": "Automatic differentiation",
+      "pattern": "backward, grad, no_grad, detach",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "torch004",
+      "type": "fundamentals",
+      "name": "GPU Acceleration",
+      "description": "CUDA support",
+      "pattern": "cuda, to(device), DataParallel",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "torch005",
+      "type": "nn",
+      "name": "nn.Module",
+      "description": "Neural network base",
+      "pattern": "forward, parameters, state_dict",
+      "example": "Nn usage"
+    },
+    {
+      "id": "torch006",
+      "type": "nn",
+      "name": "Linear Layers",
+      "description": "Dense layers",
+      "pattern": "nn.Linear, weight, bias",
+      "example": "Nn usage"
+    },
+    {
+      "id": "torch007",
+      "type": "nn",
+      "name": "Activation Functions",
+      "description": "Non-linearities",
+      "pattern": "ReLU, Sigmoid, Tanh, GELU, SiLU",
+      "example": "Nn usage"
+    },
+    {
+      "id": "torch008",
+      "type": "nn",
+      "name": "Convolutional Layers",
+      "description": "CNN building blocks",
+      "pattern": "Conv2d, MaxPool2d, BatchNorm2d",
+      "example": "Nn usage"
+    },
+    {
+      "id": "torch009",
+      "type": "nn",
+      "name": "Recurrent Layers",
+      "description": "Sequence models",
+      "pattern": "LSTM, GRU, RNN, bidirectional",
+      "example": "Nn usage"
+    },
+    {
+      "id": "torch010",
+      "type": "nn",
+      "name": "Transformer Layers",
+      "description": "Attention models",
+      "pattern": "MultiheadAttention, TransformerEncoder",
+      "example": "Nn usage"
+    },
+    {
+      "id": "torch011",
+      "type": "training",
+      "name": "Loss Functions",
+      "description": "Optimization targets",
+      "pattern": "CrossEntropyLoss, MSELoss, BCELoss",
+      "example": "Training usage"
+    },
+    {
+      "id": "torch012",
+      "type": "training",
+      "name": "Optimizers",
+      "description": "Parameter updates",
+      "pattern": "Adam, SGD, AdamW, lr_scheduler",
+      "example": "Training usage"
+    },
+    {
+      "id": "torch013",
+      "type": "training",
+      "name": "Training Loop",
+      "description": "Core training",
+      "pattern": "zero_grad, backward, step, eval",
+      "example": "Training usage"
+    },
+    {
+      "id": "torch014",
+      "type": "training",
+      "name": "Regularization",
+      "description": "Overfitting prevention",
+      "pattern": "Dropout, weight_decay, BatchNorm",
+      "example": "Training usage"
+    },
+    {
+      "id": "torch015",
+      "type": "data",
+      "name": "Dataset",
+      "description": "Data abstraction",
+      "pattern": "Dataset, __getitem__, __len__",
+      "example": "Data usage"
+    },
+    {
+      "id": "torch016",
+      "type": "data",
+      "name": "DataLoader",
+      "description": "Batching & shuffling",
+      "pattern": "batch_size, shuffle, num_workers",
+      "example": "Data usage"
+    },
+    {
+      "id": "torch017",
+      "type": "data",
+      "name": "Transforms",
+      "description": "Data augmentation",
+      "pattern": "Compose, ToTensor, Normalize, RandomCrop",
+      "example": "Data usage"
+    },
+    {
+      "id": "torch018",
+      "type": "saving",
+      "name": "Model Saving",
+      "description": "Checkpointing",
+      "pattern": "save, load, state_dict",
+      "example": "Saving usage"
+    },
+    {
+      "id": "torch019",
+      "type": "saving",
+      "name": "TorchScript",
+      "description": "Production export",
+      "pattern": "jit.trace, jit.script, save",
+      "example": "Saving usage"
+    },
+    {
+      "id": "torch020",
+      "type": "saving",
+      "name": "ONNX Export",
+      "description": "Interoperability",
+      "pattern": "torch.onnx.export, dynamic_axes",
+      "example": "Saving usage"
+    },
+    {
+      "id": "torch021",
+      "type": "distributed",
+      "name": "DistributedDataParallel",
+      "description": "Multi-GPU training",
+      "pattern": "DDP, init_process_group, world_size",
+      "example": "Distributed usage"
+    },
+    {
+      "id": "torch022",
+      "type": "distributed",
+      "name": "FSDP",
+      "description": "Large model training",
+      "pattern": "FullyShardedDataParallel, CPU offload",
+      "example": "Distributed usage"
+    },
+    {
+      "id": "torch023",
+      "type": "optimization",
+      "name": "Mixed Precision",
+      "description": "FP16 training",
+      "pattern": "autocast, GradScaler, bfloat16",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "torch024",
+      "type": "optimization",
+      "name": "torch.compile",
+      "description": "Graph optimization",
+      "pattern": "compile, mode, backend",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "torch025",
+      "type": "vision",
+      "name": "torchvision",
+      "description": "Computer vision",
+      "pattern": "models, datasets, transforms",
+      "example": "Vision usage"
+    },
+    {
+      "id": "torch026",
+      "type": "text",
+      "name": "torchtext",
+      "description": "NLP utilities",
+      "pattern": "Vocab, tokenizers, datasets",
+      "example": "Text usage"
+    },
+    {
+      "id": "torch027",
+      "type": "audio",
+      "name": "torchaudio",
+      "description": "Audio processing",
+      "pattern": "Spectrogram, MelScale, transforms",
+      "example": "Audio usage"
+    },
+    {
+      "id": "torch028",
+      "type": "debugging",
+      "name": "Debugging",
+      "description": "Troubleshooting",
+      "pattern": "anomaly_detection, profiler, hooks",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "torch029",
+      "type": "lightning",
+      "name": "PyTorch Lightning",
+      "description": "Training framework",
+      "pattern": "LightningModule, Trainer, callbacks",
+      "example": "Lightning usage"
+    },
+    {
+      "id": "torch030",
+      "type": "hub",
+      "name": "torch.hub",
+      "description": "Pretrained models",
+      "pattern": "load, list, download_url_to_file",
+      "example": "Hub usage"
+    }
+  ]
+}

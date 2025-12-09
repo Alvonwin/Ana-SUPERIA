@@ -1,0 +1,173 @@
+{
+  "name": "Ana Agents Monitor",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 5
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Every 5 Minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:3338/api/agents",
+        "options": {}
+      },
+      "id": "get-agents-status",
+      "name": "Get Agents Status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Analyze agent status\nconst agents = $input.all();\nconst results = [];\n\nfor (const item of agents) {\n  const data = item.json;\n  \n  // Check if response has agents array\n  if (data.agents) {\n    for (const agent of data.agents) {\n      results.push({\n        name: agent.name,\n        status: agent.status || 'unknown',\n        lastActive: agent.lastActive || null,\n        isHealthy: agent.status === 'running' || agent.status === 'idle',\n        checkedAt: new Date().toISOString()\n      });\n    }\n  }\n}\n\n// Summary\nconst healthy = results.filter(a => a.isHealthy).length;\nconst unhealthy = results.filter(a => !a.isHealthy).length;\n\nreturn [{\n  json: {\n    summary: {\n      total: results.length,\n      healthy: healthy,\n      unhealthy: unhealthy,\n      healthPercentage: results.length > 0 ? Math.round((healthy / results.length) * 100) : 0\n    },\n    agents: results,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "analyze-status",
+      "name": "Analyze Agent Status",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.summary.unhealthy }}",
+              "operation": "larger",
+              "value2": 0
+            }
+          ]
+        }
+      },
+      "id": "check-unhealthy",
+      "name": "Any Unhealthy?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:3338/api/memory/store",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": \"agent_monitor\",\n  \"status\": \"healthy\",\n  \"data\": {{ JSON.stringify($json) }}\n}",
+        "options": {}
+      },
+      "id": "log-healthy",
+      "name": "Log Healthy Status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1120, 420]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:3338/api/memory/store",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": \"agent_alert\",\n  \"status\": \"warning\",\n  \"message\": \"{{ $json.summary.unhealthy }} agent(s) unhealthy\",\n  \"data\": {{ JSON.stringify($json) }}\n}",
+        "options": {}
+      },
+      "id": "alert-unhealthy",
+      "name": "Alert Unhealthy",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1120, 180]
+    },
+    {
+      "parameters": {
+        "content": "## Ana Agents Monitor\n\nCe workflow surveille les 17 agents Ana toutes les 5 minutes.\n\n### Actions:\n1. Récupère le status de tous les agents via API\n2. Analyse la santé de chaque agent\n3. Log le résultat dans la mémoire Ana\n4. Alerte si des agents sont unhealthy\n\n### Personnalisation:\n- Modifier l'intervalle dans \"Every 5 Minutes\"\n- Ajouter des notifications (Email, Slack, Discord)\n- Modifier les critères d'alerte",
+        "height": 380,
+        "width": 320
+      },
+      "id": "sticky-note",
+      "name": "Documentation",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 480]
+    }
+  ],
+  "connections": {
+    "Every 5 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Get Agents Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Agents Status": {
+      "main": [
+        [
+          {
+            "node": "Analyze Agent Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Agent Status": {
+      "main": [
+        [
+          {
+            "node": "Any Unhealthy?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Any Unhealthy?": {
+      "main": [
+        [
+          {
+            "node": "Alert Unhealthy",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Healthy Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "name": "Ana",
+      "createdAt": "2025-11-29T00:00:00.000Z",
+      "updatedAt": "2025-11-29T00:00:00.000Z"
+    },
+    {
+      "name": "Monitoring",
+      "createdAt": "2025-11-29T00:00:00.000Z",
+      "updatedAt": "2025-11-29T00:00:00.000Z"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T00:00:00.000Z",
+  "versionId": "1"
+}

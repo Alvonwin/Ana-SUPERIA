@@ -1,0 +1,246 @@
+{
+  "category": "media-entertainment",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "med001",
+      "type": "fundamentals",
+      "name": "Media Tech Basics",
+      "description": "Media technology",
+      "pattern": "Content, distribution, monetization",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "med002",
+      "type": "fundamentals",
+      "name": "Content Types",
+      "description": "Media formats",
+      "pattern": "Video, audio, text, interactive",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "med003",
+      "type": "fundamentals",
+      "name": "Media Data",
+      "description": "Industry data",
+      "pattern": "Metadata, rights, analytics",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "med004",
+      "type": "streaming",
+      "name": "Video Streaming",
+      "description": "OTT delivery",
+      "pattern": "HLS, DASH, adaptive bitrate",
+      "example": "Streaming usage"
+    },
+    {
+      "id": "med005",
+      "type": "streaming",
+      "name": "Live Streaming",
+      "description": "Real-time delivery",
+      "pattern": "Encoder, origin, CDN, latency",
+      "example": "Streaming usage"
+    },
+    {
+      "id": "med006",
+      "type": "streaming",
+      "name": "Audio Streaming",
+      "description": "Music/podcasts",
+      "pattern": "Codecs, playlists, offline",
+      "example": "Streaming usage"
+    },
+    {
+      "id": "med007",
+      "type": "content",
+      "name": "CMS Media",
+      "description": "Content management",
+      "pattern": "DAM, MAM, workflow",
+      "example": "Content usage"
+    },
+    {
+      "id": "med008",
+      "type": "content",
+      "name": "Transcoding",
+      "description": "Media processing",
+      "pattern": "FFmpeg, profiles, cloud encoding",
+      "example": "Content usage"
+    },
+    {
+      "id": "med009",
+      "type": "content",
+      "name": "Metadata Management",
+      "description": "Content metadata",
+      "pattern": "Taxonomy, tagging, enrichment",
+      "example": "Content usage"
+    },
+    {
+      "id": "med010",
+      "type": "distribution",
+      "name": "CDN",
+      "description": "Content delivery",
+      "pattern": "Edge, caching, multi-CDN",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "med011",
+      "type": "distribution",
+      "name": "DRM",
+      "description": "Rights management",
+      "pattern": "Widevine, FairPlay, PlayReady",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "med012",
+      "type": "distribution",
+      "name": "Content Syndication",
+      "description": "Distribution",
+      "pattern": "MRSS, APIs, partners",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "med013",
+      "type": "monetization",
+      "name": "SVOD/AVOD/TVOD",
+      "description": "Business models",
+      "pattern": "Subscription, ads, transactional",
+      "example": "Monetization usage"
+    },
+    {
+      "id": "med014",
+      "type": "monetization",
+      "name": "Ad Tech Media",
+      "description": "Advertising",
+      "pattern": "SSAI, VAST, programmatic",
+      "example": "Monetization usage"
+    },
+    {
+      "id": "med015",
+      "type": "monetization",
+      "name": "Paywall",
+      "description": "Access control",
+      "pattern": "Metered, freemium, registration",
+      "example": "Monetization usage"
+    },
+    {
+      "id": "med016",
+      "type": "experience",
+      "name": "Video Player",
+      "description": "Player tech",
+      "pattern": "Shaka, hls.js, custom players",
+      "example": "Experience usage"
+    },
+    {
+      "id": "med017",
+      "type": "experience",
+      "name": "Recommendations",
+      "description": "Content discovery",
+      "pattern": "Personalization, ML, engagement",
+      "example": "Experience usage"
+    },
+    {
+      "id": "med018",
+      "type": "experience",
+      "name": "Interactive Video",
+      "description": "Engagement features",
+      "pattern": "Chapters, quizzes, branching",
+      "example": "Experience usage"
+    },
+    {
+      "id": "med019",
+      "type": "production",
+      "name": "Video Production",
+      "description": "Content creation",
+      "pattern": "Capture, editing, post-production",
+      "example": "Production usage"
+    },
+    {
+      "id": "med020",
+      "type": "production",
+      "name": "Cloud Production",
+      "description": "Remote production",
+      "pattern": "Cloud editing, collaboration",
+      "example": "Production usage"
+    },
+    {
+      "id": "med021",
+      "type": "production",
+      "name": "Virtual Production",
+      "description": "LED walls",
+      "pattern": "Unreal, LED volume, real-time",
+      "example": "Production usage"
+    },
+    {
+      "id": "med022",
+      "type": "broadcast",
+      "name": "Broadcast Systems",
+      "description": "TV broadcast",
+      "pattern": "Playout, scheduling, automation",
+      "example": "Broadcast usage"
+    },
+    {
+      "id": "med023",
+      "type": "broadcast",
+      "name": "IP Broadcast",
+      "description": "IP video",
+      "pattern": "SMPTE 2110, NDI, IP transition",
+      "example": "Broadcast usage"
+    },
+    {
+      "id": "med024",
+      "type": "analytics",
+      "name": "Audience Analytics",
+      "description": "Viewership",
+      "pattern": "Engagement, retention, demographics",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "med025",
+      "type": "analytics",
+      "name": "QoE Monitoring",
+      "description": "Quality of experience",
+      "pattern": "Buffering, bitrate, errors",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "med026",
+      "type": "ai-media",
+      "name": "AI Media",
+      "description": "AI applications",
+      "pattern": "Auto-tagging, highlights, moderation",
+      "example": "Ai-media usage"
+    },
+    {
+      "id": "med027",
+      "type": "ai-media",
+      "name": "Speech-to-Text",
+      "description": "Transcription",
+      "pattern": "Captions, subtitles, translation",
+      "example": "Ai-media usage"
+    },
+    {
+      "id": "med028",
+      "type": "gaming",
+      "name": "Cloud Gaming",
+      "description": "Game streaming",
+      "pattern": "Stadia, xCloud, latency",
+      "example": "Gaming usage"
+    },
+    {
+      "id": "med029",
+      "type": "emerging",
+      "name": "Spatial Media",
+      "description": "Immersive content",
+      "pattern": "360, VR, volumetric",
+      "example": "Emerging usage"
+    },
+    {
+      "id": "med030",
+      "type": "emerging",
+      "name": "NFT/Web3 Media",
+      "description": "Blockchain media",
+      "pattern": "Digital collectibles, ownership",
+      "example": "Emerging usage"
+    }
+  ]
+}

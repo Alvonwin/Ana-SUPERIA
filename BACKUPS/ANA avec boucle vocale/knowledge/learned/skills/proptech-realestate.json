@@ -1,0 +1,246 @@
+{
+  "category": "proptech-realestate",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "prop001",
+      "type": "fundamentals",
+      "name": "PropTech Basics",
+      "description": "Property technology",
+      "pattern": "Real estate, digital, innovation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "prop002",
+      "type": "fundamentals",
+      "name": "Real Estate Data",
+      "description": "Property data",
+      "pattern": "MLS, listings, valuations",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "prop003",
+      "type": "fundamentals",
+      "name": "Property Types",
+      "description": "Asset classes",
+      "pattern": "Residential, commercial, industrial",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "prop004",
+      "type": "listings",
+      "name": "Listing Platforms",
+      "description": "Property portals",
+      "pattern": "Zillow, Realtor, aggregation",
+      "example": "Listings usage"
+    },
+    {
+      "id": "prop005",
+      "type": "listings",
+      "name": "MLS Integration",
+      "description": "Listing services",
+      "pattern": "RETS, Web API, syndication",
+      "example": "Listings usage"
+    },
+    {
+      "id": "prop006",
+      "type": "listings",
+      "name": "Property Search",
+      "description": "Search experience",
+      "pattern": "Filters, maps, recommendations",
+      "example": "Listings usage"
+    },
+    {
+      "id": "prop007",
+      "type": "valuation",
+      "name": "AVMs",
+      "description": "Automated valuation",
+      "pattern": "Models, comps, algorithms",
+      "example": "Valuation usage"
+    },
+    {
+      "id": "prop008",
+      "type": "valuation",
+      "name": "Property Analytics",
+      "description": "Market analysis",
+      "pattern": "Trends, forecasting, investment",
+      "example": "Valuation usage"
+    },
+    {
+      "id": "prop009",
+      "type": "valuation",
+      "name": "Investment Analysis",
+      "description": "RE investment",
+      "pattern": "ROI, cap rate, cash flow",
+      "example": "Valuation usage"
+    },
+    {
+      "id": "prop010",
+      "type": "transaction",
+      "name": "Digital Transactions",
+      "description": "Online closings",
+      "pattern": "E-signatures, escrow, title",
+      "example": "Transaction usage"
+    },
+    {
+      "id": "prop011",
+      "type": "transaction",
+      "name": "Mortgage Tech",
+      "description": "Digital lending",
+      "pattern": "Application, underwriting, origination",
+      "example": "Transaction usage"
+    },
+    {
+      "id": "prop012",
+      "type": "transaction",
+      "name": "Title & Escrow",
+      "description": "Settlement tech",
+      "pattern": "Title search, closing, wire",
+      "example": "Transaction usage"
+    },
+    {
+      "id": "prop013",
+      "type": "management",
+      "name": "Property Management",
+      "description": "PM software",
+      "pattern": "Tenants, leases, maintenance",
+      "example": "Management usage"
+    },
+    {
+      "id": "prop014",
+      "type": "management",
+      "name": "Tenant Experience",
+      "description": "Resident apps",
+      "pattern": "Portals, payments, communication",
+      "example": "Management usage"
+    },
+    {
+      "id": "prop015",
+      "type": "management",
+      "name": "Lease Management",
+      "description": "Lease admin",
+      "pattern": "Abstraction, renewals, compliance",
+      "example": "Management usage"
+    },
+    {
+      "id": "prop016",
+      "type": "smart",
+      "name": "Smart Buildings",
+      "description": "Building tech",
+      "pattern": "IoT, automation, sustainability",
+      "example": "Smart usage"
+    },
+    {
+      "id": "prop017",
+      "type": "smart",
+      "name": "Building IoT",
+      "description": "Connected buildings",
+      "pattern": "Sensors, HVAC, lighting",
+      "example": "Smart usage"
+    },
+    {
+      "id": "prop018",
+      "type": "smart",
+      "name": "Energy Management",
+      "description": "Building energy",
+      "pattern": "Monitoring, optimization, ESG",
+      "example": "Smart usage"
+    },
+    {
+      "id": "prop019",
+      "type": "visualization",
+      "name": "Virtual Tours",
+      "description": "3D property",
+      "pattern": "Matterport, 360, virtual staging",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "prop020",
+      "type": "visualization",
+      "name": "Property Photography",
+      "description": "Visual content",
+      "pattern": "HDR, drones, editing",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "prop021",
+      "type": "visualization",
+      "name": "Floor Plans",
+      "description": "Space visualization",
+      "pattern": "2D, 3D, interactive",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "prop022",
+      "type": "construction",
+      "name": "ConTech",
+      "description": "Construction tech",
+      "pattern": "Project management, BIM",
+      "example": "Construction usage"
+    },
+    {
+      "id": "prop023",
+      "type": "construction",
+      "name": "BIM",
+      "description": "Building information",
+      "pattern": "Models, coordination, lifecycle",
+      "example": "Construction usage"
+    },
+    {
+      "id": "prop024",
+      "type": "construction",
+      "name": "Construction Management",
+      "description": "Project software",
+      "pattern": "Procore, schedules, documents",
+      "example": "Construction usage"
+    },
+    {
+      "id": "prop025",
+      "type": "commercial",
+      "name": "CRE Tech",
+      "description": "Commercial RE",
+      "pattern": "Brokerage, leasing, investment",
+      "example": "Commercial usage"
+    },
+    {
+      "id": "prop026",
+      "type": "commercial",
+      "name": "Coworking Tech",
+      "description": "Flex space",
+      "pattern": "Booking, access, community",
+      "example": "Commercial usage"
+    },
+    {
+      "id": "prop027",
+      "type": "commercial",
+      "name": "Space Utilization",
+      "description": "Occupancy",
+      "pattern": "Sensors, analytics, optimization",
+      "example": "Commercial usage"
+    },
+    {
+      "id": "prop028",
+      "type": "ai",
+      "name": "RE AI",
+      "description": "AI in real estate",
+      "pattern": "Valuation, leads, recommendations",
+      "example": "Ai usage"
+    },
+    {
+      "id": "prop029",
+      "type": "ai",
+      "name": "Property Matching",
+      "description": "Buyer matching",
+      "pattern": "Preferences, ML, personalization",
+      "example": "Ai usage"
+    },
+    {
+      "id": "prop030",
+      "type": "blockchain",
+      "name": "RE Blockchain",
+      "description": "Property blockchain",
+      "pattern": "Tokenization, records, smart contracts",
+      "example": "Blockchain usage"
+    }
+  ]
+}

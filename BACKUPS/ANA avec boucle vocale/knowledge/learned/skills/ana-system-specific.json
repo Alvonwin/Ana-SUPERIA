@@ -1,0 +1,248 @@
+{
+  "category": "ana-system-specific",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "Skills specific to Ana SUPERIA system architecture",
+  "skills": [
+    {
+      "id": "ana01",
+      "type": "architecture",
+      "name": "Ana Core Structure",
+      "description": "Main backend entry point",
+      "pattern": "E:\\ANA\\server\\ana-core.cjs - Express + Socket.io",
+      "example": "Port 3338, routes all API calls"
+    },
+    {
+      "id": "ana02",
+      "type": "architecture",
+      "name": "Ana Interface",
+      "description": "React frontend",
+      "pattern": "E:\\ANA\\ana-interface\\src\\ - Vite + React",
+      "example": "Port 5173 dev, pages in /pages/"
+    },
+    {
+      "id": "ana03",
+      "type": "llm",
+      "name": "Multi-Brain Architecture",
+      "description": "Multiple LLM routing",
+      "pattern": "config/llm_config.json defines routing",
+      "example": "PHI3 conversation, DEEPSEEK coding, QWEN math"
+    },
+    {
+      "id": "ana04",
+      "type": "llm",
+      "name": "Ollama Integration",
+      "description": "Local LLM via Ollama",
+      "pattern": "http://localhost:11434/api/chat",
+      "example": "Primary LLM backend"
+    },
+    {
+      "id": "ana05",
+      "type": "memory",
+      "name": "Three-Tier Memory",
+      "description": "Short/Medium/Long term memory",
+      "pattern": "tiered-memory-service.cjs - ChromaDB backed",
+      "example": "Primary, Secondary, Tertiary tiers"
+    },
+    {
+      "id": "ana06",
+      "type": "memory",
+      "name": "Semantic Search",
+      "description": "Vector similarity search",
+      "pattern": "ChromaDB with nomic-embed-text",
+      "example": "Find related memories by meaning"
+    },
+    {
+      "id": "ana07",
+      "type": "memory",
+      "name": "Conversation Capture",
+      "description": "Auto-save conversations",
+      "pattern": "memory-capture.cjs writes to E:\\Memoire Claude\\",
+      "example": "stage01 raw capture"
+    },
+    {
+      "id": "ana08",
+      "type": "agents",
+      "name": "Autonomous Agents",
+      "description": "24 background agents",
+      "pattern": "E:\\ANA\\agents\\ - master_coordinator.cjs",
+      "example": "Managers: ops, cognitive, knowledge"
+    },
+    {
+      "id": "ana09",
+      "type": "agents",
+      "name": "Agent Event Bus",
+      "description": "Inter-agent communication",
+      "pattern": "shared_event_bus.cjs - EventEmitter3",
+      "example": "Agents publish/subscribe events"
+    },
+    {
+      "id": "ana10",
+      "type": "agents",
+      "name": "Agent Dashboard",
+      "description": "Monitor agent status",
+      "pattern": "dashboard_server.cjs on port 3340",
+      "example": "View all agent health/status"
+    },
+    {
+      "id": "ana11",
+      "type": "skills",
+      "name": "Skill Learner",
+      "description": "Skill management system",
+      "pattern": "skill-learner.cjs - loads skills/*.json",
+      "example": "13500+ skills available"
+    },
+    {
+      "id": "ana12",
+      "type": "skills",
+      "name": "Dynamic Skills",
+      "description": "Runtime learned skills",
+      "pattern": "skills.json - learned during conversations",
+      "example": "Auto-extracted from interactions"
+    },
+    {
+      "id": "ana13",
+      "type": "skills",
+      "name": "Static Skills",
+      "description": "Pre-loaded skill files",
+      "pattern": "knowledge/learned/skills/*.json",
+      "example": "427+ category files"
+    },
+    {
+      "id": "ana14",
+      "type": "voice",
+      "name": "Voice Pipeline",
+      "description": "Speech input/output",
+      "pattern": "Whisper STT + Edge TTS",
+      "example": "Continuous voice loop"
+    },
+    {
+      "id": "ana15",
+      "type": "voice",
+      "name": "Voice Recording",
+      "description": "Browser audio capture",
+      "pattern": "MediaRecorder API + WebSocket",
+      "example": "Send audio chunks to backend"
+    },
+    {
+      "id": "ana16",
+      "type": "art",
+      "name": "Daily Art Generator",
+      "description": "Automated art creation",
+      "pattern": "daily-art-generator.cjs + ComfyUI",
+      "example": "42 prompts, scheduled generation"
+    },
+    {
+      "id": "ana17",
+      "type": "research",
+      "name": "Research Agent",
+      "description": "Autonomous web research",
+      "pattern": "LangChain + DuckDuckGo search",
+      "example": "4 strategies: quick, deep, compare, expert"
+    },
+    {
+      "id": "ana18",
+      "type": "tools",
+      "name": "Tool Executor",
+      "description": "Execute tools for LLM",
+      "pattern": "tool-executor.cjs - file, bash, git, web",
+      "example": "ReAct pattern tool calling"
+    },
+    {
+      "id": "ana19",
+      "type": "tools",
+      "name": "File Tools",
+      "description": "File system operations",
+      "pattern": "file-tools.cjs - read, write, edit, list",
+      "example": "/api/tools/file/read"
+    },
+    {
+      "id": "ana20",
+      "type": "tools",
+      "name": "Bash Tools",
+      "description": "Shell command execution",
+      "pattern": "bash-tools.cjs - execute, spawn, kill",
+      "example": "Sandboxed command execution"
+    },
+    {
+      "id": "ana21",
+      "type": "tools",
+      "name": "Git Tools",
+      "description": "Version control operations",
+      "pattern": "git-tools.cjs - status, diff, commit",
+      "example": "Manage code repositories"
+    },
+    {
+      "id": "ana22",
+      "type": "autonomous",
+      "name": "Autonomous Mode",
+      "description": "Full tool-calling chat",
+      "pattern": "ana-autonomous.cjs - ReAct loop",
+      "example": "/api/chat/autonomous endpoint"
+    },
+    {
+      "id": "ana23",
+      "type": "config",
+      "name": "Configuration Files",
+      "description": "System configuration",
+      "pattern": "E:\\ANA\\config\\ - JSON configs",
+      "example": "llm_config.json, art_config.json"
+    },
+    {
+      "id": "ana24",
+      "type": "pages",
+      "name": "UI Pages",
+      "description": "Frontend page components",
+      "pattern": "ChatPage, CodingPage, BrainsPage, etc.",
+      "example": "React components in /pages/"
+    },
+    {
+      "id": "ana25",
+      "type": "socket",
+      "name": "Socket.io Events",
+      "description": "Real-time communication",
+      "pattern": "chat:message, chat:stream, coding:inject",
+      "example": "Bidirectional client-server"
+    },
+    {
+      "id": "ana26",
+      "type": "n8n",
+      "name": "n8n Integration",
+      "description": "Workflow automation",
+      "pattern": "n8n-integration.cjs - webhooks, triggers",
+      "example": "Connect external services"
+    },
+    {
+      "id": "ana27",
+      "type": "vram",
+      "name": "VRAM Manager",
+      "description": "GPU memory management",
+      "pattern": "vram-manager.cjs - track model loading",
+      "example": "8GB RTX 3070 optimization"
+    },
+    {
+      "id": "ana28",
+      "type": "code",
+      "name": "Code Execution",
+      "description": "Run code in sandbox",
+      "pattern": "/api/code/execute - JS, Python, etc.",
+      "example": "Secure code runner"
+    },
+    {
+      "id": "ana29",
+      "type": "startup",
+      "name": "System Startup",
+      "description": "Launch sequence",
+      "pattern": "DEMARRER_SYSTEME_COMPLET.bat",
+      "example": "Starts backend, agents, frontend"
+    },
+    {
+      "id": "ana30",
+      "type": "monitoring",
+      "name": "Health Checks",
+      "description": "System health endpoints",
+      "pattern": "/api/health, /api/status",
+      "example": "Monitor all subsystems"
+    }
+  ]
+}

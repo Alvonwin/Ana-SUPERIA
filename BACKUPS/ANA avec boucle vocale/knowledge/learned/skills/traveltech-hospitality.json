@@ -1,0 +1,246 @@
+{
+  "category": "traveltech-hospitality",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "trv001",
+      "type": "fundamentals",
+      "name": "TravelTech Basics",
+      "description": "Travel technology",
+      "pattern": "OTAs, GDS, booking",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "trv002",
+      "type": "fundamentals",
+      "name": "Hospitality Tech",
+      "description": "Hotel technology",
+      "pattern": "PMS, POS, operations",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "trv003",
+      "type": "fundamentals",
+      "name": "Travel Data",
+      "description": "Industry data",
+      "pattern": "Inventory, rates, availability",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "trv004",
+      "type": "distribution",
+      "name": "GDS Systems",
+      "description": "Global distribution",
+      "pattern": "Amadeus, Sabre, Travelport",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "trv005",
+      "type": "distribution",
+      "name": "Channel Management",
+      "description": "Distribution channels",
+      "pattern": "OTAs, direct, connectivity",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "trv006",
+      "type": "distribution",
+      "name": "NDC",
+      "description": "New distribution",
+      "pattern": "Airline distribution, offers",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "trv007",
+      "type": "booking",
+      "name": "Booking Engines",
+      "description": "Reservation systems",
+      "pattern": "Search, book, payment",
+      "example": "Booking usage"
+    },
+    {
+      "id": "trv008",
+      "type": "booking",
+      "name": "Flight Search",
+      "description": "Air shopping",
+      "pattern": "Fares, routing, availability",
+      "example": "Booking usage"
+    },
+    {
+      "id": "trv009",
+      "type": "booking",
+      "name": "Hotel Booking",
+      "description": "Accommodation booking",
+      "pattern": "Rates, rooms, packages",
+      "example": "Booking usage"
+    },
+    {
+      "id": "trv010",
+      "type": "hotel",
+      "name": "PMS Systems",
+      "description": "Property management",
+      "pattern": "Opera, reservations, housekeeping",
+      "example": "Hotel usage"
+    },
+    {
+      "id": "trv011",
+      "type": "hotel",
+      "name": "Revenue Management",
+      "description": "Yield management",
+      "pattern": "Pricing, forecasting, optimization",
+      "example": "Hotel usage"
+    },
+    {
+      "id": "trv012",
+      "type": "hotel",
+      "name": "Hotel APIs",
+      "description": "Connectivity",
+      "pattern": "OTA APIs, rate shopping",
+      "example": "Hotel usage"
+    },
+    {
+      "id": "trv013",
+      "type": "airline",
+      "name": "Airline Systems",
+      "description": "Airline tech",
+      "pattern": "PSS, DCS, operations",
+      "example": "Airline usage"
+    },
+    {
+      "id": "trv014",
+      "type": "airline",
+      "name": "Flight Operations",
+      "description": "Ops systems",
+      "pattern": "Scheduling, crew, dispatch",
+      "example": "Airline usage"
+    },
+    {
+      "id": "trv015",
+      "type": "airline",
+      "name": "Loyalty Programs",
+      "description": "FFP systems",
+      "pattern": "Miles, tiers, redemption",
+      "example": "Airline usage"
+    },
+    {
+      "id": "trv016",
+      "type": "experience",
+      "name": "Guest Experience",
+      "description": "CX technology",
+      "pattern": "Mobile check-in, concierge",
+      "example": "Experience usage"
+    },
+    {
+      "id": "trv017",
+      "type": "experience",
+      "name": "Personalization",
+      "description": "Travel personalization",
+      "pattern": "Recommendations, preferences",
+      "example": "Experience usage"
+    },
+    {
+      "id": "trv018",
+      "type": "experience",
+      "name": "Reviews & Ratings",
+      "description": "UGC platforms",
+      "pattern": "TripAdvisor, reviews, reputation",
+      "example": "Experience usage"
+    },
+    {
+      "id": "trv019",
+      "type": "payments",
+      "name": "Travel Payments",
+      "description": "Payment solutions",
+      "pattern": "Virtual cards, reconciliation",
+      "example": "Payments usage"
+    },
+    {
+      "id": "trv020",
+      "type": "payments",
+      "name": "B2B Travel",
+      "description": "Corporate travel",
+      "pattern": "TMC, expense, policy",
+      "example": "Payments usage"
+    },
+    {
+      "id": "trv021",
+      "type": "experiences",
+      "name": "Tours & Activities",
+      "description": "Experiences tech",
+      "pattern": "Viator, GetYourGuide, booking",
+      "example": "Experiences usage"
+    },
+    {
+      "id": "trv022",
+      "type": "experiences",
+      "name": "Destination Tech",
+      "description": "DMO technology",
+      "pattern": "Marketing, visitor management",
+      "example": "Experiences usage"
+    },
+    {
+      "id": "trv023",
+      "type": "mobility",
+      "name": "Ground Transportation",
+      "description": "Transfers, rentals",
+      "pattern": "Car rental, ride-hail, shuttles",
+      "example": "Mobility usage"
+    },
+    {
+      "id": "trv024",
+      "type": "mobility",
+      "name": "MaaS",
+      "description": "Mobility as a Service",
+      "pattern": "Multi-modal, planning, booking",
+      "example": "Mobility usage"
+    },
+    {
+      "id": "trv025",
+      "type": "smart",
+      "name": "Smart Hotels",
+      "description": "IoT hospitality",
+      "pattern": "Room controls, energy, automation",
+      "example": "Smart usage"
+    },
+    {
+      "id": "trv026",
+      "type": "smart",
+      "name": "Contactless",
+      "description": "Touch-free tech",
+      "pattern": "Mobile key, digital check-in",
+      "example": "Smart usage"
+    },
+    {
+      "id": "trv027",
+      "type": "analytics",
+      "name": "Travel Analytics",
+      "description": "Industry analytics",
+      "pattern": "Demand, pricing, competitive",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "trv028",
+      "type": "analytics",
+      "name": "Travel AI",
+      "description": "AI applications",
+      "pattern": "Chatbots, dynamic pricing, forecasting",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "trv029",
+      "type": "sustainability",
+      "name": "Sustainable Travel",
+      "description": "Green travel",
+      "pattern": "Carbon, certifications, impact",
+      "example": "Sustainability usage"
+    },
+    {
+      "id": "trv030",
+      "type": "emerging",
+      "name": "Travel Metaverse",
+      "description": "Virtual travel",
+      "pattern": "VR tours, virtual hotels",
+      "example": "Emerging usage"
+    }
+  ]
+}

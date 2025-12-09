@@ -1,0 +1,246 @@
+{
+  "category": "government-civic",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "gov001",
+      "type": "fundamentals",
+      "name": "GovTech Basics",
+      "description": "Government technology",
+      "pattern": "Digital government, citizen services",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "gov002",
+      "type": "fundamentals",
+      "name": "Public Sector IT",
+      "description": "Government IT",
+      "pattern": "Legacy, modernization, procurement",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "gov003",
+      "type": "fundamentals",
+      "name": "Government Data",
+      "description": "Public data",
+      "pattern": "Open data, records, statistics",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "gov004",
+      "type": "services",
+      "name": "Digital Services",
+      "description": "Online government",
+      "pattern": "Portals, e-services, forms",
+      "example": "Services usage"
+    },
+    {
+      "id": "gov005",
+      "type": "services",
+      "name": "Citizen Identity",
+      "description": "Digital ID",
+      "pattern": "Authentication, verification, SSO",
+      "example": "Services usage"
+    },
+    {
+      "id": "gov006",
+      "type": "services",
+      "name": "Benefits Systems",
+      "description": "Social services",
+      "pattern": "Eligibility, enrollment, payments",
+      "example": "Services usage"
+    },
+    {
+      "id": "gov007",
+      "type": "services",
+      "name": "Permitting/Licensing",
+      "description": "Regulatory services",
+      "pattern": "Applications, reviews, issuance",
+      "example": "Services usage"
+    },
+    {
+      "id": "gov008",
+      "type": "infrastructure",
+      "name": "Government Cloud",
+      "description": "Cloud adoption",
+      "pattern": "FedRAMP, GovCloud, compliance",
+      "example": "Infrastructure usage"
+    },
+    {
+      "id": "gov009",
+      "type": "infrastructure",
+      "name": "Shared Services",
+      "description": "Common platforms",
+      "pattern": "Identity, payments, notifications",
+      "example": "Infrastructure usage"
+    },
+    {
+      "id": "gov010",
+      "type": "infrastructure",
+      "name": "Legacy Modernization",
+      "description": "System updates",
+      "pattern": "COBOL migration, API-first",
+      "example": "Infrastructure usage"
+    },
+    {
+      "id": "gov011",
+      "type": "data",
+      "name": "Open Data",
+      "description": "Data portals",
+      "pattern": "Datasets, APIs, CKAN",
+      "example": "Data usage"
+    },
+    {
+      "id": "gov012",
+      "type": "data",
+      "name": "Data Governance",
+      "description": "Data management",
+      "pattern": "Quality, standards, stewardship",
+      "example": "Data usage"
+    },
+    {
+      "id": "gov013",
+      "type": "data",
+      "name": "Interoperability",
+      "description": "System integration",
+      "pattern": "Standards, APIs, data exchange",
+      "example": "Data usage"
+    },
+    {
+      "id": "gov014",
+      "type": "security-gov",
+      "name": "Government Security",
+      "description": "Cyber security",
+      "pattern": "NIST, FedRAMP, zero trust",
+      "example": "Security-gov usage"
+    },
+    {
+      "id": "gov015",
+      "type": "security-gov",
+      "name": "Privacy Government",
+      "description": "Privacy compliance",
+      "pattern": "PII, privacy impact, consent",
+      "example": "Security-gov usage"
+    },
+    {
+      "id": "gov016",
+      "type": "security-gov",
+      "name": "Classified Systems",
+      "description": "Secure systems",
+      "pattern": "Classification, air-gap, clearance",
+      "example": "Security-gov usage"
+    },
+    {
+      "id": "gov017",
+      "type": "procurement",
+      "name": "Government Procurement",
+      "description": "Acquisition",
+      "pattern": "RFP, contracts, compliance",
+      "example": "Procurement usage"
+    },
+    {
+      "id": "gov018",
+      "type": "procurement",
+      "name": "Agile Government",
+      "description": "Modern delivery",
+      "pattern": "Agile, DevOps, iteration",
+      "example": "Procurement usage"
+    },
+    {
+      "id": "gov019",
+      "type": "civic",
+      "name": "Civic Tech",
+      "description": "Citizen engagement",
+      "pattern": "Participation, transparency, feedback",
+      "example": "Civic usage"
+    },
+    {
+      "id": "gov020",
+      "type": "civic",
+      "name": "Open Source Government",
+      "description": "OSS adoption",
+      "pattern": "Code sharing, communities",
+      "example": "Civic usage"
+    },
+    {
+      "id": "gov021",
+      "type": "civic",
+      "name": "311/Service Requests",
+      "description": "Citizen requests",
+      "pattern": "Reporting, tracking, resolution",
+      "example": "Civic usage"
+    },
+    {
+      "id": "gov022",
+      "type": "justice",
+      "name": "Courts Technology",
+      "description": "Judicial systems",
+      "pattern": "Case management, e-filing",
+      "example": "Justice usage"
+    },
+    {
+      "id": "gov023",
+      "type": "justice",
+      "name": "Law Enforcement Tech",
+      "description": "Police technology",
+      "pattern": "CAD, RMS, body cameras",
+      "example": "Justice usage"
+    },
+    {
+      "id": "gov024",
+      "type": "elections",
+      "name": "Election Technology",
+      "description": "Voting systems",
+      "pattern": "Registration, voting, tabulation",
+      "example": "Elections usage"
+    },
+    {
+      "id": "gov025",
+      "type": "elections",
+      "name": "Election Security",
+      "description": "Secure elections",
+      "pattern": "Auditing, paper trail, testing",
+      "example": "Elections usage"
+    },
+    {
+      "id": "gov026",
+      "type": "smart-city",
+      "name": "Smart City",
+      "description": "Urban technology",
+      "pattern": "IoT, sensors, dashboards",
+      "example": "Smart-city usage"
+    },
+    {
+      "id": "gov027",
+      "type": "smart-city",
+      "name": "Traffic Management",
+      "description": "Transportation",
+      "pattern": "Signals, monitoring, optimization",
+      "example": "Smart-city usage"
+    },
+    {
+      "id": "gov028",
+      "type": "ai-gov",
+      "name": "Government AI",
+      "description": "AI in government",
+      "pattern": "Automation, prediction, ethics",
+      "example": "Ai-gov usage"
+    },
+    {
+      "id": "gov029",
+      "type": "ai-gov",
+      "name": "AI Ethics Government",
+      "description": "Responsible AI",
+      "pattern": "Bias, transparency, accountability",
+      "example": "Ai-gov usage"
+    },
+    {
+      "id": "gov030",
+      "type": "standards",
+      "name": "Government Standards",
+      "description": "Public standards",
+      "pattern": "508, WCAG, open standards",
+      "example": "Standards usage"
+    }
+  ]
+}

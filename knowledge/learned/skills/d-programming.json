@@ -1,0 +1,246 @@
+{
+  "category": "d-programming",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "dlang001",
+      "type": "fundamentals",
+      "name": "D Basics",
+      "description": "D language syntax",
+      "pattern": "Variables, functions, modules",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dlang002",
+      "type": "fundamentals",
+      "name": "Type System",
+      "description": "D types",
+      "pattern": "Static typing, type inference, alias",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dlang003",
+      "type": "fundamentals",
+      "name": "Arrays and Slices",
+      "description": "Array types",
+      "pattern": "Dynamic arrays, slices, static arrays",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dlang004",
+      "type": "memory",
+      "name": "Memory Management",
+      "description": "GC and manual",
+      "pattern": "GC, @nogc, malloc, free",
+      "example": "Memory usage"
+    },
+    {
+      "id": "dlang005",
+      "type": "memory",
+      "name": "Pointers",
+      "description": "Pointer operations",
+      "pattern": "Pointers, pointer arithmetic",
+      "example": "Memory usage"
+    },
+    {
+      "id": "dlang006",
+      "type": "memory",
+      "name": "Safe D",
+      "description": "Memory safety",
+      "pattern": "@safe, @trusted, @system",
+      "example": "Memory usage"
+    },
+    {
+      "id": "dlang007",
+      "type": "oop",
+      "name": "Classes",
+      "description": "OOP",
+      "pattern": "class, interface, inheritance",
+      "example": "Oop usage"
+    },
+    {
+      "id": "dlang008",
+      "type": "oop",
+      "name": "Structs",
+      "description": "Value types",
+      "pattern": "struct, opEquals, opCmp",
+      "example": "Oop usage"
+    },
+    {
+      "id": "dlang009",
+      "type": "oop",
+      "name": "Operator Overloading",
+      "description": "Custom operators",
+      "pattern": "opBinary, opUnary, opIndex",
+      "example": "Oop usage"
+    },
+    {
+      "id": "dlang010",
+      "type": "functional",
+      "name": "Ranges",
+      "description": "Lazy iteration",
+      "pattern": "InputRange, ForwardRange, map, filter",
+      "example": "Functional usage"
+    },
+    {
+      "id": "dlang011",
+      "type": "functional",
+      "name": "Lambdas",
+      "description": "Anonymous functions",
+      "pattern": "=>, delegate, function",
+      "example": "Functional usage"
+    },
+    {
+      "id": "dlang012",
+      "type": "functional",
+      "name": "UFCS",
+      "description": "Uniform call syntax",
+      "pattern": "a.foo() == foo(a), chaining",
+      "example": "Functional usage"
+    },
+    {
+      "id": "dlang013",
+      "type": "metaprogramming",
+      "name": "Templates",
+      "description": "Generic programming",
+      "pattern": "Templates, constraints, static if",
+      "example": "Metaprogramming usage"
+    },
+    {
+      "id": "dlang014",
+      "type": "metaprogramming",
+      "name": "CTFE",
+      "description": "Compile-time execution",
+      "pattern": "enum, static, compile-time",
+      "example": "Metaprogramming usage"
+    },
+    {
+      "id": "dlang015",
+      "type": "metaprogramming",
+      "name": "Mixins",
+      "description": "Code generation",
+      "pattern": "mixin, string mixins, template mixins",
+      "example": "Metaprogramming usage"
+    },
+    {
+      "id": "dlang016",
+      "type": "concurrency",
+      "name": "std.parallelism",
+      "description": "Parallelism",
+      "pattern": "parallel, taskPool, reduce",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "dlang017",
+      "type": "concurrency",
+      "name": "std.concurrency",
+      "description": "Message passing",
+      "pattern": "spawn, send, receive",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "dlang018",
+      "type": "concurrency",
+      "name": "Fibers",
+      "description": "Lightweight threads",
+      "pattern": "Fiber, yield, coroutines",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "dlang019",
+      "type": "interop",
+      "name": "C Interop",
+      "description": "C compatibility",
+      "pattern": "extern(C), importC, bindings",
+      "example": "Interop usage"
+    },
+    {
+      "id": "dlang020",
+      "type": "interop",
+      "name": "C++ Interop",
+      "description": "C++ compatibility",
+      "pattern": "extern(C++), mangling",
+      "example": "Interop usage"
+    },
+    {
+      "id": "dlang021",
+      "type": "stdlib",
+      "name": "Phobos",
+      "description": "Standard library",
+      "pattern": "std.algorithm, std.range, std.file",
+      "example": "Stdlib usage"
+    },
+    {
+      "id": "dlang022",
+      "type": "stdlib",
+      "name": "std.algorithm",
+      "description": "Algorithms",
+      "pattern": "sort, find, map, filter, reduce",
+      "example": "Stdlib usage"
+    },
+    {
+      "id": "dlang023",
+      "type": "tooling",
+      "name": "DUB",
+      "description": "Package manager",
+      "pattern": "dub.json, dependencies, build",
+      "example": "Tooling usage"
+    },
+    {
+      "id": "dlang024",
+      "type": "tooling",
+      "name": "DMD/LDC/GDC",
+      "description": "Compilers",
+      "pattern": "dmd, ldc2, gdc, optimization",
+      "example": "Tooling usage"
+    },
+    {
+      "id": "dlang025",
+      "type": "web",
+      "name": "Vibe.d",
+      "description": "Web framework",
+      "pattern": "HTTP server, routing, fibers",
+      "example": "Web usage"
+    },
+    {
+      "id": "dlang026",
+      "type": "testing",
+      "name": "Unit Tests",
+      "description": "Built-in testing",
+      "pattern": "unittest, assert, -unittest",
+      "example": "Testing usage"
+    },
+    {
+      "id": "dlang027",
+      "type": "contracts",
+      "name": "Contract Programming",
+      "description": "DbC",
+      "pattern": "in, out, invariant, assert",
+      "example": "Contracts usage"
+    },
+    {
+      "id": "dlang028",
+      "type": "attributes",
+      "name": "Attributes",
+      "description": "Function attributes",
+      "pattern": "pure, nothrow, @nogc",
+      "example": "Attributes usage"
+    },
+    {
+      "id": "dlang029",
+      "type": "betterc",
+      "name": "BetterC",
+      "description": "C subset",
+      "pattern": "-betterC, no GC, embedded",
+      "example": "Betterc usage"
+    },
+    {
+      "id": "dlang030",
+      "type": "advanced",
+      "name": "Static Introspection",
+      "description": "Reflection",
+      "pattern": "__traits, is(), .tupleof",
+      "example": "Advanced usage"
+    }
+  ]
+}

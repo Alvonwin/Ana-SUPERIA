@@ -1,0 +1,33 @@
+{
+  "category": "ai-audio-synthesis",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "AI Audio Synthesis - TTS, Voice Cloning, Music Generation",
+  "skills": [
+    {"id": "aas01", "type": "tts", "name": "Text-to-Speech", "description": "Convert text to audio", "pattern": "Text → Speech synthesis", "example": "ElevenLabs, Coqui"},
+    {"id": "aas02", "type": "clone", "name": "Voice Cloning", "description": "Clone any voice", "pattern": "Sample → Model → Generate", "example": "3s voice sample"},
+    {"id": "aas03", "type": "elevenlabs", "name": "ElevenLabs", "description": "Premium TTS API", "pattern": "High quality voices", "example": "Commercial use"},
+    {"id": "aas04", "type": "coqui", "name": "Coqui TTS", "description": "Open source TTS", "pattern": "XTTS, YourTTS", "example": "Local synthesis"},
+    {"id": "aas05", "type": "bark", "name": "Bark", "description": "Suno audio model", "pattern": "Expressive TTS", "example": "Emotions, music"},
+    {"id": "aas06", "type": "tortoise", "name": "Tortoise TTS", "description": "High quality TTS", "pattern": "Slow but good", "example": "Audiobook quality"},
+    {"id": "aas07", "type": "xtts", "name": "XTTS", "description": "Cross-lingual TTS", "pattern": "Clone + translate", "example": "Multilingual clone"},
+    {"id": "aas08", "type": "rvc", "name": "RVC", "description": "Retrieval Voice Conversion", "pattern": "Voice → Voice", "example": "Singing conversion"},
+    {"id": "aas09", "type": "sovits", "name": "So-VITS-SVC", "description": "Singing Voice Conversion", "pattern": "AI cover creation", "example": "Any voice sings"},
+    {"id": "aas10", "type": "whisper", "name": "Whisper", "description": "Speech recognition", "pattern": "Audio → Text", "example": "Transcription"},
+    {"id": "aas11", "type": "suno", "name": "Suno AI", "description": "Music generation", "pattern": "Prompt → Full song", "example": "Create songs"},
+    {"id": "aas12", "type": "udio", "name": "Udio", "description": "Music generation", "pattern": "High quality music", "example": "Genre variety"},
+    {"id": "aas13", "type": "musicgen", "name": "MusicGen", "description": "Meta music model", "pattern": "Open source music", "example": "Local generation"},
+    {"id": "aas14", "type": "audiogen", "name": "AudioGen", "description": "Sound effect generation", "pattern": "Text → SFX", "example": "Ambient sounds"},
+    {"id": "aas15", "type": "stable", "name": "Stable Audio", "description": "Stability AI audio", "pattern": "Music/SFX gen", "example": "44.1kHz output"},
+    {"id": "aas16", "type": "voicecraft", "name": "VoiceCraft", "description": "Speech editing", "pattern": "Edit existing audio", "example": "Change words"},
+    {"id": "aas17", "type": "descript", "name": "Descript Overdub", "description": "Voice replacement", "pattern": "Type to edit audio", "example": "Podcast editing"},
+    {"id": "aas18", "type": "parler", "name": "Parler TTS", "description": "Described voice TTS", "pattern": "Describe voice style", "example": "Open source"},
+    {"id": "aas19", "type": "fish", "name": "Fish Speech", "description": "Fast TTS", "pattern": "Low latency", "example": "Real-time ready"},
+    {"id": "aas20", "type": "mars5", "name": "Mars5 TTS", "description": "Emotion control", "pattern": "Style tokens", "example": "Expressive speech"},
+    {"id": "aas21", "type": "f5tts", "name": "F5-TTS", "description": "Flow matching TTS", "pattern": "Zero-shot cloning", "example": "15s sample"},
+    {"id": "aas22", "type": "kokoro", "name": "Kokoro TTS", "description": "Lightweight TTS", "pattern": "82M parameters", "example": "Edge deployment"},
+    {"id": "aas23", "type": "piper", "name": "Piper", "description": "Fast local TTS", "pattern": "ONNX models", "example": "Home assistant"},
+    {"id": "aas24", "type": "vits", "name": "VITS", "description": "End-to-end TTS", "pattern": "Single model", "example": "Research baseline"},
+    {"id": "aas25", "type": "voicefixer", "name": "VoiceFixer", "description": "Audio restoration", "pattern": "Clean bad audio", "example": "Noise removal"}
+  ]
+}

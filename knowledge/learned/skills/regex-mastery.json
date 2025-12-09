@@ -1,0 +1,246 @@
+{
+  "category": "regex-mastery",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "rgx001",
+      "type": "basics",
+      "name": "Character Classes",
+      "description": "Match character sets",
+      "pattern": "[a-z], [0-9], [^abc], \\d, \\w, \\s, . (any)",
+      "example": "Basics usage"
+    },
+    {
+      "id": "rgx002",
+      "type": "basics",
+      "name": "Quantifiers",
+      "description": "Repetition",
+      "pattern": "* (0+), + (1+), ? (0-1), {n}, {n,}, {n,m}",
+      "example": "Basics usage"
+    },
+    {
+      "id": "rgx003",
+      "type": "basics",
+      "name": "Anchors",
+      "description": "Position matching",
+      "pattern": "^ (start), $ (end), \\b (word boundary), \\B (non-boundary)",
+      "example": "Basics usage"
+    },
+    {
+      "id": "rgx004",
+      "type": "basics",
+      "name": "Alternation",
+      "description": "OR matching",
+      "pattern": "cat|dog matches 'cat' or 'dog'",
+      "example": "Basics usage"
+    },
+    {
+      "id": "rgx005",
+      "type": "basics",
+      "name": "Escaping",
+      "description": "Literal special chars",
+      "pattern": "\\. \\* \\+ \\? \\[ \\] \\( \\) \\{ \\} \\^ \\$ \\|",
+      "example": "Basics usage"
+    },
+    {
+      "id": "rgx006",
+      "type": "groups",
+      "name": "Capturing Groups",
+      "description": "Extract matches",
+      "pattern": "(\\d{4})-(\\d{2})-(\\d{2}) captures year, month, day",
+      "example": "Groups usage"
+    },
+    {
+      "id": "rgx007",
+      "type": "groups",
+      "name": "Named Groups",
+      "description": "Named captures",
+      "pattern": "(?<year>\\d{4})-(?<month>\\d{2}) -> match.groups.year",
+      "example": "Groups usage"
+    },
+    {
+      "id": "rgx008",
+      "type": "groups",
+      "name": "Non-Capturing Groups",
+      "description": "Group without capture",
+      "pattern": "(?:https?://) groups but doesn't capture",
+      "example": "Groups usage"
+    },
+    {
+      "id": "rgx009",
+      "type": "groups",
+      "name": "Backreferences",
+      "description": "Reference captures",
+      "pattern": "(\\w+)\\s+\\1 matches repeated words",
+      "example": "Groups usage"
+    },
+    {
+      "id": "rgx010",
+      "type": "lookaround",
+      "name": "Positive Lookahead",
+      "description": "Match if followed by",
+      "pattern": "\\d+(?=px) matches digits before 'px'",
+      "example": "Lookaround usage"
+    },
+    {
+      "id": "rgx011",
+      "type": "lookaround",
+      "name": "Negative Lookahead",
+      "description": "Match if not followed",
+      "pattern": "\\d+(?!px) matches digits not before 'px'",
+      "example": "Lookaround usage"
+    },
+    {
+      "id": "rgx012",
+      "type": "lookaround",
+      "name": "Positive Lookbehind",
+      "description": "Match if preceded by",
+      "pattern": "(?<=\\$)\\d+ matches digits after '$'",
+      "example": "Lookaround usage"
+    },
+    {
+      "id": "rgx013",
+      "type": "lookaround",
+      "name": "Negative Lookbehind",
+      "description": "Match if not preceded",
+      "pattern": "(?<!\\$)\\d+ matches digits not after '$'",
+      "example": "Lookaround usage"
+    },
+    {
+      "id": "rgx014",
+      "type": "advanced",
+      "name": "Greedy vs Lazy",
+      "description": "Quantifier behavior",
+      "pattern": ".* (greedy), .*? (lazy/non-greedy)",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rgx015",
+      "type": "advanced",
+      "name": "Atomic Groups",
+      "description": "No backtracking",
+      "pattern": "(?>pattern) prevents backtracking into group",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rgx016",
+      "type": "advanced",
+      "name": "Possessive Quantifiers",
+      "description": "No give back",
+      "pattern": "a++ won't backtrack, faster but may fail to match",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rgx017",
+      "type": "advanced",
+      "name": "Conditionals",
+      "description": "If-then-else",
+      "pattern": "(?(1)yes|no) - if group 1 matched, use 'yes' pattern",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rgx018",
+      "type": "advanced",
+      "name": "Recursive Patterns",
+      "description": "Nested matching",
+      "pattern": "\\((?:[^()]+|(?R))*\\) matches nested parentheses",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rgx019",
+      "type": "flags",
+      "name": "Case Insensitive",
+      "description": "Ignore case",
+      "pattern": "/pattern/i or (?i)pattern",
+      "example": "Flags usage"
+    },
+    {
+      "id": "rgx020",
+      "type": "flags",
+      "name": "Multiline",
+      "description": "^ $ per line",
+      "pattern": "/pattern/m - ^ and $ match line boundaries",
+      "example": "Flags usage"
+    },
+    {
+      "id": "rgx021",
+      "type": "flags",
+      "name": "Dotall",
+      "description": ". matches newline",
+      "pattern": "/pattern/s - dot matches everything including \\n",
+      "example": "Flags usage"
+    },
+    {
+      "id": "rgx022",
+      "type": "flags",
+      "name": "Global",
+      "description": "Find all matches",
+      "pattern": "/pattern/g - don't stop at first match",
+      "example": "Flags usage"
+    },
+    {
+      "id": "rgx023",
+      "type": "patterns",
+      "name": "Email Validation",
+      "description": "Email regex",
+      "pattern": "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$ (simplified)",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rgx024",
+      "type": "patterns",
+      "name": "URL Matching",
+      "description": "URL regex",
+      "pattern": "https?://[\\w.-]+(?:/[\\w./-]*)? (basic)",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rgx025",
+      "type": "patterns",
+      "name": "Phone Numbers",
+      "description": "Phone regex",
+      "pattern": "\\+?\\d{1,3}[-.\\s]?\\d{3}[-.\\s]?\\d{4}",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rgx026",
+      "type": "patterns",
+      "name": "IP Address",
+      "description": "IPv4 regex",
+      "pattern": "\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rgx027",
+      "type": "performance",
+      "name": "Catastrophic Backtracking",
+      "description": "Avoid ReDoS",
+      "pattern": "(a+)+ on 'aaaaaaaaaaaaaaaaX' causes exponential time",
+      "example": "Performance usage"
+    },
+    {
+      "id": "rgx028",
+      "type": "performance",
+      "name": "Optimization Tips",
+      "description": "Faster regex",
+      "pattern": "Anchor when possible, be specific, avoid nested quantifiers",
+      "example": "Performance usage"
+    },
+    {
+      "id": "rgx029",
+      "type": "tools",
+      "name": "Regex Testing",
+      "description": "Debugging tools",
+      "pattern": "regex101.com, regexr.com - explain, test, debug",
+      "example": "Tools usage"
+    },
+    {
+      "id": "rgx030",
+      "type": "js",
+      "name": "JavaScript Regex",
+      "description": "JS specifics",
+      "pattern": "/regex/.test(str), str.match(), str.replace(), matchAll()",
+      "example": "Js usage"
+    }
+  ]
+}

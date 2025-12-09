@@ -1,0 +1,246 @@
+{
+  "category": "cobol-mainframe",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cob001",
+      "type": "fundamentals",
+      "name": "COBOL Basics",
+      "description": "COBOL structure",
+      "pattern": "IDENTIFICATION, ENVIRONMENT, DATA, PROCEDURE",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cob002",
+      "type": "fundamentals",
+      "name": "Data Division",
+      "description": "Data definitions",
+      "pattern": "WORKING-STORAGE, FILE SECTION, RECORD",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cob003",
+      "type": "fundamentals",
+      "name": "Picture Clause",
+      "description": "Data types",
+      "pattern": "PIC 9, PIC X, PIC S9V99",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cob004",
+      "type": "fundamentals",
+      "name": "Procedure Division",
+      "description": "Program logic",
+      "pattern": "PERFORM, IF, EVALUATE, GO TO",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cob005",
+      "type": "fundamentals",
+      "name": "Copybooks",
+      "description": "Code reuse",
+      "pattern": "COPY, REPLACE, data structures",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cob006",
+      "type": "data",
+      "name": "File Handling",
+      "description": "File I/O",
+      "pattern": "OPEN, READ, WRITE, CLOSE, REWRITE",
+      "example": "Data usage"
+    },
+    {
+      "id": "cob007",
+      "type": "data",
+      "name": "Sequential Files",
+      "description": "Sequential processing",
+      "pattern": "LINE SEQUENTIAL, RECORD SEQUENTIAL",
+      "example": "Data usage"
+    },
+    {
+      "id": "cob008",
+      "type": "data",
+      "name": "Indexed Files",
+      "description": "VSAM KSDS",
+      "pattern": "INDEXED, ALTERNATE KEY, START",
+      "example": "Data usage"
+    },
+    {
+      "id": "cob009",
+      "type": "data",
+      "name": "Relative Files",
+      "description": "VSAM RRDS",
+      "pattern": "RELATIVE KEY, random access",
+      "example": "Data usage"
+    },
+    {
+      "id": "cob010",
+      "type": "database",
+      "name": "DB2 COBOL",
+      "description": "Database access",
+      "pattern": "EXEC SQL, SQLCA, cursors",
+      "example": "Database usage"
+    },
+    {
+      "id": "cob011",
+      "type": "database",
+      "name": "CICS Programming",
+      "description": "Online processing",
+      "pattern": "EXEC CICS, SEND, RECEIVE, LINK",
+      "example": "Database usage"
+    },
+    {
+      "id": "cob012",
+      "type": "database",
+      "name": "IMS DB/DC",
+      "description": "Hierarchical DB",
+      "pattern": "DL/I calls, PCB, PSB",
+      "example": "Database usage"
+    },
+    {
+      "id": "cob013",
+      "type": "jcl",
+      "name": "JCL Basics",
+      "description": "Job Control",
+      "pattern": "JOB, EXEC, DD statements",
+      "example": "Jcl usage"
+    },
+    {
+      "id": "cob014",
+      "type": "jcl",
+      "name": "Procedures",
+      "description": "JCL procedures",
+      "pattern": "PROC, PEND, symbolic parameters",
+      "example": "Jcl usage"
+    },
+    {
+      "id": "cob015",
+      "type": "jcl",
+      "name": "Utilities",
+      "description": "IBM utilities",
+      "pattern": "IEBGENER, IDCAMS, SORT",
+      "example": "Jcl usage"
+    },
+    {
+      "id": "cob016",
+      "type": "vsam",
+      "name": "VSAM Files",
+      "description": "VSAM types",
+      "pattern": "KSDS, ESDS, RRDS, LDS",
+      "example": "Vsam usage"
+    },
+    {
+      "id": "cob017",
+      "type": "vsam",
+      "name": "IDCAMS",
+      "description": "Access Method Services",
+      "pattern": "DEFINE, REPRO, LISTCAT, DELETE",
+      "example": "Vsam usage"
+    },
+    {
+      "id": "cob018",
+      "type": "batch",
+      "name": "Batch Processing",
+      "description": "Batch programs",
+      "pattern": "batch, job scheduling, restart",
+      "example": "Batch usage"
+    },
+    {
+      "id": "cob019",
+      "type": "batch",
+      "name": "Sort/Merge",
+      "description": "Data sorting",
+      "pattern": "DFSORT, SYNCSORT, SORT FIELDS",
+      "example": "Batch usage"
+    },
+    {
+      "id": "cob020",
+      "type": "cics",
+      "name": "CICS Maps",
+      "description": "Screen handling",
+      "pattern": "BMS, DFHMSD, DFHMDI, DFHMDF",
+      "example": "Cics usage"
+    },
+    {
+      "id": "cob021",
+      "type": "cics",
+      "name": "CICS Commands",
+      "description": "CICS API",
+      "pattern": "SEND MAP, RECEIVE MAP, RETURN",
+      "example": "Cics usage"
+    },
+    {
+      "id": "cob022",
+      "type": "debugging",
+      "name": "COBOL Debugging",
+      "description": "Debug techniques",
+      "pattern": "DISPLAY, File-Aid, Xpediter",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "cob023",
+      "type": "debugging",
+      "name": "Abend Handling",
+      "description": "Error handling",
+      "pattern": "S0C7, S0C4, ON EXCEPTION",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "cob024",
+      "type": "modern",
+      "name": "COBOL-Java",
+      "description": "Java integration",
+      "pattern": "COBOL for JVM, interoperability",
+      "example": "Modern usage"
+    },
+    {
+      "id": "cob025",
+      "type": "modern",
+      "name": "Micro Focus",
+      "description": "Modern COBOL",
+      "pattern": "Visual COBOL, .NET, cloud",
+      "example": "Modern usage"
+    },
+    {
+      "id": "cob026",
+      "type": "modern",
+      "name": "GnuCOBOL",
+      "description": "Open source",
+      "pattern": "cobc, free COBOL compiler",
+      "example": "Modern usage"
+    },
+    {
+      "id": "cob027",
+      "type": "migration",
+      "name": "COBOL Migration",
+      "description": "Modernization",
+      "pattern": "Re-hosting, re-platforming",
+      "example": "Migration usage"
+    },
+    {
+      "id": "cob028",
+      "type": "migration",
+      "name": "Code Analysis",
+      "description": "Legacy analysis",
+      "pattern": "Impact analysis, dependencies",
+      "example": "Migration usage"
+    },
+    {
+      "id": "cob029",
+      "type": "best-practices",
+      "name": "Structured COBOL",
+      "description": "Best practices",
+      "pattern": "PERFORM, avoid GO TO, modular",
+      "example": "Best-practices usage"
+    },
+    {
+      "id": "cob030",
+      "type": "best-practices",
+      "name": "Coding Standards",
+      "description": "Enterprise standards",
+      "pattern": "naming, documentation, testing",
+      "example": "Best-practices usage"
+    }
+  ]
+}

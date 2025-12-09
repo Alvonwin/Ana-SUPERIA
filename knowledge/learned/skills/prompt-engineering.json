@@ -1,0 +1,247 @@
+{
+  "category": "prompt-engineering",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "pe01",
+      "type": "zero-shot",
+      "name": "Zero-shot Prompting",
+      "description": "Direct instruction without examples",
+      "pattern": "Classify this text as positive or negative: {text}",
+      "example": "Works for simple tasks"
+    },
+    {
+      "id": "pe02",
+      "type": "few-shot",
+      "name": "Few-shot Learning",
+      "description": "Provide examples before the task",
+      "pattern": "Example 1: Input -> Output. Example 2: Input -> Output. Now: {input}",
+      "example": "3-5 examples typically optimal"
+    },
+    {
+      "id": "pe03",
+      "type": "cot",
+      "name": "Chain of Thought",
+      "description": "Step-by-step reasoning",
+      "pattern": "Lets think step by step...",
+      "example": "Improves math and logic tasks"
+    },
+    {
+      "id": "pe04",
+      "type": "self-consistency",
+      "name": "Self-Consistency",
+      "description": "Multiple reasoning paths",
+      "pattern": "Generate 5 solutions, then choose majority",
+      "example": "Reduces errors on complex problems"
+    },
+    {
+      "id": "pe05",
+      "type": "tree-of-thought",
+      "name": "Tree of Thoughts",
+      "description": "Explore multiple reasoning branches",
+      "pattern": "Consider 3 approaches, evaluate each, proceed with best",
+      "example": "For planning and strategy"
+    },
+    {
+      "id": "pe06",
+      "type": "react",
+      "name": "ReAct Pattern",
+      "description": "Reasoning + Acting",
+      "pattern": "Thought: I need to... Action: search(query) Observation: result",
+      "example": "For tool-using agents"
+    },
+    {
+      "id": "pe07",
+      "type": "role",
+      "name": "Role Prompting",
+      "description": "Assign persona to model",
+      "pattern": "You are an expert {role} with 20 years experience in...",
+      "example": "Improves domain-specific responses"
+    },
+    {
+      "id": "pe08",
+      "type": "structured",
+      "name": "Structured Output",
+      "description": "Request specific format",
+      "pattern": "Respond in JSON with keys: title, summary, points",
+      "example": "Use JSON mode when available"
+    },
+    {
+      "id": "pe09",
+      "type": "constraints",
+      "name": "Constraint Prompting",
+      "description": "Set boundaries and rules",
+      "pattern": "Do not mention X. Keep under 100 words. Only use facts from...",
+      "example": "Reduces hallucinations"
+    },
+    {
+      "id": "pe10",
+      "type": "decomposition",
+      "name": "Task Decomposition",
+      "description": "Break complex tasks into subtasks",
+      "pattern": "First analyze X, then summarize Y, finally recommend Z",
+      "example": "For multi-step workflows"
+    },
+    {
+      "id": "pe11",
+      "type": "reflection",
+      "name": "Self-Reflection",
+      "description": "Ask model to review its output",
+      "pattern": "Review your answer. Is it accurate? What could be improved?",
+      "example": "Catches errors and improves quality"
+    },
+    {
+      "id": "pe12",
+      "type": "meta",
+      "name": "Meta Prompting",
+      "description": "Prompt about prompting",
+      "pattern": "Write a prompt that would help with {task}",
+      "example": "For prompt optimization"
+    },
+    {
+      "id": "pe13",
+      "type": "delimiter",
+      "name": "Clear Delimiters",
+      "description": "Separate sections clearly",
+      "pattern": "Context: ### Instructions: ### Input: ### Output:",
+      "example": "Prevents injection attacks"
+    },
+    {
+      "id": "pe14",
+      "type": "negative",
+      "name": "Negative Prompting",
+      "description": "Specify what NOT to do",
+      "pattern": "Do not: apologize, make assumptions, use jargon",
+      "example": "More reliable than positive alone"
+    },
+    {
+      "id": "pe15",
+      "type": "temperature",
+      "name": "Temperature Tuning",
+      "description": "Control randomness",
+      "pattern": "temp=0 for factual, temp=0.7 for creative",
+      "example": "Lower = deterministic"
+    },
+    {
+      "id": "pe16",
+      "type": "system",
+      "name": "System Prompts",
+      "description": "Set persistent instructions",
+      "pattern": "System: You are a helpful assistant that...",
+      "example": "Claude system prompts"
+    },
+    {
+      "id": "pe17",
+      "type": "context-window",
+      "name": "Context Management",
+      "description": "Optimize context usage",
+      "pattern": "Summarize history, prioritize recent, trim old",
+      "example": "Handle long conversations"
+    },
+    {
+      "id": "pe18",
+      "type": "retrieval",
+      "name": "RAG Prompting",
+      "description": "Incorporate retrieved context",
+      "pattern": "Based on these documents: {docs}. Answer: {question}",
+      "example": "Citation improves accuracy"
+    },
+    {
+      "id": "pe19",
+      "type": "extraction",
+      "name": "Information Extraction",
+      "description": "Pull structured data from text",
+      "pattern": "Extract: name, date, amount from this invoice",
+      "example": "Use schema definitions"
+    },
+    {
+      "id": "pe20",
+      "type": "classification",
+      "name": "Classification Prompts",
+      "description": "Categorize inputs",
+      "pattern": "Classify into: [A, B, C, D]. Respond with letter only",
+      "example": "Constrain output space"
+    },
+    {
+      "id": "pe21",
+      "type": "summarization",
+      "name": "Summarization Techniques",
+      "description": "Condense information",
+      "pattern": "Summarize in 3 bullet points. Focus on key actions.",
+      "example": "Specify length and focus"
+    },
+    {
+      "id": "pe22",
+      "type": "code-gen",
+      "name": "Code Generation",
+      "description": "Generate code effectively",
+      "pattern": "Write a Python function that... Include type hints and docstring",
+      "example": "Specify language, style"
+    },
+    {
+      "id": "pe23",
+      "type": "multimodal",
+      "name": "Multimodal Prompts",
+      "description": "Combine text and images",
+      "pattern": "Describe this image. Focus on {aspect}",
+      "example": "Vision models (GPT-4V, Claude)"
+    },
+    {
+      "id": "pe24",
+      "type": "function-call",
+      "name": "Function Calling",
+      "description": "Enable tool use",
+      "pattern": "tools: [{name, description, parameters}]",
+      "example": "Structured API calls"
+    },
+    {
+      "id": "pe25",
+      "type": "adversarial",
+      "name": "Adversarial Testing",
+      "description": "Test prompt robustness",
+      "pattern": "Try to break this prompt with edge cases",
+      "example": "Security hardening"
+    },
+    {
+      "id": "pe26",
+      "type": "iterative",
+      "name": "Iterative Refinement",
+      "description": "Progressive improvement",
+      "pattern": "Based on feedback, revise: {previous_output}",
+      "example": "Multi-turn optimization"
+    },
+    {
+      "id": "pe27",
+      "type": "scoring",
+      "name": "Scoring Prompts",
+      "description": "Rate or rank items",
+      "pattern": "Rate 1-10 based on: clarity, accuracy, completeness",
+      "example": "Use rubrics for consistency"
+    },
+    {
+      "id": "pe28",
+      "type": "persona-switch",
+      "name": "Persona Switching",
+      "description": "Multiple expert perspectives",
+      "pattern": "As a security expert... As a UX designer...",
+      "example": "Get diverse viewpoints"
+    },
+    {
+      "id": "pe29",
+      "type": "memory",
+      "name": "Memory Prompts",
+      "description": "Maintain conversation state",
+      "pattern": "Remember: user prefers {x}. Previous decisions: {y}",
+      "example": "External memory systems"
+    },
+    {
+      "id": "pe30",
+      "type": "evaluation",
+      "name": "Prompt Evaluation",
+      "description": "Measure prompt quality",
+      "pattern": "A/B test prompts, measure accuracy, latency, cost",
+      "example": "Use evaluation datasets"
+    }
+  ]
+}

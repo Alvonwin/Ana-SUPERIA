@@ -1,0 +1,248 @@
+{
+  "category": "comfyui-workflows",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "Skills for ComfyUI image generation workflows",
+  "skills": [
+    {
+      "id": "cfy01",
+      "type": "installation",
+      "name": "ComfyUI Setup",
+      "description": "Install ComfyUI locally",
+      "pattern": "git clone https://github.com/comfyanonymous/ComfyUI && pip install -r requirements.txt",
+      "example": "python main.py --listen --port 8188"
+    },
+    {
+      "id": "cfy02",
+      "type": "api",
+      "name": "API Queue Prompt",
+      "description": "Send workflow via API",
+      "pattern": "POST /prompt {prompt: workflow_json, client_id}",
+      "example": "http://localhost:8188/prompt"
+    },
+    {
+      "id": "cfy03",
+      "type": "api",
+      "name": "API Get History",
+      "description": "Retrieve generation history",
+      "pattern": "GET /history/{prompt_id}",
+      "example": "Poll until execution complete"
+    },
+    {
+      "id": "cfy04",
+      "type": "api",
+      "name": "API Get Image",
+      "description": "Download generated image",
+      "pattern": "GET /view?filename=xxx&subfolder=&type=output",
+      "example": "Save response as image file"
+    },
+    {
+      "id": "cfy05",
+      "type": "websocket",
+      "name": "WebSocket Progress",
+      "description": "Real-time generation updates",
+      "pattern": "ws://localhost:8188/ws?clientId=xxx",
+      "example": "Events: executing, progress, executed"
+    },
+    {
+      "id": "cfy06",
+      "type": "workflow",
+      "name": "Workflow JSON Structure",
+      "description": "Node-based workflow format",
+      "pattern": "{node_id: {class_type, inputs: {...}}}",
+      "example": "Each node has unique ID and connections"
+    },
+    {
+      "id": "cfy07",
+      "type": "node",
+      "name": "KSampler Node",
+      "description": "Main sampling/denoising node",
+      "pattern": "steps, cfg, sampler_name, scheduler, denoise",
+      "example": "steps:20, cfg:7, euler, normal, denoise:1.0"
+    },
+    {
+      "id": "cfy08",
+      "type": "node",
+      "name": "CLIP Text Encode",
+      "description": "Encode prompts to conditioning",
+      "pattern": "CLIPTextEncode: {text, clip}",
+      "example": "Positive and negative prompts"
+    },
+    {
+      "id": "cfy09",
+      "type": "node",
+      "name": "Load Checkpoint",
+      "description": "Load SDXL/SD model",
+      "pattern": "CheckpointLoaderSimple: {ckpt_name}",
+      "example": "sdxl_base.safetensors"
+    },
+    {
+      "id": "cfy10",
+      "type": "node",
+      "name": "Empty Latent Image",
+      "description": "Create blank latent for txt2img",
+      "pattern": "EmptyLatentImage: {width, height, batch_size}",
+      "example": "1024x1024 for SDXL"
+    },
+    {
+      "id": "cfy11",
+      "type": "node",
+      "name": "VAE Decode",
+      "description": "Convert latent to pixel image",
+      "pattern": "VAEDecode: {samples, vae}",
+      "example": "Final step before saving"
+    },
+    {
+      "id": "cfy12",
+      "type": "node",
+      "name": "Save Image",
+      "description": "Save output to disk",
+      "pattern": "SaveImage: {images, filename_prefix}",
+      "example": "Saves to output folder"
+    },
+    {
+      "id": "cfy13",
+      "type": "model",
+      "name": "SDXL Models",
+      "description": "Stable Diffusion XL checkpoints",
+      "pattern": "sdxl_base, sdxl_refiner, juggernaut, realvisxl",
+      "example": "1024x1024 native resolution"
+    },
+    {
+      "id": "cfy14",
+      "type": "model",
+      "name": "SD 1.5 Models",
+      "description": "Stable Diffusion 1.5 checkpoints",
+      "pattern": "dreamshaper, deliberate, realistic_vision",
+      "example": "512x512 native resolution"
+    },
+    {
+      "id": "cfy15",
+      "type": "lora",
+      "name": "LoRA Loading",
+      "description": "Apply LoRA weights",
+      "pattern": "LoraLoader: {model, clip, lora_name, strength}",
+      "example": "strength_model:0.8, strength_clip:0.8"
+    },
+    {
+      "id": "cfy16",
+      "type": "controlnet",
+      "name": "ControlNet",
+      "description": "Structural guidance",
+      "pattern": "ControlNetApply: {conditioning, control_net, image, strength}",
+      "example": "canny, depth, openpose, lineart"
+    },
+    {
+      "id": "cfy17",
+      "type": "img2img",
+      "name": "Image to Image",
+      "description": "Transform existing image",
+      "pattern": "LoadImage + VAEEncode + lower denoise",
+      "example": "denoise: 0.5-0.8 for variations"
+    },
+    {
+      "id": "cfy18",
+      "type": "inpaint",
+      "name": "Inpainting",
+      "description": "Edit parts of image",
+      "pattern": "LoadImageMask + VAEEncodeForInpaint",
+      "example": "Mask black areas to repaint"
+    },
+    {
+      "id": "cfy19",
+      "type": "upscale",
+      "name": "Upscaling",
+      "description": "Increase image resolution",
+      "pattern": "ImageUpscaleWithModel: {upscale_model, image}",
+      "example": "4x_NMKD, RealESRGAN"
+    },
+    {
+      "id": "cfy20",
+      "type": "sampler",
+      "name": "Sampler Types",
+      "description": "Different sampling methods",
+      "pattern": "euler, euler_ancestral, dpmpp_2m, dpmpp_sde",
+      "example": "dpmpp_2m_sde_gpu for quality"
+    },
+    {
+      "id": "cfy21",
+      "type": "scheduler",
+      "name": "Scheduler Types",
+      "description": "Noise scheduling",
+      "pattern": "normal, karras, exponential, sgm_uniform",
+      "example": "karras often better for SDXL"
+    },
+    {
+      "id": "cfy22",
+      "type": "cfg",
+      "name": "CFG Scale",
+      "description": "Classifier-free guidance",
+      "pattern": "cfg: 1-20 (typically 5-8)",
+      "example": "Higher = more prompt adherence"
+    },
+    {
+      "id": "cfy23",
+      "type": "prompt",
+      "name": "Prompt Engineering",
+      "description": "Effective prompting",
+      "pattern": "subject, style, quality tags, weighted (word:1.2)",
+      "example": "masterpiece, best quality, 4k, detailed"
+    },
+    {
+      "id": "cfy24",
+      "type": "negative",
+      "name": "Negative Prompts",
+      "description": "Avoid unwanted elements",
+      "pattern": "bad quality, blurry, watermark, text",
+      "example": "Use embeddings like EasyNegative"
+    },
+    {
+      "id": "cfy25",
+      "type": "custom-node",
+      "name": "Custom Nodes",
+      "description": "Extend ComfyUI functionality",
+      "pattern": "Install via ComfyUI-Manager or git clone",
+      "example": "Impact Pack, ControlNet Aux, IPAdapter"
+    },
+    {
+      "id": "cfy26",
+      "type": "ipadapter",
+      "name": "IP-Adapter",
+      "description": "Image prompt adapter",
+      "pattern": "IPAdapterApply: {model, ipadapter, image}",
+      "example": "Transfer style/content from reference"
+    },
+    {
+      "id": "cfy27",
+      "type": "facerestore",
+      "name": "Face Restoration",
+      "description": "Fix/enhance faces",
+      "pattern": "FaceRestore: CodeFormer, GFPGAN",
+      "example": "Apply after generation"
+    },
+    {
+      "id": "cfy28",
+      "type": "batch",
+      "name": "Batch Generation",
+      "description": "Generate multiple images",
+      "pattern": "batch_size in EmptyLatentImage",
+      "example": "batch_size: 4 for variations"
+    },
+    {
+      "id": "cfy29",
+      "type": "seed",
+      "name": "Seed Control",
+      "description": "Reproducible generation",
+      "pattern": "seed in KSampler, -1 for random",
+      "example": "Same seed = same result"
+    },
+    {
+      "id": "cfy30",
+      "type": "vram",
+      "name": "VRAM Optimization",
+      "description": "Reduce memory usage",
+      "pattern": "--lowvram, --medvram, FP16 mode",
+      "example": "RTX 3070 8GB can run SDXL with lowvram"
+    }
+  ]
+}

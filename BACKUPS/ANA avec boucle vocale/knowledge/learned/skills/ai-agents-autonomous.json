@@ -1,0 +1,247 @@
+{
+  "category": "ai-agents-autonomous",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "ag01",
+      "type": "architecture",
+      "name": "Agent Architecture",
+      "description": "Design autonomous AI agents",
+      "pattern": "Perception -> Reasoning -> Planning -> Action -> Memory",
+      "example": "Modular agent design"
+    },
+    {
+      "id": "ag02",
+      "type": "langchain-agents",
+      "name": "LangChain Agents",
+      "description": "Build agents with LangChain",
+      "pattern": "create_react_agent(llm, tools, prompt)",
+      "example": "AgentExecutor with tools"
+    },
+    {
+      "id": "ag03",
+      "type": "tool-use",
+      "name": "Tool Use / Function Calling",
+      "description": "Enable agents to use tools",
+      "pattern": "tools=[{name, description, function}]",
+      "example": "Calculator, search, code execution"
+    },
+    {
+      "id": "ag04",
+      "type": "planning",
+      "name": "Agent Planning",
+      "description": "Decompose goals into steps",
+      "pattern": "Goal -> Subgoals -> Tasks -> Actions",
+      "example": "Hierarchical task planning"
+    },
+    {
+      "id": "ag05",
+      "type": "memory",
+      "name": "Agent Memory Systems",
+      "description": "Short and long-term memory",
+      "pattern": "ConversationBuffer, EntityMemory, VectorStore",
+      "example": "Retrieval-augmented memory"
+    },
+    {
+      "id": "ag06",
+      "type": "react",
+      "name": "ReAct Framework",
+      "description": "Reasoning and Acting",
+      "pattern": "Thought -> Action -> Observation -> Thought",
+      "example": "Iterative reasoning loop"
+    },
+    {
+      "id": "ag07",
+      "type": "reflection",
+      "name": "Self-Reflection",
+      "description": "Agents that critique themselves",
+      "pattern": "Reflexion: reflect on failure, retry",
+      "example": "Improves task completion"
+    },
+    {
+      "id": "ag08",
+      "type": "multi-agent",
+      "name": "Multi-Agent Systems",
+      "description": "Coordinated agent teams",
+      "pattern": "Supervisor, Worker agents, Communication",
+      "example": "AutoGen, CrewAI patterns"
+    },
+    {
+      "id": "ag09",
+      "type": "autogen",
+      "name": "AutoGen Framework",
+      "description": "Conversational agents",
+      "pattern": "AssistantAgent, UserProxyAgent, GroupChat",
+      "example": "Microsoft multi-agent"
+    },
+    {
+      "id": "ag10",
+      "type": "crewai",
+      "name": "CrewAI",
+      "description": "Agent crews with roles",
+      "pattern": "Agent(role, goal, backstory), Crew, Task",
+      "example": "Role-based collaboration"
+    },
+    {
+      "id": "ag11",
+      "type": "code-exec",
+      "name": "Code Execution",
+      "description": "Agents that write and run code",
+      "pattern": "Sandbox execution, Docker isolation",
+      "example": "Self-debugging agents"
+    },
+    {
+      "id": "ag12",
+      "type": "web-browsing",
+      "name": "Web Browsing Agents",
+      "description": "Navigate and interact with web",
+      "pattern": "Playwright, Selenium, browser automation",
+      "example": "Web scraping agents"
+    },
+    {
+      "id": "ag13",
+      "type": "rag-agent",
+      "name": "RAG Agents",
+      "description": "Retrieval-augmented agents",
+      "pattern": "Query -> Retrieve -> Generate -> Verify",
+      "example": "Knowledge-grounded responses"
+    },
+    {
+      "id": "ag14",
+      "type": "orchestration",
+      "name": "Agent Orchestration",
+      "description": "Coordinate multiple agents",
+      "pattern": "Router, Dispatcher, Aggregator",
+      "example": "Workflow management"
+    },
+    {
+      "id": "ag15",
+      "type": "guardrails",
+      "name": "Agent Guardrails",
+      "description": "Safety constraints",
+      "pattern": "Input validation, Output filtering, Action limits",
+      "example": "Prevent harmful actions"
+    },
+    {
+      "id": "ag16",
+      "type": "evaluation",
+      "name": "Agent Evaluation",
+      "description": "Measure agent performance",
+      "pattern": "Task completion rate, Efficiency, Accuracy",
+      "example": "Benchmark datasets"
+    },
+    {
+      "id": "ag17",
+      "type": "debugging",
+      "name": "Agent Debugging",
+      "description": "Debug agent behavior",
+      "pattern": "Trace logs, Intermediate steps, Visualization",
+      "example": "LangSmith tracing"
+    },
+    {
+      "id": "ag18",
+      "type": "streaming",
+      "name": "Streaming Responses",
+      "description": "Real-time agent output",
+      "pattern": "astream_events(), callbacks",
+      "example": "Progressive UI updates"
+    },
+    {
+      "id": "ag19",
+      "type": "state-machine",
+      "name": "State Machine Agents",
+      "description": "Structured agent flows",
+      "pattern": "States, Transitions, Conditions",
+      "example": "LangGraph state machines"
+    },
+    {
+      "id": "ag20",
+      "type": "langgraph",
+      "name": "LangGraph",
+      "description": "Graph-based agent workflows",
+      "pattern": "StateGraph, add_node, add_edge",
+      "example": "Cycles, branches, persistence"
+    },
+    {
+      "id": "ag21",
+      "type": "computer-use",
+      "name": "Computer Use Agents",
+      "description": "Control computer interfaces",
+      "pattern": "Screenshot -> Action -> Screenshot",
+      "example": "Claude Computer Use"
+    },
+    {
+      "id": "ag22",
+      "type": "mcp",
+      "name": "Model Context Protocol",
+      "description": "Standardized tool integration",
+      "pattern": "MCP servers, Resources, Tools, Prompts",
+      "example": "Cross-platform tools"
+    },
+    {
+      "id": "ag23",
+      "type": "anthropic-sdk",
+      "name": "Claude Agent SDK",
+      "description": "Build Claude-powered agents",
+      "pattern": "Anthropic client, tools, system prompts",
+      "example": "Official Anthropic SDK"
+    },
+    {
+      "id": "ag24",
+      "type": "openai-assistants",
+      "name": "OpenAI Assistants",
+      "description": "GPT-4 based assistants",
+      "pattern": "Threads, Runs, Code Interpreter",
+      "example": "File handling, retrieval"
+    },
+    {
+      "id": "ag25",
+      "type": "error-handling",
+      "name": "Agent Error Recovery",
+      "description": "Handle failures gracefully",
+      "pattern": "Retry, Fallback, Human escalation",
+      "example": "Robust agent design"
+    },
+    {
+      "id": "ag26",
+      "type": "human-in-loop",
+      "name": "Human-in-the-Loop",
+      "description": "Human oversight points",
+      "pattern": "Approval gates, Feedback collection",
+      "example": "Critical action confirmation"
+    },
+    {
+      "id": "ag27",
+      "type": "cost-mgmt",
+      "name": "Agent Cost Management",
+      "description": "Control LLM costs",
+      "pattern": "Token budgets, Caching, Model selection",
+      "example": "Cost-per-task tracking"
+    },
+    {
+      "id": "ag28",
+      "type": "persistence",
+      "name": "Agent Persistence",
+      "description": "Save and resume agent state",
+      "pattern": "Checkpoints, State serialization",
+      "example": "Long-running agents"
+    },
+    {
+      "id": "ag29",
+      "type": "observability",
+      "name": "Agent Observability",
+      "description": "Monitor agent behavior",
+      "pattern": "Traces, Metrics, Logs, Dashboards",
+      "example": "LangSmith, Phoenix"
+    },
+    {
+      "id": "ag30",
+      "type": "deployment",
+      "name": "Agent Deployment",
+      "description": "Production agent hosting",
+      "pattern": "API endpoints, Scaling, Versioning",
+      "example": "LangServe, Modal"
+    }
+  ]
+}

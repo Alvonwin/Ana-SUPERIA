@@ -1,0 +1,246 @@
+{
+  "category": "system-languages",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "sys001",
+      "type": "rust",
+      "name": "Rust Ownership",
+      "description": "Propriete, emprunt, lifetimes",
+      "pattern": "fn take(s: String) {} fn borrow(s: &String) {} fn mut_borrow(s: &mut String) {}",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys002",
+      "type": "rust",
+      "name": "Rust Option/Result",
+      "description": "Gestion erreurs sans exceptions",
+      "pattern": "fn find(id: i32) -> Option<User> {} fn parse(s: &str) -> Result<i32, ParseError> {}",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys003",
+      "type": "rust",
+      "name": "Rust Pattern Matching",
+      "description": "Match exhaustif",
+      "pattern": "match result { Ok(v) => v, Err(e) => return Err(e) }",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys004",
+      "type": "rust",
+      "name": "Rust Traits",
+      "description": "Interfaces et generics",
+      "pattern": "trait Drawable { fn draw(&self); } impl Drawable for Circle {}",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys005",
+      "type": "rust",
+      "name": "Rust Iterators",
+      "description": "Zero-cost abstractions",
+      "pattern": "v.iter().filter(|x| x > &0).map(|x| x * 2).collect::<Vec<_>>()",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys006",
+      "type": "rust",
+      "name": "Rust Async",
+      "description": "Async/await avec tokio",
+      "pattern": "#[tokio::main] async fn main() { let res = fetch().await?; }",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys007",
+      "type": "rust",
+      "name": "Rust Error Handling",
+      "description": "? operator, anyhow, thiserror",
+      "pattern": "let data = fs::read(path)?; // propage erreur",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys008",
+      "type": "rust",
+      "name": "Rust Smart Pointers",
+      "description": "Box, Rc, Arc, RefCell",
+      "pattern": "let shared = Arc::new(Mutex::new(data)); let clone = Arc::clone(&shared);",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys009",
+      "type": "rust",
+      "name": "Rust Macros",
+      "description": "Metaprogrammation",
+      "pattern": "macro_rules! vec { ($($x:expr),*) => { { let mut v = Vec::new(); $(v.push($x);)* v } } }",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys010",
+      "type": "rust",
+      "name": "Rust Unsafe",
+      "description": "Operations unsafe quand necessaire",
+      "pattern": "unsafe { *raw_ptr = 42; } // avec precaution!",
+      "example": "Rust usage"
+    },
+    {
+      "id": "sys011",
+      "type": "go",
+      "name": "Go Goroutines",
+      "description": "Concurrence legere",
+      "pattern": "go func() { doWork() }(); // lance goroutine",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys012",
+      "type": "go",
+      "name": "Go Channels",
+      "description": "Communication entre goroutines",
+      "pattern": "ch := make(chan int, 10); ch <- 42; val := <-ch",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys013",
+      "type": "go",
+      "name": "Go Select",
+      "description": "Multiplexer channels",
+      "pattern": "select { case v := <-ch1: case ch2 <- x: case <-time.After(1*time.Second): default: }",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys014",
+      "type": "go",
+      "name": "Go Interfaces",
+      "description": "Duck typing implicite",
+      "pattern": "type Reader interface { Read(p []byte) (n int, err error) }",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys015",
+      "type": "go",
+      "name": "Go Error Handling",
+      "description": "Errors are values",
+      "pattern": "if err != nil { return fmt.Errorf(\"context: %w\", err) }",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys016",
+      "type": "go",
+      "name": "Go Context",
+      "description": "Cancellation et deadlines",
+      "pattern": "ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second); defer cancel()",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys017",
+      "type": "go",
+      "name": "Go Defer",
+      "description": "Cleanup garanti",
+      "pattern": "f, _ := os.Open(path); defer f.Close()",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys018",
+      "type": "go",
+      "name": "Go Sync",
+      "description": "Mutex, WaitGroup, Once",
+      "pattern": "var wg sync.WaitGroup; wg.Add(1); go func() { defer wg.Done() }(); wg.Wait()",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys019",
+      "type": "go",
+      "name": "Go Generics",
+      "description": "Type parameters Go 1.18+",
+      "pattern": "func Map[T, U any](s []T, f func(T) U) []U {}",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys020",
+      "type": "go",
+      "name": "Go Testing",
+      "description": "Tests et benchmarks",
+      "pattern": "func TestAdd(t *testing.T) { if Add(1,2) != 3 { t.Error(\"failed\") } }",
+      "example": "Go usage"
+    },
+    {
+      "id": "sys021",
+      "type": "wasm",
+      "name": "WebAssembly Basics",
+      "description": "Compiler vers wasm",
+      "pattern": "rustc --target wasm32-unknown-unknown; wasm-pack build",
+      "example": "Wasm usage"
+    },
+    {
+      "id": "sys022",
+      "type": "wasm",
+      "name": "WASM JS Interop",
+      "description": "Appeler wasm depuis JS",
+      "pattern": "const {instance} = await WebAssembly.instantiateStreaming(fetch('mod.wasm'));",
+      "example": "Wasm usage"
+    },
+    {
+      "id": "sys023",
+      "type": "wasm",
+      "name": "WASM Memory",
+      "description": "Gestion memoire partagee",
+      "pattern": "const memory = new WebAssembly.Memory({initial: 1}); // 64KB pages",
+      "example": "Wasm usage"
+    },
+    {
+      "id": "sys024",
+      "type": "wasm",
+      "name": "AssemblyScript",
+      "description": "TypeScript vers WASM",
+      "pattern": "export function add(a: i32, b: i32): i32 { return a + b; }",
+      "example": "Wasm usage"
+    },
+    {
+      "id": "sys025",
+      "type": "cpp",
+      "name": "C++ Smart Pointers",
+      "description": "unique_ptr, shared_ptr",
+      "pattern": "auto ptr = std::make_unique<MyClass>(); auto shared = std::make_shared<MyClass>();",
+      "example": "Cpp usage"
+    },
+    {
+      "id": "sys026",
+      "type": "cpp",
+      "name": "C++ Move Semantics",
+      "description": "Eviter copies",
+      "pattern": "std::vector<int> v2 = std::move(v1); // v1 vide apres",
+      "example": "Cpp usage"
+    },
+    {
+      "id": "sys027",
+      "type": "cpp",
+      "name": "C++ Templates",
+      "description": "Generics compile-time",
+      "pattern": "template<typename T> T max(T a, T b) { return a > b ? a : b; }",
+      "example": "Cpp usage"
+    },
+    {
+      "id": "sys028",
+      "type": "cpp",
+      "name": "C++ Lambda",
+      "description": "Fonctions anonymes",
+      "pattern": "auto f = [&](int x) { return x * factor; };",
+      "example": "Cpp usage"
+    },
+    {
+      "id": "sys029",
+      "type": "cpp",
+      "name": "C++ Ranges",
+      "description": "Pipelines C++20",
+      "pattern": "auto result = v | views::filter(pred) | views::transform(fn);",
+      "example": "Cpp usage"
+    },
+    {
+      "id": "sys030",
+      "type": "cpp",
+      "name": "C++ Coroutines",
+      "description": "Async C++20",
+      "pattern": "task<int> compute() { co_return co_await fetch(); }",
+      "example": "Cpp usage"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Vocal Auto-Submit</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #1a1a1a; color: #fff; }
+        button { padding: 15px 30px; font-size: 18px; margin: 10px; cursor: pointer; }
+        #status { margin: 20px 0; padding: 15px; background: #2c3e50; border-radius: 8px; }
+        #log { margin: 20px 0; padding: 15px; background: #34495e; border-radius: 8px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>🎤 Test Vocal Auto-Submit Direct</h1>
+    <button onclick="testVocal()">🎤 Démarrer Test Vocal</button>
+    <div id="status">Prêt</div>
+    <div id="log"></div>
+
+    <script>
+        const log = (msg) => {
+            const logDiv = document.getElementById('log');
+            logDiv.innerHTML += msg + '<br>';
+            console.log(msg);
+        };
+
+        function testVocal() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (!SpeechRecognition) {
+                document.getElementById('status').innerHTML = '❌ Speech Recognition non supporté';
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'fr-FR';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = () => {
+                document.getElementById('status').innerHTML = '🎤 Écoute en cours...';
+                log('🎤 Enregistrement démarré');
+            };
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                log('📝 Transcription: "' + transcript + '"');
+
+                // CRITICAL: Auto-submit immédiat
+                log('🚀 Auto-submit dans 200ms...');
+                setTimeout(() => {
+                    log('✅ AUTO-SUBMIT DÉCLENCHÉ - Message: "' + transcript + '"');
+                    document.getElementById('status').innerHTML = '✅ Message envoyé: "' + transcript + '"';
+                }, 200);
+            };
+
+            recognition.onerror = (event) => {
+                log('❌ Erreur: ' + event.error);
+                document.getElementById('status').innerHTML = '❌ Erreur: ' + event.error;
+            };
+
+            recognition.onend = () => {
+                log('⏹️ Enregistrement terminé');
+            };
+
+            recognition.start();
+        }
+    </script>
+</body>
+</html>

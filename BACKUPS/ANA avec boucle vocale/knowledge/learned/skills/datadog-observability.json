@@ -1,0 +1,246 @@
+{
+  "category": "datadog-observability",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "dd001",
+      "type": "fundamentals",
+      "name": "Datadog Basics",
+      "description": "Platform overview",
+      "pattern": "Agents, integrations, metrics",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dd002",
+      "type": "fundamentals",
+      "name": "Agent Installation",
+      "description": "Agent setup",
+      "pattern": "datadog-agent, config, tags",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dd003",
+      "type": "fundamentals",
+      "name": "Integrations",
+      "description": "Data sources",
+      "pattern": "AWS, Docker, Kubernetes, custom",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dd004",
+      "type": "metrics",
+      "name": "Metrics Collection",
+      "description": "Metric types",
+      "pattern": "Gauges, counters, histograms",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "dd005",
+      "type": "metrics",
+      "name": "Custom Metrics",
+      "description": "Application metrics",
+      "pattern": "DogStatsD, API, client libs",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "dd006",
+      "type": "metrics",
+      "name": "Metric Queries",
+      "description": "Query language",
+      "pattern": "avg, sum, rollup, as_count",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "dd007",
+      "type": "dashboards",
+      "name": "Dashboards",
+      "description": "Visualization",
+      "pattern": "Widgets, layouts, variables",
+      "example": "Dashboards usage"
+    },
+    {
+      "id": "dd008",
+      "type": "dashboards",
+      "name": "Dashboard Templates",
+      "description": "Templates",
+      "pattern": "Template variables, saved views",
+      "example": "Dashboards usage"
+    },
+    {
+      "id": "dd009",
+      "type": "dashboards",
+      "name": "Notebooks",
+      "description": "Documentation",
+      "pattern": "Notebooks, collaboration, sharing",
+      "example": "Dashboards usage"
+    },
+    {
+      "id": "dd010",
+      "type": "apm",
+      "name": "APM Basics",
+      "description": "Tracing",
+      "pattern": "Traces, spans, services",
+      "example": "Apm usage"
+    },
+    {
+      "id": "dd011",
+      "type": "apm",
+      "name": "Distributed Tracing",
+      "description": "Cross-service",
+      "pattern": "Trace context, propagation",
+      "example": "Apm usage"
+    },
+    {
+      "id": "dd012",
+      "type": "apm",
+      "name": "Service Map",
+      "description": "Dependencies",
+      "pattern": "Service topology, dependencies",
+      "example": "Apm usage"
+    },
+    {
+      "id": "dd013",
+      "type": "apm",
+      "name": "Profiling",
+      "description": "Code profiling",
+      "pattern": "CPU, memory, allocation profiling",
+      "example": "Apm usage"
+    },
+    {
+      "id": "dd014",
+      "type": "logs",
+      "name": "Log Collection",
+      "description": "Log ingestion",
+      "pattern": "Log agents, pipelines, archives",
+      "example": "Logs usage"
+    },
+    {
+      "id": "dd015",
+      "type": "logs",
+      "name": "Log Processing",
+      "description": "Parsing",
+      "pattern": "Grok parsers, pipelines, enrichment",
+      "example": "Logs usage"
+    },
+    {
+      "id": "dd016",
+      "type": "logs",
+      "name": "Log Queries",
+      "description": "Log search",
+      "pattern": "Facets, patterns, analytics",
+      "example": "Logs usage"
+    },
+    {
+      "id": "dd017",
+      "type": "alerting",
+      "name": "Monitors",
+      "description": "Alerting",
+      "pattern": "Metric, log, APM monitors",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "dd018",
+      "type": "alerting",
+      "name": "Alert Conditions",
+      "description": "Thresholds",
+      "pattern": "Threshold, anomaly, outlier",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "dd019",
+      "type": "alerting",
+      "name": "Notifications",
+      "description": "Alert routing",
+      "pattern": "Email, Slack, PagerDuty, webhooks",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "dd020",
+      "type": "synthetics",
+      "name": "Synthetic Tests",
+      "description": "Proactive monitoring",
+      "pattern": "API tests, browser tests",
+      "example": "Synthetics usage"
+    },
+    {
+      "id": "dd021",
+      "type": "synthetics",
+      "name": "Browser Tests",
+      "description": "E2E monitoring",
+      "pattern": "User journeys, assertions",
+      "example": "Synthetics usage"
+    },
+    {
+      "id": "dd022",
+      "type": "rum",
+      "name": "Real User Monitoring",
+      "description": "Frontend",
+      "pattern": "Page views, user sessions, errors",
+      "example": "Rum usage"
+    },
+    {
+      "id": "dd023",
+      "type": "security",
+      "name": "Security Monitoring",
+      "description": "Threat detection",
+      "pattern": "Detection rules, signals",
+      "example": "Security usage"
+    },
+    {
+      "id": "dd024",
+      "type": "security",
+      "name": "Cloud Security",
+      "description": "CSPM",
+      "pattern": "Compliance, misconfiguration",
+      "example": "Security usage"
+    },
+    {
+      "id": "dd025",
+      "type": "infrastructure",
+      "name": "Host Maps",
+      "description": "Infrastructure view",
+      "pattern": "Host maps, container maps",
+      "example": "Infrastructure usage"
+    },
+    {
+      "id": "dd026",
+      "type": "infrastructure",
+      "name": "Containers",
+      "description": "Container monitoring",
+      "pattern": "Docker, Kubernetes, orchestration",
+      "example": "Infrastructure usage"
+    },
+    {
+      "id": "dd027",
+      "type": "infrastructure",
+      "name": "Serverless",
+      "description": "Lambda monitoring",
+      "pattern": "Lambda, cold starts, invocations",
+      "example": "Infrastructure usage"
+    },
+    {
+      "id": "dd028",
+      "type": "api",
+      "name": "API Usage",
+      "description": "Programmatic access",
+      "pattern": "REST API, client libraries",
+      "example": "Api usage"
+    },
+    {
+      "id": "dd029",
+      "type": "terraform",
+      "name": "Terraform Provider",
+      "description": "IaC",
+      "pattern": "Monitors as code, dashboards",
+      "example": "Terraform usage"
+    },
+    {
+      "id": "dd030",
+      "type": "cost",
+      "name": "Cost Management",
+      "description": "Usage tracking",
+      "pattern": "Usage metrics, optimization",
+      "example": "Cost usage"
+    }
+  ]
+}

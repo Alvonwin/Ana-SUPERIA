@@ -1,0 +1,246 @@
+{
+  "category": "timeseries-databases",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ts001",
+      "type": "fundamentals",
+      "name": "Time Series Concept",
+      "description": "Temporal data",
+      "pattern": "Timestamp + value, append-only, high write volume",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ts002",
+      "type": "fundamentals",
+      "name": "Use Cases",
+      "description": "Applications",
+      "pattern": "Metrics, IoT, finance, logs, monitoring",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ts003",
+      "type": "fundamentals",
+      "name": "TSDB vs Relational",
+      "description": "Differences",
+      "pattern": "Optimized for time queries, compression, retention",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ts004",
+      "type": "influxdb",
+      "name": "InfluxDB Basics",
+      "description": "Popular TSDB",
+      "pattern": "Measurements, tags, fields, timestamps",
+      "example": "Influxdb usage"
+    },
+    {
+      "id": "ts005",
+      "type": "influxdb",
+      "name": "Line Protocol",
+      "description": "Write format",
+      "pattern": "measurement,tag=value field=value timestamp",
+      "example": "Influxdb usage"
+    },
+    {
+      "id": "ts006",
+      "type": "influxdb",
+      "name": "Flux Query",
+      "description": "Query language",
+      "pattern": "from(bucket) |> range() |> filter() |> mean()",
+      "example": "Influxdb usage"
+    },
+    {
+      "id": "ts007",
+      "type": "influxdb",
+      "name": "InfluxQL",
+      "description": "SQL-like query",
+      "pattern": "SELECT mean(value) FROM cpu WHERE time > now() - 1h",
+      "example": "Influxdb usage"
+    },
+    {
+      "id": "ts008",
+      "type": "influxdb",
+      "name": "Retention Policies",
+      "description": "Data lifecycle",
+      "pattern": "Auto-delete old data, downsample, save storage",
+      "example": "Influxdb usage"
+    },
+    {
+      "id": "ts009",
+      "type": "influxdb",
+      "name": "Continuous Queries",
+      "description": "Auto aggregation",
+      "pattern": "Pre-compute aggregates, downsample automatically",
+      "example": "Influxdb usage"
+    },
+    {
+      "id": "ts010",
+      "type": "timescale",
+      "name": "TimescaleDB",
+      "description": "Postgres extension",
+      "pattern": "Full SQL, hypertables, automatic partitioning",
+      "example": "Timescale usage"
+    },
+    {
+      "id": "ts011",
+      "type": "timescale",
+      "name": "Hypertables",
+      "description": "Core concept",
+      "pattern": "SELECT create_hypertable('metrics', 'time')",
+      "example": "Timescale usage"
+    },
+    {
+      "id": "ts012",
+      "type": "timescale",
+      "name": "Compression",
+      "description": "Storage efficiency",
+      "pattern": "ALTER TABLE SET compression, 90%+ reduction",
+      "example": "Timescale usage"
+    },
+    {
+      "id": "ts013",
+      "type": "timescale",
+      "name": "Continuous Aggregates",
+      "description": "Materialized views",
+      "pattern": "Auto-updating aggregates, refresh policies",
+      "example": "Timescale usage"
+    },
+    {
+      "id": "ts014",
+      "type": "timescale",
+      "name": "Time Bucketing",
+      "description": "Group by time",
+      "pattern": "time_bucket('5 minutes', time) AS bucket",
+      "example": "Timescale usage"
+    },
+    {
+      "id": "ts015",
+      "type": "prometheus",
+      "name": "Prometheus TSDB",
+      "description": "Metrics storage",
+      "pattern": "Pull-based, PromQL, labels, alerting",
+      "example": "Prometheus usage"
+    },
+    {
+      "id": "ts016",
+      "type": "prometheus",
+      "name": "PromQL Basics",
+      "description": "Query language",
+      "pattern": "http_requests_total{status='200'}[5m]",
+      "example": "Prometheus usage"
+    },
+    {
+      "id": "ts017",
+      "type": "prometheus",
+      "name": "PromQL Aggregation",
+      "description": "Aggregate data",
+      "pattern": "sum(rate(requests[5m])) by (service)",
+      "example": "Prometheus usage"
+    },
+    {
+      "id": "ts018",
+      "type": "prometheus",
+      "name": "Recording Rules",
+      "description": "Pre-compute",
+      "pattern": "record: job:requests:rate5m, expr: rate(...)",
+      "example": "Prometheus usage"
+    },
+    {
+      "id": "ts019",
+      "type": "victoriametrics",
+      "name": "VictoriaMetrics",
+      "description": "Prometheus alternative",
+      "pattern": "Long-term storage, clustering, MetricsQL",
+      "example": "Victoriametrics usage"
+    },
+    {
+      "id": "ts020",
+      "type": "questdb",
+      "name": "QuestDB",
+      "description": "High performance",
+      "pattern": "SQL, columnar, time partitioning, fast ingestion",
+      "example": "Questdb usage"
+    },
+    {
+      "id": "ts021",
+      "type": "patterns",
+      "name": "Data Modeling",
+      "description": "Schema design",
+      "pattern": "Wide vs narrow, tags vs fields, cardinality",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ts022",
+      "type": "patterns",
+      "name": "Cardinality",
+      "description": "Label explosion",
+      "pattern": "Avoid high-cardinality tags, aggregate carefully",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ts023",
+      "type": "patterns",
+      "name": "Downsampling",
+      "description": "Reduce resolution",
+      "pattern": "Keep detailed recent, aggregate historical",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ts024",
+      "type": "patterns",
+      "name": "Gap Filling",
+      "description": "Missing data",
+      "pattern": "Interpolation, last value, null handling",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ts025",
+      "type": "queries",
+      "name": "Window Functions",
+      "description": "Rolling calculations",
+      "pattern": "Moving average, rate of change, percentiles",
+      "example": "Queries usage"
+    },
+    {
+      "id": "ts026",
+      "type": "queries",
+      "name": "Range Queries",
+      "description": "Time ranges",
+      "pattern": "WHERE time > now() - interval '1 hour'",
+      "example": "Queries usage"
+    },
+    {
+      "id": "ts027",
+      "type": "queries",
+      "name": "Aggregation",
+      "description": "Summarize data",
+      "pattern": "min, max, avg, sum, count, percentile",
+      "example": "Queries usage"
+    },
+    {
+      "id": "ts028",
+      "type": "integration",
+      "name": "Grafana",
+      "description": "Visualization",
+      "pattern": "Dashboard, panels, data source plugins",
+      "example": "Integration usage"
+    },
+    {
+      "id": "ts029",
+      "type": "integration",
+      "name": "Telegraf",
+      "description": "Data collection",
+      "pattern": "Agent, plugins, InfluxDB Line Protocol output",
+      "example": "Integration usage"
+    },
+    {
+      "id": "ts030",
+      "type": "cloud",
+      "name": "Cloud Options",
+      "description": "Managed services",
+      "pattern": "InfluxDB Cloud, Timescale Cloud, Amazon Timestream",
+      "example": "Cloud usage"
+    }
+  ]
+}

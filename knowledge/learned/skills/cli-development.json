@@ -1,0 +1,246 @@
+{
+  "category": "cli-development",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cli001",
+      "type": "basics",
+      "name": "CLI Architecture",
+      "description": "Structure",
+      "pattern": "Commands, subcommands, options, flags, arguments, config files",
+      "example": "Basics usage"
+    },
+    {
+      "id": "cli002",
+      "type": "basics",
+      "name": "Exit Codes",
+      "description": "Status communication",
+      "pattern": "0 = success, 1 = general error, 2 = misuse, 126 = permission, 127 = not found",
+      "example": "Basics usage"
+    },
+    {
+      "id": "cli003",
+      "type": "basics",
+      "name": "Stdin/Stdout/Stderr",
+      "description": "Standard streams",
+      "pattern": "process.stdin for input, stdout for output, stderr for errors",
+      "example": "Basics usage"
+    },
+    {
+      "id": "cli004",
+      "type": "basics",
+      "name": "Pipes",
+      "description": "Stream chaining",
+      "pattern": "cat file | grep pattern | sort | uniq - composable tools",
+      "example": "Basics usage"
+    },
+    {
+      "id": "cli005",
+      "type": "parsing",
+      "name": "Argument Parsing",
+      "description": "Parse args",
+      "pattern": "yargs, commander, meow - options, positionals, validation",
+      "example": "Parsing usage"
+    },
+    {
+      "id": "cli006",
+      "type": "parsing",
+      "name": "Option Conventions",
+      "description": "Standard flags",
+      "pattern": "-v/--version, -h/--help, -q/--quiet, -f/--force, --no-color",
+      "example": "Parsing usage"
+    },
+    {
+      "id": "cli007",
+      "type": "parsing",
+      "name": "Subcommands",
+      "description": "Nested commands",
+      "pattern": "git commit, docker compose up - hierarchical structure",
+      "example": "Parsing usage"
+    },
+    {
+      "id": "cli008",
+      "type": "parsing",
+      "name": "Environment Variables",
+      "description": "Config via env",
+      "pattern": "process.env.API_KEY, dotenv, precedence: arg > env > config",
+      "example": "Parsing usage"
+    },
+    {
+      "id": "cli009",
+      "type": "ux",
+      "name": "Progress Indicators",
+      "description": "Visual feedback",
+      "pattern": "ora spinners, cli-progress bars, percentage updates",
+      "example": "Ux usage"
+    },
+    {
+      "id": "cli010",
+      "type": "ux",
+      "name": "Colors",
+      "description": "Terminal colors",
+      "pattern": "chalk, picocolors - green for success, red for error, yellow for warning",
+      "example": "Ux usage"
+    },
+    {
+      "id": "cli011",
+      "type": "ux",
+      "name": "Interactive Prompts",
+      "description": "User input",
+      "pattern": "inquirer, prompts - select, confirm, input, password",
+      "example": "Ux usage"
+    },
+    {
+      "id": "cli012",
+      "type": "ux",
+      "name": "Tables",
+      "description": "Tabular output",
+      "pattern": "cli-table3, table - formatted data display",
+      "example": "Ux usage"
+    },
+    {
+      "id": "cli013",
+      "type": "ux",
+      "name": "Help Text",
+      "description": "Usage documentation",
+      "pattern": "Auto-generated help, examples, man pages",
+      "example": "Ux usage"
+    },
+    {
+      "id": "cli014",
+      "type": "ux",
+      "name": "Error Messages",
+      "description": "Helpful errors",
+      "pattern": "What went wrong, why, how to fix - not just stack traces",
+      "example": "Ux usage"
+    },
+    {
+      "id": "cli015",
+      "type": "distribution",
+      "name": "npm bin",
+      "description": "Node.js CLIs",
+      "pattern": "package.json bin field, #!/usr/bin/env node shebang",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "cli016",
+      "type": "distribution",
+      "name": "Single Executable",
+      "description": "Standalone binary",
+      "pattern": "pkg, nexe, vercel/pkg - bundle Node.js into executable",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "cli017",
+      "type": "distribution",
+      "name": "Cross-platform",
+      "description": "OS compatibility",
+      "pattern": "path.sep, os.homedir(), cross-spawn, handle Windows/Unix differences",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "cli018",
+      "type": "config",
+      "name": "Config Files",
+      "description": "User configuration",
+      "pattern": "cosmiconfig - .toolrc, .toolrc.json, tool.config.js",
+      "example": "Config usage"
+    },
+    {
+      "id": "cli019",
+      "type": "config",
+      "name": "Config Locations",
+      "description": "Where to store",
+      "pattern": "~/.config/tool/, ~/.toolrc, project .toolrc",
+      "example": "Config usage"
+    },
+    {
+      "id": "cli020",
+      "type": "config",
+      "name": "Config Precedence",
+      "description": "Override order",
+      "pattern": "CLI args > env vars > project config > user config > defaults",
+      "example": "Config usage"
+    },
+    {
+      "id": "cli021",
+      "type": "advanced",
+      "name": "Shell Completion",
+      "description": "Tab completion",
+      "pattern": "omelette, tabtab - bash/zsh/fish completions",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cli022",
+      "type": "advanced",
+      "name": "Update Notifications",
+      "description": "Version checks",
+      "pattern": "update-notifier - inform users of new versions",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cli023",
+      "type": "advanced",
+      "name": "Plugin System",
+      "description": "Extensibility",
+      "pattern": "Dynamic loading, hooks, plugin discovery",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cli024",
+      "type": "advanced",
+      "name": "REPL Mode",
+      "description": "Interactive shell",
+      "pattern": "readline, repl module - persistent interactive session",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cli025",
+      "type": "testing",
+      "name": "CLI Testing",
+      "description": "Test commands",
+      "pattern": "execa for spawning, snapshot output, mock stdin",
+      "example": "Testing usage"
+    },
+    {
+      "id": "cli026",
+      "type": "testing",
+      "name": "Integration Testing",
+      "description": "End-to-end",
+      "pattern": "Run actual CLI, verify output, check file system changes",
+      "example": "Testing usage"
+    },
+    {
+      "id": "cli027",
+      "type": "patterns",
+      "name": "Idempotent Operations",
+      "description": "Safe re-runs",
+      "pattern": "Check before write, skip if exists, --force to override",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "cli028",
+      "type": "patterns",
+      "name": "Dry Run Mode",
+      "description": "Preview changes",
+      "pattern": "--dry-run flag, show what would happen without doing it",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "cli029",
+      "type": "patterns",
+      "name": "Verbose/Quiet Modes",
+      "description": "Output levels",
+      "pattern": "-v for verbose, -q for quiet, multiple -v for debug",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "cli030",
+      "type": "patterns",
+      "name": "Machine-readable Output",
+      "description": "Parseable output",
+      "pattern": "--json flag, --format=json|yaml|table for scripting",
+      "example": "Patterns usage"
+    }
+  ]
+}

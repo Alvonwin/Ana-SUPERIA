@@ -1,0 +1,246 @@
+{
+  "category": "devrel-advocacy",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "dr001",
+      "type": "fundamentals",
+      "name": "DevRel Basics",
+      "description": "Developer relations",
+      "pattern": "Community, advocacy, education, support",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dr002",
+      "type": "fundamentals",
+      "name": "Developer Experience",
+      "description": "DX design",
+      "pattern": "Onboarding, documentation, SDK quality",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dr003",
+      "type": "fundamentals",
+      "name": "Community Building",
+      "description": "Dev community",
+      "pattern": "Discord, forums, meetups, champions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dr004",
+      "type": "content",
+      "name": "Technical Writing",
+      "description": "Dev content",
+      "pattern": "Blog posts, tutorials, guides",
+      "example": "Content usage"
+    },
+    {
+      "id": "dr005",
+      "type": "content",
+      "name": "Video Content",
+      "description": "YouTube/streaming",
+      "pattern": "Tutorials, demos, live coding",
+      "example": "Content usage"
+    },
+    {
+      "id": "dr006",
+      "type": "content",
+      "name": "Developer Documentation",
+      "description": "Docs writing",
+      "pattern": "API docs, quickstarts, examples",
+      "example": "Content usage"
+    },
+    {
+      "id": "dr007",
+      "type": "content",
+      "name": "Code Samples",
+      "description": "Sample code",
+      "pattern": "SDKs, examples, templates, starters",
+      "example": "Content usage"
+    },
+    {
+      "id": "dr008",
+      "type": "speaking",
+      "name": "Conference Speaking",
+      "description": "Tech talks",
+      "pattern": "CFP, slides, demos, Q&A",
+      "example": "Speaking usage"
+    },
+    {
+      "id": "dr009",
+      "type": "speaking",
+      "name": "Workshop Facilitation",
+      "description": "Hands-on training",
+      "pattern": "Labs, exercises, pacing",
+      "example": "Speaking usage"
+    },
+    {
+      "id": "dr010",
+      "type": "speaking",
+      "name": "Webinars",
+      "description": "Online presentations",
+      "pattern": "Live demos, engagement, recording",
+      "example": "Speaking usage"
+    },
+    {
+      "id": "dr011",
+      "type": "engagement",
+      "name": "Social Media DevRel",
+      "description": "Twitter/LinkedIn",
+      "pattern": "Threads, engagement, developer voice",
+      "example": "Engagement usage"
+    },
+    {
+      "id": "dr012",
+      "type": "engagement",
+      "name": "Stack Overflow",
+      "description": "Q&A support",
+      "pattern": "Answering, reputation, tags",
+      "example": "Engagement usage"
+    },
+    {
+      "id": "dr013",
+      "type": "engagement",
+      "name": "GitHub Engagement",
+      "description": "OSS community",
+      "pattern": "Issues, PRs, discussions, stars",
+      "example": "Engagement usage"
+    },
+    {
+      "id": "dr014",
+      "type": "engagement",
+      "name": "Discord/Slack Moderation",
+      "description": "Community mgmt",
+      "pattern": "Moderation, bots, channels",
+      "example": "Engagement usage"
+    },
+    {
+      "id": "dr015",
+      "type": "programs",
+      "name": "Ambassador Programs",
+      "description": "Dev champions",
+      "pattern": "Recruitment, rewards, management",
+      "example": "Programs usage"
+    },
+    {
+      "id": "dr016",
+      "type": "programs",
+      "name": "Beta Programs",
+      "description": "Early access",
+      "pattern": "Feedback collection, testing",
+      "example": "Programs usage"
+    },
+    {
+      "id": "dr017",
+      "type": "programs",
+      "name": "Hackathons",
+      "description": "Dev events",
+      "pattern": "Organization, judging, prizes",
+      "example": "Programs usage"
+    },
+    {
+      "id": "dr018",
+      "type": "programs",
+      "name": "Certification Programs",
+      "description": "Developer certs",
+      "pattern": "Curriculum, exams, badges",
+      "example": "Programs usage"
+    },
+    {
+      "id": "dr019",
+      "type": "feedback",
+      "name": "Developer Feedback",
+      "description": "Collecting input",
+      "pattern": "Surveys, interviews, analytics",
+      "example": "Feedback usage"
+    },
+    {
+      "id": "dr020",
+      "type": "feedback",
+      "name": "Product Influence",
+      "description": "Internal advocacy",
+      "pattern": "Feature requests, roadmap input",
+      "example": "Feedback usage"
+    },
+    {
+      "id": "dr021",
+      "type": "metrics",
+      "name": "DevRel Metrics",
+      "description": "Measuring impact",
+      "pattern": "Awareness, adoption, activation",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "dr022",
+      "type": "metrics",
+      "name": "Developer Journey",
+      "description": "Funnel analysis",
+      "pattern": "Discovery, trial, adoption, advocacy",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "dr023",
+      "type": "tools",
+      "name": "DevRel Tools",
+      "description": "Tooling",
+      "pattern": "Orbit, Common Room, analytics",
+      "example": "Tools usage"
+    },
+    {
+      "id": "dr024",
+      "type": "tools",
+      "name": "Developer Portals",
+      "description": "Dev hub",
+      "pattern": "Docs site, API console, dashboard",
+      "example": "Tools usage"
+    },
+    {
+      "id": "dr025",
+      "type": "strategy",
+      "name": "DevRel Strategy",
+      "description": "Program planning",
+      "pattern": "Goals, personas, channels",
+      "example": "Strategy usage"
+    },
+    {
+      "id": "dr026",
+      "type": "strategy",
+      "name": "Developer Marketing",
+      "description": "Dev-focused marketing",
+      "pattern": "Content marketing, SEO, ads",
+      "example": "Strategy usage"
+    },
+    {
+      "id": "dr027",
+      "type": "strategy",
+      "name": "Open Source Strategy",
+      "description": "OSS management",
+      "pattern": "Licensing, governance, contribution",
+      "example": "Strategy usage"
+    },
+    {
+      "id": "dr028",
+      "type": "skills",
+      "name": "Live Coding",
+      "description": "Coding on stage",
+      "pattern": "Preparation, recovery, engagement",
+      "example": "Skills usage"
+    },
+    {
+      "id": "dr029",
+      "type": "skills",
+      "name": "Demo Building",
+      "description": "Creating demos",
+      "pattern": "Compelling, reliable, story-driven",
+      "example": "Skills usage"
+    },
+    {
+      "id": "dr030",
+      "type": "skills",
+      "name": "Developer Empathy",
+      "description": "Understanding devs",
+      "pattern": "Pain points, needs, context",
+      "example": "Skills usage"
+    }
+  ]
+}

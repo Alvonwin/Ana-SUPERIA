@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-11-25",
+    "description": "Configuration système Ana"
+  },
+  "ana": {
+    "name": "Ana (Anastasia)",
+    "meaning": "Résurrection - Celle qui renaît",
+    "birthDate": "2025-11-18"
+  },
+  "paths": {
+    "root": "E:/ANA",
+    "memory": "E:/Mémoire Claude",
+    "comfyui": "E:/AI_Tools/ComfyUI/ComfyUI_windows_portable",
+    "fooocus": "E:/AI_Tools/Fooocus_win64_2-5-0",
+    "logs": "E:/ANA/logs",
+    "gallery": "E:/ANA/creative_studio/gallery"
+  },
+  "ports": {
+    "backend": 3338,
+    "frontend": 5173,
+    "n8n": 5678,
+    "comfyui": 8188,
+    "fooocus": 7865,
+    "eventBus": 3340
+  },
+  "hardware": {
+    "gpu": "RTX 3070",
+    "vram_gb": 8,
+    "cuda_version": "12.1"
+  },
+  "integrations": {
+    "ollama": {
+      "enabled": true,
+      "url": "http://localhost:11434"
+    },
+    "chromadb": {
+      "enabled": true,
+      "collection": "ana_memory"
+    },
+    "n8n": {
+      "enabled": true,
+      "url": "http://localhost:5678"
+    },
+    "comfyui": {
+      "enabled": true,
+      "url": "http://localhost:8188"
+    },
+    "fooocus": {
+      "enabled": true,
+      "url": "http://localhost:7865"
+    }
+  },
+  "features": {
+    "dailyArt": {
+      "enabled": true,
+      "time": "08:00",
+      "outputPath": "E:/ANA/creative_studio/gallery"
+    },
+    "selfImprovement": {
+      "enabled": true,
+      "time": "23:00"
+    },
+    "memoryCapture": {
+      "enabled": true,
+      "prefix": "##Ana"
+    }
+  },
+  "security": {
+    "allowedPaths": [
+      "E:/ANA",
+      "E:/AI_Tools"
+    ],
+    "blockedPaths": [
+      "E:/Claude_Autonome",
+      "E:/Mémoire Claude"
+    ],
+    "maxFileSize_MB": 100
+  }
+}

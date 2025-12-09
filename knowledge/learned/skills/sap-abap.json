@@ -1,0 +1,246 @@
+{
+  "category": "sap-abap",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "sap001",
+      "type": "fundamentals",
+      "name": "ABAP Basics",
+      "description": "ABAP syntax",
+      "pattern": "Data types, variables, control flow",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sap002",
+      "type": "fundamentals",
+      "name": "Internal Tables",
+      "description": "Table processing",
+      "pattern": "STANDARD, SORTED, HASHED, LOOP",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sap003",
+      "type": "fundamentals",
+      "name": "Open SQL",
+      "description": "Database access",
+      "pattern": "SELECT, INSERT, UPDATE, DELETE",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sap004",
+      "type": "fundamentals",
+      "name": "Modularization",
+      "description": "Code organization",
+      "pattern": "Subroutines, function modules, classes",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sap005",
+      "type": "oo-abap",
+      "name": "ABAP Objects",
+      "description": "OOP in ABAP",
+      "pattern": "Classes, interfaces, inheritance",
+      "example": "Oo-abap usage"
+    },
+    {
+      "id": "sap006",
+      "type": "oo-abap",
+      "name": "ALV Grid",
+      "description": "List display",
+      "pattern": "CL_GUI_ALV_GRID, fieldcatalog",
+      "example": "Oo-abap usage"
+    },
+    {
+      "id": "sap007",
+      "type": "oo-abap",
+      "name": "BADI",
+      "description": "Business Add-Ins",
+      "pattern": "Enhancement framework, implementations",
+      "example": "Oo-abap usage"
+    },
+    {
+      "id": "sap008",
+      "type": "reports",
+      "name": "Classical Reports",
+      "description": "Report programming",
+      "pattern": "WRITE, selection screen, events",
+      "example": "Reports usage"
+    },
+    {
+      "id": "sap009",
+      "type": "reports",
+      "name": "Interactive Reports",
+      "description": "Drill-down",
+      "pattern": "AT LINE-SELECTION, HIDE",
+      "example": "Reports usage"
+    },
+    {
+      "id": "sap010",
+      "type": "reports",
+      "name": "ALV Reports",
+      "description": "Modern lists",
+      "pattern": "REUSE_ALV_GRID_DISPLAY, layout",
+      "example": "Reports usage"
+    },
+    {
+      "id": "sap011",
+      "type": "dialogs",
+      "name": "Module Pool",
+      "description": "Dialog programs",
+      "pattern": "Screens, PBO, PAI, flow logic",
+      "example": "Dialogs usage"
+    },
+    {
+      "id": "sap012",
+      "type": "dialogs",
+      "name": "Dynpro",
+      "description": "Screen design",
+      "pattern": "Screen painter, elements, GUI status",
+      "example": "Dialogs usage"
+    },
+    {
+      "id": "sap013",
+      "type": "interfaces",
+      "name": "RFC",
+      "description": "Remote calls",
+      "pattern": "CALL FUNCTION DESTINATION, tRFC, qRFC",
+      "example": "Interfaces usage"
+    },
+    {
+      "id": "sap014",
+      "type": "interfaces",
+      "name": "IDocs",
+      "description": "Document exchange",
+      "pattern": "IDoc types, segments, partner profiles",
+      "example": "Interfaces usage"
+    },
+    {
+      "id": "sap015",
+      "type": "interfaces",
+      "name": "BAPI",
+      "description": "Business APIs",
+      "pattern": "BAPI standards, COMMIT WORK",
+      "example": "Interfaces usage"
+    },
+    {
+      "id": "sap016",
+      "type": "interfaces",
+      "name": "Web Services",
+      "description": "SOAP services",
+      "pattern": "SICF, SOAMANAGER, proxy",
+      "example": "Interfaces usage"
+    },
+    {
+      "id": "sap017",
+      "type": "fiori",
+      "name": "SAP Fiori",
+      "description": "Modern UI",
+      "pattern": "UI5, OData, launchpad",
+      "example": "Fiori usage"
+    },
+    {
+      "id": "sap018",
+      "type": "fiori",
+      "name": "CDS Views",
+      "description": "Core Data Services",
+      "pattern": "DDL, associations, annotations",
+      "example": "Fiori usage"
+    },
+    {
+      "id": "sap019",
+      "type": "fiori",
+      "name": "RAP",
+      "description": "RESTful ABAP",
+      "pattern": "Business objects, behavior, projections",
+      "example": "Fiori usage"
+    },
+    {
+      "id": "sap020",
+      "type": "data",
+      "name": "Data Dictionary",
+      "description": "DDIC objects",
+      "pattern": "Tables, domains, data elements",
+      "example": "Data usage"
+    },
+    {
+      "id": "sap021",
+      "type": "data",
+      "name": "Table Buffering",
+      "description": "Performance",
+      "pattern": "Single, generic, full buffering",
+      "example": "Data usage"
+    },
+    {
+      "id": "sap022",
+      "type": "data",
+      "name": "Lock Objects",
+      "description": "Data locking",
+      "pattern": "ENQUEUE, DEQUEUE, lock modes",
+      "example": "Data usage"
+    },
+    {
+      "id": "sap023",
+      "type": "enhancement",
+      "name": "User Exits",
+      "description": "Classic enhancement",
+      "pattern": "User exits, customer exits, SMOD",
+      "example": "Enhancement usage"
+    },
+    {
+      "id": "sap024",
+      "type": "enhancement",
+      "name": "Enhancement Framework",
+      "description": "Modern enhancement",
+      "pattern": "Enhancement spots, implicit",
+      "example": "Enhancement usage"
+    },
+    {
+      "id": "sap025",
+      "type": "enhancement",
+      "name": "Modification Assistant",
+      "description": "Standard code changes",
+      "pattern": "MOD, customer namespaces",
+      "example": "Enhancement usage"
+    },
+    {
+      "id": "sap026",
+      "type": "transport",
+      "name": "Transport System",
+      "description": "CTS",
+      "pattern": "Requests, tasks, import/export",
+      "example": "Transport usage"
+    },
+    {
+      "id": "sap027",
+      "type": "transport",
+      "name": "Change Management",
+      "description": "Landscape",
+      "pattern": "DEV, QAS, PRD, routes",
+      "example": "Transport usage"
+    },
+    {
+      "id": "sap028",
+      "type": "debugging",
+      "name": "ABAP Debugger",
+      "description": "Debug tools",
+      "pattern": "Breakpoints, watchpoints, new debugger",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "sap029",
+      "type": "performance",
+      "name": "Performance Analysis",
+      "description": "Optimization",
+      "pattern": "ST05, SE30, runtime analysis",
+      "example": "Performance usage"
+    },
+    {
+      "id": "sap030",
+      "type": "performance",
+      "name": "Code Inspector",
+      "description": "Code quality",
+      "pattern": "SCI, ATC, naming conventions",
+      "example": "Performance usage"
+    }
+  ]
+}

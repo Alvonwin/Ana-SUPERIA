@@ -1,0 +1,247 @@
+{
+  "category": "edge-computing",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "ec01",
+      "type": "basics",
+      "name": "Edge Computing Basics",
+      "description": "Run code at edge",
+      "pattern": "Serverless at CDN edge locations",
+      "example": "Low latency globally"
+    },
+    {
+      "id": "ec02",
+      "type": "workers",
+      "name": "Cloudflare Workers",
+      "description": "V8 isolates",
+      "pattern": "export default { async fetch(request) {} }",
+      "example": "Global deployment"
+    },
+    {
+      "id": "ec03",
+      "type": "kv",
+      "name": "Workers KV",
+      "description": "Key-value storage",
+      "pattern": "await env.KV.get(key), env.KV.put(key, value)",
+      "example": "Global state"
+    },
+    {
+      "id": "ec04",
+      "type": "d1",
+      "name": "Cloudflare D1",
+      "description": "SQLite at edge",
+      "pattern": "env.DB.prepare(SELECT *).all()",
+      "example": "Edge database"
+    },
+    {
+      "id": "ec05",
+      "type": "r2",
+      "name": "Cloudflare R2",
+      "description": "Object storage",
+      "pattern": "env.R2.put(key, body), env.R2.get(key)",
+      "example": "S3 compatible"
+    },
+    {
+      "id": "ec06",
+      "type": "durable",
+      "name": "Durable Objects",
+      "description": "Stateful edge",
+      "pattern": "class MyDO extends DurableObject {}",
+      "example": "Real-time apps"
+    },
+    {
+      "id": "ec07",
+      "type": "vercel",
+      "name": "Vercel Edge Functions",
+      "description": "Edge middleware",
+      "pattern": "export const config = { runtime: edge }",
+      "example": "Next.js edge"
+    },
+    {
+      "id": "ec08",
+      "type": "middleware",
+      "name": "Edge Middleware",
+      "description": "Request interception",
+      "pattern": "middleware.ts at root",
+      "example": "Auth, redirects, A/B"
+    },
+    {
+      "id": "ec09",
+      "type": "netlify",
+      "name": "Netlify Edge Functions",
+      "description": "Deno-based edge",
+      "pattern": "netlify/edge-functions/*.ts",
+      "example": "Geo-routing"
+    },
+    {
+      "id": "ec10",
+      "type": "deno",
+      "name": "Deno Deploy",
+      "description": "Global Deno runtime",
+      "pattern": "Deno.serve((req) => new Response())",
+      "example": "V8 isolates"
+    },
+    {
+      "id": "ec11",
+      "type": "lambda",
+      "name": "Lambda@Edge",
+      "description": "AWS CloudFront edge",
+      "pattern": "CloudFront triggers for Lambda",
+      "example": "Origin/viewer events"
+    },
+    {
+      "id": "ec12",
+      "type": "streaming",
+      "name": "Response Streaming",
+      "description": "Stream responses",
+      "pattern": "return new Response(stream)",
+      "example": "LLM streaming"
+    },
+    {
+      "id": "ec13",
+      "type": "geo",
+      "name": "Geolocation",
+      "description": "User location",
+      "pattern": "request.cf.country, request.geo",
+      "example": "Geo-targeting"
+    },
+    {
+      "id": "ec14",
+      "type": "headers",
+      "name": "Header Manipulation",
+      "description": "Modify headers",
+      "pattern": "new Response(body, { headers })",
+      "example": "Security headers"
+    },
+    {
+      "id": "ec15",
+      "type": "cache",
+      "name": "Edge Caching",
+      "description": "Cache API",
+      "pattern": "caches.default.put(request, response)",
+      "example": "Custom caching"
+    },
+    {
+      "id": "ec16",
+      "type": "rewrites",
+      "name": "URL Rewrites",
+      "description": "Path mapping",
+      "pattern": "return NextResponse.rewrite(new URL(path))",
+      "example": "A/B testing"
+    },
+    {
+      "id": "ec17",
+      "type": "redirects",
+      "name": "Edge Redirects",
+      "description": "Fast redirects",
+      "pattern": "return Response.redirect(url, 301)",
+      "example": "SEO redirects"
+    },
+    {
+      "id": "ec18",
+      "type": "auth",
+      "name": "Edge Authentication",
+      "description": "Auth at edge",
+      "pattern": "JWT verification at edge",
+      "example": "Block before origin"
+    },
+    {
+      "id": "ec19",
+      "type": "rateLimit",
+      "name": "Rate Limiting",
+      "description": "Request throttling",
+      "pattern": "Track requests in KV/DO",
+      "example": "API protection"
+    },
+    {
+      "id": "ec20",
+      "type": "botProtection",
+      "name": "Bot Protection",
+      "description": "Filter bots",
+      "pattern": "User-agent, challenge pages",
+      "example": "Turnstile, hCaptcha"
+    },
+    {
+      "id": "ec21",
+      "type": "personalization",
+      "name": "Edge Personalization",
+      "description": "Custom content",
+      "pattern": "Modify HTML based on cookies/geo",
+      "example": "Dynamic pages"
+    },
+    {
+      "id": "ec22",
+      "type": "htmlRewriter",
+      "name": "HTMLRewriter",
+      "description": "Transform HTML",
+      "pattern": "new HTMLRewriter().on(selector, handler)",
+      "example": "Edge-side includes"
+    },
+    {
+      "id": "ec23",
+      "type": "websockets",
+      "name": "Edge WebSockets",
+      "description": "WS at edge",
+      "pattern": "Durable Objects for WebSocket",
+      "example": "Real-time chat"
+    },
+    {
+      "id": "ec24",
+      "type": "queues",
+      "name": "Edge Queues",
+      "description": "Message queues",
+      "pattern": "Cloudflare Queues, SQS",
+      "example": "Async processing"
+    },
+    {
+      "id": "ec25",
+      "type": "ai",
+      "name": "Edge AI",
+      "description": "AI at edge",
+      "pattern": "Workers AI, @cf/meta/llama",
+      "example": "Inference at edge"
+    },
+    {
+      "id": "ec26",
+      "type": "vectorize",
+      "name": "Edge Vectors",
+      "description": "Vector DB at edge",
+      "pattern": "Cloudflare Vectorize",
+      "example": "Semantic search"
+    },
+    {
+      "id": "ec27",
+      "type": "wrangler",
+      "name": "Wrangler CLI",
+      "description": "Workers CLI",
+      "pattern": "wrangler dev, wrangler deploy",
+      "example": "Local dev"
+    },
+    {
+      "id": "ec28",
+      "type": "bindings",
+      "name": "Resource Bindings",
+      "description": "Connect services",
+      "pattern": "wrangler.toml bindings",
+      "example": "KV, D1, R2 access"
+    },
+    {
+      "id": "ec29",
+      "type": "limits",
+      "name": "Edge Limits",
+      "description": "Runtime constraints",
+      "pattern": "CPU time, memory limits",
+      "example": "50ms CPU typical"
+    },
+    {
+      "id": "ec30",
+      "type": "observability",
+      "name": "Edge Observability",
+      "description": "Monitoring",
+      "pattern": "Tail logs, Analytics Engine",
+      "example": "Debug at scale"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "category": "graph-databases",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "gd001",
+      "type": "fundamentals",
+      "name": "Graph DB Concepts",
+      "description": "Core concepts",
+      "pattern": "Nodes, relationships, properties, labels, traversal",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "gd002",
+      "type": "fundamentals",
+      "name": "When to Use",
+      "description": "Use cases",
+      "pattern": "Social networks, recommendations, fraud, knowledge graphs",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "gd003",
+      "type": "fundamentals",
+      "name": "Graph vs Relational",
+      "description": "Comparison",
+      "pattern": "Relationships first-class, no joins, flexible schema",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "gd004",
+      "type": "neo4j",
+      "name": "Neo4j Basics",
+      "description": "Leading graph DB",
+      "pattern": "Native graph storage, Cypher query, ACID compliant",
+      "example": "Neo4j usage"
+    },
+    {
+      "id": "gd005",
+      "type": "neo4j",
+      "name": "Neo4j Setup",
+      "description": "Installation",
+      "pattern": "Docker, Desktop, Aura cloud, bolt:// protocol",
+      "example": "Neo4j usage"
+    },
+    {
+      "id": "gd006",
+      "type": "cypher",
+      "name": "Cypher Basics",
+      "description": "Query language",
+      "pattern": "MATCH (n) RETURN n, pattern matching, ASCII art",
+      "example": "Cypher usage"
+    },
+    {
+      "id": "gd007",
+      "type": "cypher",
+      "name": "Create Nodes",
+      "description": "Insert nodes",
+      "pattern": "CREATE (p:Person {name: 'Alice', age: 30})",
+      "example": "Cypher usage"
+    },
+    {
+      "id": "gd008",
+      "type": "cypher",
+      "name": "Create Relationships",
+      "description": "Connect nodes",
+      "pattern": "MATCH (a), (b) CREATE (a)-[:KNOWS]->(b)",
+      "example": "Cypher usage"
+    },
+    {
+      "id": "gd009",
+      "type": "cypher",
+      "name": "Match Patterns",
+      "description": "Query patterns",
+      "pattern": "MATCH (a:Person)-[:KNOWS]->(b:Person) RETURN a, b",
+      "example": "Cypher usage"
+    },
+    {
+      "id": "gd010",
+      "type": "cypher",
+      "name": "Variable Length",
+      "description": "Path queries",
+      "pattern": "MATCH (a)-[:KNOWS*1..3]->(b) // 1 to 3 hops",
+      "example": "Cypher usage"
+    },
+    {
+      "id": "gd011",
+      "type": "cypher",
+      "name": "Aggregation",
+      "description": "Aggregate functions",
+      "pattern": "MATCH (p:Person) RETURN count(p), avg(p.age)",
+      "example": "Cypher usage"
+    },
+    {
+      "id": "gd012",
+      "type": "cypher",
+      "name": "Filtering",
+      "description": "WHERE clause",
+      "pattern": "WHERE p.age > 25 AND p.name STARTS WITH 'A'",
+      "example": "Cypher usage"
+    },
+    {
+      "id": "gd013",
+      "type": "cypher",
+      "name": "Ordering",
+      "description": "Sort results",
+      "pattern": "ORDER BY p.name ASC LIMIT 10 SKIP 20",
+      "example": "Cypher usage"
+    },
+    {
+      "id": "gd014",
+      "type": "cypher",
+      "name": "MERGE",
+      "description": "Upsert pattern",
+      "pattern": "MERGE (p:Person {id: 1}) SET p.name = 'Alice'",
+      "example": "Cypher usage"
+    },
+    {
+      "id": "gd015",
+      "type": "modeling",
+      "name": "Graph Modeling",
+      "description": "Design patterns",
+      "pattern": "Nodes for entities, relationships for connections",
+      "example": "Modeling usage"
+    },
+    {
+      "id": "gd016",
+      "type": "modeling",
+      "name": "Property vs Relationship",
+      "description": "When to use",
+      "pattern": "Relationship if you'll traverse, property for attributes",
+      "example": "Modeling usage"
+    },
+    {
+      "id": "gd017",
+      "type": "modeling",
+      "name": "Intermediate Nodes",
+      "description": "Hyperedges",
+      "pattern": "Event nodes for temporal relationships",
+      "example": "Modeling usage"
+    },
+    {
+      "id": "gd018",
+      "type": "algorithms",
+      "name": "Shortest Path",
+      "description": "Path finding",
+      "pattern": "shortestPath((a)-[*]-(b)), Dijkstra, A*",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "gd019",
+      "type": "algorithms",
+      "name": "PageRank",
+      "description": "Node importance",
+      "pattern": "gds.pageRank.stream('graph'), influence scoring",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "gd020",
+      "type": "algorithms",
+      "name": "Community Detection",
+      "description": "Clustering",
+      "pattern": "Louvain, Label Propagation, find groups",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "gd021",
+      "type": "algorithms",
+      "name": "Node Similarity",
+      "description": "Similar nodes",
+      "pattern": "Jaccard, Overlap, find similar entities",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "gd022",
+      "type": "gds",
+      "name": "Graph Data Science",
+      "description": "Analytics library",
+      "pattern": "Neo4j GDS, algorithms, ML pipelines",
+      "example": "Gds usage"
+    },
+    {
+      "id": "gd023",
+      "type": "integration",
+      "name": "Neo4j Driver",
+      "description": "Node.js driver",
+      "pattern": "neo4j-driver, session.run(cypher, params)",
+      "example": "Integration usage"
+    },
+    {
+      "id": "gd024",
+      "type": "integration",
+      "name": "OGM",
+      "description": "Object mapping",
+      "pattern": "neogma, @neo4j/graphql, type-safe models",
+      "example": "Integration usage"
+    },
+    {
+      "id": "gd025",
+      "type": "performance",
+      "name": "Indexes",
+      "description": "Query optimization",
+      "pattern": "CREATE INDEX FOR (p:Person) ON (p.id)",
+      "example": "Performance usage"
+    },
+    {
+      "id": "gd026",
+      "type": "performance",
+      "name": "Query Profiling",
+      "description": "Analyze queries",
+      "pattern": "PROFILE MATCH..., EXPLAIN, db hits",
+      "example": "Performance usage"
+    },
+    {
+      "id": "gd027",
+      "type": "alternatives",
+      "name": "Amazon Neptune",
+      "description": "AWS graph DB",
+      "pattern": "Managed, Gremlin + SPARQL, RDF support",
+      "example": "Alternatives usage"
+    },
+    {
+      "id": "gd028",
+      "type": "alternatives",
+      "name": "ArangoDB",
+      "description": "Multi-model",
+      "pattern": "Document + Graph + Key-Value, AQL",
+      "example": "Alternatives usage"
+    },
+    {
+      "id": "gd029",
+      "type": "alternatives",
+      "name": "Dgraph",
+      "description": "Distributed graph",
+      "pattern": "GraphQL native, horizontal scaling",
+      "example": "Alternatives usage"
+    },
+    {
+      "id": "gd030",
+      "type": "use-cases",
+      "name": "Knowledge Graphs",
+      "description": "Semantic data",
+      "pattern": "Entities, relationships, reasoning, RAG enhancement",
+      "example": "Use-cases usage"
+    }
+  ]
+}

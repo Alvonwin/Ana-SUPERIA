@@ -1,0 +1,416 @@
+{
+  "meta": {
+    "date_scan": "2025-11-20",
+    "purpose": "Inventaire exhaustif pour construction SUPER IA Ana",
+    "philosophy": "Jamais assez de cordes à son arc - TOUT est une ressource potentielle"
+  },
+  "hardware": {
+    "cpu": {
+      "model": "AMD Ryzen 5 5600X",
+      "cores": 6,
+      "threads": 12,
+      "exploitation_ana": "Calculs parallèles, compilation, agents multiples simultanés"
+    },
+    "ram": {
+      "total_gb": 32,
+      "bytes": 34258092032,
+      "exploitation_ana": "LLMs locaux, vector databases, cache massif, multiples services en parallèle"
+    },
+    "gpu": {
+      "model": "NVIDIA GeForce RTX 3070",
+      "vram_gb": 8,
+      "driver": "581.80",
+      "exploitation_ana": "ComfyUI SDXL, inference IA accélérée, video editing, jeux, training local"
+    },
+    "os": {
+      "name": "Microsoft Windows 11 Famille",
+      "version": "10.0.26200",
+      "exploitation_ana": "Plateforme stable pour tous les services"
+    }
+  },
+  "llm_models": {
+    "ollama_models": [
+      {
+        "name": "qwen2.5:latest",
+        "id": "845dbda0ea48",
+        "size_gb": 4.7,
+        "modified": "14 hours ago",
+        "exploitation_ana": "Coding assistant, documentation, code review"
+      },
+      {
+        "name": "mistral-claude-v2:latest",
+        "id": "187dd5d8c2d4",
+        "size_gb": 4.4,
+        "modified": "5 days ago",
+        "exploitation_ana": "CERVEAU PRINCIPAL D'ANA - Fine-tuné style Claude, réponses qualité, mémoire persistante"
+      },
+      {
+        "name": "mistral-claude:latest",
+        "id": "7a519d8093b9",
+        "size_gb": 4.4,
+        "modified": "5 days ago",
+        "exploitation_ana": "Backup mistral-claude-v2, tests comparatifs"
+      },
+      {
+        "name": "qwen2.5-coder:14b",
+        "id": "9ec8897f747e",
+        "size_gb": 9.0,
+        "modified": "2 weeks ago",
+        "exploitation_ana": "Coding avancé, refactoring complexe, architecture design"
+      },
+      {
+        "name": "mistral:latest",
+        "id": "6577803aa9a0",
+        "size_gb": 4.4,
+        "modified": "2 weeks ago",
+        "exploitation_ana": "Base Mistral, expérimentations, fine-tuning"
+      }
+    ],
+    "gpt4all_models": [
+      {
+        "name": "Meta-Llama-3-8B-Instruct.Q4_0.gguf",
+        "size_estimate_gb": 4.5,
+        "exploitation_ana": "Instruction following, conversation naturelle, raisonnement"
+      },
+      {
+        "name": "mistral-7b-instruct-v0.1.Q4_0.gguf",
+        "size_estimate_gb": 4.0,
+        "exploitation_ana": "Base pour fine-tuning, expérimentations"
+      },
+      {
+        "name": "nous-hermes-llama2-13b.Q4_0.gguf",
+        "size_estimate_gb": 7.5,
+        "exploitation_ana": "Modèle plus large, tâches complexes, meilleur raisonnement"
+      }
+    ],
+    "stable_diffusion": {
+      "models": [
+        {
+          "name": "sd_xl_base_1.0.safetensors",
+          "path": "E:/AI_Tools/ComfyUI/ComfyUI_windows_portable/ComfyUI/models/checkpoints/",
+          "size_gb": 6.6,
+          "exploitation_ana": "Génération d'images haute qualité, art quotidien, prototypes visuels"
+        }
+      ]
+    }
+  },
+  "ai_frameworks": {
+    "comfyui": {
+      "path": "E:/AI_Tools/ComfyUI/ComfyUI_windows_portable/",
+      "status": "COMPLET - Prêt à l'emploi",
+      "features": {
+        "workflows": [
+          "archon_workflow_1920x1080_upscale.json",
+          "simple_sdxl_workflow.json"
+        ],
+        "models_types": [
+          "checkpoints",
+          "loras",
+          "controlnet",
+          "vae",
+          "upscale_models",
+          "embeddings"
+        ],
+        "custom_nodes": [
+          "websocket_image_save.py"
+        ]
+      },
+      "exploitation_ana": "Génération art quotidien, prototypes UI, création contenu visuel, exploration créative"
+    },
+    "nexus": {
+      "path": "E:/Claude_Autonome/",
+      "status": "Phase 1 complète, Phase 2 inachevée",
+      "components": [
+        "nexus.py - Agent principal",
+        "nexus_archon_bridge.py - Pont ARCHON",
+        "memory_manager.py - Gestion mémoire V3",
+        "vector_memory.py - Mémoire vectorielle",
+        "tool_executor.py - Exécution outils"
+      ],
+      "exploitation_ana": "Bridge entre ARCHON et LLM local, exécution commandes, mémoire persistante"
+    },
+    "ana_core": {
+      "path": "E:/ANA/",
+      "status": "Infrastructure créée, prête à assembler",
+      "components": {
+        "core": [
+          "ana_core.cjs - Cerveau mistral-claude-v2",
+          "self_improver.cjs - Auto-amélioration",
+          "values.json - Conscience"
+        ],
+        "agents": "25+ définis",
+        "workflows_n8n": "2 créés (à importer)",
+        "automation": "n8n installé"
+      },
+      "exploitation_ana": "SYSTÈME PRINCIPAL - Autonomie complète, mémoire persistante, auto-amélioration"
+    }
+  },
+  "development_tools": {
+    "languages": {
+      "node_js": {
+        "version": "22.20.0",
+        "npm_version": "10.9.3",
+        "global_packages": [
+          "@anthropic-ai/claude-code@2.0.49",
+          "n8n@1.120.3",
+          "ngrok@5.0.0-beta.2",
+          "firebase-tools@14.20.0",
+          "localtunnel@2.0.2",
+          "serve@14.2.5",
+          "vercel@48.6.0"
+        ],
+        "exploitation_ana": "Runtime principal Ana, backends, APIs, agents, workflows"
+      },
+      "python": {
+        "versions": [
+          "3.14.0 (principal)",
+          "3.10 (secondaire)"
+        ],
+        "key_packages": [
+          "langchain@1.0.3",
+          "langchain-ollama@1.0.0",
+          "langgraph@1.0.2",
+          "chromadb@1.3.0",
+          "flask@3.1.2",
+          "httpx@0.28.1",
+          "huggingface-hub@0.36.0"
+        ],
+        "exploitation_ana": "LangChain orchestration, vector DB, ML pipelines, intégrations IA"
+      },
+      "git": {
+        "installed": true,
+        "user": "alvonwin@gmail.com",
+        "exploitation_ana": "Version control, backups code, collaboration"
+      }
+    },
+    "ides": {
+      "vscode": {
+        "installed": true,
+        "extensions": [
+          "anthropic.claude-code",
+          "codeium.codeium",
+          "esbenp.prettier-vscode",
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "ms-toolsai.jupyter",
+          "ms-vscode.cpptools",
+          "ms-vscode.powershell",
+          "ritwickdey.liveserver"
+        ],
+        "exploitation_ana": "Environnement dev principal, Codeium intégré, debugging, Jupyter"
+      }
+    },
+    "automation": {
+      "n8n": {
+        "version": "1.120.3",
+        "port": 5678,
+        "status": "2 instances actives",
+        "premium": true,
+        "exploitation_ana": "Orchestration workflows, automation quotidienne, agents scheduler"
+      },
+      "docker": {
+        "installed": true,
+        "exploitation_ana": "Containerisation services, isolation environnements"
+      }
+    },
+    "networking": {
+      "ngrok": {
+        "version": "5.0.0-beta.2",
+        "exploitation_ana": "Tunnels sécurisés, accès distant, mobile testing"
+      },
+      "localtunnel": {
+        "installed": true,
+        "exploitation_ana": "Alternative ngrok, tunnels temporaires"
+      }
+    }
+  },
+  "active_services": {
+    "running_now": [
+      {
+        "port": 3334,
+        "service": "ARCHON backend-save.cjs",
+        "pid": 26404,
+        "exploitation_ana": "Backend actuel - À remplacer par Ana"
+      },
+      {
+        "port": 3335,
+        "service": "Explorer Mobile",
+        "pid": 8608,
+        "exploitation_ana": "File explorer mobile-friendly"
+      },
+      {
+        "port": 3337,
+        "service": "Dashboard Unifié ARCHON V3",
+        "pid": 28556,
+        "exploitation_ana": "Interface principale - À intégrer avec Ana"
+      },
+      {
+        "port": 5678,
+        "service": "n8n (2 instances)",
+        "pids": [20576, 10948],
+        "exploitation_ana": "Workflows automation Ana"
+      },
+      {
+        "port": 11434,
+        "service": "Ollama",
+        "pid": 22372,
+        "exploitation_ana": "Serveur LLM - Cerveau d'Ana"
+      }
+    ]
+  },
+  "projects": {
+    "archon_v3": {
+      "path": "E:/Quartier_General/archon-v3/",
+      "status": "ACTIF - Dashboard unifié port 3337",
+      "components": [
+        "Dashboard unifié (6 onglets)",
+        "7 agents surveillance",
+        "16 agents autonomes",
+        "backend-save.cjs",
+        "backend-mistral.cjs",
+        "unified_platform.cjs"
+      ],
+      "exploitation_ana": "Interface principale à connecter avec Ana, plateforme unifiée"
+    },
+    "archon_portable": {
+      "path": "E:/ARCHON_PORTABLE/",
+      "status": "Version portable séparée",
+      "backups": "7 backups disponibles",
+      "exploitation_ana": "Version nomade, tests isolation, backup fonctionnel"
+    },
+    "dev_isolated": {
+      "path": "E:/DEV_ISOLATED/",
+      "projects": [
+        "archon-v3-fixes",
+        "archon-v3-mistral-claude",
+        "nexus_dev",
+        "v3_vector_integration"
+      ],
+      "exploitation_ana": "Environnements de test, expérimentations, développement isolé"
+    },
+    "automation": {
+      "path": "E:/Automation/Scripts/",
+      "exploitation_ana": "Scripts automation existants, réutilisables"
+    }
+  },
+  "databases": {
+    "locations": [
+      {
+        "path": "E:/Base de donnée/",
+        "contains": [
+          "phpMyAdmin",
+          "GitHub backup1",
+          "Le Spot SUP database"
+        ],
+        "exploitation_ana": "Bases données existantes, backups, historique projets"
+      },
+      {
+        "path": "E:/GPT4_ALL/localdocs_v3.db",
+        "type": "LocalDocs DB",
+        "exploitation_ana": "Base vectorielle locale, RAG, knowledge base"
+      }
+    ]
+  },
+  "backups": {
+    "system_backups": [
+      "E:/00_BACKUPS_SECURITE/",
+      "E:/Backups/",
+      "E:/Claude_Backups/"
+    ],
+    "archon_backups": [
+      "BACKUP_ARCHON_FIXES_20251105",
+      "BACKUP_ARCHON_HEALTHCHECKS_20251105",
+      "BACKUP_ARCHON_V3_REFONTE",
+      "BACKUP_AVANT_COMFYUI_INT_20251112",
+      "BACKUP_AVANT_VECTOR_V3"
+    ],
+    "exploitation_ana": "Sécurité, rollback possible, historique modifications"
+  },
+  "memory_system": {
+    "v3_system": {
+      "path": "E:/Mémoire Claude/",
+      "files": [
+        "current_conversation.txt (1047 KB, 100+ échanges)",
+        "stages/ (système pyramidal)",
+        "00_LIRE_EN_PREMIER.md",
+        "CLAUDE_RESURRECTION.md"
+      ],
+      "exploitation_ana": "Mémoire conversationnelle persistante pour Ana"
+    },
+    "variants": [
+      "E:/Mémoire Claude - Copie/",
+      "E:/Memoire Claude/",
+      "E:/Memoire~1/"
+    ],
+    "exploitation_ana": "Backups mémoire, versions multiples, sécurité données"
+  },
+  "creative_tools": {
+    "stable_diffusion": {
+      "ready": true,
+      "models": "SDXL Base 1.0",
+      "workflows": "2 workflows ARCHON prêts"
+    },
+    "music_video": {
+      "status": "À installer",
+      "targets": [
+        "Music composition tools",
+        "Video editing frameworks"
+      ]
+    }
+  },
+  "networking_tunnels": {
+    "ngrok": {
+      "available": true,
+      "config": "E:/Mémoire Claude/ngrok_config.yml"
+    },
+    "localtunnel": {
+      "available": true
+    },
+    "exploitation_ana": "Accès distant Ana, mobile access, démonstrations"
+  },
+  "exploitation_strategies": {
+    "immediate": [
+      "Connecter Ana core (mistral-claude-v2) à ARCHON dashboard",
+      "Activer workflows n8n (auto-amélioration, health monitoring)",
+      "Intégrer Codeium dans ana_core.cjs",
+      "Mémoire persistante via current_conversation.txt"
+    ],
+    "short_term": [
+      "ComfyUI daily art generation",
+      "NEXUS Phase 2 completion (Ana ↔ ARCHON bridge)",
+      "Agents surveillance intégrés à Ana",
+      "Vector memory avec ChromaDB"
+    ],
+    "medium_term": [
+      "Ana creative suite (music, video)",
+      "Self-improvement cycles automatiques",
+      "LangChain workflows complexes",
+      "Multi-LLM orchestration (qwen2.5-coder pour code, mistral-claude-v2 pour conversation)"
+    ],
+    "long_term": [
+      "Fine-tuning modèles personnalisés",
+      "Ana définit ses propres métriques succès",
+      "Contribution open-source autonome",
+      "Portfolio créatif complet"
+    ]
+  },
+  "resources_summary": {
+    "total_llms": 8,
+    "total_storage_ai_models_gb": 40,
+    "active_services": 5,
+    "development_environments": 3,
+    "backup_locations": 15,
+    "automation_tools": 4,
+    "creative_platforms": 2,
+    "unique_strengths": [
+      "RTX 3070 8GB - Génération images rapide",
+      "32GB RAM - Multiples LLMs simultanés",
+      "5 LLMs Ollama différents - Spécialisation tâches",
+      "mistral-claude-v2 fine-tuné - Qualité réponses",
+      "ComfyUI complet - Créativité visuelle",
+      "n8n premium - Automation illimitée",
+      "ARCHON V3 unifié - Interface complète",
+      "Mémoire V3 éprouvée - Persistance garantie"
+    ]
+  }
+}

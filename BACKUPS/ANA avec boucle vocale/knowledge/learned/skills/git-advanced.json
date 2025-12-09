@@ -1,0 +1,246 @@
+{
+  "category": "git-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "git001",
+      "type": "internals",
+      "name": "Git Objects",
+      "description": "Core storage",
+      "pattern": "blob (file), tree (directory), commit, tag - content-addressable",
+      "example": "Internals usage"
+    },
+    {
+      "id": "git002",
+      "type": "internals",
+      "name": "Git References",
+      "description": "Pointers",
+      "pattern": "HEAD, branches, tags - pointers to commits",
+      "example": "Internals usage"
+    },
+    {
+      "id": "git003",
+      "type": "internals",
+      "name": "Reflog",
+      "description": "Reference log",
+      "pattern": "git reflog - recover lost commits, see HEAD history",
+      "example": "Internals usage"
+    },
+    {
+      "id": "git004",
+      "type": "branching",
+      "name": "Git Flow",
+      "description": "Branch strategy",
+      "pattern": "main, develop, feature/*, release/*, hotfix/*",
+      "example": "Branching usage"
+    },
+    {
+      "id": "git005",
+      "type": "branching",
+      "name": "Trunk-Based Development",
+      "description": "Short-lived branches",
+      "pattern": "Main branch, short feature branches, feature flags",
+      "example": "Branching usage"
+    },
+    {
+      "id": "git006",
+      "type": "branching",
+      "name": "GitHub Flow",
+      "description": "Simple flow",
+      "pattern": "main + feature branches, PR for merge",
+      "example": "Branching usage"
+    },
+    {
+      "id": "git007",
+      "type": "merging",
+      "name": "Merge Strategies",
+      "description": "Combining branches",
+      "pattern": "merge commit, squash, rebase - each has tradeoffs",
+      "example": "Merging usage"
+    },
+    {
+      "id": "git008",
+      "type": "merging",
+      "name": "Rebase vs Merge",
+      "description": "History approaches",
+      "pattern": "Rebase: linear history. Merge: preserve topology.",
+      "example": "Merging usage"
+    },
+    {
+      "id": "git009",
+      "type": "merging",
+      "name": "Interactive Rebase",
+      "description": "Rewrite history",
+      "pattern": "git rebase -i HEAD~5 - squash, reorder, edit commits",
+      "example": "Merging usage"
+    },
+    {
+      "id": "git010",
+      "type": "merging",
+      "name": "Conflict Resolution",
+      "description": "Handle conflicts",
+      "pattern": "Understand both changes, choose/combine, test result",
+      "example": "Merging usage"
+    },
+    {
+      "id": "git011",
+      "type": "merging",
+      "name": "Rerere",
+      "description": "Reuse resolution",
+      "pattern": "git config rerere.enabled true - remember conflict resolutions",
+      "example": "Merging usage"
+    },
+    {
+      "id": "git012",
+      "type": "history",
+      "name": "Git Bisect",
+      "description": "Find bad commit",
+      "pattern": "git bisect start, good, bad - binary search for bug",
+      "example": "History usage"
+    },
+    {
+      "id": "git013",
+      "type": "history",
+      "name": "Git Blame",
+      "description": "Line history",
+      "pattern": "git blame file.js - who changed each line, when",
+      "example": "History usage"
+    },
+    {
+      "id": "git014",
+      "type": "history",
+      "name": "Git Log Advanced",
+      "description": "History exploration",
+      "pattern": "git log --graph --oneline --all, --author, --since, -S",
+      "example": "History usage"
+    },
+    {
+      "id": "git015",
+      "type": "history",
+      "name": "Git Diff",
+      "description": "Compare changes",
+      "pattern": "git diff HEAD~3, --staged, branch1..branch2, --stat",
+      "example": "History usage"
+    },
+    {
+      "id": "git016",
+      "type": "staging",
+      "name": "Partial Staging",
+      "description": "Stage hunks",
+      "pattern": "git add -p - stage specific changes, not whole file",
+      "example": "Staging usage"
+    },
+    {
+      "id": "git017",
+      "type": "staging",
+      "name": "Stashing",
+      "description": "Temporary storage",
+      "pattern": "git stash, stash pop, stash list, stash apply@{2}",
+      "example": "Staging usage"
+    },
+    {
+      "id": "git018",
+      "type": "staging",
+      "name": "Git Clean",
+      "description": "Remove untracked",
+      "pattern": "git clean -fd - remove untracked files and directories",
+      "example": "Staging usage"
+    },
+    {
+      "id": "git019",
+      "type": "recovery",
+      "name": "Reset Modes",
+      "description": "Undo changes",
+      "pattern": "soft (keep staged), mixed (unstage), hard (discard)",
+      "example": "Recovery usage"
+    },
+    {
+      "id": "git020",
+      "type": "recovery",
+      "name": "Git Revert",
+      "description": "Undo commit safely",
+      "pattern": "git revert SHA - create new commit that undoes changes",
+      "example": "Recovery usage"
+    },
+    {
+      "id": "git021",
+      "type": "recovery",
+      "name": "Cherry-Pick",
+      "description": "Apply specific commit",
+      "pattern": "git cherry-pick SHA - apply one commit to current branch",
+      "example": "Recovery usage"
+    },
+    {
+      "id": "git022",
+      "type": "remote",
+      "name": "Remote Management",
+      "description": "Multiple remotes",
+      "pattern": "git remote add upstream URL, fetch, push to different remotes",
+      "example": "Remote usage"
+    },
+    {
+      "id": "git023",
+      "type": "remote",
+      "name": "Tracking Branches",
+      "description": "Remote tracking",
+      "pattern": "git branch -u origin/main, --set-upstream-to",
+      "example": "Remote usage"
+    },
+    {
+      "id": "git024",
+      "type": "remote",
+      "name": "Force Push Safely",
+      "description": "Protected force push",
+      "pattern": "git push --force-with-lease - fails if remote changed",
+      "example": "Remote usage"
+    },
+    {
+      "id": "git025",
+      "type": "submodules",
+      "name": "Git Submodules",
+      "description": "Nested repos",
+      "pattern": "git submodule add URL, update --init --recursive",
+      "example": "Submodules usage"
+    },
+    {
+      "id": "git026",
+      "type": "submodules",
+      "name": "Git Subtree",
+      "description": "Alternative to submodules",
+      "pattern": "git subtree add --prefix lib URL main - simpler workflow",
+      "example": "Submodules usage"
+    },
+    {
+      "id": "git027",
+      "type": "hooks",
+      "name": "Git Hooks",
+      "description": "Automation triggers",
+      "pattern": "pre-commit, pre-push, commit-msg - custom scripts",
+      "example": "Hooks usage"
+    },
+    {
+      "id": "git028",
+      "type": "hooks",
+      "name": "Husky Setup",
+      "description": "Easy hooks",
+      "pattern": "npx husky install, npx husky add .husky/pre-commit 'npm test'",
+      "example": "Hooks usage"
+    },
+    {
+      "id": "git029",
+      "type": "advanced",
+      "name": "Git Worktrees",
+      "description": "Multiple checkouts",
+      "pattern": "git worktree add ../feature-branch feature-branch",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "git030",
+      "type": "advanced",
+      "name": "Git LFS",
+      "description": "Large file storage",
+      "pattern": "git lfs track '*.psd', store large files outside repo",
+      "example": "Advanced usage"
+    }
+  ]
+}

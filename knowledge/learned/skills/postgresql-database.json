@@ -1,0 +1,247 @@
+{
+  "category": "postgresql-database",
+  "version": "1.0.0",
+  "generatedBy": "Ana SUPERIA (DeepSeek Coder) - Supervisé et complété par Claude",
+  "skills": [
+    {
+      "id": "pgsql001",
+      "type": "ddl",
+      "name": "CREATE TABLE",
+      "description": "Create a new table in the database",
+      "pattern": "CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(100));",
+      "example": "Ddl usage"
+    },
+    {
+      "id": "pgsql002",
+      "type": "ddl",
+      "name": "ALTER TABLE",
+      "description": "Modify an existing table structure",
+      "pattern": "ALTER TABLE users ADD COLUMN email VARCHAR(255) UNIQUE;",
+      "example": "Ddl usage"
+    },
+    {
+      "id": "pgsql003",
+      "type": "ddl",
+      "name": "DROP TABLE",
+      "description": "Remove a table from the database",
+      "pattern": "DROP TABLE IF EXISTS users CASCADE;",
+      "example": "Ddl usage"
+    },
+    {
+      "id": "pgsql004",
+      "type": "dml",
+      "name": "SELECT Query",
+      "description": "Retrieve data from tables",
+      "pattern": "SELECT id, name FROM users WHERE active = true ORDER BY name;",
+      "example": "Dml usage"
+    },
+    {
+      "id": "pgsql005",
+      "type": "dml",
+      "name": "INSERT Data",
+      "description": "Add new rows to a table",
+      "pattern": "INSERT INTO users (name, email) VALUES ('John', 'john@example.com') RETURNING id;",
+      "example": "Dml usage"
+    },
+    {
+      "id": "pgsql006",
+      "type": "dml",
+      "name": "UPDATE Data",
+      "description": "Modify existing rows in a table",
+      "pattern": "UPDATE users SET email = 'new@example.com' WHERE id = 1;",
+      "example": "Dml usage"
+    },
+    {
+      "id": "pgsql007",
+      "type": "dml",
+      "name": "DELETE Data",
+      "description": "Remove rows from a table",
+      "pattern": "DELETE FROM users WHERE created_at < NOW() - INTERVAL '1 year';",
+      "example": "Dml usage"
+    },
+    {
+      "id": "pgsql008",
+      "type": "indexes",
+      "name": "B-tree Index",
+      "description": "Default index type for equality and range queries",
+      "pattern": "CREATE INDEX idx_users_email ON users(email);",
+      "example": "Indexes usage"
+    },
+    {
+      "id": "pgsql009",
+      "type": "indexes",
+      "name": "GIN Index",
+      "description": "Generalized Inverted Index for full-text and JSONB",
+      "pattern": "CREATE INDEX idx_data_gin ON documents USING GIN (content);",
+      "example": "Indexes usage"
+    },
+    {
+      "id": "pgsql010",
+      "type": "indexes",
+      "name": "GiST Index",
+      "description": "Generalized Search Tree for geometric and range types",
+      "pattern": "CREATE INDEX idx_geo_gist ON locations USING GIST (coordinates);",
+      "example": "Indexes usage"
+    },
+    {
+      "id": "pgsql011",
+      "type": "constraints",
+      "name": "Primary Key",
+      "description": "Unique identifier constraint",
+      "pattern": "ALTER TABLE users ADD CONSTRAINT pk_users PRIMARY KEY (id);",
+      "example": "Constraints usage"
+    },
+    {
+      "id": "pgsql012",
+      "type": "constraints",
+      "name": "Foreign Key",
+      "description": "Referential integrity constraint",
+      "pattern": "ALTER TABLE orders ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id);",
+      "example": "Constraints usage"
+    },
+    {
+      "id": "pgsql013",
+      "type": "transactions",
+      "name": "BEGIN Transaction",
+      "description": "Start a new transaction block",
+      "pattern": "BEGIN; UPDATE accounts SET balance = balance - 100 WHERE id = 1;",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "pgsql014",
+      "type": "transactions",
+      "name": "COMMIT",
+      "description": "Commit current transaction permanently",
+      "pattern": "COMMIT;",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "pgsql015",
+      "type": "transactions",
+      "name": "ROLLBACK",
+      "description": "Abort current transaction and undo changes",
+      "pattern": "ROLLBACK;",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "pgsql016",
+      "type": "acid",
+      "name": "ACID Properties",
+      "description": "Atomicity, Consistency, Isolation, Durability guarantees",
+      "pattern": "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;",
+      "example": "Acid usage"
+    },
+    {
+      "id": "pgsql017",
+      "type": "mvcc",
+      "name": "MVCC Concurrency",
+      "description": "Multi-Version Concurrency Control for reads",
+      "pattern": "SELECT xmin, xmax, * FROM users; -- View transaction IDs",
+      "example": "Mvcc usage"
+    },
+    {
+      "id": "pgsql018",
+      "type": "json",
+      "name": "JSONB Storage",
+      "description": "Store and query JSON binary data",
+      "pattern": "SELECT data->>'name' FROM documents WHERE data @> '{\"type\": \"article\"}';",
+      "example": "Json usage"
+    },
+    {
+      "id": "pgsql019",
+      "type": "json",
+      "name": "JSONB Operators",
+      "description": "Query JSON with containment and existence",
+      "pattern": "SELECT * FROM products WHERE attributes ? 'color' AND attributes->>'color' = 'red';",
+      "example": "Json usage"
+    },
+    {
+      "id": "pgsql020",
+      "type": "fulltext",
+      "name": "Full-Text Search",
+      "description": "Text search with tsvector and tsquery",
+      "pattern": "SELECT * FROM articles WHERE to_tsvector('english', content) @@ to_tsquery('postgresql & database');",
+      "example": "Fulltext usage"
+    },
+    {
+      "id": "pgsql021",
+      "type": "partitioning",
+      "name": "Table Partitioning",
+      "description": "Split tables by range, list, or hash",
+      "pattern": "CREATE TABLE logs (id SERIAL, created DATE) PARTITION BY RANGE (created);",
+      "example": "Partitioning usage"
+    },
+    {
+      "id": "pgsql022",
+      "type": "replication",
+      "name": "Streaming Replication",
+      "description": "Physical replication for high availability",
+      "pattern": "primary_conninfo = 'host=master port=5432 user=replicator'",
+      "example": "Replication usage"
+    },
+    {
+      "id": "pgsql023",
+      "type": "replication",
+      "name": "Logical Replication",
+      "description": "Table-level replication between databases",
+      "pattern": "CREATE PUBLICATION my_pub FOR TABLE users, orders;",
+      "example": "Replication usage"
+    },
+    {
+      "id": "pgsql024",
+      "type": "pooling",
+      "name": "PgBouncer",
+      "description": "Connection pooling for scalability",
+      "pattern": "[databases] mydb = host=127.0.0.1 port=5432 dbname=mydb",
+      "example": "Pooling usage"
+    },
+    {
+      "id": "pgsql025",
+      "type": "extensions",
+      "name": "PostGIS",
+      "description": "Geographic objects and spatial queries",
+      "pattern": "CREATE EXTENSION postgis; SELECT ST_Distance(geom1, geom2) FROM locations;",
+      "example": "Extensions usage"
+    },
+    {
+      "id": "pgsql026",
+      "type": "extensions",
+      "name": "pg_trgm",
+      "description": "Trigram similarity for fuzzy search",
+      "pattern": "CREATE EXTENSION pg_trgm; SELECT * FROM users WHERE name % 'John';",
+      "example": "Extensions usage"
+    },
+    {
+      "id": "pgsql027",
+      "type": "cte",
+      "name": "Common Table Expression",
+      "description": "Named subqueries with WITH clause",
+      "pattern": "WITH recent AS (SELECT * FROM orders WHERE date > NOW() - '7 days') SELECT * FROM recent;",
+      "example": "Cte usage"
+    },
+    {
+      "id": "pgsql028",
+      "type": "window",
+      "name": "Window Functions",
+      "description": "Calculations across row sets",
+      "pattern": "SELECT name, salary, RANK() OVER (PARTITION BY dept ORDER BY salary DESC) FROM employees;",
+      "example": "Window usage"
+    },
+    {
+      "id": "pgsql029",
+      "type": "procedures",
+      "name": "Stored Procedures",
+      "description": "Server-side PL/pgSQL functions",
+      "pattern": "CREATE FUNCTION get_user(uid INT) RETURNS TABLE(name TEXT) AS $$ BEGIN RETURN QUERY SELECT name FROM users WHERE id = uid; END; $$ LANGUAGE plpgsql;",
+      "example": "Procedures usage"
+    },
+    {
+      "id": "pgsql030",
+      "type": "performance",
+      "name": "EXPLAIN ANALYZE",
+      "description": "Query execution plan analysis",
+      "pattern": "EXPLAIN (ANALYZE, BUFFERS, FORMAT TEXT) SELECT * FROM users WHERE email = 'test@example.com';",
+      "example": "Performance usage"
+    }
+  ]
+}

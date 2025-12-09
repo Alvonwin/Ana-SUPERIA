@@ -1,0 +1,246 @@
+{
+  "category": "database-migrations",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "dm001",
+      "type": "fundamentals",
+      "name": "Migration Concept",
+      "description": "Schema versioning",
+      "pattern": "Incremental changes, version controlled, reversible",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dm002",
+      "type": "fundamentals",
+      "name": "Migration Files",
+      "description": "Change scripts",
+      "pattern": "Timestamped files, up/down functions, sequential",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dm003",
+      "type": "fundamentals",
+      "name": "Migration Table",
+      "description": "Track applied",
+      "pattern": "migrations table stores applied migrations, checksums",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dm004",
+      "type": "prisma",
+      "name": "Prisma Migrate",
+      "description": "Prisma migrations",
+      "pattern": "prisma migrate dev, migrate deploy, schema.prisma",
+      "example": "Prisma usage"
+    },
+    {
+      "id": "dm005",
+      "type": "prisma",
+      "name": "Prisma Shadow DB",
+      "description": "Migration diff",
+      "pattern": "Shadow database compares schema, generates migration",
+      "example": "Prisma usage"
+    },
+    {
+      "id": "dm006",
+      "type": "prisma",
+      "name": "Prisma Baseline",
+      "description": "Existing DB",
+      "pattern": "prisma migrate resolve, baseline existing schema",
+      "example": "Prisma usage"
+    },
+    {
+      "id": "dm007",
+      "type": "knex",
+      "name": "Knex Migrations",
+      "description": "Knex.js",
+      "pattern": "knex migrate:make, migrate:latest, migrate:rollback",
+      "example": "Knex usage"
+    },
+    {
+      "id": "dm008",
+      "type": "knex",
+      "name": "Knex Up/Down",
+      "description": "Migration functions",
+      "pattern": "exports.up = (knex) => {}, exports.down = (knex) => {}",
+      "example": "Knex usage"
+    },
+    {
+      "id": "dm009",
+      "type": "typeorm",
+      "name": "TypeORM Migrations",
+      "description": "TypeORM",
+      "pattern": "typeorm migration:generate, migration:run",
+      "example": "Typeorm usage"
+    },
+    {
+      "id": "dm010",
+      "type": "sequelize",
+      "name": "Sequelize Migrations",
+      "description": "Sequelize CLI",
+      "pattern": "sequelize migration:generate, db:migrate",
+      "example": "Sequelize usage"
+    },
+    {
+      "id": "dm011",
+      "type": "drizzle",
+      "name": "Drizzle Migrations",
+      "description": "Drizzle Kit",
+      "pattern": "drizzle-kit generate, push, introspect",
+      "example": "Drizzle usage"
+    },
+    {
+      "id": "dm012",
+      "type": "flyway",
+      "name": "Flyway",
+      "description": "Java-based",
+      "pattern": "V1__name.sql naming, flyway migrate, Java/SQL",
+      "example": "Flyway usage"
+    },
+    {
+      "id": "dm013",
+      "type": "operations",
+      "name": "Add Column",
+      "description": "New column",
+      "pattern": "ALTER TABLE ADD COLUMN, nullable first or default",
+      "example": "Operations usage"
+    },
+    {
+      "id": "dm014",
+      "type": "operations",
+      "name": "Remove Column",
+      "description": "Drop column",
+      "pattern": "Deploy code first, then drop column, backwards compatible",
+      "example": "Operations usage"
+    },
+    {
+      "id": "dm015",
+      "type": "operations",
+      "name": "Rename Column",
+      "description": "Change name",
+      "pattern": "Add new, copy data, update code, drop old",
+      "example": "Operations usage"
+    },
+    {
+      "id": "dm016",
+      "type": "operations",
+      "name": "Add Index",
+      "description": "Create index",
+      "pattern": "CREATE INDEX CONCURRENTLY, avoid locks",
+      "example": "Operations usage"
+    },
+    {
+      "id": "dm017",
+      "type": "operations",
+      "name": "Change Type",
+      "description": "Alter type",
+      "pattern": "Add new column, migrate data, swap, drop old",
+      "example": "Operations usage"
+    },
+    {
+      "id": "dm018",
+      "type": "safety",
+      "name": "Zero-Downtime",
+      "description": "No interruption",
+      "pattern": "Expand-contract pattern, backwards compatible",
+      "example": "Safety usage"
+    },
+    {
+      "id": "dm019",
+      "type": "safety",
+      "name": "Backwards Compatible",
+      "description": "Old code works",
+      "pattern": "Nullable columns, default values, no required changes",
+      "example": "Safety usage"
+    },
+    {
+      "id": "dm020",
+      "type": "safety",
+      "name": "Rollback Plan",
+      "description": "Undo migration",
+      "pattern": "Down migration, test rollback, data preservation",
+      "example": "Safety usage"
+    },
+    {
+      "id": "dm021",
+      "type": "safety",
+      "name": "Lock Timeouts",
+      "description": "Avoid blocking",
+      "pattern": "SET lock_timeout, statement_timeout, avoid long locks",
+      "example": "Safety usage"
+    },
+    {
+      "id": "dm022",
+      "type": "data",
+      "name": "Data Migrations",
+      "description": "Transform data",
+      "pattern": "Separate from schema, backfill scripts, batched",
+      "example": "Data usage"
+    },
+    {
+      "id": "dm023",
+      "type": "data",
+      "name": "Backfill",
+      "description": "Populate new column",
+      "pattern": "Batch updates, rate limit, background job",
+      "example": "Data usage"
+    },
+    {
+      "id": "dm024",
+      "type": "data",
+      "name": "Seed Data",
+      "description": "Initial data",
+      "pattern": "Separate from migrations, idempotent, reference data",
+      "example": "Data usage"
+    },
+    {
+      "id": "dm025",
+      "type": "testing",
+      "name": "Migration Testing",
+      "description": "Test migrations",
+      "pattern": "Fresh DB, upgrade path, rollback test",
+      "example": "Testing usage"
+    },
+    {
+      "id": "dm026",
+      "type": "testing",
+      "name": "CI/CD Integration",
+      "description": "Automated migrations",
+      "pattern": "Run in CI, deploy runs migrate, health checks",
+      "example": "Testing usage"
+    },
+    {
+      "id": "dm027",
+      "type": "production",
+      "name": "Production Deploy",
+      "description": "Safe rollout",
+      "pattern": "Backup first, run during low traffic, monitor",
+      "example": "Production usage"
+    },
+    {
+      "id": "dm028",
+      "type": "production",
+      "name": "Failed Migration",
+      "description": "Handle failure",
+      "pattern": "Transaction rollback, manual fix, re-run",
+      "example": "Production usage"
+    },
+    {
+      "id": "dm029",
+      "type": "multi-tenant",
+      "name": "Multi-Tenant",
+      "description": "Multiple schemas",
+      "pattern": "Per-tenant migration, parallel execution",
+      "example": "Multi-tenant usage"
+    },
+    {
+      "id": "dm030",
+      "type": "tools",
+      "name": "Schema Diff",
+      "description": "Compare schemas",
+      "pattern": "pg_diff, skeema, auto-generate migrations",
+      "example": "Tools usage"
+    }
+  ]
+}

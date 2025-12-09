@@ -1,0 +1,246 @@
+{
+  "category": "ansible",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ans001",
+      "type": "fundamentals",
+      "name": "Ansible Basics",
+      "description": "Config management",
+      "pattern": "Agentless, SSH-based, YAML playbooks, idempotent",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ans002",
+      "type": "fundamentals",
+      "name": "Inventory",
+      "description": "Host definitions",
+      "pattern": "hosts file, groups, variables, dynamic inventory",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ans003",
+      "type": "fundamentals",
+      "name": "Modules",
+      "description": "Task actions",
+      "pattern": "apt, yum, copy, template, service, user",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ans004",
+      "type": "fundamentals",
+      "name": "Ad-Hoc Commands",
+      "description": "Quick tasks",
+      "pattern": "ansible all -m ping, -a 'uptime'",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ans005",
+      "type": "playbooks",
+      "name": "Playbook Structure",
+      "description": "YAML format",
+      "pattern": "hosts, tasks, handlers, vars, roles",
+      "example": "Playbooks usage"
+    },
+    {
+      "id": "ans006",
+      "type": "playbooks",
+      "name": "Tasks",
+      "description": "Actions to perform",
+      "pattern": "- name: Install nginx; apt: name=nginx state=present",
+      "example": "Playbooks usage"
+    },
+    {
+      "id": "ans007",
+      "type": "playbooks",
+      "name": "Handlers",
+      "description": "Triggered tasks",
+      "pattern": "notify: restart nginx, run once at end",
+      "example": "Playbooks usage"
+    },
+    {
+      "id": "ans008",
+      "type": "playbooks",
+      "name": "Variables",
+      "description": "Dynamic values",
+      "pattern": "vars:, vars_files, {{ variable }}, Jinja2",
+      "example": "Playbooks usage"
+    },
+    {
+      "id": "ans009",
+      "type": "playbooks",
+      "name": "Facts",
+      "description": "System info",
+      "pattern": "ansible_facts, gather_facts, custom facts",
+      "example": "Playbooks usage"
+    },
+    {
+      "id": "ans010",
+      "type": "playbooks",
+      "name": "Conditionals",
+      "description": "When clause",
+      "pattern": "when: ansible_os_family == 'Debian'",
+      "example": "Playbooks usage"
+    },
+    {
+      "id": "ans011",
+      "type": "playbooks",
+      "name": "Loops",
+      "description": "Iterate items",
+      "pattern": "loop: [a, b, c], with_items, with_dict",
+      "example": "Playbooks usage"
+    },
+    {
+      "id": "ans012",
+      "type": "playbooks",
+      "name": "Templates",
+      "description": "Jinja2 templates",
+      "pattern": "template: src=nginx.conf.j2 dest=/etc/nginx/",
+      "example": "Playbooks usage"
+    },
+    {
+      "id": "ans013",
+      "type": "playbooks",
+      "name": "Blocks",
+      "description": "Group tasks",
+      "pattern": "block: tasks, rescue: on error, always:",
+      "example": "Playbooks usage"
+    },
+    {
+      "id": "ans014",
+      "type": "roles",
+      "name": "Role Structure",
+      "description": "Reusable units",
+      "pattern": "tasks/, handlers/, templates/, vars/, defaults/",
+      "example": "Roles usage"
+    },
+    {
+      "id": "ans015",
+      "type": "roles",
+      "name": "Role Dependencies",
+      "description": "Role requirements",
+      "pattern": "meta/main.yml, dependencies list",
+      "example": "Roles usage"
+    },
+    {
+      "id": "ans016",
+      "type": "roles",
+      "name": "Ansible Galaxy",
+      "description": "Role sharing",
+      "pattern": "ansible-galaxy install role, requirements.yml",
+      "example": "Roles usage"
+    },
+    {
+      "id": "ans017",
+      "type": "variables",
+      "name": "Variable Precedence",
+      "description": "Override order",
+      "pattern": "22 levels, -e highest, role defaults lowest",
+      "example": "Variables usage"
+    },
+    {
+      "id": "ans018",
+      "type": "variables",
+      "name": "Vault",
+      "description": "Encrypt secrets",
+      "pattern": "ansible-vault encrypt, decrypt, edit, view",
+      "example": "Variables usage"
+    },
+    {
+      "id": "ans019",
+      "type": "variables",
+      "name": "Group Vars",
+      "description": "Group variables",
+      "pattern": "group_vars/all.yml, group_vars/webservers/",
+      "example": "Variables usage"
+    },
+    {
+      "id": "ans020",
+      "type": "variables",
+      "name": "Host Vars",
+      "description": "Host-specific",
+      "pattern": "host_vars/hostname.yml, per-host config",
+      "example": "Variables usage"
+    },
+    {
+      "id": "ans021",
+      "type": "advanced",
+      "name": "Delegation",
+      "description": "Run elsewhere",
+      "pattern": "delegate_to: localhost, run_once: true",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ans022",
+      "type": "advanced",
+      "name": "Async Tasks",
+      "description": "Long-running",
+      "pattern": "async: 3600, poll: 0, async_status",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ans023",
+      "type": "advanced",
+      "name": "Dynamic Inventory",
+      "description": "Auto-discover",
+      "pattern": "AWS, Azure, GCP inventory plugins",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ans024",
+      "type": "advanced",
+      "name": "Custom Modules",
+      "description": "Extend Ansible",
+      "pattern": "Python modules, library/ directory",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ans025",
+      "type": "advanced",
+      "name": "Callbacks",
+      "description": "Output plugins",
+      "pattern": "json, yaml, custom callback plugins",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ans026",
+      "type": "testing",
+      "name": "Molecule",
+      "description": "Role testing",
+      "pattern": "molecule init, test, converge, verify",
+      "example": "Testing usage"
+    },
+    {
+      "id": "ans027",
+      "type": "testing",
+      "name": "Ansible Lint",
+      "description": "Best practices",
+      "pattern": "ansible-lint playbook.yml, rules",
+      "example": "Testing usage"
+    },
+    {
+      "id": "ans028",
+      "type": "collections",
+      "name": "Collections",
+      "description": "Package format",
+      "pattern": "ansible-galaxy collection install, namespace.collection",
+      "example": "Collections usage"
+    },
+    {
+      "id": "ans029",
+      "type": "awx",
+      "name": "AWX/Tower",
+      "description": "Web UI",
+      "pattern": "Job templates, inventories, credentials, RBAC",
+      "example": "Awx usage"
+    },
+    {
+      "id": "ans030",
+      "type": "patterns",
+      "name": "Best Practices",
+      "description": "Organization",
+      "pattern": "Idempotency, small tasks, tags, check mode",
+      "example": "Patterns usage"
+    }
+  ]
+}

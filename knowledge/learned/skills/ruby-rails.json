@@ -1,0 +1,246 @@
+{
+  "category": "ruby-rails",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "rb001",
+      "type": "fundamentals",
+      "name": "Ruby Basics",
+      "description": "Core Ruby syntax",
+      "pattern": "puts, variables, strings, symbols",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb002",
+      "type": "fundamentals",
+      "name": "Data Structures",
+      "description": "Ruby collections",
+      "pattern": "Array, Hash, Set, Range",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb003",
+      "type": "fundamentals",
+      "name": "Blocks & Procs",
+      "description": "Code blocks",
+      "pattern": "do..end, yield, Proc.new, lambda",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb004",
+      "type": "fundamentals",
+      "name": "OOP Ruby",
+      "description": "Object orientation",
+      "pattern": "class, module, include, extend, attr_accessor",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb005",
+      "type": "fundamentals",
+      "name": "Metaprogramming",
+      "description": "Dynamic code",
+      "pattern": "define_method, method_missing, eval, send",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb006",
+      "type": "fundamentals",
+      "name": "Gems & Bundler",
+      "description": "Package management",
+      "pattern": "Gemfile, bundle install, gem build",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb007",
+      "type": "fundamentals",
+      "name": "Error Handling",
+      "description": "Exceptions",
+      "pattern": "begin/rescue/ensure, raise, custom exceptions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb008",
+      "type": "fundamentals",
+      "name": "File I/O",
+      "description": "File operations",
+      "pattern": "File.read, File.write, Dir, FileUtils",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb009",
+      "type": "fundamentals",
+      "name": "Regular Expressions",
+      "description": "Pattern matching",
+      "pattern": "/pattern/, =~, match, gsub, scan",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb010",
+      "type": "fundamentals",
+      "name": "Iterators",
+      "description": "Enumerable methods",
+      "pattern": "each, map, select, reduce, find",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rb011",
+      "type": "rails",
+      "name": "Rails MVC",
+      "description": "Architecture",
+      "pattern": "Model-View-Controller, conventions",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb012",
+      "type": "rails",
+      "name": "ActiveRecord",
+      "description": "ORM layer",
+      "pattern": "migrations, associations, validations, scopes",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb013",
+      "type": "rails",
+      "name": "Routing",
+      "description": "URL routing",
+      "pattern": "resources, namespace, constraints, custom routes",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb014",
+      "type": "rails",
+      "name": "Controllers",
+      "description": "Request handling",
+      "pattern": "actions, params, filters, strong_parameters",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb015",
+      "type": "rails",
+      "name": "Views & ERB",
+      "description": "Templates",
+      "pattern": "erb, partials, layouts, helpers",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb016",
+      "type": "rails",
+      "name": "Asset Pipeline",
+      "description": "Static assets",
+      "pattern": "Sprockets, importmaps, esbuild",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb017",
+      "type": "rails",
+      "name": "ActiveJob",
+      "description": "Background jobs",
+      "pattern": "perform_later, queue adapters, Sidekiq",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb018",
+      "type": "rails",
+      "name": "ActionMailer",
+      "description": "Email sending",
+      "pattern": "mailer classes, deliver_now, templates",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb019",
+      "type": "rails",
+      "name": "ActionCable",
+      "description": "WebSockets",
+      "pattern": "channels, subscriptions, broadcasting",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb020",
+      "type": "rails",
+      "name": "ActiveStorage",
+      "description": "File uploads",
+      "pattern": "has_one_attached, variants, direct upload",
+      "example": "Rails usage"
+    },
+    {
+      "id": "rb021",
+      "type": "advanced",
+      "name": "Rails API Mode",
+      "description": "API-only apps",
+      "pattern": "rails new --api, serializers, jbuilder",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rb022",
+      "type": "advanced",
+      "name": "Authentication",
+      "description": "User auth",
+      "pattern": "Devise, has_secure_password, JWT",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rb023",
+      "type": "advanced",
+      "name": "Authorization",
+      "description": "Permissions",
+      "pattern": "Pundit, CanCanCan, policies",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rb024",
+      "type": "advanced",
+      "name": "Testing RSpec",
+      "description": "Testing framework",
+      "pattern": "describe, it, expect, mocks, factories",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rb025",
+      "type": "advanced",
+      "name": "Hotwire/Turbo",
+      "description": "Modern Rails",
+      "pattern": "Turbo Frames, Streams, Stimulus",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rb026",
+      "type": "advanced",
+      "name": "Caching",
+      "description": "Performance",
+      "pattern": "fragment, Russian doll, Redis, memcached",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rb027",
+      "type": "advanced",
+      "name": "I18n",
+      "description": "Internationalization",
+      "pattern": "t(), locales, pluralization",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rb028",
+      "type": "advanced",
+      "name": "Database Optimization",
+      "description": "Query tuning",
+      "pattern": "includes, joins, N+1, explain",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rb029",
+      "type": "advanced",
+      "name": "Deployment",
+      "description": "Production",
+      "pattern": "Capistrano, Kamal, Docker, Heroku",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rb030",
+      "type": "advanced",
+      "name": "Rails Engines",
+      "description": "Modular Rails",
+      "pattern": "mountable engines, plugins, gems",
+      "example": "Advanced usage"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "category": "oracle-plsql",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ora001",
+      "type": "fundamentals",
+      "name": "PL/SQL Basics",
+      "description": "PL/SQL syntax",
+      "pattern": "DECLARE, BEGIN, END, blocks",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ora002",
+      "type": "fundamentals",
+      "name": "Variables",
+      "description": "Data types",
+      "pattern": "VARCHAR2, NUMBER, DATE, %TYPE",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ora003",
+      "type": "fundamentals",
+      "name": "Control Structures",
+      "description": "Flow control",
+      "pattern": "IF, CASE, LOOP, FOR, WHILE",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ora004",
+      "type": "cursors",
+      "name": "Explicit Cursors",
+      "description": "Cursor processing",
+      "pattern": "CURSOR, OPEN, FETCH, CLOSE",
+      "example": "Cursors usage"
+    },
+    {
+      "id": "ora005",
+      "type": "cursors",
+      "name": "Implicit Cursors",
+      "description": "SQL cursors",
+      "pattern": "SQL%ROWCOUNT, SQL%FOUND",
+      "example": "Cursors usage"
+    },
+    {
+      "id": "ora006",
+      "type": "cursors",
+      "name": "Cursor FOR Loop",
+      "description": "Simplified cursors",
+      "pattern": "FOR rec IN cursor LOOP",
+      "example": "Cursors usage"
+    },
+    {
+      "id": "ora007",
+      "type": "procedures",
+      "name": "Stored Procedures",
+      "description": "Procedures",
+      "pattern": "CREATE PROCEDURE, IN/OUT params",
+      "example": "Procedures usage"
+    },
+    {
+      "id": "ora008",
+      "type": "procedures",
+      "name": "Functions",
+      "description": "Return values",
+      "pattern": "CREATE FUNCTION, RETURN",
+      "example": "Procedures usage"
+    },
+    {
+      "id": "ora009",
+      "type": "procedures",
+      "name": "Packages",
+      "description": "Modularity",
+      "pattern": "PACKAGE, PACKAGE BODY, spec",
+      "example": "Procedures usage"
+    },
+    {
+      "id": "ora010",
+      "type": "exceptions",
+      "name": "Exception Handling",
+      "description": "Error handling",
+      "pattern": "EXCEPTION, WHEN, RAISE",
+      "example": "Exceptions usage"
+    },
+    {
+      "id": "ora011",
+      "type": "exceptions",
+      "name": "User-Defined Exceptions",
+      "description": "Custom errors",
+      "pattern": "PRAGMA EXCEPTION_INIT",
+      "example": "Exceptions usage"
+    },
+    {
+      "id": "ora012",
+      "type": "exceptions",
+      "name": "SQLCODE/SQLERRM",
+      "description": "Error info",
+      "pattern": "SQLCODE, SQLERRM, error stack",
+      "example": "Exceptions usage"
+    },
+    {
+      "id": "ora013",
+      "type": "triggers",
+      "name": "DML Triggers",
+      "description": "Data triggers",
+      "pattern": "BEFORE/AFTER INSERT/UPDATE/DELETE",
+      "example": "Triggers usage"
+    },
+    {
+      "id": "ora014",
+      "type": "triggers",
+      "name": "Compound Triggers",
+      "description": "Multi-timing",
+      "pattern": "COMPOUND TRIGGER, timing points",
+      "example": "Triggers usage"
+    },
+    {
+      "id": "ora015",
+      "type": "triggers",
+      "name": "Instead-Of Triggers",
+      "description": "View triggers",
+      "pattern": "INSTEAD OF, view DML",
+      "example": "Triggers usage"
+    },
+    {
+      "id": "ora016",
+      "type": "collections",
+      "name": "Nested Tables",
+      "description": "Collection types",
+      "pattern": "TABLE OF, BULK COLLECT",
+      "example": "Collections usage"
+    },
+    {
+      "id": "ora017",
+      "type": "collections",
+      "name": "VARRAYs",
+      "description": "Fixed arrays",
+      "pattern": "VARRAY, EXTEND, COUNT",
+      "example": "Collections usage"
+    },
+    {
+      "id": "ora018",
+      "type": "collections",
+      "name": "Associative Arrays",
+      "description": "Index-by tables",
+      "pattern": "INDEX BY, PLS_INTEGER",
+      "example": "Collections usage"
+    },
+    {
+      "id": "ora019",
+      "type": "bulk",
+      "name": "BULK COLLECT",
+      "description": "Bulk fetch",
+      "pattern": "BULK COLLECT INTO, LIMIT",
+      "example": "Bulk usage"
+    },
+    {
+      "id": "ora020",
+      "type": "bulk",
+      "name": "FORALL",
+      "description": "Bulk DML",
+      "pattern": "FORALL, SAVE EXCEPTIONS",
+      "example": "Bulk usage"
+    },
+    {
+      "id": "ora021",
+      "type": "dynamic",
+      "name": "Dynamic SQL",
+      "description": "Runtime SQL",
+      "pattern": "EXECUTE IMMEDIATE, bind vars",
+      "example": "Dynamic usage"
+    },
+    {
+      "id": "ora022",
+      "type": "dynamic",
+      "name": "DBMS_SQL",
+      "description": "Dynamic package",
+      "pattern": "DBMS_SQL.PARSE, EXECUTE",
+      "example": "Dynamic usage"
+    },
+    {
+      "id": "ora023",
+      "type": "objects",
+      "name": "Object Types",
+      "description": "OOP",
+      "pattern": "CREATE TYPE, methods, inheritance",
+      "example": "Objects usage"
+    },
+    {
+      "id": "ora024",
+      "type": "performance",
+      "name": "Performance Tuning",
+      "description": "Optimization",
+      "pattern": "Explain plan, hints, statistics",
+      "example": "Performance usage"
+    },
+    {
+      "id": "ora025",
+      "type": "performance",
+      "name": "Native Compilation",
+      "description": "Compilation",
+      "pattern": "NATIVE, INTERPRETED",
+      "example": "Performance usage"
+    },
+    {
+      "id": "ora026",
+      "type": "utilities",
+      "name": "DBMS_OUTPUT",
+      "description": "Debug output",
+      "pattern": "PUT_LINE, buffer, enable",
+      "example": "Utilities usage"
+    },
+    {
+      "id": "ora027",
+      "type": "utilities",
+      "name": "UTL Packages",
+      "description": "Utilities",
+      "pattern": "UTL_FILE, UTL_HTTP, UTL_MAIL",
+      "example": "Utilities usage"
+    },
+    {
+      "id": "ora028",
+      "type": "utilities",
+      "name": "DBMS_SCHEDULER",
+      "description": "Job scheduling",
+      "pattern": "CREATE_JOB, schedules, programs",
+      "example": "Utilities usage"
+    },
+    {
+      "id": "ora029",
+      "type": "security",
+      "name": "Security",
+      "description": "Access control",
+      "pattern": "AUTHID, definer/invoker rights",
+      "example": "Security usage"
+    },
+    {
+      "id": "ora030",
+      "type": "debugging",
+      "name": "Debugging",
+      "description": "Debug tools",
+      "pattern": "DBMS_DEBUG, SQL Developer debug",
+      "example": "Debugging usage"
+    }
+  ]
+}

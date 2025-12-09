@@ -1,0 +1,556 @@
+const EventEmitter = require('events')
+const fs = require('fs')
+const path = require('path')
+const eventBus = require('./shared_event_bus.cjs')
+
+/**
+ * 🔔 ALAIN NOTIFIER AGENT - Communication Proactive
+ *
+ * Raison d'être:
+ * Communiquer proactivement avec Alain plutôt qu'attendre qu'il me demande.
+ *
+ * Ce n'est pas juste "logger des événements".
+ * C'est DÉCIDER QUOI DIRE, QUAND, et COMMENT.
+ *
+ * Fonctionnalités:
+ * - Surveille tous les événements du système
+ * - Décide quels événements méritent notification
+ * - Priorise (urgent, important, info, debug)
+ * - Agrège notifications similaires
+ * - Crée messages contextuels pour Alain
+ * - Écrit dans fichier qu'Alain peut consulter
+ * - Suggère actions concrètes
+ *
+ * Fréquence: Temps réel (événements) + résumés quotidiens
+ * Événements émis: notification:created, notification:urgent
+ */
+class AlainNotifier extends EventEmitter {
+  constructor() {
+    super()
+    this.running = false
+
+    // Chemins
+    this.memoryBase = 'E:\\Mémoire Claude'
+    this.notificationsFile = path.join(this.memoryBase, 'NOTIFICATIONS_ALAIN.md')
+    this.urgentFile = path.join(this.memoryBase, 'URGENT_ALAIN.md')
+
+    // Queue de notifications
+    this.notifications = []
+    this.maxNotifications = 50 // Garder les 50 dernières
+
+    // Dernière notification de chaque type (éviter spam)
+    this.lastNotification = new Map()
+    this.cooldownPeriod = 5 * 60 * 1000 // 5 minutes
+
+    // Compteurs par type
+    this.counts = {
+      urgent: 0,
+      important: 0,
+      info: 0,
+      total: 0
+    }
+
+    // Stats
+    this.stats = {
+      notificationsCreated: 0,
+      urgentAlertsCreated: 0,
+      startTime: null
+    }
+
+    console.log('🔔 Alain Notifier initialisé')
+  }
+
+  /**
+   * Démarre l'agent
+   */
+  async start() {
+    if (this.running) {
+      console.log('⚠️ Alain Notifier déjà démarré')
+      return
+    }
+
+    this.running = true
+    this.stats.startTime = Date.now()
+
+    console.log('🔔 Alain Notifier démarré')
+    console.log(`   - Notifications: ${this.notificationsFile}`)
+    console.log(`   - Urgent: ${this.urgentFile}`)
+
+    // Initialiser fichiers
+    this.initializeFiles()
+
+    // Écouter TOUS les événements du système
+    this.setupEventListeners()
+
+    // Résumé quotidien (minuit)
+    this.scheduleDailySummary()
+
+    this.emit('started')
+    eventBus.emit('agent:started', { name: 'alain_notifier' })
+  }
+
+  /**
+   * Arrête l'agent
+   */
+  async stop() {
+    if (!this.running) {
+      console.log('⚠️ Alain Notifier déjà arrêté')
+      return
+    }
+
+    console.log('🛑 Alain Notifier en cours d\'arrêt...')
+
+    // Sauvegarder dernières notifications
+    this.saveNotifications()
+
+    this.running = false
+    console.log('🔔 Alain Notifier arrêté')
+
+    this.emit('stopped')
+    eventBus.emit('agent:stopped', { name: 'alain_notifier' })
+  }
+
+  /**
+   * Initialise les fichiers de notifications
+   */
+  initializeFiles() {
+    // Fichier principal
+    if (!fs.existsSync(this.notificationsFile)) {
+      const initial = this.createInitialFile()
+      fs.writeFileSync(this.notificationsFile, initial, 'utf-8')
+      console.log('   ✅ Fichier notifications créé')
+    }
+  }
+
+  /**
+   * Crée le contenu initial du fichier
+   */
+  createInitialFile() {
+    return `# 🔔 NOTIFICATIONS POUR ALAIN
+
+**Mis à jour**: ${new Date().toLocaleString('fr-FR')}
+
+Ce fichier contient les notifications que je (Claude) veux partager avec toi de manière proactive.
+
+---
+
+## ⚡ URGENT
+
+*(Rien pour le moment)*
+
+---
+
+## 📋 IMPORTANT
+
+*(Rien pour le moment)*
+
+---
+
+## ℹ️ INFO
+
+*(Rien pour le moment)*
+
+---
+
+## 📊 Résumé
+
+**Total notifications**: 0
+
+---
+
+*Dernière mise à jour: ${new Date().toLocaleString('fr-FR')}*
+`
+  }
+
+  /**
+   * Configure les listeners d'événements
+   */
+  setupEventListeners() {
+    // ÉVÉNEMENTS URGENTS
+
+    // Memory critique
+    eventBus.on('memory:size_critical', (data) => {
+      this.notify({
+        level: 'urgent',
+        category: 'memory',
+        title: '⚠️ Mémoire critique',
+        message: `Current conversation atteint ${data.sizeMB}MB. Archivage automatique déclenché.`,
+        action: 'Vérifier archives dans MÉMOIRE_CHARGÉE_TEMP_ARCHIVES/',
+        data
+      })
+    })
+
+    // Service down
+    eventBus.on('system:service_down', (data) => {
+      this.notify({
+        level: 'urgent',
+        category: 'system',
+        title: '🔴 Service arrêté',
+        message: `Le service "${data.service}" n'est plus accessible.`,
+        action: 'Redémarrer le service ou vérifier logs',
+        data
+      })
+    })
+
+    // ÉVÉNEMENTS IMPORTANTS
+
+    // Agents démarrés
+    eventBus.on('agent:started', (data) => {
+      this.notify({
+        level: 'info',
+        category: 'agents',
+        title: `🚀 Agent démarré: ${data.name}`,
+        message: `L'agent ${data.name} est maintenant opérationnel.`,
+        data
+      })
+    })
+
+    // Mémoire consolidée
+    eventBus.on('memory:monthly_consolidated', (data) => {
+      this.notify({
+        level: 'important',
+        category: 'memory',
+        title: '🧠 Consolidation mensuelle complétée',
+        message: `Mois ${data.month}/${data.year} consolidé en narratif autobiographique.`,
+        action: `Lire: ${data.filepath}`,
+        data
+      })
+    })
+
+    // Synthèse hebdomadaire
+    eventBus.on('synthesis:saved', (data) => {
+      this.notify({
+        level: 'important',
+        category: 'synthesis',
+        title: '📝 Synthèse hebdomadaire créée',
+        message: `Nouvelle synthèse narrative de ma semaine disponible.`,
+        action: `Lire: ${data.filepath}`,
+        data
+      })
+    })
+
+    // Assertions incorrectes (Truth Checker)
+    eventBus.on('truth:mismatches_found', (data) => {
+      this.notify({
+        level: 'important',
+        category: 'truth',
+        title: '⚠️ Assertions incorrectes détectées',
+        message: `J'ai dit ${data.count} chose(s) fausse(s). Truth Checker a créé alertes.`,
+        action: 'Vérifier TRUTH_ALERTS/ pour corrections',
+        data
+      })
+    })
+
+    // Gaps de connaissance
+    eventBus.on('research:gaps_detected', (data) => {
+      if (data.count >= 5) {
+        this.notify({
+          level: 'important',
+          category: 'research',
+          title: '🔍 Lacunes de connaissance détectées',
+          message: `${data.count} gaps identifiés dans mes conversations.`,
+          action: 'Vérifier RECHERCHES/ pour voir ce que je cherche',
+          data
+        })
+      }
+    })
+
+    // Code issues
+    eventBus.on('code:issues_found', (data) => {
+      if (data.issueCount > 10) {
+        this.notify({
+          level: 'important',
+          category: 'code',
+          title: '🔬 Issues dans mon code',
+          message: `${data.issueCount} issues détectées dans ${data.fileCount} fichier(s).`,
+          action: 'Vérifier CODE_REVIEWS/ pour détails et suggestions',
+          data
+        })
+      }
+    })
+
+    // ÉVÉNEMENTS INFO
+
+    // Leçons extraites
+    eventBus.on('learning:lessons_extracted', (data) => {
+      if (data.count > 0) {
+        this.notify({
+          level: 'info',
+          category: 'learning',
+          title: '📚 Nouvelles leçons apprises',
+          message: `${data.count} leçon(s) extraite(s) de la conversation.`,
+          data
+        })
+      }
+    })
+
+    // Patterns émotionnels
+    eventBus.on('emotion:analysis_complete', (data) => {
+      if (data.patternsFound) {
+        this.notify({
+          level: 'info',
+          category: 'emotion',
+          title: '🎭 Patterns émotionnels identifiés',
+          message: `Nouveaux patterns dans mon journal émotionnel.`,
+          data
+        })
+      }
+    })
+  }
+
+  /**
+   * Crée une notification
+   */
+  notify({ level, category, title, message, action, data }) {
+    // Vérifier cooldown (éviter spam)
+    const key = `${level}:${category}:${title}`
+    const lastTime = this.lastNotification.get(key)
+
+    if (lastTime && Date.now() - lastTime < this.cooldownPeriod) {
+      // Trop tôt, skip
+      return
+    }
+
+    const notification = {
+      id: `notif_${Date.now()}`,
+      timestamp: Date.now(),
+      level,
+      category,
+      title,
+      message,
+      action: action || null,
+      data: data || null,
+      read: false
+    }
+
+    // Ajouter à queue
+    this.notifications.unshift(notification)
+
+    // Limiter taille queue
+    if (this.notifications.length > this.maxNotifications) {
+      this.notifications = this.notifications.slice(0, this.maxNotifications)
+    }
+
+    // Update compteurs
+    this.counts[level]++
+    this.counts.total++
+    this.stats.notificationsCreated++
+
+    // Update lastNotification
+    this.lastNotification.set(key, Date.now())
+
+    // Log
+    const icon = { urgent: '🔴', important: '🟠', info: 'ℹ️' }[level]
+    console.log(`🔔 [Notifier] ${icon} ${title}`)
+
+    // Sauvegarder
+    this.saveNotifications()
+
+    // Créer fichier urgent si nécessaire
+    if (level === 'urgent') {
+      this.createUrgentAlert(notification)
+      this.stats.urgentAlertsCreated++
+      eventBus.emit('notification:urgent', notification)
+    }
+
+    eventBus.emit('notification:created', notification)
+  }
+
+  /**
+   * Sauvegarde les notifications dans le fichier
+   */
+  saveNotifications() {
+    let content = `# 🔔 NOTIFICATIONS POUR ALAIN\n\n`
+    content += `**Dernière mise à jour**: ${new Date().toLocaleString('fr-FR')}\n\n`
+    content += `Ce fichier contient les notifications que je (Claude) veux partager avec toi de manière proactive.\n\n`
+    content += `---\n\n`
+
+    // Urgentes
+    const urgent = this.notifications.filter(n => n.level === 'urgent')
+    content += `## ⚡ URGENT (${urgent.length})\n\n`
+
+    if (urgent.length === 0) {
+      content += `*(Rien pour le moment)* ✅\n\n`
+    } else {
+      urgent.forEach(n => {
+        content += this.formatNotification(n)
+      })
+    }
+
+    content += `---\n\n`
+
+    // Importantes
+    const important = this.notifications.filter(n => n.level === 'important')
+    content += `## 📋 IMPORTANT (${important.length})\n\n`
+
+    if (important.length === 0) {
+      content += `*(Rien pour le moment)* ✅\n\n`
+    } else {
+      // Limiter à 10 plus récentes
+      important.slice(0, 10).forEach(n => {
+        content += this.formatNotification(n)
+      })
+
+      if (important.length > 10) {
+        content += `\n*... et ${important.length - 10} autre(s)*\n\n`
+      }
+    }
+
+    content += `---\n\n`
+
+    // Info
+    const info = this.notifications.filter(n => n.level === 'info')
+    content += `## ℹ️ INFO (${info.length})\n\n`
+
+    if (info.length === 0) {
+      content += `*(Rien pour le moment)*\n\n`
+    } else {
+      // Limiter à 5 plus récentes
+      info.slice(0, 5).forEach(n => {
+        content += this.formatNotification(n)
+      })
+
+      if (info.length > 5) {
+        content += `\n*... et ${info.length - 5} autre(s)*\n\n`
+      }
+    }
+
+    content += `---\n\n`
+
+    // Résumé
+    content += `## 📊 Résumé\n\n`
+    content += `**Total notifications**: ${this.counts.total}\n`
+    content += `- 🔴 Urgent: ${this.counts.urgent}\n`
+    content += `- 🟠 Important: ${this.counts.important}\n`
+    content += `- ℹ️ Info: ${this.counts.info}\n\n`
+
+    content += `---\n\n`
+    content += `*Dernière mise à jour: ${new Date().toLocaleString('fr-FR')}*\n`
+    content += `*Fichier auto-généré par Alain Notifier Agent*\n`
+
+    fs.writeFileSync(this.notificationsFile, content, 'utf-8')
+  }
+
+  /**
+   * Formate une notification pour affichage
+   */
+  formatNotification(n) {
+    let text = `### ${n.title}\n\n`
+    text += `**Quand**: ${new Date(n.timestamp).toLocaleString('fr-FR')}\n`
+    text += `**Catégorie**: ${n.category}\n\n`
+    text += `${n.message}\n\n`
+
+    if (n.action) {
+      text += `💡 **Action suggérée**: ${n.action}\n\n`
+    }
+
+    return text
+  }
+
+  /**
+   * Crée une alerte urgente
+   */
+  createUrgentAlert(notification) {
+    let content = `# 🚨 ALERTE URGENTE\n\n`
+    content += `**Date**: ${new Date(notification.timestamp).toLocaleString('fr-FR')}\n\n`
+    content += `---\n\n`
+    content += `## ${notification.title}\n\n`
+    content += `${notification.message}\n\n`
+
+    if (notification.action) {
+      content += `## 💡 Action Requise\n\n`
+      content += `${notification.action}\n\n`
+    }
+
+    content += `---\n\n`
+    content += `*Alerte créée automatiquement par Alain Notifier*\n`
+
+    fs.writeFileSync(this.urgentFile, content, 'utf-8')
+    console.log('   🚨 URGENT_ALAIN.md créé')
+  }
+
+  /**
+   * Programme résumé quotidien
+   */
+  scheduleDailySummary() {
+    // Calculer ms jusqu'à minuit
+    const now = new Date()
+    const tomorrow = new Date(now)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    tomorrow.setHours(0, 0, 0, 0)
+
+    const msUntilMidnight = tomorrow - now
+
+    setTimeout(() => {
+      this.createDailySummary()
+
+      // Puis chaque 24h
+      setInterval(() => {
+        this.createDailySummary()
+      }, 24 * 60 * 60 * 1000)
+    }, msUntilMidnight)
+
+    console.log('   📅 Résumé quotidien programmé (minuit)')
+  }
+
+  /**
+   * Crée un résumé quotidien
+   */
+  createDailySummary() {
+    // Compter notifications des dernières 24h
+    const yesterday = Date.now() - 24 * 60 * 60 * 1000
+    const recent = this.notifications.filter(n => n.timestamp > yesterday)
+
+    if (recent.length === 0) {
+      return // Rien à résumer
+    }
+
+    this.notify({
+      level: 'info',
+      category: 'summary',
+      title: '📅 Résumé quotidien',
+      message: `${recent.length} événement(s) dans les dernières 24h.`,
+      action: 'Consulter NOTIFICATIONS_ALAIN.md pour détails'
+    })
+  }
+
+  /**
+   * Récupère les statistiques de l'agent
+   */
+  getStats() {
+    const uptime = this.stats.startTime
+      ? Date.now() - this.stats.startTime
+      : 0
+
+    return {
+      running: this.running,
+      uptime: this._formatDuration(uptime),
+      notificationsCreated: this.stats.notificationsCreated,
+      urgentAlertsCreated: this.stats.urgentAlertsCreated,
+      currentNotifications: this.notifications.length,
+      byLevel: {
+        urgent: this.counts.urgent,
+        important: this.counts.important,
+        info: this.counts.info
+      }
+    }
+  }
+
+  /**
+   * Formate une durée
+   */
+  _formatDuration(ms) {
+    const seconds = Math.floor(ms / 1000)
+    const minutes = Math.floor(seconds / 60)
+    const hours = Math.floor(minutes / 60)
+    const days = Math.floor(hours / 24)
+
+    if (days > 0) return `${days}j ${hours % 24}h`
+    if (hours > 0) return `${hours}h ${minutes % 60}m`
+    if (minutes > 0) return `${minutes}m ${seconds % 60}s`
+    return `${seconds}s`
+  }
+}
+
+// Export instance singleton
+module.exports = new AlainNotifier()

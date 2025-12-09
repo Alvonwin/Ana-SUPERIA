@@ -1,0 +1,246 @@
+{
+  "category": "internationalization",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "i18n001",
+      "type": "basics",
+      "name": "i18n vs l10n",
+      "description": "Concepts",
+      "pattern": "i18n: internationalization (design), l10n: localization (translation)",
+      "example": "Basics usage"
+    },
+    {
+      "id": "i18n002",
+      "type": "basics",
+      "name": "Locale Codes",
+      "description": "Language tags",
+      "pattern": "BCP 47: en-US, fr-FR, zh-Hans-CN (language-script-region)",
+      "example": "Basics usage"
+    },
+    {
+      "id": "i18n003",
+      "type": "basics",
+      "name": "Unicode",
+      "description": "Character encoding",
+      "pattern": "UTF-8 everywhere, normalize strings, handle emoji",
+      "example": "Basics usage"
+    },
+    {
+      "id": "i18n004",
+      "type": "libraries",
+      "name": "react-i18next",
+      "description": "React i18n",
+      "pattern": "useTranslation(), <Trans>, namespaces, lazy loading",
+      "example": "Libraries usage"
+    },
+    {
+      "id": "i18n005",
+      "type": "libraries",
+      "name": "FormatJS (react-intl)",
+      "description": "ICU-based",
+      "pattern": "<FormattedMessage id='greeting' values={{name}} />",
+      "example": "Libraries usage"
+    },
+    {
+      "id": "i18n006",
+      "type": "libraries",
+      "name": "vue-i18n",
+      "description": "Vue i18n",
+      "pattern": "$t('key'), <i18n-t>, number/date formatting",
+      "example": "Libraries usage"
+    },
+    {
+      "id": "i18n007",
+      "type": "libraries",
+      "name": "i18next",
+      "description": "Framework-agnostic",
+      "pattern": "i18next.init({lng: 'en', resources}); t('key')",
+      "example": "Libraries usage"
+    },
+    {
+      "id": "i18n008",
+      "type": "messages",
+      "name": "ICU Message Format",
+      "description": "Standard format",
+      "pattern": "{count, plural, one {# item} other {# items}}",
+      "example": "Messages usage"
+    },
+    {
+      "id": "i18n009",
+      "type": "messages",
+      "name": "Pluralization",
+      "description": "Quantity handling",
+      "pattern": "zero, one, two, few, many, other - varies by language",
+      "example": "Messages usage"
+    },
+    {
+      "id": "i18n010",
+      "type": "messages",
+      "name": "Gender",
+      "description": "Grammatical gender",
+      "pattern": "{gender, select, male {He} female {She} other {They}}",
+      "example": "Messages usage"
+    },
+    {
+      "id": "i18n011",
+      "type": "messages",
+      "name": "Interpolation",
+      "description": "Dynamic values",
+      "pattern": "Hello, {name}! You have {count} messages.",
+      "example": "Messages usage"
+    },
+    {
+      "id": "i18n012",
+      "type": "messages",
+      "name": "Context",
+      "description": "Disambiguation",
+      "pattern": "Same word, different translations based on context",
+      "example": "Messages usage"
+    },
+    {
+      "id": "i18n013",
+      "type": "formatting",
+      "name": "Number Formatting",
+      "description": "Locale numbers",
+      "pattern": "Intl.NumberFormat('de-DE').format(1234.56) -> '1.234,56'",
+      "example": "Formatting usage"
+    },
+    {
+      "id": "i18n014",
+      "type": "formatting",
+      "name": "Currency",
+      "description": "Money formatting",
+      "pattern": "Intl.NumberFormat('ja-JP', {style: 'currency', currency: 'JPY'})",
+      "example": "Formatting usage"
+    },
+    {
+      "id": "i18n015",
+      "type": "formatting",
+      "name": "Date Formatting",
+      "description": "Locale dates",
+      "pattern": "Intl.DateTimeFormat('fr-FR', {dateStyle: 'long'})",
+      "example": "Formatting usage"
+    },
+    {
+      "id": "i18n016",
+      "type": "formatting",
+      "name": "Relative Time",
+      "description": "Time ago",
+      "pattern": "Intl.RelativeTimeFormat('en', {numeric: 'auto'}).format(-1, 'day')",
+      "example": "Formatting usage"
+    },
+    {
+      "id": "i18n017",
+      "type": "formatting",
+      "name": "List Formatting",
+      "description": "Locale lists",
+      "pattern": "Intl.ListFormat('en', {type: 'conjunction'}).format(['a','b','c'])",
+      "example": "Formatting usage"
+    },
+    {
+      "id": "i18n018",
+      "type": "formatting",
+      "name": "Unit Formatting",
+      "description": "Measurements",
+      "pattern": "Intl.NumberFormat('en', {style: 'unit', unit: 'kilometer'})",
+      "example": "Formatting usage"
+    },
+    {
+      "id": "i18n019",
+      "type": "rtl",
+      "name": "RTL Support",
+      "description": "Right-to-left",
+      "pattern": "dir='rtl', logical CSS (start/end vs left/right)",
+      "example": "Rtl usage"
+    },
+    {
+      "id": "i18n020",
+      "type": "rtl",
+      "name": "Logical Properties",
+      "description": "Direction-agnostic CSS",
+      "pattern": "margin-inline-start, padding-block-end, inset-inline",
+      "example": "Rtl usage"
+    },
+    {
+      "id": "i18n021",
+      "type": "rtl",
+      "name": "Bidirectional Text",
+      "description": "Mixed directions",
+      "pattern": "unicode-bidi, <bdi>, <bdo>, isolate text",
+      "example": "Rtl usage"
+    },
+    {
+      "id": "i18n022",
+      "type": "workflow",
+      "name": "Translation Management",
+      "description": "TMS tools",
+      "pattern": "Crowdin, Lokalise, Phrase - translator workflow, memory",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "i18n023",
+      "type": "workflow",
+      "name": "String Extraction",
+      "description": "Extract to translate",
+      "pattern": "i18next-parser, formatjs extract - find all translatable strings",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "i18n024",
+      "type": "workflow",
+      "name": "Pseudo-localization",
+      "description": "Test readiness",
+      "pattern": "[Ḧḗḗŀŀǿǿ Ẇǿǿřŀḓ!] - test layout, find hardcoded strings",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "i18n025",
+      "type": "workflow",
+      "name": "Machine Translation",
+      "description": "Auto-translate",
+      "pattern": "DeepL, Google Translate API - draft translations",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "i18n026",
+      "type": "server",
+      "name": "Server-side i18n",
+      "description": "Backend translations",
+      "pattern": "Accept-Language header, user preferences, fallback chain",
+      "example": "Server usage"
+    },
+    {
+      "id": "i18n027",
+      "type": "server",
+      "name": "URL Strategies",
+      "description": "Locale in URL",
+      "pattern": "/en/page, en.example.com, ?lang=en, domain per locale",
+      "example": "Server usage"
+    },
+    {
+      "id": "i18n028",
+      "type": "server",
+      "name": "Content Negotiation",
+      "description": "Auto-detect locale",
+      "pattern": "Accept-Language parsing, IP geolocation, user preference",
+      "example": "Server usage"
+    },
+    {
+      "id": "i18n029",
+      "type": "testing",
+      "name": "i18n Testing",
+      "description": "Verify translations",
+      "pattern": "Missing keys, truncation, layout issues, date/number formats",
+      "example": "Testing usage"
+    },
+    {
+      "id": "i18n030",
+      "type": "testing",
+      "name": "Locale Testing",
+      "description": "Test all locales",
+      "pattern": "Visual regression per locale, RTL layout, long translations",
+      "example": "Testing usage"
+    }
+  ]
+}

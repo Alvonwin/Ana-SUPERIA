@@ -1,0 +1,246 @@
+{
+  "category": "a-b-testing",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ab001",
+      "type": "fundamentals",
+      "name": "A/B Testing Basics",
+      "description": "Experimentation",
+      "pattern": "Control vs variant, measure impact, statistical significance",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ab002",
+      "type": "fundamentals",
+      "name": "Hypothesis",
+      "description": "Test hypothesis",
+      "pattern": "If we change X, then metric Y will improve by Z%",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ab003",
+      "type": "fundamentals",
+      "name": "Sample Size",
+      "description": "Statistical power",
+      "pattern": "Calculate required sample for desired power and significance",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ab004",
+      "type": "fundamentals",
+      "name": "Random Assignment",
+      "description": "User allocation",
+      "pattern": "Randomly assign users to control/variant, consistent assignment",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ab005",
+      "type": "statistics",
+      "name": "Statistical Significance",
+      "description": "P-value",
+      "pattern": "p < 0.05 typically, reject null hypothesis",
+      "example": "Statistics usage"
+    },
+    {
+      "id": "ab006",
+      "type": "statistics",
+      "name": "Confidence Intervals",
+      "description": "Effect range",
+      "pattern": "95% CI: true effect likely within range",
+      "example": "Statistics usage"
+    },
+    {
+      "id": "ab007",
+      "type": "statistics",
+      "name": "Power Analysis",
+      "description": "Sample calculation",
+      "pattern": "80% power typical, detect minimum effect size",
+      "example": "Statistics usage"
+    },
+    {
+      "id": "ab008",
+      "type": "statistics",
+      "name": "Multiple Testing",
+      "description": "Correction",
+      "pattern": "Bonferroni correction, FDR when testing multiple variants",
+      "example": "Statistics usage"
+    },
+    {
+      "id": "ab009",
+      "type": "metrics",
+      "name": "Primary Metrics",
+      "description": "Success metrics",
+      "pattern": "One primary metric per test, clear success criteria",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "ab010",
+      "type": "metrics",
+      "name": "Guardrail Metrics",
+      "description": "Safety metrics",
+      "pattern": "Ensure no negative impact on critical metrics",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "ab011",
+      "type": "metrics",
+      "name": "Proxy Metrics",
+      "description": "Leading indicators",
+      "pattern": "Short-term metrics that predict long-term success",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "ab012",
+      "type": "design",
+      "name": "Experiment Design",
+      "description": "Test setup",
+      "pattern": "Define hypothesis, metrics, sample size, duration",
+      "example": "Design usage"
+    },
+    {
+      "id": "ab013",
+      "type": "design",
+      "name": "Test Duration",
+      "description": "Run length",
+      "pattern": "Run until significance or max duration, week effects",
+      "example": "Design usage"
+    },
+    {
+      "id": "ab014",
+      "type": "design",
+      "name": "Stratification",
+      "description": "Balanced groups",
+      "pattern": "Ensure equal distribution of user segments",
+      "example": "Design usage"
+    },
+    {
+      "id": "ab015",
+      "type": "design",
+      "name": "Multivariate Testing",
+      "description": "Multiple variables",
+      "pattern": "Test combinations of changes, factorial design",
+      "example": "Design usage"
+    },
+    {
+      "id": "ab016",
+      "type": "implementation",
+      "name": "Feature Flags",
+      "description": "Technical implementation",
+      "pattern": "LaunchDarkly, Optimizely, Unleash for assignment",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "ab017",
+      "type": "implementation",
+      "name": "Consistent Bucketing",
+      "description": "User assignment",
+      "pattern": "Hash user ID, consistent assignment across sessions",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "ab018",
+      "type": "implementation",
+      "name": "Client vs Server",
+      "description": "Where to test",
+      "pattern": "Server-side for consistency, client-side for speed",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "ab019",
+      "type": "implementation",
+      "name": "Event Tracking",
+      "description": "Data collection",
+      "pattern": "Track exposures, conversions, ensure data quality",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "ab020",
+      "type": "analysis",
+      "name": "Results Analysis",
+      "description": "Interpret results",
+      "pattern": "Statistical significance, practical significance, segments",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "ab021",
+      "type": "analysis",
+      "name": "Segment Analysis",
+      "description": "Subgroup effects",
+      "pattern": "Analyze by user segment, detect heterogeneous effects",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "ab022",
+      "type": "analysis",
+      "name": "Novelty Effects",
+      "description": "Initial bias",
+      "pattern": "New feature excitement fades, run longer tests",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "ab023",
+      "type": "analysis",
+      "name": "Network Effects",
+      "description": "User interactions",
+      "pattern": "Treatment affects control via user interactions",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "ab024",
+      "type": "pitfalls",
+      "name": "Peeking",
+      "description": "Early stopping",
+      "pattern": "Don't check results early, increases false positives",
+      "example": "Pitfalls usage"
+    },
+    {
+      "id": "ab025",
+      "type": "pitfalls",
+      "name": "Sample Ratio Mismatch",
+      "description": "Allocation issues",
+      "pattern": "Verify 50/50 split, SRM indicates problems",
+      "example": "Pitfalls usage"
+    },
+    {
+      "id": "ab026",
+      "type": "pitfalls",
+      "name": "Selection Bias",
+      "description": "Non-random sampling",
+      "pattern": "Only active users see test, survivorship bias",
+      "example": "Pitfalls usage"
+    },
+    {
+      "id": "ab027",
+      "type": "advanced",
+      "name": "Bayesian A/B Testing",
+      "description": "Bayesian approach",
+      "pattern": "Probability to be best, continuous monitoring",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ab028",
+      "type": "advanced",
+      "name": "Multi-Armed Bandits",
+      "description": "Adaptive allocation",
+      "pattern": "Shift traffic to winning variant, explore/exploit",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ab029",
+      "type": "advanced",
+      "name": "Sequential Testing",
+      "description": "Early stopping",
+      "pattern": "Valid early stopping with adjusted thresholds",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ab030",
+      "type": "culture",
+      "name": "Experimentation Culture",
+      "description": "Organization",
+      "pattern": "Test everything, data-driven decisions, document learnings",
+      "example": "Culture usage"
+    }
+  ]
+}

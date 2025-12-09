@@ -1,0 +1,246 @@
+{
+  "category": "sportstech",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "spt001",
+      "type": "fundamentals",
+      "name": "SportsTech Basics",
+      "description": "Sports technology",
+      "pattern": "Performance, fan engagement, operations",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spt002",
+      "type": "fundamentals",
+      "name": "Sports Data",
+      "description": "Athletic data",
+      "pattern": "Stats, tracking, historical",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spt003",
+      "type": "fundamentals",
+      "name": "Sports APIs",
+      "description": "Data feeds",
+      "pattern": "Live scores, stats, odds",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spt004",
+      "type": "performance",
+      "name": "Performance Analytics",
+      "description": "Athlete analytics",
+      "pattern": "Metrics, trends, benchmarking",
+      "example": "Performance usage"
+    },
+    {
+      "id": "spt005",
+      "type": "performance",
+      "name": "Player Tracking",
+      "description": "Location tracking",
+      "pattern": "GPS, optical, wearables",
+      "example": "Performance usage"
+    },
+    {
+      "id": "spt006",
+      "type": "performance",
+      "name": "Video Analysis",
+      "description": "Game film",
+      "pattern": "Tagging, breakdowns, AI",
+      "example": "Performance usage"
+    },
+    {
+      "id": "spt007",
+      "type": "performance",
+      "name": "Biomechanics",
+      "description": "Movement analysis",
+      "pattern": "Motion capture, forces, efficiency",
+      "example": "Performance usage"
+    },
+    {
+      "id": "spt008",
+      "type": "health",
+      "name": "Athlete Health",
+      "description": "Health monitoring",
+      "pattern": "Load, recovery, readiness",
+      "example": "Health usage"
+    },
+    {
+      "id": "spt009",
+      "type": "health",
+      "name": "Injury Prevention",
+      "description": "Risk mitigation",
+      "pattern": "Prediction, workload, screening",
+      "example": "Health usage"
+    },
+    {
+      "id": "spt010",
+      "type": "health",
+      "name": "Wearable Sports",
+      "description": "Sports wearables",
+      "pattern": "Heart rate, GPS, accelerometer",
+      "example": "Health usage"
+    },
+    {
+      "id": "spt011",
+      "type": "coaching",
+      "name": "Coaching Software",
+      "description": "Coach tools",
+      "pattern": "Planning, playbook, communication",
+      "example": "Coaching usage"
+    },
+    {
+      "id": "spt012",
+      "type": "coaching",
+      "name": "Practice Planning",
+      "description": "Training planning",
+      "pattern": "Drills, periodization, scheduling",
+      "example": "Coaching usage"
+    },
+    {
+      "id": "spt013",
+      "type": "coaching",
+      "name": "Opponent Scouting",
+      "description": "Opposition analysis",
+      "pattern": "Tendencies, patterns, preparation",
+      "example": "Coaching usage"
+    },
+    {
+      "id": "spt014",
+      "type": "fan",
+      "name": "Fan Engagement",
+      "description": "Fan experience",
+      "pattern": "Apps, gamification, loyalty",
+      "example": "Fan usage"
+    },
+    {
+      "id": "spt015",
+      "type": "fan",
+      "name": "Live Sports Apps",
+      "description": "Second screen",
+      "pattern": "Stats, replays, social",
+      "example": "Fan usage"
+    },
+    {
+      "id": "spt016",
+      "type": "fan",
+      "name": "Fantasy Sports",
+      "description": "Fantasy platforms",
+      "pattern": "Drafts, scoring, DFS",
+      "example": "Fan usage"
+    },
+    {
+      "id": "spt017",
+      "type": "betting",
+      "name": "Sports Betting",
+      "description": "Betting tech",
+      "pattern": "Odds, markets, live betting",
+      "example": "Betting usage"
+    },
+    {
+      "id": "spt018",
+      "type": "betting",
+      "name": "Betting Analytics",
+      "description": "Odds analysis",
+      "pattern": "Models, arbitrage, value",
+      "example": "Betting usage"
+    },
+    {
+      "id": "spt019",
+      "type": "media",
+      "name": "Sports Broadcasting",
+      "description": "Live production",
+      "pattern": "Streaming, graphics, commentary",
+      "example": "Media usage"
+    },
+    {
+      "id": "spt020",
+      "type": "media",
+      "name": "Sports Streaming",
+      "description": "OTT sports",
+      "pattern": "Live, VOD, DRM",
+      "example": "Media usage"
+    },
+    {
+      "id": "spt021",
+      "type": "media",
+      "name": "Automated Highlights",
+      "description": "AI highlights",
+      "pattern": "Detection, clipping, distribution",
+      "example": "Media usage"
+    },
+    {
+      "id": "spt022",
+      "type": "venue",
+      "name": "Stadium Tech",
+      "description": "Venue technology",
+      "pattern": "WiFi, apps, operations",
+      "example": "Venue usage"
+    },
+    {
+      "id": "spt023",
+      "type": "venue",
+      "name": "Ticketing",
+      "description": "Sports ticketing",
+      "pattern": "Dynamic pricing, mobile, resale",
+      "example": "Venue usage"
+    },
+    {
+      "id": "spt024",
+      "type": "venue",
+      "name": "Fan Experience",
+      "description": "In-venue experience",
+      "pattern": "Food ordering, wayfinding",
+      "example": "Venue usage"
+    },
+    {
+      "id": "spt025",
+      "type": "esports",
+      "name": "Esports Tech",
+      "description": "Competitive gaming",
+      "pattern": "Tournaments, streaming, analytics",
+      "example": "Esports usage"
+    },
+    {
+      "id": "spt026",
+      "type": "esports",
+      "name": "Game Analytics",
+      "description": "Gaming performance",
+      "pattern": "Stats, replays, coaching",
+      "example": "Esports usage"
+    },
+    {
+      "id": "spt027",
+      "type": "fitness",
+      "name": "Fitness Tech",
+      "description": "Fitness apps",
+      "pattern": "Workouts, tracking, social",
+      "example": "Fitness usage"
+    },
+    {
+      "id": "spt028",
+      "type": "fitness",
+      "name": "Connected Fitness",
+      "description": "Smart equipment",
+      "pattern": "Peloton, Mirror, metrics",
+      "example": "Fitness usage"
+    },
+    {
+      "id": "spt029",
+      "type": "management",
+      "name": "Team Management",
+      "description": "Operations software",
+      "pattern": "Roster, travel, budget",
+      "example": "Management usage"
+    },
+    {
+      "id": "spt030",
+      "type": "management",
+      "name": "Athlete Management",
+      "description": "AMS systems",
+      "pattern": "Database, compliance, development",
+      "example": "Management usage"
+    }
+  ]
+}

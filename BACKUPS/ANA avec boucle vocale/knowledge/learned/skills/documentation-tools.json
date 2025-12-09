@@ -1,0 +1,246 @@
+{
+  "category": "documentation-tools",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "doc001",
+      "type": "static",
+      "name": "Docusaurus",
+      "description": "Documentation sites",
+      "pattern": "docs/, blog/, MDX support, versioning, i18n",
+      "example": "Static usage"
+    },
+    {
+      "id": "doc002",
+      "type": "static",
+      "name": "VitePress",
+      "description": "Vue-powered docs",
+      "pattern": "Markdown + Vue components, fast HMR, theme customization",
+      "example": "Static usage"
+    },
+    {
+      "id": "doc003",
+      "type": "static",
+      "name": "GitBook",
+      "description": "Hosted docs",
+      "pattern": "WYSIWYG editing, collaboration, custom domains",
+      "example": "Static usage"
+    },
+    {
+      "id": "doc004",
+      "type": "static",
+      "name": "Nextra",
+      "description": "Next.js docs",
+      "pattern": "next.config.js with nextra, MDX pages, search",
+      "example": "Static usage"
+    },
+    {
+      "id": "doc005",
+      "type": "static",
+      "name": "MkDocs",
+      "description": "Python docs",
+      "pattern": "mkdocs.yml, Material theme, plugins ecosystem",
+      "example": "Static usage"
+    },
+    {
+      "id": "doc006",
+      "type": "api",
+      "name": "Swagger/OpenAPI",
+      "description": "REST API docs",
+      "pattern": "openapi.yaml, Swagger UI, interactive try-it-out",
+      "example": "Api usage"
+    },
+    {
+      "id": "doc007",
+      "type": "api",
+      "name": "Redoc",
+      "description": "API reference",
+      "pattern": "Beautiful API docs from OpenAPI spec, three-panel layout",
+      "example": "Api usage"
+    },
+    {
+      "id": "doc008",
+      "type": "api",
+      "name": "Stoplight",
+      "description": "API design platform",
+      "pattern": "Visual OpenAPI editor, mock servers, style guides",
+      "example": "Api usage"
+    },
+    {
+      "id": "doc009",
+      "type": "api",
+      "name": "Postman Documentation",
+      "description": "Collection docs",
+      "pattern": "Auto-generate from collections, examples, environments",
+      "example": "Api usage"
+    },
+    {
+      "id": "doc010",
+      "type": "api",
+      "name": "GraphQL Docs",
+      "description": "GraphQL documentation",
+      "pattern": "GraphiQL, Apollo Studio, auto-generated from schema",
+      "example": "Api usage"
+    },
+    {
+      "id": "doc011",
+      "type": "component",
+      "name": "Storybook",
+      "description": "Component library",
+      "pattern": "Stories, addons, docs addon, visual testing",
+      "example": "Component usage"
+    },
+    {
+      "id": "doc012",
+      "type": "component",
+      "name": "Storybook Docs",
+      "description": "Component documentation",
+      "pattern": "MDX stories, ArgsTable, Canvas, autodocs",
+      "example": "Component usage"
+    },
+    {
+      "id": "doc013",
+      "type": "component",
+      "name": "Styleguidist",
+      "description": "React styleguide",
+      "pattern": "Live examples, props documentation, markdown",
+      "example": "Component usage"
+    },
+    {
+      "id": "doc014",
+      "type": "component",
+      "name": "Histoire",
+      "description": "Vue stories",
+      "pattern": "Similar to Storybook for Vue, Vite-powered",
+      "example": "Component usage"
+    },
+    {
+      "id": "doc015",
+      "type": "code",
+      "name": "TypeDoc",
+      "description": "TS documentation",
+      "pattern": "Generate docs from TSDoc comments, HTML output",
+      "example": "Code usage"
+    },
+    {
+      "id": "doc016",
+      "type": "code",
+      "name": "JSDoc",
+      "description": "JS documentation",
+      "pattern": "@param, @returns, @example, @typedef comments",
+      "example": "Code usage"
+    },
+    {
+      "id": "doc017",
+      "type": "code",
+      "name": "API Extractor",
+      "description": "API reports",
+      "pattern": "Microsoft tool, .d.ts rollup, API review workflow",
+      "example": "Code usage"
+    },
+    {
+      "id": "doc018",
+      "type": "code",
+      "name": "Docstring Standards",
+      "description": "Comment conventions",
+      "pattern": "TSDoc, JSDoc, NumPy style, Google style",
+      "example": "Code usage"
+    },
+    {
+      "id": "doc019",
+      "type": "diagrams",
+      "name": "Mermaid",
+      "description": "Text-based diagrams",
+      "pattern": "flowchart, sequenceDiagram, classDiagram in markdown",
+      "example": "Diagrams usage"
+    },
+    {
+      "id": "doc020",
+      "type": "diagrams",
+      "name": "PlantUML",
+      "description": "UML diagrams",
+      "pattern": "@startuml, sequence, class, activity diagrams",
+      "example": "Diagrams usage"
+    },
+    {
+      "id": "doc021",
+      "type": "diagrams",
+      "name": "Draw.io",
+      "description": "Visual diagrams",
+      "pattern": "diagrams.net, VS Code extension, export to SVG/PNG",
+      "example": "Diagrams usage"
+    },
+    {
+      "id": "doc022",
+      "type": "diagrams",
+      "name": "Excalidraw",
+      "description": "Whiteboard diagrams",
+      "pattern": "Hand-drawn style, collaborative, embeddable",
+      "example": "Diagrams usage"
+    },
+    {
+      "id": "doc023",
+      "type": "writing",
+      "name": "Markdown Best Practices",
+      "description": "MD conventions",
+      "pattern": "Headings, code blocks, tables, links, images",
+      "example": "Writing usage"
+    },
+    {
+      "id": "doc024",
+      "type": "writing",
+      "name": "MDX",
+      "description": "Markdown + JSX",
+      "pattern": "Import components into markdown, interactive docs",
+      "example": "Writing usage"
+    },
+    {
+      "id": "doc025",
+      "type": "writing",
+      "name": "Technical Writing",
+      "description": "Clear documentation",
+      "pattern": "Active voice, concise, examples, structure",
+      "example": "Writing usage"
+    },
+    {
+      "id": "doc026",
+      "type": "writing",
+      "name": "README Template",
+      "description": "Project readme",
+      "pattern": "Title, badges, description, install, usage, API, license",
+      "example": "Writing usage"
+    },
+    {
+      "id": "doc027",
+      "type": "workflow",
+      "name": "Docs as Code",
+      "description": "Git-based docs",
+      "pattern": "Version control, PR reviews, CI/CD for docs",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "doc028",
+      "type": "workflow",
+      "name": "Doc Versioning",
+      "description": "Multiple versions",
+      "pattern": "Version dropdown, maintain old versions, migration guides",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "doc029",
+      "type": "workflow",
+      "name": "Search Integration",
+      "description": "Doc search",
+      "pattern": "Algolia DocSearch, local search, full-text indexing",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "doc030",
+      "type": "workflow",
+      "name": "Changelog",
+      "description": "Release notes",
+      "pattern": "CHANGELOG.md, Keep a Changelog format, auto-generation",
+      "example": "Workflow usage"
+    }
+  ]
+}

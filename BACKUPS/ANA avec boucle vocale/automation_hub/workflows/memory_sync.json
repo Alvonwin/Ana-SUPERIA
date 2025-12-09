@@ -1,0 +1,162 @@
+{
+  "name": "Memory Sync to ChromaDB",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Every 6 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "path": "memory-sync",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Manual Sync Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [250, 500],
+      "webhookId": "ana-memory-sync"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://localhost:3338/api/memory/semantic/stats",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "id": "get-memory-stats",
+      "name": "Get Memory Stats",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.success }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "check-success",
+      "name": "Check Success",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [750, 400]
+    },
+    {
+      "parameters": {
+        "content": "=📚 Memory Sync Report\n\nTime: {{ $now.format('yyyy-MM-dd HH:mm') }}\nChromaDB Entries: {{ $json.totalEntries || 'N/A' }}\nCollections: {{ $json.collections || 'N/A' }}\n\n---\n",
+        "fileName": "E:/ANA/logs/memory_sync.log",
+        "options": {
+          "append": true
+        }
+      },
+      "id": "log-success",
+      "name": "Log Success",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [1000, 300]
+    },
+    {
+      "parameters": {
+        "content": "=⚠️ Memory Sync Failed\n\nTime: {{ $now.format('yyyy-MM-dd HH:mm') }}\nError: {{ $json.error || 'Unknown' }}\n\n---\n",
+        "fileName": "E:/ANA/logs/memory_sync_errors.log",
+        "options": {
+          "append": true
+        }
+      },
+      "id": "log-error",
+      "name": "Log Error",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [1000, 500]
+    }
+  ],
+  "connections": {
+    "Every 6 Hours": {
+      "main": [
+        [
+          {
+            "node": "Get Memory Stats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Sync Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get Memory Stats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Memory Stats": {
+      "main": [
+        [
+          {
+            "node": "Check Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Success": {
+      "main": [
+        [
+          {
+            "node": "Log Success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "instanceId": "ana-local",
+    "description": "Vérifie et log l'état de la mémoire ChromaDB toutes les 6 heures",
+    "createdBy": "Ana SUPERIA",
+    "createdAt": "2025-11-25T15:30:00.000Z"
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "category": "search-engines",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "srch001",
+      "type": "fundamentals",
+      "name": "Inverted Index",
+      "description": "Core data structure",
+      "pattern": "Term -> [doc1:pos, doc2:pos] mapping for fast lookups",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "srch002",
+      "type": "fundamentals",
+      "name": "Tokenization",
+      "description": "Text splitting",
+      "pattern": "Split text into tokens, handle punctuation, case",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "srch003",
+      "type": "fundamentals",
+      "name": "Stemming",
+      "description": "Root form",
+      "pattern": "running -> run, Porter/Snowball stemmers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "srch004",
+      "type": "fundamentals",
+      "name": "Lemmatization",
+      "description": "Dictionary form",
+      "pattern": "better -> good, uses vocabulary lookup",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "srch005",
+      "type": "fundamentals",
+      "name": "Stop Words",
+      "description": "Common words removal",
+      "pattern": "the, is, at, which - remove or keep for phrases",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "srch006",
+      "type": "scoring",
+      "name": "TF-IDF",
+      "description": "Term importance",
+      "pattern": "Term Frequency * Inverse Document Frequency",
+      "example": "Scoring usage"
+    },
+    {
+      "id": "srch007",
+      "type": "scoring",
+      "name": "BM25",
+      "description": "Modern relevance",
+      "pattern": "Improved TF-IDF with length normalization",
+      "example": "Scoring usage"
+    },
+    {
+      "id": "srch008",
+      "type": "scoring",
+      "name": "Boosting",
+      "description": "Field weights",
+      "pattern": "title^3 body^1 - title matches score higher",
+      "example": "Scoring usage"
+    },
+    {
+      "id": "srch009",
+      "type": "scoring",
+      "name": "Function Score",
+      "description": "Custom scoring",
+      "pattern": "Combine relevance with recency, popularity, etc.",
+      "example": "Scoring usage"
+    },
+    {
+      "id": "srch010",
+      "type": "elasticsearch",
+      "name": "ES Mappings",
+      "description": "Schema definition",
+      "pattern": "properties: {title: {type: 'text', analyzer: 'english'}}",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "srch011",
+      "type": "elasticsearch",
+      "name": "ES Analyzers",
+      "description": "Text processing",
+      "pattern": "standard, english, custom: char_filter + tokenizer + token_filter",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "srch012",
+      "type": "elasticsearch",
+      "name": "ES Query DSL",
+      "description": "Search queries",
+      "pattern": "match, term, bool (must/should/must_not/filter), range",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "srch013",
+      "type": "elasticsearch",
+      "name": "ES Aggregations",
+      "description": "Analytics",
+      "pattern": "terms, date_histogram, avg, cardinality, nested aggs",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "srch014",
+      "type": "elasticsearch",
+      "name": "ES Suggesters",
+      "description": "Autocomplete",
+      "pattern": "completion suggester, phrase suggester, term suggester",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "srch015",
+      "type": "elasticsearch",
+      "name": "ES Highlighting",
+      "description": "Match snippets",
+      "pattern": "highlight: {fields: {content: {}}} - show matched text",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "srch016",
+      "type": "elasticsearch",
+      "name": "ES Indexing",
+      "description": "Data ingestion",
+      "pattern": "Bulk API, index templates, aliases, reindexing",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "srch017",
+      "type": "elasticsearch",
+      "name": "ES Cluster",
+      "description": "Distributed setup",
+      "pattern": "Nodes, shards, replicas, cluster health, shard allocation",
+      "example": "Elasticsearch usage"
+    },
+    {
+      "id": "srch018",
+      "type": "features",
+      "name": "Fuzzy Search",
+      "description": "Typo tolerance",
+      "pattern": "Levenshtein distance, fuzziness: AUTO, n-grams",
+      "example": "Features usage"
+    },
+    {
+      "id": "srch019",
+      "type": "features",
+      "name": "Synonym Handling",
+      "description": "Related terms",
+      "pattern": "Synonym filter: car, automobile => vehicle",
+      "example": "Features usage"
+    },
+    {
+      "id": "srch020",
+      "type": "features",
+      "name": "Faceted Search",
+      "description": "Filter navigation",
+      "pattern": "Aggregations for category counts, price ranges",
+      "example": "Features usage"
+    },
+    {
+      "id": "srch021",
+      "type": "features",
+      "name": "Geospatial Search",
+      "description": "Location-based",
+      "pattern": "geo_point, geo_distance query, geo_bounding_box",
+      "example": "Features usage"
+    },
+    {
+      "id": "srch022",
+      "type": "features",
+      "name": "Multi-language",
+      "description": "i18n search",
+      "pattern": "Language-specific analyzers, field per language",
+      "example": "Features usage"
+    },
+    {
+      "id": "srch023",
+      "type": "features",
+      "name": "Phrase Search",
+      "description": "Exact phrases",
+      "pattern": "match_phrase, slop for word distance tolerance",
+      "example": "Features usage"
+    },
+    {
+      "id": "srch024",
+      "type": "vector",
+      "name": "Vector Search",
+      "description": "Semantic search",
+      "pattern": "Embeddings, kNN search, dense_vector field type",
+      "example": "Vector usage"
+    },
+    {
+      "id": "srch025",
+      "type": "vector",
+      "name": "Hybrid Search",
+      "description": "Combine approaches",
+      "pattern": "BM25 + vector similarity for best results",
+      "example": "Vector usage"
+    },
+    {
+      "id": "srch026",
+      "type": "algolia",
+      "name": "Algolia",
+      "description": "Hosted search",
+      "pattern": "Instant search, typo tolerance, ranking rules, analytics",
+      "example": "Algolia usage"
+    },
+    {
+      "id": "srch027",
+      "type": "alternatives",
+      "name": "Meilisearch",
+      "description": "Fast search",
+      "pattern": "Rust-based, typo tolerance, easy setup",
+      "example": "Alternatives usage"
+    },
+    {
+      "id": "srch028",
+      "type": "alternatives",
+      "name": "Typesense",
+      "description": "Open-source",
+      "pattern": "Fast, typo-tolerant, easy to use alternative",
+      "example": "Alternatives usage"
+    },
+    {
+      "id": "srch029",
+      "type": "optimization",
+      "name": "Search Optimization",
+      "description": "Performance",
+      "pattern": "Proper mappings, shard sizing, query caching, filter caching",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "srch030",
+      "type": "ux",
+      "name": "Search UX",
+      "description": "User experience",
+      "pattern": "Instant results, did-you-mean, zero-results handling, filters",
+      "example": "Ux usage"
+    }
+  ]
+}

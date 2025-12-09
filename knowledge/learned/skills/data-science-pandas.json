@@ -1,0 +1,246 @@
+{
+  "category": "data-science-pandas",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ds001",
+      "type": "fundamentals",
+      "name": "Pandas Basics",
+      "description": "Data analysis",
+      "pattern": "DataFrame, Series, read_csv, head(), info()",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ds002",
+      "type": "fundamentals",
+      "name": "DataFrame Creation",
+      "description": "Create DataFrames",
+      "pattern": "pd.DataFrame(dict), from_records, from_csv",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ds003",
+      "type": "fundamentals",
+      "name": "Series",
+      "description": "1D labeled array",
+      "pattern": "pd.Series([1,2,3]), index, values",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ds004",
+      "type": "selection",
+      "name": "Column Selection",
+      "description": "Select columns",
+      "pattern": "df['col'], df[['a', 'b']], df.col",
+      "example": "Selection usage"
+    },
+    {
+      "id": "ds005",
+      "type": "selection",
+      "name": "Row Selection",
+      "description": "Select rows",
+      "pattern": "df.loc[label], df.iloc[index], boolean indexing",
+      "example": "Selection usage"
+    },
+    {
+      "id": "ds006",
+      "type": "selection",
+      "name": "Filtering",
+      "description": "Filter rows",
+      "pattern": "df[df['age'] > 25], df.query('age > 25')",
+      "example": "Selection usage"
+    },
+    {
+      "id": "ds007",
+      "type": "manipulation",
+      "name": "Adding Columns",
+      "description": "Create columns",
+      "pattern": "df['new'] = values, df.assign(new=lambda x: ...)",
+      "example": "Manipulation usage"
+    },
+    {
+      "id": "ds008",
+      "type": "manipulation",
+      "name": "Dropping",
+      "description": "Remove data",
+      "pattern": "df.drop(columns=['a']), df.drop(index=[0,1])",
+      "example": "Manipulation usage"
+    },
+    {
+      "id": "ds009",
+      "type": "manipulation",
+      "name": "Renaming",
+      "description": "Rename columns",
+      "pattern": "df.rename(columns={'old': 'new'})",
+      "example": "Manipulation usage"
+    },
+    {
+      "id": "ds010",
+      "type": "manipulation",
+      "name": "Sorting",
+      "description": "Order data",
+      "pattern": "df.sort_values('col'), sort_index()",
+      "example": "Manipulation usage"
+    },
+    {
+      "id": "ds011",
+      "type": "missing",
+      "name": "Missing Data",
+      "description": "Handle NaN",
+      "pattern": "isna(), fillna(), dropna(), interpolate()",
+      "example": "Missing usage"
+    },
+    {
+      "id": "ds012",
+      "type": "aggregation",
+      "name": "GroupBy",
+      "description": "Split-apply-combine",
+      "pattern": "df.groupby('col').agg({'x': 'mean'})",
+      "example": "Aggregation usage"
+    },
+    {
+      "id": "ds013",
+      "type": "aggregation",
+      "name": "Aggregation Functions",
+      "description": "Summarize data",
+      "pattern": "sum, mean, count, min, max, std, agg",
+      "example": "Aggregation usage"
+    },
+    {
+      "id": "ds014",
+      "type": "aggregation",
+      "name": "Pivot Tables",
+      "description": "Reshape data",
+      "pattern": "df.pivot_table(values, index, columns, aggfunc)",
+      "example": "Aggregation usage"
+    },
+    {
+      "id": "ds015",
+      "type": "joining",
+      "name": "Merge",
+      "description": "Join DataFrames",
+      "pattern": "pd.merge(df1, df2, on='key', how='left')",
+      "example": "Joining usage"
+    },
+    {
+      "id": "ds016",
+      "type": "joining",
+      "name": "Concat",
+      "description": "Stack DataFrames",
+      "pattern": "pd.concat([df1, df2], axis=0)",
+      "example": "Joining usage"
+    },
+    {
+      "id": "ds017",
+      "type": "joining",
+      "name": "Join",
+      "description": "Index-based join",
+      "pattern": "df1.join(df2, how='inner')",
+      "example": "Joining usage"
+    },
+    {
+      "id": "ds018",
+      "type": "reshaping",
+      "name": "Melt",
+      "description": "Wide to long",
+      "pattern": "pd.melt(df, id_vars, value_vars)",
+      "example": "Reshaping usage"
+    },
+    {
+      "id": "ds019",
+      "type": "reshaping",
+      "name": "Pivot",
+      "description": "Long to wide",
+      "pattern": "df.pivot(index, columns, values)",
+      "example": "Reshaping usage"
+    },
+    {
+      "id": "ds020",
+      "type": "datetime",
+      "name": "DateTime",
+      "description": "Time handling",
+      "pattern": "pd.to_datetime(), dt accessor, resample",
+      "example": "Datetime usage"
+    },
+    {
+      "id": "ds021",
+      "type": "datetime",
+      "name": "Time Series",
+      "description": "Temporal data",
+      "pattern": "DatetimeIndex, resample('D').mean(), rolling",
+      "example": "Datetime usage"
+    },
+    {
+      "id": "ds022",
+      "type": "string",
+      "name": "String Operations",
+      "description": "Text processing",
+      "pattern": "df['col'].str.lower(), contains, replace, split",
+      "example": "String usage"
+    },
+    {
+      "id": "ds023",
+      "type": "apply",
+      "name": "Apply",
+      "description": "Custom functions",
+      "pattern": "df.apply(func), df['col'].apply(lambda x: ...)",
+      "example": "Apply usage"
+    },
+    {
+      "id": "ds024",
+      "type": "apply",
+      "name": "Vectorized Operations",
+      "description": "Fast operations",
+      "pattern": "df['a'] + df['b'], numpy operations",
+      "example": "Apply usage"
+    },
+    {
+      "id": "ds025",
+      "type": "io",
+      "name": "Reading Data",
+      "description": "Load data",
+      "pattern": "read_csv, read_excel, read_json, read_sql",
+      "example": "Io usage"
+    },
+    {
+      "id": "ds026",
+      "type": "io",
+      "name": "Writing Data",
+      "description": "Save data",
+      "pattern": "to_csv, to_excel, to_parquet, to_sql",
+      "example": "Io usage"
+    },
+    {
+      "id": "ds027",
+      "type": "numpy",
+      "name": "NumPy Integration",
+      "description": "Array operations",
+      "pattern": "df.values, np.where, vectorized math",
+      "example": "Numpy usage"
+    },
+    {
+      "id": "ds028",
+      "type": "visualization",
+      "name": "Pandas Plotting",
+      "description": "Quick plots",
+      "pattern": "df.plot(), plot.bar(), plot.hist()",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "ds029",
+      "type": "performance",
+      "name": "Performance",
+      "description": "Optimization",
+      "pattern": "dtypes optimization, chunked reading, Dask",
+      "example": "Performance usage"
+    },
+    {
+      "id": "ds030",
+      "type": "style",
+      "name": "Method Chaining",
+      "description": "Fluent API",
+      "pattern": "df.query(...).assign(...).groupby(...).agg(...)",
+      "example": "Style usage"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2025-12-09",
+  "facts": {
+    "voiture": "2009 Mitsubishi Eclipse Spyder GS manual",
+    "ville": "Longueuil",
+    "prenom": "Alain",
+    "nom": "Gagné",
+    "pays": "Canada",
+    "province": "Quebec",
+    "date_naissance": "13 septembre 1975"
+  },
+  "extractionPatterns": [
+    "Ma voiture c'est:",
+    "J'habite à",
+    "Je m'appelle",
+    "Mon nom c'est",
+    "Ma date de naissance"
+  ]
+}

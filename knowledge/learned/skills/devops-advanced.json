@@ -1,0 +1,246 @@
+{
+  "category": "devops-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "do001",
+      "type": "github-actions",
+      "name": "GHA Workflows",
+      "description": "CI/CD YAML",
+      "pattern": "on: [push, pull_request] jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v4",
+      "example": "Github-actions usage"
+    },
+    {
+      "id": "do002",
+      "type": "github-actions",
+      "name": "GHA Matrix",
+      "description": "Parallel jobs",
+      "pattern": "strategy: matrix: node: [18, 20] os: [ubuntu-latest, windows-latest]",
+      "example": "Github-actions usage"
+    },
+    {
+      "id": "do003",
+      "type": "github-actions",
+      "name": "GHA Secrets",
+      "description": "Secure variables",
+      "pattern": "env: API_KEY: ${{ secrets.API_KEY }}",
+      "example": "Github-actions usage"
+    },
+    {
+      "id": "do004",
+      "type": "github-actions",
+      "name": "GHA Caching",
+      "description": "Speed up builds",
+      "pattern": "- uses: actions/cache@v3 with: path: ~/.npm key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}",
+      "example": "Github-actions usage"
+    },
+    {
+      "id": "do005",
+      "type": "github-actions",
+      "name": "GHA Artifacts",
+      "description": "Share between jobs",
+      "pattern": "- uses: actions/upload-artifact@v3 with: name: build path: dist/",
+      "example": "Github-actions usage"
+    },
+    {
+      "id": "do006",
+      "type": "gitlab-ci",
+      "name": "GitLab Stages",
+      "description": "Pipeline stages",
+      "pattern": "stages: [build, test, deploy] build-job: stage: build script: npm run build",
+      "example": "Gitlab-ci usage"
+    },
+    {
+      "id": "do007",
+      "type": "gitlab-ci",
+      "name": "GitLab Rules",
+      "description": "Conditional jobs",
+      "pattern": "rules: - if: $CI_COMMIT_BRANCH == 'main' - if: $CI_PIPELINE_SOURCE == 'merge_request_event'",
+      "example": "Gitlab-ci usage"
+    },
+    {
+      "id": "do008",
+      "type": "gitlab-ci",
+      "name": "GitLab Cache",
+      "description": "Dependencies cache",
+      "pattern": "cache: key: ${CI_COMMIT_REF_SLUG} paths: [node_modules/]",
+      "example": "Gitlab-ci usage"
+    },
+    {
+      "id": "do009",
+      "type": "argocd",
+      "name": "ArgoCD Apps",
+      "description": "GitOps deployments",
+      "pattern": "kind: Application spec: source: repoURL: git@github.com:org/repo path: k8s/",
+      "example": "Argocd usage"
+    },
+    {
+      "id": "do010",
+      "type": "argocd",
+      "name": "ArgoCD Sync",
+      "description": "Auto sync policies",
+      "pattern": "syncPolicy: automated: prune: true selfHeal: true",
+      "example": "Argocd usage"
+    },
+    {
+      "id": "do011",
+      "type": "prometheus",
+      "name": "PromQL Basics",
+      "description": "Query language",
+      "pattern": "rate(http_requests_total{status='500'}[5m]) / rate(http_requests_total[5m])",
+      "example": "Prometheus usage"
+    },
+    {
+      "id": "do012",
+      "type": "prometheus",
+      "name": "Prometheus Alerts",
+      "description": "Alerting rules",
+      "pattern": "alert: HighErrorRate expr: rate(errors[5m]) > 0.05 for: 5m labels: severity: critical",
+      "example": "Prometheus usage"
+    },
+    {
+      "id": "do013",
+      "type": "prometheus",
+      "name": "Prometheus Recording",
+      "description": "Pre-compute metrics",
+      "pattern": "record: job:http_requests:rate5m expr: rate(http_requests_total[5m])",
+      "example": "Prometheus usage"
+    },
+    {
+      "id": "do014",
+      "type": "grafana",
+      "name": "Grafana Dashboards",
+      "description": "JSON model",
+      "pattern": "panels: [{type: 'graph', targets: [{expr: 'rate(requests[5m])'}], gridPos: {x:0, y:0, w:12, h:8}}]",
+      "example": "Grafana usage"
+    },
+    {
+      "id": "do015",
+      "type": "grafana",
+      "name": "Grafana Variables",
+      "description": "Dashboard templating",
+      "pattern": "templating: list: [{name: 'namespace', query: 'label_values(kube_pod_info, namespace)'}]",
+      "example": "Grafana usage"
+    },
+    {
+      "id": "do016",
+      "type": "elk",
+      "name": "Elasticsearch Index",
+      "description": "Log indexing",
+      "pattern": "logs-{yyyy.MM.dd} avec ILM policy pour rotation",
+      "example": "Elk usage"
+    },
+    {
+      "id": "do017",
+      "type": "elk",
+      "name": "Logstash Pipeline",
+      "description": "Parse et transform",
+      "pattern": "filter { grok { match => { 'message' => '%{COMBINEDAPACHELOG}' } } }",
+      "example": "Elk usage"
+    },
+    {
+      "id": "do018",
+      "type": "elk",
+      "name": "Kibana Discover",
+      "description": "Log exploration",
+      "pattern": "KQL: status:500 AND @timestamp > now-1h",
+      "example": "Elk usage"
+    },
+    {
+      "id": "do019",
+      "type": "ansible",
+      "name": "Ansible Playbooks",
+      "description": "Infrastructure automation",
+      "pattern": "- hosts: webservers tasks: - name: Install nginx apt: name=nginx state=present",
+      "example": "Ansible usage"
+    },
+    {
+      "id": "do020",
+      "type": "ansible",
+      "name": "Ansible Roles",
+      "description": "Reusable configs",
+      "pattern": "roles/nginx/tasks/main.yml, templates/nginx.conf.j2",
+      "example": "Ansible usage"
+    },
+    {
+      "id": "do021",
+      "type": "ansible",
+      "name": "Ansible Vault",
+      "description": "Encrypt secrets",
+      "pattern": "ansible-vault encrypt secrets.yml; ansible-playbook --ask-vault-pass",
+      "example": "Ansible usage"
+    },
+    {
+      "id": "do022",
+      "type": "vault",
+      "name": "Vault Secrets",
+      "description": "Secret management",
+      "pattern": "vault kv put secret/myapp/config username=admin password=secret",
+      "example": "Vault usage"
+    },
+    {
+      "id": "do023",
+      "type": "vault",
+      "name": "Vault Dynamic",
+      "description": "Dynamic credentials",
+      "pattern": "vault read database/creds/my-role -> temporary DB credentials",
+      "example": "Vault usage"
+    },
+    {
+      "id": "do024",
+      "type": "vault",
+      "name": "Vault Policies",
+      "description": "Access control",
+      "pattern": "path 'secret/data/myapp/*' { capabilities = ['read'] }",
+      "example": "Vault usage"
+    },
+    {
+      "id": "do025",
+      "type": "networking",
+      "name": "DNS Records",
+      "description": "A, CNAME, MX, TXT",
+      "pattern": "A: IP address. CNAME: alias. MX: mail. TXT: verification",
+      "example": "Networking usage"
+    },
+    {
+      "id": "do026",
+      "type": "networking",
+      "name": "SSL/TLS",
+      "description": "Certificates",
+      "pattern": "Let's Encrypt certbot, cert-manager pour K8s, mTLS pour service mesh",
+      "example": "Networking usage"
+    },
+    {
+      "id": "do027",
+      "type": "networking",
+      "name": "Load Balancer Types",
+      "description": "L4 vs L7",
+      "pattern": "L4: TCP/UDP, fast. L7: HTTP, path routing, SSL termination",
+      "example": "Networking usage"
+    },
+    {
+      "id": "do028",
+      "type": "containers",
+      "name": "OCI Images",
+      "description": "Standards containers",
+      "pattern": "buildah, podman, kaniko pour builds rootless/daemonless",
+      "example": "Containers usage"
+    },
+    {
+      "id": "do029",
+      "type": "containers",
+      "name": "Container Security",
+      "description": "Scan et hardening",
+      "pattern": "trivy scan, distroless base, non-root user, read-only fs",
+      "example": "Containers usage"
+    },
+    {
+      "id": "do030",
+      "type": "containers",
+      "name": "Container Registries",
+      "description": "Harbor, ECR, GCR",
+      "pattern": "Image signing, vulnerability scanning, retention policies",
+      "example": "Containers usage"
+    }
+  ]
+}

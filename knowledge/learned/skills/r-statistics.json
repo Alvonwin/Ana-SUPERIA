@@ -1,0 +1,246 @@
+{
+  "category": "r-statistics",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "r001",
+      "type": "fundamentals",
+      "name": "R Basics",
+      "description": "R language",
+      "pattern": "vectors, assignment, functions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "r002",
+      "type": "fundamentals",
+      "name": "Data Types",
+      "description": "R types",
+      "pattern": "numeric, character, factor, logical",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "r003",
+      "type": "fundamentals",
+      "name": "Vectors",
+      "description": "Vector operations",
+      "pattern": "c(), seq(), rep(), vectorization",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "r004",
+      "type": "fundamentals",
+      "name": "Data Frames",
+      "description": "Tabular data",
+      "pattern": "data.frame, tibble, subsetting",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "r005",
+      "type": "fundamentals",
+      "name": "Lists",
+      "description": "R lists",
+      "pattern": "list(), [[]], lapply, sapply",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "r006",
+      "type": "tidyverse",
+      "name": "dplyr",
+      "description": "Data manipulation",
+      "pattern": "filter, select, mutate, summarize",
+      "example": "Tidyverse usage"
+    },
+    {
+      "id": "r007",
+      "type": "tidyverse",
+      "name": "ggplot2",
+      "description": "Visualization",
+      "pattern": "ggplot, aes, geom_*, facets",
+      "example": "Tidyverse usage"
+    },
+    {
+      "id": "r008",
+      "type": "tidyverse",
+      "name": "tidyr",
+      "description": "Data tidying",
+      "pattern": "pivot_longer, pivot_wider, nest",
+      "example": "Tidyverse usage"
+    },
+    {
+      "id": "r009",
+      "type": "tidyverse",
+      "name": "purrr",
+      "description": "Functional programming",
+      "pattern": "map, map_df, reduce, walk",
+      "example": "Tidyverse usage"
+    },
+    {
+      "id": "r010",
+      "type": "tidyverse",
+      "name": "readr/readxl",
+      "description": "Data import",
+      "pattern": "read_csv, read_excel, parsing",
+      "example": "Tidyverse usage"
+    },
+    {
+      "id": "r011",
+      "type": "statistics",
+      "name": "Descriptive Stats",
+      "description": "Summary statistics",
+      "pattern": "mean, sd, median, quantile",
+      "example": "Statistics usage"
+    },
+    {
+      "id": "r012",
+      "type": "statistics",
+      "name": "Hypothesis Testing",
+      "description": "Statistical tests",
+      "pattern": "t.test, chisq.test, wilcox.test",
+      "example": "Statistics usage"
+    },
+    {
+      "id": "r013",
+      "type": "statistics",
+      "name": "Linear Regression",
+      "description": "Regression models",
+      "pattern": "lm(), summary, predict",
+      "example": "Statistics usage"
+    },
+    {
+      "id": "r014",
+      "type": "statistics",
+      "name": "ANOVA",
+      "description": "Analysis of variance",
+      "pattern": "aov(), TukeyHSD, interactions",
+      "example": "Statistics usage"
+    },
+    {
+      "id": "r015",
+      "type": "statistics",
+      "name": "GLM",
+      "description": "Generalized linear",
+      "pattern": "glm(), family, logistic",
+      "example": "Statistics usage"
+    },
+    {
+      "id": "r016",
+      "type": "ml",
+      "name": "caret/tidymodels",
+      "description": "ML framework",
+      "pattern": "train, recipe, workflow",
+      "example": "Ml usage"
+    },
+    {
+      "id": "r017",
+      "type": "ml",
+      "name": "Random Forest R",
+      "description": "RF models",
+      "pattern": "randomForest, ranger, importance",
+      "example": "Ml usage"
+    },
+    {
+      "id": "r018",
+      "type": "ml",
+      "name": "Cross-Validation R",
+      "description": "Model validation",
+      "pattern": "cv, trainControl, resampling",
+      "example": "Ml usage"
+    },
+    {
+      "id": "r019",
+      "type": "visualization",
+      "name": "Base Plotting",
+      "description": "Base graphics",
+      "pattern": "plot, hist, boxplot, par",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "r020",
+      "type": "visualization",
+      "name": "Interactive Plots",
+      "description": "Interactive viz",
+      "pattern": "plotly, highcharter, ggiraph",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "r021",
+      "type": "visualization",
+      "name": "Maps R",
+      "description": "Spatial viz",
+      "pattern": "sf, leaflet, tmap",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "r022",
+      "type": "reporting",
+      "name": "R Markdown",
+      "description": "Literate programming",
+      "pattern": "Rmd, knitr, chunks, YAML",
+      "example": "Reporting usage"
+    },
+    {
+      "id": "r023",
+      "type": "reporting",
+      "name": "Quarto",
+      "description": "Next-gen publishing",
+      "pattern": "qmd, formats, computations",
+      "example": "Reporting usage"
+    },
+    {
+      "id": "r024",
+      "type": "reporting",
+      "name": "Shiny",
+      "description": "Web apps",
+      "pattern": "ui, server, reactive, render",
+      "example": "Reporting usage"
+    },
+    {
+      "id": "r025",
+      "type": "bioconductor",
+      "name": "Bioconductor",
+      "description": "Bioinformatics",
+      "pattern": "BiocManager, genomic data",
+      "example": "Bioconductor usage"
+    },
+    {
+      "id": "r026",
+      "type": "bioconductor",
+      "name": "DESeq2",
+      "description": "RNA-seq analysis",
+      "pattern": "differential expression, counts",
+      "example": "Bioconductor usage"
+    },
+    {
+      "id": "r027",
+      "type": "advanced",
+      "name": "Parallel R",
+      "description": "Parallel computing",
+      "pattern": "parallel, foreach, future",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "r028",
+      "type": "advanced",
+      "name": "Rcpp",
+      "description": "C++ integration",
+      "pattern": "Rcpp, sourceCpp, performance",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "r029",
+      "type": "packages",
+      "name": "Package Development",
+      "description": "R packages",
+      "pattern": "devtools, roxygen2, testthat",
+      "example": "Packages usage"
+    },
+    {
+      "id": "r030",
+      "type": "packages",
+      "name": "R Environment",
+      "description": "Environment mgmt",
+      "pattern": "renv, .Renviron, .Rprofile",
+      "example": "Packages usage"
+    }
+  ]
+}

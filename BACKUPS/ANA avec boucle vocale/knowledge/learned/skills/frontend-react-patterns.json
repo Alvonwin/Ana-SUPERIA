@@ -1,0 +1,33 @@
+{
+  "category": "frontend-react-patterns",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "React Design Patterns and Best Practices",
+  "skills": [
+    {"id": "frp01", "type": "composition", "name": "Component Composition", "description": "Build from smaller parts", "pattern": "children, slots", "example": "Layout components"},
+    {"id": "frp02", "type": "hoc", "name": "Higher Order Components", "description": "Wrap components", "pattern": "withAuth, withLoading", "example": "Cross-cutting concerns"},
+    {"id": "frp03", "type": "renderprops", "name": "Render Props", "description": "Share logic via props", "pattern": "render={data => ...}", "example": "Mouse tracking"},
+    {"id": "frp04", "type": "hooks", "name": "Custom Hooks", "description": "Reusable logic", "pattern": "useCustomHook()", "example": "useLocalStorage"},
+    {"id": "frp05", "type": "compound", "name": "Compound Components", "description": "Implicit state sharing", "pattern": "Parent.Child pattern", "example": "Tabs, Accordion"},
+    {"id": "frp06", "type": "controlled", "name": "Controlled Components", "description": "React owns state", "pattern": "value + onChange", "example": "Form inputs"},
+    {"id": "frp07", "type": "uncontrolled", "name": "Uncontrolled Components", "description": "DOM owns state", "pattern": "ref + defaultValue", "example": "File inputs"},
+    {"id": "frp08", "type": "container", "name": "Container/Presenter", "description": "Logic vs UI", "pattern": "Smart + Dumb components", "example": "Data fetching"},
+    {"id": "frp09", "type": "provider", "name": "Provider Pattern", "description": "Context distribution", "pattern": "Context.Provider", "example": "Theme, Auth"},
+    {"id": "frp10", "type": "statemachine", "name": "State Machine", "description": "Finite states", "pattern": "XState, useReducer", "example": "Form wizard"},
+    {"id": "frp11", "type": "optimistic", "name": "Optimistic Updates", "description": "Update before server", "pattern": "Rollback on error", "example": "Like buttons"},
+    {"id": "frp12", "type": "suspense", "name": "Suspense Pattern", "description": "Declarative loading", "pattern": "<Suspense fallback>", "example": "Lazy loading"},
+    {"id": "frp13", "type": "errorboundary", "name": "Error Boundaries", "description": "Catch render errors", "pattern": "componentDidCatch", "example": "Graceful degradation"},
+    {"id": "frp14", "type": "portal", "name": "Portal Pattern", "description": "Render outside DOM", "pattern": "createPortal()", "example": "Modals, tooltips"},
+    {"id": "frp15", "type": "forwardref", "name": "Forward Ref", "description": "Pass refs through", "pattern": "forwardRef()", "example": "Custom inputs"},
+    {"id": "frp16", "type": "memo", "name": "Memoization", "description": "Prevent re-renders", "pattern": "memo, useMemo, useCallback", "example": "Performance"},
+    {"id": "frp17", "type": "lazy", "name": "Code Splitting", "description": "Dynamic imports", "pattern": "React.lazy()", "example": "Route-based split"},
+    {"id": "frp18", "type": "virtualization", "name": "List Virtualization", "description": "Render visible only", "pattern": "react-window", "example": "Large lists"},
+    {"id": "frp19", "type": "debounce", "name": "Debounced Updates", "description": "Delay rapid changes", "pattern": "useDeferredValue", "example": "Search input"},
+    {"id": "frp20", "type": "transition", "name": "Transitions", "description": "Non-blocking updates", "pattern": "useTransition", "example": "Tab switching"},
+    {"id": "frp21", "type": "servercomp", "name": "Server Components", "description": "Server-side React", "pattern": "async components", "example": "Next.js RSC"},
+    {"id": "frp22", "type": "serveraction", "name": "Server Actions", "description": "Server mutations", "pattern": "'use server'", "example": "Form submissions"},
+    {"id": "frp23", "type": "streaming", "name": "Streaming SSR", "description": "Progressive rendering", "pattern": "renderToPipeableStream", "example": "Faster TTFB"},
+    {"id": "frp24", "type": "island", "name": "Islands Architecture", "description": "Partial hydration", "pattern": "Static + Interactive", "example": "Astro-like"},
+    {"id": "frp25", "type": "reducer", "name": "useReducer Pattern", "description": "Complex state", "pattern": "dispatch actions", "example": "Form state"}
+  ]
+}

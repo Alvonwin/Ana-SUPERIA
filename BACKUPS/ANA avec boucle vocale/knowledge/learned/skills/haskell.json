@@ -1,0 +1,246 @@
+{
+  "category": "haskell",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "has001",
+      "type": "fundamentals",
+      "name": "Haskell Basics",
+      "description": "Pure FP",
+      "pattern": "Immutable, lazy evaluation, type inference",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "has002",
+      "type": "fundamentals",
+      "name": "Type System",
+      "description": "Strong static types",
+      "pattern": "Int, String, [a], Maybe a, Either a b",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "has003",
+      "type": "fundamentals",
+      "name": "Functions",
+      "description": "Function definition",
+      "pattern": "add :: Int -> Int -> Int; add x y = x + y",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "has004",
+      "type": "fundamentals",
+      "name": "Pattern Matching",
+      "description": "Destructure data",
+      "pattern": "case x of Just v -> v; Nothing -> default",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "has005",
+      "type": "fundamentals",
+      "name": "Guards",
+      "description": "Conditional",
+      "pattern": "abs n | n < 0 = -n | otherwise = n",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "has006",
+      "type": "fundamentals",
+      "name": "Where & Let",
+      "description": "Local bindings",
+      "pattern": "f x = result where helper = ..., let x = 1 in x+1",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "has007",
+      "type": "types",
+      "name": "Algebraic Data Types",
+      "description": "Sum & product types",
+      "pattern": "data Maybe a = Nothing | Just a",
+      "example": "Types usage"
+    },
+    {
+      "id": "has008",
+      "type": "types",
+      "name": "Type Classes",
+      "description": "Polymorphism",
+      "pattern": "class Eq a where (==) :: a -> a -> Bool",
+      "example": "Types usage"
+    },
+    {
+      "id": "has009",
+      "type": "types",
+      "name": "Instances",
+      "description": "Implement type class",
+      "pattern": "instance Eq MyType where (==) = ...",
+      "example": "Types usage"
+    },
+    {
+      "id": "has010",
+      "type": "types",
+      "name": "Deriving",
+      "description": "Auto instances",
+      "pattern": "data T = T deriving (Eq, Show, Ord)",
+      "example": "Types usage"
+    },
+    {
+      "id": "has011",
+      "type": "functional",
+      "name": "Higher-Order Functions",
+      "description": "FP core",
+      "pattern": "map, filter, foldr, foldl, (.)",
+      "example": "Functional usage"
+    },
+    {
+      "id": "has012",
+      "type": "functional",
+      "name": "Currying",
+      "description": "Partial application",
+      "pattern": "add 1 :: Int -> Int, all functions curried",
+      "example": "Functional usage"
+    },
+    {
+      "id": "has013",
+      "type": "functional",
+      "name": "Function Composition",
+      "description": "Compose functions",
+      "pattern": "(f . g) x = f (g x), point-free style",
+      "example": "Functional usage"
+    },
+    {
+      "id": "has014",
+      "type": "functional",
+      "name": "Lambda",
+      "description": "Anonymous functions",
+      "pattern": "\\x -> x + 1, \\x y -> x + y",
+      "example": "Functional usage"
+    },
+    {
+      "id": "has015",
+      "type": "monads",
+      "name": "Functor",
+      "description": "Mappable",
+      "pattern": "class Functor f where fmap :: (a -> b) -> f a -> f b",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has016",
+      "type": "monads",
+      "name": "Applicative",
+      "description": "Apply in context",
+      "pattern": "pure, (<*>), liftA2",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has017",
+      "type": "monads",
+      "name": "Monad",
+      "description": "Sequencing",
+      "pattern": "return, (>>=) bind, do notation",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has018",
+      "type": "monads",
+      "name": "Do Notation",
+      "description": "Imperative style",
+      "pattern": "do { x <- action; return (f x) }",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has019",
+      "type": "monads",
+      "name": "Maybe Monad",
+      "description": "Optional values",
+      "pattern": "Just x >>= f, Nothing propagates",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has020",
+      "type": "monads",
+      "name": "IO Monad",
+      "description": "Side effects",
+      "pattern": "IO a, getLine, putStrLn, main :: IO ()",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has021",
+      "type": "monads",
+      "name": "State Monad",
+      "description": "Stateful computation",
+      "pattern": "State s a, get, put, runState",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has022",
+      "type": "monads",
+      "name": "Reader Monad",
+      "description": "Environment",
+      "pattern": "Reader r a, ask, local, runReader",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has023",
+      "type": "monads",
+      "name": "Writer Monad",
+      "description": "Logging",
+      "pattern": "Writer w a, tell, runWriter",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has024",
+      "type": "monads",
+      "name": "Monad Transformers",
+      "description": "Stack monads",
+      "pattern": "ReaderT, StateT, ExceptT, lift",
+      "example": "Monads usage"
+    },
+    {
+      "id": "has025",
+      "type": "lazy",
+      "name": "Lazy Evaluation",
+      "description": "Call by need",
+      "pattern": "Infinite lists, thunks, seq for strictness",
+      "example": "Lazy usage"
+    },
+    {
+      "id": "has026",
+      "type": "lazy",
+      "name": "Infinite Structures",
+      "description": "Lazy lists",
+      "pattern": "[1..], take 10 (repeat 1), cycle",
+      "example": "Lazy usage"
+    },
+    {
+      "id": "has027",
+      "type": "tools",
+      "name": "GHC",
+      "description": "Compiler",
+      "pattern": "ghc, ghci REPL, optimization flags",
+      "example": "Tools usage"
+    },
+    {
+      "id": "has028",
+      "type": "tools",
+      "name": "Cabal & Stack",
+      "description": "Build tools",
+      "pattern": "cabal.project, stack.yaml, dependencies",
+      "example": "Tools usage"
+    },
+    {
+      "id": "has029",
+      "type": "testing",
+      "name": "QuickCheck",
+      "description": "Property testing",
+      "pattern": "prop_reverse, arbitrary, Gen a",
+      "example": "Testing usage"
+    },
+    {
+      "id": "has030",
+      "type": "ecosystem",
+      "name": "Common Libraries",
+      "description": "Ecosystem",
+      "pattern": "lens, mtl, aeson, servant, conduit",
+      "example": "Ecosystem usage"
+    }
+  ]
+}

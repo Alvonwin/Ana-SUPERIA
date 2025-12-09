@@ -1,0 +1,246 @@
+{
+  "category": "java-spring",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "java001",
+      "type": "core",
+      "name": "Java Basics",
+      "description": "Language fundamentals",
+      "pattern": "Classes, interfaces, inheritance, generics, collections",
+      "example": "Core usage"
+    },
+    {
+      "id": "java002",
+      "type": "core",
+      "name": "Java Streams",
+      "description": "Functional operations",
+      "pattern": "list.stream().filter().map().collect(Collectors.toList())",
+      "example": "Core usage"
+    },
+    {
+      "id": "java003",
+      "type": "core",
+      "name": "Optional",
+      "description": "Null safety",
+      "pattern": "Optional.ofNullable(value).map(v -> v.getName()).orElse(default)",
+      "example": "Core usage"
+    },
+    {
+      "id": "java004",
+      "type": "core",
+      "name": "Records",
+      "description": "Immutable data",
+      "pattern": "record Person(String name, int age) {} // Java 14+",
+      "example": "Core usage"
+    },
+    {
+      "id": "java005",
+      "type": "core",
+      "name": "Virtual Threads",
+      "description": "Lightweight threads",
+      "pattern": "Thread.startVirtualThread(() -> {...}); // Java 21+",
+      "example": "Core usage"
+    },
+    {
+      "id": "java006",
+      "type": "spring",
+      "name": "Spring Boot",
+      "description": "App framework",
+      "pattern": "@SpringBootApplication, auto-configuration, starters",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java007",
+      "type": "spring",
+      "name": "Dependency Injection",
+      "description": "IoC container",
+      "pattern": "@Autowired, @Component, @Service, @Repository, @Configuration",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java008",
+      "type": "spring",
+      "name": "Spring MVC",
+      "description": "Web layer",
+      "pattern": "@RestController, @GetMapping, @PostMapping, @RequestBody",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java009",
+      "type": "spring",
+      "name": "Spring Data JPA",
+      "description": "Data access",
+      "pattern": "interface UserRepository extends JpaRepository<User, Long> {}",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java010",
+      "type": "spring",
+      "name": "Spring Security",
+      "description": "Auth & authz",
+      "pattern": "@EnableWebSecurity, SecurityFilterChain, JWT, OAuth2",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java011",
+      "type": "spring",
+      "name": "Spring Validation",
+      "description": "Input validation",
+      "pattern": "@Valid, @NotNull, @Size, @Email, BindingResult",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java012",
+      "type": "spring",
+      "name": "Spring Profiles",
+      "description": "Environment config",
+      "pattern": "@Profile('dev'), application-dev.yml, spring.profiles.active",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java013",
+      "type": "spring",
+      "name": "Spring AOP",
+      "description": "Aspect-oriented",
+      "pattern": "@Aspect, @Before, @After, @Around, cross-cutting concerns",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java014",
+      "type": "spring",
+      "name": "Spring WebFlux",
+      "description": "Reactive web",
+      "pattern": "Mono, Flux, non-blocking, backpressure",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java015",
+      "type": "spring",
+      "name": "Spring Cloud",
+      "description": "Microservices",
+      "pattern": "Config Server, Eureka, Gateway, Circuit Breaker",
+      "example": "Spring usage"
+    },
+    {
+      "id": "java016",
+      "type": "testing",
+      "name": "JUnit 5",
+      "description": "Unit testing",
+      "pattern": "@Test, @BeforeEach, @ParameterizedTest, assertions",
+      "example": "Testing usage"
+    },
+    {
+      "id": "java017",
+      "type": "testing",
+      "name": "Mockito",
+      "description": "Mocking",
+      "pattern": "@Mock, @InjectMocks, when().thenReturn(), verify()",
+      "example": "Testing usage"
+    },
+    {
+      "id": "java018",
+      "type": "testing",
+      "name": "Spring Test",
+      "description": "Integration tests",
+      "pattern": "@SpringBootTest, @WebMvcTest, TestRestTemplate",
+      "example": "Testing usage"
+    },
+    {
+      "id": "java019",
+      "type": "persistence",
+      "name": "JPA/Hibernate",
+      "description": "ORM",
+      "pattern": "@Entity, @Table, @OneToMany, JPQL, native queries",
+      "example": "Persistence usage"
+    },
+    {
+      "id": "java020",
+      "type": "persistence",
+      "name": "Transaction Management",
+      "description": "ACID",
+      "pattern": "@Transactional, propagation, isolation levels",
+      "example": "Persistence usage"
+    },
+    {
+      "id": "java021",
+      "type": "persistence",
+      "name": "Query Optimization",
+      "description": "Performance",
+      "pattern": "N+1 problem, fetch joins, batch size, indexes",
+      "example": "Persistence usage"
+    },
+    {
+      "id": "java022",
+      "type": "build",
+      "name": "Maven",
+      "description": "Build tool",
+      "pattern": "pom.xml, dependencies, plugins, profiles, lifecycle",
+      "example": "Build usage"
+    },
+    {
+      "id": "java023",
+      "type": "build",
+      "name": "Gradle",
+      "description": "Build tool",
+      "pattern": "build.gradle, plugins, tasks, dependencies, Kotlin DSL",
+      "example": "Build usage"
+    },
+    {
+      "id": "java024",
+      "type": "patterns",
+      "name": "DTO Pattern",
+      "description": "Data transfer",
+      "pattern": "Separate DTOs from entities, MapStruct for mapping",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "java025",
+      "type": "patterns",
+      "name": "Service Layer",
+      "description": "Business logic",
+      "pattern": "@Service with @Transactional, orchestrates repositories",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "java026",
+      "type": "patterns",
+      "name": "Exception Handling",
+      "description": "Error management",
+      "pattern": "@ControllerAdvice, @ExceptionHandler, custom exceptions",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "java027",
+      "type": "api",
+      "name": "OpenAPI/Swagger",
+      "description": "API docs",
+      "pattern": "springdoc-openapi, @Operation, @ApiResponse",
+      "example": "Api usage"
+    },
+    {
+      "id": "java028",
+      "type": "api",
+      "name": "REST Best Practices",
+      "description": "API design",
+      "pattern": "HATEOAS, ResponseEntity, proper status codes",
+      "example": "Api usage"
+    },
+    {
+      "id": "java029",
+      "type": "monitoring",
+      "name": "Spring Actuator",
+      "description": "Health & metrics",
+      "pattern": "/actuator/health, /metrics, custom endpoints",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "java030",
+      "type": "deployment",
+      "name": "Containerization",
+      "description": "Docker deployment",
+      "pattern": "Dockerfile, Jib plugin, layered jars, native images",
+      "example": "Deployment usage"
+    }
+  ]
+}

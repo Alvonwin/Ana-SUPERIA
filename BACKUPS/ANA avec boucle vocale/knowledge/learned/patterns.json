@@ -1,0 +1,170 @@
+{
+  "conversationPatterns": [
+    {
+      "trigger": "demande de code",
+      "response_style": "code d'abord, explication ensuite",
+      "rule": "Montrer le code fonctionnel avant d'expliquer"
+    },
+    {
+      "trigger": "erreur/bug",
+      "response_style": "diagnostic puis solution",
+      "rule": "1) Identifier le probleme 2) Expliquer pourquoi 3) Donner la solution"
+    },
+    {
+      "trigger": "question vague",
+      "response_style": "clarifier avant d'agir",
+      "rule": "Poser des questions pour comprendre le contexte"
+    }
+  ],
+  "codePatterns": [
+    {
+      "name": "Express Route Handler",
+      "pattern": "router.get('/path', validateMiddleware, async (req, res, next) => { try { const result = await service(req.params); res.json(result); } catch(e) { next(e); } });",
+      "usage": "API REST endpoints"
+    },
+    {
+      "name": "Async File Operation",
+      "pattern": "const data = await fs.promises.readFile(path, 'utf-8').catch(() => defaultValue);",
+      "usage": "Lecture fichier avec fallback"
+    },
+    {
+      "name": "Safe JSON Parse",
+      "pattern": "const parsed = (() => { try { return JSON.parse(str); } catch { return null; } })();",
+      "usage": "Parser JSON sans crasher"
+    },
+    {
+      "name": "Debounced Function",
+      "pattern": "const debounced = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };",
+      "usage": "Eviter les appels repetitifs"
+    },
+    {
+      "name": "Retry with Backoff",
+      "pattern": "const retry = async (fn, n=3, d=1000) => { for(let i=0; i<n; i++) { try { return await fn(); } catch(e) { if(i===n-1) throw e; await sleep(d * 2**i); } } };",
+      "usage": "Retenter les operations qui echouent"
+    },
+    {
+      "name": "Object Destructuring with Defaults",
+      "pattern": "const { name = 'default', count = 0, options = {} } = config;",
+      "usage": "Extraire avec valeurs par defaut"
+    },
+    {
+      "name": "Pipeline Pattern",
+      "pattern": "const result = await pipe(validate, transform, enrich, save)(input);",
+      "usage": "Chainer les transformations"
+    },
+    {
+      "name": "Factory Function",
+      "pattern": "const createService = (config) => ({ method: (x) => doSomething(config, x), cleanup: () => cleanupConfig(config) });",
+      "usage": "Creer des instances configurables"
+    }
+  ],
+  "errorPatterns": [
+    {
+      "error_type": "TypeError: Cannot read property of undefined",
+      "cause": "Acces a une propriete sur un objet null/undefined",
+      "fix": "Utiliser optional chaining: obj?.prop ou verifier avant"
+    },
+    {
+      "error_type": "ENOENT: no such file or directory",
+      "cause": "Fichier ou dossier inexistant",
+      "fix": "Verifier existence avec fs.existsSync ou creer avec mkdirSync recursive"
+    },
+    {
+      "error_type": "EADDRINUSE",
+      "cause": "Port deja utilise",
+      "fix": "Trouver et tuer le process: netstat -ano | findstr :PORT puis taskkill"
+    },
+    {
+      "error_type": "SyntaxError: Unexpected token",
+      "cause": "JSON mal forme ou erreur de syntaxe JS",
+      "fix": "Valider le JSON avec try/catch, verifier les virgules et guillemets"
+    },
+    {
+      "error_type": "UnhandledPromiseRejection",
+      "cause": "Promise rejetee sans catch",
+      "fix": "Toujours .catch() ou try/catch avec async/await"
+    }
+  ],
+  "avoid": [
+    {
+      "mistake_type": "God Function",
+      "what_went_wrong": "Fonction de plus de 50 lignes qui fait trop de choses",
+      "improvement_rule": "Decouper en fonctions de 10-20 lignes max, une responsabilite chacune",
+      "anti_pattern": "function doEverything() { /* 200 lines */ }"
+    },
+    {
+      "mistake_type": "Callback Hell",
+      "what_went_wrong": "Callbacks imbriques sur plusieurs niveaux",
+      "improvement_rule": "Utiliser async/await ou Promises",
+      "anti_pattern": "fn1(() => { fn2(() => { fn3(() => { /* pyramid of doom */ }); }); });"
+    },
+    {
+      "mistake_type": "Magic Numbers",
+      "what_went_wrong": "Nombres hardcodes sans explication",
+      "improvement_rule": "Definir des constantes nommees: const MAX_RETRIES = 3;",
+      "anti_pattern": "if (count > 3) { setTimeout(fn, 5000); }"
+    },
+    {
+      "mistake_type": "Silent Failures",
+      "what_went_wrong": "Catch vide qui avale les erreurs",
+      "improvement_rule": "Toujours logger ou propager les erreurs",
+      "anti_pattern": "try { risky(); } catch(e) { /* nothing */ }"
+    },
+    {
+      "mistake_type": "Mutable Shared State",
+      "what_went_wrong": "Variables globales modifiees partout",
+      "improvement_rule": "Passer les donnees en parametres, retourner de nouvelles valeurs",
+      "anti_pattern": "let globalData = {}; function modify() { globalData.x = 1; }"
+    },
+    {
+      "mistake_type": "Premature Optimization",
+      "what_went_wrong": "Optimiser avant de mesurer",
+      "improvement_rule": "D'abord faire marcher, puis profiler, puis optimiser les bottlenecks",
+      "anti_pattern": "// Micro-optimisations sur du code execute 1 fois"
+    },
+    {
+      "mistake_type": "Stringly Typed",
+      "what_went_wrong": "Utiliser des strings pour des valeurs qui devraient etre typees",
+      "improvement_rule": "Utiliser des enums, constantes, ou objets structures",
+      "anti_pattern": "if (status === 'active') vs if (status === Status.ACTIVE)"
+    },
+    {
+      "mistake_type": "Copy-Paste Programming",
+      "what_went_wrong": "Dupliquer du code au lieu de factoriser",
+      "improvement_rule": "Extraire en fonction des qu'on copie plus de 3 lignes",
+      "anti_pattern": "// Meme bloc de 10 lignes repete 5 fois"
+    },
+    {
+      "mistake_type": "Boolean Blindness",
+      "what_went_wrong": "Fonctions avec plusieurs booleens en parametres",
+      "improvement_rule": "Utiliser un objet d'options nomme",
+      "anti_pattern": "createUser(name, true, false, true) vs createUser(name, {admin: true, verified: false})"
+    },
+    {
+      "mistake_type": "Nested Ternaries",
+      "what_went_wrong": "Ternaires imbriques illisibles",
+      "improvement_rule": "Utiliser if/else ou switch pour plus de 2 conditions",
+      "anti_pattern": "const x = a ? b ? c : d : e ? f : g;"
+    },
+    {
+      "mistake_type": "Missing Input Validation",
+      "what_went_wrong": "Faire confiance aux donnees utilisateur",
+      "improvement_rule": "Valider et sanitizer toutes les entrees externes",
+      "anti_pattern": "db.query(`SELECT * FROM users WHERE id = ${req.params.id}`) // SQL injection!"
+    },
+    {
+      "mistake_type": "Hardcoded Secrets",
+      "what_went_wrong": "API keys et passwords dans le code",
+      "improvement_rule": "Utiliser des variables d'environnement",
+      "anti_pattern": "const API_KEY = 'sk-abc123...'; // JAMAIS!"
+    }
+  ],
+  "userPreferences": {
+    "language": "fr",
+    "codeStyle": "clean",
+    "verbosity": "concise",
+    "preferredPatterns": ["async/await", "functional", "composition"],
+    "avoidPatterns": ["callbacks", "inheritance", "mutation"]
+  },
+  "lastUpdated": "2025-11-27T15:15:00.000Z"
+}

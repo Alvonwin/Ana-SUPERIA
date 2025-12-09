@@ -1,0 +1,246 @@
+{
+  "category": "oauth-oidc",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "oa001",
+      "type": "fundamentals",
+      "name": "OAuth 2.0 Basics",
+      "description": "Authorization framework",
+      "pattern": "Delegated authorization, access tokens, scopes",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "oa002",
+      "type": "fundamentals",
+      "name": "OAuth vs OIDC",
+      "description": "Auth vs identity",
+      "pattern": "OAuth: authorization, OIDC: authentication + identity",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "oa003",
+      "type": "fundamentals",
+      "name": "Roles",
+      "description": "OAuth actors",
+      "pattern": "Resource owner, client, authorization server, resource server",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "oa004",
+      "type": "flows",
+      "name": "Authorization Code",
+      "description": "Server-side flow",
+      "pattern": "Redirect to auth, get code, exchange for token",
+      "example": "Flows usage"
+    },
+    {
+      "id": "oa005",
+      "type": "flows",
+      "name": "PKCE",
+      "description": "Public client security",
+      "pattern": "code_verifier + code_challenge, prevents interception",
+      "example": "Flows usage"
+    },
+    {
+      "id": "oa006",
+      "type": "flows",
+      "name": "Client Credentials",
+      "description": "Machine-to-machine",
+      "pattern": "No user, client authenticates directly, service accounts",
+      "example": "Flows usage"
+    },
+    {
+      "id": "oa007",
+      "type": "flows",
+      "name": "Device Flow",
+      "description": "Limited input devices",
+      "pattern": "Display code, user authorizes on another device",
+      "example": "Flows usage"
+    },
+    {
+      "id": "oa008",
+      "type": "flows",
+      "name": "Implicit Flow",
+      "description": "Legacy SPA flow",
+      "pattern": "DEPRECATED: token in URL fragment, use PKCE instead",
+      "example": "Flows usage"
+    },
+    {
+      "id": "oa009",
+      "type": "tokens",
+      "name": "Access Tokens",
+      "description": "API authorization",
+      "pattern": "Short-lived, Bearer token, scope-limited, JWT or opaque",
+      "example": "Tokens usage"
+    },
+    {
+      "id": "oa010",
+      "type": "tokens",
+      "name": "Refresh Tokens",
+      "description": "Token renewal",
+      "pattern": "Long-lived, exchange for new access token, rotate",
+      "example": "Tokens usage"
+    },
+    {
+      "id": "oa011",
+      "type": "tokens",
+      "name": "ID Tokens",
+      "description": "OIDC identity",
+      "pattern": "JWT with user info, sub, email, name claims",
+      "example": "Tokens usage"
+    },
+    {
+      "id": "oa012",
+      "type": "oidc",
+      "name": "OIDC Discovery",
+      "description": "Auto-configuration",
+      "pattern": "/.well-known/openid-configuration, endpoints, keys",
+      "example": "Oidc usage"
+    },
+    {
+      "id": "oa013",
+      "type": "oidc",
+      "name": "UserInfo Endpoint",
+      "description": "Get user details",
+      "pattern": "GET /userinfo with access token, profile claims",
+      "example": "Oidc usage"
+    },
+    {
+      "id": "oa014",
+      "type": "oidc",
+      "name": "Standard Scopes",
+      "description": "OIDC scopes",
+      "pattern": "openid, profile, email, address, phone",
+      "example": "Oidc usage"
+    },
+    {
+      "id": "oa015",
+      "type": "oidc",
+      "name": "Claims",
+      "description": "User attributes",
+      "pattern": "sub (subject), iss (issuer), aud (audience), exp, iat",
+      "example": "Oidc usage"
+    },
+    {
+      "id": "oa016",
+      "type": "security",
+      "name": "State Parameter",
+      "description": "CSRF protection",
+      "pattern": "Random state, verify on callback, prevent attacks",
+      "example": "Security usage"
+    },
+    {
+      "id": "oa017",
+      "type": "security",
+      "name": "Nonce",
+      "description": "Replay protection",
+      "pattern": "Random nonce in request, verify in ID token",
+      "example": "Security usage"
+    },
+    {
+      "id": "oa018",
+      "type": "security",
+      "name": "Token Storage",
+      "description": "Secure storage",
+      "pattern": "HttpOnly cookies, not localStorage, BFF pattern",
+      "example": "Security usage"
+    },
+    {
+      "id": "oa019",
+      "type": "security",
+      "name": "Token Validation",
+      "description": "Verify tokens",
+      "pattern": "Signature, expiry, issuer, audience, use JWKS",
+      "example": "Security usage"
+    },
+    {
+      "id": "oa020",
+      "type": "implementation",
+      "name": "Passport.js",
+      "description": "Node.js auth",
+      "pattern": "passport-oauth2, passport-google-oauth20, strategies",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "oa021",
+      "type": "implementation",
+      "name": "NextAuth.js",
+      "description": "Next.js auth",
+      "pattern": "Built-in providers, callbacks, JWT/database sessions",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "oa022",
+      "type": "implementation",
+      "name": "Auth0",
+      "description": "Auth platform",
+      "pattern": "Universal Login, SDKs, Rules, Actions, MFA",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "oa023",
+      "type": "implementation",
+      "name": "Keycloak",
+      "description": "Open source IdP",
+      "pattern": "Self-hosted, realms, clients, identity federation",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "oa024",
+      "type": "providers",
+      "name": "Social Login",
+      "description": "OAuth providers",
+      "pattern": "Google, GitHub, Facebook, Apple, Microsoft",
+      "example": "Providers usage"
+    },
+    {
+      "id": "oa025",
+      "type": "providers",
+      "name": "Enterprise SSO",
+      "description": "Corporate IdP",
+      "pattern": "SAML, Okta, Azure AD, federation",
+      "example": "Providers usage"
+    },
+    {
+      "id": "oa026",
+      "type": "advanced",
+      "name": "Token Exchange",
+      "description": "Token transformation",
+      "pattern": "RFC 8693, delegation, impersonation",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "oa027",
+      "type": "advanced",
+      "name": "Pushed Authorization",
+      "description": "PAR",
+      "pattern": "Push request object first, get request_uri",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "oa028",
+      "type": "advanced",
+      "name": "DPoP",
+      "description": "Proof of possession",
+      "pattern": "Bind token to key pair, prevent token theft",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "oa029",
+      "type": "api",
+      "name": "API Authorization",
+      "description": "Protect APIs",
+      "pattern": "Bearer token validation, scope checking, rate limits",
+      "example": "Api usage"
+    },
+    {
+      "id": "oa030",
+      "type": "testing",
+      "name": "OAuth Testing",
+      "description": "Test auth flows",
+      "pattern": "Mock IdP, test tokens, integration tests, security scan",
+      "example": "Testing usage"
+    }
+  ]
+}

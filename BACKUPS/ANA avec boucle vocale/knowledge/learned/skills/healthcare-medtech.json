@@ -1,0 +1,246 @@
+{
+  "category": "healthcare-medtech",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "med001",
+      "type": "fundamentals",
+      "name": "HealthTech Basics",
+      "description": "Medical technology",
+      "pattern": "Digital health, EHR, interoperability",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "med002",
+      "type": "fundamentals",
+      "name": "Healthcare Data",
+      "description": "Medical data",
+      "pattern": "HL7, FHIR, DICOM, clinical",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "med003",
+      "type": "fundamentals",
+      "name": "Medical Terminology",
+      "description": "Clinical terms",
+      "pattern": "ICD, CPT, SNOMED, LOINC",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "med004",
+      "type": "standards",
+      "name": "HL7 FHIR",
+      "description": "Healthcare standard",
+      "pattern": "Resources, REST, profiles",
+      "example": "Standards usage"
+    },
+    {
+      "id": "med005",
+      "type": "standards",
+      "name": "DICOM",
+      "description": "Medical imaging",
+      "pattern": "Images, metadata, PACS",
+      "example": "Standards usage"
+    },
+    {
+      "id": "med006",
+      "type": "standards",
+      "name": "CDA/CCDA",
+      "description": "Clinical documents",
+      "pattern": "Structured documents, sections",
+      "example": "Standards usage"
+    },
+    {
+      "id": "med007",
+      "type": "ehr",
+      "name": "EHR Systems",
+      "description": "Electronic health records",
+      "pattern": "Epic, Cerner, clinical workflow",
+      "example": "Ehr usage"
+    },
+    {
+      "id": "med008",
+      "type": "ehr",
+      "name": "EHR Integration",
+      "description": "System integration",
+      "pattern": "APIs, interfaces, middleware",
+      "example": "Ehr usage"
+    },
+    {
+      "id": "med009",
+      "type": "ehr",
+      "name": "Clinical Decision Support",
+      "description": "CDS",
+      "pattern": "Alerts, guidelines, recommendations",
+      "example": "Ehr usage"
+    },
+    {
+      "id": "med010",
+      "type": "compliance",
+      "name": "HIPAA",
+      "description": "Healthcare privacy",
+      "pattern": "PHI, safeguards, BAA",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "med011",
+      "type": "compliance",
+      "name": "FDA Regulations",
+      "description": "Medical device",
+      "pattern": "510k, premarket, classification",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "med012",
+      "type": "compliance",
+      "name": "Clinical Trials",
+      "description": "Research compliance",
+      "pattern": "GCP, IRB, consent",
+      "example": "Compliance usage"
+    },
+    {
+      "id": "med013",
+      "type": "imaging",
+      "name": "Medical Imaging AI",
+      "description": "Radiology AI",
+      "pattern": "Detection, segmentation, diagnosis",
+      "example": "Imaging usage"
+    },
+    {
+      "id": "med014",
+      "type": "imaging",
+      "name": "PACS Systems",
+      "description": "Image management",
+      "pattern": "Storage, viewing, workflow",
+      "example": "Imaging usage"
+    },
+    {
+      "id": "med015",
+      "type": "imaging",
+      "name": "3D Medical Imaging",
+      "description": "Volumetric imaging",
+      "pattern": "CT, MRI, 3D reconstruction",
+      "example": "Imaging usage"
+    },
+    {
+      "id": "med016",
+      "type": "telehealth",
+      "name": "Telemedicine",
+      "description": "Remote care",
+      "pattern": "Video, async, remote monitoring",
+      "example": "Telehealth usage"
+    },
+    {
+      "id": "med017",
+      "type": "telehealth",
+      "name": "Remote Patient Monitoring",
+      "description": "RPM",
+      "pattern": "Devices, alerts, chronic care",
+      "example": "Telehealth usage"
+    },
+    {
+      "id": "med018",
+      "type": "telehealth",
+      "name": "Digital Therapeutics",
+      "description": "DTx",
+      "pattern": "App-based treatment, FDA-cleared",
+      "example": "Telehealth usage"
+    },
+    {
+      "id": "med019",
+      "type": "devices",
+      "name": "Medical Devices",
+      "description": "Connected devices",
+      "pattern": "Wearables, sensors, IoMT",
+      "example": "Devices usage"
+    },
+    {
+      "id": "med020",
+      "type": "devices",
+      "name": "Wearable Health",
+      "description": "Health wearables",
+      "pattern": "Heart rate, activity, sleep",
+      "example": "Devices usage"
+    },
+    {
+      "id": "med021",
+      "type": "devices",
+      "name": "Medical IoT",
+      "description": "IoMT",
+      "pattern": "Connected devices, protocols",
+      "example": "Devices usage"
+    },
+    {
+      "id": "med022",
+      "type": "ai",
+      "name": "Clinical NLP",
+      "description": "Medical text",
+      "pattern": "Notes, extraction, NER",
+      "example": "Ai usage"
+    },
+    {
+      "id": "med023",
+      "type": "ai",
+      "name": "Diagnostic AI",
+      "description": "AI diagnosis",
+      "pattern": "Symptoms, prediction, triage",
+      "example": "Ai usage"
+    },
+    {
+      "id": "med024",
+      "type": "ai",
+      "name": "Drug Discovery AI",
+      "description": "Pharma AI",
+      "pattern": "Molecule design, repurposing",
+      "example": "Ai usage"
+    },
+    {
+      "id": "med025",
+      "type": "genomics",
+      "name": "Clinical Genomics",
+      "description": "Medical genetics",
+      "pattern": "Testing, interpretation, precision",
+      "example": "Genomics usage"
+    },
+    {
+      "id": "med026",
+      "type": "genomics",
+      "name": "Precision Medicine",
+      "description": "Personalized treatment",
+      "pattern": "Biomarkers, targeted therapy",
+      "example": "Genomics usage"
+    },
+    {
+      "id": "med027",
+      "type": "operations",
+      "name": "Healthcare Analytics",
+      "description": "Hospital analytics",
+      "pattern": "Quality, outcomes, population",
+      "example": "Operations usage"
+    },
+    {
+      "id": "med028",
+      "type": "operations",
+      "name": "Revenue Cycle",
+      "description": "Healthcare billing",
+      "pattern": "Claims, coding, denials",
+      "example": "Operations usage"
+    },
+    {
+      "id": "med029",
+      "type": "patient",
+      "name": "Patient Engagement",
+      "description": "Patient apps",
+      "pattern": "Portals, messaging, education",
+      "example": "Patient usage"
+    },
+    {
+      "id": "med030",
+      "type": "patient",
+      "name": "Mental Health Tech",
+      "description": "Digital mental health",
+      "pattern": "Therapy apps, crisis, CBT",
+      "example": "Patient usage"
+    }
+  ]
+}

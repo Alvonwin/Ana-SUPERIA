@@ -1,0 +1,246 @@
+{
+  "category": "networking-protocols",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "net001",
+      "type": "osi",
+      "name": "OSI Model",
+      "description": "Network layers",
+      "pattern": "Physical, Data Link, Network, Transport, Session, Presentation, Application",
+      "example": "Osi usage"
+    },
+    {
+      "id": "net002",
+      "type": "osi",
+      "name": "TCP/IP Model",
+      "description": "Internet stack",
+      "pattern": "Network Access, Internet, Transport, Application",
+      "example": "Osi usage"
+    },
+    {
+      "id": "net003",
+      "type": "tcp",
+      "name": "TCP",
+      "description": "Reliable transport",
+      "pattern": "Connection-oriented, ordered, reliable, flow control",
+      "example": "Tcp usage"
+    },
+    {
+      "id": "net004",
+      "type": "tcp",
+      "name": "TCP Handshake",
+      "description": "Connection setup",
+      "pattern": "SYN -> SYN-ACK -> ACK (three-way handshake)",
+      "example": "Tcp usage"
+    },
+    {
+      "id": "net005",
+      "type": "tcp",
+      "name": "TCP Congestion Control",
+      "description": "Flow management",
+      "pattern": "Slow start, congestion avoidance, fast retransmit",
+      "example": "Tcp usage"
+    },
+    {
+      "id": "net006",
+      "type": "udp",
+      "name": "UDP",
+      "description": "Fast transport",
+      "pattern": "Connectionless, no ordering, no reliability, low latency",
+      "example": "Udp usage"
+    },
+    {
+      "id": "net007",
+      "type": "udp",
+      "name": "UDP Use Cases",
+      "description": "When to use UDP",
+      "pattern": "Streaming, gaming, DNS, VoIP - speed over reliability",
+      "example": "Udp usage"
+    },
+    {
+      "id": "net008",
+      "type": "http",
+      "name": "HTTP/1.1",
+      "description": "Classic HTTP",
+      "pattern": "Text-based, persistent connections, pipelining",
+      "example": "Http usage"
+    },
+    {
+      "id": "net009",
+      "type": "http",
+      "name": "HTTP/2",
+      "description": "Binary HTTP",
+      "pattern": "Multiplexing, header compression, server push, binary framing",
+      "example": "Http usage"
+    },
+    {
+      "id": "net010",
+      "type": "http",
+      "name": "HTTP/3",
+      "description": "QUIC-based HTTP",
+      "pattern": "UDP-based, 0-RTT, improved mobile, connection migration",
+      "example": "Http usage"
+    },
+    {
+      "id": "net011",
+      "type": "http",
+      "name": "HTTP Methods",
+      "description": "Request verbs",
+      "pattern": "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS",
+      "example": "Http usage"
+    },
+    {
+      "id": "net012",
+      "type": "http",
+      "name": "HTTP Headers",
+      "description": "Metadata",
+      "pattern": "Content-Type, Authorization, Cache-Control, CORS headers",
+      "example": "Http usage"
+    },
+    {
+      "id": "net013",
+      "type": "http",
+      "name": "HTTP Status Codes",
+      "description": "Response status",
+      "pattern": "2xx success, 3xx redirect, 4xx client error, 5xx server error",
+      "example": "Http usage"
+    },
+    {
+      "id": "net014",
+      "type": "dns",
+      "name": "DNS",
+      "description": "Name resolution",
+      "pattern": "Domain -> IP, recursive resolvers, authoritative servers",
+      "example": "Dns usage"
+    },
+    {
+      "id": "net015",
+      "type": "dns",
+      "name": "DNS Records",
+      "description": "Record types",
+      "pattern": "A, AAAA, CNAME, MX, TXT, NS, SOA records",
+      "example": "Dns usage"
+    },
+    {
+      "id": "net016",
+      "type": "dns",
+      "name": "DNS Resolution",
+      "description": "Lookup process",
+      "pattern": "Cache -> Recursive -> Root -> TLD -> Authoritative",
+      "example": "Dns usage"
+    },
+    {
+      "id": "net017",
+      "type": "tls",
+      "name": "TLS/SSL",
+      "description": "Transport security",
+      "pattern": "Encryption, authentication, integrity - HTTPS",
+      "example": "Tls usage"
+    },
+    {
+      "id": "net018",
+      "type": "tls",
+      "name": "TLS Handshake",
+      "description": "Connection setup",
+      "pattern": "ClientHello, ServerHello, certificates, key exchange",
+      "example": "Tls usage"
+    },
+    {
+      "id": "net019",
+      "type": "tls",
+      "name": "Certificates",
+      "description": "PKI",
+      "pattern": "CA, certificate chain, X.509, Let's Encrypt",
+      "example": "Tls usage"
+    },
+    {
+      "id": "net020",
+      "type": "websocket",
+      "name": "WebSocket",
+      "description": "Full-duplex",
+      "pattern": "HTTP upgrade, persistent connection, bidirectional",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "net021",
+      "type": "websocket",
+      "name": "WebSocket vs HTTP",
+      "description": "When to use",
+      "pattern": "Real-time bidirectional -> WS, request-response -> HTTP",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "net022",
+      "type": "ip",
+      "name": "IP Addressing",
+      "description": "Network addressing",
+      "pattern": "IPv4 (32-bit), IPv6 (128-bit), CIDR notation",
+      "example": "Ip usage"
+    },
+    {
+      "id": "net023",
+      "type": "ip",
+      "name": "Subnetting",
+      "description": "Network division",
+      "pattern": "Subnet mask, CIDR /24, network/host portions",
+      "example": "Ip usage"
+    },
+    {
+      "id": "net024",
+      "type": "ip",
+      "name": "NAT",
+      "description": "Address translation",
+      "pattern": "Private to public IP mapping, port forwarding",
+      "example": "Ip usage"
+    },
+    {
+      "id": "net025",
+      "type": "tools",
+      "name": "ping/traceroute",
+      "description": "Network testing",
+      "pattern": "ping for connectivity, traceroute for path",
+      "example": "Tools usage"
+    },
+    {
+      "id": "net026",
+      "type": "tools",
+      "name": "netstat/ss",
+      "description": "Connection status",
+      "pattern": "ss -tulpn - show listening ports and connections",
+      "example": "Tools usage"
+    },
+    {
+      "id": "net027",
+      "type": "tools",
+      "name": "tcpdump/Wireshark",
+      "description": "Packet capture",
+      "pattern": "Capture and analyze network traffic",
+      "example": "Tools usage"
+    },
+    {
+      "id": "net028",
+      "type": "tools",
+      "name": "curl",
+      "description": "HTTP client",
+      "pattern": "curl -v -X POST -H 'Content-Type: application/json' -d '{}'",
+      "example": "Tools usage"
+    },
+    {
+      "id": "net029",
+      "type": "tools",
+      "name": "dig/nslookup",
+      "description": "DNS lookup",
+      "pattern": "dig example.com A, dig @8.8.8.8 example.com",
+      "example": "Tools usage"
+    },
+    {
+      "id": "net030",
+      "type": "security",
+      "name": "Network Security",
+      "description": "Security concepts",
+      "pattern": "Firewalls, VPN, IDS/IPS, DDoS protection",
+      "example": "Security usage"
+    }
+  ]
+}

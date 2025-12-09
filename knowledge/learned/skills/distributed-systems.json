@@ -1,0 +1,246 @@
+{
+  "category": "distributed-systems",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ds001",
+      "type": "fundamentals",
+      "name": "CAP Theorem",
+      "description": "Tradeoffs",
+      "pattern": "Consistency, Availability, Partition tolerance - pick 2",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ds002",
+      "type": "fundamentals",
+      "name": "PACELC",
+      "description": "Extended CAP",
+      "pattern": "If Partition: A or C, Else: Latency or Consistency",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ds003",
+      "type": "fundamentals",
+      "name": "Fallacies",
+      "description": "8 fallacies",
+      "pattern": "Network is reliable, latency is zero, bandwidth infinite...",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ds004",
+      "type": "consistency",
+      "name": "Strong Consistency",
+      "description": "Linearizability",
+      "pattern": "All nodes see same data at same time, like single machine",
+      "example": "Consistency usage"
+    },
+    {
+      "id": "ds005",
+      "type": "consistency",
+      "name": "Eventual Consistency",
+      "description": "Eventually converge",
+      "pattern": "Replicas converge over time, read-your-writes, monotonic",
+      "example": "Consistency usage"
+    },
+    {
+      "id": "ds006",
+      "type": "consistency",
+      "name": "Causal Consistency",
+      "description": "Cause before effect",
+      "pattern": "Operations that causally depend are seen in order",
+      "example": "Consistency usage"
+    },
+    {
+      "id": "ds007",
+      "type": "consensus",
+      "name": "Paxos",
+      "description": "Consensus protocol",
+      "pattern": "Proposers, acceptors, learners, majority quorum",
+      "example": "Consensus usage"
+    },
+    {
+      "id": "ds008",
+      "type": "consensus",
+      "name": "Raft",
+      "description": "Understandable consensus",
+      "pattern": "Leader election, log replication, safety, etcd uses Raft",
+      "example": "Consensus usage"
+    },
+    {
+      "id": "ds009",
+      "type": "consensus",
+      "name": "Leader Election",
+      "description": "Single leader",
+      "pattern": "Bully algorithm, ring algorithm, ZooKeeper recipes",
+      "example": "Consensus usage"
+    },
+    {
+      "id": "ds010",
+      "type": "replication",
+      "name": "Primary-Backup",
+      "description": "Master-slave",
+      "pattern": "Primary handles writes, backups replicate, failover",
+      "example": "Replication usage"
+    },
+    {
+      "id": "ds011",
+      "type": "replication",
+      "name": "Multi-Leader",
+      "description": "Multiple writers",
+      "pattern": "Each leader accepts writes, conflict resolution needed",
+      "example": "Replication usage"
+    },
+    {
+      "id": "ds012",
+      "type": "replication",
+      "name": "Leaderless",
+      "description": "Dynamo-style",
+      "pattern": "Any node accepts writes, quorum reads/writes, anti-entropy",
+      "example": "Replication usage"
+    },
+    {
+      "id": "ds013",
+      "type": "partitioning",
+      "name": "Sharding",
+      "description": "Horizontal split",
+      "pattern": "Partition by key range or hash, rebalancing strategies",
+      "example": "Partitioning usage"
+    },
+    {
+      "id": "ds014",
+      "type": "partitioning",
+      "name": "Consistent Hashing",
+      "description": "Minimal reshuffling",
+      "pattern": "Virtual nodes on ring, add/remove affects few keys",
+      "example": "Partitioning usage"
+    },
+    {
+      "id": "ds015",
+      "type": "partitioning",
+      "name": "Partition Strategies",
+      "description": "Key distribution",
+      "pattern": "Range (hot spots), hash (no range queries), directory",
+      "example": "Partitioning usage"
+    },
+    {
+      "id": "ds016",
+      "type": "clocks",
+      "name": "Logical Clocks",
+      "description": "Event ordering",
+      "pattern": "Lamport timestamps, happens-before relationship",
+      "example": "Clocks usage"
+    },
+    {
+      "id": "ds017",
+      "type": "clocks",
+      "name": "Vector Clocks",
+      "description": "Causality tracking",
+      "pattern": "Detect concurrent events, conflict detection in Dynamo",
+      "example": "Clocks usage"
+    },
+    {
+      "id": "ds018",
+      "type": "clocks",
+      "name": "Hybrid Clocks",
+      "description": "Physical + logical",
+      "pattern": "HLC combines wall clock with logical, CockroachDB",
+      "example": "Clocks usage"
+    },
+    {
+      "id": "ds019",
+      "type": "transactions",
+      "name": "2PC",
+      "description": "Two-phase commit",
+      "pattern": "Prepare phase, commit phase, blocking protocol",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "ds020",
+      "type": "transactions",
+      "name": "Saga Pattern",
+      "description": "Long transactions",
+      "pattern": "Sequence of local txns, compensating actions on failure",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "ds021",
+      "type": "transactions",
+      "name": "Outbox Pattern",
+      "description": "Reliable events",
+      "pattern": "Write to outbox table in txn, publish asynchronously",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "ds022",
+      "type": "failures",
+      "name": "Failure Detection",
+      "description": "Detect crashes",
+      "pattern": "Heartbeats, phi accrual detector, gossip protocols",
+      "example": "Failures usage"
+    },
+    {
+      "id": "ds023",
+      "type": "failures",
+      "name": "Byzantine Faults",
+      "description": "Malicious nodes",
+      "pattern": "PBFT, blockchain consensus, f < n/3 tolerance",
+      "example": "Failures usage"
+    },
+    {
+      "id": "ds024",
+      "type": "failures",
+      "name": "Split Brain",
+      "description": "Network partition",
+      "pattern": "Fencing tokens, STONITH, quorum-based decisions",
+      "example": "Failures usage"
+    },
+    {
+      "id": "ds025",
+      "type": "patterns",
+      "name": "Crdt",
+      "description": "Conflict-free types",
+      "pattern": "G-Counter, PN-Counter, LWW-Register, OR-Set",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ds026",
+      "type": "patterns",
+      "name": "Gossip Protocol",
+      "description": "Epidemic broadcast",
+      "pattern": "Random peer selection, eventual propagation, scalable",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ds027",
+      "type": "patterns",
+      "name": "Anti-Entropy",
+      "description": "Sync replicas",
+      "pattern": "Merkle trees, read repair, background sync",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ds028",
+      "type": "storage",
+      "name": "LSM Trees",
+      "description": "Write-optimized",
+      "pattern": "MemTable -> SSTable, compaction, Cassandra/RocksDB",
+      "example": "Storage usage"
+    },
+    {
+      "id": "ds029",
+      "type": "storage",
+      "name": "B-Trees",
+      "description": "Read-optimized",
+      "pattern": "Balanced tree, in-place updates, traditional RDBMS",
+      "example": "Storage usage"
+    },
+    {
+      "id": "ds030",
+      "type": "testing",
+      "name": "Jepsen Testing",
+      "description": "Correctness testing",
+      "pattern": "Inject faults, verify linearizability, find edge cases",
+      "example": "Testing usage"
+    }
+  ]
+}

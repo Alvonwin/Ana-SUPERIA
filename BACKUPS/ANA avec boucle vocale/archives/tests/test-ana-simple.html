@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Ana WebSocket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        #messages {
+            height: 400px;
+            border: 1px solid #444;
+            padding: 10px;
+            overflow-y: auto;
+            background: #2a2a2a;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        .user { background: #3498db; }
+        .ana { background: #2ecc71; }
+        .system { background: #e74c3c; font-size: 0.9em; }
+        input {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            width: 25%;
+            padding: 10px;
+            font-size: 16px;
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>🤖 Test Ana - WebSocket Simple</h1>
+    <div id="status">Status: Connexion...</div>
+    <div id="messages"></div>
+    <input type="text" id="input" placeholder="Écris ton message..." />
+    <button onclick="sendMessage()">Envoyer</button>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script>
+        const messagesDiv = document.getElementById('messages');
+        const statusDiv = document.getElementById('status');
+        const input = document.getElementById('input');
+
+        // Connexion WebSocket
+        const socket = io('http://localhost:3338', {
+            transports: ['websocket', 'polling']
+        });
+
+        socket.on('connect', () => {
+            statusDiv.innerHTML = '✅ Status: Connecté (ID: ' + socket.id + ')';
+            addMessage('system', 'Connecté au backend Ana!');
+        });
+
+        socket.on('connect_error', (error) => {
+            statusDiv.innerHTML = '❌ Status: Erreur de connexion';
+            addMessage('system', 'ERREUR: ' + error.message);
+        });
+
+        socket.on('chat:model_selected', (data) => {
+            addMessage('system', '🧠 ' + data.reason + ' (Modèle: ' + data.model + ')');
+        });
+
+        let currentAnaMessage = null;
+
+        socket.on('chat:chunk', (data) => {
+            console.log('Chunk reçu:', data);
+            if (data && data.chunk) {
+                if (!currentAnaMessage) {
+                    currentAnaMessage = document.createElement('div');
+                    currentAnaMessage.className = 'message ana';
+                    currentAnaMessage.innerHTML = '<strong>Ana:</strong> ';
+                    messagesDiv.appendChild(currentAnaMessage);
+                }
+                currentAnaMessage.innerHTML += data.chunk;
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+        });
+
+        socket.on('chat:complete', () => {
+            console.log('Réponse complète');
+            currentAnaMessage = null;
+        });
+
+        socket.on('chat:error', (data) => {
+            addMessage('system', 'ERREUR: ' + data.error);
+        });
+
+        function addMessage(type, text) {
+            const div = document.createElement('div');
+            div.className = 'message ' + type;
+            if (type === 'user') {
+                div.innerHTML = '<strong>Toi:</strong> ' + text;
+            } else if (type === 'ana') {
+                div.innerHTML = '<strong>Ana:</strong> ' + text;
+            } else {
+                div.innerHTML = text;
+            }
+            messagesDiv.appendChild(div);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function sendMessage() {
+            const message = input.value.trim();
+            if (!message) return;
+
+            addMessage('user', message);
+            socket.emit('chat:message', { message: message });
+            input.value = '';
+        }
+
+        // Envoyer avec Enter
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana SUPERIA - Inventaire Skills &amp; Outils</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #00d4ff;
+            font-size: 2.5em;
+            text-shadow: 0 0 20px rgba(0,212,255,0.5);
+        }
+        .subtitle { color: #888; margin-top: 10px; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.08);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(0,212,255,0.3);
+        }
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .stat-label { color: #aaa; margin-top: 5px; }
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        h2 {
+            color: #00d4ff;
+            border-bottom: 2px solid rgba(0,212,255,0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .tool-card {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #00d4ff;
+        }
+        .tool-name {
+            color: #00ff88;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 1.1em;
+        }
+        .tool-desc { color: #bbb; font-size: 0.9em; margin-top: 5px; }
+        .category {
+            color: #ff6b6b;
+            font-size: 0.8em;
+            background: rgba(255,107,107,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+        .agents-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .agent-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+        .file-list {
+            font-family: monospace;
+            font-size: 0.9em;
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .file-list div { padding: 3px 0; }
+        .file-size { color: #888; }
+        .timestamp {
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Ana SUPERIA</h1>
+        <div class="subtitle">Inventaire Complet des Skills &amp; Outils</div>
+        <div class="subtitle">Version: 8 Decembre 2025</div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">25</div>
+            <div class="stat-label">Outils (Tools)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Agents Specialises</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Modules Tools</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">29 000</div>
+            <div class="stat-label">Lignes de Code</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">12</div>
+            <div class="stat-label">Modeles Ollama</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">24/24</div>
+            <div class="stat-label">Tests Passes</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>25 Outils Disponibles (Tool Agent)</h2>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-name">web_search</div>
+                <div class="tool-desc">Recherche d'information generale sur le web (DuckDuckGo)</div>
+                <div class="category">Web</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">get_weather</div>
+                <div class="tool-desc">Obtenir la meteo actuelle pour une ville donnee</div>
+                <div class="category">Web</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">get_time</div>
+                <div class="tool-desc">Obtenir l'heure et la date actuelles du systeme</div>
+                <div class="category">Systeme</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">read_file</div>
+                <div class="tool-desc">Lire un fichier texte sur le disque</div>
+                <div class="category">Fichiers</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">search_in_file</div>
+                <div class="tool-desc">Rechercher un pattern (regex) dans un fichier avec contexte</div>
+                <div class="category">Fichiers</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">read_file_chunk</div>
+                <div class="tool-desc">Lire une portion specifique d'un fichier (lignes X a Y)</div>
+                <div class="category">Fichiers</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">file_info</div>
+                <div class="tool-desc">Obtenir infos sur un fichier (taille, lignes, type)</div>
+                <div class="category">Fichiers</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">write_file</div>
+                <div class="tool-desc">Ecrire du contenu dans un fichier</div>
+                <div class="category">Fichiers</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">list_files</div>
+                <div class="tool-desc">Lister les fichiers d'un repertoire</div>
+                <div class="category">Fichiers</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">run_shell</div>
+                <div class="tool-desc">Executer une commande shell Windows/Linux</div>
+                <div class="category">Systeme</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">web_fetch</div>
+                <div class="tool-desc">Recuperer le contenu d'une page web (URL)</div>
+                <div class="category">Web</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">wikipedia</div>
+                <div class="tool-desc">Rechercher sur Wikipedia</div>
+                <div class="category">Web</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">ask_groq</div>
+                <div class="tool-desc">Interroger l'API Groq (LLM externe)</div>
+                <div class="category">LLM</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">ask_cerebras</div>
+                <div class="tool-desc">Interroger l'API Cerebras (LLM externe)</div>
+                <div class="category">LLM</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">search_memory</div>
+                <div class="tool-desc">Rechercher dans la memoire ChromaDB</div>
+                <div class="category">Memoire</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">edit_file</div>
+                <div class="tool-desc">Modifier un fichier existant (recherche/remplacement)</div>
+                <div class="category">Fichiers</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">glob</div>
+                <div class="tool-desc">Trouver des fichiers par pattern (*.js, **/*.md)</div>
+                <div class="category">Fichiers</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">grep</div>
+                <div class="tool-desc">Rechercher un pattern dans plusieurs fichiers</div>
+                <div class="category">Fichiers</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">ask_user</div>
+                <div class="tool-desc">Poser une question a l'utilisateur pour clarifier</div>
+                <div class="category">Interaction</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">run_background</div>
+                <div class="tool-desc">Lancer une commande en arriere-plan</div>
+                <div class="category">Systeme</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">kill_process</div>
+                <div class="tool-desc">Arreter un processus par PID</div>
+                <div class="category">Systeme</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">todo_write</div>
+                <div class="tool-desc">Gerer une liste de taches persistante</div>
+                <div class="category">Productivite</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">notebook_edit</div>
+                <div class="tool-desc">Modifier une cellule de notebook Jupyter</div>
+                <div class="category">Dev</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">plan_mode</div>
+                <div class="tool-desc">Entrer en mode planification avant action</div>
+                <div class="category">Workflow</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name">launch_agent</div>
+                <div class="tool-desc">Lancer un agent specialise pour une tache complexe</div>
+                <div class="category">Agents</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3 Agents Specialises</h2>
+        <div class="agents-list">
+            <div class="agent-badge">Tool Agent (25 outils)</div>
+            <div class="agent-badge">Research Agent (4 strategies)</div>
+            <div class="agent-badge">Coding Agent (analyse code)</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>6 Modules d'Outils</h2>
+        <div class="file-list">
+            <div><strong>web-tools.cjs</strong> <span class="file-size">(698 lignes)</span> - Recherche web, meteo, Wikipedia</div>
+            <div><strong>file-tools.cjs</strong> <span class="file-size">(368 lignes)</span> - Lecture/ecriture fichiers</div>
+            <div><strong>bash-tools.cjs</strong> <span class="file-size">(446 lignes)</span> - Execution commandes shell</div>
+            <div><strong>search-tools.cjs</strong> <span class="file-size">(445 lignes)</span> - Glob, Grep, recherche</div>
+            <div><strong>git-tools.cjs</strong> <span class="file-size">(417 lignes)</span> - Operations Git</div>
+            <div><strong>web_browser.cjs</strong> <span class="file-size">(413 lignes)</span> - Navigation web</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Fichiers Principaux</h2>
+        <div class="file-list">
+            <div><strong>ana-core.cjs</strong> <span class="file-size">(5,584 lignes)</span> - Coeur du systeme Ana</div>
+            <div><strong>tool-agent.cjs</strong> <span class="file-size">(1,595 lignes)</span> - Agent avec 25 outils</div>
+            <div><strong>research-agent.cjs</strong> <span class="file-size">(500 lignes)</span> - Agent de recherche</div>
+            <div><strong>coding-agent.cjs</strong> <span class="file-size">(650 lignes)</span> - Agent de code</div>
+            <div><strong>tiered-memory.cjs</strong> <span class="file-size">(300 lignes)</span> - Memoire ChromaDB</div>
+            <div><strong>loop-controller.cjs</strong> <span class="file-size">(200 lignes)</span> - Controle boucles agents</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>12 Modeles Ollama Disponibles</h2>
+        <div class="file-list">
+            <div>1. <strong>ana-french-tutoiement</strong> - Modele principal francais (tutoiement)</div>
+            <div>2. <strong>qwen2.5-coder:7b</strong> - Code et outils</div>
+            <div>3. <strong>deepseek-coder:latest</strong> - Developpement</div>
+            <div>4. <strong>llama3.2-vision:latest</strong> - Vision/images</div>
+            <div>5. <strong>phi3:latest</strong> - Modele leger</div>
+            <div>6. <strong>mistral:latest</strong> - Usage general</div>
+            <div>7. <strong>gemma2:latest</strong> - Google Gemma</div>
+            <div>8. <strong>qwen2.5:7b</strong> - Qwen general</div>
+            <div>9. <strong>llama3.2:3b</strong> - Llama compact</div>
+            <div>10. <strong>nomic-embed-text</strong> - Embeddings</div>
+            <div>11. <strong>mxbai-embed-large</strong> - Embeddings large</div>
+            <div>12. <strong>codellama:7b</strong> - Code Llama</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Categories d'Outils</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Fichiers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Web</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Systeme</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">LLM Externes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Memoire</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Autres</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="timestamp">
+        Genere le 8 Decembre 2025 a 00:45 par Claude Code
+    </div>
+</body>
+</html>

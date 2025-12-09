@@ -1,0 +1,246 @@
+{
+  "category": "web3-blockchain",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "w3001",
+      "type": "ethereum",
+      "name": "Solidity Basics",
+      "description": "Smart contract language",
+      "pattern": "contract Token { mapping(address => uint) balances; function transfer(address to, uint amount) public {} }",
+      "example": "Ethereum usage"
+    },
+    {
+      "id": "w3002",
+      "type": "ethereum",
+      "name": "ERC-20 Token",
+      "description": "Fungible token standard",
+      "pattern": "function transfer(address to, uint256 amount) returns (bool); event Transfer(address from, address to, uint256 value)",
+      "example": "Ethereum usage"
+    },
+    {
+      "id": "w3003",
+      "type": "ethereum",
+      "name": "ERC-721 NFT",
+      "description": "Non-fungible tokens",
+      "pattern": "function ownerOf(uint256 tokenId) returns (address); function safeTransferFrom(from, to, tokenId)",
+      "example": "Ethereum usage"
+    },
+    {
+      "id": "w3004",
+      "type": "ethereum",
+      "name": "Gas Optimization",
+      "description": "Reduce costs",
+      "pattern": "Pack storage, use calldata, avoid loops, batch operations",
+      "example": "Ethereum usage"
+    },
+    {
+      "id": "w3005",
+      "type": "ethereum",
+      "name": "Reentrancy Guard",
+      "description": "Security pattern",
+      "pattern": "modifier nonReentrant { require(!locked); locked = true; _; locked = false; }",
+      "example": "Ethereum usage"
+    },
+    {
+      "id": "w3006",
+      "type": "ethereum",
+      "name": "Upgradeable Contracts",
+      "description": "Proxy pattern",
+      "pattern": "TransparentUpgradeableProxy, UUPS, delegatecall to implementation",
+      "example": "Ethereum usage"
+    },
+    {
+      "id": "w3007",
+      "type": "tools",
+      "name": "Hardhat",
+      "description": "Dev environment",
+      "pattern": "npx hardhat compile; npx hardhat test; npx hardhat deploy --network mainnet",
+      "example": "Tools usage"
+    },
+    {
+      "id": "w3008",
+      "type": "tools",
+      "name": "Foundry",
+      "description": "Fast Solidity toolkit",
+      "pattern": "forge build; forge test; forge script Deploy.s.sol --broadcast",
+      "example": "Tools usage"
+    },
+    {
+      "id": "w3009",
+      "type": "tools",
+      "name": "Ethers.js",
+      "description": "JS library",
+      "pattern": "const contract = new ethers.Contract(addr, abi, signer); await contract.transfer(to, amount)",
+      "example": "Tools usage"
+    },
+    {
+      "id": "w3010",
+      "type": "tools",
+      "name": "Viem",
+      "description": "Modern alternative",
+      "pattern": "const hash = await walletClient.writeContract({address, abi, functionName, args})",
+      "example": "Tools usage"
+    },
+    {
+      "id": "w3011",
+      "type": "tools",
+      "name": "Wagmi",
+      "description": "React hooks",
+      "pattern": "const {data, write} = useContractWrite({address, abi, functionName})",
+      "example": "Tools usage"
+    },
+    {
+      "id": "w3012",
+      "type": "defi",
+      "name": "AMM Basics",
+      "description": "Automated Market Maker",
+      "pattern": "x * y = k constant product formula (Uniswap)",
+      "example": "Defi usage"
+    },
+    {
+      "id": "w3013",
+      "type": "defi",
+      "name": "Lending Protocols",
+      "description": "Aave, Compound",
+      "pattern": "Supply collateral, borrow assets, liquidation thresholds",
+      "example": "Defi usage"
+    },
+    {
+      "id": "w3014",
+      "type": "defi",
+      "name": "Flash Loans",
+      "description": "Uncollateralized loans",
+      "pattern": "Borrow, use, repay in single transaction, arbitrage",
+      "example": "Defi usage"
+    },
+    {
+      "id": "w3015",
+      "type": "defi",
+      "name": "Yield Farming",
+      "description": "Liquidity mining",
+      "pattern": "Provide liquidity, earn LP tokens + rewards",
+      "example": "Defi usage"
+    },
+    {
+      "id": "w3016",
+      "type": "security",
+      "name": "Audit Checklist",
+      "description": "Common vulnerabilities",
+      "pattern": "Reentrancy, overflow, access control, oracle manipulation, front-running",
+      "example": "Security usage"
+    },
+    {
+      "id": "w3017",
+      "type": "security",
+      "name": "Slither",
+      "description": "Static analysis",
+      "pattern": "slither . --print human-summary",
+      "example": "Security usage"
+    },
+    {
+      "id": "w3018",
+      "type": "security",
+      "name": "Fuzzing",
+      "description": "Property-based testing",
+      "pattern": "function testFuzz_transfer(uint256 amount) public { vm.assume(amount <= balance); }",
+      "example": "Security usage"
+    },
+    {
+      "id": "w3019",
+      "type": "l2",
+      "name": "Optimistic Rollups",
+      "description": "Optimism, Arbitrum",
+      "pattern": "Fraud proofs, 7 day withdrawal, EVM compatible",
+      "example": "L2 usage"
+    },
+    {
+      "id": "w3020",
+      "type": "l2",
+      "name": "ZK Rollups",
+      "description": "zkSync, StarkNet",
+      "pattern": "Validity proofs, instant finality, higher compression",
+      "example": "L2 usage"
+    },
+    {
+      "id": "w3021",
+      "type": "storage",
+      "name": "IPFS",
+      "description": "Decentralized storage",
+      "pattern": "ipfs.add(file); CID content addressing",
+      "example": "Storage usage"
+    },
+    {
+      "id": "w3022",
+      "type": "storage",
+      "name": "Arweave",
+      "description": "Permanent storage",
+      "pattern": "Pay once, store forever, permaweb",
+      "example": "Storage usage"
+    },
+    {
+      "id": "w3023",
+      "type": "indexing",
+      "name": "The Graph",
+      "description": "Blockchain indexing",
+      "pattern": "Subgraph: schema.graphql, mapping.ts, subgraph.yaml",
+      "example": "Indexing usage"
+    },
+    {
+      "id": "w3024",
+      "type": "indexing",
+      "name": "Event Listening",
+      "description": "Track contract events",
+      "pattern": "contract.on('Transfer', (from, to, amount) => {})",
+      "example": "Indexing usage"
+    },
+    {
+      "id": "w3025",
+      "type": "wallets",
+      "name": "WalletConnect",
+      "description": "Wallet connection",
+      "pattern": "Web3Modal, multiple wallet support",
+      "example": "Wallets usage"
+    },
+    {
+      "id": "w3026",
+      "type": "wallets",
+      "name": "Account Abstraction",
+      "description": "ERC-4337",
+      "pattern": "Smart contract wallets, gasless transactions, social recovery",
+      "example": "Wallets usage"
+    },
+    {
+      "id": "w3027",
+      "type": "oracles",
+      "name": "Chainlink",
+      "description": "Price feeds",
+      "pattern": "AggregatorV3Interface(addr).latestRoundData() returns price",
+      "example": "Oracles usage"
+    },
+    {
+      "id": "w3028",
+      "type": "oracles",
+      "name": "VRF",
+      "description": "Verifiable randomness",
+      "pattern": "Chainlink VRF for provably fair random numbers",
+      "example": "Oracles usage"
+    },
+    {
+      "id": "w3029",
+      "type": "governance",
+      "name": "DAO Basics",
+      "description": "Decentralized governance",
+      "pattern": "Token voting, proposals, timelock, quorum",
+      "example": "Governance usage"
+    },
+    {
+      "id": "w3030",
+      "type": "governance",
+      "name": "Governor Contract",
+      "description": "OpenZeppelin Governor",
+      "pattern": "propose(), castVote(), queue(), execute()",
+      "example": "Governance usage"
+    }
+  ]
+}

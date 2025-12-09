@@ -1,0 +1,248 @@
+{
+  "category": "ollama-local-llm",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "Skills for running LLMs locally with Ollama",
+  "skills": [
+    {
+      "id": "oll01",
+      "type": "installation",
+      "name": "Ollama Installation",
+      "description": "Install and setup Ollama",
+      "pattern": "winget install Ollama.Ollama || curl -fsSL https://ollama.ai/install.sh | sh",
+      "example": "ollama --version"
+    },
+    {
+      "id": "oll02",
+      "type": "model-pull",
+      "name": "Pull Models",
+      "description": "Download models from Ollama library",
+      "pattern": "ollama pull <model-name>",
+      "example": "ollama pull llama3.2:3b"
+    },
+    {
+      "id": "oll03",
+      "type": "model-run",
+      "name": "Run Model Interactive",
+      "description": "Start interactive chat with model",
+      "pattern": "ollama run <model-name>",
+      "example": "ollama run qwen2.5-coder:7b"
+    },
+    {
+      "id": "oll04",
+      "type": "api",
+      "name": "REST API Generate",
+      "description": "Generate text via HTTP API",
+      "pattern": "POST http://localhost:11434/api/generate {model, prompt, stream}",
+      "example": "curl http://localhost:11434/api/generate -d '{\"model\":\"llama3\",\"prompt\":\"Hello\"}'"
+    },
+    {
+      "id": "oll05",
+      "type": "api",
+      "name": "REST API Chat",
+      "description": "Chat completion via HTTP API",
+      "pattern": "POST http://localhost:11434/api/chat {model, messages[], stream}",
+      "example": "messages: [{role:'user', content:'Hello'}]"
+    },
+    {
+      "id": "oll06",
+      "type": "api",
+      "name": "REST API Embeddings",
+      "description": "Generate embeddings for text",
+      "pattern": "POST http://localhost:11434/api/embeddings {model, prompt}",
+      "example": "ollama pull nomic-embed-text && POST /api/embeddings"
+    },
+    {
+      "id": "oll07",
+      "type": "model-list",
+      "name": "List Models",
+      "description": "Show installed models",
+      "pattern": "ollama list",
+      "example": "NAME SIZE MODIFIED"
+    },
+    {
+      "id": "oll08",
+      "type": "model-show",
+      "name": "Model Info",
+      "description": "Show model details and parameters",
+      "pattern": "ollama show <model-name>",
+      "example": "ollama show llama3 --modelfile"
+    },
+    {
+      "id": "oll09",
+      "type": "modelfile",
+      "name": "Custom Modelfile",
+      "description": "Create custom model configuration",
+      "pattern": "FROM base-model\\nSYSTEM prompt\\nPARAMETER temp 0.7",
+      "example": "ollama create my-model -f Modelfile"
+    },
+    {
+      "id": "oll10",
+      "type": "parameters",
+      "name": "Generation Parameters",
+      "description": "Control generation behavior",
+      "pattern": "temperature, top_p, top_k, num_predict, repeat_penalty",
+      "example": "{\"options\":{\"temperature\":0.8,\"num_predict\":500}}"
+    },
+    {
+      "id": "oll11",
+      "type": "context",
+      "name": "Context Window",
+      "description": "Manage context length",
+      "pattern": "num_ctx parameter in options",
+      "example": "{\"options\":{\"num_ctx\":8192}}"
+    },
+    {
+      "id": "oll12",
+      "type": "streaming",
+      "name": "Streaming Response",
+      "description": "Stream tokens as generated",
+      "pattern": "stream: true in request body",
+      "example": "Parse NDJSON chunks with JSON.parse per line"
+    },
+    {
+      "id": "oll13",
+      "type": "vision",
+      "name": "Vision Models",
+      "description": "Process images with vision models",
+      "pattern": "images: [base64_string] in request",
+      "example": "ollama run llava 'describe this image' --images ./photo.jpg"
+    },
+    {
+      "id": "oll14",
+      "type": "gpu",
+      "name": "GPU Acceleration",
+      "description": "CUDA/ROCm GPU usage",
+      "pattern": "OLLAMA_GPU_LAYERS, CUDA_VISIBLE_DEVICES",
+      "example": "Automatic GPU detection for NVIDIA/AMD"
+    },
+    {
+      "id": "oll15",
+      "type": "memory",
+      "name": "VRAM Management",
+      "description": "Manage GPU memory usage",
+      "pattern": "OLLAMA_NUM_GPU=1, model quantization (q4_K_M, q5_K_M)",
+      "example": "Smaller quants = less VRAM, slight quality loss"
+    },
+    {
+      "id": "oll16",
+      "type": "quantization",
+      "name": "Model Quantization",
+      "description": "Understand quantization levels",
+      "pattern": "Q4_0 < Q4_K_M < Q5_K_M < Q6_K < Q8_0 < FP16",
+      "example": "q4_K_M is best balance for most use cases"
+    },
+    {
+      "id": "oll17",
+      "type": "serve",
+      "name": "Ollama Server",
+      "description": "Run as background service",
+      "pattern": "ollama serve (runs on :11434)",
+      "example": "OLLAMA_HOST=0.0.0.0:11434 for network access"
+    },
+    {
+      "id": "oll18",
+      "type": "copy",
+      "name": "Copy Model",
+      "description": "Duplicate model with new name",
+      "pattern": "ollama cp source-model new-model",
+      "example": "ollama cp llama3 my-llama3-custom"
+    },
+    {
+      "id": "oll19",
+      "type": "delete",
+      "name": "Remove Model",
+      "description": "Delete downloaded model",
+      "pattern": "ollama rm <model-name>",
+      "example": "ollama rm old-model"
+    },
+    {
+      "id": "oll20",
+      "type": "multimodal",
+      "name": "Multimodal Models",
+      "description": "Models supporting text+image+audio",
+      "pattern": "llava, llama3.2-vision, bakllava",
+      "example": "Best for image description tasks"
+    },
+    {
+      "id": "oll21",
+      "type": "coding",
+      "name": "Coding Models",
+      "description": "Code-specialized models",
+      "pattern": "deepseek-coder, qwen2.5-coder, codellama, starcoder",
+      "example": "deepseek-coder-v2:16b for complex code"
+    },
+    {
+      "id": "oll22",
+      "type": "small-models",
+      "name": "Small Efficient Models",
+      "description": "Fast models for quick tasks",
+      "pattern": "phi3:mini, qwen2.5:1.5b, gemma2:2b",
+      "example": "Under 2GB VRAM, fast inference"
+    },
+    {
+      "id": "oll23",
+      "type": "large-models",
+      "name": "Large Capable Models",
+      "description": "High quality models",
+      "pattern": "llama3.1:70b, mixtral:8x7b, qwen2.5:72b",
+      "example": "Need 48GB+ VRAM for full performance"
+    },
+    {
+      "id": "oll24",
+      "type": "nodejs",
+      "name": "Node.js Integration",
+      "description": "Use Ollama from Node.js",
+      "pattern": "import ollama from 'ollama'; await ollama.chat({model, messages})",
+      "example": "npm install ollama"
+    },
+    {
+      "id": "oll25",
+      "type": "python",
+      "name": "Python Integration",
+      "description": "Use Ollama from Python",
+      "pattern": "import ollama; ollama.chat(model='llama3', messages=[...])",
+      "example": "pip install ollama"
+    },
+    {
+      "id": "oll26",
+      "type": "langchain",
+      "name": "LangChain Integration",
+      "description": "Use with LangChain framework",
+      "pattern": "from langchain_community.llms import Ollama",
+      "example": "llm = Ollama(model='llama3', base_url='http://localhost:11434')"
+    },
+    {
+      "id": "oll27",
+      "type": "keep-alive",
+      "name": "Keep Alive Setting",
+      "description": "Control model memory persistence",
+      "pattern": "keep_alive: '5m' or -1 for forever",
+      "example": "Keeps model in VRAM between requests"
+    },
+    {
+      "id": "oll28",
+      "type": "system-prompt",
+      "name": "System Prompts",
+      "description": "Set model behavior",
+      "pattern": "system: 'You are a helpful assistant...'",
+      "example": "First message with role: 'system'"
+    },
+    {
+      "id": "oll29",
+      "type": "format",
+      "name": "JSON Output",
+      "description": "Force JSON response format",
+      "pattern": "format: 'json' in request",
+      "example": "Combine with system prompt for schema"
+    },
+    {
+      "id": "oll30",
+      "type": "troubleshoot",
+      "name": "Common Issues",
+      "description": "Debug Ollama problems",
+      "pattern": "Check: service running, port 11434, VRAM, model pulled",
+      "example": "netstat -ano | findstr 11434"
+    }
+  ]
+}

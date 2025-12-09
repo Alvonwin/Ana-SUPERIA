@@ -1,0 +1,247 @@
+{
+  "category": "nginx-webserver",
+  "version": "1.0.0",
+  "generatedBy": "Ana SUPERIA (DeepSeek Coder) - Supervisé et complété par Claude",
+  "skills": [
+    {
+      "id": "nginx001",
+      "type": "config",
+      "name": "Configuration Syntax",
+      "description": "Basic Nginx configuration structure",
+      "pattern": "http { server { location { } } }",
+      "example": "Config usage"
+    },
+    {
+      "id": "nginx002",
+      "type": "config",
+      "name": "Server Blocks",
+      "description": "Define virtual servers",
+      "pattern": "server { listen 80; server_name example.com; }",
+      "example": "Config usage"
+    },
+    {
+      "id": "nginx003",
+      "type": "config",
+      "name": "Location Blocks",
+      "description": "URL routing within server",
+      "pattern": "location /api { } location ~ \\.php$ { }",
+      "example": "Config usage"
+    },
+    {
+      "id": "nginx004",
+      "type": "proxy",
+      "name": "Reverse Proxy",
+      "description": "Forward requests to backend servers",
+      "pattern": "proxy_pass http://backend; proxy_set_header Host $host;",
+      "example": "Proxy usage"
+    },
+    {
+      "id": "nginx005",
+      "type": "loadbalance",
+      "name": "Round-Robin LB",
+      "description": "Default load balancing method",
+      "pattern": "upstream backend { server 10.0.0.1; server 10.0.0.2; }",
+      "example": "Loadbalance usage"
+    },
+    {
+      "id": "nginx006",
+      "type": "loadbalance",
+      "name": "Least Connections",
+      "description": "Route to least busy server",
+      "pattern": "upstream backend { least_conn; server 10.0.0.1; }",
+      "example": "Loadbalance usage"
+    },
+    {
+      "id": "nginx007",
+      "type": "loadbalance",
+      "name": "IP Hash",
+      "description": "Sticky sessions by client IP",
+      "pattern": "upstream backend { ip_hash; server 10.0.0.1; }",
+      "example": "Loadbalance usage"
+    },
+    {
+      "id": "nginx008",
+      "type": "loadbalance",
+      "name": "Weighted Load Balancing",
+      "description": "Assign weights to servers",
+      "pattern": "upstream backend { server 10.0.0.1 weight=3; server 10.0.0.2; }",
+      "example": "Loadbalance usage"
+    },
+    {
+      "id": "nginx009",
+      "type": "ssl",
+      "name": "SSL/TLS Configuration",
+      "description": "Enable HTTPS",
+      "pattern": "listen 443 ssl; ssl_certificate /path/cert.pem; ssl_certificate_key /path/key.pem;",
+      "example": "Ssl usage"
+    },
+    {
+      "id": "nginx010",
+      "type": "ssl",
+      "name": "SSL Protocols",
+      "description": "Configure TLS versions",
+      "pattern": "ssl_protocols TLSv1.2 TLSv1.3; ssl_ciphers HIGH:!aNULL;",
+      "example": "Ssl usage"
+    },
+    {
+      "id": "nginx011",
+      "type": "http2",
+      "name": "HTTP/2",
+      "description": "Enable HTTP/2 protocol",
+      "pattern": "listen 443 ssl http2;",
+      "example": "Http2 usage"
+    },
+    {
+      "id": "nginx012",
+      "type": "cache",
+      "name": "Proxy Caching",
+      "description": "Cache backend responses",
+      "pattern": "proxy_cache_path /var/cache keys_zone=my_cache:10m; proxy_cache my_cache;",
+      "example": "Cache usage"
+    },
+    {
+      "id": "nginx013",
+      "type": "cache",
+      "name": "Cache Control",
+      "description": "Configure cache behavior",
+      "pattern": "proxy_cache_valid 200 1h; proxy_cache_bypass $http_pragma;",
+      "example": "Cache usage"
+    },
+    {
+      "id": "nginx014",
+      "type": "ratelimit",
+      "name": "Rate Limiting",
+      "description": "Limit request rates",
+      "pattern": "limit_req_zone $binary_remote_addr zone=one:10m rate=10r/s;",
+      "example": "Ratelimit usage"
+    },
+    {
+      "id": "nginx015",
+      "type": "ratelimit",
+      "name": "Connection Limiting",
+      "description": "Limit concurrent connections",
+      "pattern": "limit_conn_zone $binary_remote_addr zone=addr:10m; limit_conn addr 10;",
+      "example": "Ratelimit usage"
+    },
+    {
+      "id": "nginx016",
+      "type": "compression",
+      "name": "Gzip Compression",
+      "description": "Compress responses",
+      "pattern": "gzip on; gzip_types text/plain application/json; gzip_min_length 1000;",
+      "example": "Compression usage"
+    },
+    {
+      "id": "nginx017",
+      "type": "logging",
+      "name": "Access Logging",
+      "description": "Log request details",
+      "pattern": "access_log /var/log/nginx/access.log; log_format main '$remote_addr - $request';",
+      "example": "Logging usage"
+    },
+    {
+      "id": "nginx018",
+      "type": "logging",
+      "name": "Error Logging",
+      "description": "Log errors and warnings",
+      "pattern": "error_log /var/log/nginx/error.log warn;",
+      "example": "Logging usage"
+    },
+    {
+      "id": "nginx019",
+      "type": "security",
+      "name": "Access Control",
+      "description": "IP-based restrictions",
+      "pattern": "allow 192.168.1.0/24; deny all;",
+      "example": "Security usage"
+    },
+    {
+      "id": "nginx020",
+      "type": "security",
+      "name": "Basic Auth",
+      "description": "Password protection",
+      "pattern": "auth_basic 'Restricted'; auth_basic_user_file /etc/nginx/.htpasswd;",
+      "example": "Security usage"
+    },
+    {
+      "id": "nginx021",
+      "type": "upstream",
+      "name": "Upstream Definition",
+      "description": "Define backend server groups",
+      "pattern": "upstream backend { server 127.0.0.1:8080; server 127.0.0.1:8081 backup; }",
+      "example": "Upstream usage"
+    },
+    {
+      "id": "nginx022",
+      "type": "upstream",
+      "name": "Health Checks",
+      "description": "Monitor backend health",
+      "pattern": "server 10.0.0.1 max_fails=3 fail_timeout=30s;",
+      "example": "Upstream usage"
+    },
+    {
+      "id": "nginx023",
+      "type": "websocket",
+      "name": "WebSocket Proxy",
+      "description": "Handle WebSocket connections",
+      "pattern": "proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection 'upgrade';",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "nginx024",
+      "type": "rewrite",
+      "name": "URL Rewriting",
+      "description": "Modify request URLs",
+      "pattern": "rewrite ^/old/(.*)$ /new/$1 permanent;",
+      "example": "Rewrite usage"
+    },
+    {
+      "id": "nginx025",
+      "type": "rewrite",
+      "name": "Redirects",
+      "description": "HTTP redirects",
+      "pattern": "return 301 https://$host$request_uri;",
+      "example": "Rewrite usage"
+    },
+    {
+      "id": "nginx026",
+      "type": "headers",
+      "name": "Custom Headers",
+      "description": "Add/modify HTTP headers",
+      "pattern": "add_header X-Frame-Options DENY; proxy_set_header X-Real-IP $remote_addr;",
+      "example": "Headers usage"
+    },
+    {
+      "id": "nginx027",
+      "type": "static",
+      "name": "Static File Serving",
+      "description": "Serve static content",
+      "pattern": "root /var/www/html; index index.html; try_files $uri $uri/ =404;",
+      "example": "Static usage"
+    },
+    {
+      "id": "nginx028",
+      "type": "static",
+      "name": "File Caching",
+      "description": "Browser caching for static files",
+      "pattern": "location ~* \\.(jpg|css|js)$ { expires 30d; add_header Cache-Control 'public'; }",
+      "example": "Static usage"
+    },
+    {
+      "id": "nginx029",
+      "type": "performance",
+      "name": "Worker Processes",
+      "description": "Configure worker processes",
+      "pattern": "worker_processes auto; worker_connections 1024;",
+      "example": "Performance usage"
+    },
+    {
+      "id": "nginx030",
+      "type": "performance",
+      "name": "Keepalive",
+      "description": "Persistent connections",
+      "pattern": "keepalive_timeout 65; keepalive_requests 100;",
+      "example": "Performance usage"
+    }
+  ]
+}

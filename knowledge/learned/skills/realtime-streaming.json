@@ -1,0 +1,246 @@
+{
+  "category": "realtime-streaming",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "rt001",
+      "type": "websocket",
+      "name": "WebSocket Server",
+      "description": "Bidirectional comms",
+      "pattern": "wss.on('connection', ws => { ws.on('message', msg => ws.send(response)); })",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "rt002",
+      "type": "websocket",
+      "name": "Socket.io",
+      "description": "Real-time framework",
+      "pattern": "io.on('connection', socket => { socket.emit('event', data); socket.on('event', handler); })",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "rt003",
+      "type": "websocket",
+      "name": "Socket.io Rooms",
+      "description": "Channel grouping",
+      "pattern": "socket.join('room1'); io.to('room1').emit('message', data);",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "rt004",
+      "type": "websocket",
+      "name": "Heartbeat/Ping",
+      "description": "Connection health",
+      "pattern": "setInterval(() => ws.ping(), 30000); ws.on('pong', heartbeat);",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "rt005",
+      "type": "websocket",
+      "name": "Reconnection",
+      "description": "Auto-reconnect",
+      "pattern": "exponential backoff, max retries, state sync on reconnect",
+      "example": "Websocket usage"
+    },
+    {
+      "id": "rt006",
+      "type": "sse",
+      "name": "Server-Sent Events",
+      "description": "Server to client stream",
+      "pattern": "res.writeHead(200, {'Content-Type': 'text/event-stream'}); res.write(`data: ${json}\\n\\n`)",
+      "example": "Sse usage"
+    },
+    {
+      "id": "rt007",
+      "type": "sse",
+      "name": "EventSource Client",
+      "description": "Browser API",
+      "pattern": "const es = new EventSource('/stream'); es.onmessage = e => handle(JSON.parse(e.data));",
+      "example": "Sse usage"
+    },
+    {
+      "id": "rt008",
+      "type": "sse",
+      "name": "SSE vs WebSocket",
+      "description": "Quand utiliser quoi",
+      "pattern": "SSE: unidirectionnel, auto-reconnect. WS: bidirectionnel, binary support",
+      "example": "Sse usage"
+    },
+    {
+      "id": "rt009",
+      "type": "kafka",
+      "name": "Kafka Producers",
+      "description": "Publish messages",
+      "pattern": "await producer.send({topic: 'events', messages: [{key, value: JSON.stringify(data)}]})",
+      "example": "Kafka usage"
+    },
+    {
+      "id": "rt010",
+      "type": "kafka",
+      "name": "Kafka Consumers",
+      "description": "Subscribe to topics",
+      "pattern": "await consumer.subscribe({topic: 'events'}); await consumer.run({eachMessage: async ({message}) => {}})",
+      "example": "Kafka usage"
+    },
+    {
+      "id": "rt011",
+      "type": "kafka",
+      "name": "Consumer Groups",
+      "description": "Parallel processing",
+      "pattern": "Multiple consumers same group = partitions distributed",
+      "example": "Kafka usage"
+    },
+    {
+      "id": "rt012",
+      "type": "kafka",
+      "name": "Kafka Streams",
+      "description": "Stream processing",
+      "pattern": "builder.stream('input').filter().mapValues().to('output')",
+      "example": "Kafka usage"
+    },
+    {
+      "id": "rt013",
+      "type": "kafka",
+      "name": "Schema Registry",
+      "description": "Avro/Protobuf schemas",
+      "pattern": "Versioned schemas, compatibility checks, serialization",
+      "example": "Kafka usage"
+    },
+    {
+      "id": "rt014",
+      "type": "redis",
+      "name": "Redis Pub/Sub",
+      "description": "Simple messaging",
+      "pattern": "subscriber.subscribe('channel'); publisher.publish('channel', message);",
+      "example": "Redis usage"
+    },
+    {
+      "id": "rt015",
+      "type": "redis",
+      "name": "Redis Streams",
+      "description": "Persistent messaging",
+      "pattern": "XADD stream * field value; XREAD BLOCK 0 STREAMS stream $",
+      "example": "Redis usage"
+    },
+    {
+      "id": "rt016",
+      "type": "redis",
+      "name": "Consumer Groups",
+      "description": "Distributed consumption",
+      "pattern": "XGROUP CREATE stream group $; XREADGROUP GROUP group consumer STREAMS stream >",
+      "example": "Redis usage"
+    },
+    {
+      "id": "rt017",
+      "type": "nats",
+      "name": "NATS Core",
+      "description": "Lightweight messaging",
+      "pattern": "nc.publish('subject', data); nc.subscribe('subject', handler)",
+      "example": "Nats usage"
+    },
+    {
+      "id": "rt018",
+      "type": "nats",
+      "name": "NATS JetStream",
+      "description": "Persistence layer",
+      "pattern": "Stream storage, replay, exactly-once delivery",
+      "example": "Nats usage"
+    },
+    {
+      "id": "rt019",
+      "type": "rabbitmq",
+      "name": "RabbitMQ Exchanges",
+      "description": "Message routing",
+      "pattern": "direct: exact key. fanout: broadcast. topic: pattern match. headers: attribute match",
+      "example": "Rabbitmq usage"
+    },
+    {
+      "id": "rt020",
+      "type": "rabbitmq",
+      "name": "RabbitMQ Queues",
+      "description": "Message storage",
+      "pattern": "durable: true, exclusive: false, autoDelete: false",
+      "example": "Rabbitmq usage"
+    },
+    {
+      "id": "rt021",
+      "type": "rabbitmq",
+      "name": "Dead Letter Queue",
+      "description": "Failed messages",
+      "pattern": "x-dead-letter-exchange: 'dlx', x-dead-letter-routing-key: 'dlq'",
+      "example": "Rabbitmq usage"
+    },
+    {
+      "id": "rt022",
+      "type": "grpc",
+      "name": "gRPC Streaming",
+      "description": "Bidirectional streams",
+      "pattern": "rpc Chat(stream Message) returns (stream Message) {}",
+      "example": "Grpc usage"
+    },
+    {
+      "id": "rt023",
+      "type": "grpc",
+      "name": "Server Streaming",
+      "description": "One req, many responses",
+      "pattern": "rpc ListFeatures(Rectangle) returns (stream Feature) {}",
+      "example": "Grpc usage"
+    },
+    {
+      "id": "rt024",
+      "type": "patterns",
+      "name": "Event Sourcing",
+      "description": "Events as truth",
+      "pattern": "Append events, rebuild state by replay, event store",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rt025",
+      "type": "patterns",
+      "name": "CQRS",
+      "description": "Separate read/write",
+      "pattern": "Command -> Event Store. Query -> Read Model (projection)",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rt026",
+      "type": "patterns",
+      "name": "Saga Pattern",
+      "description": "Distributed transactions",
+      "pattern": "Choreography (events) ou Orchestration (coordinator)",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rt027",
+      "type": "patterns",
+      "name": "Outbox Pattern",
+      "description": "Reliable publishing",
+      "pattern": "Write to outbox table in same TX, poll and publish",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rt028",
+      "type": "scaling",
+      "name": "Horizontal Scaling",
+      "description": "Multiple instances",
+      "pattern": "Stateless servers, sticky sessions ou Redis adapter",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "rt029",
+      "type": "scaling",
+      "name": "Partitioning",
+      "description": "Distribute load",
+      "pattern": "Partition by user_id, consistent hashing",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "rt030",
+      "type": "scaling",
+      "name": "Backpressure",
+      "description": "Handle overload",
+      "pattern": "Buffer, drop, sample, or push back to producer",
+      "example": "Scaling usage"
+    }
+  ]
+}

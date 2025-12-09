@@ -1,0 +1,8 @@
+# Ana Cloudflare Tunnel URLs
+# Generated: 2025-12-09 11:52:08
+#
+# Use the FRONTEND URL on your phone to access Ana
+# The backend URL is updated automatically in config.js
+
+FRONTEND=https://has-unwrap-mai-strain.trycloudflare.com
+BACKEND=https://logs-network-amazing-murray.trycloudflare.com

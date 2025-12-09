@@ -1,0 +1,364 @@
+/**
+ * ANA SKILL LEARNER - Self-Improvement System
+ *
+ * Permet a Ana d'apprendre et de s'ameliorer automatiquement:
+ * - Extraction de skills depuis les conversations
+ * - Feedback loop pour amelioration continue
+ * - Meta-learning: apprendre a mieux apprendre
+ *
+ * Best Practices 2025:
+ * - Source: https://powerdrill.ai/blog/self-improving-data-agents
+ * - Source: https://richardcsuwandi.github.io/blog/2025/dgm/
+ */
+
+const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
+
+const OLLAMA_URL = 'http://localhost:11434';
+const SKILLS_PATH = path.join('E:', 'ANA', 'knowledge', 'learned', 'skills.json');
+const PATTERNS_PATH = path.join('E:', 'ANA', 'knowledge', 'learned', 'patterns.json');
+const FEEDBACK_PATH = path.join('E:', 'ANA', 'knowledge', 'learned', 'feedback.json');
+
+class SkillLearner {
+  constructor() {
+    this.skills = { metadata: {}, skills: [], in_progress: [], planned: [] };
+    this.patterns = { code: [], conversation: [], problem_solving: [] };
+    this.feedback = { positive: [], negative: [], suggestions: [] };
+    this.initialized = false;
+  }
+
+  async initialize() {
+    try {
+      // Load existing skills
+      if (fs.existsSync(SKILLS_PATH)) {
+        this.skills = JSON.parse(fs.readFileSync(SKILLS_PATH, 'utf-8'));
+      }
+
+      // Load patterns
+      if (fs.existsSync(PATTERNS_PATH)) {
+        this.patterns = JSON.parse(fs.readFileSync(PATTERNS_PATH, 'utf-8'));
+      }
+
+      // Load feedback history
+      if (fs.existsSync(FEEDBACK_PATH)) {
+        this.feedback = JSON.parse(fs.readFileSync(FEEDBACK_PATH, 'utf-8'));
+      }
+
+      this.initialized = true;
+      console.log('[SkillLearner] Initialized with', this.skills.skills.length, 'skills');
+      return { success: true };
+    } catch (error) {
+      console.error('[SkillLearner] Init error:', error.message);
+      return { success: false, error: error.message };
+    }
+  }
+
+  /**
+   * Extract skills from a conversation exchange
+   * Uses LLM to analyze what skills were demonstrated/learned
+   */
+  async extractSkillsFromConversation(exchange) {
+    const { userMessage, anaResponse, model, success = true } = exchange;
+
+    try {
+      // Use PHI3 for skill extraction (fast + reasoning)
+      const extractionPrompt = `Analyze this conversation and extract any skills demonstrated or learned.
+
+USER: ${userMessage}
+
+ASSISTANT RESPONSE: ${anaResponse}
+
+Extract:
+1. SKILL_TYPE: (coding, debugging, reasoning, creativity, research, communication)
+2. SKILL_NAME: Short descriptive name
+3. SKILL_DESCRIPTION: What was demonstrated/learned
+4. CONFIDENCE: (high, medium, low)
+5. PATTERN: Reusable pattern if any
+
+Respond in JSON format:
+{
+  "skills": [
+    {
+      "type": "...",
+      "name": "...",
+      "description": "...",
+      "confidence": "...",
+      "pattern": "..."
+    }
+  ]
+}`;
+
+      const response = await axios.post(`${OLLAMA_URL}/api/generate`, {
+        model: 'phi3:mini-128k',
+        prompt: extractionPrompt,
+        stream: false,
+        options: { temperature: 0.3 }
+      });
+
+      // Parse LLM response
+      let extractedSkills = [];
+      try {
+        const jsonMatch = response.data.response.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          const parsed = JSON.parse(jsonMatch[0]);
+          extractedSkills = parsed.skills || [];
+        }
+      } catch (parseError) {
+        console.log('[SkillLearner] Parse warning:', parseError.message);
+      }
+
+      // Add extracted skills to our knowledge
+      for (const skill of extractedSkills) {
+        await this.addSkill({
+          ...skill,
+          learnedAt: new Date().toISOString(),
+          sourceModel: model,
+          successfulExecution: success
+        });
+      }
+
+      return {
+        success: true,
+        extracted: extractedSkills.length,
+        skills: extractedSkills
+      };
+    } catch (error) {
+      console.error('[SkillLearner] Extraction error:', error.message);
+      return { success: false, error: error.message };
+    }
+  }
+
+  /**
+   * Add a new skill to knowledge base
+   */
+  async addSkill(skill) {
+    // Check for duplicates
+    const exists = this.skills.skills.find(s =>
+      s.name === skill.name && s.type === skill.type
+    );
+
+    if (exists) {
+      // Update existing skill with new evidence
+      exists.occurrences = (exists.occurrences || 1) + 1;
+      exists.lastSeen = new Date().toISOString();
+      if (skill.confidence === 'high' && exists.confidence !== 'high') {
+        exists.confidence = 'high';
+      }
+    } else {
+      // Add new skill
+      this.skills.skills.push({
+        id: 'skill_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+        ...skill,
+        occurrences: 1
+      });
+    }
+
+    // Save to disk
+    await this.saveSkills();
+
+    return { success: true, skill };
+  }
+
+  /**
+   * Record user feedback for learning
+   */
+  async recordFeedback(feedbackData) {
+    const { type, message, anaResponse, rating, suggestion } = feedbackData;
+
+    const entry = {
+      id: 'fb_' + Date.now(),
+      timestamp: new Date().toISOString(),
+      type,
+      rating,
+      message: message?.substring(0, 500),
+      response: anaResponse?.substring(0, 500),
+      suggestion
+    };
+
+    if (type === 'positive' || rating >= 4) {
+      this.feedback.positive.push(entry);
+    } else if (type === 'negative' || rating <= 2) {
+      this.feedback.negative.push(entry);
+      // Learn from negative feedback
+      await this.learnFromMistake(entry);
+    }
+
+    if (suggestion) {
+      this.feedback.suggestions.push(entry);
+    }
+
+    await this.saveFeedback();
+
+    return { success: true, entry };
+  }
+
+  /**
+   * Learn from mistakes (negative feedback)
+   */
+  async learnFromMistake(feedbackEntry) {
+    try {
+      const analysisPrompt = `Analyze this negative feedback and suggest how to improve:
+
+ORIGINAL MESSAGE: ${feedbackEntry.message}
+MY RESPONSE: ${feedbackEntry.response}
+FEEDBACK RATING: ${feedbackEntry.rating}/5
+SUGGESTION: ${feedbackEntry.suggestion || 'None'}
+
+What should I learn from this? What pattern should I avoid?
+Respond in JSON:
+{
+  "mistake_type": "...",
+  "what_went_wrong": "...",
+  "improvement_rule": "...",
+  "anti_pattern": "..."
+}`;
+
+      const response = await axios.post(`${OLLAMA_URL}/api/generate`, {
+        model: 'phi3:mini-128k',
+        prompt: analysisPrompt,
+        stream: false,
+        options: { temperature: 0.3 }
+      });
+
+      // Extract learning
+      try {
+        const jsonMatch = response.data.response.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          const learning = JSON.parse(jsonMatch[0]);
+
+          // Store as anti-pattern to avoid
+          if (!this.patterns.avoid) this.patterns.avoid = [];
+          this.patterns.avoid.push({
+            ...learning,
+            learnedAt: new Date().toISOString(),
+            fromFeedback: feedbackEntry.id
+          });
+
+          await this.savePatterns();
+        }
+      } catch (e) {
+        console.log('[SkillLearner] Learning parse warning:', e.message);
+      }
+
+      return { success: true };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  }
+
+  /**
+   * Get coding assistance based on learned patterns
+   */
+  async getCodingHelp(task) {
+    // Find relevant learned patterns
+    const relevantSkills = this.skills.skills.filter(s =>
+      s.type === 'coding' || s.type === 'debugging'
+    );
+
+    const relevantPatterns = this.patterns.code.filter(p =>
+      task.toLowerCase().includes(p.keyword?.toLowerCase() || '')
+    );
+
+    return {
+      skills: relevantSkills.slice(0, 5),
+      patterns: relevantPatterns.slice(0, 5),
+      antiPatterns: (this.patterns.avoid || []).slice(0, 3)
+    };
+  }
+
+  /**
+   * Self-improvement check: Analyze recent performance
+   */
+  async analyzePerformance() {
+    const recentPositive = this.feedback.positive.slice(-20);
+    const recentNegative = this.feedback.negative.slice(-20);
+
+    const positiveRate = recentPositive.length / (recentPositive.length + recentNegative.length || 1);
+
+    const topSkills = [...this.skills.skills]
+      .sort((a, b) => (b.occurrences || 0) - (a.occurrences || 0))
+      .slice(0, 10);
+
+    return {
+      totalSkills: this.skills.skills.length,
+      topSkills,
+      positiveRate: Math.round(positiveRate * 100),
+      recentFeedback: {
+        positive: recentPositive.length,
+        negative: recentNegative.length
+      },
+      antiPatternsLearned: (this.patterns.avoid || []).length,
+      lastUpdated: new Date().toISOString()
+    };
+  }
+
+  /**
+   * Get suggestions for a coding task based on learned knowledge
+   */
+  async getSuggestions(context) {
+    const help = await this.getCodingHelp(context);
+    const performance = await this.analyzePerformance();
+
+    return {
+      applicableSkills: help.skills,
+      relevantPatterns: help.patterns,
+      avoidPatterns: help.antiPatterns,
+      performanceMetrics: performance,
+      recommendation: help.skills.length > 0
+        ? `Found ${help.skills.length} relevant skills for this task`
+        : 'No specific learned skills for this task yet'
+    };
+  }
+
+  // Persistence methods
+  async saveSkills() {
+    try {
+      this.skills.metadata.updated = new Date().toISOString();
+      this.skills.metadata.version = '1.0.1';
+      fs.writeFileSync(SKILLS_PATH, JSON.stringify(this.skills, null, 2), 'utf-8');
+    } catch (error) {
+      console.error('[SkillLearner] Save skills error:', error.message);
+    }
+  }
+
+  async savePatterns() {
+    try {
+      const dir = path.dirname(PATTERNS_PATH);
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(PATTERNS_PATH, JSON.stringify(this.patterns, null, 2), 'utf-8');
+    } catch (error) {
+      console.error('[SkillLearner] Save patterns error:', error.message);
+    }
+  }
+
+  async saveFeedback() {
+    try {
+      const dir = path.dirname(FEEDBACK_PATH);
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(FEEDBACK_PATH, JSON.stringify(this.feedback, null, 2), 'utf-8');
+    } catch (error) {
+      console.error('[SkillLearner] Save feedback error:', error.message);
+    }
+  }
+
+  getStats() {
+    return {
+      initialized: this.initialized,
+      skillsCount: this.skills.skills.length,
+      patternsCount: {
+        code: this.patterns.code.length,
+        conversation: this.patterns.conversation.length,
+        problem_solving: this.patterns.problem_solving.length,
+        avoid: (this.patterns.avoid || []).length
+      },
+      feedbackCount: {
+        positive: this.feedback.positive.length,
+        negative: this.feedback.negative.length,
+        suggestions: this.feedback.suggestions.length
+      }
+    };
+  }
+}
+
+module.exports = new SkillLearner();

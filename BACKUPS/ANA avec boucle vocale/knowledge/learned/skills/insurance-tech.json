@@ -1,0 +1,246 @@
+{
+  "category": "insurance-tech",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ins001",
+      "type": "fundamentals",
+      "name": "InsurTech Basics",
+      "description": "Insurance technology",
+      "pattern": "Digital insurance, underwriting, claims",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ins002",
+      "type": "fundamentals",
+      "name": "Insurance Products",
+      "description": "Product types",
+      "pattern": "Life, P&C, health, commercial",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ins003",
+      "type": "fundamentals",
+      "name": "Insurance Data",
+      "description": "Industry data",
+      "pattern": "Policy, claims, actuarial, exposure",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ins004",
+      "type": "core",
+      "name": "Policy Administration",
+      "description": "Core systems",
+      "pattern": "PAS, Guidewire, Duck Creek",
+      "example": "Core usage"
+    },
+    {
+      "id": "ins005",
+      "type": "core",
+      "name": "Claims Management",
+      "description": "Claims systems",
+      "pattern": "FNOL, adjustment, settlement",
+      "example": "Core usage"
+    },
+    {
+      "id": "ins006",
+      "type": "core",
+      "name": "Billing Systems",
+      "description": "Premium billing",
+      "pattern": "Installments, renewals, collections",
+      "example": "Core usage"
+    },
+    {
+      "id": "ins007",
+      "type": "underwriting",
+      "name": "Automated Underwriting",
+      "description": "UW automation",
+      "pattern": "Rules engines, decisioning, scoring",
+      "example": "Underwriting usage"
+    },
+    {
+      "id": "ins008",
+      "type": "underwriting",
+      "name": "Risk Assessment",
+      "description": "Risk evaluation",
+      "pattern": "Risk models, pricing, selection",
+      "example": "Underwriting usage"
+    },
+    {
+      "id": "ins009",
+      "type": "underwriting",
+      "name": "Telematics",
+      "description": "Usage-based",
+      "pattern": "UBI, OBD, driving data",
+      "example": "Underwriting usage"
+    },
+    {
+      "id": "ins010",
+      "type": "distribution",
+      "name": "Agent Portals",
+      "description": "Distribution tech",
+      "pattern": "Quote, bind, policy issuance",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "ins011",
+      "type": "distribution",
+      "name": "Embedded Insurance",
+      "description": "Embedded products",
+      "pattern": "API, partners, white-label",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "ins012",
+      "type": "distribution",
+      "name": "Digital Quote",
+      "description": "Online quoting",
+      "pattern": "Raters, comparison, instant",
+      "example": "Distribution usage"
+    },
+    {
+      "id": "ins013",
+      "type": "claims",
+      "name": "Digital FNOL",
+      "description": "Claims intake",
+      "pattern": "Online, mobile, AI triage",
+      "example": "Claims usage"
+    },
+    {
+      "id": "ins014",
+      "type": "claims",
+      "name": "Claims Automation",
+      "description": "STP claims",
+      "pattern": "Auto-adjudication, touchless",
+      "example": "Claims usage"
+    },
+    {
+      "id": "ins015",
+      "type": "claims",
+      "name": "Fraud Detection",
+      "description": "Claims fraud",
+      "pattern": "ML, patterns, SIU",
+      "example": "Claims usage"
+    },
+    {
+      "id": "ins016",
+      "type": "ai",
+      "name": "Insurance AI",
+      "description": "AI applications",
+      "pattern": "Pricing, claims, UW, service",
+      "example": "Ai usage"
+    },
+    {
+      "id": "ins017",
+      "type": "ai",
+      "name": "Document AI",
+      "description": "Document processing",
+      "pattern": "OCR, extraction, classification",
+      "example": "Ai usage"
+    },
+    {
+      "id": "ins018",
+      "type": "ai",
+      "name": "Chatbots Insurance",
+      "description": "Customer service",
+      "pattern": "Quote, claims, service bots",
+      "example": "Ai usage"
+    },
+    {
+      "id": "ins019",
+      "type": "actuarial",
+      "name": "Actuarial Modeling",
+      "description": "Risk modeling",
+      "pattern": "GLM, pricing, reserving",
+      "example": "Actuarial usage"
+    },
+    {
+      "id": "ins020",
+      "type": "actuarial",
+      "name": "Catastrophe Models",
+      "description": "Cat modeling",
+      "pattern": "AIR, RMS, exposure analysis",
+      "example": "Actuarial usage"
+    },
+    {
+      "id": "ins021",
+      "type": "actuarial",
+      "name": "Loss Reserving",
+      "description": "Reserve estimation",
+      "pattern": "Chain ladder, Bornhuetter",
+      "example": "Actuarial usage"
+    },
+    {
+      "id": "ins022",
+      "type": "regulatory",
+      "name": "Insurance Compliance",
+      "description": "Regulatory",
+      "pattern": "State filing, NAIC, Solvency",
+      "example": "Regulatory usage"
+    },
+    {
+      "id": "ins023",
+      "type": "regulatory",
+      "name": "IFRS 17",
+      "description": "Accounting standard",
+      "pattern": "Measurement models, CSM",
+      "example": "Regulatory usage"
+    },
+    {
+      "id": "ins024",
+      "type": "standards",
+      "name": "ACORD Standards",
+      "description": "Data standards",
+      "pattern": "ACORD XML, forms, data dictionary",
+      "example": "Standards usage"
+    },
+    {
+      "id": "ins025",
+      "type": "standards",
+      "name": "Insurance APIs",
+      "description": "API standards",
+      "pattern": "ACORD API, Quote/Bind, Claims",
+      "example": "Standards usage"
+    },
+    {
+      "id": "ins026",
+      "type": "customer",
+      "name": "Customer Portals",
+      "description": "Self-service",
+      "pattern": "Policy management, claims tracking",
+      "example": "Customer usage"
+    },
+    {
+      "id": "ins027",
+      "type": "customer",
+      "name": "Insurance CX",
+      "description": "Experience",
+      "pattern": "Omnichannel, personalization",
+      "example": "Customer usage"
+    },
+    {
+      "id": "ins028",
+      "type": "emerging",
+      "name": "Parametric Insurance",
+      "description": "Index-based",
+      "pattern": "Triggers, automatic payout",
+      "example": "Emerging usage"
+    },
+    {
+      "id": "ins029",
+      "type": "emerging",
+      "name": "P2P Insurance",
+      "description": "Peer-to-peer",
+      "pattern": "Pooled risk, community",
+      "example": "Emerging usage"
+    },
+    {
+      "id": "ins030",
+      "type": "emerging",
+      "name": "On-Demand Insurance",
+      "description": "Episodic coverage",
+      "pattern": "Short-term, usage-based, API",
+      "example": "Emerging usage"
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+import { useState, useEffect } from 'react';
+import { IconSettings, IconMoon, IconSun, IconVolume2, IconBrain, IconBell, IconSave, IconRotateCcw } from '../components/Icons';
+import './SettingsPage.css';
+
+// Custom hook for localStorage
+function useLocalStorage(key, initialValue) {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(`Error reading localStorage key "${key}":`, error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value) => {
+    try {
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      console.error(`Error setting localStorage key "${key}":`, error);
+    }
+  };
+
+  return [storedValue, setValue];
+}
+
+function SettingsPage() {
+  // Settings state with localStorage persistence
+  const [theme, setTheme] = useLocalStorage('ana_theme', 'dark');
+  const [ttsEnabled, setTtsEnabled] = useLocalStorage('ana_tts_enabled', true);
+  const [ttsVoice, setTtsVoice] = useLocalStorage('ana_tts_voice', '');
+  const [defaultLLM, setDefaultLLM] = useLocalStorage('ana_default_llm', 'auto');
+  const [notifications, setNotifications] = useLocalStorage('ana_notifications', true);
+  const [autoScroll, setAutoScroll] = useLocalStorage('ana_auto_scroll', true);
+  const [streamingEnabled, setStreamingEnabled] = useLocalStorage('ana_streaming', true);
+
+  // Available voices
+  const [availableVoices, setAvailableVoices] = useState([]);
+  const [saved, setSaved] = useState(false);
+
+  // Load available TTS voices
+  useEffect(() => {
+    const loadVoices = () => {
+      if (!window.speechSynthesis) return;
+      const voices = window.speechSynthesis.getVoices();
+      const frenchVoices = voices.filter(v => v.lang.startsWith('fr'));
+      setAvailableVoices(frenchVoices.length > 0 ? frenchVoices : voices.slice(0, 10));
+    };
+
+    loadVoices();
+    window.speechSynthesis?.addEventListener('voiceschanged', loadVoices);
+    return () => window.speechSynthesis?.removeEventListener('voiceschanged', loadVoices);
+  }, []);
+
+  // Apply theme
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const handleSave = () => {
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
+
+  const handleReset = () => {
+    if (confirm('Réinitialiser tous les paramètres par défaut?')) {
+      setTheme('dark');
+      setTtsEnabled(true);
+      setTtsVoice('');
+      setDefaultLLM('auto');
+      setNotifications(true);
+      setAutoScroll(true);
+      setStreamingEnabled(true);
+    }
+  };
+
+  const llmOptions = [
+    { value: 'auto', label: 'Automatique (recommandé)', desc: 'Ana choisit le meilleur LLM' },
+    { value: 'phi3', label: 'Phi-3 Mini', desc: 'Conversation rapide' },
+    { value: 'deepseek', label: 'DeepSeek-Coder', desc: 'Code et programmation' },
+    { value: 'qwen', label: 'Qwen2.5-Coder', desc: 'Math et calculs' },
+    { value: 'llama_vision', label: 'Llama Vision', desc: 'Images et vision' },
+  ];
+
+  return (
+    <div className="settings-page">
+      <div className="settings-header">
+        <IconSettings size={32} />
+        <div>
+          <h1>Paramètres</h1>
+          <p className="subtitle">Configuration de Ana SUPERIA</p>
+        </div>
+      </div>
+
+      <div className="settings-content">
+        {/* Appearance */}
+        <section className="settings-section">
+          <h2><IconSun size={20} /> Apparence</h2>
+
+          <div className="setting-item">
+            <div className="setting-info">
+              <label>Thème</label>
+              <span className="setting-desc">Choisir le mode d'affichage</span>
+            </div>
+            <div className="setting-control">
+              <button
+                className={`theme-btn ${theme === 'light' ? 'active' : ''}`}
+                onClick={() => setTheme('light')}
+              >
+                <IconSun size={16} /> Clair
+              </button>
+              <button
+                className={`theme-btn ${theme === 'dark' ? 'active' : ''}`}
+                onClick={() => setTheme('dark')}
+              >
+                <IconMoon size={16} /> Sombre
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Voice */}
+        <section className="settings-section">
+          <h2><IconVolume2 size={20} /> Voix & Audio</h2>
+
+          <div className="setting-item">
+            <div className="setting-info">
+              <label>Synthèse vocale (TTS)</label>
+              <span className="setting-desc">Ana lit ses réponses à voix haute</span>
+            </div>
+            <div className="setting-control">
+              <label className="toggle">
+                <input
+                  type="checkbox"
+                  checked={ttsEnabled}
+                  onChange={(e) => setTtsEnabled(e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          {ttsEnabled && (
+            <div className="setting-item">
+              <div className="setting-info">
+                <label>Voix TTS</label>
+                <span className="setting-desc">Sélectionner la voix de synthèse</span>
+              </div>
+              <div className="setting-control">
+                <select value={ttsVoice} onChange={(e) => setTtsVoice(e.target.value)}>
+                  <option value="">Voix par défaut</option>
+                  {availableVoices.map((voice, i) => (
+                    <option key={i} value={voice.name}>
+                      {voice.name} ({voice.lang})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* LLM */}
+        <section className="settings-section">
+          <h2><IconBrain size={20} /> Intelligence (LLM)</h2>
+
+          <div className="setting-item">
+            <div className="setting-info">
+              <label>Modèle par défaut</label>
+              <span className="setting-desc">LLM utilisé pour les requêtes</span>
+            </div>
+            <div className="setting-control">
+              <select value={defaultLLM} onChange={(e) => setDefaultLLM(e.target.value)}>
+                {llmOptions.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="setting-item">
+            <div className="setting-info">
+              <label>Streaming</label>
+              <span className="setting-desc">Afficher les réponses en temps réel</span>
+            </div>
+            <div className="setting-control">
+              <label className="toggle">
+                <input
+                  type="checkbox"
+                  checked={streamingEnabled}
+                  onChange={(e) => setStreamingEnabled(e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        {/* Notifications */}
+        <section className="settings-section">
+          <h2><IconBell size={20} /> Notifications</h2>
+
+          <div className="setting-item">
+            <div className="setting-info">
+              <label>Notifications système</label>
+              <span className="setting-desc">Alertes et messages importants</span>
+            </div>
+            <div className="setting-control">
+              <label className="toggle">
+                <input
+                  type="checkbox"
+                  checked={notifications}
+                  onChange={(e) => setNotifications(e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div className="setting-item">
+            <div className="setting-info">
+              <label>Auto-scroll</label>
+              <span className="setting-desc">Défiler automatiquement vers les nouveaux messages</span>
+            </div>
+            <div className="setting-control">
+              <label className="toggle">
+                <input
+                  type="checkbox"
+                  checked={autoScroll}
+                  onChange={(e) => setAutoScroll(e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        {/* Actions */}
+        <div className="settings-actions">
+          <button className="btn-reset" onClick={handleReset}>
+            <IconRotateCcw size={16} /> Réinitialiser
+          </button>
+          <button className="btn-save" onClick={handleSave}>
+            <IconSave size={16} /> {saved ? 'Sauvegardé!' : 'Sauvegarder'}
+          </button>
+        </div>
+
+        {/* Info */}
+        <div className="settings-info-box">
+          <p>Les paramètres sont automatiquement sauvegardés dans le navigateur (localStorage).</p>
+          <p><strong>Version:</strong> Ana SUPERIA v1.0.0</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default SettingsPage;

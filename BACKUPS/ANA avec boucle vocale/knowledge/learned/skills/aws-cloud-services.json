@@ -1,0 +1,247 @@
+{
+  "category": "aws-cloud-services",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "aws01",
+      "type": "ec2",
+      "name": "EC2 Instances",
+      "description": "Launch and manage virtual servers",
+      "pattern": "aws ec2 run-instances --image-id ami-xxx --instance-type t3.micro",
+      "example": "Auto Scaling Groups for high availability"
+    },
+    {
+      "id": "aws02",
+      "type": "s3",
+      "name": "S3 Storage",
+      "description": "Object storage with versioning and lifecycle",
+      "pattern": "aws s3 cp file.txt s3://bucket/key",
+      "example": "Static website hosting, data lake"
+    },
+    {
+      "id": "aws03",
+      "type": "lambda",
+      "name": "Lambda Functions",
+      "description": "Serverless compute",
+      "pattern": "exports.handler = async (event) => { return response; }",
+      "example": "Event-driven architectures"
+    },
+    {
+      "id": "aws04",
+      "type": "rds",
+      "name": "RDS Databases",
+      "description": "Managed relational databases",
+      "pattern": "aws rds create-db-instance --engine postgres",
+      "example": "Multi-AZ for high availability"
+    },
+    {
+      "id": "aws05",
+      "type": "dynamodb",
+      "name": "DynamoDB",
+      "description": "NoSQL key-value database",
+      "pattern": "dynamodb.put({ TableName, Item })",
+      "example": "Single-digit millisecond latency"
+    },
+    {
+      "id": "aws06",
+      "type": "api-gateway",
+      "name": "API Gateway",
+      "description": "REST and WebSocket APIs",
+      "pattern": "Integration with Lambda, HTTP backends",
+      "example": "Rate limiting, API keys"
+    },
+    {
+      "id": "aws07",
+      "type": "cloudfront",
+      "name": "CloudFront CDN",
+      "description": "Content delivery network",
+      "pattern": "Origin: S3 bucket or ALB",
+      "example": "Edge locations worldwide"
+    },
+    {
+      "id": "aws08",
+      "type": "iam",
+      "name": "IAM Roles & Policies",
+      "description": "Identity and access management",
+      "pattern": "{ Effect: Allow, Action: s3:*, Resource: arn }",
+      "example": "Least privilege principle"
+    },
+    {
+      "id": "aws09",
+      "type": "vpc",
+      "name": "VPC Networking",
+      "description": "Virtual private cloud",
+      "pattern": "Subnets, Route Tables, NAT Gateway",
+      "example": "Public/private subnet architecture"
+    },
+    {
+      "id": "aws10",
+      "type": "ecs",
+      "name": "ECS Containers",
+      "description": "Elastic Container Service",
+      "pattern": "Task definitions, Services, Clusters",
+      "example": "Fargate for serverless containers"
+    },
+    {
+      "id": "aws11",
+      "type": "eks",
+      "name": "EKS Kubernetes",
+      "description": "Managed Kubernetes",
+      "pattern": "eksctl create cluster",
+      "example": "Node groups, managed add-ons"
+    },
+    {
+      "id": "aws12",
+      "type": "sqs",
+      "name": "SQS Queues",
+      "description": "Message queuing service",
+      "pattern": "sqs.sendMessage({ QueueUrl, MessageBody })",
+      "example": "Dead letter queues, FIFO"
+    },
+    {
+      "id": "aws13",
+      "type": "sns",
+      "name": "SNS Notifications",
+      "description": "Pub/sub messaging",
+      "pattern": "sns.publish({ TopicArn, Message })",
+      "example": "Fan-out pattern"
+    },
+    {
+      "id": "aws14",
+      "type": "cloudwatch",
+      "name": "CloudWatch Monitoring",
+      "description": "Metrics, logs, and alarms",
+      "pattern": "CloudWatch Logs Insights queries",
+      "example": "Custom metrics, dashboards"
+    },
+    {
+      "id": "aws15",
+      "type": "secrets-manager",
+      "name": "Secrets Manager",
+      "description": "Secure secrets storage",
+      "pattern": "secretsmanager.getSecretValue({ SecretId })",
+      "example": "Automatic rotation"
+    },
+    {
+      "id": "aws16",
+      "type": "cognito",
+      "name": "Cognito Auth",
+      "description": "User authentication",
+      "pattern": "User Pools, Identity Pools",
+      "example": "Social login, MFA"
+    },
+    {
+      "id": "aws17",
+      "type": "step-functions",
+      "name": "Step Functions",
+      "description": "Workflow orchestration",
+      "pattern": "State machine with Choice, Parallel, Map",
+      "example": "Long-running processes"
+    },
+    {
+      "id": "aws18",
+      "type": "eventbridge",
+      "name": "EventBridge",
+      "description": "Event bus for serverless",
+      "pattern": "Rules, Targets, Event patterns",
+      "example": "Cross-account events"
+    },
+    {
+      "id": "aws19",
+      "type": "elasticache",
+      "name": "ElastiCache",
+      "description": "Managed Redis/Memcached",
+      "pattern": "Cluster mode, replication",
+      "example": "Session storage, caching"
+    },
+    {
+      "id": "aws20",
+      "type": "route53",
+      "name": "Route 53 DNS",
+      "description": "DNS and domain management",
+      "pattern": "Hosted zones, A/CNAME records",
+      "example": "Health checks, failover"
+    },
+    {
+      "id": "aws21",
+      "type": "cloudformation",
+      "name": "CloudFormation IaC",
+      "description": "Infrastructure as Code",
+      "pattern": "YAML/JSON templates, Stacks",
+      "example": "Nested stacks, drift detection"
+    },
+    {
+      "id": "aws22",
+      "type": "cdk",
+      "name": "AWS CDK",
+      "description": "Cloud Development Kit",
+      "pattern": "new s3.Bucket(this, id, props)",
+      "example": "TypeScript/Python constructs"
+    },
+    {
+      "id": "aws23",
+      "type": "aurora",
+      "name": "Aurora Database",
+      "description": "MySQL/PostgreSQL compatible",
+      "pattern": "Serverless v2, Global Database",
+      "example": "5x faster than standard MySQL"
+    },
+    {
+      "id": "aws24",
+      "type": "kinesis",
+      "name": "Kinesis Streaming",
+      "description": "Real-time data streaming",
+      "pattern": "Data Streams, Firehose, Analytics",
+      "example": "Clickstream analytics"
+    },
+    {
+      "id": "aws25",
+      "type": "athena",
+      "name": "Athena Queries",
+      "description": "Serverless SQL on S3",
+      "pattern": "SELECT * FROM s3_table",
+      "example": "Pay per query, no infrastructure"
+    },
+    {
+      "id": "aws26",
+      "type": "glue",
+      "name": "Glue ETL",
+      "description": "Serverless data integration",
+      "pattern": "Crawlers, Jobs, Data Catalog",
+      "example": "PySpark transformations"
+    },
+    {
+      "id": "aws27",
+      "type": "bedrock",
+      "name": "Bedrock AI",
+      "description": "Foundation models API",
+      "pattern": "Claude, Llama, Stable Diffusion",
+      "example": "RAG with Knowledge Bases"
+    },
+    {
+      "id": "aws28",
+      "type": "sagemaker",
+      "name": "SageMaker ML",
+      "description": "Machine learning platform",
+      "pattern": "Training, Endpoints, Pipelines",
+      "example": "MLOps workflows"
+    },
+    {
+      "id": "aws29",
+      "type": "waf",
+      "name": "WAF Security",
+      "description": "Web Application Firewall",
+      "pattern": "Rules, Rate limiting, IP sets",
+      "example": "Protection against OWASP Top 10"
+    },
+    {
+      "id": "aws30",
+      "type": "cost-explorer",
+      "name": "Cost Management",
+      "description": "Cost optimization",
+      "pattern": "Budgets, Cost allocation tags",
+      "example": "Reserved instances, Savings Plans"
+    }
+  ]
+}

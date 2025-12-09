@@ -1,0 +1,247 @@
+{
+  "category": "rabbitmq-messaging",
+  "version": "1.0.0",
+  "generatedBy": "Ana SUPERIA (DeepSeek Coder) - Supervisé par Claude",
+  "skills": [
+    {
+      "id": "rmq001",
+      "type": "exchanges",
+      "name": "Direct Exchange",
+      "description": "Route messages to specific queues by routing key",
+      "pattern": "channel.exchange_declare(exchange='logs', exchange_type='direct')",
+      "example": "Exchanges usage"
+    },
+    {
+      "id": "rmq002",
+      "type": "exchanges",
+      "name": "Fanout Exchange",
+      "description": "Broadcast messages to all bound queues",
+      "pattern": "channel.exchange_declare(exchange='logs', exchange_type='fanout')",
+      "example": "Exchanges usage"
+    },
+    {
+      "id": "rmq003",
+      "type": "exchanges",
+      "name": "Topic Exchange",
+      "description": "Route messages based on pattern matching",
+      "pattern": "channel.exchange_declare(exchange='topic_logs', exchange_type='topic')",
+      "example": "Exchanges usage"
+    },
+    {
+      "id": "rmq004",
+      "type": "exchanges",
+      "name": "Headers Exchange",
+      "description": "Route messages based on message headers",
+      "pattern": "channel.exchange_declare(exchange='headers', exchange_type='headers')",
+      "example": "Exchanges usage"
+    },
+    {
+      "id": "rmq005",
+      "type": "queues",
+      "name": "Queue Declaration",
+      "description": "Declare queues to store messages",
+      "pattern": "channel.queue_declare(queue='hello', durable=True)",
+      "example": "Queues usage"
+    },
+    {
+      "id": "rmq006",
+      "type": "bindings",
+      "name": "Queue Binding",
+      "description": "Bind exchanges to queues with routing keys",
+      "pattern": "channel.queue_bind(exchange='logs', queue='info_log', routing_key='info')",
+      "example": "Bindings usage"
+    },
+    {
+      "id": "rmq007",
+      "type": "consumers",
+      "name": "Basic Consume",
+      "description": "Consume messages from a queue",
+      "pattern": "channel.basic_consume(queue='hello', on_message_callback=callback)",
+      "example": "Consumers usage"
+    },
+    {
+      "id": "rmq008",
+      "type": "publishers",
+      "name": "Publish Messages",
+      "description": "Publish messages to an exchange",
+      "pattern": "channel.basic_publish(exchange='logs', routing_key='info', body=message)",
+      "example": "Publishers usage"
+    },
+    {
+      "id": "rmq009",
+      "type": "acks",
+      "name": "Message Acknowledgement",
+      "description": "Acknowledge processed messages",
+      "pattern": "channel.basic_ack(delivery_tag=method.delivery_tag)",
+      "example": "Acks usage"
+    },
+    {
+      "id": "rmq010",
+      "type": "acks",
+      "name": "Negative Acknowledgement",
+      "description": "Reject and requeue messages",
+      "pattern": "channel.basic_nack(delivery_tag=tag, requeue=True)",
+      "example": "Acks usage"
+    },
+    {
+      "id": "rmq011",
+      "type": "dlx",
+      "name": "Dead Letter Exchange",
+      "description": "Handle undeliverable messages",
+      "pattern": "arguments={'x-dead-letter-exchange': 'dlx', 'x-dead-letter-routing-key': 'dlq'}",
+      "example": "Dlx usage"
+    },
+    {
+      "id": "rmq012",
+      "type": "ttl",
+      "name": "Message TTL",
+      "description": "Set time-to-live for messages",
+      "pattern": "queue_declare(arguments={'x-message-ttl': 60000})",
+      "example": "Ttl usage"
+    },
+    {
+      "id": "rmq013",
+      "type": "priority",
+      "name": "Priority Queues",
+      "description": "Handle messages with different priorities",
+      "pattern": "queue_declare(arguments={'x-max-priority': 10})",
+      "example": "Priority usage"
+    },
+    {
+      "id": "rmq014",
+      "type": "cluster",
+      "name": "Clustering",
+      "description": "High availability with cluster nodes",
+      "pattern": "rabbitmqctl join_cluster rabbit@node1",
+      "example": "Cluster usage"
+    },
+    {
+      "id": "rmq015",
+      "type": "cluster",
+      "name": "Mirrored Queues",
+      "description": "Replicate queues across cluster nodes",
+      "pattern": "rabbitmqctl set_policy ha-all '.*' '{\"ha-mode\":\"all\"}'",
+      "example": "Cluster usage"
+    },
+    {
+      "id": "rmq016",
+      "type": "federation",
+      "name": "Federation Plugin",
+      "description": "Federate queues across clusters",
+      "pattern": "rabbitmqctl set_parameter federation-upstream my-upstream",
+      "example": "Federation usage"
+    },
+    {
+      "id": "rmq017",
+      "type": "shovel",
+      "name": "Shovel Plugin",
+      "description": "Move messages between brokers",
+      "pattern": "rabbitmqctl set_parameter shovel my-shovel",
+      "example": "Shovel usage"
+    },
+    {
+      "id": "rmq018",
+      "type": "management",
+      "name": "Management API",
+      "description": "HTTP API for monitoring",
+      "pattern": "GET /api/queues, POST /api/exchanges",
+      "example": "Management usage"
+    },
+    {
+      "id": "rmq019",
+      "type": "protocol",
+      "name": "AMQP Protocol",
+      "description": "Advanced Message Queuing Protocol",
+      "pattern": "AMQP 0-9-1, frames, channels, virtual hosts",
+      "example": "Protocol usage"
+    },
+    {
+      "id": "rmq020",
+      "type": "clients",
+      "name": "Pika Client",
+      "description": "Python RabbitMQ client",
+      "pattern": "import pika; connection = pika.BlockingConnection()",
+      "example": "Clients usage"
+    },
+    {
+      "id": "rmq021",
+      "type": "clients",
+      "name": "amqplib Client",
+      "description": "Node.js RabbitMQ client",
+      "pattern": "const amqp = require('amqplib'); await amqp.connect()",
+      "example": "Clients usage"
+    },
+    {
+      "id": "rmq022",
+      "type": "qos",
+      "name": "Prefetch Count",
+      "description": "Control message delivery rate",
+      "pattern": "channel.basic_qos(prefetch_count=10)",
+      "example": "Qos usage"
+    },
+    {
+      "id": "rmq023",
+      "type": "persistence",
+      "name": "Message Persistence",
+      "description": "Persist messages to disk",
+      "pattern": "properties=pika.BasicProperties(delivery_mode=2)",
+      "example": "Persistence usage"
+    },
+    {
+      "id": "rmq024",
+      "type": "queues",
+      "name": "Quorum Queues",
+      "description": "Replicated queues with Raft consensus",
+      "pattern": "queue_declare(arguments={'x-queue-type': 'quorum'})",
+      "example": "Queues usage"
+    },
+    {
+      "id": "rmq025",
+      "type": "queues",
+      "name": "Lazy Queues",
+      "description": "Store messages on disk to reduce memory",
+      "pattern": "queue_declare(arguments={'x-queue-mode': 'lazy'})",
+      "example": "Queues usage"
+    },
+    {
+      "id": "rmq026",
+      "type": "queues",
+      "name": "Stream Queues",
+      "description": "Append-only log for high throughput",
+      "pattern": "queue_declare(arguments={'x-queue-type': 'stream'})",
+      "example": "Queues usage"
+    },
+    {
+      "id": "rmq027",
+      "type": "confirms",
+      "name": "Publisher Confirms",
+      "description": "Confirm message delivery to broker",
+      "pattern": "channel.confirm_delivery()",
+      "example": "Confirms usage"
+    },
+    {
+      "id": "rmq028",
+      "type": "recovery",
+      "name": "Connection Recovery",
+      "description": "Auto-reconnect on connection loss",
+      "pattern": "pika.SelectConnection with on_close_callback",
+      "example": "Recovery usage"
+    },
+    {
+      "id": "rmq029",
+      "type": "vhosts",
+      "name": "Virtual Hosts",
+      "description": "Logical separation of resources",
+      "pattern": "rabbitmqctl add_vhost /production",
+      "example": "Vhosts usage"
+    },
+    {
+      "id": "rmq030",
+      "type": "security",
+      "name": "TLS Security",
+      "description": "Encrypted connections",
+      "pattern": "ssl_options={'certfile': 'cert.pem', 'keyfile': 'key.pem'}",
+      "example": "Security usage"
+    }
+  ]
+}

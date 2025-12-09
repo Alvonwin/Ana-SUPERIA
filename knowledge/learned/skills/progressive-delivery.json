@@ -1,0 +1,246 @@
+{
+  "category": "progressive-delivery",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "pd001",
+      "type": "fundamentals",
+      "name": "Progressive Delivery",
+      "description": "Gradual rollout",
+      "pattern": "Release to subset, validate, expand, minimize risk",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pd002",
+      "type": "fundamentals",
+      "name": "Deployment vs Release",
+      "description": "Key distinction",
+      "pattern": "Deploy: put code in prod, Release: expose to users",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pd003",
+      "type": "fundamentals",
+      "name": "Dark Launching",
+      "description": "Hidden features",
+      "pattern": "Deploy without exposing, test in production",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pd004",
+      "type": "strategies",
+      "name": "Blue-Green Deployment",
+      "description": "Two environments",
+      "pattern": "Blue: current, Green: new, switch traffic instantly",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "pd005",
+      "type": "strategies",
+      "name": "Canary Deployment",
+      "description": "Gradual rollout",
+      "pattern": "1% -> 10% -> 50% -> 100%, monitor metrics",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "pd006",
+      "type": "strategies",
+      "name": "Rolling Deployment",
+      "description": "Instance by instance",
+      "pattern": "Update pods gradually, zero downtime",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "pd007",
+      "type": "strategies",
+      "name": "A/B Testing Deploy",
+      "description": "Experiment-based",
+      "pattern": "Route by user cohort, measure outcomes",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "pd008",
+      "type": "strategies",
+      "name": "Shadow Traffic",
+      "description": "Mirror requests",
+      "pattern": "Send copy of prod traffic to new version",
+      "example": "Strategies usage"
+    },
+    {
+      "id": "pd009",
+      "type": "feature-flags",
+      "name": "Feature Flags",
+      "description": "Toggle features",
+      "pattern": "if (flag.isEnabled('feature')) { ... }",
+      "example": "Feature-flags usage"
+    },
+    {
+      "id": "pd010",
+      "type": "feature-flags",
+      "name": "Flag Types",
+      "description": "Different flags",
+      "pattern": "Release, experiment, ops, permission flags",
+      "example": "Feature-flags usage"
+    },
+    {
+      "id": "pd011",
+      "type": "feature-flags",
+      "name": "Targeting",
+      "description": "User segments",
+      "pattern": "By user ID, %, region, attributes, cohorts",
+      "example": "Feature-flags usage"
+    },
+    {
+      "id": "pd012",
+      "type": "feature-flags",
+      "name": "Kill Switches",
+      "description": "Emergency off",
+      "pattern": "Instant disable, rollback without deploy",
+      "example": "Feature-flags usage"
+    },
+    {
+      "id": "pd013",
+      "type": "tools",
+      "name": "LaunchDarkly",
+      "description": "Flag platform",
+      "pattern": "SDKs, targeting, experiments, analytics",
+      "example": "Tools usage"
+    },
+    {
+      "id": "pd014",
+      "type": "tools",
+      "name": "Unleash",
+      "description": "Open source flags",
+      "pattern": "Self-hosted, strategies, gradual rollout",
+      "example": "Tools usage"
+    },
+    {
+      "id": "pd015",
+      "type": "tools",
+      "name": "Flagsmith",
+      "description": "Feature flags",
+      "pattern": "Open source, remote config, A/B testing",
+      "example": "Tools usage"
+    },
+    {
+      "id": "pd016",
+      "type": "kubernetes",
+      "name": "Argo Rollouts",
+      "description": "K8s progressive",
+      "pattern": "Canary, blue-green, analysis, automatic rollback",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "pd017",
+      "type": "kubernetes",
+      "name": "Flagger",
+      "description": "Progressive delivery",
+      "pattern": "Automated canary, metrics analysis, rollback",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "pd018",
+      "type": "kubernetes",
+      "name": "Rollout Strategies",
+      "description": "K8s rollout",
+      "pattern": "Rollout strategy in spec, maxSurge, maxUnavailable",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "pd019",
+      "type": "analysis",
+      "name": "Canary Analysis",
+      "description": "Validate release",
+      "pattern": "Compare metrics: error rate, latency, success rate",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "pd020",
+      "type": "analysis",
+      "name": "Automatic Rollback",
+      "description": "Self-healing",
+      "pattern": "Rollback if metrics degrade, no manual intervention",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "pd021",
+      "type": "analysis",
+      "name": "Statistical Significance",
+      "description": "Valid results",
+      "pattern": "Enough traffic, confidence intervals, avoid noise",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "pd022",
+      "type": "patterns",
+      "name": "Ring Deployment",
+      "description": "Concentric rings",
+      "pattern": "Internal -> beta -> early adopters -> all",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "pd023",
+      "type": "patterns",
+      "name": "Percentage Rollout",
+      "description": "Traffic split",
+      "pattern": "Sticky assignment, gradual increase",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "pd024",
+      "type": "patterns",
+      "name": "Region Rollout",
+      "description": "Geographic",
+      "pattern": "Deploy to one region, validate, expand",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "pd025",
+      "type": "observability",
+      "name": "Rollout Metrics",
+      "description": "What to measure",
+      "pattern": "Error rate, latency, saturation, business metrics",
+      "example": "Observability usage"
+    },
+    {
+      "id": "pd026",
+      "type": "observability",
+      "name": "Alerting on Rollout",
+      "description": "Detect issues",
+      "pattern": "Alert on metric degradation, auto-pause",
+      "example": "Observability usage"
+    },
+    {
+      "id": "pd027",
+      "type": "observability",
+      "name": "Tracing for Canary",
+      "description": "Debug issues",
+      "pattern": "Tag traces with version, compare behavior",
+      "example": "Observability usage"
+    },
+    {
+      "id": "pd028",
+      "type": "lifecycle",
+      "name": "Flag Hygiene",
+      "description": "Clean up flags",
+      "pattern": "Remove old flags, expiration dates, audits",
+      "example": "Lifecycle usage"
+    },
+    {
+      "id": "pd029",
+      "type": "lifecycle",
+      "name": "Flag Documentation",
+      "description": "Document flags",
+      "pattern": "Purpose, owner, cleanup date, dependencies",
+      "example": "Lifecycle usage"
+    },
+    {
+      "id": "pd030",
+      "type": "testing",
+      "name": "Testing with Flags",
+      "description": "Test variations",
+      "pattern": "Test flag on/off, test rollout percentages",
+      "example": "Testing usage"
+    }
+  ]
+}

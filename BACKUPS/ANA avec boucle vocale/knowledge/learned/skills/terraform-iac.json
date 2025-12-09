@@ -1,0 +1,246 @@
+{
+  "category": "terraform-iac",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "tf001",
+      "type": "fundamentals",
+      "name": "Terraform Basics",
+      "description": "IaC tool",
+      "pattern": "Declarative, providers, resources, state",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tf002",
+      "type": "fundamentals",
+      "name": "HCL Syntax",
+      "description": "Configuration language",
+      "pattern": "resource \"type\" \"name\" { ... }, blocks",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tf003",
+      "type": "fundamentals",
+      "name": "Providers",
+      "description": "Cloud plugins",
+      "pattern": "provider \"aws\" { region = \"us-east-1\" }",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tf004",
+      "type": "fundamentals",
+      "name": "Resources",
+      "description": "Infrastructure objects",
+      "pattern": "resource \"aws_instance\" \"web\" { ami = \"...\" }",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tf005",
+      "type": "fundamentals",
+      "name": "Data Sources",
+      "description": "Read external data",
+      "pattern": "data \"aws_ami\" \"latest\" { ... }",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tf006",
+      "type": "workflow",
+      "name": "Init",
+      "description": "Initialize",
+      "pattern": "terraform init, download providers, setup backend",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "tf007",
+      "type": "workflow",
+      "name": "Plan",
+      "description": "Preview changes",
+      "pattern": "terraform plan, show what will change",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "tf008",
+      "type": "workflow",
+      "name": "Apply",
+      "description": "Apply changes",
+      "pattern": "terraform apply, create/update resources",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "tf009",
+      "type": "workflow",
+      "name": "Destroy",
+      "description": "Remove resources",
+      "pattern": "terraform destroy, clean up infrastructure",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "tf010",
+      "type": "state",
+      "name": "State File",
+      "description": "Track resources",
+      "pattern": "terraform.tfstate, maps config to real resources",
+      "example": "State usage"
+    },
+    {
+      "id": "tf011",
+      "type": "state",
+      "name": "Remote State",
+      "description": "Shared state",
+      "pattern": "S3 + DynamoDB backend, state locking",
+      "example": "State usage"
+    },
+    {
+      "id": "tf012",
+      "type": "state",
+      "name": "State Commands",
+      "description": "Manage state",
+      "pattern": "terraform state list, mv, rm, import",
+      "example": "State usage"
+    },
+    {
+      "id": "tf013",
+      "type": "variables",
+      "name": "Input Variables",
+      "description": "Parameters",
+      "pattern": "variable \"name\" { type = string, default = \"\" }",
+      "example": "Variables usage"
+    },
+    {
+      "id": "tf014",
+      "type": "variables",
+      "name": "Variable Types",
+      "description": "Type constraints",
+      "pattern": "string, number, bool, list, map, object",
+      "example": "Variables usage"
+    },
+    {
+      "id": "tf015",
+      "type": "variables",
+      "name": "Outputs",
+      "description": "Export values",
+      "pattern": "output \"ip\" { value = aws_instance.web.public_ip }",
+      "example": "Variables usage"
+    },
+    {
+      "id": "tf016",
+      "type": "variables",
+      "name": "Locals",
+      "description": "Local values",
+      "pattern": "locals { name = \"${var.env}-app\" }",
+      "example": "Variables usage"
+    },
+    {
+      "id": "tf017",
+      "type": "modules",
+      "name": "Module Basics",
+      "description": "Reusable code",
+      "pattern": "module \"vpc\" { source = \"./modules/vpc\" }",
+      "example": "Modules usage"
+    },
+    {
+      "id": "tf018",
+      "type": "modules",
+      "name": "Module Sources",
+      "description": "Where modules come from",
+      "pattern": "Local path, Git, Registry, S3",
+      "example": "Modules usage"
+    },
+    {
+      "id": "tf019",
+      "type": "modules",
+      "name": "Module Registry",
+      "description": "Public modules",
+      "pattern": "registry.terraform.io, versioned modules",
+      "example": "Modules usage"
+    },
+    {
+      "id": "tf020",
+      "type": "expressions",
+      "name": "Expressions",
+      "description": "Dynamic values",
+      "pattern": "Conditionals, for_each, count, dynamic blocks",
+      "example": "Expressions usage"
+    },
+    {
+      "id": "tf021",
+      "type": "expressions",
+      "name": "For Each",
+      "description": "Iterate resources",
+      "pattern": "for_each = toset(var.names), each.key/value",
+      "example": "Expressions usage"
+    },
+    {
+      "id": "tf022",
+      "type": "expressions",
+      "name": "Count",
+      "description": "Multiple instances",
+      "pattern": "count = 3, count.index",
+      "example": "Expressions usage"
+    },
+    {
+      "id": "tf023",
+      "type": "expressions",
+      "name": "Conditionals",
+      "description": "Conditional logic",
+      "pattern": "condition ? true_val : false_val",
+      "example": "Expressions usage"
+    },
+    {
+      "id": "tf024",
+      "type": "functions",
+      "name": "Built-in Functions",
+      "description": "Transform data",
+      "pattern": "join, split, lookup, merge, file, templatefile",
+      "example": "Functions usage"
+    },
+    {
+      "id": "tf025",
+      "type": "provisioners",
+      "name": "Provisioners",
+      "description": "Run commands",
+      "pattern": "local-exec, remote-exec, file, last resort",
+      "example": "Provisioners usage"
+    },
+    {
+      "id": "tf026",
+      "type": "workspaces",
+      "name": "Workspaces",
+      "description": "Multiple envs",
+      "pattern": "terraform workspace new dev, select, list",
+      "example": "Workspaces usage"
+    },
+    {
+      "id": "tf027",
+      "type": "best-practices",
+      "name": "File Structure",
+      "description": "Organize code",
+      "pattern": "main.tf, variables.tf, outputs.tf, modules/",
+      "example": "Best-practices usage"
+    },
+    {
+      "id": "tf028",
+      "type": "best-practices",
+      "name": "Naming Conventions",
+      "description": "Consistent names",
+      "pattern": "snake_case, descriptive, environment prefixes",
+      "example": "Best-practices usage"
+    },
+    {
+      "id": "tf029",
+      "type": "testing",
+      "name": "Terraform Testing",
+      "description": "Validate code",
+      "pattern": "terraform validate, fmt, tflint, terratest",
+      "example": "Testing usage"
+    },
+    {
+      "id": "tf030",
+      "type": "cloud",
+      "name": "Terraform Cloud",
+      "description": "Managed Terraform",
+      "pattern": "Remote runs, VCS integration, policy as code",
+      "example": "Cloud usage"
+    }
+  ]
+}

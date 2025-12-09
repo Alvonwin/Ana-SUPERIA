@@ -1,0 +1,246 @@
+{
+  "category": "ada-spark",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ada001",
+      "type": "fundamentals",
+      "name": "Ada Basics",
+      "description": "Ada syntax",
+      "pattern": "Packages, procedures, types",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ada002",
+      "type": "fundamentals",
+      "name": "Strong Typing",
+      "description": "Type safety",
+      "pattern": "Subtypes, derived types, constraints",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ada003",
+      "type": "fundamentals",
+      "name": "Packages",
+      "description": "Modularity",
+      "pattern": "Package spec, body, child units",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ada004",
+      "type": "types",
+      "name": "Scalar Types",
+      "description": "Numeric types",
+      "pattern": "Integer, Float, Fixed, Modular",
+      "example": "Types usage"
+    },
+    {
+      "id": "ada005",
+      "type": "types",
+      "name": "Composite Types",
+      "description": "Structured types",
+      "pattern": "Arrays, records, discriminants",
+      "example": "Types usage"
+    },
+    {
+      "id": "ada006",
+      "type": "types",
+      "name": "Access Types",
+      "description": "Pointers",
+      "pattern": "access, not null, aliased",
+      "example": "Types usage"
+    },
+    {
+      "id": "ada007",
+      "type": "oop",
+      "name": "Tagged Types",
+      "description": "OOP",
+      "pattern": "Tagged records, inheritance, dispatching",
+      "example": "Oop usage"
+    },
+    {
+      "id": "ada008",
+      "type": "oop",
+      "name": "Interfaces",
+      "description": "Multiple inheritance",
+      "pattern": "interface, synchronized",
+      "example": "Oop usage"
+    },
+    {
+      "id": "ada009",
+      "type": "oop",
+      "name": "Controlled Types",
+      "description": "RAII",
+      "pattern": "Initialize, Adjust, Finalize",
+      "example": "Oop usage"
+    },
+    {
+      "id": "ada010",
+      "type": "generics",
+      "name": "Generic Units",
+      "description": "Templates",
+      "pattern": "generic, instantiation",
+      "example": "Generics usage"
+    },
+    {
+      "id": "ada011",
+      "type": "generics",
+      "name": "Generic Formal",
+      "description": "Generic parameters",
+      "pattern": "Formal types, subprograms, packages",
+      "example": "Generics usage"
+    },
+    {
+      "id": "ada012",
+      "type": "concurrency",
+      "name": "Tasks",
+      "description": "Native threads",
+      "pattern": "task, entry, accept, select",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "ada013",
+      "type": "concurrency",
+      "name": "Protected Objects",
+      "description": "Synchronization",
+      "pattern": "protected, entry, barrier",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "ada014",
+      "type": "concurrency",
+      "name": "Rendezvous",
+      "description": "Task communication",
+      "pattern": "Entry calls, accept, select",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "ada015",
+      "type": "safety",
+      "name": "Exception Handling",
+      "description": "Exceptions",
+      "pattern": "raise, exception, when others",
+      "example": "Safety usage"
+    },
+    {
+      "id": "ada016",
+      "type": "safety",
+      "name": "Contracts",
+      "description": "Pre/Post conditions",
+      "pattern": "Pre, Post, Type_Invariant",
+      "example": "Safety usage"
+    },
+    {
+      "id": "ada017",
+      "type": "safety",
+      "name": "Aspects",
+      "description": "Declarative specs",
+      "pattern": "with aspect, pragma",
+      "example": "Safety usage"
+    },
+    {
+      "id": "ada018",
+      "type": "spark",
+      "name": "SPARK Basics",
+      "description": "Formal methods",
+      "pattern": "SPARK_Mode, formal verification",
+      "example": "Spark usage"
+    },
+    {
+      "id": "ada019",
+      "type": "spark",
+      "name": "Flow Analysis",
+      "description": "Data flow",
+      "pattern": "Global, Depends, derives",
+      "example": "Spark usage"
+    },
+    {
+      "id": "ada020",
+      "type": "spark",
+      "name": "Proof",
+      "description": "Formal proof",
+      "pattern": "gnatprove, assertions, lemmas",
+      "example": "Spark usage"
+    },
+    {
+      "id": "ada021",
+      "type": "realtime",
+      "name": "Real-Time Ada",
+      "description": "Real-time systems",
+      "pattern": "Ravenscar, Jorvik, priorities",
+      "example": "Realtime usage"
+    },
+    {
+      "id": "ada022",
+      "type": "realtime",
+      "name": "Timing",
+      "description": "Time management",
+      "pattern": "Ada.Real_Time, delay until",
+      "example": "Realtime usage"
+    },
+    {
+      "id": "ada023",
+      "type": "embedded",
+      "name": "Embedded Ada",
+      "description": "Bare metal",
+      "pattern": "Pragma Restrictions, runtime",
+      "example": "Embedded usage"
+    },
+    {
+      "id": "ada024",
+      "type": "embedded",
+      "name": "Low-Level",
+      "description": "Hardware access",
+      "pattern": "Address clauses, representation",
+      "example": "Embedded usage"
+    },
+    {
+      "id": "ada025",
+      "type": "interop",
+      "name": "C Interfacing",
+      "description": "C binding",
+      "pattern": "Interfaces.C, Import, Export",
+      "example": "Interop usage"
+    },
+    {
+      "id": "ada026",
+      "type": "stdlib",
+      "name": "Standard Library",
+      "description": "Ada libraries",
+      "pattern": "Ada.Text_IO, Containers, Strings",
+      "example": "Stdlib usage"
+    },
+    {
+      "id": "ada027",
+      "type": "stdlib",
+      "name": "Containers",
+      "description": "Data structures",
+      "pattern": "Vectors, Maps, Sets, Lists",
+      "example": "Stdlib usage"
+    },
+    {
+      "id": "ada028",
+      "type": "tooling",
+      "name": "GNAT",
+      "description": "Compiler",
+      "pattern": "gnatmake, gprbuild, gnat",
+      "example": "Tooling usage"
+    },
+    {
+      "id": "ada029",
+      "type": "tooling",
+      "name": "Alire",
+      "description": "Package manager",
+      "pattern": "alr get, alr build, crates",
+      "example": "Tooling usage"
+    },
+    {
+      "id": "ada030",
+      "type": "safety-critical",
+      "name": "DO-178C/EN 50128",
+      "description": "Certification",
+      "pattern": "Safety standards, traceability",
+      "example": "Safety-critical usage"
+    }
+  ]
+}

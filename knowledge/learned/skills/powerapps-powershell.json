@@ -1,0 +1,246 @@
+{
+  "category": "powerapps-powershell",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "pwr001",
+      "type": "powerapps",
+      "name": "Power Apps Basics",
+      "description": "Canvas apps",
+      "pattern": "Screens, controls, formulas, data",
+      "example": "Powerapps usage"
+    },
+    {
+      "id": "pwr002",
+      "type": "powerapps",
+      "name": "Power Fx",
+      "description": "Formula language",
+      "pattern": "Functions, expressions, delegation",
+      "example": "Powerapps usage"
+    },
+    {
+      "id": "pwr003",
+      "type": "powerapps",
+      "name": "Model-Driven Apps",
+      "description": "Data-centric apps",
+      "pattern": "Dataverse, forms, views, dashboards",
+      "example": "Powerapps usage"
+    },
+    {
+      "id": "pwr004",
+      "type": "powerapps",
+      "name": "Canvas Components",
+      "description": "Reusable UI",
+      "pattern": "Components, properties, custom",
+      "example": "Powerapps usage"
+    },
+    {
+      "id": "pwr005",
+      "type": "powerapps",
+      "name": "PCF Controls",
+      "description": "Custom controls",
+      "pattern": "TypeScript, React, Fluent UI",
+      "example": "Powerapps usage"
+    },
+    {
+      "id": "pwr006",
+      "type": "automate",
+      "name": "Power Automate Basics",
+      "description": "Flow automation",
+      "pattern": "Triggers, actions, connectors",
+      "example": "Automate usage"
+    },
+    {
+      "id": "pwr007",
+      "type": "automate",
+      "name": "Cloud Flows",
+      "description": "Automated flows",
+      "pattern": "Automated, instant, scheduled",
+      "example": "Automate usage"
+    },
+    {
+      "id": "pwr008",
+      "type": "automate",
+      "name": "Desktop Flows",
+      "description": "RPA",
+      "pattern": "UI automation, actions, recorder",
+      "example": "Automate usage"
+    },
+    {
+      "id": "pwr009",
+      "type": "automate",
+      "name": "Business Process Flows",
+      "description": "Guided processes",
+      "pattern": "Stages, steps, branching",
+      "example": "Automate usage"
+    },
+    {
+      "id": "pwr010",
+      "type": "automate",
+      "name": "Custom Connectors",
+      "description": "API integration",
+      "pattern": "OpenAPI, authentication, actions",
+      "example": "Automate usage"
+    },
+    {
+      "id": "pwr011",
+      "type": "dataverse",
+      "name": "Dataverse Basics",
+      "description": "Data platform",
+      "pattern": "Tables, columns, relationships",
+      "example": "Dataverse usage"
+    },
+    {
+      "id": "pwr012",
+      "type": "dataverse",
+      "name": "Dataverse Security",
+      "description": "Access control",
+      "pattern": "Business units, teams, roles",
+      "example": "Dataverse usage"
+    },
+    {
+      "id": "pwr013",
+      "type": "dataverse",
+      "name": "Dataverse Solutions",
+      "description": "ALM",
+      "pattern": "Solutions, publishers, dependencies",
+      "example": "Dataverse usage"
+    },
+    {
+      "id": "pwr014",
+      "type": "powershell",
+      "name": "PowerShell Basics",
+      "description": "Scripting",
+      "pattern": "Cmdlets, variables, pipelines",
+      "example": "Powershell usage"
+    },
+    {
+      "id": "pwr015",
+      "type": "powershell",
+      "name": "PowerShell Objects",
+      "description": "Object pipeline",
+      "pattern": "Properties, methods, Select-Object",
+      "example": "Powershell usage"
+    },
+    {
+      "id": "pwr016",
+      "type": "powershell",
+      "name": "PowerShell Functions",
+      "description": "Advanced functions",
+      "pattern": "Param, CmdletBinding, pipeline input",
+      "example": "Powershell usage"
+    },
+    {
+      "id": "pwr017",
+      "type": "powershell",
+      "name": "PowerShell Modules",
+      "description": "Module development",
+      "pattern": "psm1, psd1, Export-ModuleMember",
+      "example": "Powershell usage"
+    },
+    {
+      "id": "pwr018",
+      "type": "powershell",
+      "name": "PowerShell Remoting",
+      "description": "Remote execution",
+      "pattern": "Enter-PSSession, Invoke-Command",
+      "example": "Powershell usage"
+    },
+    {
+      "id": "pwr019",
+      "type": "powershell",
+      "name": "PowerShell DSC",
+      "description": "Configuration",
+      "pattern": "Configurations, resources, push/pull",
+      "example": "Powershell usage"
+    },
+    {
+      "id": "pwr020",
+      "type": "powershell",
+      "name": "PowerShell Error Handling",
+      "description": "Exception handling",
+      "pattern": "Try/Catch, ErrorAction, $Error",
+      "example": "Powershell usage"
+    },
+    {
+      "id": "pwr021",
+      "type": "admin",
+      "name": "Azure AD PowerShell",
+      "description": "Identity management",
+      "pattern": "AzureAD module, users, groups",
+      "example": "Admin usage"
+    },
+    {
+      "id": "pwr022",
+      "type": "admin",
+      "name": "Exchange PowerShell",
+      "description": "Exchange admin",
+      "pattern": "Mailboxes, distribution groups",
+      "example": "Admin usage"
+    },
+    {
+      "id": "pwr023",
+      "type": "admin",
+      "name": "SharePoint PowerShell",
+      "description": "SharePoint admin",
+      "pattern": "PnP PowerShell, sites, lists",
+      "example": "Admin usage"
+    },
+    {
+      "id": "pwr024",
+      "type": "admin",
+      "name": "Teams PowerShell",
+      "description": "Teams admin",
+      "pattern": "MicrosoftTeams module, policies",
+      "example": "Admin usage"
+    },
+    {
+      "id": "pwr025",
+      "type": "azure",
+      "name": "Az Module",
+      "description": "Azure automation",
+      "pattern": "Connect-AzAccount, resources, ARM",
+      "example": "Azure usage"
+    },
+    {
+      "id": "pwr026",
+      "type": "azure",
+      "name": "Azure Automation",
+      "description": "Runbooks",
+      "pattern": "Runbooks, schedules, hybrid workers",
+      "example": "Azure usage"
+    },
+    {
+      "id": "pwr027",
+      "type": "bi",
+      "name": "Power BI Basics",
+      "description": "Data visualization",
+      "pattern": "Reports, datasets, DAX",
+      "example": "Bi usage"
+    },
+    {
+      "id": "pwr028",
+      "type": "bi",
+      "name": "Power Query",
+      "description": "Data transformation",
+      "pattern": "M language, steps, merge",
+      "example": "Bi usage"
+    },
+    {
+      "id": "pwr029",
+      "type": "bi",
+      "name": "DAX",
+      "description": "Analysis expressions",
+      "pattern": "Measures, calculated columns, context",
+      "example": "Bi usage"
+    },
+    {
+      "id": "pwr030",
+      "type": "bi",
+      "name": "Power BI Embedded",
+      "description": "Embedding",
+      "pattern": "Embed tokens, API, capacity",
+      "example": "Bi usage"
+    }
+  ]
+}

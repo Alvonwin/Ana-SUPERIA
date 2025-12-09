@@ -1,0 +1,246 @@
+{
+  "category": "devtools-debugging",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "dt001",
+      "type": "fundamentals",
+      "name": "Chrome DevTools",
+      "description": "Browser debugging",
+      "pattern": "F12, Cmd+Opt+I, inspect element, console",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dt002",
+      "type": "elements",
+      "name": "Elements Panel",
+      "description": "DOM inspection",
+      "pattern": "Inspect HTML, modify live, CSS styles, computed",
+      "example": "Elements usage"
+    },
+    {
+      "id": "dt003",
+      "type": "elements",
+      "name": "CSS Editing",
+      "description": "Live CSS",
+      "pattern": "Edit styles live, add properties, toggle, copy",
+      "example": "Elements usage"
+    },
+    {
+      "id": "dt004",
+      "type": "elements",
+      "name": "DOM Breakpoints",
+      "description": "Break on change",
+      "pattern": "Subtree modifications, attribute changes, node removal",
+      "example": "Elements usage"
+    },
+    {
+      "id": "dt005",
+      "type": "console",
+      "name": "Console Panel",
+      "description": "JavaScript console",
+      "pattern": "console.log, error, warn, table, group",
+      "example": "Console usage"
+    },
+    {
+      "id": "dt006",
+      "type": "console",
+      "name": "Console API",
+      "description": "Advanced logging",
+      "pattern": "console.time(), trace(), assert(), count()",
+      "example": "Console usage"
+    },
+    {
+      "id": "dt007",
+      "type": "console",
+      "name": "Console Utilities",
+      "description": "Helper functions",
+      "pattern": "$0 selected, $() querySelector, copy(), keys()",
+      "example": "Console usage"
+    },
+    {
+      "id": "dt008",
+      "type": "sources",
+      "name": "Sources Panel",
+      "description": "Debug JavaScript",
+      "pattern": "View files, set breakpoints, step through code",
+      "example": "Sources usage"
+    },
+    {
+      "id": "dt009",
+      "type": "sources",
+      "name": "Breakpoints",
+      "description": "Pause execution",
+      "pattern": "Line breakpoints, conditional, logpoints",
+      "example": "Sources usage"
+    },
+    {
+      "id": "dt010",
+      "type": "sources",
+      "name": "Step Debugging",
+      "description": "Step through",
+      "pattern": "Step over F10, step into F11, step out, continue",
+      "example": "Sources usage"
+    },
+    {
+      "id": "dt011",
+      "type": "sources",
+      "name": "Watch Expressions",
+      "description": "Monitor values",
+      "pattern": "Add expressions to watch, evaluate as you step",
+      "example": "Sources usage"
+    },
+    {
+      "id": "dt012",
+      "type": "sources",
+      "name": "Call Stack",
+      "description": "Execution path",
+      "pattern": "View function call chain, click to navigate",
+      "example": "Sources usage"
+    },
+    {
+      "id": "dt013",
+      "type": "sources",
+      "name": "Source Maps",
+      "description": "Debug original",
+      "pattern": "Map minified to source, debug TypeScript/JSX",
+      "example": "Sources usage"
+    },
+    {
+      "id": "dt014",
+      "type": "network",
+      "name": "Network Panel",
+      "description": "HTTP requests",
+      "pattern": "View requests, headers, response, timing",
+      "example": "Network usage"
+    },
+    {
+      "id": "dt015",
+      "type": "network",
+      "name": "Network Filtering",
+      "description": "Filter requests",
+      "pattern": "XHR, Fetch, JS, CSS, filter by URL",
+      "example": "Network usage"
+    },
+    {
+      "id": "dt016",
+      "type": "network",
+      "name": "Request Details",
+      "description": "Inspect request",
+      "pattern": "Headers, payload, response, timing, initiator",
+      "example": "Network usage"
+    },
+    {
+      "id": "dt017",
+      "type": "network",
+      "name": "Throttling",
+      "description": "Simulate slow",
+      "pattern": "Slow 3G, offline, custom throttle profiles",
+      "example": "Network usage"
+    },
+    {
+      "id": "dt018",
+      "type": "performance",
+      "name": "Performance Panel",
+      "description": "Profile performance",
+      "pattern": "Record, flame chart, FPS, main thread activity",
+      "example": "Performance usage"
+    },
+    {
+      "id": "dt019",
+      "type": "performance",
+      "name": "Flame Charts",
+      "description": "Visualize time",
+      "pattern": "Call hierarchy, time spent, identify bottlenecks",
+      "example": "Performance usage"
+    },
+    {
+      "id": "dt020",
+      "type": "performance",
+      "name": "Performance Insights",
+      "description": "Quick analysis",
+      "pattern": "Core Web Vitals, recommendations, issues",
+      "example": "Performance usage"
+    },
+    {
+      "id": "dt021",
+      "type": "memory",
+      "name": "Memory Panel",
+      "description": "Memory debugging",
+      "pattern": "Heap snapshots, allocation timeline, memory leaks",
+      "example": "Memory usage"
+    },
+    {
+      "id": "dt022",
+      "type": "memory",
+      "name": "Heap Snapshot",
+      "description": "Memory dump",
+      "pattern": "Take snapshot, compare, find retained objects",
+      "example": "Memory usage"
+    },
+    {
+      "id": "dt023",
+      "type": "memory",
+      "name": "Memory Leaks",
+      "description": "Find leaks",
+      "pattern": "Detached DOM, growing heap, allocation timeline",
+      "example": "Memory usage"
+    },
+    {
+      "id": "dt024",
+      "type": "application",
+      "name": "Application Panel",
+      "description": "Storage inspection",
+      "pattern": "localStorage, sessionStorage, cookies, IndexedDB",
+      "example": "Application usage"
+    },
+    {
+      "id": "dt025",
+      "type": "application",
+      "name": "Service Workers",
+      "description": "SW debugging",
+      "pattern": "View registered, update, unregister, offline",
+      "example": "Application usage"
+    },
+    {
+      "id": "dt026",
+      "type": "application",
+      "name": "Cache Storage",
+      "description": "Cache inspection",
+      "pattern": "View cached assets, delete, test offline",
+      "example": "Application usage"
+    },
+    {
+      "id": "dt027",
+      "type": "lighthouse",
+      "name": "Lighthouse",
+      "description": "Audit tool",
+      "pattern": "Performance, accessibility, SEO, PWA audits",
+      "example": "Lighthouse usage"
+    },
+    {
+      "id": "dt028",
+      "type": "mobile",
+      "name": "Device Mode",
+      "description": "Responsive testing",
+      "pattern": "Mobile viewport, device frames, touch simulation",
+      "example": "Mobile usage"
+    },
+    {
+      "id": "dt029",
+      "type": "mobile",
+      "name": "Remote Debugging",
+      "description": "Debug mobile",
+      "pattern": "chrome://inspect, USB debugging, real device",
+      "example": "Mobile usage"
+    },
+    {
+      "id": "dt030",
+      "type": "tips",
+      "name": "DevTools Tips",
+      "description": "Power user",
+      "pattern": "Cmd+P open file, Cmd+Shift+P commands, snippets",
+      "example": "Tips usage"
+    }
+  ]
+}

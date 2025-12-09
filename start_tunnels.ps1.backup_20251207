@@ -1,0 +1,88 @@
+# Start Cloudflare Tunnels and update config.js with new URLs
+# Called by START_ANA.bat after services are up
+
+param(
+    [switch]$NoWindow = $false
+)
+
+$ErrorActionPreference = "SilentlyContinue"
+
+Write-Host ""
+Write-Host "[5/5] Starting Cloudflare Tunnels for remote access..." -ForegroundColor Cyan
+
+$cloudflared = "C:\Program Files (x86)\cloudflared\cloudflared.exe"
+$configFile = "E:\ANA\ana-interface\src\config.js"
+$urlsFile = "E:\ANA\tunnel_urls.txt"
+
+# Create temp files for capturing output
+$backendLog = [System.IO.Path]::GetTempFileName()
+$frontendLog = [System.IO.Path]::GetTempFileName()
+
+# Start tunnels as separate processes
+$backendProc = Start-Process -FilePath $cloudflared -ArgumentList "tunnel", "--url", "http://localhost:3338" `
+    -RedirectStandardError $backendLog -PassThru -WindowStyle Normal
+$frontendProc = Start-Process -FilePath $cloudflared -ArgumentList "tunnel", "--url", "http://localhost:5173" `
+    -RedirectStandardError $frontendLog -PassThru -WindowStyle Normal
+
+Write-Host "   Waiting for tunnel URLs..." -ForegroundColor Gray
+
+# Wait for URLs to appear
+$backendUrl = $null
+$frontendUrl = $null
+$maxWait = 20
+
+for ($i = 0; $i -lt $maxWait; $i++) {
+    Start-Sleep -Seconds 1
+
+    if (-not $backendUrl) {
+        $log = Get-Content $backendLog -Raw -ErrorAction SilentlyContinue
+        if ($log -match "(https://[a-z0-9-]+\.trycloudflare\.com)") {
+            $backendUrl = $Matches[1]
+        }
+    }
+
+    if (-not $frontendUrl) {
+        $log = Get-Content $frontendLog -Raw -ErrorAction SilentlyContinue
+        if ($log -match "(https://[a-z0-9-]+\.trycloudflare\.com)") {
+            $frontendUrl = $Matches[1]
+        }
+    }
+
+    if ($backendUrl -and $frontendUrl) { break }
+}
+
+# Cleanup temp files
+Remove-Item $backendLog, $frontendLog -Force -ErrorAction SilentlyContinue
+
+if ($backendUrl -and $frontendUrl) {
+    Write-Host ""
+    Write-Host "   TUNNEL URLS:" -ForegroundColor Green
+    Write-Host "   Frontend: $frontendUrl" -ForegroundColor Yellow
+    Write-Host "   Backend:  $backendUrl" -ForegroundColor Yellow
+    Write-Host ""
+
+    # Update config.js with backend URL
+    $config = Get-Content $configFile -Raw
+    $config = $config -replace "https://[a-z0-9-]+\.trycloudflare\.com", $backendUrl
+    Set-Content $configFile -Value $config -NoNewline
+    Write-Host "   config.js updated with backend URL" -ForegroundColor Green
+
+    # Save URLs for reference
+    @"
+# Ana Cloudflare Tunnel URLs
+# Generated: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+#
+# Use the FRONTEND URL on your phone to access Ana
+# The backend URL is updated automatically in config.js
+
+FRONTEND=$frontendUrl
+BACKEND=$backendUrl
+"@ | Set-Content $urlsFile
+
+    Write-Host "   URLs saved to tunnel_urls.txt" -ForegroundColor Green
+} else {
+    Write-Host "   Warning: Could not detect tunnel URLs" -ForegroundColor Red
+    Write-Host "   Check the Cloudflare windows for the URLs" -ForegroundColor Yellow
+}
+
+Write-Host ""

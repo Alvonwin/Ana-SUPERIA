@@ -1,0 +1,246 @@
+{
+  "category": "agrotech-farming",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "agr001",
+      "type": "fundamentals",
+      "name": "AgTech Basics",
+      "description": "Agricultural tech",
+      "pattern": "Precision farming, digitalization",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "agr002",
+      "type": "fundamentals",
+      "name": "Farm Management",
+      "description": "Farm software",
+      "pattern": "Planning, records, operations",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "agr003",
+      "type": "fundamentals",
+      "name": "Crop Science Data",
+      "description": "Agricultural data",
+      "pattern": "Soil, weather, yields",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "agr004",
+      "type": "precision",
+      "name": "Precision Agriculture",
+      "description": "Data-driven farming",
+      "pattern": "Variable rate, zones, optimization",
+      "example": "Precision usage"
+    },
+    {
+      "id": "agr005",
+      "type": "precision",
+      "name": "GPS Guidance",
+      "description": "Field navigation",
+      "pattern": "RTK, auto-steer, mapping",
+      "example": "Precision usage"
+    },
+    {
+      "id": "agr006",
+      "type": "precision",
+      "name": "Field Mapping",
+      "description": "Farm GIS",
+      "pattern": "Boundaries, zones, soil mapping",
+      "example": "Precision usage"
+    },
+    {
+      "id": "agr007",
+      "type": "sensing",
+      "name": "Remote Sensing",
+      "description": "Satellite/drone imagery",
+      "pattern": "NDVI, multispectral, crop health",
+      "example": "Sensing usage"
+    },
+    {
+      "id": "agr008",
+      "type": "sensing",
+      "name": "Drone Agriculture",
+      "description": "UAV farming",
+      "pattern": "Scouting, spraying, mapping",
+      "example": "Sensing usage"
+    },
+    {
+      "id": "agr009",
+      "type": "sensing",
+      "name": "Soil Sensors",
+      "description": "Soil monitoring",
+      "pattern": "Moisture, nutrients, EC",
+      "example": "Sensing usage"
+    },
+    {
+      "id": "agr010",
+      "type": "sensing",
+      "name": "Weather Stations",
+      "description": "Farm weather",
+      "pattern": "Microclimate, forecasting",
+      "example": "Sensing usage"
+    },
+    {
+      "id": "agr011",
+      "type": "iot",
+      "name": "Farm IoT",
+      "description": "Connected agriculture",
+      "pattern": "Sensors, connectivity, edge",
+      "example": "Iot usage"
+    },
+    {
+      "id": "agr012",
+      "type": "iot",
+      "name": "Smart Irrigation",
+      "description": "Irrigation tech",
+      "pattern": "Scheduling, automation, monitoring",
+      "example": "Iot usage"
+    },
+    {
+      "id": "agr013",
+      "type": "iot",
+      "name": "Livestock Monitoring",
+      "description": "Animal tech",
+      "pattern": "Tags, health, location",
+      "example": "Iot usage"
+    },
+    {
+      "id": "agr014",
+      "type": "robotics",
+      "name": "Agricultural Robots",
+      "description": "Farm robots",
+      "pattern": "Weeding, harvesting, autonomous",
+      "example": "Robotics usage"
+    },
+    {
+      "id": "agr015",
+      "type": "robotics",
+      "name": "Autonomous Tractors",
+      "description": "Self-driving farm",
+      "pattern": "Navigation, implements, safety",
+      "example": "Robotics usage"
+    },
+    {
+      "id": "agr016",
+      "type": "analytics",
+      "name": "Yield Prediction",
+      "description": "Crop forecasting",
+      "pattern": "ML models, satellite, weather",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "agr017",
+      "type": "analytics",
+      "name": "Farm Analytics",
+      "description": "Agricultural analytics",
+      "pattern": "Dashboards, benchmarking, insights",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "agr018",
+      "type": "analytics",
+      "name": "Disease Detection",
+      "description": "Crop disease AI",
+      "pattern": "Image recognition, alerts",
+      "example": "Analytics usage"
+    },
+    {
+      "id": "agr019",
+      "type": "supply",
+      "name": "Farm-to-Table",
+      "description": "Traceability",
+      "pattern": "Origin, chain, transparency",
+      "example": "Supply usage"
+    },
+    {
+      "id": "agr020",
+      "type": "supply",
+      "name": "Commodity Trading",
+      "description": "Agri markets",
+      "pattern": "Pricing, contracts, hedging",
+      "example": "Supply usage"
+    },
+    {
+      "id": "agr021",
+      "type": "indoor",
+      "name": "Vertical Farming",
+      "description": "Indoor agriculture",
+      "pattern": "LEDs, hydroponics, environment",
+      "example": "Indoor usage"
+    },
+    {
+      "id": "agr022",
+      "type": "indoor",
+      "name": "Hydroponics/Aquaponics",
+      "description": "Soilless farming",
+      "pattern": "Nutrients, systems, monitoring",
+      "example": "Indoor usage"
+    },
+    {
+      "id": "agr023",
+      "type": "indoor",
+      "name": "Controlled Environment",
+      "description": "CEA",
+      "pattern": "Climate control, automation",
+      "example": "Indoor usage"
+    },
+    {
+      "id": "agr024",
+      "type": "genetics",
+      "name": "Crop Genetics",
+      "description": "Plant breeding tech",
+      "pattern": "Genomics, markers, CRISPR",
+      "example": "Genetics usage"
+    },
+    {
+      "id": "agr025",
+      "type": "genetics",
+      "name": "Seed Tech",
+      "description": "Seed innovation",
+      "pattern": "Traits, treatment, tracking",
+      "example": "Genetics usage"
+    },
+    {
+      "id": "agr026",
+      "type": "sustainability",
+      "name": "Regenerative Ag",
+      "description": "Sustainable farming",
+      "pattern": "Soil health, carbon, biodiversity",
+      "example": "Sustainability usage"
+    },
+    {
+      "id": "agr027",
+      "type": "sustainability",
+      "name": "Carbon Farming",
+      "description": "Ag carbon",
+      "pattern": "Sequestration, credits, MRV",
+      "example": "Sustainability usage"
+    },
+    {
+      "id": "agr028",
+      "type": "finance",
+      "name": "Ag Finance",
+      "description": "Farm financing",
+      "pattern": "Lending, insurance, risk",
+      "example": "Finance usage"
+    },
+    {
+      "id": "agr029",
+      "type": "finance",
+      "name": "Crop Insurance",
+      "description": "Ag insurance tech",
+      "pattern": "Parametric, satellite, claims",
+      "example": "Finance usage"
+    },
+    {
+      "id": "agr030",
+      "type": "marketplace",
+      "name": "Ag Marketplaces",
+      "description": "Farm trading",
+      "pattern": "Inputs, outputs, services",
+      "example": "Marketplace usage"
+    }
+  ]
+}

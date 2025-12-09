@@ -1,0 +1,246 @@
+{
+  "category": "assembly-lowlevel",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "asm001",
+      "type": "fundamentals",
+      "name": "Assembly Basics",
+      "description": "Low-level code",
+      "pattern": "Mnemonics, opcodes, machine code",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "asm002",
+      "type": "fundamentals",
+      "name": "CPU Architecture",
+      "description": "Processor design",
+      "pattern": "ALU, registers, pipeline, cache",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "asm003",
+      "type": "fundamentals",
+      "name": "Registers",
+      "description": "CPU registers",
+      "pattern": "General purpose, special, flags",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "asm004",
+      "type": "fundamentals",
+      "name": "Memory Addressing",
+      "description": "Address modes",
+      "pattern": "Direct, indirect, indexed, base",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "asm005",
+      "type": "fundamentals",
+      "name": "Stack Operations",
+      "description": "Call stack",
+      "pattern": "PUSH, POP, stack pointer, frames",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "asm006",
+      "type": "x86",
+      "name": "x86 Architecture",
+      "description": "Intel/AMD",
+      "pattern": "EAX, EBX, segments, modes",
+      "example": "X86 usage"
+    },
+    {
+      "id": "asm007",
+      "type": "x86",
+      "name": "x86-64",
+      "description": "64-bit x86",
+      "pattern": "RAX, RBX, R8-R15, RIP-relative",
+      "example": "X86 usage"
+    },
+    {
+      "id": "asm008",
+      "type": "x86",
+      "name": "x86 Instructions",
+      "description": "x86 ISA",
+      "pattern": "MOV, ADD, CMP, JMP, CALL",
+      "example": "X86 usage"
+    },
+    {
+      "id": "asm009",
+      "type": "x86",
+      "name": "SIMD x86",
+      "description": "Vector instructions",
+      "pattern": "SSE, AVX, AVX-512, SIMD",
+      "example": "X86 usage"
+    },
+    {
+      "id": "asm010",
+      "type": "arm",
+      "name": "ARM Architecture",
+      "description": "ARM processors",
+      "pattern": "R0-R15, CPSR, Thumb, ARM",
+      "example": "Arm usage"
+    },
+    {
+      "id": "asm011",
+      "type": "arm",
+      "name": "ARM64/AArch64",
+      "description": "64-bit ARM",
+      "pattern": "X0-X30, W registers, NEON",
+      "example": "Arm usage"
+    },
+    {
+      "id": "asm012",
+      "type": "arm",
+      "name": "ARM Instructions",
+      "description": "ARM ISA",
+      "pattern": "LDR, STR, ADD, conditional",
+      "example": "Arm usage"
+    },
+    {
+      "id": "asm013",
+      "type": "riscv",
+      "name": "RISC-V",
+      "description": "Open ISA",
+      "pattern": "x0-x31, extensions, modular",
+      "example": "Riscv usage"
+    },
+    {
+      "id": "asm014",
+      "type": "tools",
+      "name": "Assemblers",
+      "description": "Assembly tools",
+      "pattern": "NASM, GAS, MASM, armasm",
+      "example": "Tools usage"
+    },
+    {
+      "id": "asm015",
+      "type": "tools",
+      "name": "Linkers",
+      "description": "Linking",
+      "pattern": "ld, symbols, relocation, sections",
+      "example": "Tools usage"
+    },
+    {
+      "id": "asm016",
+      "type": "tools",
+      "name": "Disassemblers",
+      "description": "Reverse engineering",
+      "pattern": "objdump, IDA, Ghidra, radare2",
+      "example": "Tools usage"
+    },
+    {
+      "id": "asm017",
+      "type": "calling",
+      "name": "Calling Conventions",
+      "description": "ABI",
+      "pattern": "cdecl, stdcall, System V, ARM AAPCS",
+      "example": "Calling usage"
+    },
+    {
+      "id": "asm018",
+      "type": "calling",
+      "name": "C Interop",
+      "description": "C calling",
+      "pattern": "extern, inline asm, __asm__",
+      "example": "Calling usage"
+    },
+    {
+      "id": "asm019",
+      "type": "system",
+      "name": "System Calls",
+      "description": "OS interface",
+      "pattern": "syscall, int 0x80, kernel ABI",
+      "example": "System usage"
+    },
+    {
+      "id": "asm020",
+      "type": "system",
+      "name": "Interrupt Handling",
+      "description": "Hardware interrupts",
+      "pattern": "IDT, ISR, IRQ, context switch",
+      "example": "System usage"
+    },
+    {
+      "id": "asm021",
+      "type": "system",
+      "name": "Boot Code",
+      "description": "Boot process",
+      "pattern": "BIOS, UEFI, bootloader, MBR",
+      "example": "System usage"
+    },
+    {
+      "id": "asm022",
+      "type": "optimization",
+      "name": "Instruction Optimization",
+      "description": "Code optimization",
+      "pattern": "Pipeline, latency, throughput",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "asm023",
+      "type": "optimization",
+      "name": "Cache Optimization",
+      "description": "Memory optimization",
+      "pattern": "Cache lines, prefetch, locality",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "asm024",
+      "type": "optimization",
+      "name": "Branch Prediction",
+      "description": "Control flow",
+      "pattern": "Branch prediction, cmov, branchless",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "asm025",
+      "type": "security",
+      "name": "Shellcode",
+      "description": "Exploit code",
+      "pattern": "Position independent, null-free",
+      "example": "Security usage"
+    },
+    {
+      "id": "asm026",
+      "type": "security",
+      "name": "ROP",
+      "description": "Return-oriented",
+      "pattern": "Gadgets, chains, DEP bypass",
+      "example": "Security usage"
+    },
+    {
+      "id": "asm027",
+      "type": "security",
+      "name": "Security Mitigations",
+      "description": "OS protections",
+      "pattern": "ASLR, stack canaries, NX",
+      "example": "Security usage"
+    },
+    {
+      "id": "asm028",
+      "type": "special",
+      "name": "GPU Assembly",
+      "description": "GPU programming",
+      "pattern": "PTX, SASS, shader assembly",
+      "example": "Special usage"
+    },
+    {
+      "id": "asm029",
+      "type": "special",
+      "name": "WebAssembly",
+      "description": "Wasm",
+      "pattern": "Wasm instructions, stack machine",
+      "example": "Special usage"
+    },
+    {
+      "id": "asm030",
+      "type": "special",
+      "name": "Virtualization",
+      "description": "VM instructions",
+      "pattern": "VT-x, hypervisor, VMX",
+      "example": "Special usage"
+    }
+  ]
+}

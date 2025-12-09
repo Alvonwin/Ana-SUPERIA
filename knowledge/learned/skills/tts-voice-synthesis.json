@@ -1,0 +1,248 @@
+{
+  "category": "tts-voice-synthesis",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "Text-to-Speech voice synthesis skills",
+  "skills": [
+    {
+      "id": "tts01",
+      "type": "library",
+      "name": "Coqui TTS",
+      "description": "Open-source TTS library",
+      "pattern": "pip install TTS && tts --text 'Hello' --out_path output.wav",
+      "example": "High quality neural voices"
+    },
+    {
+      "id": "tts02",
+      "type": "library",
+      "name": "Bark TTS",
+      "description": "Suno Bark generative audio",
+      "pattern": "from bark import generate_audio, SAMPLE_RATE",
+      "example": "Supports laughter, music, emotions"
+    },
+    {
+      "id": "tts03",
+      "type": "library",
+      "name": "Piper TTS",
+      "description": "Fast local TTS",
+      "pattern": "piper --model fr_FR-siwis-medium --output audio.wav",
+      "example": "Optimized for Raspberry Pi"
+    },
+    {
+      "id": "tts04",
+      "type": "library",
+      "name": "Edge TTS",
+      "description": "Microsoft Edge voices free",
+      "pattern": "edge-tts --voice fr-FR-DeniseNeural --text 'Bonjour'",
+      "example": "pip install edge-tts"
+    },
+    {
+      "id": "tts05",
+      "type": "library",
+      "name": "pyttsx3",
+      "description": "System TTS wrapper",
+      "pattern": "engine = pyttsx3.init(); engine.say('Hello')",
+      "example": "Uses SAPI5 on Windows"
+    },
+    {
+      "id": "tts06",
+      "type": "api",
+      "name": "OpenAI TTS",
+      "description": "OpenAI text-to-speech API",
+      "pattern": "client.audio.speech.create(model='tts-1', voice='alloy', input=text)",
+      "example": "Voices: alloy, echo, fable, onyx, nova, shimmer"
+    },
+    {
+      "id": "tts07",
+      "type": "api",
+      "name": "ElevenLabs",
+      "description": "Premium voice cloning",
+      "pattern": "elevenlabs.generate(text=text, voice='Rachel')",
+      "example": "Best quality, voice cloning"
+    },
+    {
+      "id": "tts08",
+      "type": "api",
+      "name": "Google Cloud TTS",
+      "description": "Google Cloud voices",
+      "pattern": "client.synthesize_speech(input, voice, audio_config)",
+      "example": "WaveNet, Neural2 voices"
+    },
+    {
+      "id": "tts09",
+      "type": "api",
+      "name": "Azure Speech",
+      "description": "Microsoft Azure TTS",
+      "pattern": "speech_synthesizer.speak_text_async(text)",
+      "example": "Neural voices, SSML support"
+    },
+    {
+      "id": "tts10",
+      "type": "french",
+      "name": "French Voices",
+      "description": "Best French TTS options",
+      "pattern": "Edge: fr-FR-DeniseNeural, Coqui: tts_models/fr/",
+      "example": "DeniseNeural is high quality free"
+    },
+    {
+      "id": "tts11",
+      "type": "xtts",
+      "name": "XTTS Voice Cloning",
+      "description": "Coqui XTTS multilingual",
+      "pattern": "tts_models/multilingual/multi-dataset/xtts_v2",
+      "example": "Clone voice from 6s sample"
+    },
+    {
+      "id": "tts12",
+      "type": "streaming",
+      "name": "Streaming TTS",
+      "description": "Real-time audio streaming",
+      "pattern": "Generate audio chunks, stream to speaker",
+      "example": "Lower latency for chat"
+    },
+    {
+      "id": "tts13",
+      "type": "ssml",
+      "name": "SSML Control",
+      "description": "Speech Synthesis Markup",
+      "pattern": "<speak><prosody rate='slow'>Hello</prosody></speak>",
+      "example": "Control rate, pitch, pauses"
+    },
+    {
+      "id": "tts14",
+      "type": "emotion",
+      "name": "Emotional Speech",
+      "description": "Add emotion to voice",
+      "pattern": "Bark: [laughs], [sighs], <voice style='cheerful'>",
+      "example": "Some models support style"
+    },
+    {
+      "id": "tts15",
+      "type": "output",
+      "name": "Audio Formats",
+      "description": "Output format options",
+      "pattern": "wav, mp3, ogg, opus",
+      "example": "opus for streaming, wav for quality"
+    },
+    {
+      "id": "tts16",
+      "type": "speed",
+      "name": "Speed Control",
+      "description": "Adjust speaking rate",
+      "pattern": "rate: 0.5-2.0, words per minute",
+      "example": "1.0 = normal, 1.5 = faster"
+    },
+    {
+      "id": "tts17",
+      "type": "pitch",
+      "name": "Pitch Control",
+      "description": "Adjust voice pitch",
+      "pattern": "pitch: -20 to +20 semitones",
+      "example": "Higher pitch = younger voice"
+    },
+    {
+      "id": "tts18",
+      "type": "cloning",
+      "name": "Voice Cloning Process",
+      "description": "Clone custom voice",
+      "pattern": "Record 5-30s clean audio, fine-tune model",
+      "example": "XTTS needs 6s minimum"
+    },
+    {
+      "id": "tts19",
+      "type": "preprocessing",
+      "name": "Text Preprocessing",
+      "description": "Prepare text for TTS",
+      "pattern": "Expand abbreviations, numbers, symbols",
+      "example": "$5 -> five dollars"
+    },
+    {
+      "id": "tts20",
+      "type": "phoneme",
+      "name": "Phoneme Control",
+      "description": "Custom pronunciation",
+      "pattern": "<phoneme alphabet='ipa' ph='test'>test</phoneme>",
+      "example": "Force specific pronunciation"
+    },
+    {
+      "id": "tts21",
+      "type": "nodejs",
+      "name": "Node.js TTS",
+      "description": "TTS in Node.js",
+      "pattern": "edge-tts, say.js, google-tts-api",
+      "example": "const say = require('say')"
+    },
+    {
+      "id": "tts22",
+      "type": "browser",
+      "name": "Web Speech API",
+      "description": "Browser native TTS",
+      "pattern": "speechSynthesis.speak(new SpeechSynthesisUtterance(text))",
+      "example": "Free, no API needed"
+    },
+    {
+      "id": "tts23",
+      "type": "local",
+      "name": "Local vs Cloud",
+      "description": "Choose TTS deployment",
+      "pattern": "Local: Piper, Coqui. Cloud: OpenAI, Azure",
+      "example": "Local = privacy, Cloud = quality"
+    },
+    {
+      "id": "tts24",
+      "type": "gpu",
+      "name": "GPU Acceleration",
+      "description": "CUDA for faster synthesis",
+      "pattern": "device='cuda' in model.to()",
+      "example": "10x faster than CPU"
+    },
+    {
+      "id": "tts25",
+      "type": "latency",
+      "name": "Low Latency Setup",
+      "description": "Minimize response time",
+      "pattern": "Streaming + small model + GPU",
+      "example": "< 100ms first chunk"
+    },
+    {
+      "id": "tts26",
+      "type": "queue",
+      "name": "Audio Queue",
+      "description": "Manage playback queue",
+      "pattern": "Queue sentences, play sequentially",
+      "example": "Avoid overlapping audio"
+    },
+    {
+      "id": "tts27",
+      "type": "interrupt",
+      "name": "Interruptible Speech",
+      "description": "Stop current speech",
+      "pattern": "speechSynthesis.cancel() or audio.pause()",
+      "example": "When user speaks"
+    },
+    {
+      "id": "tts28",
+      "type": "cache",
+      "name": "Audio Caching",
+      "description": "Cache common phrases",
+      "pattern": "Pre-generate and store as files",
+      "example": "Instant playback for greetings"
+    },
+    {
+      "id": "tts29",
+      "type": "multilingual",
+      "name": "Language Switching",
+      "description": "Handle multiple languages",
+      "pattern": "Detect language, switch voice",
+      "example": "French text -> French voice"
+    },
+    {
+      "id": "tts30",
+      "type": "quality",
+      "name": "Quality Settings",
+      "description": "Balance quality vs speed",
+      "pattern": "Sample rate: 22050-48000 Hz",
+      "example": "24000 Hz good balance"
+    }
+  ]
+}

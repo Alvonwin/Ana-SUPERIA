@@ -1,0 +1,247 @@
+{
+  "category": "devops-gitops",
+  "version": "1.0.0",
+  "generatedBy": "Ana SUPERIA (DeepSeek Coder)",
+  "skills": [
+    {
+      "id": "gitops001",
+      "type": "fundamentals",
+      "name": "GitOps Principles",
+      "description": "Git as single source of truth for infrastructure",
+      "pattern": "Declarative, versioned, automated",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "gitops002",
+      "type": "tools",
+      "name": "ArgoCD",
+      "description": "Kubernetes GitOps operator",
+      "pattern": "Application CRD, sync, health status",
+      "example": "Tools usage"
+    },
+    {
+      "id": "gitops003",
+      "type": "tools",
+      "name": "FluxCD",
+      "description": "GitOps toolkit for Kubernetes",
+      "pattern": "Kustomize, Helm, source controllers",
+      "example": "Tools usage"
+    },
+    {
+      "id": "gitops004",
+      "type": "tools",
+      "name": "Tekton",
+      "description": "Cloud-native CI/CD pipelines",
+      "pattern": "Tasks, Pipelines, Triggers",
+      "example": "Tools usage"
+    },
+    {
+      "id": "gitops005",
+      "type": "tools",
+      "name": "Crossplane",
+      "description": "Multi-cloud control plane",
+      "pattern": "Providers, compositions, claims",
+      "example": "Tools usage"
+    },
+    {
+      "id": "gitops006",
+      "type": "deployment",
+      "name": "Progressive Delivery",
+      "description": "Gradual rollouts",
+      "pattern": "Canary, blue-green, A/B testing",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "gitops007",
+      "type": "deployment",
+      "name": "Argo Rollouts",
+      "description": "Advanced deployment strategies",
+      "pattern": "Analysis, rollback, promotion",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "gitops008",
+      "type": "secrets",
+      "name": "Sealed Secrets",
+      "description": "Encrypted secrets in Git",
+      "pattern": "kubeseal, encryption, controllers",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "gitops009",
+      "type": "secrets",
+      "name": "SOPS",
+      "description": "Secrets operations",
+      "pattern": "age, PGP, AWS KMS encryption",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "gitops010",
+      "type": "secrets",
+      "name": "External Secrets",
+      "description": "Sync external secrets",
+      "pattern": "Vault, AWS SM, Azure KV",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "gitops011",
+      "type": "iac",
+      "name": "Terraform GitOps",
+      "description": "Terraform with GitOps",
+      "pattern": "atlantis, terraform-controller",
+      "example": "Iac usage"
+    },
+    {
+      "id": "gitops012",
+      "type": "iac",
+      "name": "Pulumi GitOps",
+      "description": "Pulumi with Git workflows",
+      "pattern": "pulumi-kubernetes-operator",
+      "example": "Iac usage"
+    },
+    {
+      "id": "gitops013",
+      "type": "iac",
+      "name": "Ansible GitOps",
+      "description": "Ansible automation from Git",
+      "pattern": "AWX, Tower, Git inventory",
+      "example": "Iac usage"
+    },
+    {
+      "id": "gitops014",
+      "type": "monitoring",
+      "name": "GitOps Observability",
+      "description": "Monitoring GitOps pipelines",
+      "pattern": "Sync status, health, notifications",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "gitops015",
+      "type": "monitoring",
+      "name": "Argo Notifications",
+      "description": "Alert on sync events",
+      "pattern": "Slack, email, webhook triggers",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "gitops016",
+      "type": "security",
+      "name": "Policy as Code",
+      "description": "Git-managed policies",
+      "pattern": "OPA, Kyverno, Gatekeeper",
+      "example": "Security usage"
+    },
+    {
+      "id": "gitops017",
+      "type": "security",
+      "name": "Image Signing",
+      "description": "Container image verification",
+      "pattern": "Cosign, Sigstore, admission",
+      "example": "Security usage"
+    },
+    {
+      "id": "gitops018",
+      "type": "security",
+      "name": "RBAC GitOps",
+      "description": "Git-controlled access",
+      "pattern": "Projects, SSO, role bindings",
+      "example": "Security usage"
+    },
+    {
+      "id": "gitops019",
+      "type": "patterns",
+      "name": "App of Apps",
+      "description": "Hierarchical app management",
+      "pattern": "Root app, child apps, waves",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "gitops020",
+      "type": "patterns",
+      "name": "ApplicationSets",
+      "description": "Dynamic app generation",
+      "pattern": "Generators, templates, clusters",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "gitops021",
+      "type": "patterns",
+      "name": "Multi-Cluster",
+      "description": "GitOps across clusters",
+      "pattern": "Hub-spoke, fleet management",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "gitops022",
+      "type": "patterns",
+      "name": "Environment Promotion",
+      "description": "Git-based env progression",
+      "pattern": "dev->staging->prod, PR promotion",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "gitops023",
+      "type": "repositories",
+      "name": "Monorepo vs Polyrepo",
+      "description": "Repository strategies",
+      "pattern": "Single vs multiple repos, paths",
+      "example": "Repositories usage"
+    },
+    {
+      "id": "gitops024",
+      "type": "repositories",
+      "name": "Helm Charts Repo",
+      "description": "Chart repository management",
+      "pattern": "ChartMuseum, OCI registry",
+      "example": "Repositories usage"
+    },
+    {
+      "id": "gitops025",
+      "type": "advanced",
+      "name": "Drift Detection",
+      "description": "Detect config drift",
+      "pattern": "Sync vs OutOfSync, auto-heal",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "gitops026",
+      "type": "advanced",
+      "name": "Resource Hooks",
+      "description": "Lifecycle hooks",
+      "pattern": "PreSync, Sync, PostSync, Skip",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "gitops027",
+      "type": "advanced",
+      "name": "Sync Waves",
+      "description": "Ordered deployment",
+      "pattern": "Wave annotations, dependencies",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "gitops028",
+      "type": "platforms",
+      "name": "OpenShift GitOps",
+      "description": "Red Hat GitOps",
+      "pattern": "OpenShift integration, operator",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "gitops029",
+      "type": "platforms",
+      "name": "Rancher Fleet",
+      "description": "GitOps at scale",
+      "pattern": "Bundle, cluster groups, GitRepo",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "gitops030",
+      "type": "platforms",
+      "name": "Weave GitOps",
+      "description": "Enterprise GitOps",
+      "pattern": "UI, RBAC, multi-tenancy",
+      "example": "Platforms usage"
+    }
+  ]
+}

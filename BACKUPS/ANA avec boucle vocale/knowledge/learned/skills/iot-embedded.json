@@ -1,0 +1,246 @@
+{
+  "category": "iot-embedded",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "iot001",
+      "type": "fundamentals",
+      "name": "IoT Architecture",
+      "description": "System design",
+      "pattern": "Devices -> Gateway -> Cloud -> Application, edge computing",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "iot002",
+      "type": "fundamentals",
+      "name": "Embedded Systems",
+      "description": "Constrained devices",
+      "pattern": "Limited memory/CPU, real-time requirements, low power",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "iot003",
+      "type": "fundamentals",
+      "name": "Microcontrollers",
+      "description": "MCU basics",
+      "pattern": "GPIO, ADC, PWM, timers, interrupts, registers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "iot004",
+      "type": "hardware",
+      "name": "Arduino",
+      "description": "Prototyping platform",
+      "pattern": "setup(), loop(), digitalRead/Write, analogRead, Serial",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "iot005",
+      "type": "hardware",
+      "name": "ESP32/ESP8266",
+      "description": "WiFi MCU",
+      "pattern": "WiFi.begin(), HTTP client, deep sleep, OTA updates",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "iot006",
+      "type": "hardware",
+      "name": "Raspberry Pi",
+      "description": "Single-board computer",
+      "pattern": "Linux-based, GPIO, Python, full OS capabilities",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "iot007",
+      "type": "hardware",
+      "name": "Sensors",
+      "description": "Input devices",
+      "pattern": "Temperature, humidity, motion, light, accelerometer",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "iot008",
+      "type": "hardware",
+      "name": "Actuators",
+      "description": "Output devices",
+      "pattern": "LEDs, motors, servos, relays, displays",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "iot009",
+      "type": "protocols",
+      "name": "MQTT",
+      "description": "IoT messaging",
+      "pattern": "Publish/subscribe, topics, QoS levels, retained messages",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "iot010",
+      "type": "protocols",
+      "name": "MQTT Broker",
+      "description": "Message broker",
+      "pattern": "Mosquitto, HiveMQ, AWS IoT Core, topic hierarchy",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "iot011",
+      "type": "protocols",
+      "name": "CoAP",
+      "description": "Constrained HTTP",
+      "pattern": "UDP-based, RESTful, observe, block transfer",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "iot012",
+      "type": "protocols",
+      "name": "HTTP/REST",
+      "description": "Web protocols",
+      "pattern": "Simple integration, higher overhead, webhooks",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "iot013",
+      "type": "protocols",
+      "name": "WebSocket",
+      "description": "Real-time",
+      "pattern": "Bidirectional, persistent connection, browser support",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "iot014",
+      "type": "protocols",
+      "name": "Bluetooth/BLE",
+      "description": "Short-range wireless",
+      "pattern": "GATT, services, characteristics, advertising",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "iot015",
+      "type": "protocols",
+      "name": "LoRaWAN",
+      "description": "Long-range",
+      "pattern": "Low power, long range, low bandwidth, TTN network",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "iot016",
+      "type": "protocols",
+      "name": "Zigbee/Z-Wave",
+      "description": "Home automation",
+      "pattern": "Mesh networking, low power, smart home",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "iot017",
+      "type": "cloud",
+      "name": "AWS IoT",
+      "description": "AWS IoT services",
+      "pattern": "IoT Core, Device Shadow, Greengrass, Rules Engine",
+      "example": "Cloud usage"
+    },
+    {
+      "id": "iot018",
+      "type": "cloud",
+      "name": "Azure IoT",
+      "description": "Azure IoT services",
+      "pattern": "IoT Hub, Digital Twins, IoT Edge, Stream Analytics",
+      "example": "Cloud usage"
+    },
+    {
+      "id": "iot019",
+      "type": "cloud",
+      "name": "Device Management",
+      "description": "Fleet management",
+      "pattern": "Provisioning, monitoring, OTA updates, device twins",
+      "example": "Cloud usage"
+    },
+    {
+      "id": "iot020",
+      "type": "edge",
+      "name": "Edge Computing",
+      "description": "Local processing",
+      "pattern": "Reduce latency, offline operation, data filtering",
+      "example": "Edge usage"
+    },
+    {
+      "id": "iot021",
+      "type": "edge",
+      "name": "Edge ML",
+      "description": "ML on device",
+      "pattern": "TensorFlow Lite, Edge Impulse, model optimization",
+      "example": "Edge usage"
+    },
+    {
+      "id": "iot022",
+      "type": "data",
+      "name": "Time Series Data",
+      "description": "Sensor data",
+      "pattern": "InfluxDB, TimescaleDB, downsampling, retention",
+      "example": "Data usage"
+    },
+    {
+      "id": "iot023",
+      "type": "data",
+      "name": "Data Ingestion",
+      "description": "High-volume data",
+      "pattern": "Kafka, Kinesis, batching, buffering",
+      "example": "Data usage"
+    },
+    {
+      "id": "iot024",
+      "type": "security",
+      "name": "IoT Security",
+      "description": "Device security",
+      "pattern": "TLS, certificates, secure boot, firmware signing",
+      "example": "Security usage"
+    },
+    {
+      "id": "iot025",
+      "type": "security",
+      "name": "Device Authentication",
+      "description": "Identity",
+      "pattern": "X.509 certificates, SAS tokens, device identity",
+      "example": "Security usage"
+    },
+    {
+      "id": "iot026",
+      "type": "power",
+      "name": "Power Management",
+      "description": "Battery life",
+      "pattern": "Sleep modes, duty cycling, power profiling",
+      "example": "Power usage"
+    },
+    {
+      "id": "iot027",
+      "type": "power",
+      "name": "Energy Harvesting",
+      "description": "Self-powered",
+      "pattern": "Solar, kinetic, thermal energy sources",
+      "example": "Power usage"
+    },
+    {
+      "id": "iot028",
+      "type": "firmware",
+      "name": "OTA Updates",
+      "description": "Remote updates",
+      "pattern": "Delta updates, rollback, A/B partitions",
+      "example": "Firmware usage"
+    },
+    {
+      "id": "iot029",
+      "type": "firmware",
+      "name": "RTOS",
+      "description": "Real-time OS",
+      "pattern": "FreeRTOS, Zephyr, tasks, queues, semaphores",
+      "example": "Firmware usage"
+    },
+    {
+      "id": "iot030",
+      "type": "testing",
+      "name": "IoT Testing",
+      "description": "Device testing",
+      "pattern": "HIL testing, simulation, stress testing, field testing",
+      "example": "Testing usage"
+    }
+  ]
+}

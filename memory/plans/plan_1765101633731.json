@@ -1,0 +1,27 @@
+{
+  "id": "plan_1765101633731",
+  "title": "Test with \"quotes\" and <brackets>",
+  "description": "Test with \"quotes\" and <brackets>",
+  "status": "active",
+  "createdAt": "2025-12-07T10:00:33.731Z",
+  "updatedAt": "2025-12-07T10:00:33.731Z",
+  "steps": [
+    {
+      "id": 0,
+      "action": "Step with $pecial chars",
+      "status": "pending",
+      "tools": [],
+      "validation": "",
+      "critical": false,
+      "dependencies": [],
+      "result": null,
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "risks": [],
+  "dependencies": [],
+  "estimatedDuration": null,
+  "actualDuration": null,
+  "metadata": {}
+}

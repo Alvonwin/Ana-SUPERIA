@@ -1,0 +1,246 @@
+{
+  "category": "3d-webgl",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "3d001",
+      "type": "fundamentals",
+      "name": "3D Basics",
+      "description": "Core concepts",
+      "pattern": "Vertices, faces, meshes, normals, UV coordinates",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "3d002",
+      "type": "fundamentals",
+      "name": "Coordinate Systems",
+      "description": "3D space",
+      "pattern": "World, local, camera, screen coordinates, transformations",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "3d003",
+      "type": "fundamentals",
+      "name": "Matrices",
+      "description": "Transformations",
+      "pattern": "Model, view, projection matrices, MVP transformation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "3d004",
+      "type": "fundamentals",
+      "name": "Vectors",
+      "description": "Math operations",
+      "pattern": "Dot product, cross product, normalization, interpolation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "3d005",
+      "type": "webgl",
+      "name": "WebGL Basics",
+      "description": "Low-level 3D",
+      "pattern": "gl.createBuffer, gl.bindBuffer, gl.drawArrays, shaders",
+      "example": "Webgl usage"
+    },
+    {
+      "id": "3d006",
+      "type": "webgl",
+      "name": "Shaders",
+      "description": "GPU programs",
+      "pattern": "Vertex shader (position), Fragment shader (color), GLSL",
+      "example": "Webgl usage"
+    },
+    {
+      "id": "3d007",
+      "type": "webgl",
+      "name": "Vertex Buffers",
+      "description": "Geometry data",
+      "pattern": "VBO, VAO, attributes, gl.vertexAttribPointer",
+      "example": "Webgl usage"
+    },
+    {
+      "id": "3d008",
+      "type": "webgl",
+      "name": "Textures",
+      "description": "Surface images",
+      "pattern": "gl.createTexture, gl.texImage2D, texture coordinates",
+      "example": "Webgl usage"
+    },
+    {
+      "id": "3d009",
+      "type": "webgl",
+      "name": "WebGL2",
+      "description": "Modern WebGL",
+      "pattern": "VAOs, instancing, MRT, transform feedback, 3D textures",
+      "example": "Webgl usage"
+    },
+    {
+      "id": "3d010",
+      "type": "webgpu",
+      "name": "WebGPU",
+      "description": "Next-gen graphics",
+      "pattern": "GPUDevice, GPURenderPipeline, compute shaders, WGSL",
+      "example": "Webgpu usage"
+    },
+    {
+      "id": "3d011",
+      "type": "threejs",
+      "name": "Three.js Basics",
+      "description": "3D library",
+      "pattern": "Scene, Camera, Renderer, Mesh, Geometry, Material",
+      "example": "Threejs usage"
+    },
+    {
+      "id": "3d012",
+      "type": "threejs",
+      "name": "Three.js Geometries",
+      "description": "Built-in shapes",
+      "pattern": "BoxGeometry, SphereGeometry, PlaneGeometry, BufferGeometry",
+      "example": "Threejs usage"
+    },
+    {
+      "id": "3d013",
+      "type": "threejs",
+      "name": "Three.js Materials",
+      "description": "Surface appearance",
+      "pattern": "MeshBasicMaterial, MeshStandardMaterial, ShaderMaterial",
+      "example": "Threejs usage"
+    },
+    {
+      "id": "3d014",
+      "type": "threejs",
+      "name": "Three.js Lighting",
+      "description": "Light sources",
+      "pattern": "AmbientLight, DirectionalLight, PointLight, SpotLight",
+      "example": "Threejs usage"
+    },
+    {
+      "id": "3d015",
+      "type": "threejs",
+      "name": "Three.js Camera",
+      "description": "View control",
+      "pattern": "PerspectiveCamera, OrthographicCamera, OrbitControls",
+      "example": "Threejs usage"
+    },
+    {
+      "id": "3d016",
+      "type": "threejs",
+      "name": "Three.js Animation",
+      "description": "Motion",
+      "pattern": "requestAnimationFrame loop, Tween.js, AnimationMixer",
+      "example": "Threejs usage"
+    },
+    {
+      "id": "3d017",
+      "type": "threejs",
+      "name": "Three.js Loaders",
+      "description": "Import models",
+      "pattern": "GLTFLoader, FBXLoader, OBJLoader, texture loaders",
+      "example": "Threejs usage"
+    },
+    {
+      "id": "3d018",
+      "type": "react",
+      "name": "React Three Fiber",
+      "description": "React for 3D",
+      "pattern": "<Canvas><mesh><boxGeometry/><meshStandardMaterial/></mesh></Canvas>",
+      "example": "React usage"
+    },
+    {
+      "id": "3d019",
+      "type": "react",
+      "name": "Drei",
+      "description": "R3F helpers",
+      "pattern": "OrbitControls, Environment, useGLTF, Html, Text",
+      "example": "React usage"
+    },
+    {
+      "id": "3d020",
+      "type": "performance",
+      "name": "3D Optimization",
+      "description": "Performance",
+      "pattern": "LOD, frustum culling, instancing, texture atlases",
+      "example": "Performance usage"
+    },
+    {
+      "id": "3d021",
+      "type": "performance",
+      "name": "Draw Calls",
+      "description": "Batching",
+      "pattern": "Minimize draw calls, merge geometries, instanced rendering",
+      "example": "Performance usage"
+    },
+    {
+      "id": "3d022",
+      "type": "effects",
+      "name": "Post-processing",
+      "description": "Screen effects",
+      "pattern": "EffectComposer, bloom, SSAO, depth of field",
+      "example": "Effects usage"
+    },
+    {
+      "id": "3d023",
+      "type": "effects",
+      "name": "Shadows",
+      "description": "Shadow mapping",
+      "pattern": "renderer.shadowMap.enabled, castShadow, receiveShadow",
+      "example": "Effects usage"
+    },
+    {
+      "id": "3d024",
+      "type": "effects",
+      "name": "Environment Maps",
+      "description": "Reflections",
+      "pattern": "CubeTextureLoader, HDR environment, IBL lighting",
+      "example": "Effects usage"
+    },
+    {
+      "id": "3d025",
+      "type": "physics",
+      "name": "3D Physics",
+      "description": "Simulation",
+      "pattern": "Cannon.js, Rapier, rigid bodies, collision detection",
+      "example": "Physics usage"
+    },
+    {
+      "id": "3d026",
+      "type": "physics",
+      "name": "Raycasting",
+      "description": "Picking",
+      "pattern": "Raycaster.intersectObjects, mouse picking, click detection",
+      "example": "Physics usage"
+    },
+    {
+      "id": "3d027",
+      "type": "animation",
+      "name": "Skeletal Animation",
+      "description": "Character animation",
+      "pattern": "Bones, skinning, animation clips, blend trees",
+      "example": "Animation usage"
+    },
+    {
+      "id": "3d028",
+      "type": "animation",
+      "name": "Morph Targets",
+      "description": "Shape keys",
+      "pattern": "Blend shapes, facial animation, mesh deformation",
+      "example": "Animation usage"
+    },
+    {
+      "id": "3d029",
+      "type": "tools",
+      "name": "Blender Export",
+      "description": "Asset pipeline",
+      "pattern": "glTF export, materials, animations, optimization",
+      "example": "Tools usage"
+    },
+    {
+      "id": "3d030",
+      "type": "vr",
+      "name": "WebXR",
+      "description": "VR/AR",
+      "pattern": "navigator.xr, XRSession, immersive-vr, controllers",
+      "example": "Vr usage"
+    }
+  ]
+}

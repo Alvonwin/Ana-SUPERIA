@@ -1,0 +1,33 @@
+{
+  "category": "prompt-engineering-advanced",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "Advanced Prompt Engineering Techniques",
+  "skills": [
+    {"id": "pea01", "type": "basics", "name": "Chain of Thought", "description": "Step-by-step reasoning", "pattern": "Let's think step by step", "example": "Math problems"},
+    {"id": "pea02", "type": "cot", "name": "Zero-Shot CoT", "description": "No examples needed", "pattern": "Think step by step", "example": "Simple prompting"},
+    {"id": "pea03", "type": "fewshot", "name": "Few-Shot Prompting", "description": "Learn from examples", "pattern": "Example1, Example2 → Answer", "example": "Pattern matching"},
+    {"id": "pea04", "type": "selfask", "name": "Self-Ask", "description": "Model asks itself", "pattern": "Are follow-up questions needed?", "example": "Complex queries"},
+    {"id": "pea05", "type": "react", "name": "ReAct Prompting", "description": "Reason + Act", "pattern": "Thought, Action, Observation", "example": "Tool-using agents"},
+    {"id": "pea06", "type": "tree", "name": "Tree of Thoughts", "description": "Explore multiple paths", "pattern": "Branch and evaluate", "example": "Creative problem solving"},
+    {"id": "pea07", "type": "graph", "name": "Graph of Thoughts", "description": "Non-linear reasoning", "pattern": "Nodes and connections", "example": "Complex reasoning"},
+    {"id": "pea08", "type": "persona", "name": "Persona Prompting", "description": "Assume a role", "pattern": "You are an expert in...", "example": "Domain expertise"},
+    {"id": "pea09", "type": "system", "name": "System Prompts", "description": "Set behavior", "pattern": "Instructions, constraints", "example": "Define AI personality"},
+    {"id": "pea10", "type": "structured", "name": "Structured Output", "description": "Force JSON/format", "pattern": "Respond in JSON format", "example": "Parseable responses"},
+    {"id": "pea11", "type": "decompose", "name": "Task Decomposition", "description": "Break into subtasks", "pattern": "First... Then... Finally...", "example": "Complex workflows"},
+    {"id": "pea12", "type": "context", "name": "Context Window", "description": "Use full context", "pattern": "Provide relevant context", "example": "Long documents"},
+    {"id": "pea13", "type": "negative", "name": "Negative Prompting", "description": "What to avoid", "pattern": "Don't include...", "example": "Exclude unwanted"},
+    {"id": "pea14", "type": "refine", "name": "Iterative Refinement", "description": "Improve outputs", "pattern": "Review and improve", "example": "Quality enhancement"},
+    {"id": "pea15", "type": "selfconsist", "name": "Self-Consistency", "description": "Multiple paths", "pattern": "Sample and majority vote", "example": "Reduce errors"},
+    {"id": "pea16", "type": "generated", "name": "Generated Knowledge", "description": "Generate then use", "pattern": "First generate facts...", "example": "Knowledge grounding"},
+    {"id": "pea17", "type": "retrieval", "name": "Retrieval Augmented", "description": "Add external knowledge", "pattern": "Context: [retrieved]", "example": "RAG prompting"},
+    {"id": "pea18", "type": "reflection", "name": "Reflexion", "description": "Self-critique", "pattern": "Evaluate your response", "example": "Quality check"},
+    {"id": "pea19", "type": "meta", "name": "Meta Prompting", "description": "Prompt about prompts", "pattern": "Create a prompt that...", "example": "Prompt generation"},
+    {"id": "pea20", "type": "multimodal", "name": "Multimodal Prompts", "description": "Text + images", "pattern": "Describe this image...", "example": "Vision tasks"},
+    {"id": "pea21", "type": "constrained", "name": "Constrained Generation", "description": "Limit output", "pattern": "In 3 sentences...", "example": "Length control"},
+    {"id": "pea22", "type": "emotional", "name": "Emotional Prompting", "description": "Add emotional context", "pattern": "This is very important", "example": "Increase effort"},
+    {"id": "pea23", "type": "roleplay", "name": "Roleplay Prompting", "description": "Scenario-based", "pattern": "Imagine you are...", "example": "Creative scenarios"},
+    {"id": "pea24", "type": "socratic", "name": "Socratic Prompting", "description": "Question-based", "pattern": "What if... Why...", "example": "Deep exploration"},
+    {"id": "pea25", "type": "benchmark", "name": "Prompt Benchmarking", "description": "Test and compare", "pattern": "A/B test prompts", "example": "Optimize performance"}
+  ]
+}

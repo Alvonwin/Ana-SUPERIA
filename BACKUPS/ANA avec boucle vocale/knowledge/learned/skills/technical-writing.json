@@ -1,0 +1,246 @@
+{
+  "category": "technical-writing",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "tw001",
+      "type": "fundamentals",
+      "name": "Technical Writing Basics",
+      "description": "Clear communication",
+      "pattern": "Clear, concise, accurate, audience-focused",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tw002",
+      "type": "fundamentals",
+      "name": "Know Your Audience",
+      "description": "Target readers",
+      "pattern": "Beginner vs expert, technical vs business, adjust depth",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tw003",
+      "type": "fundamentals",
+      "name": "Active Voice",
+      "description": "Direct writing",
+      "pattern": "'Click the button' not 'The button should be clicked'",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tw004",
+      "type": "documentation",
+      "name": "README Structure",
+      "description": "Project README",
+      "pattern": "Title, description, install, usage, examples, license",
+      "example": "Documentation usage"
+    },
+    {
+      "id": "tw005",
+      "type": "documentation",
+      "name": "API Documentation",
+      "description": "Document APIs",
+      "pattern": "Endpoints, parameters, responses, examples, errors",
+      "example": "Documentation usage"
+    },
+    {
+      "id": "tw006",
+      "type": "documentation",
+      "name": "Code Comments",
+      "description": "In-code docs",
+      "pattern": "Why not what, JSDoc, docstrings, complex logic",
+      "example": "Documentation usage"
+    },
+    {
+      "id": "tw007",
+      "type": "documentation",
+      "name": "Architecture Docs",
+      "description": "System overview",
+      "pattern": "Diagrams, components, data flow, decisions",
+      "example": "Documentation usage"
+    },
+    {
+      "id": "tw008",
+      "type": "types",
+      "name": "Tutorials",
+      "description": "Step-by-step",
+      "pattern": "Learning-oriented, sequential, hands-on, achievable goal",
+      "example": "Types usage"
+    },
+    {
+      "id": "tw009",
+      "type": "types",
+      "name": "How-To Guides",
+      "description": "Task-focused",
+      "pattern": "Problem-oriented, practical steps, assumes knowledge",
+      "example": "Types usage"
+    },
+    {
+      "id": "tw010",
+      "type": "types",
+      "name": "Reference",
+      "description": "Information",
+      "pattern": "Complete, accurate, structured, searchable",
+      "example": "Types usage"
+    },
+    {
+      "id": "tw011",
+      "type": "types",
+      "name": "Explanation",
+      "description": "Understanding",
+      "pattern": "Background, concepts, why, alternatives",
+      "example": "Types usage"
+    },
+    {
+      "id": "tw012",
+      "type": "structure",
+      "name": "Document Structure",
+      "description": "Organization",
+      "pattern": "Headings, sections, progressive disclosure, scannable",
+      "example": "Structure usage"
+    },
+    {
+      "id": "tw013",
+      "type": "structure",
+      "name": "Code Examples",
+      "description": "Show code",
+      "pattern": "Working examples, copy-paste ready, explained",
+      "example": "Structure usage"
+    },
+    {
+      "id": "tw014",
+      "type": "structure",
+      "name": "Tables & Lists",
+      "description": "Structured data",
+      "pattern": "Tables for comparison, lists for steps, clear formatting",
+      "example": "Structure usage"
+    },
+    {
+      "id": "tw015",
+      "type": "tools",
+      "name": "Markdown",
+      "description": "Writing format",
+      "pattern": "GitHub-flavored, headings, code blocks, links",
+      "example": "Tools usage"
+    },
+    {
+      "id": "tw016",
+      "type": "tools",
+      "name": "Docusaurus",
+      "description": "Doc site",
+      "pattern": "React-based, MDX, versioning, search",
+      "example": "Tools usage"
+    },
+    {
+      "id": "tw017",
+      "type": "tools",
+      "name": "Mintlify",
+      "description": "Modern docs",
+      "pattern": "API docs, components, beautiful defaults",
+      "example": "Tools usage"
+    },
+    {
+      "id": "tw018",
+      "type": "tools",
+      "name": "Notion",
+      "description": "Team docs",
+      "pattern": "Internal docs, collaborative, templates",
+      "example": "Tools usage"
+    },
+    {
+      "id": "tw019",
+      "type": "api-docs",
+      "name": "OpenAPI/Swagger",
+      "description": "API spec",
+      "pattern": "YAML/JSON spec, auto-generated docs, try-it",
+      "example": "Api-docs usage"
+    },
+    {
+      "id": "tw020",
+      "type": "api-docs",
+      "name": "Postman Docs",
+      "description": "Collection docs",
+      "pattern": "Postman collections, examples, publishing",
+      "example": "Api-docs usage"
+    },
+    {
+      "id": "tw021",
+      "type": "api-docs",
+      "name": "GraphQL Docs",
+      "description": "Schema docs",
+      "pattern": "GraphiQL, introspection, schema description",
+      "example": "Api-docs usage"
+    },
+    {
+      "id": "tw022",
+      "type": "diagrams",
+      "name": "Mermaid Diagrams",
+      "description": "Code diagrams",
+      "pattern": "Flowcharts, sequence, ER diagrams in markdown",
+      "example": "Diagrams usage"
+    },
+    {
+      "id": "tw023",
+      "type": "diagrams",
+      "name": "Architecture Diagrams",
+      "description": "System visuals",
+      "pattern": "C4 model, Excalidraw, Lucidchart, draw.io",
+      "example": "Diagrams usage"
+    },
+    {
+      "id": "tw024",
+      "type": "adr",
+      "name": "ADRs",
+      "description": "Decision records",
+      "pattern": "Context, decision, consequences, status, alternatives",
+      "example": "Adr usage"
+    },
+    {
+      "id": "tw025",
+      "type": "adr",
+      "name": "RFC Process",
+      "description": "Proposals",
+      "pattern": "Problem, proposal, alternatives, discussion, decision",
+      "example": "Adr usage"
+    },
+    {
+      "id": "tw026",
+      "type": "changelog",
+      "name": "Changelog",
+      "description": "Track changes",
+      "pattern": "Keep a Changelog format, semantic versioning",
+      "example": "Changelog usage"
+    },
+    {
+      "id": "tw027",
+      "type": "changelog",
+      "name": "Release Notes",
+      "description": "User-facing",
+      "pattern": "Features, fixes, breaking changes, migration guide",
+      "example": "Changelog usage"
+    },
+    {
+      "id": "tw028",
+      "type": "quality",
+      "name": "Doc Review",
+      "description": "Quality control",
+      "pattern": "Peer review, accuracy check, user testing",
+      "example": "Quality usage"
+    },
+    {
+      "id": "tw029",
+      "type": "quality",
+      "name": "Doc Testing",
+      "description": "Verify docs",
+      "pattern": "Test code examples, follow tutorials, link checking",
+      "example": "Quality usage"
+    },
+    {
+      "id": "tw030",
+      "type": "maintenance",
+      "name": "Doc Maintenance",
+      "description": "Keep current",
+      "pattern": "Update with code, deprecation notices, version",
+      "example": "Maintenance usage"
+    }
+  ]
+}

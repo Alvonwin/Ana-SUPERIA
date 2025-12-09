@@ -1,0 +1,246 @@
+{
+  "category": "cms-wordpress",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cms001",
+      "type": "wordpress",
+      "name": "WordPress Basics",
+      "description": "CMS platform",
+      "pattern": "Posts, Pages, Media, Plugins, Themes",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms002",
+      "type": "wordpress",
+      "name": "Theme Development",
+      "description": "Custom themes",
+      "pattern": "template hierarchy, functions.php, hooks",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms003",
+      "type": "wordpress",
+      "name": "Plugin Development",
+      "description": "Custom plugins",
+      "pattern": "register_activation_hook, add_action",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms004",
+      "type": "wordpress",
+      "name": "Custom Post Types",
+      "description": "CPT",
+      "pattern": "register_post_type, custom taxonomies",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms005",
+      "type": "wordpress",
+      "name": "ACF",
+      "description": "Custom fields",
+      "pattern": "Advanced Custom Fields, field groups",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms006",
+      "type": "wordpress",
+      "name": "Gutenberg Blocks",
+      "description": "Block editor",
+      "pattern": "registerBlockType, React, block.json",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms007",
+      "type": "wordpress",
+      "name": "REST API",
+      "description": "WP API",
+      "pattern": "register_rest_route, custom endpoints",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms008",
+      "type": "wordpress",
+      "name": "WooCommerce",
+      "description": "E-commerce",
+      "pattern": "Products, Cart, Checkout, extensions",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms009",
+      "type": "wordpress",
+      "name": "Headless WP",
+      "description": "Decoupled",
+      "pattern": "WPGraphQL, Next.js, static generation",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms010",
+      "type": "wordpress",
+      "name": "Security",
+      "description": "WP security",
+      "pattern": "wp_nonce, sanitization, capabilities",
+      "example": "Wordpress usage"
+    },
+    {
+      "id": "cms011",
+      "type": "drupal",
+      "name": "Drupal Basics",
+      "description": "Enterprise CMS",
+      "pattern": "Nodes, Content Types, Views, Modules",
+      "example": "Drupal usage"
+    },
+    {
+      "id": "cms012",
+      "type": "drupal",
+      "name": "Drupal Theming",
+      "description": "Twig templates",
+      "pattern": "Twig, preprocess hooks, libraries",
+      "example": "Drupal usage"
+    },
+    {
+      "id": "cms013",
+      "type": "drupal",
+      "name": "Drupal Modules",
+      "description": "Custom modules",
+      "pattern": ".module, hooks, services",
+      "example": "Drupal usage"
+    },
+    {
+      "id": "cms014",
+      "type": "drupal",
+      "name": "Drupal Commerce",
+      "description": "E-commerce",
+      "pattern": "Products, Cart, Payments",
+      "example": "Drupal usage"
+    },
+    {
+      "id": "cms015",
+      "type": "drupal",
+      "name": "Views & Paragraphs",
+      "description": "Content building",
+      "pattern": "Views, Paragraphs, Layout Builder",
+      "example": "Drupal usage"
+    },
+    {
+      "id": "cms016",
+      "type": "headless",
+      "name": "Contentful",
+      "description": "Headless CMS",
+      "pattern": "Content Types, API, SDK, GraphQL",
+      "example": "Headless usage"
+    },
+    {
+      "id": "cms017",
+      "type": "headless",
+      "name": "Sanity",
+      "description": "Structured content",
+      "pattern": "GROQ, schemas, portable text",
+      "example": "Headless usage"
+    },
+    {
+      "id": "cms018",
+      "type": "headless",
+      "name": "Strapi",
+      "description": "Open source headless",
+      "pattern": "Content-Types, REST, GraphQL, plugins",
+      "example": "Headless usage"
+    },
+    {
+      "id": "cms019",
+      "type": "headless",
+      "name": "Prismic",
+      "description": "Headless CMS",
+      "pattern": "Slices, Document types, Previews",
+      "example": "Headless usage"
+    },
+    {
+      "id": "cms020",
+      "type": "headless",
+      "name": "Payload CMS",
+      "description": "TypeScript CMS",
+      "pattern": "Collections, Fields, Hooks, Access",
+      "example": "Headless usage"
+    },
+    {
+      "id": "cms021",
+      "type": "headless",
+      "name": "Directus",
+      "description": "Data platform",
+      "pattern": "Collections, Roles, Flows, SDK",
+      "example": "Headless usage"
+    },
+    {
+      "id": "cms022",
+      "type": "ecommerce",
+      "name": "Shopify",
+      "description": "E-commerce platform",
+      "pattern": "Liquid, Themes, Apps, Storefront API",
+      "example": "Ecommerce usage"
+    },
+    {
+      "id": "cms023",
+      "type": "ecommerce",
+      "name": "Magento",
+      "description": "Adobe Commerce",
+      "pattern": "Modules, Themes, GraphQL, PWA",
+      "example": "Ecommerce usage"
+    },
+    {
+      "id": "cms024",
+      "type": "ecommerce",
+      "name": "BigCommerce",
+      "description": "SaaS e-commerce",
+      "pattern": "Stencil, APIs, headless",
+      "example": "Ecommerce usage"
+    },
+    {
+      "id": "cms025",
+      "type": "wiki",
+      "name": "MediaWiki",
+      "description": "Wiki platform",
+      "pattern": "Templates, Extensions, Wikitext",
+      "example": "Wiki usage"
+    },
+    {
+      "id": "cms026",
+      "type": "wiki",
+      "name": "Confluence",
+      "description": "Team wiki",
+      "pattern": "Spaces, Pages, Macros, Apps",
+      "example": "Wiki usage"
+    },
+    {
+      "id": "cms027",
+      "type": "advanced",
+      "name": "CMS Migration",
+      "description": "Data migration",
+      "pattern": "Export, Transform, Import, mapping",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cms028",
+      "type": "advanced",
+      "name": "Multi-site",
+      "description": "Multiple sites",
+      "pattern": "WP Multisite, shared resources",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cms029",
+      "type": "advanced",
+      "name": "CDN & Caching",
+      "description": "Performance",
+      "pattern": "Cloudflare, Varnish, page cache",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cms030",
+      "type": "advanced",
+      "name": "SEO for CMS",
+      "description": "Search optimization",
+      "pattern": "Yoast, meta tags, structured data",
+      "example": "Advanced usage"
+    }
+  ]
+}

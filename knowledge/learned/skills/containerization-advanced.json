@@ -1,0 +1,246 @@
+{
+  "category": "containerization-advanced",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cnt001",
+      "type": "docker",
+      "name": "Multi-stage Builds",
+      "description": "Smaller images",
+      "pattern": "FROM node AS build ... FROM node:alpine COPY --from=build /app/dist",
+      "example": "Docker usage"
+    },
+    {
+      "id": "cnt002",
+      "type": "docker",
+      "name": "Layer Caching",
+      "description": "Optimize builds",
+      "pattern": "COPY package*.json first, then npm install, then COPY source",
+      "example": "Docker usage"
+    },
+    {
+      "id": "cnt003",
+      "type": "docker",
+      "name": "Distroless Images",
+      "description": "Minimal base",
+      "pattern": "gcr.io/distroless/nodejs, no shell, minimal attack surface",
+      "example": "Docker usage"
+    },
+    {
+      "id": "cnt004",
+      "type": "docker",
+      "name": "BuildKit",
+      "description": "Modern builder",
+      "pattern": "DOCKER_BUILDKIT=1, cache mounts, secret mounts, SSH forwarding",
+      "example": "Docker usage"
+    },
+    {
+      "id": "cnt005",
+      "type": "docker",
+      "name": "Docker Compose",
+      "description": "Multi-container",
+      "pattern": "services, networks, volumes, depends_on, healthcheck",
+      "example": "Docker usage"
+    },
+    {
+      "id": "cnt006",
+      "type": "docker",
+      "name": "Container Security",
+      "description": "Hardening",
+      "pattern": "Non-root user, read-only fs, no new privileges, resource limits",
+      "example": "Docker usage"
+    },
+    {
+      "id": "cnt007",
+      "type": "docker",
+      "name": "Image Scanning",
+      "description": "Vulnerability detection",
+      "pattern": "Trivy, Snyk, docker scan - CVE detection",
+      "example": "Docker usage"
+    },
+    {
+      "id": "cnt008",
+      "type": "docker",
+      "name": "Registry Management",
+      "description": "Image storage",
+      "pattern": "Docker Hub, ECR, GCR, Harbor - push, pull, tagging",
+      "example": "Docker usage"
+    },
+    {
+      "id": "cnt009",
+      "type": "k8s",
+      "name": "Kubernetes Architecture",
+      "description": "Cluster components",
+      "pattern": "Control plane (API, scheduler, etcd), nodes (kubelet, proxy)",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt010",
+      "type": "k8s",
+      "name": "Pods",
+      "description": "Smallest unit",
+      "pattern": "Co-located containers, shared network/storage, lifecycle",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt011",
+      "type": "k8s",
+      "name": "Deployments",
+      "description": "Declarative updates",
+      "pattern": "replicas, strategy (rolling/recreate), revision history",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt012",
+      "type": "k8s",
+      "name": "Services",
+      "description": "Network abstraction",
+      "pattern": "ClusterIP, NodePort, LoadBalancer, ExternalName",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt013",
+      "type": "k8s",
+      "name": "Ingress",
+      "description": "HTTP routing",
+      "pattern": "Host/path rules, TLS termination, ingress controllers",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt014",
+      "type": "k8s",
+      "name": "ConfigMaps & Secrets",
+      "description": "Configuration",
+      "pattern": "env vars, volume mounts, external secret operators",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt015",
+      "type": "k8s",
+      "name": "Persistent Volumes",
+      "description": "Storage",
+      "pattern": "PV, PVC, StorageClass, dynamic provisioning",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt016",
+      "type": "k8s",
+      "name": "StatefulSets",
+      "description": "Stateful apps",
+      "pattern": "Stable network IDs, ordered deployment, persistent storage",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt017",
+      "type": "k8s",
+      "name": "DaemonSets",
+      "description": "Node-level pods",
+      "pattern": "Log collectors, monitoring agents, one per node",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt018",
+      "type": "k8s",
+      "name": "Jobs & CronJobs",
+      "description": "Batch workloads",
+      "pattern": "Run to completion, scheduling, parallelism, backoff",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt019",
+      "type": "k8s",
+      "name": "HPA",
+      "description": "Horizontal autoscaling",
+      "pattern": "CPU/memory metrics, custom metrics, scale up/down",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt020",
+      "type": "k8s",
+      "name": "Resource Management",
+      "description": "Limits & requests",
+      "pattern": "requests: {cpu: 100m, memory: 128Mi}, limits: {...}",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt021",
+      "type": "k8s",
+      "name": "RBAC",
+      "description": "Access control",
+      "pattern": "Roles, ClusterRoles, RoleBindings, ServiceAccounts",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt022",
+      "type": "k8s",
+      "name": "Network Policies",
+      "description": "Pod network rules",
+      "pattern": "Ingress/egress rules, pod/namespace selectors",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt023",
+      "type": "k8s",
+      "name": "Operators",
+      "description": "Custom controllers",
+      "pattern": "CRDs, reconciliation loops, Operator SDK",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt024",
+      "type": "k8s",
+      "name": "Helm",
+      "description": "Package manager",
+      "pattern": "Charts, values.yaml, releases, helm install/upgrade",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt025",
+      "type": "k8s",
+      "name": "Kustomize",
+      "description": "Config customization",
+      "pattern": "Overlays, patches, bases, kubectl -k",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt026",
+      "type": "k8s",
+      "name": "Service Mesh",
+      "description": "Istio/Linkerd",
+      "pattern": "Sidecar proxies, mTLS, traffic management, observability",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt027",
+      "type": "k8s",
+      "name": "GitOps",
+      "description": "Declarative ops",
+      "pattern": "ArgoCD, Flux - git as source of truth, auto-sync",
+      "example": "K8s usage"
+    },
+    {
+      "id": "cnt028",
+      "type": "runtime",
+      "name": "containerd",
+      "description": "Container runtime",
+      "pattern": "Industry standard runtime, CRI implementation",
+      "example": "Runtime usage"
+    },
+    {
+      "id": "cnt029",
+      "type": "runtime",
+      "name": "Podman",
+      "description": "Daemonless containers",
+      "pattern": "Rootless containers, Docker-compatible CLI",
+      "example": "Runtime usage"
+    },
+    {
+      "id": "cnt030",
+      "type": "runtime",
+      "name": "Kata Containers",
+      "description": "VM-isolated containers",
+      "pattern": "Hardware virtualization, stronger isolation",
+      "example": "Runtime usage"
+    }
+  ]
+}

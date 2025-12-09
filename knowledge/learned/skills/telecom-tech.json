@@ -1,0 +1,246 @@
+{
+  "category": "telecom-tech",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "tel001",
+      "type": "fundamentals",
+      "name": "Telecom Basics",
+      "description": "Telecommunications",
+      "pattern": "Networks, protocols, services",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tel002",
+      "type": "fundamentals",
+      "name": "OSS/BSS",
+      "description": "Support systems",
+      "pattern": "Operations, billing, provisioning",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tel003",
+      "type": "fundamentals",
+      "name": "Telecom Data",
+      "description": "Industry data",
+      "pattern": "CDR, network, subscriber",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "tel004",
+      "type": "network",
+      "name": "5G Technology",
+      "description": "Fifth generation",
+      "pattern": "NR, mmWave, network slicing",
+      "example": "Network usage"
+    },
+    {
+      "id": "tel005",
+      "type": "network",
+      "name": "LTE/4G",
+      "description": "Fourth generation",
+      "pattern": "eNodeB, EPC, VoLTE",
+      "example": "Network usage"
+    },
+    {
+      "id": "tel006",
+      "type": "network",
+      "name": "Core Network",
+      "description": "Core systems",
+      "pattern": "5GC, EPC, IMS, packet core",
+      "example": "Network usage"
+    },
+    {
+      "id": "tel007",
+      "type": "network",
+      "name": "RAN",
+      "description": "Radio access",
+      "pattern": "Baseband, antenna, spectrum",
+      "example": "Network usage"
+    },
+    {
+      "id": "tel008",
+      "type": "nfv-sdn",
+      "name": "NFV",
+      "description": "Network function virtualization",
+      "pattern": "VNF, MANO, NFVI",
+      "example": "Nfv-sdn usage"
+    },
+    {
+      "id": "tel009",
+      "type": "nfv-sdn",
+      "name": "SDN",
+      "description": "Software-defined networking",
+      "pattern": "Controller, OpenFlow, overlay",
+      "example": "Nfv-sdn usage"
+    },
+    {
+      "id": "tel010",
+      "type": "nfv-sdn",
+      "name": "Cloud Native Network",
+      "description": "CNF",
+      "pattern": "Kubernetes, microservices, 5G",
+      "example": "Nfv-sdn usage"
+    },
+    {
+      "id": "tel011",
+      "type": "bss",
+      "name": "Billing Systems",
+      "description": "Telecom billing",
+      "pattern": "Rating, charging, invoicing",
+      "example": "Bss usage"
+    },
+    {
+      "id": "tel012",
+      "type": "bss",
+      "name": "CRM Telecom",
+      "description": "Customer management",
+      "pattern": "360 view, interactions, churn",
+      "example": "Bss usage"
+    },
+    {
+      "id": "tel013",
+      "type": "bss",
+      "name": "Revenue Management",
+      "description": "Revenue assurance",
+      "pattern": "Leakage, reconciliation, fraud",
+      "example": "Bss usage"
+    },
+    {
+      "id": "tel014",
+      "type": "oss",
+      "name": "Network Management",
+      "description": "NMS systems",
+      "pattern": "Fault, config, performance",
+      "example": "Oss usage"
+    },
+    {
+      "id": "tel015",
+      "type": "oss",
+      "name": "Service Assurance",
+      "description": "Quality management",
+      "pattern": "SLA, monitoring, trouble",
+      "example": "Oss usage"
+    },
+    {
+      "id": "tel016",
+      "type": "oss",
+      "name": "Service Orchestration",
+      "description": "Service delivery",
+      "pattern": "Provisioning, activation, ONAP",
+      "example": "Oss usage"
+    },
+    {
+      "id": "tel017",
+      "type": "iptv",
+      "name": "Video Delivery",
+      "description": "IPTV/OTT",
+      "pattern": "Streaming, CDN, encoding",
+      "example": "Iptv usage"
+    },
+    {
+      "id": "tel018",
+      "type": "iptv",
+      "name": "VoIP",
+      "description": "Voice over IP",
+      "pattern": "SIP, RTP, codec, PBX",
+      "example": "Iptv usage"
+    },
+    {
+      "id": "tel019",
+      "type": "iptv",
+      "name": "Unified Communications",
+      "description": "UC platforms",
+      "pattern": "Video, messaging, presence",
+      "example": "Iptv usage"
+    },
+    {
+      "id": "tel020",
+      "type": "standards",
+      "name": "3GPP Standards",
+      "description": "Mobile standards",
+      "pattern": "Releases, specifications, protocols",
+      "example": "Standards usage"
+    },
+    {
+      "id": "tel021",
+      "type": "standards",
+      "name": "TM Forum",
+      "description": "Industry framework",
+      "pattern": "eTOM, SID, TAM, Open APIs",
+      "example": "Standards usage"
+    },
+    {
+      "id": "tel022",
+      "type": "standards",
+      "name": "GSMA",
+      "description": "Mobile association",
+      "pattern": "eSIM, RCS, interoperability",
+      "example": "Standards usage"
+    },
+    {
+      "id": "tel023",
+      "type": "ai",
+      "name": "Network AI",
+      "description": "AI in telecom",
+      "pattern": "Optimization, prediction, automation",
+      "example": "Ai usage"
+    },
+    {
+      "id": "tel024",
+      "type": "ai",
+      "name": "Churn Prediction",
+      "description": "Customer retention",
+      "pattern": "ML models, propensity, intervention",
+      "example": "Ai usage"
+    },
+    {
+      "id": "tel025",
+      "type": "ai",
+      "name": "Network Analytics",
+      "description": "Network intelligence",
+      "pattern": "Traffic analysis, anomaly, planning",
+      "example": "Ai usage"
+    },
+    {
+      "id": "tel026",
+      "type": "iot-tel",
+      "name": "IoT Connectivity",
+      "description": "M2M/IoT",
+      "pattern": "NB-IoT, LTE-M, eSIM",
+      "example": "Iot-tel usage"
+    },
+    {
+      "id": "tel027",
+      "type": "iot-tel",
+      "name": "MVNO",
+      "description": "Virtual operators",
+      "pattern": "MVNO platform, wholesale",
+      "example": "Iot-tel usage"
+    },
+    {
+      "id": "tel028",
+      "type": "fiber",
+      "name": "Fiber Networks",
+      "description": "Fixed broadband",
+      "pattern": "FTTH, GPON, XGS-PON",
+      "example": "Fiber usage"
+    },
+    {
+      "id": "tel029",
+      "type": "edge",
+      "name": "MEC",
+      "description": "Multi-access edge",
+      "pattern": "Edge computing, low latency",
+      "example": "Edge usage"
+    },
+    {
+      "id": "tel030",
+      "type": "emerging",
+      "name": "Private 5G",
+      "description": "Enterprise networks",
+      "pattern": "CBRS, private LTE, Industry 4.0",
+      "example": "Emerging usage"
+    }
+  ]
+}

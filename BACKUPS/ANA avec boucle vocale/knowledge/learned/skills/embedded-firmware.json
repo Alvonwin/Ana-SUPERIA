@@ -1,0 +1,246 @@
+{
+  "category": "embedded-firmware",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "emb001",
+      "type": "fundamentals",
+      "name": "Embedded Basics",
+      "description": "Embedded systems",
+      "pattern": "Microcontrollers, firmware, real-time",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "emb002",
+      "type": "fundamentals",
+      "name": "Microcontrollers",
+      "description": "MCU architecture",
+      "pattern": "ARM Cortex, AVR, PIC, registers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "emb003",
+      "type": "fundamentals",
+      "name": "Memory Architecture",
+      "description": "Embedded memory",
+      "pattern": "Flash, RAM, EEPROM, memory map",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "emb004",
+      "type": "fundamentals",
+      "name": "GPIO",
+      "description": "Digital I/O",
+      "pattern": "Input, output, pull-up, interrupts",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "emb005",
+      "type": "fundamentals",
+      "name": "Interrupts",
+      "description": "ISR",
+      "pattern": "IRQ, ISR, priority, NVIC",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "emb006",
+      "type": "peripherals",
+      "name": "UART/Serial",
+      "description": "Serial communication",
+      "pattern": "Baud rate, TX, RX, flow control",
+      "example": "Peripherals usage"
+    },
+    {
+      "id": "emb007",
+      "type": "peripherals",
+      "name": "SPI",
+      "description": "SPI bus",
+      "pattern": "Master, slave, MOSI, MISO, clock",
+      "example": "Peripherals usage"
+    },
+    {
+      "id": "emb008",
+      "type": "peripherals",
+      "name": "I2C",
+      "description": "I2C bus",
+      "pattern": "Master, slave, address, ACK",
+      "example": "Peripherals usage"
+    },
+    {
+      "id": "emb009",
+      "type": "peripherals",
+      "name": "ADC/DAC",
+      "description": "Analog conversion",
+      "pattern": "Resolution, sampling, reference",
+      "example": "Peripherals usage"
+    },
+    {
+      "id": "emb010",
+      "type": "peripherals",
+      "name": "PWM",
+      "description": "Pulse width modulation",
+      "pattern": "Duty cycle, frequency, motor control",
+      "example": "Peripherals usage"
+    },
+    {
+      "id": "emb011",
+      "type": "peripherals",
+      "name": "Timers",
+      "description": "Hardware timers",
+      "pattern": "Counter, capture, compare, prescaler",
+      "example": "Peripherals usage"
+    },
+    {
+      "id": "emb012",
+      "type": "rtos",
+      "name": "RTOS Basics",
+      "description": "Real-time OS",
+      "pattern": "Tasks, scheduling, preemption",
+      "example": "Rtos usage"
+    },
+    {
+      "id": "emb013",
+      "type": "rtos",
+      "name": "FreeRTOS",
+      "description": "Popular RTOS",
+      "pattern": "xTaskCreate, queue, semaphore",
+      "example": "Rtos usage"
+    },
+    {
+      "id": "emb014",
+      "type": "rtos",
+      "name": "Zephyr RTOS",
+      "description": "Modern RTOS",
+      "pattern": "Devicetree, Kconfig, threads",
+      "example": "Rtos usage"
+    },
+    {
+      "id": "emb015",
+      "type": "rtos",
+      "name": "Task Synchronization",
+      "description": "RTOS sync",
+      "pattern": "Mutex, semaphore, event flags",
+      "example": "Rtos usage"
+    },
+    {
+      "id": "emb016",
+      "type": "platforms",
+      "name": "STM32",
+      "description": "ARM Cortex MCU",
+      "pattern": "HAL, CubeMX, STM32F4",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "emb017",
+      "type": "platforms",
+      "name": "ESP32",
+      "description": "WiFi/BLE MCU",
+      "pattern": "ESP-IDF, WiFi, BLE, OTA",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "emb018",
+      "type": "platforms",
+      "name": "Nordic nRF",
+      "description": "BLE platform",
+      "pattern": "nRF SDK, BLE, Thread, Matter",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "emb019",
+      "type": "platforms",
+      "name": "Raspberry Pi Pico",
+      "description": "RP2040",
+      "pattern": "PIO, dual-core, MicroPython",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "emb020",
+      "type": "protocols",
+      "name": "CAN Bus",
+      "description": "Automotive bus",
+      "pattern": "CAN 2.0, frames, arbitration",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "emb021",
+      "type": "protocols",
+      "name": "Modbus",
+      "description": "Industrial protocol",
+      "pattern": "RTU, TCP, registers, coils",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "emb022",
+      "type": "protocols",
+      "name": "BLE",
+      "description": "Bluetooth Low Energy",
+      "pattern": "GATT, services, characteristics",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "emb023",
+      "type": "protocols",
+      "name": "LoRa/LoRaWAN",
+      "description": "Long range IoT",
+      "pattern": "Spreading factor, TTN, class A/B/C",
+      "example": "Protocols usage"
+    },
+    {
+      "id": "emb024",
+      "type": "tools",
+      "name": "JTAG/SWD",
+      "description": "Debug interfaces",
+      "pattern": "J-Link, ST-Link, OpenOCD",
+      "example": "Tools usage"
+    },
+    {
+      "id": "emb025",
+      "type": "tools",
+      "name": "Logic Analyzer",
+      "description": "Signal analysis",
+      "pattern": "Saleae, protocol decode, timing",
+      "example": "Tools usage"
+    },
+    {
+      "id": "emb026",
+      "type": "tools",
+      "name": "Oscilloscope",
+      "description": "Signal measurement",
+      "pattern": "Voltage, frequency, triggering",
+      "example": "Tools usage"
+    },
+    {
+      "id": "emb027",
+      "type": "firmware",
+      "name": "Bootloaders",
+      "description": "Boot process",
+      "pattern": "Bootloader, OTA, firmware update",
+      "example": "Firmware usage"
+    },
+    {
+      "id": "emb028",
+      "type": "firmware",
+      "name": "Power Management",
+      "description": "Low power",
+      "pattern": "Sleep modes, wake sources, battery",
+      "example": "Firmware usage"
+    },
+    {
+      "id": "emb029",
+      "type": "firmware",
+      "name": "Bare Metal",
+      "description": "No OS",
+      "pattern": "Super loop, polling, minimal",
+      "example": "Firmware usage"
+    },
+    {
+      "id": "emb030",
+      "type": "firmware",
+      "name": "Firmware Testing",
+      "description": "Embedded testing",
+      "pattern": "Unit tests, HIL, emulators",
+      "example": "Firmware usage"
+    }
+  ]
+}

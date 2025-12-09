@@ -1,0 +1,246 @@
+{
+  "category": "auth-security",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "auth001",
+      "type": "oauth",
+      "name": "OAuth2 Flows",
+      "description": "Authorization Code, PKCE, Client Credentials",
+      "pattern": "Auth Code + PKCE pour SPA, Client Credentials pour M2M",
+      "example": "Oauth usage"
+    },
+    {
+      "id": "auth002",
+      "type": "oauth",
+      "name": "OAuth2 Scopes",
+      "description": "Permissions granulaires",
+      "pattern": "scope: 'read:users write:posts openid profile email'",
+      "example": "Oauth usage"
+    },
+    {
+      "id": "auth003",
+      "type": "oauth",
+      "name": "Refresh Tokens",
+      "description": "Renouveler access tokens",
+      "pattern": "Access: 15min, Refresh: 7d, Rotation on use",
+      "example": "Oauth usage"
+    },
+    {
+      "id": "auth004",
+      "type": "oauth",
+      "name": "Token Storage",
+      "description": "Ou stocker tokens",
+      "pattern": "httpOnly cookie (XSS safe) > memory > localStorage (XSS vulnerable)",
+      "example": "Oauth usage"
+    },
+    {
+      "id": "auth005",
+      "type": "oidc",
+      "name": "OpenID Connect",
+      "description": "Identity layer sur OAuth2",
+      "pattern": "ID Token (JWT) + UserInfo endpoint",
+      "example": "Oidc usage"
+    },
+    {
+      "id": "auth006",
+      "type": "oidc",
+      "name": "ID Token Claims",
+      "description": "sub, iss, aud, exp, iat, nonce",
+      "pattern": "Toujours valider: signature, iss, aud, exp, nonce",
+      "example": "Oidc usage"
+    },
+    {
+      "id": "auth007",
+      "type": "oidc",
+      "name": "Discovery Document",
+      "description": "/.well-known/openid-configuration",
+      "pattern": "authorization_endpoint, token_endpoint, jwks_uri",
+      "example": "Oidc usage"
+    },
+    {
+      "id": "auth008",
+      "type": "jwt",
+      "name": "JWT Structure",
+      "description": "Header.Payload.Signature",
+      "pattern": "base64url(header).base64url(payload).signature",
+      "example": "Jwt usage"
+    },
+    {
+      "id": "auth009",
+      "type": "jwt",
+      "name": "JWT Validation",
+      "description": "Verifier signature et claims",
+      "pattern": "Verify sig with public key, check exp, iss, aud",
+      "example": "Jwt usage"
+    },
+    {
+      "id": "auth010",
+      "type": "jwt",
+      "name": "JWT Best Practices",
+      "description": "Short expiry, no sensitive data",
+      "pattern": "exp: 15min, pas de PII dans payload, use JWE si necessaire",
+      "example": "Jwt usage"
+    },
+    {
+      "id": "auth011",
+      "type": "jwt",
+      "name": "JWT Revocation",
+      "description": "Blacklist ou short-lived",
+      "pattern": "Redis blacklist, ou tokens courts + refresh rotation",
+      "example": "Jwt usage"
+    },
+    {
+      "id": "auth012",
+      "type": "saml",
+      "name": "SAML Basics",
+      "description": "Enterprise SSO XML-based",
+      "pattern": "IdP (identity), SP (service), SAML Assertion",
+      "example": "Saml usage"
+    },
+    {
+      "id": "auth013",
+      "type": "saml",
+      "name": "SAML vs OIDC",
+      "description": "Quand utiliser quoi",
+      "pattern": "SAML: legacy enterprise. OIDC: moderne, mobile-friendly",
+      "example": "Saml usage"
+    },
+    {
+      "id": "auth014",
+      "type": "mfa",
+      "name": "TOTP",
+      "description": "Time-based OTP",
+      "pattern": "Google Authenticator, 6 digits, 30s window",
+      "example": "Mfa usage"
+    },
+    {
+      "id": "auth015",
+      "type": "mfa",
+      "name": "WebAuthn",
+      "description": "Passwordless avec hardware",
+      "pattern": "navigator.credentials.create(), biometrics, security keys",
+      "example": "Mfa usage"
+    },
+    {
+      "id": "auth016",
+      "type": "mfa",
+      "name": "SMS OTP",
+      "description": "Moins secure mais ubiquitaire",
+      "pattern": "Vulnerable SIM swap, backup option seulement",
+      "example": "Mfa usage"
+    },
+    {
+      "id": "auth017",
+      "type": "password",
+      "name": "Password Hashing",
+      "description": "bcrypt, Argon2, scrypt",
+      "pattern": "Argon2id prefere, bcrypt cost 12+, JAMAIS MD5/SHA1",
+      "example": "Password usage"
+    },
+    {
+      "id": "auth018",
+      "type": "password",
+      "name": "Password Policy",
+      "description": "Longueur > complexite",
+      "pattern": "Min 12 chars, check breached passwords (HaveIBeenPwned)",
+      "example": "Password usage"
+    },
+    {
+      "id": "auth019",
+      "type": "password",
+      "name": "Password Reset",
+      "description": "Secure reset flow",
+      "pattern": "Random token, expire 1h, single use, notify user",
+      "example": "Password usage"
+    },
+    {
+      "id": "auth020",
+      "type": "session",
+      "name": "Session Management",
+      "description": "Server-side sessions",
+      "pattern": "Random session ID, httpOnly, Secure, SameSite=Strict",
+      "example": "Session usage"
+    },
+    {
+      "id": "auth021",
+      "type": "session",
+      "name": "Session Fixation",
+      "description": "Regenerer ID apres login",
+      "pattern": "req.session.regenerate() apres authentification",
+      "example": "Session usage"
+    },
+    {
+      "id": "auth022",
+      "type": "authz",
+      "name": "RBAC",
+      "description": "Role-Based Access Control",
+      "pattern": "User -> Roles -> Permissions. if (user.hasRole('admin'))",
+      "example": "Authz usage"
+    },
+    {
+      "id": "auth023",
+      "type": "authz",
+      "name": "ABAC",
+      "description": "Attribute-Based Access Control",
+      "pattern": "if (user.department === resource.department && user.clearance >= resource.level)",
+      "example": "Authz usage"
+    },
+    {
+      "id": "auth024",
+      "type": "authz",
+      "name": "ReBAC",
+      "description": "Relationship-Based (Google Zanzibar)",
+      "pattern": "user:alice is owner of doc:readme -> check tuple",
+      "example": "Authz usage"
+    },
+    {
+      "id": "auth025",
+      "type": "api",
+      "name": "API Keys",
+      "description": "Simple auth pour APIs",
+      "pattern": "Header: X-API-Key. Hash stored, prefix for lookup",
+      "example": "Api usage"
+    },
+    {
+      "id": "auth026",
+      "type": "api",
+      "name": "API Key Rotation",
+      "description": "Renouveler sans downtime",
+      "pattern": "Support 2 active keys pendant transition",
+      "example": "Api usage"
+    },
+    {
+      "id": "auth027",
+      "type": "api",
+      "name": "Signed Requests",
+      "description": "HMAC signature",
+      "pattern": "signature = HMAC-SHA256(secret, method + path + timestamp + body)",
+      "example": "Api usage"
+    },
+    {
+      "id": "auth028",
+      "type": "attack",
+      "name": "Brute Force Protection",
+      "description": "Limiter tentatives",
+      "pattern": "5 fails -> 15min lockout, progressive delays, CAPTCHA",
+      "example": "Attack usage"
+    },
+    {
+      "id": "auth029",
+      "type": "attack",
+      "name": "Credential Stuffing",
+      "description": "Detecter bot patterns",
+      "pattern": "Rate limit per IP, device fingerprinting, breach detection",
+      "example": "Attack usage"
+    },
+    {
+      "id": "auth030",
+      "type": "attack",
+      "name": "Account Enumeration",
+      "description": "Ne pas reveler existence",
+      "pattern": "Same response for valid/invalid email on reset",
+      "example": "Attack usage"
+    }
+  ]
+}

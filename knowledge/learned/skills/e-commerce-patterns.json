@@ -1,0 +1,246 @@
+{
+  "category": "e-commerce-patterns",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ec001",
+      "type": "fundamentals",
+      "name": "E-commerce Architecture",
+      "description": "Core components",
+      "pattern": "Catalog, cart, checkout, orders, payments, inventory",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ec002",
+      "type": "fundamentals",
+      "name": "Product Catalog",
+      "description": "Product data",
+      "pattern": "Products, variants, categories, attributes, images",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ec003",
+      "type": "fundamentals",
+      "name": "Product Variants",
+      "description": "Options",
+      "pattern": "Size, color, combinations, SKU per variant",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ec004",
+      "type": "cart",
+      "name": "Shopping Cart",
+      "description": "Cart system",
+      "pattern": "Add/remove items, quantity, persistence, merge",
+      "example": "Cart usage"
+    },
+    {
+      "id": "ec005",
+      "type": "cart",
+      "name": "Cart Persistence",
+      "description": "Save cart",
+      "pattern": "Session, localStorage, database, user account",
+      "example": "Cart usage"
+    },
+    {
+      "id": "ec006",
+      "type": "cart",
+      "name": "Cart Merge",
+      "description": "Guest to user",
+      "pattern": "Merge guest cart on login, conflict resolution",
+      "example": "Cart usage"
+    },
+    {
+      "id": "ec007",
+      "type": "checkout",
+      "name": "Checkout Flow",
+      "description": "Purchase process",
+      "pattern": "Cart -> shipping -> payment -> confirmation",
+      "example": "Checkout usage"
+    },
+    {
+      "id": "ec008",
+      "type": "checkout",
+      "name": "Guest Checkout",
+      "description": "No account",
+      "pattern": "Allow purchase without account, optional signup",
+      "example": "Checkout usage"
+    },
+    {
+      "id": "ec009",
+      "type": "checkout",
+      "name": "Address Validation",
+      "description": "Shipping address",
+      "pattern": "Address autocomplete, validation APIs, format",
+      "example": "Checkout usage"
+    },
+    {
+      "id": "ec010",
+      "type": "payments",
+      "name": "Payment Integration",
+      "description": "Process payments",
+      "pattern": "Stripe, PayPal, Braintree, payment intents",
+      "example": "Payments usage"
+    },
+    {
+      "id": "ec011",
+      "type": "payments",
+      "name": "Payment Methods",
+      "description": "Multiple options",
+      "pattern": "Cards, wallets, BNPL, regional methods",
+      "example": "Payments usage"
+    },
+    {
+      "id": "ec012",
+      "type": "payments",
+      "name": "3D Secure",
+      "description": "Strong auth",
+      "pattern": "SCA compliance, 3DS2, authentication flow",
+      "example": "Payments usage"
+    },
+    {
+      "id": "ec013",
+      "type": "payments",
+      "name": "Webhook Handling",
+      "description": "Payment events",
+      "pattern": "payment_intent.succeeded, handle async results",
+      "example": "Payments usage"
+    },
+    {
+      "id": "ec014",
+      "type": "orders",
+      "name": "Order Management",
+      "description": "Order lifecycle",
+      "pattern": "Pending, paid, shipped, delivered, cancelled",
+      "example": "Orders usage"
+    },
+    {
+      "id": "ec015",
+      "type": "orders",
+      "name": "Order Numbers",
+      "description": "Order IDs",
+      "pattern": "Sequential, prefixed, human-readable, unique",
+      "example": "Orders usage"
+    },
+    {
+      "id": "ec016",
+      "type": "orders",
+      "name": "Order Confirmation",
+      "description": "Post-purchase",
+      "pattern": "Confirmation email, receipt, order tracking",
+      "example": "Orders usage"
+    },
+    {
+      "id": "ec017",
+      "type": "inventory",
+      "name": "Inventory Management",
+      "description": "Stock tracking",
+      "pattern": "Available quantity, reserved, backorder",
+      "example": "Inventory usage"
+    },
+    {
+      "id": "ec018",
+      "type": "inventory",
+      "name": "Stock Reservation",
+      "description": "Hold inventory",
+      "pattern": "Reserve on add to cart/checkout, timeout release",
+      "example": "Inventory usage"
+    },
+    {
+      "id": "ec019",
+      "type": "inventory",
+      "name": "Low Stock Alerts",
+      "description": "Reorder point",
+      "pattern": "Alert when below threshold, restock notifications",
+      "example": "Inventory usage"
+    },
+    {
+      "id": "ec020",
+      "type": "pricing",
+      "name": "Pricing Engine",
+      "description": "Calculate prices",
+      "pattern": "Base price, discounts, taxes, shipping, total",
+      "example": "Pricing usage"
+    },
+    {
+      "id": "ec021",
+      "type": "pricing",
+      "name": "Discounts & Coupons",
+      "description": "Promotions",
+      "pattern": "Percentage, fixed, BOGO, minimum purchase",
+      "example": "Pricing usage"
+    },
+    {
+      "id": "ec022",
+      "type": "pricing",
+      "name": "Tax Calculation",
+      "description": "Sales tax",
+      "pattern": "Tax rates by region, VAT, tax APIs (Avalara, TaxJar)",
+      "example": "Pricing usage"
+    },
+    {
+      "id": "ec023",
+      "type": "shipping",
+      "name": "Shipping Rates",
+      "description": "Calculate shipping",
+      "pattern": "Weight-based, zone-based, carrier APIs",
+      "example": "Shipping usage"
+    },
+    {
+      "id": "ec024",
+      "type": "shipping",
+      "name": "Shipping Carriers",
+      "description": "Carrier integration",
+      "pattern": "USPS, FedEx, UPS APIs, label generation",
+      "example": "Shipping usage"
+    },
+    {
+      "id": "ec025",
+      "type": "shipping",
+      "name": "Order Tracking",
+      "description": "Track shipments",
+      "pattern": "Tracking numbers, status updates, notifications",
+      "example": "Shipping usage"
+    },
+    {
+      "id": "ec026",
+      "type": "subscriptions",
+      "name": "Subscriptions",
+      "description": "Recurring orders",
+      "pattern": "Subscription products, billing cycles, Stripe Billing",
+      "example": "Subscriptions usage"
+    },
+    {
+      "id": "ec027",
+      "type": "search",
+      "name": "Product Search",
+      "description": "Find products",
+      "pattern": "Full-text, faceted, autocomplete, Algolia, Elasticsearch",
+      "example": "Search usage"
+    },
+    {
+      "id": "ec028",
+      "type": "recommendations",
+      "name": "Recommendations",
+      "description": "Suggest products",
+      "pattern": "Related products, frequently bought together, personalized",
+      "example": "Recommendations usage"
+    },
+    {
+      "id": "ec029",
+      "type": "headless",
+      "name": "Headless Commerce",
+      "description": "API-first",
+      "pattern": "Shopify Storefront API, Commerce.js, Medusa",
+      "example": "Headless usage"
+    },
+    {
+      "id": "ec030",
+      "type": "platforms",
+      "name": "E-commerce Platforms",
+      "description": "Solutions",
+      "pattern": "Shopify, WooCommerce, Magento, BigCommerce, custom",
+      "example": "Platforms usage"
+    }
+  ]
+}

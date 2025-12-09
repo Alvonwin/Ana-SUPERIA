@@ -1,0 +1,246 @@
+{
+  "category": "nats-messaging",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "nats001",
+      "type": "fundamentals",
+      "name": "NATS Overview",
+      "description": "Cloud-native messaging",
+      "pattern": "Pub/sub, request/reply, queues",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "nats002",
+      "type": "fundamentals",
+      "name": "Core NATS",
+      "description": "Basic messaging",
+      "pattern": "Subjects, messages, connections",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "nats003",
+      "type": "fundamentals",
+      "name": "Subjects",
+      "description": "Address topics",
+      "pattern": "Hierarchy, wildcards (*, >)",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "nats004",
+      "type": "fundamentals",
+      "name": "Pub/Sub",
+      "description": "Publish subscribe",
+      "pattern": "Publish, subscribe, unsubscribe",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "nats005",
+      "type": "patterns",
+      "name": "Request/Reply",
+      "description": "Synchronous messaging",
+      "pattern": "Request with timeout, inbox",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "nats006",
+      "type": "patterns",
+      "name": "Queue Groups",
+      "description": "Load balancing",
+      "pattern": "Queue subscribe, work distribution",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "nats007",
+      "type": "jetstream",
+      "name": "JetStream Overview",
+      "description": "Persistence layer",
+      "pattern": "Streams, consumers, persistence",
+      "example": "Jetstream usage"
+    },
+    {
+      "id": "nats008",
+      "type": "jetstream",
+      "name": "Streams",
+      "description": "Message storage",
+      "pattern": "Retention, limits, subjects",
+      "example": "Jetstream usage"
+    },
+    {
+      "id": "nats009",
+      "type": "jetstream",
+      "name": "Stream Configuration",
+      "description": "Stream settings",
+      "pattern": "Retention policy, storage, replicas",
+      "example": "Jetstream usage"
+    },
+    {
+      "id": "nats010",
+      "type": "jetstream",
+      "name": "Consumers",
+      "description": "Message consumption",
+      "pattern": "Push, pull, durable, ephemeral",
+      "example": "Jetstream usage"
+    },
+    {
+      "id": "nats011",
+      "type": "jetstream",
+      "name": "Consumer Types",
+      "description": "Delivery patterns",
+      "pattern": "Durable, ephemeral, ordered",
+      "example": "Jetstream usage"
+    },
+    {
+      "id": "nats012",
+      "type": "jetstream",
+      "name": "Ack Policies",
+      "description": "Acknowledgment",
+      "pattern": "Ack, Nak, InProgress, Term",
+      "example": "Jetstream usage"
+    },
+    {
+      "id": "nats013",
+      "type": "jetstream",
+      "name": "Replay Policies",
+      "description": "Message replay",
+      "pattern": "Instant, original, by time",
+      "example": "Jetstream usage"
+    },
+    {
+      "id": "nats014",
+      "type": "jetstream",
+      "name": "KV Store",
+      "description": "Key-value storage",
+      "pattern": "Get, put, delete, watch, history",
+      "example": "Jetstream usage"
+    },
+    {
+      "id": "nats015",
+      "type": "jetstream",
+      "name": "Object Store",
+      "description": "Blob storage",
+      "pattern": "Put, get, delete, watch, chunking",
+      "example": "Jetstream usage"
+    },
+    {
+      "id": "nats016",
+      "type": "clustering",
+      "name": "Clustering",
+      "description": "High availability",
+      "pattern": "Routes, cluster config, gossip",
+      "example": "Clustering usage"
+    },
+    {
+      "id": "nats017",
+      "type": "clustering",
+      "name": "Super Clusters",
+      "description": "Geographic distribution",
+      "pattern": "Gateways, interest propagation",
+      "example": "Clustering usage"
+    },
+    {
+      "id": "nats018",
+      "type": "clustering",
+      "name": "Leaf Nodes",
+      "description": "Edge connectivity",
+      "pattern": "Remote connections, account mapping",
+      "example": "Clustering usage"
+    },
+    {
+      "id": "nats019",
+      "type": "security",
+      "name": "TLS",
+      "description": "Transport security",
+      "pattern": "Server TLS, client TLS, mTLS",
+      "example": "Security usage"
+    },
+    {
+      "id": "nats020",
+      "type": "security",
+      "name": "Authentication",
+      "description": "Client auth",
+      "pattern": "Token, user/pass, NKey, JWT",
+      "example": "Security usage"
+    },
+    {
+      "id": "nats021",
+      "type": "security",
+      "name": "Authorization",
+      "description": "Permissions",
+      "pattern": "Publish, subscribe, allow, deny",
+      "example": "Security usage"
+    },
+    {
+      "id": "nats022",
+      "type": "security",
+      "name": "Accounts",
+      "description": "Multi-tenancy",
+      "pattern": "Account isolation, imports, exports",
+      "example": "Security usage"
+    },
+    {
+      "id": "nats023",
+      "type": "operations",
+      "name": "Monitoring",
+      "description": "Server monitoring",
+      "pattern": "Varz, connz, subsz, routez",
+      "example": "Operations usage"
+    },
+    {
+      "id": "nats024",
+      "type": "operations",
+      "name": "nats CLI",
+      "description": "Command-line tool",
+      "pattern": "Pub, sub, stream, consumer commands",
+      "example": "Operations usage"
+    },
+    {
+      "id": "nats025",
+      "type": "operations",
+      "name": "NATS Top",
+      "description": "Real-time monitoring",
+      "pattern": "Connection stats, throughput",
+      "example": "Operations usage"
+    },
+    {
+      "id": "nats026",
+      "type": "client",
+      "name": "Client Libraries",
+      "description": "Language support",
+      "pattern": "Go, Node.js, Python, Java, Rust",
+      "example": "Client usage"
+    },
+    {
+      "id": "nats027",
+      "type": "client",
+      "name": "Connection Handling",
+      "description": "Connection management",
+      "pattern": "Reconnection, drain, close",
+      "example": "Client usage"
+    },
+    {
+      "id": "nats028",
+      "type": "client",
+      "name": "Headers",
+      "description": "Message metadata",
+      "pattern": "Custom headers, NATS headers",
+      "example": "Client usage"
+    },
+    {
+      "id": "nats029",
+      "type": "patterns",
+      "name": "Service API",
+      "description": "Microservices pattern",
+      "pattern": "Service discovery, stats, ping",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "nats030",
+      "type": "patterns",
+      "name": "Exactly Once",
+      "description": "Message deduplication",
+      "pattern": "Message ID, dedup window",
+      "example": "Patterns usage"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "category": "game-development",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "game001",
+      "type": "fundamentals",
+      "name": "Game Loop",
+      "description": "Core cycle",
+      "pattern": "while(running) { processInput(); update(deltaTime); render(); }",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "game002",
+      "type": "fundamentals",
+      "name": "Delta Time",
+      "description": "Frame independence",
+      "pattern": "position += velocity * deltaTime; // consistent across framerates",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "game003",
+      "type": "fundamentals",
+      "name": "Fixed Timestep",
+      "description": "Physics consistency",
+      "pattern": "Accumulator pattern: while(acc >= dt) { physicsUpdate(dt); acc -= dt; }",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "game004",
+      "type": "fundamentals",
+      "name": "State Machine",
+      "description": "Game states",
+      "pattern": "Menu -> Playing -> Paused -> GameOver, state transitions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "game005",
+      "type": "architecture",
+      "name": "Entity Component System",
+      "description": "ECS pattern",
+      "pattern": "Entities (IDs), Components (data), Systems (logic)",
+      "example": "Architecture usage"
+    },
+    {
+      "id": "game006",
+      "type": "architecture",
+      "name": "Scene Graph",
+      "description": "Hierarchy",
+      "pattern": "Parent-child transforms, local vs world coordinates",
+      "example": "Architecture usage"
+    },
+    {
+      "id": "game007",
+      "type": "architecture",
+      "name": "Object Pooling",
+      "description": "Reuse objects",
+      "pattern": "Pre-allocate, activate/deactivate, avoid GC spikes",
+      "example": "Architecture usage"
+    },
+    {
+      "id": "game008",
+      "type": "physics",
+      "name": "Collision Detection",
+      "description": "Overlap testing",
+      "pattern": "AABB, circle, SAT, spatial partitioning (quadtree, grid)",
+      "example": "Physics usage"
+    },
+    {
+      "id": "game009",
+      "type": "physics",
+      "name": "Collision Response",
+      "description": "React to collision",
+      "pattern": "Bounce, slide, stop, trigger events",
+      "example": "Physics usage"
+    },
+    {
+      "id": "game010",
+      "type": "physics",
+      "name": "2D Physics",
+      "description": "Simulation",
+      "pattern": "Velocity, acceleration, gravity, friction, mass",
+      "example": "Physics usage"
+    },
+    {
+      "id": "game011",
+      "type": "physics",
+      "name": "Raycasting",
+      "description": "Line intersection",
+      "pattern": "Visibility, shooting, line of sight, obstacle detection",
+      "example": "Physics usage"
+    },
+    {
+      "id": "game012",
+      "type": "input",
+      "name": "Input Handling",
+      "description": "Player input",
+      "pattern": "Keyboard, mouse, gamepad, touch, input mapping",
+      "example": "Input usage"
+    },
+    {
+      "id": "game013",
+      "type": "input",
+      "name": "Input Buffering",
+      "description": "Responsive controls",
+      "pattern": "Store inputs briefly, coyote time, jump buffering",
+      "example": "Input usage"
+    },
+    {
+      "id": "game014",
+      "type": "graphics",
+      "name": "Sprite Animation",
+      "description": "2D animation",
+      "pattern": "Sprite sheets, frame timing, animation states",
+      "example": "Graphics usage"
+    },
+    {
+      "id": "game015",
+      "type": "graphics",
+      "name": "Tilemaps",
+      "description": "Level design",
+      "pattern": "Tile-based levels, collision layers, auto-tiling",
+      "example": "Graphics usage"
+    },
+    {
+      "id": "game016",
+      "type": "graphics",
+      "name": "Parallax Scrolling",
+      "description": "Depth effect",
+      "pattern": "Multiple layers moving at different speeds",
+      "example": "Graphics usage"
+    },
+    {
+      "id": "game017",
+      "type": "graphics",
+      "name": "Camera Systems",
+      "description": "View control",
+      "pattern": "Follow, lerp smoothing, bounds, shake effects",
+      "example": "Graphics usage"
+    },
+    {
+      "id": "game018",
+      "type": "audio",
+      "name": "Game Audio",
+      "description": "Sound design",
+      "pattern": "SFX, music, spatial audio, audio pools",
+      "example": "Audio usage"
+    },
+    {
+      "id": "game019",
+      "type": "ai",
+      "name": "Pathfinding",
+      "description": "Navigation",
+      "pattern": "A*, Dijkstra, navigation meshes, waypoints",
+      "example": "Ai usage"
+    },
+    {
+      "id": "game020",
+      "type": "ai",
+      "name": "Behavior Trees",
+      "description": "AI decisions",
+      "pattern": "Selector, Sequence, Decorator nodes, modular AI",
+      "example": "Ai usage"
+    },
+    {
+      "id": "game021",
+      "type": "ai",
+      "name": "Steering Behaviors",
+      "description": "Movement AI",
+      "pattern": "Seek, flee, arrive, wander, flocking",
+      "example": "Ai usage"
+    },
+    {
+      "id": "game022",
+      "type": "web",
+      "name": "Canvas 2D",
+      "description": "2D rendering",
+      "pattern": "ctx.drawImage, clearRect, requestAnimationFrame",
+      "example": "Web usage"
+    },
+    {
+      "id": "game023",
+      "type": "web",
+      "name": "Phaser",
+      "description": "2D game framework",
+      "pattern": "Scenes, sprites, physics (Arcade, Matter), tilemaps",
+      "example": "Web usage"
+    },
+    {
+      "id": "game024",
+      "type": "web",
+      "name": "PixiJS",
+      "description": "2D renderer",
+      "pattern": "Fast WebGL rendering, sprites, containers, filters",
+      "example": "Web usage"
+    },
+    {
+      "id": "game025",
+      "type": "networking",
+      "name": "Multiplayer Basics",
+      "description": "Online games",
+      "pattern": "Client-server, authoritative server, client prediction",
+      "example": "Networking usage"
+    },
+    {
+      "id": "game026",
+      "type": "networking",
+      "name": "Lag Compensation",
+      "description": "Network latency",
+      "pattern": "Interpolation, extrapolation, rollback netcode",
+      "example": "Networking usage"
+    },
+    {
+      "id": "game027",
+      "type": "data",
+      "name": "Save Systems",
+      "description": "Persistence",
+      "pattern": "LocalStorage, IndexedDB, serialization, save slots",
+      "example": "Data usage"
+    },
+    {
+      "id": "game028",
+      "type": "data",
+      "name": "Level Data",
+      "description": "Level storage",
+      "pattern": "JSON levels, Tiled editor export, procedural generation",
+      "example": "Data usage"
+    },
+    {
+      "id": "game029",
+      "type": "optimization",
+      "name": "Game Optimization",
+      "description": "Performance",
+      "pattern": "Object pooling, spatial partitioning, LOD, culling",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "game030",
+      "type": "tools",
+      "name": "Game Dev Tools",
+      "description": "Development",
+      "pattern": "Debug overlay, level editor, hot reload, profiling",
+      "example": "Tools usage"
+    }
+  ]
+}

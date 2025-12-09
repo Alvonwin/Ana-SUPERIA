@@ -1,0 +1,246 @@
+{
+  "category": "fortran-scientific",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "for001",
+      "type": "fundamentals",
+      "name": "Fortran Basics",
+      "description": "Fortran syntax",
+      "pattern": "Variables, types, arrays, control",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "for002",
+      "type": "fundamentals",
+      "name": "Modern Fortran",
+      "description": "F90/F95/F2003",
+      "pattern": "Modules, derived types, pointers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "for003",
+      "type": "fundamentals",
+      "name": "Array Programming",
+      "description": "Array operations",
+      "pattern": "Array slicing, where, forall",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "for004",
+      "type": "io",
+      "name": "File I/O",
+      "description": "Input/Output",
+      "pattern": "open, read, write, formatted/unformatted",
+      "example": "Io usage"
+    },
+    {
+      "id": "for005",
+      "type": "io",
+      "name": "Namelist",
+      "description": "Structured I/O",
+      "pattern": "namelist, input files, configuration",
+      "example": "Io usage"
+    },
+    {
+      "id": "for006",
+      "type": "numerical",
+      "name": "Numerical Computing",
+      "description": "Scientific calc",
+      "pattern": "Floating point, precision, accuracy",
+      "example": "Numerical usage"
+    },
+    {
+      "id": "for007",
+      "type": "numerical",
+      "name": "BLAS",
+      "description": "Linear algebra",
+      "pattern": "dgemm, dgemv, matrix operations",
+      "example": "Numerical usage"
+    },
+    {
+      "id": "for008",
+      "type": "numerical",
+      "name": "LAPACK",
+      "description": "Linear algebra package",
+      "pattern": "Eigenvalues, SVD, LU, solvers",
+      "example": "Numerical usage"
+    },
+    {
+      "id": "for009",
+      "type": "numerical",
+      "name": "FFT Libraries",
+      "description": "Spectral analysis",
+      "pattern": "FFTW, transform, frequencies",
+      "example": "Numerical usage"
+    },
+    {
+      "id": "for010",
+      "type": "parallel",
+      "name": "OpenMP",
+      "description": "Shared memory",
+      "pattern": "!$omp parallel, do, reduction",
+      "example": "Parallel usage"
+    },
+    {
+      "id": "for011",
+      "type": "parallel",
+      "name": "MPI",
+      "description": "Message passing",
+      "pattern": "MPI_Send, MPI_Recv, collective",
+      "example": "Parallel usage"
+    },
+    {
+      "id": "for012",
+      "type": "parallel",
+      "name": "Coarray Fortran",
+      "description": "Native parallel",
+      "pattern": "Coarrays, images, sync",
+      "example": "Parallel usage"
+    },
+    {
+      "id": "for013",
+      "type": "hpc",
+      "name": "HPC Computing",
+      "description": "Supercomputing",
+      "pattern": "Clusters, batch, SLURM, PBS",
+      "example": "Hpc usage"
+    },
+    {
+      "id": "for014",
+      "type": "hpc",
+      "name": "GPU Offloading",
+      "description": "GPU computing",
+      "pattern": "OpenACC, CUDA Fortran, offload",
+      "example": "Hpc usage"
+    },
+    {
+      "id": "for015",
+      "type": "hpc",
+      "name": "Vectorization",
+      "description": "SIMD optimization",
+      "pattern": "Auto-vectorization, intrinsics",
+      "example": "Hpc usage"
+    },
+    {
+      "id": "for016",
+      "type": "interop",
+      "name": "C Interoperability",
+      "description": "C binding",
+      "pattern": "iso_c_binding, c_ptr, interfaces",
+      "example": "Interop usage"
+    },
+    {
+      "id": "for017",
+      "type": "interop",
+      "name": "Python Integration",
+      "description": "Python calling",
+      "pattern": "f2py, numpy.f2py, ctypes",
+      "example": "Interop usage"
+    },
+    {
+      "id": "for018",
+      "type": "applications",
+      "name": "CFD",
+      "description": "Fluid dynamics",
+      "pattern": "Navier-Stokes, mesh, discretization",
+      "example": "Applications usage"
+    },
+    {
+      "id": "for019",
+      "type": "applications",
+      "name": "Weather/Climate",
+      "description": "Atmospheric modeling",
+      "pattern": "WRF, CESM, GCM, ensemble",
+      "example": "Applications usage"
+    },
+    {
+      "id": "for020",
+      "type": "applications",
+      "name": "Molecular Dynamics",
+      "description": "Atomistic simulation",
+      "pattern": "Force fields, integration, LAMMPS",
+      "example": "Applications usage"
+    },
+    {
+      "id": "for021",
+      "type": "applications",
+      "name": "Finite Element",
+      "description": "FEM analysis",
+      "pattern": "Mesh, elements, assembly, solve",
+      "example": "Applications usage"
+    },
+    {
+      "id": "for022",
+      "type": "applications",
+      "name": "Quantum Chemistry",
+      "description": "Electronic structure",
+      "pattern": "Gaussian, DFT, basis sets",
+      "example": "Applications usage"
+    },
+    {
+      "id": "for023",
+      "type": "build",
+      "name": "Compilers",
+      "description": "Fortran compilers",
+      "pattern": "gfortran, ifort, nvfortran",
+      "example": "Build usage"
+    },
+    {
+      "id": "for024",
+      "type": "build",
+      "name": "Build Systems",
+      "description": "Building projects",
+      "pattern": "CMake, Make, fpm",
+      "example": "Build usage"
+    },
+    {
+      "id": "for025",
+      "type": "build",
+      "name": "Optimization Flags",
+      "description": "Compiler options",
+      "pattern": "-O3, -march, -flto, profiling",
+      "example": "Build usage"
+    },
+    {
+      "id": "for026",
+      "type": "legacy",
+      "name": "Fortran 77",
+      "description": "Classic Fortran",
+      "pattern": "Fixed format, common blocks",
+      "example": "Legacy usage"
+    },
+    {
+      "id": "for027",
+      "type": "legacy",
+      "name": "Code Modernization",
+      "description": "Updating legacy",
+      "pattern": "Refactoring, modules, F77 to F90",
+      "example": "Legacy usage"
+    },
+    {
+      "id": "for028",
+      "type": "testing",
+      "name": "Unit Testing",
+      "description": "Testing Fortran",
+      "pattern": "pFUnit, FRUIT, assertions",
+      "example": "Testing usage"
+    },
+    {
+      "id": "for029",
+      "type": "debugging",
+      "name": "Debugging",
+      "description": "Debug tools",
+      "pattern": "gdb, TotalView, Valgrind",
+      "example": "Debugging usage"
+    },
+    {
+      "id": "for030",
+      "type": "documentation",
+      "name": "Documentation",
+      "description": "Code docs",
+      "pattern": "FORD, Doxygen, comments",
+      "example": "Documentation usage"
+    }
+  ]
+}

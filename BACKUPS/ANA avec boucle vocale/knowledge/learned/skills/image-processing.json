@@ -1,0 +1,246 @@
+{
+  "category": "image-processing",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "img001",
+      "type": "fundamentals",
+      "name": "Image Formats",
+      "description": "Format selection",
+      "pattern": "JPEG for photos, PNG for transparency, WebP for web, AVIF next-gen",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "img002",
+      "type": "fundamentals",
+      "name": "Color Spaces",
+      "description": "Color models",
+      "pattern": "RGB, CMYK, HSL, LAB - convert for different uses",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "img003",
+      "type": "fundamentals",
+      "name": "Resolution & DPI",
+      "description": "Image dimensions",
+      "pattern": "72 DPI web, 300 DPI print, retina 2x/3x",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "img004",
+      "type": "optimization",
+      "name": "Image Compression",
+      "description": "Reduce file size",
+      "pattern": "Lossy vs lossless, quality settings, squoosh.app",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "img005",
+      "type": "optimization",
+      "name": "Responsive Images",
+      "description": "Right size for device",
+      "pattern": "srcset, sizes, picture element, art direction",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "img006",
+      "type": "optimization",
+      "name": "Lazy Loading",
+      "description": "Load when visible",
+      "pattern": "loading='lazy', Intersection Observer, blur placeholder",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "img007",
+      "type": "sharp",
+      "name": "Sharp Library",
+      "description": "Node.js processing",
+      "pattern": "sharp(input).resize(300).webp().toFile(output)",
+      "example": "Sharp usage"
+    },
+    {
+      "id": "img008",
+      "type": "sharp",
+      "name": "Sharp Resize",
+      "description": "Dimension changes",
+      "pattern": "resize({width, height, fit: 'cover/contain/fill'})",
+      "example": "Sharp usage"
+    },
+    {
+      "id": "img009",
+      "type": "sharp",
+      "name": "Sharp Operations",
+      "description": "Transformations",
+      "pattern": "rotate(), flip(), blur(), sharpen(), grayscale()",
+      "example": "Sharp usage"
+    },
+    {
+      "id": "img010",
+      "type": "sharp",
+      "name": "Sharp Composite",
+      "description": "Layer images",
+      "pattern": "composite([{input: overlay, gravity: 'southeast'}])",
+      "example": "Sharp usage"
+    },
+    {
+      "id": "img011",
+      "type": "canvas",
+      "name": "Canvas API",
+      "description": "Browser drawing",
+      "pattern": "ctx.drawImage(), getImageData(), putImageData()",
+      "example": "Canvas usage"
+    },
+    {
+      "id": "img012",
+      "type": "canvas",
+      "name": "Canvas Filters",
+      "description": "Apply effects",
+      "pattern": "ctx.filter = 'blur(5px) brightness(1.2)'",
+      "example": "Canvas usage"
+    },
+    {
+      "id": "img013",
+      "type": "canvas",
+      "name": "Pixel Manipulation",
+      "description": "Direct access",
+      "pattern": "imageData.data[i] for RGBA values, iterate pixels",
+      "example": "Canvas usage"
+    },
+    {
+      "id": "img014",
+      "type": "jimp",
+      "name": "Jimp Library",
+      "description": "Pure JS processing",
+      "pattern": "Jimp.read(path).then(img => img.resize(256).write(out))",
+      "example": "Jimp usage"
+    },
+    {
+      "id": "img015",
+      "type": "imagemagick",
+      "name": "ImageMagick",
+      "description": "CLI processing",
+      "pattern": "convert input.jpg -resize 50% -quality 80 output.jpg",
+      "example": "Imagemagick usage"
+    },
+    {
+      "id": "img016",
+      "type": "imagemagick",
+      "name": "ImageMagick Batch",
+      "description": "Process multiple",
+      "pattern": "mogrify -resize 800x600 -path output/ *.jpg",
+      "example": "Imagemagick usage"
+    },
+    {
+      "id": "img017",
+      "type": "transformations",
+      "name": "Cropping",
+      "description": "Extract region",
+      "pattern": "extract({left, top, width, height}), smart crop",
+      "example": "Transformations usage"
+    },
+    {
+      "id": "img018",
+      "type": "transformations",
+      "name": "Watermarking",
+      "description": "Add overlay",
+      "pattern": "Composite with opacity, position, text overlay",
+      "example": "Transformations usage"
+    },
+    {
+      "id": "img019",
+      "type": "transformations",
+      "name": "Thumbnails",
+      "description": "Generate previews",
+      "pattern": "Multiple sizes, square crop, maintain aspect",
+      "example": "Transformations usage"
+    },
+    {
+      "id": "img020",
+      "type": "transformations",
+      "name": "Format Conversion",
+      "description": "Change format",
+      "pattern": "toFormat('webp', {quality: 80}), batch convert",
+      "example": "Transformations usage"
+    },
+    {
+      "id": "img021",
+      "type": "ai",
+      "name": "Background Removal",
+      "description": "Remove bg",
+      "pattern": "remove.bg API, rembg library, U-Net models",
+      "example": "Ai usage"
+    },
+    {
+      "id": "img022",
+      "type": "ai",
+      "name": "Image Classification",
+      "description": "Identify content",
+      "pattern": "TensorFlow.js, mobilenet, custom models",
+      "example": "Ai usage"
+    },
+    {
+      "id": "img023",
+      "type": "ai",
+      "name": "Face Detection",
+      "description": "Find faces",
+      "pattern": "face-api.js, landmarks, expressions, recognition",
+      "example": "Ai usage"
+    },
+    {
+      "id": "img024",
+      "type": "ai",
+      "name": "OCR",
+      "description": "Extract text",
+      "pattern": "Tesseract.js, Google Vision API, structured data",
+      "example": "Ai usage"
+    },
+    {
+      "id": "img025",
+      "type": "services",
+      "name": "Cloudinary",
+      "description": "Image CDN",
+      "pattern": "URL transforms, automatic optimization, AI features",
+      "example": "Services usage"
+    },
+    {
+      "id": "img026",
+      "type": "services",
+      "name": "Imgix",
+      "description": "Real-time processing",
+      "pattern": "URL parameters for resize, crop, filters, faces",
+      "example": "Services usage"
+    },
+    {
+      "id": "img027",
+      "type": "svg",
+      "name": "SVG Manipulation",
+      "description": "Vector graphics",
+      "pattern": "SVGO optimization, programmatic generation, animation",
+      "example": "Svg usage"
+    },
+    {
+      "id": "img028",
+      "type": "metadata",
+      "name": "EXIF Data",
+      "description": "Image metadata",
+      "pattern": "exif-reader, extract camera info, GPS, strip privacy",
+      "example": "Metadata usage"
+    },
+    {
+      "id": "img029",
+      "type": "upload",
+      "name": "Image Upload",
+      "description": "Handle uploads",
+      "pattern": "multer, validation, virus scan, size limits",
+      "example": "Upload usage"
+    },
+    {
+      "id": "img030",
+      "type": "storage",
+      "name": "Image Storage",
+      "description": "Store images",
+      "pattern": "S3, GCS, local with CDN, organized paths, cleanup",
+      "example": "Storage usage"
+    }
+  ]
+}

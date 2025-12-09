@@ -1,0 +1,11 @@
+[
+  {
+    "id": "voice_1764482003437_ackpu",
+    "timestamp": "2025-11-30T05:53:23.437Z",
+    "text": "Bonjour Ana, comment vas-tu?",
+    "conversationId": null,
+    "llm": "phi3:mini-128k",
+    "durationSec": 3.5,
+    "meta": {}
+  }
+]

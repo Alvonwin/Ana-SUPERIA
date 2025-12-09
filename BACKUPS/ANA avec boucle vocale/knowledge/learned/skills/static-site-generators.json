@@ -1,0 +1,246 @@
+{
+  "category": "static-site-generators",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ssg001",
+      "type": "fundamentals",
+      "name": "SSG Concepts",
+      "description": "Static vs dynamic",
+      "pattern": "Pre-rendering, build-time, no server",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ssg002",
+      "type": "fundamentals",
+      "name": "Jamstack",
+      "description": "Modern architecture",
+      "pattern": "JavaScript, APIs, Markup",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ssg003",
+      "type": "fundamentals",
+      "name": "Markdown Content",
+      "description": "Content authoring",
+      "pattern": "Markdown, MDX, frontmatter",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ssg004",
+      "type": "fundamentals",
+      "name": "Templating",
+      "description": "Template engines",
+      "pattern": "Layouts, partials, includes",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ssg005",
+      "type": "fundamentals",
+      "name": "Asset Processing",
+      "description": "Build pipeline",
+      "pattern": "CSS, JS bundling, images",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ssg006",
+      "type": "gatsby",
+      "name": "Gatsby Basics",
+      "description": "React-based SSG",
+      "pattern": "gatsby new, develop, build",
+      "example": "Gatsby usage"
+    },
+    {
+      "id": "ssg007",
+      "type": "gatsby",
+      "name": "GraphQL Data",
+      "description": "Gatsby data layer",
+      "pattern": "useStaticQuery, page queries",
+      "example": "Gatsby usage"
+    },
+    {
+      "id": "ssg008",
+      "type": "gatsby",
+      "name": "Gatsby Plugins",
+      "description": "Extend functionality",
+      "pattern": "source plugins, transformer plugins",
+      "example": "Gatsby usage"
+    },
+    {
+      "id": "ssg009",
+      "type": "gatsby",
+      "name": "Gatsby Images",
+      "description": "Image optimization",
+      "pattern": "gatsby-image, sharp, lazy loading",
+      "example": "Gatsby usage"
+    },
+    {
+      "id": "ssg010",
+      "type": "nextjs",
+      "name": "Next.js Static",
+      "description": "Static export",
+      "pattern": "getStaticProps, getStaticPaths",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "ssg011",
+      "type": "nextjs",
+      "name": "ISR",
+      "description": "Incremental Static",
+      "pattern": "revalidate, on-demand ISR",
+      "example": "Nextjs usage"
+    },
+    {
+      "id": "ssg012",
+      "type": "hugo",
+      "name": "Hugo Basics",
+      "description": "Go-based SSG",
+      "pattern": "hugo new site, hugo server",
+      "example": "Hugo usage"
+    },
+    {
+      "id": "ssg013",
+      "type": "hugo",
+      "name": "Hugo Templates",
+      "description": "Go templates",
+      "pattern": "{{ .Title }}, range, partial",
+      "example": "Hugo usage"
+    },
+    {
+      "id": "ssg014",
+      "type": "hugo",
+      "name": "Hugo Themes",
+      "description": "Theme system",
+      "pattern": "git submodule, theme config",
+      "example": "Hugo usage"
+    },
+    {
+      "id": "ssg015",
+      "type": "hugo",
+      "name": "Hugo Shortcodes",
+      "description": "Content components",
+      "pattern": "{{< youtube >}}, custom shortcodes",
+      "example": "Hugo usage"
+    },
+    {
+      "id": "ssg016",
+      "type": "jekyll",
+      "name": "Jekyll Basics",
+      "description": "Ruby-based SSG",
+      "pattern": "bundle exec jekyll serve",
+      "example": "Jekyll usage"
+    },
+    {
+      "id": "ssg017",
+      "type": "jekyll",
+      "name": "Liquid Templates",
+      "description": "Template language",
+      "pattern": "{{ page.title }}, {% for %}",
+      "example": "Jekyll usage"
+    },
+    {
+      "id": "ssg018",
+      "type": "jekyll",
+      "name": "Jekyll Collections",
+      "description": "Custom content types",
+      "pattern": "_posts, custom collections",
+      "example": "Jekyll usage"
+    },
+    {
+      "id": "ssg019",
+      "type": "eleventy",
+      "name": "11ty Basics",
+      "description": "Flexible SSG",
+      "pattern": "npx @11ty/eleventy",
+      "example": "Eleventy usage"
+    },
+    {
+      "id": "ssg020",
+      "type": "eleventy",
+      "name": "11ty Templates",
+      "description": "Multi-template",
+      "pattern": "Nunjucks, Liquid, EJS, Markdown",
+      "example": "Eleventy usage"
+    },
+    {
+      "id": "ssg021",
+      "type": "eleventy",
+      "name": "11ty Data",
+      "description": "Data cascade",
+      "pattern": "_data, front matter, computed",
+      "example": "Eleventy usage"
+    },
+    {
+      "id": "ssg022",
+      "type": "astro",
+      "name": "Astro Basics",
+      "description": "Island architecture",
+      "pattern": "astro build, .astro components",
+      "example": "Astro usage"
+    },
+    {
+      "id": "ssg023",
+      "type": "astro",
+      "name": "Astro Islands",
+      "description": "Partial hydration",
+      "pattern": "client:load, client:visible",
+      "example": "Astro usage"
+    },
+    {
+      "id": "ssg024",
+      "type": "astro",
+      "name": "Astro Integrations",
+      "description": "Framework support",
+      "pattern": "React, Vue, Svelte in Astro",
+      "example": "Astro usage"
+    },
+    {
+      "id": "ssg025",
+      "type": "deployment",
+      "name": "Netlify Deploy",
+      "description": "Netlify hosting",
+      "pattern": "netlify.toml, functions, forms",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "ssg026",
+      "type": "deployment",
+      "name": "Vercel Deploy",
+      "description": "Vercel hosting",
+      "pattern": "vercel.json, edge functions",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "ssg027",
+      "type": "deployment",
+      "name": "GitHub Pages",
+      "description": "Free hosting",
+      "pattern": "gh-pages branch, Actions",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "ssg028",
+      "type": "deployment",
+      "name": "Cloudflare Pages",
+      "description": "Edge hosting",
+      "pattern": "Workers integration, fast CDN",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "ssg029",
+      "type": "advanced",
+      "name": "Headless CMS",
+      "description": "Content backends",
+      "pattern": "Contentful, Sanity, Strapi",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ssg030",
+      "type": "advanced",
+      "name": "Build Optimization",
+      "description": "Fast builds",
+      "pattern": "Incremental builds, caching",
+      "example": "Advanced usage"
+    }
+  ]
+}

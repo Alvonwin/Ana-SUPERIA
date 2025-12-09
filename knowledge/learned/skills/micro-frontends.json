@@ -1,0 +1,246 @@
+{
+  "category": "micro-frontends",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "mf001",
+      "type": "fundamentals",
+      "name": "Micro-Frontend Concept",
+      "description": "Frontend decomposition",
+      "pattern": "Independent teams, separate deployments, composed UI",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "mf002",
+      "type": "fundamentals",
+      "name": "When to Use",
+      "description": "Right fit",
+      "pattern": "Large teams, different tech stacks, independent deploys",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "mf003",
+      "type": "fundamentals",
+      "name": "Integration Types",
+      "description": "Composition approaches",
+      "pattern": "Build-time, server-side, runtime, edge-side",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "mf004",
+      "type": "module-federation",
+      "name": "Module Federation",
+      "description": "Webpack 5 feature",
+      "pattern": "Share modules at runtime, remote/host containers",
+      "example": "Module-federation usage"
+    },
+    {
+      "id": "mf005",
+      "type": "module-federation",
+      "name": "Federation Config",
+      "description": "Setup",
+      "pattern": "exposes, remotes, shared dependencies config",
+      "example": "Module-federation usage"
+    },
+    {
+      "id": "mf006",
+      "type": "module-federation",
+      "name": "Shared Dependencies",
+      "description": "Avoid duplication",
+      "pattern": "shared: {react: {singleton: true}}, version matching",
+      "example": "Module-federation usage"
+    },
+    {
+      "id": "mf007",
+      "type": "module-federation",
+      "name": "Dynamic Remotes",
+      "description": "Runtime loading",
+      "pattern": "Load remote URL dynamically, feature flags",
+      "example": "Module-federation usage"
+    },
+    {
+      "id": "mf008",
+      "type": "single-spa",
+      "name": "Single-SPA",
+      "description": "Framework agnostic",
+      "pattern": "Root config, register applications, lifecycle hooks",
+      "example": "Single-spa usage"
+    },
+    {
+      "id": "mf009",
+      "type": "single-spa",
+      "name": "Application Lifecycle",
+      "description": "Mount/unmount",
+      "pattern": "bootstrap, mount, unmount functions per app",
+      "example": "Single-spa usage"
+    },
+    {
+      "id": "mf010",
+      "type": "single-spa",
+      "name": "Parcels",
+      "description": "Shared components",
+      "pattern": "Mount components from any framework, reusable",
+      "example": "Single-spa usage"
+    },
+    {
+      "id": "mf011",
+      "type": "qiankun",
+      "name": "Qiankun",
+      "description": "Chinese micro-FE",
+      "pattern": "Based on single-spa, sandbox, prefetch, Ant Design",
+      "example": "Qiankun usage"
+    },
+    {
+      "id": "mf012",
+      "type": "iframe",
+      "name": "Iframe Approach",
+      "description": "Isolated frames",
+      "pattern": "Strong isolation, postMessage communication, legacy",
+      "example": "Iframe usage"
+    },
+    {
+      "id": "mf013",
+      "type": "web-components",
+      "name": "Web Components",
+      "description": "Native composition",
+      "pattern": "Custom elements, Shadow DOM, framework agnostic",
+      "example": "Web-components usage"
+    },
+    {
+      "id": "mf014",
+      "type": "communication",
+      "name": "Cross-App Events",
+      "description": "Event bus",
+      "pattern": "Custom events, pub/sub, window.dispatchEvent",
+      "example": "Communication usage"
+    },
+    {
+      "id": "mf015",
+      "type": "communication",
+      "name": "Shared State",
+      "description": "Global state",
+      "pattern": "Custom store, Redux shared slice, RxJS",
+      "example": "Communication usage"
+    },
+    {
+      "id": "mf016",
+      "type": "communication",
+      "name": "URL Routing",
+      "description": "Route coordination",
+      "pattern": "Shell handles top-level, apps handle sub-routes",
+      "example": "Communication usage"
+    },
+    {
+      "id": "mf017",
+      "type": "styling",
+      "name": "Style Isolation",
+      "description": "CSS conflicts",
+      "pattern": "Shadow DOM, CSS Modules, scoped styles, BEM",
+      "example": "Styling usage"
+    },
+    {
+      "id": "mf018",
+      "type": "styling",
+      "name": "Shared Design System",
+      "description": "Consistent UI",
+      "pattern": "NPM package, web components, CSS variables",
+      "example": "Styling usage"
+    },
+    {
+      "id": "mf019",
+      "type": "shell",
+      "name": "App Shell",
+      "description": "Container app",
+      "pattern": "Handles layout, auth, navigation, loads micro-apps",
+      "example": "Shell usage"
+    },
+    {
+      "id": "mf020",
+      "type": "shell",
+      "name": "Layout Management",
+      "description": "Compose apps",
+      "pattern": "Slots, regions, dynamic placement",
+      "example": "Shell usage"
+    },
+    {
+      "id": "mf021",
+      "type": "deployment",
+      "name": "Independent Deploys",
+      "description": "Separate CI/CD",
+      "pattern": "Each team deploys independently, version URLs",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "mf022",
+      "type": "deployment",
+      "name": "Version Management",
+      "description": "Coordinate versions",
+      "pattern": "Semantic versioning, compatibility matrix",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "mf023",
+      "type": "deployment",
+      "name": "Feature Flags",
+      "description": "Progressive rollout",
+      "pattern": "Enable micro-apps per user, A/B testing",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "mf024",
+      "type": "performance",
+      "name": "Bundle Optimization",
+      "description": "Reduce duplication",
+      "pattern": "Shared vendor bundles, dynamic imports",
+      "example": "Performance usage"
+    },
+    {
+      "id": "mf025",
+      "type": "performance",
+      "name": "Lazy Loading",
+      "description": "Load on demand",
+      "pattern": "Load micro-app when navigated, prefetch",
+      "example": "Performance usage"
+    },
+    {
+      "id": "mf026",
+      "type": "performance",
+      "name": "Critical Path",
+      "description": "Fast initial load",
+      "pattern": "Shell loads fast, defer non-critical apps",
+      "example": "Performance usage"
+    },
+    {
+      "id": "mf027",
+      "type": "testing",
+      "name": "Testing Strategy",
+      "description": "Test in isolation",
+      "pattern": "Unit test apps, integration test composition",
+      "example": "Testing usage"
+    },
+    {
+      "id": "mf028",
+      "type": "testing",
+      "name": "Contract Testing",
+      "description": "API contracts",
+      "pattern": "Pact for cross-app APIs, schema validation",
+      "example": "Testing usage"
+    },
+    {
+      "id": "mf029",
+      "type": "challenges",
+      "name": "Common Pitfalls",
+      "description": "What to avoid",
+      "pattern": "Over-fragmentation, perf issues, complex debugging",
+      "example": "Challenges usage"
+    },
+    {
+      "id": "mf030",
+      "type": "tools",
+      "name": "Tooling",
+      "description": "Development tools",
+      "pattern": "Turborepo, Nx, monorepo management, dev proxy",
+      "example": "Tools usage"
+    }
+  ]
+}

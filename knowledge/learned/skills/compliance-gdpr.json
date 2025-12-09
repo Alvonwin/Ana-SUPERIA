@@ -1,0 +1,246 @@
+{
+  "category": "compliance-gdpr",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cg001",
+      "type": "gdpr",
+      "name": "GDPR Basics",
+      "description": "EU regulation",
+      "pattern": "Data protection, privacy rights, applies to EU residents",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg002",
+      "type": "gdpr",
+      "name": "Personal Data",
+      "description": "What is PII",
+      "pattern": "Name, email, IP, location, any identifying information",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg003",
+      "type": "gdpr",
+      "name": "Lawful Basis",
+      "description": "Legal grounds",
+      "pattern": "Consent, contract, legal obligation, legitimate interest",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg004",
+      "type": "gdpr",
+      "name": "Consent",
+      "description": "User consent",
+      "pattern": "Freely given, specific, informed, unambiguous, withdrawable",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg005",
+      "type": "gdpr",
+      "name": "Data Subject Rights",
+      "description": "User rights",
+      "pattern": "Access, rectification, erasure, portability, objection",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg006",
+      "type": "gdpr",
+      "name": "Right to Erasure",
+      "description": "Delete data",
+      "pattern": "GDPR deletion requests, 30 days, cascading delete",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg007",
+      "type": "gdpr",
+      "name": "Data Portability",
+      "description": "Export data",
+      "pattern": "Machine-readable format, JSON export, user download",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg008",
+      "type": "gdpr",
+      "name": "Privacy by Design",
+      "description": "Built-in privacy",
+      "pattern": "Default privacy settings, minimal data, encryption",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg009",
+      "type": "gdpr",
+      "name": "Data Minimization",
+      "description": "Collect less",
+      "pattern": "Only collect what's needed, purpose limitation",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg010",
+      "type": "gdpr",
+      "name": "Breach Notification",
+      "description": "Report breaches",
+      "pattern": "72 hours to authority, notify affected users",
+      "example": "Gdpr usage"
+    },
+    {
+      "id": "cg011",
+      "type": "implementation",
+      "name": "Cookie Consent",
+      "description": "Cookie banner",
+      "pattern": "Opt-in required, granular choices, remember preference",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "cg012",
+      "type": "implementation",
+      "name": "Privacy Policy",
+      "description": "Transparency",
+      "pattern": "Clear language, what data, why, how long, rights",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "cg013",
+      "type": "implementation",
+      "name": "Data Inventory",
+      "description": "Know your data",
+      "pattern": "Map all personal data, sources, storage, flows",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "cg014",
+      "type": "implementation",
+      "name": "Retention Policies",
+      "description": "Data lifecycle",
+      "pattern": "Define retention periods, auto-delete, legal holds",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "cg015",
+      "type": "implementation",
+      "name": "Anonymization",
+      "description": "Remove identity",
+      "pattern": "Can't re-identify, k-anonymity, differential privacy",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "cg016",
+      "type": "implementation",
+      "name": "Pseudonymization",
+      "description": "Replace identifiers",
+      "pattern": "Tokens instead of IDs, reversible with key",
+      "example": "Implementation usage"
+    },
+    {
+      "id": "cg017",
+      "type": "security",
+      "name": "Encryption at Rest",
+      "description": "Store encrypted",
+      "pattern": "AES-256, encrypted databases, key management",
+      "example": "Security usage"
+    },
+    {
+      "id": "cg018",
+      "type": "security",
+      "name": "Encryption in Transit",
+      "description": "TLS everywhere",
+      "pattern": "HTTPS, TLS 1.3, certificate management",
+      "example": "Security usage"
+    },
+    {
+      "id": "cg019",
+      "type": "security",
+      "name": "Access Control",
+      "description": "Limit access",
+      "pattern": "Role-based, least privilege, audit logs",
+      "example": "Security usage"
+    },
+    {
+      "id": "cg020",
+      "type": "pci",
+      "name": "PCI-DSS Basics",
+      "description": "Payment security",
+      "pattern": "12 requirements, SAQ levels, cardholder data",
+      "example": "Pci usage"
+    },
+    {
+      "id": "cg021",
+      "type": "pci",
+      "name": "PCI Scope Reduction",
+      "description": "Minimize scope",
+      "pattern": "Use Stripe/Braintree, never touch card data",
+      "example": "Pci usage"
+    },
+    {
+      "id": "cg022",
+      "type": "pci",
+      "name": "Tokenization",
+      "description": "Replace card data",
+      "pattern": "Store tokens not cards, Stripe tokens",
+      "example": "Pci usage"
+    },
+    {
+      "id": "cg023",
+      "type": "hipaa",
+      "name": "HIPAA Basics",
+      "description": "Health data US",
+      "pattern": "PHI protection, covered entities, BAA required",
+      "example": "Hipaa usage"
+    },
+    {
+      "id": "cg024",
+      "type": "hipaa",
+      "name": "BAA",
+      "description": "Business Associate",
+      "pattern": "Agreement with vendors handling PHI",
+      "example": "Hipaa usage"
+    },
+    {
+      "id": "cg025",
+      "type": "soc2",
+      "name": "SOC 2",
+      "description": "Trust criteria",
+      "pattern": "Security, availability, processing integrity, confidentiality, privacy",
+      "example": "Soc2 usage"
+    },
+    {
+      "id": "cg026",
+      "type": "soc2",
+      "name": "SOC 2 Type 1 vs 2",
+      "description": "Audit types",
+      "pattern": "Type 1: point in time, Type 2: period of time",
+      "example": "Soc2 usage"
+    },
+    {
+      "id": "cg027",
+      "type": "audit",
+      "name": "Audit Logging",
+      "description": "Track access",
+      "pattern": "Who accessed what when, immutable logs, retention",
+      "example": "Audit usage"
+    },
+    {
+      "id": "cg028",
+      "type": "audit",
+      "name": "Data Access Logs",
+      "description": "PII access logs",
+      "pattern": "Log all PII access, justify access, review",
+      "example": "Audit usage"
+    },
+    {
+      "id": "cg029",
+      "type": "international",
+      "name": "Data Residency",
+      "description": "Where data lives",
+      "pattern": "EU data in EU, regional requirements, data sovereignty",
+      "example": "International usage"
+    },
+    {
+      "id": "cg030",
+      "type": "international",
+      "name": "Cross-Border Transfer",
+      "description": "International data",
+      "pattern": "SCCs, adequacy decisions, transfer impact assessment",
+      "example": "International usage"
+    }
+  ]
+}

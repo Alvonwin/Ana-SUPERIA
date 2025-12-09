@@ -1,0 +1,246 @@
+{
+  "category": "web-scraping",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ws001",
+      "type": "fundamentals",
+      "name": "HTTP Requests",
+      "description": "Fetch web pages",
+      "pattern": "requests.get(), headers, cookies, sessions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws002",
+      "type": "fundamentals",
+      "name": "HTML Parsing",
+      "description": "Parse HTML",
+      "pattern": "BeautifulSoup, lxml, html.parser",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws003",
+      "type": "fundamentals",
+      "name": "CSS Selectors",
+      "description": "Element selection",
+      "pattern": "select(), find(), find_all()",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws004",
+      "type": "fundamentals",
+      "name": "XPath",
+      "description": "XML path queries",
+      "pattern": "//div[@class], /html/body, text()",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws005",
+      "type": "fundamentals",
+      "name": "URL Handling",
+      "description": "URL manipulation",
+      "pattern": "urljoin, urlparse, query params",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws006",
+      "type": "fundamentals",
+      "name": "Data Extraction",
+      "description": "Extract content",
+      "pattern": "text, attributes, href, src",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws007",
+      "type": "fundamentals",
+      "name": "Pagination",
+      "description": "Multi-page scraping",
+      "pattern": "next page links, page numbers, infinite scroll",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws008",
+      "type": "fundamentals",
+      "name": "Form Submission",
+      "description": "POST requests",
+      "pattern": "form data, CSRF tokens, login",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws009",
+      "type": "fundamentals",
+      "name": "Rate Limiting",
+      "description": "Polite scraping",
+      "pattern": "time.sleep, random delays, retry logic",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws010",
+      "type": "fundamentals",
+      "name": "Error Handling",
+      "description": "Robust scraping",
+      "pattern": "try/except, status codes, timeouts",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ws011",
+      "type": "browser",
+      "name": "Selenium Basics",
+      "description": "Browser automation",
+      "pattern": "webdriver, Chrome, Firefox, headless",
+      "example": "Browser usage"
+    },
+    {
+      "id": "ws012",
+      "type": "browser",
+      "name": "Selenium Actions",
+      "description": "User interactions",
+      "pattern": "click, send_keys, scroll, wait",
+      "example": "Browser usage"
+    },
+    {
+      "id": "ws013",
+      "type": "browser",
+      "name": "Playwright",
+      "description": "Modern automation",
+      "pattern": "async/await, multiple browsers, contexts",
+      "example": "Browser usage"
+    },
+    {
+      "id": "ws014",
+      "type": "browser",
+      "name": "Puppeteer",
+      "description": "Node.js automation",
+      "pattern": "launch, newPage, evaluate, screenshot",
+      "example": "Browser usage"
+    },
+    {
+      "id": "ws015",
+      "type": "browser",
+      "name": "Dynamic Content",
+      "description": "JavaScript rendering",
+      "pattern": "wait for elements, AJAX, SPA",
+      "example": "Browser usage"
+    },
+    {
+      "id": "ws016",
+      "type": "browser",
+      "name": "Captcha Handling",
+      "description": "Anti-bot bypass",
+      "pattern": "2captcha, manual solve, recognition",
+      "example": "Browser usage"
+    },
+    {
+      "id": "ws017",
+      "type": "advanced",
+      "name": "Scrapy Framework",
+      "description": "Scraping framework",
+      "pattern": "spiders, items, pipelines, middleware",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ws018",
+      "type": "advanced",
+      "name": "Scrapy Selectors",
+      "description": "Data extraction",
+      "pattern": "response.css, response.xpath, ItemLoader",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ws019",
+      "type": "advanced",
+      "name": "Distributed Scraping",
+      "description": "Scale scraping",
+      "pattern": "Scrapy-Redis, distributed queues",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ws020",
+      "type": "advanced",
+      "name": "Proxy Rotation",
+      "description": "IP management",
+      "pattern": "proxy pools, rotating IPs, residential",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ws021",
+      "type": "advanced",
+      "name": "User-Agent Rotation",
+      "description": "Header spoofing",
+      "pattern": "fake-useragent, browser fingerprints",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ws022",
+      "type": "advanced",
+      "name": "API Discovery",
+      "description": "Hidden APIs",
+      "pattern": "network tab, XHR, fetch requests",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ws023",
+      "type": "advanced",
+      "name": "JSON APIs",
+      "description": "API scraping",
+      "pattern": "response.json(), pagination, auth",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ws024",
+      "type": "data",
+      "name": "Data Cleaning",
+      "description": "Clean scraped data",
+      "pattern": "strip, regex, normalize, dedupe",
+      "example": "Data usage"
+    },
+    {
+      "id": "ws025",
+      "type": "data",
+      "name": "Data Storage",
+      "description": "Save results",
+      "pattern": "CSV, JSON, database, cloud storage",
+      "example": "Data usage"
+    },
+    {
+      "id": "ws026",
+      "type": "data",
+      "name": "Data Pipelines",
+      "description": "Process data",
+      "pattern": "ETL, transformation, validation",
+      "example": "Data usage"
+    },
+    {
+      "id": "ws027",
+      "type": "ethics",
+      "name": "Robots.txt",
+      "description": "Respect rules",
+      "pattern": "parse robots.txt, crawl-delay",
+      "example": "Ethics usage"
+    },
+    {
+      "id": "ws028",
+      "type": "ethics",
+      "name": "Legal Considerations",
+      "description": "Terms of service",
+      "pattern": "ToS compliance, CFAA, GDPR",
+      "example": "Ethics usage"
+    },
+    {
+      "id": "ws029",
+      "type": "ethics",
+      "name": "Ethical Scraping",
+      "description": "Best practices",
+      "pattern": "identify yourself, limit requests",
+      "example": "Ethics usage"
+    },
+    {
+      "id": "ws030",
+      "type": "tools",
+      "name": "Scraping Tools",
+      "description": "No-code tools",
+      "pattern": "Octoparse, ParseHub, Import.io",
+      "example": "Tools usage"
+    }
+  ]
+}

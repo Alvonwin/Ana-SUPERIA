@@ -1,0 +1,246 @@
+{
+  "category": "robotics-automation",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "rob001",
+      "type": "fundamentals",
+      "name": "Robotics Basics",
+      "description": "Robot systems",
+      "pattern": "Sensors, actuators, controllers, feedback",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rob002",
+      "type": "fundamentals",
+      "name": "Kinematics",
+      "description": "Motion math",
+      "pattern": "Forward, inverse kinematics, DH parameters",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rob003",
+      "type": "fundamentals",
+      "name": "Dynamics",
+      "description": "Forces and motion",
+      "pattern": "Torque, inertia, equations of motion",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rob004",
+      "type": "fundamentals",
+      "name": "Control Systems",
+      "description": "Robot control",
+      "pattern": "PID, feedback, trajectory tracking",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rob005",
+      "type": "fundamentals",
+      "name": "Path Planning",
+      "description": "Motion planning",
+      "pattern": "RRT, A*, Dijkstra, obstacle avoidance",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "rob006",
+      "type": "ros",
+      "name": "ROS Basics",
+      "description": "Robot OS",
+      "pattern": "Nodes, topics, services, actions",
+      "example": "Ros usage"
+    },
+    {
+      "id": "rob007",
+      "type": "ros",
+      "name": "ROS2",
+      "description": "Modern ROS",
+      "pattern": "DDS, lifecycle, QoS, security",
+      "example": "Ros usage"
+    },
+    {
+      "id": "rob008",
+      "type": "ros",
+      "name": "ROS Navigation",
+      "description": "Nav stack",
+      "pattern": "move_base, costmaps, SLAM",
+      "example": "Ros usage"
+    },
+    {
+      "id": "rob009",
+      "type": "ros",
+      "name": "ROS Perception",
+      "description": "Sensing",
+      "pattern": "PCL, image_pipeline, sensor fusion",
+      "example": "Ros usage"
+    },
+    {
+      "id": "rob010",
+      "type": "ros",
+      "name": "ROS MoveIt",
+      "description": "Motion planning",
+      "pattern": "MoveIt2, planning scene, constraints",
+      "example": "Ros usage"
+    },
+    {
+      "id": "rob011",
+      "type": "simulation",
+      "name": "Gazebo",
+      "description": "Robot simulation",
+      "pattern": "Worlds, models, plugins, physics",
+      "example": "Simulation usage"
+    },
+    {
+      "id": "rob012",
+      "type": "simulation",
+      "name": "PyBullet",
+      "description": "Physics sim",
+      "pattern": "URDF, joints, collision, RL",
+      "example": "Simulation usage"
+    },
+    {
+      "id": "rob013",
+      "type": "simulation",
+      "name": "MuJoCo",
+      "description": "Physics engine",
+      "pattern": "Contact, muscle, optimization",
+      "example": "Simulation usage"
+    },
+    {
+      "id": "rob014",
+      "type": "simulation",
+      "name": "Isaac Sim",
+      "description": "NVIDIA robotics",
+      "pattern": "Omniverse, synthetic data, RL",
+      "example": "Simulation usage"
+    },
+    {
+      "id": "rob015",
+      "type": "perception",
+      "name": "SLAM",
+      "description": "Localization",
+      "pattern": "ORB-SLAM, LiDAR SLAM, visual SLAM",
+      "example": "Perception usage"
+    },
+    {
+      "id": "rob016",
+      "type": "perception",
+      "name": "Object Detection Robots",
+      "description": "Robot vision",
+      "pattern": "YOLO, depth cameras, 3D detection",
+      "example": "Perception usage"
+    },
+    {
+      "id": "rob017",
+      "type": "perception",
+      "name": "Point Clouds",
+      "description": "3D perception",
+      "pattern": "PCL, filtering, segmentation, ICP",
+      "example": "Perception usage"
+    },
+    {
+      "id": "rob018",
+      "type": "perception",
+      "name": "Sensor Fusion",
+      "description": "Multi-sensor",
+      "pattern": "Kalman filter, IMU, GPS, LiDAR",
+      "example": "Perception usage"
+    },
+    {
+      "id": "rob019",
+      "type": "hardware",
+      "name": "Robot Arms",
+      "description": "Manipulators",
+      "pattern": "UR, Franka, end effectors, grippers",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "rob020",
+      "type": "hardware",
+      "name": "Mobile Robots",
+      "description": "Wheeled robots",
+      "pattern": "Differential, omnidirectional, AGV",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "rob021",
+      "type": "hardware",
+      "name": "Drones/UAV",
+      "description": "Flying robots",
+      "pattern": "PX4, ArduPilot, flight control",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "rob022",
+      "type": "hardware",
+      "name": "Humanoid Robots",
+      "description": "Human-like",
+      "pattern": "Balance, walking, Boston Dynamics",
+      "example": "Hardware usage"
+    },
+    {
+      "id": "rob023",
+      "type": "ai",
+      "name": "Robot Learning",
+      "description": "ML for robots",
+      "pattern": "Imitation, RL, sim-to-real",
+      "example": "Ai usage"
+    },
+    {
+      "id": "rob024",
+      "type": "ai",
+      "name": "Reinforcement Learning Robots",
+      "description": "RL control",
+      "pattern": "PPO, SAC, continuous control",
+      "example": "Ai usage"
+    },
+    {
+      "id": "rob025",
+      "type": "ai",
+      "name": "Vision-Language Robots",
+      "description": "Multimodal",
+      "pattern": "CLIP, instruction following",
+      "example": "Ai usage"
+    },
+    {
+      "id": "rob026",
+      "type": "industrial",
+      "name": "Industrial Automation",
+      "description": "Factory robots",
+      "pattern": "PLC, SCADA, OPC-UA",
+      "example": "Industrial usage"
+    },
+    {
+      "id": "rob027",
+      "type": "industrial",
+      "name": "Cobots",
+      "description": "Collaborative",
+      "pattern": "Safety, force sensing, teach mode",
+      "example": "Industrial usage"
+    },
+    {
+      "id": "rob028",
+      "type": "industrial",
+      "name": "Pick and Place",
+      "description": "Material handling",
+      "pattern": "Bin picking, conveyor tracking",
+      "example": "Industrial usage"
+    },
+    {
+      "id": "rob029",
+      "type": "advanced",
+      "name": "Swarm Robotics",
+      "description": "Multi-robot",
+      "pattern": "Coordination, consensus, flocking",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "rob030",
+      "type": "advanced",
+      "name": "Soft Robotics",
+      "description": "Soft actuators",
+      "pattern": "Pneumatic, silicone, compliance",
+      "example": "Advanced usage"
+    }
+  ]
+}

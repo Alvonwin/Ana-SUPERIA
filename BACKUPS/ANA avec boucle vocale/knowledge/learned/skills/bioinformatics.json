@@ -1,0 +1,246 @@
+{
+  "category": "bioinformatics",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "bio001",
+      "type": "fundamentals",
+      "name": "Bioinformatics Basics",
+      "description": "Computational biology",
+      "pattern": "Sequences, databases, analysis",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "bio002",
+      "type": "fundamentals",
+      "name": "DNA/RNA/Protein",
+      "description": "Biological molecules",
+      "pattern": "Nucleotides, amino acids, codons",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "bio003",
+      "type": "fundamentals",
+      "name": "Sequence Formats",
+      "description": "Bio formats",
+      "pattern": "FASTA, FASTQ, GenBank, GFF",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "bio004",
+      "type": "fundamentals",
+      "name": "Biological Databases",
+      "description": "Data sources",
+      "pattern": "NCBI, UniProt, Ensembl, PDB",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "bio005",
+      "type": "alignment",
+      "name": "Sequence Alignment",
+      "description": "Comparing sequences",
+      "pattern": "Pairwise, multiple, scoring",
+      "example": "Alignment usage"
+    },
+    {
+      "id": "bio006",
+      "type": "alignment",
+      "name": "BLAST",
+      "description": "Similarity search",
+      "pattern": "blastn, blastp, E-value",
+      "example": "Alignment usage"
+    },
+    {
+      "id": "bio007",
+      "type": "alignment",
+      "name": "Multiple Alignment",
+      "description": "MSA",
+      "pattern": "ClustalW, MUSCLE, MAFFT",
+      "example": "Alignment usage"
+    },
+    {
+      "id": "bio008",
+      "type": "alignment",
+      "name": "Sequence Scoring",
+      "description": "Scoring matrices",
+      "pattern": "BLOSUM, PAM, gap penalties",
+      "example": "Alignment usage"
+    },
+    {
+      "id": "bio009",
+      "type": "genomics",
+      "name": "NGS Analysis",
+      "description": "Sequencing data",
+      "pattern": "Quality control, trimming, mapping",
+      "example": "Genomics usage"
+    },
+    {
+      "id": "bio010",
+      "type": "genomics",
+      "name": "Read Mapping",
+      "description": "Alignment to reference",
+      "pattern": "BWA, Bowtie2, STAR",
+      "example": "Genomics usage"
+    },
+    {
+      "id": "bio011",
+      "type": "genomics",
+      "name": "Variant Calling",
+      "description": "SNP/indel detection",
+      "pattern": "GATK, bcftools, VCF",
+      "example": "Genomics usage"
+    },
+    {
+      "id": "bio012",
+      "type": "genomics",
+      "name": "Genome Assembly",
+      "description": "De novo assembly",
+      "pattern": "SPAdes, Velvet, contigs",
+      "example": "Genomics usage"
+    },
+    {
+      "id": "bio013",
+      "type": "genomics",
+      "name": "RNA-Seq",
+      "description": "Transcriptomics",
+      "pattern": "Expression, DESeq2, edgeR",
+      "example": "Genomics usage"
+    },
+    {
+      "id": "bio014",
+      "type": "structural",
+      "name": "Protein Structure",
+      "description": "3D structure",
+      "pattern": "PDB, secondary, tertiary",
+      "example": "Structural usage"
+    },
+    {
+      "id": "bio015",
+      "type": "structural",
+      "name": "AlphaFold",
+      "description": "Structure prediction",
+      "pattern": "AlphaFold2, ColabFold",
+      "example": "Structural usage"
+    },
+    {
+      "id": "bio016",
+      "type": "structural",
+      "name": "Molecular Docking",
+      "description": "Drug binding",
+      "pattern": "AutoDock, Vina, scoring",
+      "example": "Structural usage"
+    },
+    {
+      "id": "bio017",
+      "type": "structural",
+      "name": "Molecular Dynamics",
+      "description": "Simulations",
+      "pattern": "GROMACS, AMBER, MD",
+      "example": "Structural usage"
+    },
+    {
+      "id": "bio018",
+      "type": "phylo",
+      "name": "Phylogenetics",
+      "description": "Evolutionary trees",
+      "pattern": "Trees, bootstrap, MEGA",
+      "example": "Phylo usage"
+    },
+    {
+      "id": "bio019",
+      "type": "phylo",
+      "name": "Tree Building",
+      "description": "Phylogeny methods",
+      "pattern": "NJ, ML, Bayesian",
+      "example": "Phylo usage"
+    },
+    {
+      "id": "bio020",
+      "type": "tools",
+      "name": "Biopython",
+      "description": "Python for bio",
+      "pattern": "SeqIO, Entrez, BLAST",
+      "example": "Tools usage"
+    },
+    {
+      "id": "bio021",
+      "type": "tools",
+      "name": "Bioconductor",
+      "description": "R for bio",
+      "pattern": "Genomic ranges, annotation",
+      "example": "Tools usage"
+    },
+    {
+      "id": "bio022",
+      "type": "tools",
+      "name": "Galaxy",
+      "description": "Web platform",
+      "pattern": "Workflows, tools, data",
+      "example": "Tools usage"
+    },
+    {
+      "id": "bio023",
+      "type": "tools",
+      "name": "Nextflow",
+      "description": "Workflow language",
+      "pattern": "Pipelines, DSL, containers",
+      "example": "Tools usage"
+    },
+    {
+      "id": "bio024",
+      "type": "omics",
+      "name": "Proteomics",
+      "description": "Protein analysis",
+      "pattern": "Mass spec, identification",
+      "example": "Omics usage"
+    },
+    {
+      "id": "bio025",
+      "type": "omics",
+      "name": "Metabolomics",
+      "description": "Metabolite analysis",
+      "pattern": "LC-MS, NMR, pathways",
+      "example": "Omics usage"
+    },
+    {
+      "id": "bio026",
+      "type": "omics",
+      "name": "Single-Cell",
+      "description": "scRNA-seq",
+      "pattern": "10X, Seurat, clustering",
+      "example": "Omics usage"
+    },
+    {
+      "id": "bio027",
+      "type": "clinical",
+      "name": "Clinical Genomics",
+      "description": "Medical genetics",
+      "pattern": "ACMG, pathogenicity, ClinVar",
+      "example": "Clinical usage"
+    },
+    {
+      "id": "bio028",
+      "type": "clinical",
+      "name": "Pharmacogenomics",
+      "description": "Drug genetics",
+      "pattern": "PGx, drug response, CPIC",
+      "example": "Clinical usage"
+    },
+    {
+      "id": "bio029",
+      "type": "ai",
+      "name": "ML in Bioinformatics",
+      "description": "Bio AI",
+      "pattern": "Prediction, classification",
+      "example": "Ai usage"
+    },
+    {
+      "id": "bio030",
+      "type": "ai",
+      "name": "Large Language Models Bio",
+      "description": "Bio LLMs",
+      "pattern": "ESM, ProtTrans, BioGPT",
+      "example": "Ai usage"
+    }
+  ]
+}

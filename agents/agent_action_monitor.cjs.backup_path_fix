@@ -1,0 +1,489 @@
+/**
+ * AGENT: Action Monitor
+ * Surveille et enregistre toutes les actions de Ana
+ *
+ * MISSION:
+ * - Tracker tous les outils utilisés (Edit, Write, Bash, etc.)
+ * - Détecter les patterns d'actions répétitives (boucles infinies)
+ * - Identifier les actions inefficaces
+ * - Créer un journal d'actions pour analyse
+ *
+ * PHILOSOPHIE:
+ * "Observe ton comportement pour comprendre tes erreurs"
+ * - Principe de réflexion et d'auto-amélioration
+ */
+
+const fs = require('fs').promises
+const path = require('path')
+const eventBus = require('./shared_event_bus.cjs')
+
+class ActionMonitor {
+  constructor() {
+    this.name = 'action_monitor'
+    this.running = false
+    this.checkInterval = 10000 // Vérifier toutes les 10 secondes
+    this.intervalId = null
+
+    // Historique des actions
+    this.actionHistory = []
+    this.maxHistorySize = 100 // Garder les 100 dernières actions
+
+    // Détection de patterns problématiques
+    this.repeatedActionThreshold = 3 // 3 fois la même action = suspect
+    this.actionWindow = 2 * 60 * 1000 // Dans une fenêtre de 2 minutes
+
+    // Stats
+    this.stats = {
+      totalActions: 0,
+      editActions: 0,
+      writeActions: 0,
+      bashActions: 0,
+      readActions: 0,
+      grepActions: 0,
+      globActions: 0,
+      webSearchActions: 0,
+      repeatedPatterns: 0,
+      inefficientActions: 0,
+      lastAction: null,
+      running: true,
+      uptime: '0s'
+    }
+
+    // Patterns d'actions répétitives
+    this.repeatedPatterns = []
+
+    this.conversationPath = 'E:\\Mémoire Ana\\02_MÉMOIRE_COURT_TERME\\current_conversation.txt'
+    this.rappelsPath = 'E:\\Mémoire Ana\\RAPPELS_ACTIFS.md'
+    this.actionLogPath = 'E:\\Mémoire Ana\\03_METAMEMOIRE\\action_log.jsonl'
+
+    this.startTime = Date.now()
+    this.lastPosition = 0
+  }
+
+  /**
+   * Démarre la surveillance
+   */
+  async start() {
+    console.log(`👁️  [${this.name}] Démarrage du moniteur d'actions...`)
+    this.running = true
+
+    eventBus.emit('agent:started', {
+      agent: this.name,
+      timestamp: new Date().toISOString()
+    })
+
+    // Écouter tous les événements d'outils
+    const tools = ['Edit', 'Write', 'Bash', 'Read', 'Grep', 'Glob', 'WebSearch', 'Task']
+
+    tools.forEach(tool => {
+      eventBus.on(`tool:${tool.toLowerCase()}`, (data) => {
+        this.recordAction(tool, data)
+      })
+    })
+
+    // Initialiser position lecture
+    try {
+      const stats = await fs.stat(this.conversationPath)
+      this.lastPosition = stats.size
+    } catch (error) {
+      this.lastPosition = 0
+    }
+
+    // Lancer la surveillance périodique
+    this.intervalId = setInterval(() => this.analyzePatterns(), this.checkInterval)
+
+    console.log(`✅ [${this.name}] Moniteur actif - analyse toutes les ${this.checkInterval/1000}s`)
+  }
+
+  /**
+   * Enregistre une action
+   */
+  async recordAction(tool, data) {
+    const action = {
+      tool,
+      timestamp: Date.now(),
+      data: this.sanitizeData(data),
+      context: this.extractContext(data)
+    }
+
+    // Ajouter à l'historique
+    this.actionHistory.push(action)
+
+    // Limiter la taille de l'historique
+    if (this.actionHistory.length > this.maxHistorySize) {
+      this.actionHistory.shift()
+    }
+
+    // Mettre à jour les stats
+    this.stats.totalActions++
+    this.stats.lastAction = new Date().toISOString()
+
+    const statKey = `${tool.toLowerCase()}Actions`
+    if (this.stats.hasOwnProperty(statKey)) {
+      this.stats[statKey]++
+    }
+
+    // Enregistrer dans le log persistant
+    await this.logAction(action)
+
+    // Vérifier immédiatement si c'est une répétition
+    await this.checkForRepetition(action)
+
+    console.log(`📝 [${this.name}] Action enregistrée: ${tool}`)
+  }
+
+  /**
+   * Sanitize les données pour éviter les logs trop gros
+   */
+  sanitizeData(data) {
+    if (!data) return {}
+
+    const sanitized = { ...data }
+
+    // Limiter les contenus longs
+    if (sanitized.content && sanitized.content.length > 200) {
+      sanitized.content = sanitized.content.substring(0, 200) + '...[truncated]'
+    }
+
+    if (sanitized.command && sanitized.command.length > 200) {
+      sanitized.command = sanitized.command.substring(0, 200) + '...[truncated]'
+    }
+
+    return sanitized
+  }
+
+  /**
+   * Extrait le contexte d'une action
+   */
+  extractContext(data) {
+    const context = {}
+
+    if (data.file_path) context.file = path.basename(data.file_path)
+    if (data.pattern) context.pattern = data.pattern
+    if (data.command) context.command = data.command.split(' ')[0] // Première commande seulement
+
+    return context
+  }
+
+  /**
+   * Enregistre l'action dans un fichier JSONL
+   */
+  async logAction(action) {
+    try {
+      const logEntry = JSON.stringify(action) + '\n'
+
+      // Créer le dossier si nécessaire
+      const logDir = path.dirname(this.actionLogPath)
+      await fs.mkdir(logDir, { recursive: true })
+
+      await fs.appendFile(this.actionLogPath, logEntry, 'utf-8')
+
+    } catch (error) {
+      console.error(`❌ [${this.name}] Erreur log action:`, error.message)
+    }
+  }
+
+  /**
+   * Vérifie si l'action est une répétition
+   */
+  async checkForRepetition(action) {
+    const now = Date.now()
+    const windowStart = now - this.actionWindow
+
+    // Trouver les actions similaires dans la fenêtre de temps
+    const similarActions = this.actionHistory.filter(a => {
+      if (a.timestamp < windowStart) return false
+      if (a.tool !== action.tool) return false
+
+      // Vérifier si le contexte est similaire
+      return this.areSimilarContexts(a.context, action.context)
+    })
+
+    if (similarActions.length >= this.repeatedActionThreshold) {
+      await this.handleRepeatedAction(action, similarActions.length)
+    }
+  }
+
+  /**
+   * Compare deux contextes d'action
+   */
+  areSimilarContexts(ctx1, ctx2) {
+    // Si même fichier
+    if (ctx1.file && ctx2.file && ctx1.file === ctx2.file) return true
+
+    // Si même pattern de recherche
+    if (ctx1.pattern && ctx2.pattern && ctx1.pattern === ctx2.pattern) return true
+
+    // Si même commande bash
+    if (ctx1.command && ctx2.command && ctx1.command === ctx2.command) return true
+
+    return false
+  }
+
+  /**
+   * Gère la détection d'actions répétées
+   */
+  async handleRepeatedAction(action, count) {
+    this.stats.repeatedPatterns++
+
+    const alert = {
+      type: 'repeated_action',
+      tool: action.tool,
+      context: action.context,
+      count: count,
+      timestamp: new Date().toISOString(),
+      severity: 'warning'
+    }
+
+    console.log(`⚠️  [${this.name}] ACTION RÉPÉTÉE DÉTECTÉE!`)
+    console.log(`   Outil: ${action.tool}`)
+    console.log(`   Répétitions: ${count} fois`)
+    console.log(`   Contexte:`, action.context)
+
+    eventBus.emit('action:repeated', alert)
+
+    try {
+      const reminder = `
+## ⚠️ PATTERN D'ACTIONS RÉPÉTÉES - ${new Date().toLocaleString('fr-FR')}
+
+**Outil:** \`${action.tool}\`
+**Répétitions:** ${count} fois en 2 minutes
+**Contexte:** ${JSON.stringify(action.context, null, 2)}
+
+**ALERTE:**
+Tu répètes la même action plusieurs fois. Cela peut indiquer:
+
+1. 🔁 **Boucle infinie**
+   - Tu essaies la même chose encore et encore
+   - Sans succès, mais tu continues
+
+2. ❌ **Approche inefficace**
+   - La méthode ne fonctionne pas
+   - Il faut changer de stratégie
+
+3. 🤔 **Manque de réflexion**
+   - Agir sans analyser pourquoi ça échoue
+   - Besoin de prendre du recul
+
+**ACTION RECOMMANDÉE:**
+
+✅ **STOP et RÉFLÉCHIS:**
+- Pourquoi cette action échoue-t-elle?
+- Qu'est-ce que les erreurs me disent?
+- Y a-t-il une autre approche?
+
+✅ **RECHERCHE:**
+- WebSearch pour comprendre le problème
+- Lire la documentation
+- Demander à Alain
+
+✅ **CHANGE DE STRATÉGIE:**
+- Essayer une approche différente
+- Décomposer le problème autrement
+- Utiliser un autre outil
+
+**Rappel:**
+> "La folie, c'est de faire toujours la même chose et de s'attendre à un résultat différent."
+> - Albert Einstein
+
+---
+
+`
+
+      await fs.appendFile(this.rappelsPath, reminder, 'utf-8')
+      console.log(`📝 [${this.name}] Rappel actions répétées créé`)
+
+    } catch (error) {
+      console.error(`❌ [${this.name}] Erreur création rappel:`, error.message)
+    }
+  }
+
+  /**
+   * Analyse les patterns dans l'historique
+   */
+  async analyzePatterns() {
+    try {
+      // Mettre à jour uptime
+      const uptimeMs = Date.now() - this.startTime
+      const uptimeMin = Math.floor(uptimeMs / 60000)
+      const uptimeSec = Math.floor((uptimeMs % 60000) / 1000)
+      this.stats.uptime = `${uptimeMin}m ${uptimeSec}s`
+
+      // Analyser les 20 dernières actions
+      const recentActions = this.actionHistory.slice(-20)
+
+      if (recentActions.length === 0) return
+
+      // Détecter les inefficacités (beaucoup d'actions Read/Grep sans résultat)
+      const searchActions = recentActions.filter(a =>
+        ['Read', 'Grep', 'Glob'].includes(a.tool)
+      )
+
+      if (searchActions.length > 10) {
+        // Beaucoup de recherches récemment
+        const actionCount = recentActions.filter(a =>
+          ['Edit', 'Write', 'Bash'].includes(a.tool)
+        ).length
+
+        // Si beaucoup de recherches mais peu d'actions concrètes
+        if (actionCount === 0) {
+          await this.handleInefficiency('too_much_searching')
+        }
+      }
+
+    } catch (error) {
+      console.error(`❌ [${this.name}] Erreur analyse patterns:`, error.message)
+    }
+  }
+
+  /**
+   * Gère la détection d'inefficacité
+   */
+  async handleInefficiency(type) {
+    this.stats.inefficientActions++
+
+    const alert = {
+      type: 'inefficiency_detected',
+      inefficiencyType: type,
+      timestamp: new Date().toISOString(),
+      severity: 'info'
+    }
+
+    console.log(`💡 [${this.name}] INEFFICACITÉ DÉTECTÉE: ${type}`)
+
+    eventBus.emit('action:inefficient', alert)
+
+    if (type === 'too_much_searching') {
+      try {
+        const reminder = `
+## 💡 SUGGESTION D'EFFICACITÉ - ${new Date().toLocaleString('fr-FR')}
+
+**Observation:**
+Beaucoup de recherches (Read/Grep/Glob) mais peu d'actions concrètes récemment.
+
+**SUGGESTION:**
+
+Tu cherches peut-être trop sans agir. Considère:
+
+1. 🎯 **Définir l'objectif clairement**
+   - Que cherches-tu exactement?
+   - Quelle est la prochaine action concrète?
+
+2. 📋 **Utiliser le Task tool**
+   - Pour les recherches exploratoires
+   - L'agent Explore est fait pour ça
+
+3. ✋ **Stop et décide**
+   - As-tu assez d'information pour agir?
+   - Ou as-tu besoin d'aide d'Alain?
+
+**Rappel:**
+L'analyse est importante, mais l'action l'est aussi. Trouve l'équilibre.
+
+---
+
+`
+
+        await fs.appendFile(this.rappelsPath, reminder, 'utf-8')
+        console.log(`📝 [${this.name}] Suggestion d'efficacité créée`)
+
+      } catch (error) {
+        console.error(`❌ [${this.name}] Erreur création suggestion:`, error.message)
+      }
+    }
+  }
+
+  /**
+   * Arrête la surveillance
+   */
+  async stop() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId)
+      this.intervalId = null
+    }
+
+    this.running = false
+    this.stats.running = false
+
+    console.log(`🛑 [${this.name}] Moniteur arrêté`)
+    console.log(`   Actions totales: ${this.stats.totalActions}`)
+    console.log(`   Patterns répétés détectés: ${this.stats.repeatedPatterns}`)
+    console.log(`   Inefficacités détectées: ${this.stats.inefficientActions}`)
+
+    eventBus.emit('agent:stopped', {
+      agent: this.name,
+      stats: this.stats,
+      timestamp: new Date().toISOString()
+    })
+
+    // Sauvegarder les stats finales
+    await this.saveSessionStats()
+  }
+
+  /**
+   * Sauvegarde les statistiques de session
+   */
+  async saveSessionStats() {
+    try {
+      const sessionStats = {
+        session_end: new Date().toISOString(),
+        uptime: this.stats.uptime,
+        total_actions: this.stats.totalActions,
+        actions_by_tool: {
+          edit: this.stats.editActions,
+          write: this.stats.writeActions,
+          bash: this.stats.bashActions,
+          read: this.stats.readActions,
+          grep: this.stats.grepActions,
+          glob: this.stats.globActions,
+          webSearch: this.stats.webSearchActions
+        },
+        patterns_detected: {
+          repeated: this.stats.repeatedPatterns,
+          inefficient: this.stats.inefficientActions
+        }
+      }
+
+      const statsPath = 'E:\\Mémoire Ana\\03_METAMEMOIRE\\session_stats.jsonl'
+      const statsEntry = JSON.stringify(sessionStats) + '\n'
+
+      await fs.appendFile(statsPath, statsEntry, 'utf-8')
+      console.log(`💾 [${this.name}] Stats de session sauvegardées`)
+
+    } catch (error) {
+      console.error(`❌ [${this.name}] Erreur sauvegarde stats:`, error.message)
+    }
+  }
+
+  /**
+   * Retourne les statistiques
+   */
+  getStats() {
+    return {
+      ...this.stats,
+      running: this.running,
+      historySize: this.actionHistory.length,
+      recentActions: this.actionHistory.slice(-5).map(a => ({
+        tool: a.tool,
+        timestamp: new Date(a.timestamp).toLocaleTimeString('fr-FR'),
+        context: a.context
+      }))
+    }
+  }
+}
+
+// Créer et exporter l'instance singleton
+const monitor = new ActionMonitor()
+
+// Gestion du signal d'arrêt
+process.on('SIGINT', async () => {
+  await monitor.stop()
+  process.exit(0)
+})
+
+process.on('SIGTERM', async () => {
+  await monitor.stop()
+  process.exit(0)
+})
+
+module.exports = monitor

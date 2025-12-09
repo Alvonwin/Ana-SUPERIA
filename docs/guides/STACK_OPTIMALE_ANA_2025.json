@@ -1,0 +1,307 @@
+{
+  "meta": {
+    "date_analyse": "2025-11-20",
+    "objectif": "Stack OPTIMALE pour construction Ana en 4 semaines",
+    "philosophie": "MEILLEUR gratuit+local uniquement, jamais assez de cordes à son arc"
+  },
+  "llm_stack_optimale": {
+    "strategie": "Multi-LLM spécialisés plutôt qu'un seul gros - adaptés RTX 3070 8GB",
+    "modeles_recommandes": [
+      {
+        "role": "Coding Champion",
+        "modele": "DeepSeek-Coder-V2-Lite 16B",
+        "quantization": "Q4_K_M",
+        "taille_vram": "~5-6GB",
+        "raison": "CHAMPION coding 2025, performance GPT-4 Turbo, MoE = très rapide",
+        "action": "INSTALLER - pas présent actuellement",
+        "commande_ollama": "ollama pull deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+      },
+      {
+        "role": "Conversation & Raisonnement",
+        "modele": "Phi-3-Mini 3.8B",
+        "quantization": "Q8_0",
+        "taille_vram": "~3GB",
+        "raison": "Rapide (130-150 tok/sec), excellent raisonnement, compact",
+        "action": "INSTALLER - Meilleur que mistral-claude-v2 pour conversation légère",
+        "commande_ollama": "ollama pull phi3:mini-128k"
+      },
+      {
+        "role": "Coding Alternative & Math",
+        "modele": "Qwen2.5-Coder 7B",
+        "quantization": "Q4_0",
+        "taille_vram": "~3.4GB",
+        "raison": "HumanEval 85+, MATH 80+, excellent backup coding",
+        "action": "UPGRADER - On a qwen2.5 général, prendre version Coder",
+        "commande_ollama": "ollama pull qwen2.5-coder:7b"
+      },
+      {
+        "role": "Tâches générales lourdes",
+        "modele": "Llama 3.2 11B Vision",
+        "quantization": "Q4_0",
+        "taille_vram": "~5GB",
+        "raison": "Meilleure version Llama pour 8GB, multimodal (vision)",
+        "action": "INSTALLER - Nouveau, pas présent",
+        "commande_ollama": "ollama pull llama3.2-vision:11b"
+      }
+    ],
+    "modeles_a_garder": [
+      {
+        "modele": "qwen2.5:latest (4.7GB)",
+        "raison": "Récent (14h), bon général purpose, peut servir de backup"
+      },
+      {
+        "modele": "mistral:latest (4.4GB)",
+        "raison": "Solide, éprouvé, bon pour tests comparatifs"
+      }
+    ],
+    "modeles_a_retirer": [
+      {
+        "modele": "mistral-claude-v2",
+        "raison": "Fine-tuning custom peu fiable, remplacé par Phi-3-Mini + DeepSeek-Coder"
+      },
+      {
+        "modele": "mistral-claude (original)",
+        "raison": "Redondant avec mistral:latest"
+      },
+      {
+        "modele": "Meta-Llama-3-8B (GPT4ALL)",
+        "raison": "Remplacé par Llama 3.2 11B Vision plus récent"
+      },
+      {
+        "modele": "mistral-7b-instruct-v0.1 (GPT4ALL)",
+        "raison": "Vieille version, on a mistral:latest dans Ollama"
+      },
+      {
+        "modele": "nous-hermes-llama2-13b (GPT4ALL)",
+        "raison": "Trop lourd (7.5GB) pour nos besoins avec nouveaux modèles"
+      },
+      {
+        "modele": "qwen2.5-coder:14b",
+        "raison": "Remplacé par version 7B Q4 + DeepSeek-Coder-V2-Lite 16B (meilleurs)"
+      }
+    ]
+  },
+  "automation_stack": {
+    "choix_actuel": {
+      "tool": "n8n v1.120.3",
+      "status": "OPÉRATIONNEL",
+      "premium": true
+    },
+    "evaluation": {
+      "points_forts": [
+        "Déjà installé et configuré",
+        "Premium à vie (workflow history, debug, folders)",
+        "2 workflows Ana déjà créés",
+        "Bonne documentation",
+        "Large communauté"
+      ],
+      "points_faibles": [
+        "Interface un peu complexe",
+        "Consomme ressources"
+      ]
+    },
+    "meilleure_alternative": {
+      "tool": "Activepieces",
+      "raison": "Plus simple (9.1/10 vs 7.7/10), MIT license, unlimited tasks self-hosted, plus moderne",
+      "decision": "CONSIDÉRER migration future, mais GARDER n8n pour l'instant (déjà configuré, premium)"
+    },
+    "recommandation_finale": "GARDER n8n - déjà opérationnel avec premium, migration = perte de temps"
+  },
+  "stable_diffusion_stack": {
+    "choix_actuel": {
+      "tool": "ComfyUI",
+      "status": "COMPLET avec SDXL Base 1.0",
+      "workflows": ["archon_workflow_1920x1080_upscale.json", "simple_sdxl_workflow.json"]
+    },
+    "evaluation": {
+      "points_forts": [
+        "Contrôle total sur workflows",
+        "Node-based = très flexible",
+        "SDXL Base 1.0 déjà installé (6.6GB)",
+        "Custom nodes (websocket_image_save)",
+        "Workflows ARCHON déjà créés"
+      ],
+      "points_faibles": [
+        "Courbe apprentissage élevée",
+        "Interface intimidante"
+      ]
+    },
+    "alternatives": {
+      "fooocus": {
+        "raison": "Plus simple, automatise beaucoup",
+        "decision": "AJOUTER en complément pour génération rapide"
+      },
+      "automatic1111": {
+        "raison": "Standard industrie, user-friendly",
+        "decision": "PAS nécessaire, ComfyUI suffit"
+      },
+      "invokeai": {
+        "raison": "Unified Canvas, équilibré",
+        "decision": "PAS nécessaire"
+      }
+    },
+    "recommandation_finale": "GARDER ComfyUI + AJOUTER Fooocus pour simplicité quotidienne"
+  },
+  "memory_stack": {
+    "choix_actuel": {
+      "system": "Mémoire V3",
+      "path": "E:/Mémoire Claude/",
+      "files": ["current_conversation.txt (1047 KB)", "stages/ pyramidal"],
+      "status": "ÉPROUVÉ, FONCTIONNEL"
+    },
+    "meilleures_alternatives": {
+      "chromadb": {
+        "deja_installe": true,
+        "version": "1.3.0",
+        "raison": "Vector database, recherche sémantique",
+        "decision": "INTÉGRER avec V3 existant"
+      },
+      "mem0": {
+        "raison": "Memory layer for LLMs, modern, Python-based",
+        "decision": "ÉVALUER pour remplacement V3 futur"
+      }
+    },
+    "recommandation_finale": "HYBRIDE: Garder V3 + Ajouter ChromaDB pour vector search"
+  },
+  "orchestration_stack": {
+    "choix_actuel": {
+      "nexus": {
+        "path": "E:/Claude_Autonome/",
+        "status": "Phase 1 complète, NEXUS V2 intégré dans boucle vocale",
+        "role": "Bridge ARCHON ↔ LLM local + Boucle vocale CRITIQUE",
+        "boucle_vocale": "Voix → NEXUS → Voix (MISSION CRITIQUE)"
+      }
+    },
+    "evaluation": "NEXUS est ESSENTIEL pour boucle vocale - ne JAMAIS remplacer",
+    "frameworks_complementaires": {
+      "langchain": {
+        "deja_installe": true,
+        "version": "1.0.3",
+        "raison": "Standard industrie, LangChain + LangGraph + langchain-ollama",
+        "decision": "COEXISTER avec NEXUS pour orchestration autres tâches"
+      },
+      "llamaindex": {
+        "raison": "Alternative à LangChain, focus sur RAG",
+        "decision": "PAS nécessaire, LangChain suffit"
+      }
+    },
+    "recommandation_finale": "NEXUS + LangChain COEXISTENT - NEXUS gère boucle vocale (critique), LangChain gère orchestration Ana"
+  },
+  "development_stack": {
+    "langages": {
+      "node_js": {
+        "version_actuelle": "22.20.0",
+        "recommandation": "GARDER - excellente version"
+      },
+      "python": {
+        "version_actuelle": "3.14.0",
+        "recommandation": "GARDER - dernière version"
+      }
+    },
+    "ai_coding_assistants": {
+      "codeium": {
+        "installe": true,
+        "version": "1.48.2",
+        "recommandation": "GARDER - gratuit, bon"
+      },
+      "meilleures_alternatives": {
+        "continue_dev": {
+          "raison": "Open-source, fonctionne avec modèles locaux (Ollama), plus puissant",
+          "decision": "AJOUTER à côté de Codeium"
+        },
+        "tabby": {
+          "raison": "Self-hosted GitHub Copilot alternative",
+          "decision": "ÉVALUER si Codeium + Continue.dev insuffisants"
+        }
+      }
+    },
+    "recommandation_finale": "AJOUTER Continue.dev extension VS Code pour utiliser DeepSeek-Coder local"
+  },
+  "stack_finale_recommandee": {
+    "llms": [
+      "DeepSeek-Coder-V2-Lite 16B Q4 (coding champion)",
+      "Phi-3-Mini 3.8B Q8 (conversation rapide)",
+      "Qwen2.5-Coder 7B Q4 (backup coding)",
+      "Llama 3.2 11B Vision Q4 (général + vision)",
+      "Qwen2.5 4.7GB (backup général)",
+      "Mistral 4.4GB (backup éprouvé)"
+    ],
+    "frameworks": {
+      "automation": "n8n (garder actuel)",
+      "image_generation": "ComfyUI + Fooocus",
+      "orchestration": "NEXUS (boucle vocale) + LangChain (autres tâches) - COEXISTENT",
+      "memory": "V3 + ChromaDB hybride",
+      "coding_assistant": "Codeium + Continue.dev"
+    },
+    "nouveaux_outils_a_installer": [
+      {
+        "nom": "Fooocus",
+        "raison": "Génération images simplifiée",
+        "priorite": "Moyenne"
+      },
+      {
+        "nom": "Continue.dev",
+        "raison": "Coding assistant local avec DeepSeek-Coder",
+        "priorite": "Haute"
+      }
+    ]
+  },
+  "actions_immediates": [
+    {
+      "action": "Installer DeepSeek-Coder-V2-Lite 16B",
+      "commande": "ollama pull deepseek-coder-v2:16b-lite-instruct-q4_K_M",
+      "priorite": 1
+    },
+    {
+      "action": "Installer Phi-3-Mini",
+      "commande": "ollama pull phi3:mini-128k",
+      "priorite": 1
+    },
+    {
+      "action": "Installer Qwen2.5-Coder 7B",
+      "commande": "ollama pull qwen2.5-coder:7b",
+      "priorite": 1
+    },
+    {
+      "action": "Installer Llama 3.2 11B Vision",
+      "commande": "ollama pull llama3.2-vision:11b",
+      "priorite": 2
+    },
+    {
+      "action": "Retirer modèles obsolètes",
+      "commandes": [
+        "ollama rm mistral-claude-v2",
+        "ollama rm mistral-claude",
+        "ollama rm qwen2.5-coder:14b"
+      ],
+      "priorite": 3
+    },
+    {
+      "action": "Installer Continue.dev extension VS Code",
+      "commande": "code --install-extension continue.continue",
+      "priorite": 1
+    },
+    {
+      "action": "Installer Fooocus",
+      "methode": "git clone + setup",
+      "priorite": 2
+    }
+  ],
+  "gains_attendus": {
+    "performance_coding": "+200% avec DeepSeek-Coder-V2-Lite vs mistral-claude-v2",
+    "vitesse_conversation": "+150% avec Phi-3-Mini (130-150 tok/sec)",
+    "orchestration_optimisee": "NEXUS (boucle vocale préservée) + LangChain (orchestration standard) = meilleur des 2 mondes",
+    "qualite_code": "Continue.dev + DeepSeek local = coding assistant niveau GPT-4",
+    "generation_images": "Fooocus = génération quotidienne facile",
+    "vram_optimisation": "Q4 quantization = 2-3 modèles simultanés possibles"
+  },
+  "timeline_optimisation": {
+    "jour_1": "Installation nouveaux LLMs (4 modèles)",
+    "jour_2": "Installation Continue.dev + configuration",
+    "jour_3": "Cleanup modèles obsolètes + tests performance",
+    "jour_4-5": "Intégration LangChain avec Ana core (coexistence avec NEXUS préservé)",
+    "jour_6-7": "Installation Fooocus + intégration workflows",
+    "semaine_2": "Intégration ChromaDB avec mémoire V3",
+    "reste": "Construction Ana selon plan 4 semaines"
+  }
+}

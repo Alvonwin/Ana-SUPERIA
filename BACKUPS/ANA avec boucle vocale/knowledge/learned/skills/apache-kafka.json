@@ -1,0 +1,247 @@
+{
+  "category": "apache-kafka",
+  "version": "1.0.0",
+  "generatedBy": "Ana SUPERIA (DeepSeek Coder) - Supervisé et complété par Claude",
+  "skills": [
+    {
+      "id": "kafka01",
+      "type": "topics",
+      "name": "Create Topic",
+      "description": "Create Kafka topic with partitions and replication",
+      "pattern": "kafka-topics.sh --create --topic orders --partitions 3 --replication-factor 2 --bootstrap-server localhost:9092",
+      "example": "Topics usage"
+    },
+    {
+      "id": "kafka02",
+      "type": "topics",
+      "name": "Alter Partitions",
+      "description": "Increase number of partitions",
+      "pattern": "kafka-topics.sh --alter --topic orders --partitions 6 --bootstrap-server localhost:9092",
+      "example": "Topics usage"
+    },
+    {
+      "id": "kafka03",
+      "type": "producer",
+      "name": "Producer Send",
+      "description": "Send messages with callback",
+      "pattern": "producer.send(new ProducerRecord<>(topic, key, value), (metadata, ex) -> {})",
+      "example": "Producer usage"
+    },
+    {
+      "id": "kafka04",
+      "type": "producer",
+      "name": "Acks Configuration",
+      "description": "Configure acknowledgment level",
+      "pattern": "props.put(ProducerConfig.ACKS_CONFIG, \"all\")",
+      "example": "Producer usage"
+    },
+    {
+      "id": "kafka05",
+      "type": "producer",
+      "name": "Batching Config",
+      "description": "Configure batch size and linger",
+      "pattern": "props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384); props.put(ProducerConfig.LINGER_MS_CONFIG, 5)",
+      "example": "Producer usage"
+    },
+    {
+      "id": "kafka06",
+      "type": "producer",
+      "name": "Compression",
+      "description": "Enable message compression",
+      "pattern": "props.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, \"snappy\")",
+      "example": "Producer usage"
+    },
+    {
+      "id": "kafka07",
+      "type": "consumer",
+      "name": "Subscribe Topics",
+      "description": "Subscribe to topics",
+      "pattern": "consumer.subscribe(Arrays.asList(\"topic1\", \"topic2\"))",
+      "example": "Consumer usage"
+    },
+    {
+      "id": "kafka08",
+      "type": "consumer",
+      "name": "Poll Loop",
+      "description": "Consume messages in poll loop",
+      "pattern": "while(true) { ConsumerRecords<K,V> records = consumer.poll(Duration.ofMillis(100)); }",
+      "example": "Consumer usage"
+    },
+    {
+      "id": "kafka09",
+      "type": "consumer",
+      "name": "Manual Commit",
+      "description": "Manually commit offsets",
+      "pattern": "consumer.commitSync(); // or consumer.commitAsync()",
+      "example": "Consumer usage"
+    },
+    {
+      "id": "kafka10",
+      "type": "consumer",
+      "name": "Consumer Groups",
+      "description": "Configure consumer group",
+      "pattern": "props.put(ConsumerConfig.GROUP_ID_CONFIG, \"my-consumer-group\")",
+      "example": "Consumer usage"
+    },
+    {
+      "id": "kafka11",
+      "type": "streams",
+      "name": "KStream Definition",
+      "description": "Create KStream from topic",
+      "pattern": "KStream<String, String> stream = builder.stream(\"input-topic\")",
+      "example": "Streams usage"
+    },
+    {
+      "id": "kafka12",
+      "type": "streams",
+      "name": "KTable Definition",
+      "description": "Create KTable from topic",
+      "pattern": "KTable<String, Long> table = builder.table(\"input-topic\")",
+      "example": "Streams usage"
+    },
+    {
+      "id": "kafka13",
+      "type": "streams",
+      "name": "Stream-Table Join",
+      "description": "Join KStream with KTable",
+      "pattern": "stream.join(table, (streamVal, tableVal) -> streamVal + tableVal)",
+      "example": "Streams usage"
+    },
+    {
+      "id": "kafka14",
+      "type": "streams",
+      "name": "Windowed Aggregations",
+      "description": "Time-windowed aggregations",
+      "pattern": "stream.groupByKey().windowedBy(TimeWindows.of(Duration.ofMinutes(5))).count()",
+      "example": "Streams usage"
+    },
+    {
+      "id": "kafka15",
+      "type": "connect",
+      "name": "Source Connector",
+      "description": "Configure source connector",
+      "pattern": "connector.class=io.confluent.connect.jdbc.JdbcSourceConnector",
+      "example": "Connect usage"
+    },
+    {
+      "id": "kafka16",
+      "type": "connect",
+      "name": "Sink Connector",
+      "description": "Configure sink connector",
+      "pattern": "connector.class=io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+      "example": "Connect usage"
+    },
+    {
+      "id": "kafka17",
+      "type": "schema",
+      "name": "Avro Schema",
+      "description": "Use Avro with Schema Registry",
+      "pattern": "props.put(\"schema.registry.url\", \"http://localhost:8081\")",
+      "example": "Schema usage"
+    },
+    {
+      "id": "kafka18",
+      "type": "schema",
+      "name": "JSON Schema",
+      "description": "JSON Schema validation",
+      "pattern": "value.converter.schema.registry.url=http://localhost:8081",
+      "example": "Schema usage"
+    },
+    {
+      "id": "kafka19",
+      "type": "semantics",
+      "name": "Exactly-Once Producer",
+      "description": "Enable idempotent producer",
+      "pattern": "props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true)",
+      "example": "Semantics usage"
+    },
+    {
+      "id": "kafka20",
+      "type": "transactions",
+      "name": "Transactional API",
+      "description": "Atomic transactions",
+      "pattern": "producer.initTransactions(); producer.beginTransaction(); producer.send(...); producer.commitTransaction()",
+      "example": "Transactions usage"
+    },
+    {
+      "id": "kafka21",
+      "type": "retention",
+      "name": "Log Compaction",
+      "description": "Enable log compaction",
+      "pattern": "kafka-configs.sh --alter --topic my-topic --add-config cleanup.policy=compact",
+      "example": "Retention usage"
+    },
+    {
+      "id": "kafka22",
+      "type": "retention",
+      "name": "Retention Policy",
+      "description": "Set retention time",
+      "pattern": "kafka-configs.sh --alter --topic my-topic --add-config retention.ms=604800000",
+      "example": "Retention usage"
+    },
+    {
+      "id": "kafka23",
+      "type": "monitoring",
+      "name": "JMX Metrics",
+      "description": "Monitor via JMX",
+      "pattern": "JMX_PORT=9999 kafka-server-start.sh config/server.properties",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "kafka24",
+      "type": "monitoring",
+      "name": "Consumer Lag",
+      "description": "Monitor consumer lag",
+      "pattern": "kafka-consumer-groups.sh --describe --group my-group --bootstrap-server localhost:9092",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "kafka25",
+      "type": "cli",
+      "name": "Console Producer",
+      "description": "Send test messages",
+      "pattern": "kafka-console-producer.sh --topic test --bootstrap-server localhost:9092",
+      "example": "Cli usage"
+    },
+    {
+      "id": "kafka26",
+      "type": "cli",
+      "name": "Console Consumer",
+      "description": "Read messages from topic",
+      "pattern": "kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server localhost:9092",
+      "example": "Cli usage"
+    },
+    {
+      "id": "kafka27",
+      "type": "ksql",
+      "name": "KSQL Stream",
+      "description": "Create KSQL stream",
+      "pattern": "CREATE STREAM orders_stream (id INT, amount DOUBLE) WITH (KAFKA_TOPIC='orders', VALUE_FORMAT='JSON')",
+      "example": "Ksql usage"
+    },
+    {
+      "id": "kafka28",
+      "type": "consumer",
+      "name": "Rebalance Listener",
+      "description": "Handle partition rebalance",
+      "pattern": "consumer.subscribe(topics, new ConsumerRebalanceListener() { onPartitionsRevoked... onPartitionsAssigned... })",
+      "example": "Consumer usage"
+    },
+    {
+      "id": "kafka29",
+      "type": "errors",
+      "name": "Dead Letter Queue",
+      "description": "Route failed messages to DLQ",
+      "pattern": "errors.deadletterqueue.topic.name=dlq-topic",
+      "example": "Errors usage"
+    },
+    {
+      "id": "kafka30",
+      "type": "admin",
+      "name": "Delete Topic",
+      "description": "Delete Kafka topic",
+      "pattern": "kafka-topics.sh --delete --topic old-topic --bootstrap-server localhost:9092",
+      "example": "Admin usage"
+    }
+  ]
+}

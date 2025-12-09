@@ -1,0 +1,27 @@
+{
+  "id": "plan_1765101668129",
+  "title": "Test",
+  "description": "Test",
+  "status": "active",
+  "createdAt": "2025-12-07T10:01:08.129Z",
+  "updatedAt": "2025-12-07T10:01:08.129Z",
+  "steps": [
+    {
+      "id": 0,
+      "action": "Only one",
+      "status": "pending",
+      "tools": [],
+      "validation": "",
+      "critical": false,
+      "dependencies": [],
+      "result": null,
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "risks": [],
+  "dependencies": [],
+  "estimatedDuration": null,
+  "actualDuration": null,
+  "metadata": {}
+}

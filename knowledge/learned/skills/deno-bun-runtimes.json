@@ -1,0 +1,247 @@
+{
+  "category": "deno-bun-runtimes",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "db01",
+      "type": "deno-basics",
+      "name": "Deno Basics",
+      "description": "Secure runtime",
+      "pattern": "deno run --allow-net --allow-read script.ts",
+      "example": "Permissions by default"
+    },
+    {
+      "id": "db02",
+      "type": "deno-imports",
+      "name": "Deno Imports",
+      "description": "URL imports",
+      "pattern": "import { serve } from 'https://deno.land/std/http/server.ts'",
+      "example": "deps.ts pattern"
+    },
+    {
+      "id": "db03",
+      "type": "deno-std",
+      "name": "Deno Standard Library",
+      "description": "Built-in modules",
+      "pattern": "std/http, std/fs, std/path, std/testing",
+      "example": "No node_modules"
+    },
+    {
+      "id": "db04",
+      "type": "deno-kv",
+      "name": "Deno KV",
+      "description": "Built-in database",
+      "pattern": "const kv = await Deno.openKv(); kv.set(['key'], value)",
+      "example": "Edge-native storage"
+    },
+    {
+      "id": "db05",
+      "type": "deno-deploy",
+      "name": "Deno Deploy",
+      "description": "Edge hosting",
+      "pattern": "deployctl deploy --project=myapp",
+      "example": "Global deployment"
+    },
+    {
+      "id": "db06",
+      "type": "deno-fresh",
+      "name": "Fresh Framework",
+      "description": "Deno web framework",
+      "pattern": "routes/index.tsx, islands/Counter.tsx",
+      "example": "Island architecture"
+    },
+    {
+      "id": "db07",
+      "type": "deno-test",
+      "name": "Deno Testing",
+      "description": "Built-in test runner",
+      "pattern": "Deno.test('name', async () => {})",
+      "example": "deno test"
+    },
+    {
+      "id": "db08",
+      "type": "deno-lint",
+      "name": "Deno Lint/Format",
+      "description": "Built-in tools",
+      "pattern": "deno lint, deno fmt",
+      "example": "Zero config"
+    },
+    {
+      "id": "db09",
+      "type": "deno-compile",
+      "name": "Deno Compile",
+      "description": "Single binary",
+      "pattern": "deno compile --output=app script.ts",
+      "example": "Cross-platform"
+    },
+    {
+      "id": "db10",
+      "type": "deno-npm",
+      "name": "Deno NPM Compat",
+      "description": "npm: specifier",
+      "pattern": "import express from 'npm:express@4'",
+      "example": "Node compatibility"
+    },
+    {
+      "id": "db11",
+      "type": "bun-basics",
+      "name": "Bun Basics",
+      "description": "Fast JS runtime",
+      "pattern": "bun run script.ts",
+      "example": "Zig-based, fast startup"
+    },
+    {
+      "id": "db12",
+      "type": "bun-package",
+      "name": "Bun Package Manager",
+      "description": "Fast npm alternative",
+      "pattern": "bun install, bun add package",
+      "example": "Lockfile: bun.lockb"
+    },
+    {
+      "id": "db13",
+      "type": "bun-bundler",
+      "name": "Bun Bundler",
+      "description": "Built-in bundling",
+      "pattern": "bun build ./index.ts --outdir=./dist",
+      "example": "Tree shaking"
+    },
+    {
+      "id": "db14",
+      "type": "bun-test",
+      "name": "Bun Test",
+      "description": "Built-in testing",
+      "pattern": "import { test, expect } from 'bun:test'",
+      "example": "Jest-compatible"
+    },
+    {
+      "id": "db15",
+      "type": "bun-http",
+      "name": "Bun HTTP Server",
+      "description": "Fast HTTP server",
+      "pattern": "Bun.serve({ fetch(req) { return new Response() } })",
+      "example": "Fastest JS server"
+    },
+    {
+      "id": "db16",
+      "type": "bun-sqlite",
+      "name": "Bun SQLite",
+      "description": "Built-in SQLite",
+      "pattern": "import { Database } from 'bun:sqlite'",
+      "example": "Native bindings"
+    },
+    {
+      "id": "db17",
+      "type": "bun-ffi",
+      "name": "Bun FFI",
+      "description": "Native code calls",
+      "pattern": "import { dlopen } from 'bun:ffi'",
+      "example": "C/Rust libraries"
+    },
+    {
+      "id": "db18",
+      "type": "bun-file",
+      "name": "Bun File I/O",
+      "description": "Fast file operations",
+      "pattern": "await Bun.file('path').text()",
+      "example": "10x faster than Node"
+    },
+    {
+      "id": "db19",
+      "type": "bun-shell",
+      "name": "Bun Shell",
+      "description": "Shell scripting",
+      "pattern": "import { $ } from 'bun'; await $`ls -la`",
+      "example": "Cross-platform"
+    },
+    {
+      "id": "db20",
+      "type": "bun-websocket",
+      "name": "Bun WebSocket",
+      "description": "Native WebSocket",
+      "pattern": "Bun.serve({ websocket: { message(ws, msg) } })",
+      "example": "Per-message deflate"
+    },
+    {
+      "id": "db21",
+      "type": "bun-macros",
+      "name": "Bun Macros",
+      "description": "Compile-time code",
+      "pattern": "import { myMacro } from './macro' with { type: 'macro' }",
+      "example": "Build-time evaluation"
+    },
+    {
+      "id": "db22",
+      "type": "bun-hono",
+      "name": "Hono on Bun",
+      "description": "Fast web framework",
+      "pattern": "import { Hono } from 'hono'; app.get('/', c => c.text())",
+      "example": "Multi-runtime"
+    },
+    {
+      "id": "db23",
+      "type": "deno-oak",
+      "name": "Oak on Deno",
+      "description": "Koa-like framework",
+      "pattern": "import { Application } from 'oak'; app.use(router.routes())",
+      "example": "Middleware stack"
+    },
+    {
+      "id": "db24",
+      "type": "workers",
+      "name": "Web Workers",
+      "description": "Multi-threading",
+      "pattern": "new Worker('./worker.ts'); worker.postMessage()",
+      "example": "CPU-bound tasks"
+    },
+    {
+      "id": "db25",
+      "type": "streams",
+      "name": "Web Streams",
+      "description": "Stream processing",
+      "pattern": "ReadableStream, WritableStream, TransformStream",
+      "example": "Streaming responses"
+    },
+    {
+      "id": "db26",
+      "type": "fetch-api",
+      "name": "Fetch API",
+      "description": "HTTP client",
+      "pattern": "await fetch(url, { method, headers, body })",
+      "example": "Standard API"
+    },
+    {
+      "id": "db27",
+      "type": "crypto",
+      "name": "Web Crypto API",
+      "description": "Cryptography",
+      "pattern": "crypto.subtle.encrypt(), generateKey()",
+      "example": "Browser-compatible"
+    },
+    {
+      "id": "db28",
+      "type": "env",
+      "name": "Environment Variables",
+      "description": "Env access",
+      "pattern": "Deno.env.get(), process.env, Bun.env",
+      "example": ".env loading"
+    },
+    {
+      "id": "db29",
+      "type": "node-compat",
+      "name": "Node Compatibility",
+      "description": "Node API support",
+      "pattern": "node:fs, node:path, node:http",
+      "example": "Most npm works"
+    },
+    {
+      "id": "db30",
+      "type": "performance",
+      "name": "Performance Comparison",
+      "description": "Runtime benchmarks",
+      "pattern": "Bun > Deno > Node for most workloads",
+      "example": "Choose per use case"
+    }
+  ]
+}

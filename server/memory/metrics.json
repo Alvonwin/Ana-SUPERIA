@@ -1,0 +1,11 @@
+{
+  "totalSearches": 2,
+  "totalAdds": 1,
+  "averageSearchLatency": 40,
+  "searchLatencies": [
+    42,
+    38
+  ],
+  "successfulContextRecalls": 2,
+  "failedContextRecalls": 0
+}

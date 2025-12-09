@@ -1,0 +1,246 @@
+{
+  "category": "clojure",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "clj001",
+      "type": "fundamentals",
+      "name": "Clojure Basics",
+      "description": "Lisp on JVM",
+      "pattern": "(def x 1), (fn [x] ...), prefix notation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "clj002",
+      "type": "fundamentals",
+      "name": "Data Structures",
+      "description": "Persistent structures",
+      "pattern": "Lists (), Vectors [], Maps {}, Sets #{}",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "clj003",
+      "type": "fundamentals",
+      "name": "Immutability",
+      "description": "Immutable by default",
+      "pattern": "All data immutable, structural sharing",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "clj004",
+      "type": "fundamentals",
+      "name": "Functions",
+      "description": "First-class functions",
+      "pattern": "(defn greet [name] (str \"Hello \" name))",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "clj005",
+      "type": "fundamentals",
+      "name": "Destructuring",
+      "description": "Extract values",
+      "pattern": "(let [{:keys [name age]} person] ...)",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "clj006",
+      "type": "fundamentals",
+      "name": "Namespaces",
+      "description": "Code organization",
+      "pattern": "(ns my.namespace (:require [lib :as l]))",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "clj007",
+      "type": "sequences",
+      "name": "Sequence Operations",
+      "description": "Lazy sequences",
+      "pattern": "(map inc coll), (filter odd? coll), (reduce + coll)",
+      "example": "Sequences usage"
+    },
+    {
+      "id": "clj008",
+      "type": "sequences",
+      "name": "Threading Macros",
+      "description": "Pipeline style",
+      "pattern": "(-> x (f) (g)) or (->> x (map f) (filter g))",
+      "example": "Sequences usage"
+    },
+    {
+      "id": "clj009",
+      "type": "sequences",
+      "name": "Transducers",
+      "description": "Composable transforms",
+      "pattern": "(comp (map inc) (filter even?)), transduce",
+      "example": "Sequences usage"
+    },
+    {
+      "id": "clj010",
+      "type": "concurrency",
+      "name": "Atoms",
+      "description": "Mutable reference",
+      "pattern": "(atom 0), (swap! a inc), (reset! a 0), @a deref",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "clj011",
+      "type": "concurrency",
+      "name": "Refs & STM",
+      "description": "Coordinated change",
+      "pattern": "(ref 0), (dosync (alter r inc)), transactions",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "clj012",
+      "type": "concurrency",
+      "name": "Agents",
+      "description": "Async updates",
+      "pattern": "(agent 0), (send a inc), (await a)",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "clj013",
+      "type": "concurrency",
+      "name": "core.async",
+      "description": "CSP channels",
+      "pattern": "(chan), (go (>! c v)), (<!! c), pipelines",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "clj014",
+      "type": "macros",
+      "name": "Macros",
+      "description": "Code as data",
+      "pattern": "(defmacro when [test & body] ...)",
+      "example": "Macros usage"
+    },
+    {
+      "id": "clj015",
+      "type": "macros",
+      "name": "Homoiconicity",
+      "description": "Code is data",
+      "pattern": "Quote ', syntax-quote `, unquote ~, splice ~@",
+      "example": "Macros usage"
+    },
+    {
+      "id": "clj016",
+      "type": "spec",
+      "name": "clojure.spec",
+      "description": "Data specification",
+      "pattern": "(s/def ::name string?), (s/valid? ::name x)",
+      "example": "Spec usage"
+    },
+    {
+      "id": "clj017",
+      "type": "spec",
+      "name": "Generative Testing",
+      "description": "Property testing",
+      "pattern": "(stest/check `fn), generate test data",
+      "example": "Spec usage"
+    },
+    {
+      "id": "clj018",
+      "type": "web",
+      "name": "Ring",
+      "description": "HTTP abstraction",
+      "pattern": "Request/response maps, middleware, handlers",
+      "example": "Web usage"
+    },
+    {
+      "id": "clj019",
+      "type": "web",
+      "name": "Compojure",
+      "description": "Routing",
+      "pattern": "(GET \"/\" [] \"Hello\"), defroutes",
+      "example": "Web usage"
+    },
+    {
+      "id": "clj020",
+      "type": "web",
+      "name": "Pedestal",
+      "description": "Web framework",
+      "pattern": "Interceptors, async, service map",
+      "example": "Web usage"
+    },
+    {
+      "id": "clj021",
+      "type": "database",
+      "name": "next.jdbc",
+      "description": "JDBC wrapper",
+      "pattern": "(jdbc/execute! ds [\"SELECT...\"])",
+      "example": "Database usage"
+    },
+    {
+      "id": "clj022",
+      "type": "database",
+      "name": "HoneySQL",
+      "description": "SQL DSL",
+      "pattern": "(sql/format {:select [:*] :from [:users]})",
+      "example": "Database usage"
+    },
+    {
+      "id": "clj023",
+      "type": "database",
+      "name": "Datomic",
+      "description": "Immutable database",
+      "pattern": "Datalog queries, time travel, facts",
+      "example": "Database usage"
+    },
+    {
+      "id": "clj024",
+      "type": "clojurescript",
+      "name": "ClojureScript",
+      "description": "Clojure to JS",
+      "pattern": "Same language, JavaScript interop, React",
+      "example": "Clojurescript usage"
+    },
+    {
+      "id": "clj025",
+      "type": "clojurescript",
+      "name": "Reagent",
+      "description": "React wrapper",
+      "pattern": "(defn component [] [:div \"Hello\"])",
+      "example": "Clojurescript usage"
+    },
+    {
+      "id": "clj026",
+      "type": "clojurescript",
+      "name": "Re-frame",
+      "description": "State management",
+      "pattern": "Events, subscriptions, effects, coeffects",
+      "example": "Clojurescript usage"
+    },
+    {
+      "id": "clj027",
+      "type": "tools",
+      "name": "Leiningen",
+      "description": "Build tool",
+      "pattern": "project.clj, lein run, lein test, lein uberjar",
+      "example": "Tools usage"
+    },
+    {
+      "id": "clj028",
+      "type": "tools",
+      "name": "deps.edn",
+      "description": "Modern build",
+      "pattern": "deps.edn, clj CLI, aliases, tools",
+      "example": "Tools usage"
+    },
+    {
+      "id": "clj029",
+      "type": "repl",
+      "name": "REPL Development",
+      "description": "Interactive dev",
+      "pattern": "REPL-driven, hot reload, inspect state",
+      "example": "Repl usage"
+    },
+    {
+      "id": "clj030",
+      "type": "testing",
+      "name": "clojure.test",
+      "description": "Testing",
+      "pattern": "(deftest test-fn (is (= expected (fn))))",
+      "example": "Testing usage"
+    }
+  ]
+}

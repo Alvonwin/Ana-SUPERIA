@@ -1,0 +1,246 @@
+{
+  "category": "event-sourcing",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "es001",
+      "type": "fundamentals",
+      "name": "Event Sourcing Concept",
+      "description": "Store events",
+      "pattern": "Store state changes as events, rebuild state from events",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "es002",
+      "type": "fundamentals",
+      "name": "Events vs State",
+      "description": "Key difference",
+      "pattern": "Traditional: current state, ES: sequence of changes",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "es003",
+      "type": "fundamentals",
+      "name": "Event Characteristics",
+      "description": "Event properties",
+      "pattern": "Immutable, past tense, timestamped, ordered",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "es004",
+      "type": "events",
+      "name": "Event Structure",
+      "description": "Event shape",
+      "pattern": "{type, aggregateId, data, metadata, timestamp, version}",
+      "example": "Events usage"
+    },
+    {
+      "id": "es005",
+      "type": "events",
+      "name": "Event Naming",
+      "description": "Name conventions",
+      "pattern": "Past tense: OrderPlaced, PaymentReceived, UserRegistered",
+      "example": "Events usage"
+    },
+    {
+      "id": "es006",
+      "type": "events",
+      "name": "Event Granularity",
+      "description": "Event size",
+      "pattern": "Balance between too fine and too coarse, business meaning",
+      "example": "Events usage"
+    },
+    {
+      "id": "es007",
+      "type": "aggregates",
+      "name": "Aggregates",
+      "description": "DDD aggregates",
+      "pattern": "Consistency boundary, emit events, rebuild from events",
+      "example": "Aggregates usage"
+    },
+    {
+      "id": "es008",
+      "type": "aggregates",
+      "name": "Aggregate Root",
+      "description": "Entry point",
+      "pattern": "Only root accessed, encapsulates events, invariants",
+      "example": "Aggregates usage"
+    },
+    {
+      "id": "es009",
+      "type": "aggregates",
+      "name": "State Rebuilding",
+      "description": "Replay events",
+      "pattern": "Apply events to rebuild aggregate, left fold",
+      "example": "Aggregates usage"
+    },
+    {
+      "id": "es010",
+      "type": "store",
+      "name": "Event Store",
+      "description": "Persist events",
+      "pattern": "Append-only, stream per aggregate, global ordering",
+      "example": "Store usage"
+    },
+    {
+      "id": "es011",
+      "type": "store",
+      "name": "EventStoreDB",
+      "description": "Purpose-built",
+      "pattern": "Native event store, projections, subscriptions",
+      "example": "Store usage"
+    },
+    {
+      "id": "es012",
+      "type": "store",
+      "name": "Postgres Events",
+      "description": "Relational store",
+      "pattern": "Events table, optimistic concurrency, outbox",
+      "example": "Store usage"
+    },
+    {
+      "id": "es013",
+      "type": "store",
+      "name": "Event Streams",
+      "description": "Stream concept",
+      "pattern": "Stream per aggregate, category streams, all stream",
+      "example": "Store usage"
+    },
+    {
+      "id": "es014",
+      "type": "projections",
+      "name": "Projections",
+      "description": "Read models",
+      "pattern": "Subscribe to events, build denormalized views",
+      "example": "Projections usage"
+    },
+    {
+      "id": "es015",
+      "type": "projections",
+      "name": "Projection Types",
+      "description": "Different views",
+      "pattern": "List views, detail views, reports, search indexes",
+      "example": "Projections usage"
+    },
+    {
+      "id": "es016",
+      "type": "projections",
+      "name": "Projection Rebuilding",
+      "description": "Replay for view",
+      "pattern": "Delete projection, replay events, rebuild",
+      "example": "Projections usage"
+    },
+    {
+      "id": "es017",
+      "type": "cqrs",
+      "name": "CQRS Pattern",
+      "description": "Command Query",
+      "pattern": "Separate write model (events) from read model (projections)",
+      "example": "Cqrs usage"
+    },
+    {
+      "id": "es018",
+      "type": "cqrs",
+      "name": "Command Handling",
+      "description": "Process commands",
+      "pattern": "Load aggregate, execute, emit events, save",
+      "example": "Cqrs usage"
+    },
+    {
+      "id": "es019",
+      "type": "cqrs",
+      "name": "Query Handling",
+      "description": "Read data",
+      "pattern": "Query projection directly, optimized read model",
+      "example": "Cqrs usage"
+    },
+    {
+      "id": "es020",
+      "type": "snapshots",
+      "name": "Snapshots",
+      "description": "Performance optimization",
+      "pattern": "Periodic state snapshot, load snapshot + newer events",
+      "example": "Snapshots usage"
+    },
+    {
+      "id": "es021",
+      "type": "snapshots",
+      "name": "Snapshot Strategy",
+      "description": "When to snapshot",
+      "pattern": "Every N events, time-based, on-demand",
+      "example": "Snapshots usage"
+    },
+    {
+      "id": "es022",
+      "type": "versioning",
+      "name": "Event Versioning",
+      "description": "Schema evolution",
+      "pattern": "v1, v2 events, upcasting, weak schema",
+      "example": "Versioning usage"
+    },
+    {
+      "id": "es023",
+      "type": "versioning",
+      "name": "Upcasting",
+      "description": "Transform old events",
+      "pattern": "Convert old event format to new on read",
+      "example": "Versioning usage"
+    },
+    {
+      "id": "es024",
+      "type": "patterns",
+      "name": "Saga Pattern",
+      "description": "Long processes",
+      "pattern": "Process manager, listen to events, coordinate",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "es025",
+      "type": "patterns",
+      "name": "Eventual Consistency",
+      "description": "Async projections",
+      "pattern": "Projections lag behind events, handle UI",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "es026",
+      "type": "patterns",
+      "name": "Idempotent Handlers",
+      "description": "Safe replay",
+      "pattern": "Track processed event IDs, skip duplicates",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "es027",
+      "type": "benefits",
+      "name": "Audit Trail",
+      "description": "Complete history",
+      "pattern": "Full audit log, who did what when, compliance",
+      "example": "Benefits usage"
+    },
+    {
+      "id": "es028",
+      "type": "benefits",
+      "name": "Time Travel",
+      "description": "Point in time",
+      "pattern": "Rebuild state at any point, debugging",
+      "example": "Benefits usage"
+    },
+    {
+      "id": "es029",
+      "type": "challenges",
+      "name": "Complexity",
+      "description": "Trade-offs",
+      "pattern": "More complex, eventual consistency, learning curve",
+      "example": "Challenges usage"
+    },
+    {
+      "id": "es030",
+      "type": "tools",
+      "name": "ES Libraries",
+      "description": "Implementation",
+      "pattern": "Eventuous, Marten, Axon, custom implementations",
+      "example": "Tools usage"
+    }
+  ]
+}

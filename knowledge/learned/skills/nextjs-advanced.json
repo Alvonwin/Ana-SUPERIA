@@ -1,0 +1,247 @@
+{
+  "category": "nextjs-advanced",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "nx01",
+      "type": "app-router",
+      "name": "App Router",
+      "description": "Next.js 14+ App Router",
+      "pattern": "app/page.tsx, app/layout.tsx, app/loading.tsx",
+      "example": "File-based routing with layouts"
+    },
+    {
+      "id": "nx02",
+      "type": "server-components",
+      "name": "Server Components",
+      "description": "React Server Components",
+      "pattern": "async function Page() { const data = await fetch() }",
+      "example": "Default in App Router"
+    },
+    {
+      "id": "nx03",
+      "type": "client-components",
+      "name": "Client Components",
+      "description": "Interactive components",
+      "pattern": "'use client' directive at top of file",
+      "example": "useState, useEffect, event handlers"
+    },
+    {
+      "id": "nx04",
+      "type": "server-actions",
+      "name": "Server Actions",
+      "description": "Mutations without API routes",
+      "pattern": "'use server'; async function action(formData)",
+      "example": "Form submissions, data mutations"
+    },
+    {
+      "id": "nx05",
+      "type": "streaming",
+      "name": "Streaming & Suspense",
+      "description": "Progressive rendering",
+      "pattern": "<Suspense fallback={<Loading/>}><AsyncComponent/></Suspense>",
+      "example": "Parallel data fetching"
+    },
+    {
+      "id": "nx06",
+      "type": "parallel-routes",
+      "name": "Parallel Routes",
+      "description": "Simultaneous route segments",
+      "pattern": "app/@modal/page.tsx, app/@feed/page.tsx",
+      "example": "Dashboard layouts"
+    },
+    {
+      "id": "nx07",
+      "type": "intercepting",
+      "name": "Intercepting Routes",
+      "description": "Modal patterns",
+      "pattern": "app/(.)photo/[id]/page.tsx",
+      "example": "Photo modal from feed"
+    },
+    {
+      "id": "nx08",
+      "type": "route-handlers",
+      "name": "Route Handlers",
+      "description": "API endpoints",
+      "pattern": "app/api/users/route.ts: GET, POST, PUT, DELETE",
+      "example": "Replace API routes"
+    },
+    {
+      "id": "nx09",
+      "type": "middleware",
+      "name": "Next.js Middleware",
+      "description": "Request interception",
+      "pattern": "middleware.ts: NextResponse.redirect(), rewrite()",
+      "example": "Auth, geo, A/B testing"
+    },
+    {
+      "id": "nx10",
+      "type": "image-opt",
+      "name": "Image Optimization",
+      "description": "Automatic image optimization",
+      "pattern": "import Image from 'next/image'",
+      "example": "Lazy loading, responsive"
+    },
+    {
+      "id": "nx11",
+      "type": "font-opt",
+      "name": "Font Optimization",
+      "description": "Self-hosted fonts",
+      "pattern": "import { Inter } from 'next/font/google'",
+      "example": "Zero layout shift"
+    },
+    {
+      "id": "nx12",
+      "type": "metadata",
+      "name": "Metadata API",
+      "description": "SEO optimization",
+      "pattern": "export const metadata: Metadata = { title, description }",
+      "example": "Dynamic OG images"
+    },
+    {
+      "id": "nx13",
+      "type": "caching",
+      "name": "Data Caching",
+      "description": "Request memoization",
+      "pattern": "fetch(url, { cache: 'force-cache' | 'no-store' })",
+      "example": "revalidate: 3600"
+    },
+    {
+      "id": "nx14",
+      "type": "revalidation",
+      "name": "ISR Revalidation",
+      "description": "On-demand revalidation",
+      "pattern": "revalidatePath('/blog'), revalidateTag('posts')",
+      "example": "Cache invalidation"
+    },
+    {
+      "id": "nx15",
+      "type": "static-export",
+      "name": "Static Export",
+      "description": "Static site generation",
+      "pattern": "output: 'export' in next.config.js",
+      "example": "CDN deployment"
+    },
+    {
+      "id": "nx16",
+      "type": "dynamic-routes",
+      "name": "Dynamic Routes",
+      "description": "Parameter-based routing",
+      "pattern": "app/posts/[slug]/page.tsx",
+      "example": "generateStaticParams()"
+    },
+    {
+      "id": "nx17",
+      "type": "route-groups",
+      "name": "Route Groups",
+      "description": "Organize without URL",
+      "pattern": "app/(marketing)/about/page.tsx",
+      "example": "Shared layouts per group"
+    },
+    {
+      "id": "nx18",
+      "type": "error-handling",
+      "name": "Error Boundaries",
+      "description": "Error UI handling",
+      "pattern": "app/error.tsx, app/global-error.tsx",
+      "example": "reset() function"
+    },
+    {
+      "id": "nx19",
+      "type": "not-found",
+      "name": "Not Found Pages",
+      "description": "404 handling",
+      "pattern": "app/not-found.tsx, notFound() function",
+      "example": "Custom 404 UI"
+    },
+    {
+      "id": "nx20",
+      "type": "templates",
+      "name": "Templates vs Layouts",
+      "description": "Re-render on navigation",
+      "pattern": "app/template.tsx",
+      "example": "Animations, state reset"
+    },
+    {
+      "id": "nx21",
+      "type": "edge-runtime",
+      "name": "Edge Runtime",
+      "description": "Edge function execution",
+      "pattern": "export const runtime = 'edge'",
+      "example": "Low latency, global"
+    },
+    {
+      "id": "nx22",
+      "type": "ppr",
+      "name": "Partial Prerendering",
+      "description": "Static shell + dynamic",
+      "pattern": "experimental.ppr: true",
+      "example": "Best of static + dynamic"
+    },
+    {
+      "id": "nx23",
+      "type": "turbopack",
+      "name": "Turbopack",
+      "description": "Fast bundler",
+      "pattern": "next dev --turbo",
+      "example": "Rust-based, incremental"
+    },
+    {
+      "id": "nx24",
+      "type": "auth",
+      "name": "NextAuth.js v5",
+      "description": "Authentication",
+      "pattern": "auth.ts, providers, callbacks",
+      "example": "OAuth, credentials"
+    },
+    {
+      "id": "nx25",
+      "type": "i18n",
+      "name": "Internationalization",
+      "description": "Multi-language support",
+      "pattern": "app/[lang]/page.tsx, dictionaries",
+      "example": "next-intl, routing"
+    },
+    {
+      "id": "nx26",
+      "type": "analytics",
+      "name": "Vercel Analytics",
+      "description": "Performance monitoring",
+      "pattern": "@vercel/analytics, @vercel/speed-insights",
+      "example": "Web Vitals tracking"
+    },
+    {
+      "id": "nx27",
+      "type": "og-images",
+      "name": "OG Image Generation",
+      "description": "Dynamic social images",
+      "pattern": "app/api/og/route.tsx with ImageResponse",
+      "example": "Satori, Edge runtime"
+    },
+    {
+      "id": "nx28",
+      "type": "sitemap",
+      "name": "Sitemap Generation",
+      "description": "SEO sitemaps",
+      "pattern": "app/sitemap.ts: MetadataRoute.Sitemap",
+      "example": "Dynamic routes"
+    },
+    {
+      "id": "nx29",
+      "type": "robots",
+      "name": "Robots.txt",
+      "description": "Crawler instructions",
+      "pattern": "app/robots.ts: MetadataRoute.Robots",
+      "example": "Allow/disallow rules"
+    },
+    {
+      "id": "nx30",
+      "type": "deploy",
+      "name": "Deployment Strategies",
+      "description": "Production deployment",
+      "pattern": "Vercel, self-hosted, Docker",
+      "example": "Output file tracing"
+    }
+  ]
+}

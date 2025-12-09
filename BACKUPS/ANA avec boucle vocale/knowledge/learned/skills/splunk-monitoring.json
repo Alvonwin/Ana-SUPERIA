@@ -1,0 +1,246 @@
+{
+  "category": "splunk-monitoring",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "spl001",
+      "type": "fundamentals",
+      "name": "Splunk Basics",
+      "description": "Platform overview",
+      "pattern": "Indexers, search heads, forwarders",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spl002",
+      "type": "fundamentals",
+      "name": "Data Ingestion",
+      "description": "Getting data in",
+      "pattern": "Inputs, sourcetypes, parsing",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spl003",
+      "type": "fundamentals",
+      "name": "Index Management",
+      "description": "Data storage",
+      "pattern": "Indexes, retention, buckets",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "spl004",
+      "type": "spl",
+      "name": "SPL Basics",
+      "description": "Search language",
+      "pattern": "search, fields, time range",
+      "example": "Spl usage"
+    },
+    {
+      "id": "spl005",
+      "type": "spl",
+      "name": "SPL Transforming",
+      "description": "Data transformation",
+      "pattern": "stats, timechart, chart, table",
+      "example": "Spl usage"
+    },
+    {
+      "id": "spl006",
+      "type": "spl",
+      "name": "SPL Filtering",
+      "description": "Data filtering",
+      "pattern": "where, eval, rex, regex",
+      "example": "Spl usage"
+    },
+    {
+      "id": "spl007",
+      "type": "spl",
+      "name": "SPL Joins",
+      "description": "Combining data",
+      "pattern": "join, append, union",
+      "example": "Spl usage"
+    },
+    {
+      "id": "spl008",
+      "type": "spl",
+      "name": "SPL Subsearches",
+      "description": "Nested searches",
+      "pattern": "Subsearch, return, format",
+      "example": "Spl usage"
+    },
+    {
+      "id": "spl009",
+      "type": "spl",
+      "name": "SPL Macros",
+      "description": "Reusable searches",
+      "pattern": "Macro definition, arguments",
+      "example": "Spl usage"
+    },
+    {
+      "id": "spl010",
+      "type": "visualization",
+      "name": "Dashboards",
+      "description": "Visual displays",
+      "pattern": "Panels, inputs, drilldowns",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "spl011",
+      "type": "visualization",
+      "name": "Dashboard Studio",
+      "description": "Modern dashboards",
+      "pattern": "JSON, visualizations, layouts",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "spl012",
+      "type": "visualization",
+      "name": "Visualizations",
+      "description": "Chart types",
+      "pattern": "Line, bar, pie, map, single value",
+      "example": "Visualization usage"
+    },
+    {
+      "id": "spl013",
+      "type": "alerting",
+      "name": "Alerts",
+      "description": "Automated monitoring",
+      "pattern": "Scheduled searches, triggers, actions",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "spl014",
+      "type": "alerting",
+      "name": "Alert Actions",
+      "description": "Response automation",
+      "pattern": "Email, webhook, scripts",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "spl015",
+      "type": "alerting",
+      "name": "Throttling",
+      "description": "Alert management",
+      "pattern": "Suppression, per-result",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "spl016",
+      "type": "knowledge",
+      "name": "Field Extractions",
+      "description": "Data parsing",
+      "pattern": "rex, regex, transforms",
+      "example": "Knowledge usage"
+    },
+    {
+      "id": "spl017",
+      "type": "knowledge",
+      "name": "Lookups",
+      "description": "Data enrichment",
+      "pattern": "CSV, KV store, automatic",
+      "example": "Knowledge usage"
+    },
+    {
+      "id": "spl018",
+      "type": "knowledge",
+      "name": "Tags and Event Types",
+      "description": "Classification",
+      "pattern": "Tags, event types, correlations",
+      "example": "Knowledge usage"
+    },
+    {
+      "id": "spl019",
+      "type": "knowledge",
+      "name": "Data Models",
+      "description": "Structured data",
+      "pattern": "CIM, acceleration, pivot",
+      "example": "Knowledge usage"
+    },
+    {
+      "id": "spl020",
+      "type": "apps",
+      "name": "Splunk Apps",
+      "description": "App ecosystem",
+      "pattern": "Installation, configuration, Splunkbase",
+      "example": "Apps usage"
+    },
+    {
+      "id": "spl021",
+      "type": "apps",
+      "name": "App Development",
+      "description": "Custom apps",
+      "pattern": "App structure, nav, views",
+      "example": "Apps usage"
+    },
+    {
+      "id": "spl022",
+      "type": "security",
+      "name": "Splunk Enterprise Security",
+      "description": "SIEM",
+      "pattern": "Notable events, risk, investigations",
+      "example": "Security usage"
+    },
+    {
+      "id": "spl023",
+      "type": "security",
+      "name": "Security Use Cases",
+      "description": "Detection",
+      "pattern": "Correlation searches, indicators",
+      "example": "Security usage"
+    },
+    {
+      "id": "spl024",
+      "type": "itsi",
+      "name": "ITSI",
+      "description": "IT monitoring",
+      "pattern": "Services, KPIs, episodes",
+      "example": "Itsi usage"
+    },
+    {
+      "id": "spl025",
+      "type": "itsi",
+      "name": "Service Intelligence",
+      "description": "Business services",
+      "pattern": "Health scores, dependencies",
+      "example": "Itsi usage"
+    },
+    {
+      "id": "spl026",
+      "type": "admin",
+      "name": "User Management",
+      "description": "Access control",
+      "pattern": "Roles, capabilities, authentication",
+      "example": "Admin usage"
+    },
+    {
+      "id": "spl027",
+      "type": "admin",
+      "name": "Distributed Deployment",
+      "description": "Architecture",
+      "pattern": "Clustering, replication, load balancing",
+      "example": "Admin usage"
+    },
+    {
+      "id": "spl028",
+      "type": "admin",
+      "name": "Performance Tuning",
+      "description": "Optimization",
+      "pattern": "Search optimization, indexing",
+      "example": "Admin usage"
+    },
+    {
+      "id": "spl029",
+      "type": "automation",
+      "name": "REST API",
+      "description": "Programmatic access",
+      "pattern": "Endpoints, authentication, SDK",
+      "example": "Automation usage"
+    },
+    {
+      "id": "spl030",
+      "type": "automation",
+      "name": "SOAR Integration",
+      "description": "Automation",
+      "pattern": "Phantom, playbooks, connectors",
+      "example": "Automation usage"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "category": "audio-music-tech",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "aud001",
+      "type": "fundamentals",
+      "name": "Digital Audio Basics",
+      "description": "Audio fundamentals",
+      "pattern": "Sample rate, bit depth, Nyquist",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "aud002",
+      "type": "fundamentals",
+      "name": "Audio Formats",
+      "description": "File formats",
+      "pattern": "WAV, MP3, FLAC, AAC, Ogg",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "aud003",
+      "type": "fundamentals",
+      "name": "Audio Processing",
+      "description": "DSP basics",
+      "pattern": "Filters, EQ, compression, reverb",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "aud004",
+      "type": "fundamentals",
+      "name": "MIDI",
+      "description": "Musical data",
+      "pattern": "Note on/off, CC, channels",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "aud005",
+      "type": "web",
+      "name": "Web Audio API",
+      "description": "Browser audio",
+      "pattern": "AudioContext, nodes, scheduling",
+      "example": "Web usage"
+    },
+    {
+      "id": "aud006",
+      "type": "web",
+      "name": "Tone.js",
+      "description": "Web audio library",
+      "pattern": "Synths, effects, transport",
+      "example": "Web usage"
+    },
+    {
+      "id": "aud007",
+      "type": "web",
+      "name": "Audio Visualization",
+      "description": "Audio viz",
+      "pattern": "AnalyserNode, FFT, canvas",
+      "example": "Web usage"
+    },
+    {
+      "id": "aud008",
+      "type": "web",
+      "name": "WebRTC Audio",
+      "description": "Real-time audio",
+      "pattern": "MediaStream, peer connection",
+      "example": "Web usage"
+    },
+    {
+      "id": "aud009",
+      "type": "production",
+      "name": "DAW Basics",
+      "description": "Digital audio workstations",
+      "pattern": "Tracks, mixing, plugins",
+      "example": "Production usage"
+    },
+    {
+      "id": "aud010",
+      "type": "production",
+      "name": "Audio Plugins",
+      "description": "VST/AU development",
+      "pattern": "JUCE, VST SDK, parameters",
+      "example": "Production usage"
+    },
+    {
+      "id": "aud011",
+      "type": "production",
+      "name": "JUCE Framework",
+      "description": "Audio framework",
+      "pattern": "AudioProcessor, GUI, DSP",
+      "example": "Production usage"
+    },
+    {
+      "id": "aud012",
+      "type": "production",
+      "name": "Max/MSP",
+      "description": "Visual audio",
+      "pattern": "Patches, objects, Max for Live",
+      "example": "Production usage"
+    },
+    {
+      "id": "aud013",
+      "type": "synthesis",
+      "name": "Sound Synthesis",
+      "description": "Creating sounds",
+      "pattern": "Oscillators, envelopes, modulation",
+      "example": "Synthesis usage"
+    },
+    {
+      "id": "aud014",
+      "type": "synthesis",
+      "name": "Subtractive Synthesis",
+      "description": "Filter-based",
+      "pattern": "VCO, VCF, VCA, LFO",
+      "example": "Synthesis usage"
+    },
+    {
+      "id": "aud015",
+      "type": "synthesis",
+      "name": "FM Synthesis",
+      "description": "Frequency modulation",
+      "pattern": "Operators, algorithms, DX7",
+      "example": "Synthesis usage"
+    },
+    {
+      "id": "aud016",
+      "type": "synthesis",
+      "name": "Wavetable Synthesis",
+      "description": "Wavetables",
+      "pattern": "Tables, morphing, Serum",
+      "example": "Synthesis usage"
+    },
+    {
+      "id": "aud017",
+      "type": "synthesis",
+      "name": "Granular Synthesis",
+      "description": "Grain-based",
+      "pattern": "Grains, density, position",
+      "example": "Synthesis usage"
+    },
+    {
+      "id": "aud018",
+      "type": "analysis",
+      "name": "Audio Analysis",
+      "description": "Feature extraction",
+      "pattern": "Spectral, rhythm, pitch",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "aud019",
+      "type": "analysis",
+      "name": "FFT",
+      "description": "Frequency analysis",
+      "pattern": "STFT, spectrum, windowing",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "aud020",
+      "type": "analysis",
+      "name": "Pitch Detection",
+      "description": "Pitch tracking",
+      "pattern": "Autocorrelation, YIN, CREPE",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "aud021",
+      "type": "analysis",
+      "name": "Beat Detection",
+      "description": "Tempo tracking",
+      "pattern": "Onset detection, BPM",
+      "example": "Analysis usage"
+    },
+    {
+      "id": "aud022",
+      "type": "ml",
+      "name": "Audio ML",
+      "description": "ML for audio",
+      "pattern": "Classification, generation, separation",
+      "example": "Ml usage"
+    },
+    {
+      "id": "aud023",
+      "type": "ml",
+      "name": "Speech Recognition",
+      "description": "ASR",
+      "pattern": "Whisper, Wav2Vec, transcription",
+      "example": "Ml usage"
+    },
+    {
+      "id": "aud024",
+      "type": "ml",
+      "name": "Text-to-Speech",
+      "description": "TTS",
+      "pattern": "Tacotron, VITS, voice cloning",
+      "example": "Ml usage"
+    },
+    {
+      "id": "aud025",
+      "type": "ml",
+      "name": "Music Generation",
+      "description": "AI music",
+      "pattern": "Magenta, MusicLM, Stable Audio",
+      "example": "Ml usage"
+    },
+    {
+      "id": "aud026",
+      "type": "spatial",
+      "name": "Spatial Audio",
+      "description": "3D audio",
+      "pattern": "Binaural, Ambisonics, HRTF",
+      "example": "Spatial usage"
+    },
+    {
+      "id": "aud027",
+      "type": "spatial",
+      "name": "Dolby Atmos",
+      "description": "Object audio",
+      "pattern": "Objects, beds, immersive",
+      "example": "Spatial usage"
+    },
+    {
+      "id": "aud028",
+      "type": "game",
+      "name": "Game Audio",
+      "description": "Interactive audio",
+      "pattern": "FMOD, Wwise, middleware",
+      "example": "Game usage"
+    },
+    {
+      "id": "aud029",
+      "type": "game",
+      "name": "Procedural Audio",
+      "description": "Generated audio",
+      "pattern": "Physics-based, adaptive",
+      "example": "Game usage"
+    },
+    {
+      "id": "aud030",
+      "type": "streaming",
+      "name": "Audio Streaming",
+      "description": "Live audio",
+      "pattern": "HLS, DASH, codecs, latency",
+      "example": "Streaming usage"
+    }
+  ]
+}

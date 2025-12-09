@@ -1,0 +1,33 @@
+{
+  "category": "mcp-model-context-protocol",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "Model Context Protocol - Standard for AI tool integration",
+  "skills": [
+    {"id": "mcp01", "type": "basics", "name": "MCP Fundamentals", "description": "Model Context Protocol basics", "pattern": "Server-client architecture for AI tools", "example": "Connect Claude to external tools"},
+    {"id": "mcp02", "type": "server", "name": "MCP Server", "description": "Build MCP servers", "pattern": "Expose tools via JSON-RPC over stdio", "example": "Custom tool server"},
+    {"id": "mcp03", "type": "client", "name": "MCP Client", "description": "MCP client implementation", "pattern": "Connect to MCP servers", "example": "Claude Desktop integration"},
+    {"id": "mcp04", "type": "tools", "name": "MCP Tools", "description": "Define tools for AI", "pattern": "Schema, handler, validation", "example": "File operations tool"},
+    {"id": "mcp05", "type": "resources", "name": "MCP Resources", "description": "Expose data resources", "pattern": "URI-based resource access", "example": "Database content"},
+    {"id": "mcp06", "type": "prompts", "name": "MCP Prompts", "description": "Reusable prompt templates", "pattern": "Dynamic prompts with arguments", "example": "Code review prompt"},
+    {"id": "mcp07", "type": "sampling", "name": "MCP Sampling", "description": "Request LLM completions", "pattern": "Server requests AI responses", "example": "Agentic workflows"},
+    {"id": "mcp08", "type": "transport", "name": "MCP Transport", "description": "Communication layer", "pattern": "stdio, HTTP/SSE, WebSocket", "example": "Remote MCP server"},
+    {"id": "mcp09", "type": "security", "name": "MCP Security", "description": "Security best practices", "pattern": "Sandboxing, permissions, validation", "example": "Safe tool execution"},
+    {"id": "mcp10", "type": "typescript", "name": "MCP TypeScript SDK", "description": "TypeScript implementation", "pattern": "@modelcontextprotocol/sdk", "example": "Node.js MCP server"},
+    {"id": "mcp11", "type": "python", "name": "MCP Python SDK", "description": "Python implementation", "pattern": "mcp package", "example": "Python MCP server"},
+    {"id": "mcp12", "type": "filesystem", "name": "Filesystem MCP", "description": "File system operations", "pattern": "Read, write, search files", "example": "Code editing"},
+    {"id": "mcp13", "type": "database", "name": "Database MCP", "description": "Database operations", "pattern": "Query, schema inspection", "example": "PostgreSQL MCP"},
+    {"id": "mcp14", "type": "git", "name": "Git MCP", "description": "Git operations", "pattern": "Status, commit, diff", "example": "Version control"},
+    {"id": "mcp15", "type": "web", "name": "Web MCP", "description": "Web operations", "pattern": "Fetch, search, screenshot", "example": "Web research"},
+    {"id": "mcp16", "type": "memory", "name": "Memory MCP", "description": "Persistent memory", "pattern": "Store, retrieve context", "example": "Knowledge graph"},
+    {"id": "mcp17", "type": "brave", "name": "Brave Search MCP", "description": "Web search integration", "pattern": "Search API integration", "example": "Research assistant"},
+    {"id": "mcp18", "type": "slack", "name": "Slack MCP", "description": "Slack integration", "pattern": "Messages, channels, users", "example": "Team communication"},
+    {"id": "mcp19", "type": "github", "name": "GitHub MCP", "description": "GitHub operations", "pattern": "Repos, PRs, issues", "example": "Code collaboration"},
+    {"id": "mcp20", "type": "puppeteer", "name": "Puppeteer MCP", "description": "Browser automation", "pattern": "Navigate, click, screenshot", "example": "Web testing"},
+    {"id": "mcp21", "type": "sequential", "name": "Sequential Thinking MCP", "description": "Step-by-step reasoning", "pattern": "Thought chains, decisions", "example": "Complex problem solving"},
+    {"id": "mcp22", "type": "compose", "name": "MCP Composition", "description": "Combine multiple MCPs", "pattern": "Multi-server setup", "example": "Full dev environment"},
+    {"id": "mcp23", "type": "auth", "name": "MCP Authentication", "description": "Secure access", "pattern": "API keys, OAuth", "example": "Protected resources"},
+    {"id": "mcp24", "type": "logging", "name": "MCP Logging", "description": "Debug and monitor", "pattern": "Log levels, structured logs", "example": "Troubleshooting"},
+    {"id": "mcp25", "type": "custom", "name": "Custom MCP Server", "description": "Build your own", "pattern": "Define tools, resources, prompts", "example": "Domain-specific MCP"}
+  ]
+}

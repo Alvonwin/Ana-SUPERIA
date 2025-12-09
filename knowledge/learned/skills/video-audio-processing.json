@@ -1,0 +1,246 @@
+{
+  "category": "video-audio-processing",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "va001",
+      "type": "video-fundamentals",
+      "name": "Video Codecs",
+      "description": "Encoding formats",
+      "pattern": "H.264 compatible, H.265 efficient, VP9 web, AV1 next-gen",
+      "example": "Video-fundamentals usage"
+    },
+    {
+      "id": "va002",
+      "type": "video-fundamentals",
+      "name": "Container Formats",
+      "description": "File wrappers",
+      "pattern": "MP4 universal, WebM web, MKV flexible, MOV Apple",
+      "example": "Video-fundamentals usage"
+    },
+    {
+      "id": "va003",
+      "type": "video-fundamentals",
+      "name": "Resolution Standards",
+      "description": "Video sizes",
+      "pattern": "720p, 1080p, 4K, aspect ratios 16:9, 4:3, vertical 9:16",
+      "example": "Video-fundamentals usage"
+    },
+    {
+      "id": "va004",
+      "type": "ffmpeg",
+      "name": "FFmpeg Basics",
+      "description": "CLI processing",
+      "pattern": "ffmpeg -i input.mp4 -c:v libx264 -crf 23 output.mp4",
+      "example": "Ffmpeg usage"
+    },
+    {
+      "id": "va005",
+      "type": "ffmpeg",
+      "name": "FFmpeg Transcode",
+      "description": "Convert formats",
+      "pattern": "ffmpeg -i input.mov -c:v libx264 -c:a aac output.mp4",
+      "example": "Ffmpeg usage"
+    },
+    {
+      "id": "va006",
+      "type": "ffmpeg",
+      "name": "FFmpeg Resize",
+      "description": "Scale video",
+      "pattern": "ffmpeg -i in.mp4 -vf scale=1280:720 out.mp4",
+      "example": "Ffmpeg usage"
+    },
+    {
+      "id": "va007",
+      "type": "ffmpeg",
+      "name": "FFmpeg Trim",
+      "description": "Cut segments",
+      "pattern": "ffmpeg -i in.mp4 -ss 00:01:00 -t 00:00:30 out.mp4",
+      "example": "Ffmpeg usage"
+    },
+    {
+      "id": "va008",
+      "type": "ffmpeg",
+      "name": "FFmpeg Thumbnail",
+      "description": "Extract frames",
+      "pattern": "ffmpeg -i in.mp4 -ss 00:00:05 -vframes 1 thumb.jpg",
+      "example": "Ffmpeg usage"
+    },
+    {
+      "id": "va009",
+      "type": "ffmpeg",
+      "name": "FFmpeg Concat",
+      "description": "Join videos",
+      "pattern": "ffmpeg -f concat -i list.txt -c copy output.mp4",
+      "example": "Ffmpeg usage"
+    },
+    {
+      "id": "va010",
+      "type": "streaming",
+      "name": "HLS Streaming",
+      "description": "HTTP Live Streaming",
+      "pattern": "Segment into .ts files, .m3u8 playlist, adaptive bitrate",
+      "example": "Streaming usage"
+    },
+    {
+      "id": "va011",
+      "type": "streaming",
+      "name": "DASH Streaming",
+      "description": "Dynamic Adaptive",
+      "pattern": "MPD manifest, segments, bitrate switching",
+      "example": "Streaming usage"
+    },
+    {
+      "id": "va012",
+      "type": "streaming",
+      "name": "Adaptive Bitrate",
+      "description": "Quality switching",
+      "pattern": "Multiple renditions, player selects based on bandwidth",
+      "example": "Streaming usage"
+    },
+    {
+      "id": "va013",
+      "type": "node",
+      "name": "Fluent-FFmpeg",
+      "description": "Node.js wrapper",
+      "pattern": "ffmpeg(input).size('640x?').save(output)",
+      "example": "Node usage"
+    },
+    {
+      "id": "va014",
+      "type": "browser",
+      "name": "MediaRecorder API",
+      "description": "Browser recording",
+      "pattern": "new MediaRecorder(stream), ondataavailable, stop()",
+      "example": "Browser usage"
+    },
+    {
+      "id": "va015",
+      "type": "browser",
+      "name": "Video Element API",
+      "description": "Playback control",
+      "pattern": "video.play(), pause(), currentTime, playbackRate",
+      "example": "Browser usage"
+    },
+    {
+      "id": "va016",
+      "type": "audio-fundamentals",
+      "name": "Audio Codecs",
+      "description": "Audio formats",
+      "pattern": "MP3 universal, AAC modern, Opus best, FLAC lossless",
+      "example": "Audio-fundamentals usage"
+    },
+    {
+      "id": "va017",
+      "type": "audio-fundamentals",
+      "name": "Sample Rate",
+      "description": "Audio quality",
+      "pattern": "44.1kHz CD, 48kHz video, 96kHz high-res",
+      "example": "Audio-fundamentals usage"
+    },
+    {
+      "id": "va018",
+      "type": "audio-fundamentals",
+      "name": "Bit Depth",
+      "description": "Dynamic range",
+      "pattern": "16-bit CD, 24-bit professional, 32-bit float",
+      "example": "Audio-fundamentals usage"
+    },
+    {
+      "id": "va019",
+      "type": "web-audio",
+      "name": "Web Audio API",
+      "description": "Browser audio",
+      "pattern": "AudioContext, oscillator, gain, analyser nodes",
+      "example": "Web-audio usage"
+    },
+    {
+      "id": "va020",
+      "type": "web-audio",
+      "name": "Audio Visualization",
+      "description": "Visualize sound",
+      "pattern": "AnalyserNode, getByteFrequencyData, canvas drawing",
+      "example": "Web-audio usage"
+    },
+    {
+      "id": "va021",
+      "type": "web-audio",
+      "name": "Audio Effects",
+      "description": "Process audio",
+      "pattern": "BiquadFilter, ConvolverNode, DynamicsCompressor",
+      "example": "Web-audio usage"
+    },
+    {
+      "id": "va022",
+      "type": "speech",
+      "name": "Speech Recognition",
+      "description": "Voice to text",
+      "pattern": "Web Speech API, Whisper, Google Speech-to-Text",
+      "example": "Speech usage"
+    },
+    {
+      "id": "va023",
+      "type": "speech",
+      "name": "Text-to-Speech",
+      "description": "Speech synthesis",
+      "pattern": "SpeechSynthesis API, ElevenLabs, Azure TTS",
+      "example": "Speech usage"
+    },
+    {
+      "id": "va024",
+      "type": "services",
+      "name": "Mux Video",
+      "description": "Video platform",
+      "pattern": "Upload, encoding, streaming, analytics API",
+      "example": "Services usage"
+    },
+    {
+      "id": "va025",
+      "type": "services",
+      "name": "Cloudflare Stream",
+      "description": "Video CDN",
+      "pattern": "Upload, adaptive streaming, signed URLs",
+      "example": "Services usage"
+    },
+    {
+      "id": "va026",
+      "type": "webrtc",
+      "name": "WebRTC Basics",
+      "description": "Real-time comm",
+      "pattern": "getUserMedia, RTCPeerConnection, signaling",
+      "example": "Webrtc usage"
+    },
+    {
+      "id": "va027",
+      "type": "webrtc",
+      "name": "WebRTC Data",
+      "description": "P2P data",
+      "pattern": "RTCDataChannel, file transfer, low latency",
+      "example": "Webrtc usage"
+    },
+    {
+      "id": "va028",
+      "type": "subtitles",
+      "name": "Subtitles/Captions",
+      "description": "Text tracks",
+      "pattern": "WebVTT format, track element, auto-generation",
+      "example": "Subtitles usage"
+    },
+    {
+      "id": "va029",
+      "type": "optimization",
+      "name": "Video Optimization",
+      "description": "Reduce size",
+      "pattern": "CRF tuning, two-pass encoding, hardware acceleration",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "va030",
+      "type": "drm",
+      "name": "DRM Protection",
+      "description": "Content protection",
+      "pattern": "Widevine, FairPlay, PlayReady, encrypted media extensions",
+      "example": "Drm usage"
+    }
+  ]
+}

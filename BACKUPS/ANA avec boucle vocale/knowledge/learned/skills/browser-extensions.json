@@ -1,0 +1,246 @@
+{
+  "category": "browser-extensions",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ext001",
+      "type": "fundamentals",
+      "name": "Extension Architecture",
+      "description": "Components",
+      "pattern": "Background script, content scripts, popup, options page, manifest",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ext002",
+      "type": "fundamentals",
+      "name": "Manifest V3",
+      "description": "Modern manifest",
+      "pattern": "manifest_version: 3, service_worker, declarativeNetRequest",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ext003",
+      "type": "fundamentals",
+      "name": "Permissions",
+      "description": "Capability requests",
+      "pattern": "permissions: ['storage', 'tabs'], host_permissions, optional_permissions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "ext004",
+      "type": "scripts",
+      "name": "Service Worker",
+      "description": "Background script",
+      "pattern": "Event-driven, no DOM access, chrome.runtime.onInstalled",
+      "example": "Scripts usage"
+    },
+    {
+      "id": "ext005",
+      "type": "scripts",
+      "name": "Content Scripts",
+      "description": "Page injection",
+      "pattern": "Runs in page context, DOM access, isolated world",
+      "example": "Scripts usage"
+    },
+    {
+      "id": "ext006",
+      "type": "scripts",
+      "name": "Script Injection",
+      "description": "Dynamic injection",
+      "pattern": "chrome.scripting.executeScript({target: {tabId}, files: ['script.js']})",
+      "example": "Scripts usage"
+    },
+    {
+      "id": "ext007",
+      "type": "ui",
+      "name": "Popup",
+      "description": "Toolbar popup",
+      "pattern": "action.default_popup, HTML/CSS/JS, small UI",
+      "example": "Ui usage"
+    },
+    {
+      "id": "ext008",
+      "type": "ui",
+      "name": "Options Page",
+      "description": "Settings UI",
+      "pattern": "options_page or options_ui, full page for settings",
+      "example": "Ui usage"
+    },
+    {
+      "id": "ext009",
+      "type": "ui",
+      "name": "Side Panel",
+      "description": "Chrome 114+",
+      "pattern": "side_panel in manifest, persistent side UI",
+      "example": "Ui usage"
+    },
+    {
+      "id": "ext010",
+      "type": "ui",
+      "name": "Badge",
+      "description": "Icon badge",
+      "pattern": "chrome.action.setBadgeText({text: '5'}); setBadgeBackgroundColor",
+      "example": "Ui usage"
+    },
+    {
+      "id": "ext011",
+      "type": "communication",
+      "name": "Message Passing",
+      "description": "Script communication",
+      "pattern": "chrome.runtime.sendMessage, chrome.runtime.onMessage.addListener",
+      "example": "Communication usage"
+    },
+    {
+      "id": "ext012",
+      "type": "communication",
+      "name": "Long-lived Connections",
+      "description": "Ports",
+      "pattern": "chrome.runtime.connect, port.postMessage, port.onMessage",
+      "example": "Communication usage"
+    },
+    {
+      "id": "ext013",
+      "type": "communication",
+      "name": "External Messaging",
+      "description": "Web to extension",
+      "pattern": "externally_connectable, chrome.runtime.sendMessage(extensionId, msg)",
+      "example": "Communication usage"
+    },
+    {
+      "id": "ext014",
+      "type": "storage",
+      "name": "chrome.storage",
+      "description": "Extension storage",
+      "pattern": "chrome.storage.local.set({key: value}); chrome.storage.sync for cross-device",
+      "example": "Storage usage"
+    },
+    {
+      "id": "ext015",
+      "type": "storage",
+      "name": "Storage Events",
+      "description": "Change listeners",
+      "pattern": "chrome.storage.onChanged.addListener((changes, area) => {...})",
+      "example": "Storage usage"
+    },
+    {
+      "id": "ext016",
+      "type": "apis",
+      "name": "Tabs API",
+      "description": "Tab manipulation",
+      "pattern": "chrome.tabs.query, create, update, remove, onActivated",
+      "example": "Apis usage"
+    },
+    {
+      "id": "ext017",
+      "type": "apis",
+      "name": "Windows API",
+      "description": "Window management",
+      "pattern": "chrome.windows.create, getAll, update, onFocusChanged",
+      "example": "Apis usage"
+    },
+    {
+      "id": "ext018",
+      "type": "apis",
+      "name": "Bookmarks API",
+      "description": "Bookmark access",
+      "pattern": "chrome.bookmarks.create, search, getTree, onCreated",
+      "example": "Apis usage"
+    },
+    {
+      "id": "ext019",
+      "type": "apis",
+      "name": "History API",
+      "description": "Browser history",
+      "pattern": "chrome.history.search, deleteUrl, onVisited",
+      "example": "Apis usage"
+    },
+    {
+      "id": "ext020",
+      "type": "apis",
+      "name": "Alarms API",
+      "description": "Scheduled tasks",
+      "pattern": "chrome.alarms.create('name', {periodInMinutes: 30}); onAlarm.addListener",
+      "example": "Apis usage"
+    },
+    {
+      "id": "ext021",
+      "type": "network",
+      "name": "declarativeNetRequest",
+      "description": "Request blocking",
+      "pattern": "Block, redirect, modify headers - replacement for webRequest",
+      "example": "Network usage"
+    },
+    {
+      "id": "ext022",
+      "type": "network",
+      "name": "Fetch in Background",
+      "description": "API calls",
+      "pattern": "Service worker can fetch, handle CORS with host_permissions",
+      "example": "Network usage"
+    },
+    {
+      "id": "ext023",
+      "type": "context",
+      "name": "Context Menus",
+      "description": "Right-click menus",
+      "pattern": "chrome.contextMenus.create({title, contexts: ['selection'], onclick})",
+      "example": "Context usage"
+    },
+    {
+      "id": "ext024",
+      "type": "context",
+      "name": "Omnibox",
+      "description": "Address bar",
+      "pattern": "omnibox keyword, chrome.omnibox.onInputChanged, onInputEntered",
+      "example": "Context usage"
+    },
+    {
+      "id": "ext025",
+      "type": "development",
+      "name": "Extension Development",
+      "description": "Dev workflow",
+      "pattern": "chrome://extensions, Load unpacked, inspect views",
+      "example": "Development usage"
+    },
+    {
+      "id": "ext026",
+      "type": "development",
+      "name": "Hot Reload",
+      "description": "Dev efficiency",
+      "pattern": "Watch files, call chrome.runtime.reload()",
+      "example": "Development usage"
+    },
+    {
+      "id": "ext027",
+      "type": "development",
+      "name": "Debugging",
+      "description": "Debug extensions",
+      "pattern": "DevTools for each context, background page console",
+      "example": "Development usage"
+    },
+    {
+      "id": "ext028",
+      "type": "publishing",
+      "name": "Chrome Web Store",
+      "description": "Distribution",
+      "pattern": "Developer account, store listing, review process",
+      "example": "Publishing usage"
+    },
+    {
+      "id": "ext029",
+      "type": "cross-browser",
+      "name": "WebExtensions API",
+      "description": "Cross-browser",
+      "pattern": "Firefox compatible, browser.* namespace, polyfill",
+      "example": "Cross-browser usage"
+    },
+    {
+      "id": "ext030",
+      "type": "security",
+      "name": "Extension Security",
+      "description": "Security best practices",
+      "pattern": "CSP, sanitize user input, minimal permissions, secure storage",
+      "example": "Security usage"
+    }
+  ]
+}

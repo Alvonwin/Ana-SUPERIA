@@ -1,0 +1,246 @@
+{
+  "category": "backend-frameworks",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "be001",
+      "type": "express",
+      "name": "Express Middleware Chain",
+      "description": "Order matters, next()",
+      "pattern": "app.use(cors()); app.use(helmet()); app.use(json()); app.use('/api', routes);",
+      "example": "Express usage"
+    },
+    {
+      "id": "be002",
+      "type": "express",
+      "name": "Express Error Handler",
+      "description": "4 params = error handler",
+      "pattern": "app.use((err, req, res, next) => { res.status(err.status || 500).json({error: err.message}); });",
+      "example": "Express usage"
+    },
+    {
+      "id": "be003",
+      "type": "express",
+      "name": "Express Router",
+      "description": "Modulariser routes",
+      "pattern": "const router = Router(); router.get('/:id', handler); app.use('/users', router);",
+      "example": "Express usage"
+    },
+    {
+      "id": "be004",
+      "type": "express",
+      "name": "Express Validation",
+      "description": "express-validator, Zod",
+      "pattern": "body('email').isEmail(), validationResult(req).throw()",
+      "example": "Express usage"
+    },
+    {
+      "id": "be005",
+      "type": "fastify",
+      "name": "Fastify Basics",
+      "description": "Framework rapide",
+      "pattern": "fastify.get('/user/:id', async (req, reply) => { return {user}; });",
+      "example": "Fastify usage"
+    },
+    {
+      "id": "be006",
+      "type": "fastify",
+      "name": "Fastify Plugins",
+      "description": "Encapsulation",
+      "pattern": "fastify.register(require('@fastify/cors')); fastify.register(myPlugin, {prefix: '/api'});",
+      "example": "Fastify usage"
+    },
+    {
+      "id": "be007",
+      "type": "fastify",
+      "name": "Fastify Schema",
+      "description": "JSON Schema validation",
+      "pattern": "schema: {body: {type: 'object', required: ['name'], properties: {name: {type: 'string'}}}}",
+      "example": "Fastify usage"
+    },
+    {
+      "id": "be008",
+      "type": "fastify",
+      "name": "Fastify Hooks",
+      "description": "Lifecycle hooks",
+      "pattern": "fastify.addHook('onRequest', async (req, reply) => { /* auth */ });",
+      "example": "Fastify usage"
+    },
+    {
+      "id": "be009",
+      "type": "nestjs",
+      "name": "NestJS Modules",
+      "description": "Organisation modulaire",
+      "pattern": "@Module({imports: [], controllers: [UserController], providers: [UserService]})",
+      "example": "Nestjs usage"
+    },
+    {
+      "id": "be010",
+      "type": "nestjs",
+      "name": "NestJS DI",
+      "description": "Dependency Injection",
+      "pattern": "constructor(private userService: UserService) {}",
+      "example": "Nestjs usage"
+    },
+    {
+      "id": "be011",
+      "type": "nestjs",
+      "name": "NestJS Guards",
+      "description": "Authorization",
+      "pattern": "@UseGuards(JwtAuthGuard) @Get('profile') getProfile(@User() user) {}",
+      "example": "Nestjs usage"
+    },
+    {
+      "id": "be012",
+      "type": "nestjs",
+      "name": "NestJS Pipes",
+      "description": "Validation/transformation",
+      "pattern": "@Body(ValidationPipe) createUserDto: CreateUserDto",
+      "example": "Nestjs usage"
+    },
+    {
+      "id": "be013",
+      "type": "nestjs",
+      "name": "NestJS Interceptors",
+      "description": "AOP-style",
+      "pattern": "@UseInterceptors(LoggingInterceptor, CacheInterceptor)",
+      "example": "Nestjs usage"
+    },
+    {
+      "id": "be014",
+      "type": "hono",
+      "name": "Hono Basics",
+      "description": "Ultra-fast, edge-ready",
+      "pattern": "const app = new Hono(); app.get('/', (c) => c.json({hello: 'world'}));",
+      "example": "Hono usage"
+    },
+    {
+      "id": "be015",
+      "type": "hono",
+      "name": "Hono Middleware",
+      "description": "Composable middleware",
+      "pattern": "app.use('/*', cors()); app.use('/api/*', jwt({secret}));",
+      "example": "Hono usage"
+    },
+    {
+      "id": "be016",
+      "type": "fastapi",
+      "name": "FastAPI Routes",
+      "description": "Type hints = docs",
+      "pattern": "@app.get('/users/{user_id}') async def get_user(user_id: int) -> User:",
+      "example": "Fastapi usage"
+    },
+    {
+      "id": "be017",
+      "type": "fastapi",
+      "name": "FastAPI Pydantic",
+      "description": "Validation models",
+      "pattern": "class UserCreate(BaseModel): name: str; email: EmailStr; age: int = Field(ge=0)",
+      "example": "Fastapi usage"
+    },
+    {
+      "id": "be018",
+      "type": "fastapi",
+      "name": "FastAPI Dependencies",
+      "description": "DI system",
+      "pattern": "def get_db(): yield db; @app.get('/') def read(db: Session = Depends(get_db)):",
+      "example": "Fastapi usage"
+    },
+    {
+      "id": "be019",
+      "type": "fastapi",
+      "name": "FastAPI Background",
+      "description": "Background tasks",
+      "pattern": "background_tasks.add_task(send_email, email, message)",
+      "example": "Fastapi usage"
+    },
+    {
+      "id": "be020",
+      "type": "fastapi",
+      "name": "FastAPI WebSocket",
+      "description": "Real-time",
+      "pattern": "@app.websocket('/ws') async def ws(websocket: WebSocket): await websocket.accept()",
+      "example": "Fastapi usage"
+    },
+    {
+      "id": "be021",
+      "type": "django",
+      "name": "Django ORM",
+      "description": "Querysets",
+      "pattern": "User.objects.filter(active=True).select_related('profile').order_by('-created')[:10]",
+      "example": "Django usage"
+    },
+    {
+      "id": "be022",
+      "type": "django",
+      "name": "Django Views",
+      "description": "CBV vs FBV",
+      "pattern": "class UserViewSet(ModelViewSet): queryset = User.objects.all(); serializer_class = UserSerializer",
+      "example": "Django usage"
+    },
+    {
+      "id": "be023",
+      "type": "django",
+      "name": "Django Signals",
+      "description": "Decoupled events",
+      "pattern": "@receiver(post_save, sender=User) def create_profile(sender, instance, created, **kwargs):",
+      "example": "Django usage"
+    },
+    {
+      "id": "be024",
+      "type": "django",
+      "name": "Django Admin",
+      "description": "Auto admin interface",
+      "pattern": "@admin.register(User) class UserAdmin(ModelAdmin): list_display = ['name', 'email']",
+      "example": "Django usage"
+    },
+    {
+      "id": "be025",
+      "type": "flask",
+      "name": "Flask Blueprints",
+      "description": "Modular apps",
+      "pattern": "bp = Blueprint('api', __name__, url_prefix='/api'); @bp.route('/users')",
+      "example": "Flask usage"
+    },
+    {
+      "id": "be026",
+      "type": "flask",
+      "name": "Flask Context",
+      "description": "g, request, session",
+      "pattern": "g.user = get_current_user(); current_app.config['SECRET_KEY']",
+      "example": "Flask usage"
+    },
+    {
+      "id": "be027",
+      "type": "gin",
+      "name": "Gin Routes",
+      "description": "Go web framework",
+      "pattern": "r.GET('/user/:id', func(c *gin.Context) { id := c.Param('id'); c.JSON(200, user) })",
+      "example": "Gin usage"
+    },
+    {
+      "id": "be028",
+      "type": "gin",
+      "name": "Gin Middleware",
+      "description": "Handlers chain",
+      "pattern": "r.Use(gin.Logger(), gin.Recovery(), AuthMiddleware())",
+      "example": "Gin usage"
+    },
+    {
+      "id": "be029",
+      "type": "actix",
+      "name": "Actix Web",
+      "description": "Rust web framework",
+      "pattern": "#[get('/user/{id}')] async fn get_user(path: web::Path<u32>) -> impl Responder {}",
+      "example": "Actix usage"
+    },
+    {
+      "id": "be030",
+      "type": "actix",
+      "name": "Actix Extractors",
+      "description": "Type-safe extraction",
+      "pattern": "web::Path<(u32,)>, web::Query<Params>, web::Json<Body>",
+      "example": "Actix usage"
+    }
+  ]
+}

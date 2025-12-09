@@ -1,0 +1,247 @@
+{
+  "category": "react19-compiler",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "rc01",
+      "type": "compiler",
+      "name": "React Compiler",
+      "description": "Auto-optimization",
+      "pattern": "babel-plugin-react-compiler",
+      "example": "No more useMemo/useCallback"
+    },
+    {
+      "id": "rc02",
+      "type": "actions",
+      "name": "Server Actions",
+      "description": "Server mutations",
+      "pattern": "use server directive",
+      "example": "Form submissions"
+    },
+    {
+      "id": "rc03",
+      "type": "useAction",
+      "name": "useActionState",
+      "description": "Action state management",
+      "pattern": "const [state, action] = useActionState(fn, init)",
+      "example": "Pending states"
+    },
+    {
+      "id": "rc04",
+      "type": "useFormStatus",
+      "name": "useFormStatus Hook",
+      "description": "Form submission status",
+      "pattern": "const { pending, data } = useFormStatus()",
+      "example": "Loading indicators"
+    },
+    {
+      "id": "rc05",
+      "type": "useOptimistic",
+      "name": "useOptimistic Hook",
+      "description": "Optimistic UI updates",
+      "pattern": "const [optimistic, addOptimistic] = useOptimistic(state)",
+      "example": "Instant feedback"
+    },
+    {
+      "id": "rc06",
+      "type": "use",
+      "name": "use() API",
+      "description": "Read resources in render",
+      "pattern": "const value = use(promise)",
+      "example": "Context, promises"
+    },
+    {
+      "id": "rc07",
+      "type": "metadata",
+      "name": "Document Metadata",
+      "description": "Native meta tags",
+      "pattern": "<title>, <meta>, <link> in components",
+      "example": "SEO without helmet"
+    },
+    {
+      "id": "rc08",
+      "type": "stylesheets",
+      "name": "Stylesheet Loading",
+      "description": "CSS precedence",
+      "pattern": "<link rel=stylesheet precedence=high />",
+      "example": "Ordered loading"
+    },
+    {
+      "id": "rc09",
+      "type": "preload",
+      "name": "Resource Preloading",
+      "description": "Preload hints",
+      "pattern": "preload(), preinit(), prefetchDNS()",
+      "example": "Performance hints"
+    },
+    {
+      "id": "rc10",
+      "type": "scripts",
+      "name": "Async Scripts",
+      "description": "Script deduplication",
+      "pattern": "<script async src=... />",
+      "example": "Auto deduped"
+    },
+    {
+      "id": "rc11",
+      "type": "ref",
+      "name": "Ref as Prop",
+      "description": "No forwardRef needed",
+      "pattern": "function Input({ ref }) { return <input ref={ref} /> }",
+      "example": "Simplified refs"
+    },
+    {
+      "id": "rc12",
+      "type": "cleanup",
+      "name": "Ref Cleanup",
+      "description": "Cleanup function",
+      "pattern": "ref={(node) => { return () => cleanup() }}",
+      "example": "Auto cleanup"
+    },
+    {
+      "id": "rc13",
+      "type": "context",
+      "name": "Context as Provider",
+      "description": "Simplified context",
+      "pattern": "<Context value={value}> instead of <Context.Provider>",
+      "example": "Cleaner JSX"
+    },
+    {
+      "id": "rc14",
+      "type": "errors",
+      "name": "Improved Error Reporting",
+      "description": "Better error messages",
+      "pattern": "Hydration diff, duplicate key details",
+      "example": "Easier debugging"
+    },
+    {
+      "id": "rc15",
+      "type": "hydration",
+      "name": "Hydration Improvements",
+      "description": "Better SSR hydration",
+      "pattern": "Third-party script handling",
+      "example": "Graceful recovery"
+    },
+    {
+      "id": "rc16",
+      "type": "customElements",
+      "name": "Custom Elements Support",
+      "description": "Web Components",
+      "pattern": "Full custom element props support",
+      "example": "Interop"
+    },
+    {
+      "id": "rc17",
+      "type": "suspense",
+      "name": "Suspense Improvements",
+      "description": "Enhanced Suspense",
+      "pattern": "Sibling pre-warming",
+      "example": "Faster reveals"
+    },
+    {
+      "id": "rc18",
+      "type": "transitions",
+      "name": "Transitions API",
+      "description": "Concurrent rendering",
+      "pattern": "startTransition(() => setState())",
+      "example": "Non-blocking UI"
+    },
+    {
+      "id": "rc19",
+      "type": "useDeferredValue",
+      "name": "useDeferredValue",
+      "description": "Defer updates",
+      "pattern": "const deferredValue = useDeferredValue(value)",
+      "example": "Initial value support"
+    },
+    {
+      "id": "rc20",
+      "type": "rsc",
+      "name": "Server Components",
+      "description": "Server-side React",
+      "pattern": "async function ServerComponent()",
+      "example": "Zero bundle size"
+    },
+    {
+      "id": "rc21",
+      "type": "clientDirective",
+      "name": "use client Directive",
+      "description": "Client boundaries",
+      "pattern": "use client at file top",
+      "example": "Interactivity boundary"
+    },
+    {
+      "id": "rc22",
+      "type": "streaming",
+      "name": "Streaming SSR",
+      "description": "Progressive rendering",
+      "pattern": "renderToReadableStream()",
+      "example": "Fast TTFB"
+    },
+    {
+      "id": "rc23",
+      "type": "ppr",
+      "name": "Partial Prerendering",
+      "description": "Static + Dynamic",
+      "pattern": "PPR with Suspense boundaries",
+      "example": "Best of both"
+    },
+    {
+      "id": "rc24",
+      "type": "cache",
+      "name": "React Cache",
+      "description": "Request memoization",
+      "pattern": "cache(fn) wrapper",
+      "example": "Dedupe requests"
+    },
+    {
+      "id": "rc25",
+      "type": "formAction",
+      "name": "Form Actions",
+      "description": "Native form handling",
+      "pattern": "<form action={serverAction}>",
+      "example": "Progressive enhancement"
+    },
+    {
+      "id": "rc26",
+      "type": "activity",
+      "name": "Activity API",
+      "description": "Background rendering",
+      "pattern": "<Activity mode=hidden>",
+      "example": "Offscreen prep"
+    },
+    {
+      "id": "rc27",
+      "type": "viewTransition",
+      "name": "View Transitions",
+      "description": "Animate transitions",
+      "pattern": "<ViewTransition> wrapper",
+      "example": "Page animations"
+    },
+    {
+      "id": "rc28",
+      "type": "strictMode",
+      "name": "Strict Mode Changes",
+      "description": "Development checks",
+      "pattern": "No double unmount in dev",
+      "example": "Cleaner logs"
+    },
+    {
+      "id": "rc29",
+      "type": "propTypes",
+      "name": "PropTypes Removed",
+      "description": "Use TypeScript",
+      "pattern": "propTypes deprecated",
+      "example": "TS recommended"
+    },
+    {
+      "id": "rc30",
+      "type": "canary",
+      "name": "Canary Features",
+      "description": "Experimental APIs",
+      "pattern": "useEffectEvent, useMemoCache",
+      "example": "Future React"
+    }
+  ]
+}

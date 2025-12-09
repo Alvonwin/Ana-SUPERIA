@@ -1,0 +1,246 @@
+{
+  "category": "soft-skills",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ss001",
+      "type": "communication",
+      "name": "Technical Writing",
+      "description": "Documentation claire",
+      "pattern": "1. Context 2. Problem 3. Solution 4. Examples 5. Caveats",
+      "example": "Communication usage"
+    },
+    {
+      "id": "ss002",
+      "type": "communication",
+      "name": "Code Review Feedback",
+      "description": "Constructif et precis",
+      "pattern": "Consider X because Y. What do you think about Z?",
+      "example": "Communication usage"
+    },
+    {
+      "id": "ss003",
+      "type": "communication",
+      "name": "RFC/ADR Writing",
+      "description": "Architecture decisions",
+      "pattern": "Context, Decision, Consequences, Alternatives Considered",
+      "example": "Communication usage"
+    },
+    {
+      "id": "ss004",
+      "type": "communication",
+      "name": "Bug Reports",
+      "description": "Reproductible et clair",
+      "pattern": "Steps to reproduce, Expected, Actual, Environment, Logs",
+      "example": "Communication usage"
+    },
+    {
+      "id": "ss005",
+      "type": "communication",
+      "name": "Standups",
+      "description": "Concis et pertinent",
+      "pattern": "Yesterday: X. Today: Y. Blockers: Z.",
+      "example": "Communication usage"
+    },
+    {
+      "id": "ss006",
+      "type": "collaboration",
+      "name": "Pair Programming",
+      "description": "Driver/Navigator",
+      "pattern": "Driver: code. Navigator: review en temps reel. Switch toutes les 25min",
+      "example": "Collaboration usage"
+    },
+    {
+      "id": "ss007",
+      "type": "collaboration",
+      "name": "Mob Programming",
+      "description": "Team coding",
+      "pattern": "1 driver, N navigators, rotate frequently",
+      "example": "Collaboration usage"
+    },
+    {
+      "id": "ss008",
+      "type": "collaboration",
+      "name": "Knowledge Sharing",
+      "description": "Tech talks, docs",
+      "pattern": "Lunch & learns, internal blog, runbooks",
+      "example": "Collaboration usage"
+    },
+    {
+      "id": "ss009",
+      "type": "collaboration",
+      "name": "Mentoring",
+      "description": "Guider sans faire",
+      "pattern": "Ask questions, suggest resources, let them struggle (a bit)",
+      "example": "Collaboration usage"
+    },
+    {
+      "id": "ss010",
+      "type": "collaboration",
+      "name": "Cross-team Work",
+      "description": "APIs, contracts, sync",
+      "pattern": "Interface agreements, regular syncs, shared documentation",
+      "example": "Collaboration usage"
+    },
+    {
+      "id": "ss011",
+      "type": "problem-solving",
+      "name": "Root Cause Analysis",
+      "description": "5 Whys",
+      "pattern": "Why? -> Because X. Why X? -> Because Y. ... -> Root cause",
+      "example": "Problem-solving usage"
+    },
+    {
+      "id": "ss012",
+      "type": "problem-solving",
+      "name": "Divide and Conquer",
+      "description": "Break down problems",
+      "pattern": "Big problem -> smaller problems -> solve each -> combine",
+      "example": "Problem-solving usage"
+    },
+    {
+      "id": "ss013",
+      "type": "problem-solving",
+      "name": "Rubber Duck Debugging",
+      "description": "Explain to understand",
+      "pattern": "Explain step by step to find the gap in logic",
+      "example": "Problem-solving usage"
+    },
+    {
+      "id": "ss014",
+      "type": "problem-solving",
+      "name": "First Principles",
+      "description": "Question assumptions",
+      "pattern": "What do we actually know? What are we assuming?",
+      "example": "Problem-solving usage"
+    },
+    {
+      "id": "ss015",
+      "type": "problem-solving",
+      "name": "Trade-off Analysis",
+      "description": "Pros/cons decision",
+      "pattern": "Option A: pros [...], cons [...]. Option B: ...",
+      "example": "Problem-solving usage"
+    },
+    {
+      "id": "ss016",
+      "type": "estimation",
+      "name": "Story Points",
+      "description": "Relative sizing",
+      "pattern": "Fibonacci: 1,2,3,5,8,13. Compare to reference stories",
+      "example": "Estimation usage"
+    },
+    {
+      "id": "ss017",
+      "type": "estimation",
+      "name": "T-Shirt Sizing",
+      "description": "Quick estimates",
+      "pattern": "XS (hours), S (1d), M (2-3d), L (week), XL (epic)",
+      "example": "Estimation usage"
+    },
+    {
+      "id": "ss018",
+      "type": "estimation",
+      "name": "Cone of Uncertainty",
+      "description": "Precision over time",
+      "pattern": "Initial: 4x variance. After design: 2x. After impl starts: 1.25x",
+      "example": "Estimation usage"
+    },
+    {
+      "id": "ss019",
+      "type": "estimation",
+      "name": "Buffer for Unknown",
+      "description": "Account for surprises",
+      "pattern": "Add 20-30% for unknowns, more for new tech",
+      "example": "Estimation usage"
+    },
+    {
+      "id": "ss020",
+      "type": "estimation",
+      "name": "Scope Negotiation",
+      "description": "Time vs features",
+      "pattern": "Fixed deadline? Reduce scope. Fixed scope? Extend deadline.",
+      "example": "Estimation usage"
+    },
+    {
+      "id": "ss021",
+      "type": "leadership",
+      "name": "Technical Decisions",
+      "description": "Lead by example",
+      "pattern": "Gather input, decide, document why, commit",
+      "example": "Leadership usage"
+    },
+    {
+      "id": "ss022",
+      "type": "leadership",
+      "name": "Blameless Postmortems",
+      "description": "Learn from failures",
+      "pattern": "Timeline, Impact, Root cause, Action items. No blame.",
+      "example": "Leadership usage"
+    },
+    {
+      "id": "ss023",
+      "type": "leadership",
+      "name": "Delegation",
+      "description": "Empower team",
+      "pattern": "Clear outcome, context, check-ins, not micromanagement",
+      "example": "Leadership usage"
+    },
+    {
+      "id": "ss024",
+      "type": "leadership",
+      "name": "Tech Debt Management",
+      "description": "Balance new vs fix",
+      "pattern": "20% time for debt, prioritize by impact/effort",
+      "example": "Leadership usage"
+    },
+    {
+      "id": "ss025",
+      "type": "leadership",
+      "name": "Stakeholder Management",
+      "description": "Expectations",
+      "pattern": "Regular updates, no surprises, clear trade-offs",
+      "example": "Leadership usage"
+    },
+    {
+      "id": "ss026",
+      "type": "growth",
+      "name": "Learning New Tech",
+      "description": "Efficient learning",
+      "pattern": "Docs -> Tutorial -> Build something -> Teach others",
+      "example": "Growth usage"
+    },
+    {
+      "id": "ss027",
+      "type": "growth",
+      "name": "Staying Current",
+      "description": "Keep up to date",
+      "pattern": "RSS feeds, newsletters, conferences, side projects",
+      "example": "Growth usage"
+    },
+    {
+      "id": "ss028",
+      "type": "growth",
+      "name": "Building Portfolio",
+      "description": "Show your work",
+      "pattern": "GitHub, blog posts, open source contributions",
+      "example": "Growth usage"
+    },
+    {
+      "id": "ss029",
+      "type": "growth",
+      "name": "Career Conversations",
+      "description": "Growth path",
+      "pattern": "Regular 1:1s, clear goals, feedback loops",
+      "example": "Growth usage"
+    },
+    {
+      "id": "ss030",
+      "type": "growth",
+      "name": "Work-Life Balance",
+      "description": "Sustainable pace",
+      "pattern": "Boundaries, no hero culture, recovery time",
+      "example": "Growth usage"
+    }
+  ]
+}

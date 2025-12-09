@@ -1,0 +1,246 @@
+{
+  "category": "computer-vision",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cv001",
+      "type": "fundamentals",
+      "name": "Image Basics",
+      "description": "Digital images",
+      "pattern": "Pixels, channels, RGB, grayscale",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cv002",
+      "type": "fundamentals",
+      "name": "Image I/O",
+      "description": "Read/write images",
+      "pattern": "cv2.imread, imwrite, PIL.Image",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cv003",
+      "type": "fundamentals",
+      "name": "Color Spaces",
+      "description": "Color conversion",
+      "pattern": "RGB, BGR, HSV, LAB, cv2.cvtColor",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cv004",
+      "type": "fundamentals",
+      "name": "Image Transforms",
+      "description": "Geometric ops",
+      "pattern": "resize, rotate, crop, flip",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cv005",
+      "type": "fundamentals",
+      "name": "Filtering",
+      "description": "Image filters",
+      "pattern": "blur, sharpen, gaussian, median",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cv006",
+      "type": "fundamentals",
+      "name": "Edge Detection",
+      "description": "Find edges",
+      "pattern": "Canny, Sobel, Laplacian",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cv007",
+      "type": "fundamentals",
+      "name": "Thresholding",
+      "description": "Binary images",
+      "pattern": "cv2.threshold, adaptive, Otsu",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cv008",
+      "type": "fundamentals",
+      "name": "Morphology",
+      "description": "Shape operations",
+      "pattern": "erosion, dilation, opening, closing",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cv009",
+      "type": "opencv",
+      "name": "OpenCV Basics",
+      "description": "CV library",
+      "pattern": "cv2, numpy arrays, BGR",
+      "example": "Opencv usage"
+    },
+    {
+      "id": "cv010",
+      "type": "opencv",
+      "name": "Contours",
+      "description": "Shape detection",
+      "pattern": "findContours, drawContours, area",
+      "example": "Opencv usage"
+    },
+    {
+      "id": "cv011",
+      "type": "opencv",
+      "name": "Feature Detection",
+      "description": "Keypoints",
+      "pattern": "SIFT, ORB, FAST, descriptors",
+      "example": "Opencv usage"
+    },
+    {
+      "id": "cv012",
+      "type": "opencv",
+      "name": "Template Matching",
+      "description": "Find patterns",
+      "pattern": "matchTemplate, minMaxLoc",
+      "example": "Opencv usage"
+    },
+    {
+      "id": "cv013",
+      "type": "opencv",
+      "name": "Histograms",
+      "description": "Pixel distribution",
+      "pattern": "calcHist, equalizeHist, CLAHE",
+      "example": "Opencv usage"
+    },
+    {
+      "id": "cv014",
+      "type": "detection",
+      "name": "Object Detection",
+      "description": "Find objects",
+      "pattern": "YOLO, SSD, Faster R-CNN",
+      "example": "Detection usage"
+    },
+    {
+      "id": "cv015",
+      "type": "detection",
+      "name": "Face Detection",
+      "description": "Detect faces",
+      "pattern": "Haar cascades, dlib, MTCNN",
+      "example": "Detection usage"
+    },
+    {
+      "id": "cv016",
+      "type": "detection",
+      "name": "Face Recognition",
+      "description": "Identify faces",
+      "pattern": "face_recognition, FaceNet, ArcFace",
+      "example": "Detection usage"
+    },
+    {
+      "id": "cv017",
+      "type": "detection",
+      "name": "Pose Estimation",
+      "description": "Body pose",
+      "pattern": "MediaPipe, OpenPose, keypoints",
+      "example": "Detection usage"
+    },
+    {
+      "id": "cv018",
+      "type": "segmentation",
+      "name": "Semantic Segmentation",
+      "description": "Pixel classification",
+      "pattern": "U-Net, DeepLab, FCN",
+      "example": "Segmentation usage"
+    },
+    {
+      "id": "cv019",
+      "type": "segmentation",
+      "name": "Instance Segmentation",
+      "description": "Object instances",
+      "pattern": "Mask R-CNN, YOLACT",
+      "example": "Segmentation usage"
+    },
+    {
+      "id": "cv020",
+      "type": "segmentation",
+      "name": "Background Removal",
+      "description": "Remove backgrounds",
+      "pattern": "GrabCut, MOG2, rembg",
+      "example": "Segmentation usage"
+    },
+    {
+      "id": "cv021",
+      "type": "classification",
+      "name": "Image Classification",
+      "description": "Categorize images",
+      "pattern": "ResNet, VGG, EfficientNet",
+      "example": "Classification usage"
+    },
+    {
+      "id": "cv022",
+      "type": "classification",
+      "name": "Transfer Learning",
+      "description": "Pretrained models",
+      "pattern": "Fine-tuning, feature extraction",
+      "example": "Classification usage"
+    },
+    {
+      "id": "cv023",
+      "type": "ocr",
+      "name": "OCR Basics",
+      "description": "Text recognition",
+      "pattern": "Tesseract, pytesseract, EasyOCR",
+      "example": "Ocr usage"
+    },
+    {
+      "id": "cv024",
+      "type": "ocr",
+      "name": "Document Processing",
+      "description": "Extract text",
+      "pattern": "Layout analysis, table detection",
+      "example": "Ocr usage"
+    },
+    {
+      "id": "cv025",
+      "type": "video",
+      "name": "Video Processing",
+      "description": "Process video",
+      "pattern": "VideoCapture, frames, fps",
+      "example": "Video usage"
+    },
+    {
+      "id": "cv026",
+      "type": "video",
+      "name": "Object Tracking",
+      "description": "Track objects",
+      "pattern": "SORT, DeepSORT, trackers",
+      "example": "Video usage"
+    },
+    {
+      "id": "cv027",
+      "type": "video",
+      "name": "Optical Flow",
+      "description": "Motion estimation",
+      "pattern": "Lucas-Kanade, Farneback",
+      "example": "Video usage"
+    },
+    {
+      "id": "cv028",
+      "type": "advanced",
+      "name": "3D Vision",
+      "description": "Depth estimation",
+      "pattern": "Stereo, MiDaS, point clouds",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cv029",
+      "type": "advanced",
+      "name": "Image Generation",
+      "description": "Create images",
+      "pattern": "GANs, Stable Diffusion, DALL-E",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cv030",
+      "type": "advanced",
+      "name": "Augmented Reality",
+      "description": "AR applications",
+      "pattern": "ArUco markers, homography, overlay",
+      "example": "Advanced usage"
+    }
+  ]
+}

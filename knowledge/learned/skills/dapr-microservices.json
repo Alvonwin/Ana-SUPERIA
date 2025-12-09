@@ -1,0 +1,246 @@
+{
+  "category": "dapr-microservices",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "dapr001",
+      "type": "fundamentals",
+      "name": "Dapr Overview",
+      "description": "Distributed application runtime",
+      "pattern": "Building blocks, sidecar, portable",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dapr002",
+      "type": "fundamentals",
+      "name": "Sidecar Architecture",
+      "description": "Dapr sidecar",
+      "pattern": "daprd, ports, APIs",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dapr003",
+      "type": "fundamentals",
+      "name": "Building Blocks",
+      "description": "Core capabilities",
+      "pattern": "State, pubsub, bindings, actors",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "dapr004",
+      "type": "invocation",
+      "name": "Service Invocation",
+      "description": "Service-to-service calls",
+      "pattern": "HTTP, gRPC, mTLS, retries",
+      "example": "Invocation usage"
+    },
+    {
+      "id": "dapr005",
+      "type": "invocation",
+      "name": "Service Discovery",
+      "description": "Automatic discovery",
+      "pattern": "App ID, namespace resolution",
+      "example": "Invocation usage"
+    },
+    {
+      "id": "dapr006",
+      "type": "state",
+      "name": "State Management",
+      "description": "Key-value storage",
+      "pattern": "Get, set, delete, transactions",
+      "example": "State usage"
+    },
+    {
+      "id": "dapr007",
+      "type": "state",
+      "name": "State Stores",
+      "description": "Backend options",
+      "pattern": "Redis, Cosmos, PostgreSQL, MongoDB",
+      "example": "State usage"
+    },
+    {
+      "id": "dapr008",
+      "type": "state",
+      "name": "Concurrency",
+      "description": "State consistency",
+      "pattern": "First-write, last-write, ETags",
+      "example": "State usage"
+    },
+    {
+      "id": "dapr009",
+      "type": "pubsub",
+      "name": "Pub/Sub Messaging",
+      "description": "Event-driven messaging",
+      "pattern": "Publish, subscribe, topics",
+      "example": "Pubsub usage"
+    },
+    {
+      "id": "dapr010",
+      "type": "pubsub",
+      "name": "Message Brokers",
+      "description": "Backend options",
+      "pattern": "Kafka, RabbitMQ, Redis, NATS",
+      "example": "Pubsub usage"
+    },
+    {
+      "id": "dapr011",
+      "type": "pubsub",
+      "name": "CloudEvents",
+      "description": "Event format",
+      "pattern": "Spec compliance, custom metadata",
+      "example": "Pubsub usage"
+    },
+    {
+      "id": "dapr012",
+      "type": "bindings",
+      "name": "Input Bindings",
+      "description": "External triggers",
+      "pattern": "Cron, queues, webhooks",
+      "example": "Bindings usage"
+    },
+    {
+      "id": "dapr013",
+      "type": "bindings",
+      "name": "Output Bindings",
+      "description": "External calls",
+      "pattern": "HTTP, storage, email, SMS",
+      "example": "Bindings usage"
+    },
+    {
+      "id": "dapr014",
+      "type": "actors",
+      "name": "Virtual Actors",
+      "description": "Actor model",
+      "pattern": "Activation, state, timers, reminders",
+      "example": "Actors usage"
+    },
+    {
+      "id": "dapr015",
+      "type": "actors",
+      "name": "Actor Patterns",
+      "description": "Use cases",
+      "pattern": "Stateful entities, workflows",
+      "example": "Actors usage"
+    },
+    {
+      "id": "dapr016",
+      "type": "workflow",
+      "name": "Dapr Workflow",
+      "description": "Orchestration",
+      "pattern": "Activities, child workflows, timers",
+      "example": "Workflow usage"
+    },
+    {
+      "id": "dapr017",
+      "type": "secrets",
+      "name": "Secrets Management",
+      "description": "Secret stores",
+      "pattern": "Vault, Azure KV, AWS SM, K8s",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "dapr018",
+      "type": "config",
+      "name": "Configuration",
+      "description": "App configuration",
+      "pattern": "Config stores, subscriptions",
+      "example": "Config usage"
+    },
+    {
+      "id": "dapr019",
+      "type": "security",
+      "name": "mTLS",
+      "description": "Service security",
+      "pattern": "Automatic mTLS, Sentry CA",
+      "example": "Security usage"
+    },
+    {
+      "id": "dapr020",
+      "type": "security",
+      "name": "Access Control",
+      "description": "Authorization",
+      "pattern": "App policies, component access",
+      "example": "Security usage"
+    },
+    {
+      "id": "dapr021",
+      "type": "resiliency",
+      "name": "Resiliency",
+      "description": "Fault tolerance",
+      "pattern": "Retries, timeouts, circuit breakers",
+      "example": "Resiliency usage"
+    },
+    {
+      "id": "dapr022",
+      "type": "observability",
+      "name": "Tracing",
+      "description": "Distributed tracing",
+      "pattern": "W3C trace context, Zipkin, OTel",
+      "example": "Observability usage"
+    },
+    {
+      "id": "dapr023",
+      "type": "observability",
+      "name": "Metrics",
+      "description": "Performance metrics",
+      "pattern": "Prometheus, Grafana",
+      "example": "Observability usage"
+    },
+    {
+      "id": "dapr024",
+      "type": "observability",
+      "name": "Logging",
+      "description": "Structured logs",
+      "pattern": "JSON logs, log levels",
+      "example": "Observability usage"
+    },
+    {
+      "id": "dapr025",
+      "type": "components",
+      "name": "Component Specs",
+      "description": "Configuration",
+      "pattern": "YAML manifests, metadata",
+      "example": "Components usage"
+    },
+    {
+      "id": "dapr026",
+      "type": "components",
+      "name": "Custom Components",
+      "description": "Extensibility",
+      "pattern": "Pluggable components",
+      "example": "Components usage"
+    },
+    {
+      "id": "dapr027",
+      "type": "kubernetes",
+      "name": "Dapr on K8s",
+      "description": "K8s integration",
+      "pattern": "Operator, injector, dashboard",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "dapr028",
+      "type": "kubernetes",
+      "name": "K8s Annotations",
+      "description": "Pod configuration",
+      "pattern": "dapr.io annotations",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "dapr029",
+      "type": "development",
+      "name": "Dapr CLI",
+      "description": "Development tools",
+      "pattern": "dapr run, init, dashboard",
+      "example": "Development usage"
+    },
+    {
+      "id": "dapr030",
+      "type": "development",
+      "name": "SDKs",
+      "description": "Language support",
+      "pattern": "Go, .NET, Java, Python, JS",
+      "example": "Development usage"
+    }
+  ]
+}

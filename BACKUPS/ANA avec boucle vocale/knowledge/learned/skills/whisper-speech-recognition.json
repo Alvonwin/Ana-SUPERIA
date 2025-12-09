@@ -1,0 +1,248 @@
+{
+  "category": "whisper-speech-recognition",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "description": "Skills for OpenAI Whisper speech-to-text",
+  "skills": [
+    {
+      "id": "wsp01",
+      "type": "installation",
+      "name": "Whisper Installation",
+      "description": "Install OpenAI Whisper",
+      "pattern": "pip install openai-whisper",
+      "example": "Requires ffmpeg installed"
+    },
+    {
+      "id": "wsp02",
+      "type": "installation",
+      "name": "Faster Whisper",
+      "description": "CTranslate2 optimized version",
+      "pattern": "pip install faster-whisper",
+      "example": "4x faster, lower VRAM"
+    },
+    {
+      "id": "wsp03",
+      "type": "model",
+      "name": "Model Sizes",
+      "description": "Available model sizes",
+      "pattern": "tiny, base, small, medium, large, large-v2, large-v3",
+      "example": "tiny:39M, large:1.5B parameters"
+    },
+    {
+      "id": "wsp04",
+      "type": "python",
+      "name": "Basic Transcription",
+      "description": "Transcribe audio file",
+      "pattern": "whisper.load_model('base').transcribe('audio.mp3')",
+      "example": "Returns {text, segments, language}"
+    },
+    {
+      "id": "wsp05",
+      "type": "python",
+      "name": "Faster Whisper Usage",
+      "description": "Use faster-whisper library",
+      "pattern": "WhisperModel('large-v3', device='cuda', compute_type='float16')",
+      "example": "segments, info = model.transcribe(audio)"
+    },
+    {
+      "id": "wsp06",
+      "type": "cli",
+      "name": "Command Line",
+      "description": "CLI transcription",
+      "pattern": "whisper audio.mp3 --model medium --language fr",
+      "example": "Outputs .txt, .vtt, .srt files"
+    },
+    {
+      "id": "wsp07",
+      "type": "language",
+      "name": "Language Detection",
+      "description": "Auto-detect language",
+      "pattern": "result['language'] or specify --language",
+      "example": "Supports 99 languages"
+    },
+    {
+      "id": "wsp08",
+      "type": "language",
+      "name": "French Optimization",
+      "description": "Best settings for French",
+      "pattern": "language='fr', initial_prompt='Transcription en fran\u00e7ais.'",
+      "example": "Improves French accuracy"
+    },
+    {
+      "id": "wsp09",
+      "type": "output",
+      "name": "Segment Timestamps",
+      "description": "Get word-level timing",
+      "pattern": "segments: [{start, end, text}]",
+      "example": "Useful for subtitles"
+    },
+    {
+      "id": "wsp10",
+      "type": "output",
+      "name": "Word-Level Timestamps",
+      "description": "Per-word timing",
+      "pattern": "word_timestamps=True in options",
+      "example": "Each word has start/end time"
+    },
+    {
+      "id": "wsp11",
+      "type": "format",
+      "name": "SRT Subtitles",
+      "description": "Generate SRT format",
+      "pattern": "--output_format srt",
+      "example": "Standard subtitle format"
+    },
+    {
+      "id": "wsp12",
+      "type": "format",
+      "name": "VTT Subtitles",
+      "description": "Generate WebVTT format",
+      "pattern": "--output_format vtt",
+      "example": "For web video players"
+    },
+    {
+      "id": "wsp13",
+      "type": "realtime",
+      "name": "Real-time Streaming",
+      "description": "Live transcription",
+      "pattern": "whisper_streaming, RealtimeWhisper",
+      "example": "Process audio chunks as recorded"
+    },
+    {
+      "id": "wsp14",
+      "type": "vad",
+      "name": "Voice Activity Detection",
+      "description": "Detect speech segments",
+      "pattern": "vad_filter=True in faster-whisper",
+      "example": "Skip silence, faster processing"
+    },
+    {
+      "id": "wsp15",
+      "type": "performance",
+      "name": "GPU Acceleration",
+      "description": "CUDA acceleration",
+      "pattern": "device='cuda', fp16=True",
+      "example": "10x faster than CPU"
+    },
+    {
+      "id": "wsp16",
+      "type": "performance",
+      "name": "Batch Processing",
+      "description": "Process multiple files",
+      "pattern": "Loop through files, parallel processing",
+      "example": "Use multiprocessing for CPU"
+    },
+    {
+      "id": "wsp17",
+      "type": "audio",
+      "name": "Audio Preprocessing",
+      "description": "Prepare audio for best results",
+      "pattern": "16kHz mono, normalize volume, remove noise",
+      "example": "ffmpeg -i input.mp3 -ar 16000 -ac 1 output.wav"
+    },
+    {
+      "id": "wsp18",
+      "type": "audio",
+      "name": "Supported Formats",
+      "description": "Input audio formats",
+      "pattern": "mp3, wav, m4a, flac, ogg, webm",
+      "example": "ffmpeg handles conversion"
+    },
+    {
+      "id": "wsp19",
+      "type": "prompt",
+      "name": "Initial Prompt",
+      "description": "Guide transcription style",
+      "pattern": "initial_prompt='Technical discussion about...'",
+      "example": "Improves domain-specific terms"
+    },
+    {
+      "id": "wsp20",
+      "type": "prompt",
+      "name": "Vocabulary Hints",
+      "description": "Add specific terms",
+      "pattern": "initial_prompt='Terms: ComfyUI, SDXL, LoRA...'",
+      "example": "Helps with technical jargon"
+    },
+    {
+      "id": "wsp21",
+      "type": "api",
+      "name": "OpenAI API Whisper",
+      "description": "Cloud Whisper API",
+      "pattern": "client.audio.transcriptions.create(file, model='whisper-1')",
+      "example": "$0.006 per minute"
+    },
+    {
+      "id": "wsp22",
+      "type": "nodejs",
+      "name": "Node.js Integration",
+      "description": "Use Whisper from Node",
+      "pattern": "whisper-node, openai-whisper npm packages",
+      "example": "Spawn Python process or use API"
+    },
+    {
+      "id": "wsp23",
+      "type": "quantization",
+      "name": "INT8 Quantization",
+      "description": "Reduce model size",
+      "pattern": "compute_type='int8' in faster-whisper",
+      "example": "Less VRAM, slight quality loss"
+    },
+    {
+      "id": "wsp24",
+      "type": "diarization",
+      "name": "Speaker Diarization",
+      "description": "Identify different speakers",
+      "pattern": "whisperx, pyannote-audio integration",
+      "example": "Labels: SPEAKER_00, SPEAKER_01"
+    },
+    {
+      "id": "wsp25",
+      "type": "translation",
+      "name": "Translation Mode",
+      "description": "Translate to English",
+      "pattern": "task='translate' instead of 'transcribe'",
+      "example": "Any language to English"
+    },
+    {
+      "id": "wsp26",
+      "type": "error",
+      "name": "Common Issues",
+      "description": "Troubleshooting",
+      "pattern": "ffmpeg not found, CUDA OOM, hallucinations",
+      "example": "Check ffmpeg path, reduce model size"
+    },
+    {
+      "id": "wsp27",
+      "type": "hallucination",
+      "name": "Reduce Hallucinations",
+      "description": "Prevent repetitive/false text",
+      "pattern": "no_speech_threshold, compression_ratio_threshold",
+      "example": "condition_on_previous_text=False"
+    },
+    {
+      "id": "wsp28",
+      "type": "microphone",
+      "name": "Live Microphone Input",
+      "description": "Record and transcribe live",
+      "pattern": "pyaudio/sounddevice capture + whisper",
+      "example": "Real-time voice assistant"
+    },
+    {
+      "id": "wsp29",
+      "type": "accuracy",
+      "name": "Improve Accuracy",
+      "description": "Best practices for quality",
+      "pattern": "Larger model, clean audio, domain prompts",
+      "example": "large-v3 + VAD + initial_prompt"
+    },
+    {
+      "id": "wsp30",
+      "type": "benchmark",
+      "name": "Performance Benchmarks",
+      "description": "Speed comparison",
+      "pattern": "faster-whisper large: ~2-4x realtime on RTX 3070",
+      "example": "1min audio = 15-30s processing"
+    }
+  ]
+}

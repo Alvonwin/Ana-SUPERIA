@@ -1,0 +1,246 @@
+{
+  "category": "chatbots-conversational",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "cb001",
+      "type": "fundamentals",
+      "name": "Chatbot Architecture",
+      "description": "Bot design",
+      "pattern": "Intent, entities, dialog flow, NLU",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cb002",
+      "type": "fundamentals",
+      "name": "Intent Recognition",
+      "description": "User intent",
+      "pattern": "Classification, confidence, fallback",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cb003",
+      "type": "fundamentals",
+      "name": "Entity Extraction",
+      "description": "Extract data",
+      "pattern": "Named entities, slots, regex",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cb004",
+      "type": "fundamentals",
+      "name": "Dialog Management",
+      "description": "Conversation flow",
+      "pattern": "State machine, context, branching",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cb005",
+      "type": "fundamentals",
+      "name": "Response Generation",
+      "description": "Bot responses",
+      "pattern": "Templates, variables, personalization",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "cb006",
+      "type": "platforms",
+      "name": "Dialogflow",
+      "description": "Google chatbot",
+      "pattern": "Agents, intents, fulfillment, CX",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "cb007",
+      "type": "platforms",
+      "name": "Rasa",
+      "description": "Open source NLU",
+      "pattern": "Stories, rules, actions, forms",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "cb008",
+      "type": "platforms",
+      "name": "Microsoft Bot Framework",
+      "description": "MS chatbot",
+      "pattern": "Bot Builder SDK, LUIS, Azure Bot",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "cb009",
+      "type": "platforms",
+      "name": "Amazon Lex",
+      "description": "AWS chatbot",
+      "pattern": "Bots, intents, slots, Lambda",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "cb010",
+      "type": "platforms",
+      "name": "IBM Watson",
+      "description": "Watson Assistant",
+      "pattern": "Skills, dialog, actions, webhooks",
+      "example": "Platforms usage"
+    },
+    {
+      "id": "cb011",
+      "type": "llm",
+      "name": "LLM Chatbots",
+      "description": "AI chatbots",
+      "pattern": "GPT, Claude, prompts, context",
+      "example": "Llm usage"
+    },
+    {
+      "id": "cb012",
+      "type": "llm",
+      "name": "RAG Chatbots",
+      "description": "Knowledge-based",
+      "pattern": "Vector DB, embeddings, retrieval",
+      "example": "Llm usage"
+    },
+    {
+      "id": "cb013",
+      "type": "llm",
+      "name": "LangChain Bots",
+      "description": "LLM framework",
+      "pattern": "Chains, agents, memory, tools",
+      "example": "Llm usage"
+    },
+    {
+      "id": "cb014",
+      "type": "llm",
+      "name": "Function Calling",
+      "description": "Tool use",
+      "pattern": "OpenAI functions, structured output",
+      "example": "Llm usage"
+    },
+    {
+      "id": "cb015",
+      "type": "llm",
+      "name": "Prompt Engineering",
+      "description": "Bot prompts",
+      "pattern": "System prompt, few-shot, persona",
+      "example": "Llm usage"
+    },
+    {
+      "id": "cb016",
+      "type": "channels",
+      "name": "Slack Bots",
+      "description": "Slack integration",
+      "pattern": "Bolt SDK, slash commands, modals",
+      "example": "Channels usage"
+    },
+    {
+      "id": "cb017",
+      "type": "channels",
+      "name": "Discord Bots",
+      "description": "Discord integration",
+      "pattern": "discord.js, slash commands, embeds",
+      "example": "Channels usage"
+    },
+    {
+      "id": "cb018",
+      "type": "channels",
+      "name": "Telegram Bots",
+      "description": "Telegram integration",
+      "pattern": "Bot API, inline keyboards, webhooks",
+      "example": "Channels usage"
+    },
+    {
+      "id": "cb019",
+      "type": "channels",
+      "name": "WhatsApp Bots",
+      "description": "WhatsApp Business",
+      "pattern": "Cloud API, templates, media",
+      "example": "Channels usage"
+    },
+    {
+      "id": "cb020",
+      "type": "channels",
+      "name": "Facebook Messenger",
+      "description": "Meta messaging",
+      "pattern": "Send API, templates, quick replies",
+      "example": "Channels usage"
+    },
+    {
+      "id": "cb021",
+      "type": "voice",
+      "name": "Voice Bots",
+      "description": "Voice interfaces",
+      "pattern": "ASR, TTS, voice design",
+      "example": "Voice usage"
+    },
+    {
+      "id": "cb022",
+      "type": "voice",
+      "name": "Alexa Skills",
+      "description": "Amazon voice",
+      "pattern": "Skill Kit, intents, slots, SSML",
+      "example": "Voice usage"
+    },
+    {
+      "id": "cb023",
+      "type": "voice",
+      "name": "Google Actions",
+      "description": "Google voice",
+      "pattern": "Actions Console, fulfillment",
+      "example": "Voice usage"
+    },
+    {
+      "id": "cb024",
+      "type": "advanced",
+      "name": "Sentiment Analysis",
+      "description": "User sentiment",
+      "pattern": "Emotion detection, escalation",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cb025",
+      "type": "advanced",
+      "name": "Multi-turn Context",
+      "description": "Context management",
+      "pattern": "Session, memory, history",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cb026",
+      "type": "advanced",
+      "name": "Handoff to Human",
+      "description": "Live agent",
+      "pattern": "Escalation, routing, takeover",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cb027",
+      "type": "advanced",
+      "name": "Bot Analytics",
+      "description": "Conversation analytics",
+      "pattern": "Metrics, funnels, drop-off",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cb028",
+      "type": "advanced",
+      "name": "Testing Bots",
+      "description": "Bot testing",
+      "pattern": "Conversation testing, coverage",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cb029",
+      "type": "advanced",
+      "name": "Multilingual Bots",
+      "description": "Language support",
+      "pattern": "Translation, locale, detection",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "cb030",
+      "type": "advanced",
+      "name": "Bot Security",
+      "description": "Secure bots",
+      "pattern": "Auth, rate limiting, injection",
+      "example": "Advanced usage"
+    }
+  ]
+}

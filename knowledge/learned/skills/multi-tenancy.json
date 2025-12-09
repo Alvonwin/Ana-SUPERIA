@@ -1,0 +1,246 @@
+{
+  "category": "multi-tenancy",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "mt001",
+      "type": "fundamentals",
+      "name": "Multi-Tenancy Concept",
+      "description": "Shared infrastructure",
+      "pattern": "Multiple customers on same system, isolated data",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "mt002",
+      "type": "fundamentals",
+      "name": "Tenant",
+      "description": "Customer unit",
+      "pattern": "Organization, account, workspace - logical separation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "mt003",
+      "type": "fundamentals",
+      "name": "Why Multi-Tenant",
+      "description": "Benefits",
+      "pattern": "Cost efficiency, easier maintenance, shared resources",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "mt004",
+      "type": "isolation",
+      "name": "Isolation Levels",
+      "description": "Separation approaches",
+      "pattern": "Shared everything, shared DB, separate DBs, separate infra",
+      "example": "Isolation usage"
+    },
+    {
+      "id": "mt005",
+      "type": "isolation",
+      "name": "Shared Database",
+      "description": "Single DB",
+      "pattern": "tenant_id column on every table, filter all queries",
+      "example": "Isolation usage"
+    },
+    {
+      "id": "mt006",
+      "type": "isolation",
+      "name": "Schema Per Tenant",
+      "description": "Separate schemas",
+      "pattern": "Each tenant has own schema, same database",
+      "example": "Isolation usage"
+    },
+    {
+      "id": "mt007",
+      "type": "isolation",
+      "name": "Database Per Tenant",
+      "description": "Separate DBs",
+      "pattern": "Each tenant has own database, strong isolation",
+      "example": "Isolation usage"
+    },
+    {
+      "id": "mt008",
+      "type": "identification",
+      "name": "Tenant Identification",
+      "description": "Identify tenant",
+      "pattern": "Subdomain, path, header, JWT claim",
+      "example": "Identification usage"
+    },
+    {
+      "id": "mt009",
+      "type": "identification",
+      "name": "Subdomain Tenancy",
+      "description": "tenant.app.com",
+      "pattern": "Extract from host, wildcard DNS, SSL wildcards",
+      "example": "Identification usage"
+    },
+    {
+      "id": "mt010",
+      "type": "identification",
+      "name": "Path-Based Tenancy",
+      "description": "/tenant/...",
+      "pattern": "app.com/tenant-slug/resource, routing prefix",
+      "example": "Identification usage"
+    },
+    {
+      "id": "mt011",
+      "type": "data",
+      "name": "Data Isolation",
+      "description": "Prevent leakage",
+      "pattern": "Always filter by tenant, middleware enforcement",
+      "example": "Data usage"
+    },
+    {
+      "id": "mt012",
+      "type": "data",
+      "name": "Row-Level Security",
+      "description": "Database RLS",
+      "pattern": "PostgreSQL RLS, automatic tenant filtering",
+      "example": "Data usage"
+    },
+    {
+      "id": "mt013",
+      "type": "data",
+      "name": "Tenant Context",
+      "description": "Request context",
+      "pattern": "Middleware sets tenant, available throughout request",
+      "example": "Data usage"
+    },
+    {
+      "id": "mt014",
+      "type": "data",
+      "name": "Cross-Tenant Queries",
+      "description": "Admin access",
+      "pattern": "Super-admin queries all, tenant admins own data",
+      "example": "Data usage"
+    },
+    {
+      "id": "mt015",
+      "type": "auth",
+      "name": "Tenant-Aware Auth",
+      "description": "Authentication",
+      "pattern": "User belongs to tenant(s), tenant in token",
+      "example": "Auth usage"
+    },
+    {
+      "id": "mt016",
+      "type": "auth",
+      "name": "User Switching",
+      "description": "Multi-tenant users",
+      "pattern": "User can belong to multiple tenants, switch context",
+      "example": "Auth usage"
+    },
+    {
+      "id": "mt017",
+      "type": "auth",
+      "name": "Tenant Invitations",
+      "description": "Add users",
+      "pattern": "Invite by email, join tenant, roles per tenant",
+      "example": "Auth usage"
+    },
+    {
+      "id": "mt018",
+      "type": "customization",
+      "name": "Tenant Configuration",
+      "description": "Per-tenant settings",
+      "pattern": "Features, limits, branding stored per tenant",
+      "example": "Customization usage"
+    },
+    {
+      "id": "mt019",
+      "type": "customization",
+      "name": "White Labeling",
+      "description": "Custom branding",
+      "pattern": "Logo, colors, custom domain, email from address",
+      "example": "Customization usage"
+    },
+    {
+      "id": "mt020",
+      "type": "customization",
+      "name": "Feature Flags",
+      "description": "Per-tenant features",
+      "pattern": "Enable features per tenant, tiered plans",
+      "example": "Customization usage"
+    },
+    {
+      "id": "mt021",
+      "type": "scaling",
+      "name": "Noisy Neighbor",
+      "description": "Resource contention",
+      "pattern": "One tenant affects others, rate limiting, isolation",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "mt022",
+      "type": "scaling",
+      "name": "Tenant Sharding",
+      "description": "Distribute tenants",
+      "pattern": "Shard large tenants, route to specific infrastructure",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "mt023",
+      "type": "scaling",
+      "name": "Resource Limits",
+      "description": "Fair usage",
+      "pattern": "Per-tenant rate limits, storage quotas, user limits",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "mt024",
+      "type": "billing",
+      "name": "Tenant Billing",
+      "description": "Per-tenant charges",
+      "pattern": "Usage tracking, subscription tiers, Stripe",
+      "example": "Billing usage"
+    },
+    {
+      "id": "mt025",
+      "type": "billing",
+      "name": "Usage Metering",
+      "description": "Track usage",
+      "pattern": "API calls, storage, users, bandwidth per tenant",
+      "example": "Billing usage"
+    },
+    {
+      "id": "mt026",
+      "type": "operations",
+      "name": "Tenant Provisioning",
+      "description": "Onboarding",
+      "pattern": "Create tenant, seed data, configure, notify",
+      "example": "Operations usage"
+    },
+    {
+      "id": "mt027",
+      "type": "operations",
+      "name": "Tenant Offboarding",
+      "description": "Remove tenant",
+      "pattern": "Data export, grace period, deletion, legal retention",
+      "example": "Operations usage"
+    },
+    {
+      "id": "mt028",
+      "type": "operations",
+      "name": "Data Export",
+      "description": "Tenant data",
+      "pattern": "Export all tenant data, GDPR portability",
+      "example": "Operations usage"
+    },
+    {
+      "id": "mt029",
+      "type": "testing",
+      "name": "Multi-Tenant Testing",
+      "description": "Test isolation",
+      "pattern": "Test tenant switching, cross-tenant access denied",
+      "example": "Testing usage"
+    },
+    {
+      "id": "mt030",
+      "type": "patterns",
+      "name": "SaaS Patterns",
+      "description": "Best practices",
+      "pattern": "Consistent tenant context, audit logging, monitoring",
+      "example": "Patterns usage"
+    }
+  ]
+}

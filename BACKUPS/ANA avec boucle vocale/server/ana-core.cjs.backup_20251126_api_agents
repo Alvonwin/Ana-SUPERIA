@@ -1,0 +1,2115 @@
+/**
+ * ANA CORE - Backend Orchestrator
+ *
+ * SUPERIA ANA - Super IA Locale
+ * Multi-LLM Router + Memory Integration + Real-time WebSocket
+ *
+ * Port: 3338
+ * Date: 2025-11-21
+ */
+
+const express = require('express');
+const http = require('http');
+const socketIo = require('socket.io');
+const cors = require('cors');
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
+// Ana Tools
+const FileTools = require('./tools/file-tools.cjs');
+const BashTools = require('./tools/bash-tools.cjs');
+const SearchTools = require('./tools/search-tools.cjs');
+const GitTools = require('./tools/git-tools.cjs');
+const WebTools = require('./tools/web-tools.cjs');
+const Security = require('./middleware/security.cjs');
+
+// Ana Services
+const AnaAutonomous = require('./services/ana-autonomous.cjs');
+const ServiceManager = require('./services/service-manager.cjs');
+const memoryCapture = require('./services/memory-capture.cjs');
+const dailyArtGenerator = require('./services/daily-art-generator.cjs');
+const researchAgent = require('./agents/research-agent.cjs');
+const memoryManager = require('./memory/memory-manager.cjs');
+const vramManager = require('./services/vram-manager.cjs');
+const orchestrator = require('../intelligence/orchestrator.cjs');
+const n8nIntegration = require('./services/n8n-integration.cjs');
+const spellChecker = require('./utils/spell-checker.cjs');
+
+// ================== CONFIGURATION ==================
+const PORT = process.env.PORT || 3338;
+const OLLAMA_URL = 'http://localhost:11434';
+const MEMORY_PATH = 'E:\\Mémoire Claude';
+
+// LLM Models Configuration
+const LLMS = {
+  PHI3: 'phi3:mini-128k',              // Conversation & Raisonnement
+  DEEPSEEK: 'deepseek-coder-v2:16b-lite-instruct-q4_K_M', // Coding Champion
+  QWEN: 'qwen2.5-coder:7b',             // Math & Backup Coding
+  LLAMA_VISION: 'llama3.2-vision:11b'   // Images & Vision
+};
+
+// System Prompt Configuration
+const SYSTEM_PROMPT_PATH = path.join(__dirname, 'config', 'system-prompt.json');
+const DEFAULT_SYSTEM_PROMPT = "Tu es Ana, une IA locale française. Réponds TOUJOURS en français correct, sans fautes d'orthographe. Ne jamais inventer de mots. Utilise uniquement des mots français existants. Sois précise et technique.";
+
+// Load system prompt from file
+function loadSystemPrompt() {
+  try {
+    if (fs.existsSync(SYSTEM_PROMPT_PATH)) {
+      const data = JSON.parse(fs.readFileSync(SYSTEM_PROMPT_PATH, 'utf-8'));
+      return data.prompt || DEFAULT_SYSTEM_PROMPT;
+    }
+  } catch (error) {
+    console.error('Error loading system prompt:', error.message);
+  }
+  return DEFAULT_SYSTEM_PROMPT;
+}
+
+// Save system prompt to file
+function saveSystemPrompt(prompt) {
+  try {
+    const dir = path.dirname(SYSTEM_PROMPT_PATH);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(SYSTEM_PROMPT_PATH, JSON.stringify({
+      prompt: prompt,
+      lastModified: new Date().toISOString()
+    }, null, 2), 'utf-8');
+    return true;
+  } catch (error) {
+    console.error('Error saving system prompt:', error.message);
+    return false;
+  }
+}
+
+// Current system prompt (loaded at startup)
+let currentSystemPrompt = loadSystemPrompt();
+
+// ================== EXPRESS SETUP ==================
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server, {
+  cors: {
+    origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"], // Vite dev server
+    methods: ["GET", "POST"],
+    credentials: true
+  },
+  // Fix: Augmenter timeouts pour éviter déconnexions intempestives
+  pingInterval: 60000,  // 60s entre chaque ping
+  pingTimeout: 60000    // 60s avant timeout si pas de réponse
+});
+
+app.use(cors());
+app.use(express.json({ limit: '50mb' }));
+
+// ================== MULTI-LLM ROUTER ==================
+class IntelligenceRouter {
+  constructor() {
+    this.activeModel = null;
+    this.stats = {
+      phi3: 0,
+      deepseek: 0,
+      qwen: 0,
+      llama_vision: 0
+    };
+  }
+
+  /**
+   * Classify task and choose best LLM
+   */
+  classifyTask(message, context = {}) {
+    const msgLower = message.toLowerCase();
+
+    // Vision tasks - Llama Vision
+    if (context.hasImage || msgLower.includes('image') || msgLower.includes('photo')) {
+      return { model: LLMS.LLAMA_VISION, reason: 'Tâche visuelle détectée' };
+    }
+
+    // Coding tasks - DeepSeek Coder
+    const codingKeywords = ['code', 'function', 'bug', 'debug', 'refactor', 'class', 'variable', 'error', 'fix'];
+    if (codingKeywords.some(kw => msgLower.includes(kw))) {
+      return { model: LLMS.DEEPSEEK, reason: 'Tâche de coding détectée' };
+    }
+
+    // Math tasks - Qwen
+    const mathKeywords = ['calculer', 'calculate', 'math', 'équation', 'nombre'];
+    if (mathKeywords.some(kw => msgLower.includes(kw)) || /\d+[\+\-\*\/]\d+/.test(message)) {
+      return { model: LLMS.QWEN, reason: 'Tâche mathématique détectée' };
+    }
+
+    // Default - Phi-3 Mini (conversation)
+    return { model: LLMS.PHI3, reason: 'Conversation générale' };
+  }
+
+  /**
+   * Send request to Ollama
+   */
+  async query(model, prompt, streaming = false) {
+    try {
+      const response = await axios.post(`${OLLAMA_URL}/api/generate`, {
+        model: model,
+        prompt: prompt,
+        stream: streaming
+      }, {
+        responseType: streaming ? 'stream' : 'json'
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error(`❌ Error querying ${model}:`, error.message);
+      throw error;
+    }
+  }
+
+  updateStats(model) {
+    const modelKey = Object.keys(LLMS).find(key => LLMS[key] === model);
+    if (modelKey) {
+      const statsKey = modelKey.toLowerCase().replace('_', '_');
+      if (this.stats[statsKey] !== undefined) {
+        this.stats[statsKey]++;
+      }
+    }
+  }
+}
+
+const router = new IntelligenceRouter();
+
+// ================== MEMORY MANAGER ==================
+class MemoryManager {
+  constructor() {
+    this.contextPath = path.join(MEMORY_PATH, 'current_conversation.txt');
+    this.currentContext = '';
+    this.loadContext();
+  }
+
+  loadContext() {
+    try {
+      if (fs.existsSync(this.contextPath)) {
+        this.currentContext = fs.readFileSync(this.contextPath, 'utf8');
+        console.log(`📚 Contexte mémoire chargé: ${(this.currentContext.length / 1024).toFixed(2)} KB`);
+      }
+    } catch (error) {
+      console.error('❌ Erreur chargement mémoire:', error.message);
+    }
+  }
+
+  getContext() {
+    return this.currentContext;
+  }
+
+  appendToContext(text) {
+    this.currentContext += '\n' + text;
+    // Auto-save every append
+    this.saveContext();
+  }
+
+  saveContext() {
+    try {
+      fs.writeFileSync(this.contextPath, this.currentContext, 'utf8');
+    } catch (error) {
+      console.error('❌ Erreur sauvegarde mémoire:', error.message);
+    }
+  }
+
+  getStats() {
+    return {
+      size: this.currentContext.length,
+      sizeKB: (this.currentContext.length / 1024).toFixed(2),
+      lines: this.currentContext.split('\n').length
+    };
+  }
+}
+
+const memory = new MemoryManager();
+
+// ================== API ROUTES ==================
+
+// Health check
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'Ana Core',
+    port: PORT,
+    timestamp: new Date().toISOString()
+  });
+});
+
+// API Health (alias)
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'healthy',
+    service: 'Ana SUPERIA',
+    version: '2.0.0',
+    uptime: process.uptime(),
+    memory: process.memoryUsage(),
+    timestamp: new Date().toISOString()
+  });
+});
+
+// API Status - Full system status
+app.get('/api/status', async (req, res) => {
+  try {
+    // Check Ollama
+    let ollamaStatus = 'offline';
+    try {
+      const ollamaCheck = await axios.get('http://localhost:11434/api/tags', { timeout: 3000 });
+      ollamaStatus = ollamaCheck.data.models ? 'online' : 'offline';
+    } catch (e) {
+      ollamaStatus = 'offline';
+    }
+
+    res.json({
+      status: 'operational',
+      components: {
+        backend: 'online',
+        ollama: ollamaStatus,
+        memory: 'active',
+        orchestrator: 'ready'
+      },
+      llms: router.stats,
+      memory: memory.getStats(),
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Memory Status
+app.get('/api/memory/status', (req, res) => {
+  const stats = memory.getStats();
+  res.json({
+    status: 'active',
+    entries: stats.lines || 0,
+    sizeKB: stats.sizeKB || '0',
+    lastSync: new Date().toISOString(),
+    claudePrefix: '##Ana'
+  });
+});
+
+// Get LLM stats
+app.get('/api/stats', (req, res) => {
+  res.json({
+    llm_usage: router.stats,
+    memory: memory.getStats(),
+    active_model: router.activeModel
+  });
+});
+
+// Get system prompt
+app.get('/api/system-prompt', (req, res) => {
+  res.json({
+    prompt: currentSystemPrompt,
+    default: DEFAULT_SYSTEM_PROMPT
+  });
+});
+
+// Update system prompt
+app.post('/api/system-prompt', (req, res) => {
+  const { prompt } = req.body;
+
+  if (!prompt || typeof prompt !== 'string') {
+    return res.status(400).json({ error: 'Prompt requis (string)' });
+  }
+
+  currentSystemPrompt = prompt;
+  const saved = saveSystemPrompt(prompt);
+
+  res.json({
+    success: saved,
+    prompt: currentSystemPrompt,
+    message: saved ? 'Prompt système mis à jour' : 'Erreur de sauvegarde'
+  });
+});
+
+// Chat endpoint
+app.post('/api/chat', async (req, res) => {
+  const { message, context } = req.body;
+
+  if (!message) {
+    return res.status(400).json({ error: 'Message requis' });
+  }
+
+  try {
+    // 1. Choose best LLM
+    const { model, reason } = router.classifyTask(message, context || {});
+    router.activeModel = model;
+    router.updateStats(model);
+
+    console.log(`🧠 Routing to ${model} - Raison: ${reason}`);
+
+    // 2. Load memory context
+    const memoryContext = memory.getContext();
+    const fullPrompt = memoryContext ? `${memoryContext}\n\nAlain: ${message}` : message;
+
+    // 3. Query LLM
+    const response = await router.query(model, fullPrompt, false);
+
+    // 4. Save to memory
+    memory.appendToContext(`Alain: ${message}\nAna (${model}): ${response.response}`);
+
+    // 5. Send response
+    res.json({
+      response: response.response,
+      model: model,
+      reason: reason,
+      memory_loaded: memoryContext.length > 0
+    });
+
+  } catch (error) {
+    console.error('❌ Erreur chat:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Get memory
+app.get('/api/memory', (req, res) => {
+  res.json({
+    context: memory.getContext(),
+    stats: memory.getStats()
+  });
+});
+
+// Search memory - ChromaDB Semantic Search
+app.post('/api/memory/search', async (req, res) => {
+  const { query, nResults = 5, where } = req.body;
+
+  if (!query) {
+    return res.status(400).json({
+      success: false,
+      error: 'Query parameter required'
+    });
+  }
+
+  try {
+    // Use ChromaDB semantic search
+    const searchResults = await memoryManager.search(query, nResults, where);
+
+    res.json({
+      success: true,
+      query: searchResults.query,
+      results: searchResults.results,
+      count: searchResults.count,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// ChromaDB Memory Stats
+app.get('/api/memory/semantic/stats', async (req, res) => {
+  try {
+    const stats = await memoryManager.getStats();
+    res.json({
+      ...stats,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// VRAM Manager Stats
+app.get('/api/vram/stats', (req, res) => {
+  try {
+    const stats = vramManager.getStats();
+    res.json({
+      success: true,
+      ...stats,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// ================== ORCHESTRATOR V2 API ==================
+
+// Chat V2 - Using new modular orchestrator with failover
+app.post('/api/chat/v2', async (req, res) => {
+  const { message, taskType, model, context } = req.body;
+
+  if (!message) {
+    return res.status(400).json({ error: 'Message requis' });
+  }
+
+  try {
+    // 1. Load memory context
+    const memoryContext = memory.getContext();
+    const fullPrompt = memoryContext
+      ? `Context: ${memoryContext}\n\nAlain: ${message}`
+      : message;
+
+    // 2. Use orchestrator with automatic routing and failover
+    const result = await orchestrator.chat({
+      prompt: fullPrompt,
+      taskType,
+      model
+    });
+
+    if (!result.success) {
+      return res.status(500).json({
+        error: result.error,
+        taskType: result.taskType
+      });
+    }
+
+    // 3. Save to memory
+    memory.appendToContext(`Alain: ${message}\nAna (${result.modelKey}): ${result.response}`);
+
+    // 4. Capture to long-term memory
+    memoryCapture.capture({ userMessage: message, anaResponse: result.response, model: result.modelKey }).catch(err => console.error("Memory capture error:", err.message));
+
+    // 5. Send response
+    res.json({
+      success: true,
+      response: result.response,
+      model: result.model,
+      modelKey: result.modelKey,
+      taskType: result.taskType,
+      latencyMs: result.latencyMs,
+      failover: result.failover || false,
+      originalModel: result.originalModel,
+      memoryLoaded: memoryContext.length > 0
+    });
+
+  } catch (error) {
+    console.error('❌ Erreur chat V2:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Orchestrator stats
+app.get('/api/orchestrator/stats', (req, res) => {
+  try {
+    const stats = orchestrator.getStats();
+    res.json({
+      success: true,
+      ...stats,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Get orchestrator model info
+app.get('/api/orchestrator/models', (req, res) => {
+  try {
+    const models = orchestrator.getModelsInfo();
+    res.json({
+      success: true,
+      models,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// List available LLMs
+app.get('/api/llms', async (req, res) => {
+  try {
+    const response = await axios.get(`${OLLAMA_URL}/api/tags`);
+    res.json({
+      configured: LLMS,
+      available: response.data.models || []
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ================== RESEARCH AGENT API ==================
+
+// Execute research
+app.post('/api/research/execute', async (req, res) => {
+  const { topic, strategy = 'comprehensive', sources } = req.body;
+  if (!topic) return res.status(400).json({ error: 'Topic required' });
+  
+  const result = await researchAgent.research(topic, { strategy, sources });
+  res.json(result);
+});
+
+// Get research status
+app.get('/api/research/status', (req, res) => {
+  res.json(researchAgent.getStatus());
+});
+
+// ================== DAILY ART GENERATOR API ==================
+
+// Get daily art generator status
+app.get('/api/art/status', (req, res) => {
+  try {
+    const status = dailyArtGenerator.getStatus();
+    res.json({
+      success: true,
+      ...status,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Manually trigger art generation
+app.post('/api/art/generate', async (req, res) => {
+  try {
+    console.log('🎨 Manual art generation requested');
+
+    // Run generation asynchronously
+    dailyArtGenerator.triggerManualGeneration().then(result => {
+      console.log('Art generation result:', result);
+    });
+
+    res.json({
+      success: true,
+      message: 'Art generation started in background',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// ================== N8N INTEGRATION API ==================
+
+// Get n8n health and status
+app.get('/api/n8n/status', async (req, res) => {
+  try {
+    const health = await n8nIntegration.checkHealth();
+    const stats = n8nIntegration.getStats();
+    res.json({
+      success: true,
+      healthy: health.healthy,
+      ...stats,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Get registered webhooks
+app.get('/api/n8n/webhooks', (req, res) => {
+  try {
+    const webhooks = n8nIntegration.getWebhooks();
+    res.json({
+      success: true,
+      webhooks,
+      count: webhooks.length,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Register a new webhook
+app.post('/api/n8n/webhooks', (req, res) => {
+  const { name, path: webhookPath, description } = req.body;
+
+  if (!name || !webhookPath) {
+    return res.status(400).json({
+      success: false,
+      error: 'Name and path are required'
+    });
+  }
+
+  try {
+    const result = n8nIntegration.registerWebhook(name, webhookPath, description);
+    res.json({
+      success: true,
+      ...result,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Trigger a webhook
+app.post('/api/n8n/trigger', async (req, res) => {
+  const { webhookPath, data, test } = req.body;
+
+  if (!webhookPath) {
+    return res.status(400).json({
+      success: false,
+      error: 'webhookPath is required'
+    });
+  }
+
+  try {
+    const result = await n8nIntegration.triggerWebhook(webhookPath, data || {}, { test });
+    res.json({
+      ...result,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Get workflow templates
+app.get('/api/n8n/templates', (req, res) => {
+  try {
+    const templates = n8nIntegration.getAnaWorkflowTemplates();
+    res.json({
+      success: true,
+      templates,
+      count: templates.length,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Create a workflow template
+app.post('/api/n8n/templates', async (req, res) => {
+  const { name, description, triggers } = req.body;
+
+  if (!name) {
+    return res.status(400).json({
+      success: false,
+      error: 'Name is required'
+    });
+  }
+
+  try {
+    const result = await n8nIntegration.createWorkflowTemplate(
+      name,
+      description || '',
+      triggers || ['webhook']
+    );
+    res.json({
+      ...result,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// ================== ANA TOOLS API ==================
+
+// SECURITY: Path validation helper to prevent path traversal attacks
+const ALLOWED_BASE_PATHS = [
+  'E:\\ANA',
+  'E:\\Mémoire Claude',
+  'E:\\Memoire Claude',
+  'E:\\AI_Tools',
+  'E:\\ARCHON_PORTABLE',
+  'C:\\Users\\niwno\\Desktop'
+];
+
+function validateFilePath(inputPath) {
+  if (!inputPath || typeof inputPath !== 'string') {
+    return { valid: false, error: 'Invalid path: must be a non-empty string' };
+  }
+
+  // Resolve to absolute path
+  const resolvedPath = require('path').resolve(inputPath);
+
+  // Check for path traversal patterns
+  if (inputPath.includes('..') || inputPath.includes('\0')) {
+    return { valid: false, error: 'Path traversal detected' };
+  }
+
+  // Check if path is within allowed directories
+  const isAllowed = ALLOWED_BASE_PATHS.some(basePath =>
+    resolvedPath.toLowerCase().startsWith(basePath.toLowerCase())
+  );
+
+  if (!isAllowed) {
+    return { valid: false, error: 'Access to this path is not allowed' };
+  }
+
+  return { valid: true, resolvedPath };
+}
+
+// File: Read
+app.post('/api/tools/file/read', async (req, res) => {
+  const { path: filePath, encoding, offset, limit } = req.body;
+
+  // SECURITY: Validate path
+  const validation = validateFilePath(filePath);
+  if (!validation.valid) {
+    return res.status(403).json({
+      success: false,
+      tool: 'file.read',
+      error: {
+        code: 'ACCESS_DENIED',
+        message: validation.error
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+
+  try {
+    const result = await FileTools.read(validation.resolvedPath, { encoding, offset, limit });
+    res.json({
+      ...result,
+      tool: 'file.read',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'file.read',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// File: Write
+app.post('/api/tools/file/write', async (req, res) => {
+  const { path: filePath, content, createDirectories, backup } = req.body;
+
+  // SECURITY: Validate path
+  const validation = validateFilePath(filePath);
+  if (!validation.valid) {
+    return res.status(403).json({
+      success: false,
+      tool: 'file.write',
+      error: {
+        code: 'ACCESS_DENIED',
+        message: validation.error
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+
+  try {
+    const result = await FileTools.write(validation.resolvedPath, content, { createDirectories, backup });
+    res.json({
+      ...result,
+      tool: 'file.write',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'file.write',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// File: List
+app.post('/api/tools/file/list', async (req, res) => {
+  const { path: dirPath, recursive, showHidden, details } = req.body;
+
+  try {
+    const result = await FileTools.list(dirPath, { recursive, showHidden, details });
+    res.json({
+      ...result,
+      tool: 'file.list',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'file.list',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// File: Edit
+app.post('/api/tools/file/edit', async (req, res) => {
+  const { path: filePath, operations, backup } = req.body;
+
+  try {
+    const result = await FileTools.edit(filePath, operations, { backup });
+    res.json({
+      ...result,
+      tool: 'file.edit',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'file.edit',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// File: Stat
+app.post('/api/tools/file/stat', async (req, res) => {
+  const { path: filePath } = req.body;
+
+  try {
+    const result = await FileTools.stat(filePath);
+    res.json({
+      ...result,
+      tool: 'file.stat',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'file.stat',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// File: Delete
+app.post('/api/tools/file/delete', async (req, res) => {
+  const { path: targetPath, recursive, backup } = req.body;
+
+  try {
+    const result = await FileTools.delete(targetPath, { recursive, backup });
+    res.json({
+      ...result,
+      tool: 'file.delete',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'file.delete',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Bash: Execute
+app.post('/api/tools/bash/execute', async (req, res) => {
+  const { command, timeout, cwd } = req.body;
+
+  try {
+    const result = await BashTools.execute(command, { timeout, cwd });
+    res.json({
+      ...result,
+      tool: 'bash.execute',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'bash.execute',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Bash: Spawn Background
+app.post('/api/tools/bash/spawn', async (req, res) => {
+  const { command, cwd } = req.body;
+
+  try {
+    const result = await BashTools.spawnBackground(command, { cwd });
+    res.json({
+      ...result,
+      tool: 'bash.spawn',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'bash.spawn',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Bash: Get Output
+app.post('/api/tools/bash/output', async (req, res) => {
+  const { bashId, sinceTimestamp } = req.body;
+
+  try {
+    const result = BashTools.getOutput(bashId, sinceTimestamp);
+    res.json({
+      ...result,
+      tool: 'bash.output',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'bash.output',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Bash: Kill Process
+app.post('/api/tools/bash/kill', async (req, res) => {
+  const { bashId, signal } = req.body;
+
+  try {
+    const result = BashTools.killProcess(bashId, signal);
+    res.json({
+      ...result,
+      tool: 'bash.kill',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'bash.kill',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Bash: List Processes
+app.get('/api/tools/bash/processes', (req, res) => {
+  try {
+    const result = BashTools.listProcesses();
+    res.json({
+      ...result,
+      tool: 'bash.processes',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'bash.processes',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Search: Glob Pattern
+app.post('/api/tools/search/glob', async (req, res) => {
+  const { pattern, basePath, limit, extensions } = req.body;
+
+  try {
+    const result = await SearchTools.glob(pattern, { basePath, limit, extensions });
+    res.json({
+      ...result,
+      tool: 'search.glob',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'search.glob',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Search: Content
+app.post('/api/tools/search/content', async (req, res) => {
+  const { pattern, files, caseSensitive, wholeWord, includeContext, limit } = req.body;
+
+  try {
+    const result = await SearchTools.searchContent(files, pattern, {
+      caseSensitive,
+      wholeWord,
+      includeContext,
+      maxResults: limit
+    });
+    res.json({
+      ...result,
+      tool: 'search.content',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'search.content',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Search: Combined
+app.post('/api/tools/search/combined', async (req, res) => {
+  const { query, basePath, limit } = req.body;
+
+  try {
+    const result = await SearchTools.combined(query, { basePath, limit });
+    res.json({
+      ...result,
+      tool: 'search.combined',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'search.combined',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// ============================================================
+// GIT TOOLS API ROUTES
+// ============================================================
+
+// Git: Status
+app.post('/api/tools/git/status', async (req, res) => {
+  const { repoPath } = req.body;
+
+  try {
+    const result = await GitTools.status(repoPath);
+    res.json({
+      ...result,
+      tool: 'git.status',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'git.status',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Git: Diff
+app.post('/api/tools/git/diff', async (req, res) => {
+  const { repoPath, file, staged } = req.body;
+
+  try {
+    const result = await GitTools.diff(repoPath, { file, staged });
+    res.json({
+      ...result,
+      tool: 'git.diff',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'git.diff',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Git: Add
+app.post('/api/tools/git/add', async (req, res) => {
+  const { repoPath, files } = req.body;
+
+  try {
+    const result = await GitTools.add(repoPath, files);
+    res.json({
+      ...result,
+      tool: 'git.add',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'git.add',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Git: Commit
+app.post('/api/tools/git/commit', async (req, res) => {
+  const { repoPath, message, author, email } = req.body;
+
+  try {
+    const result = await GitTools.commit(repoPath, message, { author, email });
+    res.json({
+      ...result,
+      tool: 'git.commit',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'git.commit',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Git: Log
+app.post('/api/tools/git/log', async (req, res) => {
+  const { repoPath, maxCount, file } = req.body;
+
+  try {
+    const result = await GitTools.log(repoPath, { maxCount, file });
+    res.json({
+      ...result,
+      tool: 'git.log',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'git.log',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Git: Reset
+app.post('/api/tools/git/reset', async (req, res) => {
+  const { repoPath, files } = req.body;
+
+  try {
+    const result = await GitTools.reset(repoPath, files);
+    res.json({
+      ...result,
+      tool: 'git.reset',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'git.reset',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Git: Is Repository
+app.post('/api/tools/git/is-repo', async (req, res) => {
+  const { repoPath } = req.body;
+
+  try {
+    const result = await GitTools.isRepo(repoPath);
+    res.json({
+      ...result,
+      tool: 'git.isRepo',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'git.isRepo',
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// ============================================================
+// WEB TOOLS API
+// ============================================================
+
+// Web: DuckDuckGo Search
+app.post('/api/tools/web/search', async (req, res) => {
+  const { query, limit } = req.body;
+
+  try {
+    const result = await WebTools.search(query, { limit });
+    res.json({
+      ...result,
+      tool: 'web.search',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'web.search',
+      error: {
+        code: 'SEARCH_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Web: Fetch and Parse Page
+app.post('/api/tools/web/fetch', async (req, res) => {
+  const { url, extractText, extractLinks, maxLength } = req.body;
+
+  try {
+    const result = await WebTools.fetch(url, { extractText, extractLinks, maxLength });
+    res.json({
+      ...result,
+      tool: 'web.fetch',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'web.fetch',
+      error: {
+        code: 'FETCH_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Web: Wikipedia Search
+app.post('/api/tools/web/wikipedia', async (req, res) => {
+  const { query, limit } = req.body;
+
+  try {
+    const result = await WebTools.wikipedia(query, { limit });
+    res.json({
+      ...result,
+      tool: 'web.wikipedia',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'web.wikipedia',
+      error: {
+        code: 'WIKIPEDIA_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Web: NPM Search
+app.post('/api/tools/web/npm', async (req, res) => {
+  const { query, limit } = req.body;
+
+  try {
+    const result = await WebTools.npmSearch(query, { limit });
+    res.json({
+      ...result,
+      tool: 'web.npm',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'web.npm',
+      error: {
+        code: 'NPM_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Web: GitHub Search
+app.post('/api/tools/web/github', async (req, res) => {
+  const { query, sort, limit } = req.body;
+
+  try {
+    const result = await WebTools.githubSearch(query, { sort, limit });
+    res.json({
+      ...result,
+      tool: 'web.github',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      tool: 'web.github',
+      error: {
+        code: 'GITHUB_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// ============================================================
+// AUTONOMOUS CHAT API
+// ============================================================
+
+// Create AnaAutonomous instance
+const anaAutonomous = new AnaAutonomous();
+
+// Autonomous Task Execution
+app.post('/api/autonomous/execute', async (req, res) => {
+  const { task, maxIterations } = req.body;
+
+  if (!task) {
+    return res.status(400).json({
+      success: false,
+      error: 'Missing required parameter: task'
+    });
+  }
+
+  try {
+    console.log(`🚀 [API] Autonomous task: "${task.substring(0, 100)}..."`);
+
+    const result = await anaAutonomous.executeTask(task, { maxIterations });
+
+    res.json({
+      ...result,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Autonomous Stats
+app.get('/api/autonomous/stats', (req, res) => {
+  res.json({
+    success: true,
+    stats: anaAutonomous.getStats(),
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Autonomous Planning - Create execution plan for complex tasks
+app.post('/api/autonomous/plan', async (req, res) => {
+  const { task } = req.body;
+
+  if (!task) {
+    return res.status(400).json({
+      success: false,
+      error: 'Missing required parameter: task'
+    });
+  }
+
+  try {
+    console.log(`📋 [API] Creating plan for: "${task.substring(0, 100)}..."`);
+
+    const plan = await anaAutonomous.createPlan(task);
+
+    res.json({
+      success: true,
+      plan,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Create ServiceManager instance
+const serviceManager = new ServiceManager();
+
+// ============================================================
+// SERVICE MANAGER API
+// ============================================================
+
+// Start a service (agents, comfyui, n8n)
+app.post('/api/services/start/:serviceName', async (req, res) => {
+  const { serviceName } = req.params;
+
+  try {
+    const result = await serviceManager.start(serviceName);
+    res.json({
+      success: result.success,
+      message: result.message,
+      service: serviceName,
+      pid: result.pid,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+      service: serviceName,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Stop a service
+app.post('/api/services/stop/:serviceName', async (req, res) => {
+  const { serviceName } = req.params;
+
+  try {
+    const result = await serviceManager.stop(serviceName);
+    res.json({
+      success: result.success,
+      message: result.message,
+      service: serviceName,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+      service: serviceName,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Get status of all services
+app.get('/api/services/status', (req, res) => {
+  try {
+    const status = serviceManager.getStatus();
+    res.json({
+      success: true,
+      services: status,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Check if a specific service is running
+app.get('/api/services/check/:serviceName', (req, res) => {
+  const { serviceName } = req.params;
+
+  try {
+    const isRunning = serviceManager.isRunning(serviceName);
+    const status = serviceManager.getStatus();
+
+    res.json({
+      success: true,
+      service: serviceName,
+      running: isRunning,
+      details: status[serviceName],
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+      service: serviceName,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Autonomous Chat: Execute task autonomously with tool calling
+app.post('/api/chat/autonomous', async (req, res) => {
+  const { request, maxIterations } = req.body;
+
+  try {
+    if (!request || request.trim().length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: {
+          code: 'INVALID_REQUEST',
+          message: 'Request cannot be empty'
+        }
+      });
+    }
+
+    console.log(`\n🤖 AUTONOMOUS REQUEST: "${request}"`);
+
+    // Execute task with ReAct loop
+    const result = await anaAutonomous.executeTask(request, { maxIterations });
+
+    res.json({
+      ...result,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('❌ Erreur autonomous chat:', error);
+
+    res.status(500).json({
+      success: false,
+      error: {
+        code: 'AUTONOMOUS_ERROR',
+        message: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Get autonomous execution stats
+app.get('/api/chat/autonomous/stats', (req, res) => {
+  res.json({
+    success: true,
+    stats: anaAutonomous.getStats(),
+    timestamp: new Date().toISOString()
+  });
+});
+
+// ================== ERROR HANDLING MIDDLEWARE ==================
+// Must be defined AFTER all routes but BEFORE server.listen()
+// Best practice: 4 arguments (err, req, res, next)
+// Sources: Express.js official docs, Better Stack patterns
+
+app.use((err, req, res, next) => {
+  // Log error details
+  console.error('\n❌ EXPRESS ERROR HANDLER TRIGGERED');
+  console.error('Route:', req.method, req.path);
+  console.error('Error:', err.name);
+  console.error('Message:', err.message);
+  console.error('Stack:', err.stack);
+
+  // Determine status code
+  const statusCode = err.statusCode || err.status || 500;
+
+  // Send error response (never expose stack in production)
+  res.status(statusCode).json({
+    success: false,
+    error: {
+      code: err.code || 'INTERNAL_ERROR',
+      message: err.message || 'An unexpected error occurred',
+      // Include stack only in development (NODE_ENV !== 'production')
+      ...(process.env.NODE_ENV !== 'production' && { stack: err.stack })
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
+// 404 Handler - Must be AFTER all routes
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    error: {
+      code: 'NOT_FOUND',
+      message: `Route ${req.method} ${req.path} not found`
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
+// ================== WEBSOCKET EVENTS ==================
+io.on('connection', (socket) => {
+  console.log('✅ Client WebSocket connecté:', socket.id);
+  console.log('   Origin:', socket.handshake.headers.origin);
+
+  // Chat streaming
+  socket.on('chat:message', async (data) => {
+    const { message, context, images } = data;
+
+    try {
+      const { model, reason } = router.classifyTask(message, context || {});
+      router.activeModel = model;
+      router.updateStats(model);
+
+      console.log(`🧠 Routing to ${model} - Raison: ${reason}`);
+      if (images && images.length > 0) {
+        console.log(`📸 ${images.length} image(s) détectée(s), envoi à ${model}`);
+      }
+      socket.emit('chat:model_selected', { model, reason });
+
+      const memoryContext = memory.getContext();
+      const systemInstruction = "Tu es Ana, une IA locale française. Réponds TOUJOURS en français. Sois précise et technique.\n\n";
+      const fullPrompt = memoryContext
+        ? `${systemInstruction}${memoryContext}\n\nAlain: ${message}\nAna (réponds en français):`
+        : `${systemInstruction}Alain: ${message}\nAna (réponds en français):`;
+
+      // Détecter si vision model (pour utiliser /api/chat au lieu de /api/generate)
+      // Source: https://docs.ollama.com/capabilities/vision
+      const isVisionModel = images && images.length > 0;
+      let response;
+
+      if (isVisionModel) {
+        // Vision: Utiliser /api/chat avec format messages + images
+        response = await axios.post(`${OLLAMA_URL}/api/chat`, {
+          model: model,
+          messages: [
+            {
+              role: 'user',
+              content: fullPrompt,
+              images: images  // Tableau base64 strings (sans préfixe data:image)
+            }
+          ],
+          stream: true
+        }, {
+          responseType: 'stream'
+        });
+      } else {
+        // Texte: Utiliser /api/chat avec messages structurés (best practice)
+        const messages = [
+          { role: 'system', content: currentSystemPrompt }
+        ];
+
+        // Ajouter contexte mémoire comme messages précédents si disponible
+        if (memoryContext) {
+          messages.push({ role: 'assistant', content: `Contexte de nos conversations précédentes:\n${memoryContext}` });
+        }
+
+        // Message actuel de l'utilisateur
+        messages.push({ role: 'user', content: message });
+
+        response = await axios.post(`${OLLAMA_URL}/api/chat`, {
+          model: model,
+          messages: messages,
+          stream: true
+        }, {
+          responseType: 'stream'
+        });
+      }
+
+      // Handle streaming avec bufferisation
+      let fullResponse = '';
+      let jsonBuffer = '';
+
+      response.data.on('data', (chunk) => {
+        // Ajouter au buffer
+        jsonBuffer += chunk.toString();
+
+        // Détecter lignes complètes (séparées par \n)
+        let boundary = jsonBuffer.lastIndexOf('\n');
+        if (boundary !== -1) {
+          // Extraire les lignes complètes
+          const completeLines = jsonBuffer.substring(0, boundary);
+          // Garder le reste pour le prochain chunk
+          jsonBuffer = jsonBuffer.substring(boundary + 1);
+
+          // Parser chaque ligne complète
+          completeLines.split('\n').forEach(line => {
+            if (!line.trim()) return; // Ignorer lignes vides
+
+            try {
+              const json = JSON.parse(line);
+
+              // Support deux formats API Ollama:
+              // - /api/generate: json.response
+              // - /api/chat (vision): json.message.content
+              // Source: https://docs.ollama.com/capabilities/vision
+              const content = json.response || json.message?.content;
+
+              // Émettre uniquement si content existe ET que ce n'est pas le message final done:true
+              if (content && json.done !== true) {
+                fullResponse += content;
+                console.log('📤 Backend emit chunk:', content);
+                socket.emit('chat:chunk', { chunk: content });
+              } else if (json.done === true) {
+                console.log('✅ Stream terminé (done:true)');
+              }
+            } catch (e) {
+              console.log('⚠️ Parse warning:', e.message);
+            }
+          });
+        }
+      });
+
+      response.data.on('end', async () => {
+        // Apply French spell correction to Ana's response
+        const correctedResponse = spellChecker.correctText(fullResponse);
+
+        memory.appendToContext(`Alain: ${message}\nAna (${model}): ${correctedResponse}`);
+        socket.emit('chat:complete', { response: correctedResponse, model });
+        console.log(`✅ Response complete: ${correctedResponse.length} chars (spell-checked)`);
+
+        // Capture in V3 memory system (##Ana)
+        try {
+          const captureResult = await memoryCapture.capture({
+            userMessage: message,
+            anaResponse: correctedResponse,
+            model: model,
+            metadata: {
+              images: images ? images.length : 0,
+              context: context || {}
+            }
+          });
+
+          if (captureResult.success) {
+            console.log('💾 Memory captured:',
+              `V1=${captureResult.v1?.success ? '✅' : '❌'}`,
+              `V2=${captureResult.v2?.success ? '✅' : '❌'}`
+            );
+          } else {
+            console.warn('⚠️ Memory capture failed:', captureResult.error);
+          }
+        } catch (captureError) {
+          console.error('❌ Memory capture error:', captureError.message);
+          // Don't crash if memory capture fails - Ana still works
+        }
+
+        // Capture in ChromaDB for semantic search
+        try {
+          const chromaResult = await memoryManager.addConversation({
+            userMessage: message,
+            anaResponse: correctedResponse,
+            model: model,
+            metadata: {
+              images: images ? images.length : 0,
+              context: context || {}
+            }
+          });
+
+          if (chromaResult.success) {
+            console.log('🔍 ChromaDB captured:',
+              `ID=${chromaResult.exchangeId}`,
+              `Chunks=${chromaResult.chunksCount}`
+            );
+          }
+        } catch (chromaError) {
+          console.error('❌ ChromaDB capture error:', chromaError.message);
+          // Don't crash if ChromaDB fails - Ana still works
+        }
+
+      });
+
+      response.data.on('error', (err) => {
+        console.error('❌ Stream error:', err);
+        socket.emit('chat:error', { error: err.message });
+      });
+
+    } catch (error) {
+      console.error('❌ Chat error:', error);
+      socket.emit('chat:error', { error: error.message });
+    }
+  });
+
+  // Stats request
+  socket.on('stats:request', () => {
+    socket.emit('stats:update', {
+      llm_usage: router.stats,
+      memory: memory.getStats(),
+      active_model: router.activeModel
+    });
+  });
+
+  socket.on('disconnect', (reason) => {
+    console.log('❌ Client déconnecté:', socket.id, '- Raison:', reason);
+  });
+});
+
+// Log Socket.IO errors
+io.on('error', (error) => {
+  console.error('❌ Erreur Socket.IO:', error);
+});
+
+// ================== STARTUP VALIDATION ==================
+// Best practice: Validate dependencies before starting server
+// Sources: Production-ready Node.js patterns
+
+async function validateDependencies() {
+  const errors = [];
+
+  // 1. Check Ollama connectivity
+  try {
+    await axios.get(`${OLLAMA_URL}/api/tags`, { timeout: 5000 });
+    console.log('✅ Ollama connected');
+  } catch (error) {
+    errors.push(`Ollama not reachable at ${OLLAMA_URL}: ${error.message}`);
+  }
+
+  // 2. Check memory path accessibility
+  try {
+    if (!fs.existsSync(MEMORY_PATH)) {
+      errors.push(`Memory path does not exist: ${MEMORY_PATH}`);
+    } else {
+      // Test write permission
+      const testFile = path.join(MEMORY_PATH, '.ana_write_test');
+      fs.writeFileSync(testFile, 'test');
+      fs.unlinkSync(testFile);
+      console.log('✅ Memory path accessible');
+    }
+  } catch (error) {
+    errors.push(`Memory path not writable: ${error.message}`);
+  }
+
+  // 3. Check required modules
+  const requiredModules = ['express', 'socket.io', 'axios', 'cors'];
+  for (const mod of requiredModules) {
+    try {
+      require.resolve(mod);
+    } catch (error) {
+      errors.push(`Required module missing: ${mod}`);
+    }
+  }
+  if (errors.length === 0) {
+    console.log('✅ All required modules present');
+  }
+
+  return errors;
+}
+
+// ================== START SERVER ==================
+async function startServer() {
+  console.log('\n🔍 Validating dependencies...\n');
+
+  const validationErrors = await validateDependencies();
+
+  if (validationErrors.length > 0) {
+    console.error('\n❌ STARTUP VALIDATION FAILED:\n');
+    validationErrors.forEach((err, i) => console.error(`   ${i + 1}. ${err}`));
+    console.error('\n⚠️ Cannot start server. Fix issues above and retry.\n');
+    process.exit(1);
+  }
+
+  console.log('\n✅ All validations passed\n');
+
+  // Initialize Daily Art Generator
+  console.log('🎨 Initializing Daily Art Generator...');
+  dailyArtGenerator.initialize().then(result => {
+    if (result.success) {
+      console.log('✅ Daily Art Generator ready (8:00 AM schedule)');
+    }
+  });
+
+  // Initialize Research Agent
+  console.log('🔍 Initializing Research Agent...');
+  researchAgent.initialize().then(result => {
+    if (result.success) {
+      console.log('✅ Research Agent ready');
+    } else {
+      console.error('⚠️ Research Agent initialization failed');
+    }
+  });
+
+  // Initialize VRAM Manager
+  console.log('🎮 Initializing VRAM Manager...');
+  vramManager.initialize().then(result => {
+    if (result.success) {
+      console.log('✅ VRAM Manager ready (max 2 LLMs, 5min idle timeout)');
+    } else {
+      console.error('⚠️ VRAM Manager initialization failed');
+    }
+  });
+
+  // Initialize Multi-LLM Orchestrator
+  console.log('🎯 Initializing Multi-LLM Orchestrator...');
+  orchestrator.initialize().then(result => {
+    if (result.success) {
+      console.log('✅ Orchestrator ready with models:', Object.keys(result.modelStatus).filter(k => result.modelStatus[k] === 'available').join(', '));
+    } else {
+      console.error('⚠️ Orchestrator initialization failed:', result.error);
+    }
+  });
+
+  // Initialize n8n Integration
+  console.log('🔗 Initializing n8n Integration...');
+  n8nIntegration.initialize().then(result => {
+    if (result.success) {
+      console.log(`✅ n8n Integration ready (${result.webhooksCount} webhooks)`);
+    } else {
+      console.log('⚠️ n8n not available (start with: n8n start)');
+    }
+  });
+
+  // Initialize French Spell Checker
+  console.log('📝 Initializing French Spell Checker...');
+  spellChecker.initialize().then(() => {
+    console.log('✅ French Spell Checker ready');
+  }).catch(err => {
+    console.log('⚠️ Spell Checker not available:', err.message);
+  });
+
+  server.listen(PORT, () => {
+    console.log('🤖 ============================================');
+    console.log('   ANA CORE - Backend Orchestrator');
+    console.log('   SUPERIA ANA - Super IA Locale');
+    console.log('============================================');
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`💾 Memory path: ${MEMORY_PATH}`);
+    console.log(`🧠 Configured LLMs:`);
+    console.log(`   - Phi-3 Mini: ${LLMS.PHI3}`);
+    console.log(`   - DeepSeek Coder: ${LLMS.DEEPSEEK}`);
+    console.log(`   - Qwen Coder: ${LLMS.QWEN}`);
+    console.log(`   - Llama Vision: ${LLMS.LLAMA_VISION}`);
+    console.log('============================================\n');
+  }).on('error', (error) => {
+    if (error.code === 'EADDRINUSE') {
+      console.error(`\n❌ Port ${PORT} is already in use`);
+      console.error('⚠️ Another Ana instance or service is running on this port\n');
+      process.exit(1);
+    } else {
+      console.error('\n❌ Server startup error:', error.message, '\n');
+      process.exit(1);
+    }
+  });
+}
+
+// Start server with validation
+startServer().catch((error) => {
+  console.error('\n❌ Fatal startup error:', error);
+  process.exit(1);
+});
+
+// ================== PROCESS-LEVEL ERROR HANDLERS ==================
+// Best practice: Fail-fast philosophy with proper logging
+// Sources: Heroku Node.js best practices, Better Stack patterns
+
+// Uncaught Exception Handler
+process.on('uncaughtException', (error) => {
+  console.error('\n💥 UNCAUGHT EXCEPTION - FATAL ERROR');
+  console.error('Error:', error.name);
+  console.error('Message:', error.message);
+  console.error('Stack:', error.stack);
+  console.error('\n⚠️ Application state is corrupted. Exiting...\n');
+
+  // Save memory before crash
+  try {
+    memory.saveContext();
+    console.log('✅ Memory saved before exit');
+  } catch (saveError) {
+    console.error('❌ Failed to save memory:', saveError.message);
+  }
+
+  // Exit with error code (process manager will restart)
+  process.exit(1);
+});
+
+// Unhandled Promise Rejection Handler
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('\n💥 UNHANDLED PROMISE REJECTION');
+  console.error('Reason:', reason);
+  console.error('Promise:', promise);
+  console.error('\n⚠️ This will become a fatal error in future Node.js versions');
+  console.error('⚠️ Application state may be corrupted. Exiting...\n');
+
+  // Save memory before crash
+  try {
+    memory.saveContext();
+    console.log('✅ Memory saved before exit');
+  } catch (saveError) {
+    console.error('❌ Failed to save memory:', saveError.message);
+  }
+
+  // Exit with error code
+  process.exit(1);
+});
+
+// Graceful shutdown on SIGINT
+process.on('SIGINT', () => {
+  console.log('\n👋 Arrêt Ana Core (SIGINT)...');
+  memory.saveContext();
+  console.log('✅ Memory saved');
+  process.exit(0);
+});
+
+// Graceful shutdown on SIGTERM
+process.on('SIGTERM', () => {
+  console.log('\n👋 Arrêt Ana Core (SIGTERM)...');
+  memory.saveContext();
+  console.log('✅ Memory saved');
+  process.exit(0);
+});

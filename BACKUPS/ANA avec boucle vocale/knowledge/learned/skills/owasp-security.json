@@ -1,0 +1,246 @@
+{
+  "category": "owasp-security",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "owasp001",
+      "type": "top10",
+      "name": "Broken Access Control",
+      "description": "A01:2021",
+      "pattern": "IDOR, privilege escalation, CORS",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp002",
+      "type": "top10",
+      "name": "Cryptographic Failures",
+      "description": "A02:2021",
+      "pattern": "Weak encryption, clear text, key management",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp003",
+      "type": "top10",
+      "name": "Injection",
+      "description": "A03:2021",
+      "pattern": "SQL, NoSQL, OS command, LDAP injection",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp004",
+      "type": "top10",
+      "name": "Insecure Design",
+      "description": "A04:2021",
+      "pattern": "Threat modeling, secure patterns, abuse cases",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp005",
+      "type": "top10",
+      "name": "Security Misconfiguration",
+      "description": "A05:2021",
+      "pattern": "Default creds, verbose errors, open cloud",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp006",
+      "type": "top10",
+      "name": "Vulnerable Components",
+      "description": "A06:2021",
+      "pattern": "Outdated libs, CVEs, SBOM, SCA",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp007",
+      "type": "top10",
+      "name": "Auth Failures",
+      "description": "A07:2021",
+      "pattern": "Weak passwords, session fixation, brute force",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp008",
+      "type": "top10",
+      "name": "Data Integrity Failures",
+      "description": "A08:2021",
+      "pattern": "Unsigned updates, insecure deserialization",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp009",
+      "type": "top10",
+      "name": "Logging Failures",
+      "description": "A09:2021",
+      "pattern": "Missing logs, log injection, no alerting",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp010",
+      "type": "top10",
+      "name": "SSRF",
+      "description": "A10:2021",
+      "pattern": "URL validation, allowlist, cloud metadata",
+      "example": "Top10 usage"
+    },
+    {
+      "id": "owasp011",
+      "type": "web",
+      "name": "XSS Prevention",
+      "description": "Cross-site scripting",
+      "pattern": "Encoding, CSP, sanitization, DOM XSS",
+      "example": "Web usage"
+    },
+    {
+      "id": "owasp012",
+      "type": "web",
+      "name": "CSRF Protection",
+      "description": "Cross-site request forgery",
+      "pattern": "Tokens, SameSite, double submit",
+      "example": "Web usage"
+    },
+    {
+      "id": "owasp013",
+      "type": "web",
+      "name": "Clickjacking",
+      "description": "UI redressing",
+      "pattern": "X-Frame-Options, CSP frame-ancestors",
+      "example": "Web usage"
+    },
+    {
+      "id": "owasp014",
+      "type": "headers",
+      "name": "Security Headers",
+      "description": "HTTP security",
+      "pattern": "CSP, HSTS, X-Content-Type-Options",
+      "example": "Headers usage"
+    },
+    {
+      "id": "owasp015",
+      "type": "headers",
+      "name": "Content Security Policy",
+      "description": "Script control",
+      "pattern": "Directives, nonce, hash, report-uri",
+      "example": "Headers usage"
+    },
+    {
+      "id": "owasp016",
+      "type": "auth",
+      "name": "Authentication",
+      "description": "Identity verification",
+      "pattern": "MFA, passwordless, session management",
+      "example": "Auth usage"
+    },
+    {
+      "id": "owasp017",
+      "type": "auth",
+      "name": "Authorization",
+      "description": "Access control",
+      "pattern": "RBAC, ABAC, least privilege",
+      "example": "Auth usage"
+    },
+    {
+      "id": "owasp018",
+      "type": "auth",
+      "name": "OAuth/OIDC",
+      "description": "Delegation protocols",
+      "pattern": "Flows, scopes, token validation",
+      "example": "Auth usage"
+    },
+    {
+      "id": "owasp019",
+      "type": "auth",
+      "name": "JWT Security",
+      "description": "Token security",
+      "pattern": "Algorithm, expiry, claims validation",
+      "example": "Auth usage"
+    },
+    {
+      "id": "owasp020",
+      "type": "crypto",
+      "name": "Encryption",
+      "description": "Data protection",
+      "pattern": "AES-256, RSA, key rotation",
+      "example": "Crypto usage"
+    },
+    {
+      "id": "owasp021",
+      "type": "crypto",
+      "name": "Hashing",
+      "description": "Password storage",
+      "pattern": "Argon2, bcrypt, scrypt, salt",
+      "example": "Crypto usage"
+    },
+    {
+      "id": "owasp022",
+      "type": "crypto",
+      "name": "TLS/SSL",
+      "description": "Transport security",
+      "pattern": "TLS 1.3, certificate pinning, HSTS",
+      "example": "Crypto usage"
+    },
+    {
+      "id": "owasp023",
+      "type": "api",
+      "name": "API Security",
+      "description": "API protection",
+      "pattern": "Rate limiting, input validation, auth",
+      "example": "Api usage"
+    },
+    {
+      "id": "owasp024",
+      "type": "api",
+      "name": "GraphQL Security",
+      "description": "GraphQL protection",
+      "pattern": "Query depth, introspection, batching",
+      "example": "Api usage"
+    },
+    {
+      "id": "owasp025",
+      "type": "testing",
+      "name": "SAST",
+      "description": "Static analysis",
+      "pattern": "Semgrep, SonarQube, CodeQL",
+      "example": "Testing usage"
+    },
+    {
+      "id": "owasp026",
+      "type": "testing",
+      "name": "DAST",
+      "description": "Dynamic testing",
+      "pattern": "OWASP ZAP, Burp Suite, nuclei",
+      "example": "Testing usage"
+    },
+    {
+      "id": "owasp027",
+      "type": "testing",
+      "name": "Dependency Scanning",
+      "description": "SCA tools",
+      "pattern": "Snyk, Dependabot, Trivy",
+      "example": "Testing usage"
+    },
+    {
+      "id": "owasp028",
+      "type": "testing",
+      "name": "Penetration Testing",
+      "description": "Manual testing",
+      "pattern": "Recon, exploitation, reporting",
+      "example": "Testing usage"
+    },
+    {
+      "id": "owasp029",
+      "type": "devsecops",
+      "name": "Security Pipeline",
+      "description": "CI/CD security",
+      "pattern": "Pre-commit, SAST, secrets scanning",
+      "example": "Devsecops usage"
+    },
+    {
+      "id": "owasp030",
+      "type": "devsecops",
+      "name": "Incident Response",
+      "description": "Security incidents",
+      "pattern": "Detection, containment, recovery",
+      "example": "Devsecops usage"
+    }
+  ]
+}

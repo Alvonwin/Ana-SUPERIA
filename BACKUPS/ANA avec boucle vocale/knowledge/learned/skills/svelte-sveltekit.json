@@ -1,0 +1,247 @@
+{
+  "category": "svelte-sveltekit",
+  "version": "1.0.0",
+  "generatedBy": "Claude (Opus 4.5)",
+  "skills": [
+    {
+      "id": "sv01",
+      "type": "runes",
+      "name": "Svelte 5 Runes",
+      "description": "New reactivity system",
+      "pattern": "let count = $state(0); let doubled = $derived(count * 2)",
+      "example": "Replaces $: syntax"
+    },
+    {
+      "id": "sv02",
+      "type": "state",
+      "name": "$state Rune",
+      "description": "Reactive state",
+      "pattern": "let items = $state([1,2,3]); items.push(4)",
+      "example": "Deep reactivity"
+    },
+    {
+      "id": "sv03",
+      "type": "derived",
+      "name": "$derived Rune",
+      "description": "Computed values",
+      "pattern": "let total = $derived(items.reduce((a,b) => a+b, 0))",
+      "example": "Auto-updates"
+    },
+    {
+      "id": "sv04",
+      "type": "effect",
+      "name": "$effect Rune",
+      "description": "Side effects",
+      "pattern": "$effect(() => { console.log(count) })",
+      "example": "Auto-cleanup"
+    },
+    {
+      "id": "sv05",
+      "type": "props",
+      "name": "$props Rune",
+      "description": "Component props",
+      "pattern": "let { name, age = 18 } = $props()",
+      "example": "Destructuring syntax"
+    },
+    {
+      "id": "sv06",
+      "type": "bindable",
+      "name": "$bindable Rune",
+      "description": "Two-way binding props",
+      "pattern": "let { value = $bindable() } = $props()",
+      "example": "bind:value"
+    },
+    {
+      "id": "sv07",
+      "type": "snippets",
+      "name": "Snippets",
+      "description": "Reusable markup",
+      "pattern": "{#snippet row(item)}<tr>...</tr>{/snippet}",
+      "example": "Replace slots"
+    },
+    {
+      "id": "sv08",
+      "type": "components",
+      "name": "Svelte Components",
+      "description": "Single-file components",
+      "pattern": "<script>, <style>, markup in .svelte",
+      "example": "Scoped styles default"
+    },
+    {
+      "id": "sv09",
+      "type": "stores",
+      "name": "Svelte Stores",
+      "description": "Reactive stores",
+      "pattern": "writable(), readable(), derived()",
+      "example": "$store auto-subscription"
+    },
+    {
+      "id": "sv10",
+      "type": "lifecycle",
+      "name": "Lifecycle Functions",
+      "description": "Component lifecycle",
+      "pattern": "onMount(), onDestroy(), beforeUpdate()",
+      "example": "SSR-safe onMount"
+    },
+    {
+      "id": "sv11",
+      "type": "transitions",
+      "name": "Transitions",
+      "description": "Built-in animations",
+      "pattern": "transition:fade, in:fly, out:slide",
+      "example": "Custom transitions"
+    },
+    {
+      "id": "sv12",
+      "type": "actions",
+      "name": "Actions",
+      "description": "Element-level lifecycle",
+      "pattern": "use:action={params}",
+      "example": "Tooltip, click-outside"
+    },
+    {
+      "id": "sv13",
+      "type": "kit-routing",
+      "name": "SvelteKit Routing",
+      "description": "File-based routing",
+      "pattern": "routes/blog/[slug]/+page.svelte",
+      "example": "Layouts, groups"
+    },
+    {
+      "id": "sv14",
+      "type": "kit-load",
+      "name": "Load Functions",
+      "description": "Data loading",
+      "pattern": "+page.ts: load({ params, fetch })",
+      "example": "Universal load"
+    },
+    {
+      "id": "sv15",
+      "type": "kit-server",
+      "name": "Server Load",
+      "description": "Server-only data",
+      "pattern": "+page.server.ts: load({ locals })",
+      "example": "Database access"
+    },
+    {
+      "id": "sv16",
+      "type": "kit-actions",
+      "name": "Form Actions",
+      "description": "Form handling",
+      "pattern": "+page.server.ts: actions = { default, named }",
+      "example": "Progressive enhancement"
+    },
+    {
+      "id": "sv17",
+      "type": "kit-hooks",
+      "name": "SvelteKit Hooks",
+      "description": "Request interceptors",
+      "pattern": "hooks.server.ts: handle, handleError",
+      "example": "Auth, logging"
+    },
+    {
+      "id": "sv18",
+      "type": "kit-api",
+      "name": "API Routes",
+      "description": "Serverless endpoints",
+      "pattern": "+server.ts: GET, POST, PUT, DELETE",
+      "example": "JSON responses"
+    },
+    {
+      "id": "sv19",
+      "type": "kit-error",
+      "name": "Error Handling",
+      "description": "Error pages",
+      "pattern": "+error.svelte, error(404, 'Not found')",
+      "example": "Expected vs unexpected"
+    },
+    {
+      "id": "sv20",
+      "type": "kit-layout",
+      "name": "Layouts",
+      "description": "Nested layouts",
+      "pattern": "+layout.svelte, +layout.ts",
+      "example": "Data inheritance"
+    },
+    {
+      "id": "sv21",
+      "type": "kit-page",
+      "name": "Page Options",
+      "description": "Rendering modes",
+      "pattern": "export const ssr = true; prerender = true",
+      "example": "Per-route config"
+    },
+    {
+      "id": "sv22",
+      "type": "kit-env",
+      "name": "Environment Variables",
+      "description": "Safe env access",
+      "pattern": "$env/static/private, $env/dynamic/public",
+      "example": "Build-time vs runtime"
+    },
+    {
+      "id": "sv23",
+      "type": "kit-forms",
+      "name": "Enhanced Forms",
+      "description": "Progressive forms",
+      "pattern": "use:enhance, applyAction()",
+      "example": "No-JS fallback"
+    },
+    {
+      "id": "sv24",
+      "type": "kit-navigation",
+      "name": "Navigation",
+      "description": "Client-side routing",
+      "pattern": "goto(), beforeNavigate(), afterNavigate()",
+      "example": "Prevent navigation"
+    },
+    {
+      "id": "sv25",
+      "type": "kit-data",
+      "name": "Data Loading Patterns",
+      "description": "Parallel loading",
+      "pattern": "await parent(), depends()",
+      "example": "Invalidation"
+    },
+    {
+      "id": "sv26",
+      "type": "kit-adapter",
+      "name": "Adapters",
+      "description": "Deployment targets",
+      "pattern": "adapter-node, adapter-vercel, adapter-static",
+      "example": "Edge functions"
+    },
+    {
+      "id": "sv27",
+      "type": "kit-prerender",
+      "name": "Prerendering",
+      "description": "Static generation",
+      "pattern": "export const prerender = true",
+      "example": "Build-time HTML"
+    },
+    {
+      "id": "sv28",
+      "type": "kit-streaming",
+      "name": "Streaming",
+      "description": "Streaming responses",
+      "pattern": "Promises in load resolve progressively",
+      "example": "Deferred data"
+    },
+    {
+      "id": "sv29",
+      "type": "testing",
+      "name": "Svelte Testing",
+      "description": "Component testing",
+      "pattern": "@testing-library/svelte, Playwright",
+      "example": "render(), fireEvent()"
+    },
+    {
+      "id": "sv30",
+      "type": "vite-svelte",
+      "name": "Vite + Svelte",
+      "description": "Build tooling",
+      "pattern": "svelte.config.js, vite.config.ts",
+      "example": "Preprocessors"
+    }
+  ]
+}

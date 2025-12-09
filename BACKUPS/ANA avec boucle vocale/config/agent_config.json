@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-11-25",
+    "description": "Configuration des agents Ana"
+  },
+  "eventBus": {
+    "port": 3340,
+    "maxListeners": 50
+  },
+  "agents": {
+    "strict": {
+      "description": "Agents gardiens des valeurs",
+      "agents": [
+        "agent_assumption_detector",
+        "agent_backup_enforcer",
+        "agent_methodology_checker"
+      ],
+      "priority": "critical",
+      "autoStart": true
+    },
+    "cognitive": {
+      "description": "Agents cognitifs",
+      "agents": [
+        "agent_memory_manager",
+        "agent_system_monitor",
+        "agent_emotion_analyzer",
+        "agent_learning_monitor",
+        "agent_synthesis_engine"
+      ],
+      "priority": "high",
+      "autoStart": true
+    },
+    "creative": {
+      "description": "Agents créatifs",
+      "agents": [
+        "artist_agent",
+        "composer_agent"
+      ],
+      "priority": "medium",
+      "autoStart": false
+    },
+    "research": {
+      "description": "Agents de recherche",
+      "agents": [
+        "research_agent",
+        "agent_taaft_discovery"
+      ],
+      "priority": "high",
+      "autoStart": true
+    }
+  },
+  "healthCheck": {
+    "intervalMs": 300000,
+    "timeoutMs": 5000,
+    "maxRetries": 3
+  },
+  "logging": {
+    "level": "info",
+    "path": "E:/ANA/logs/agents/"
+  }
+}

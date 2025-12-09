@@ -1,0 +1,246 @@
+{
+  "category": "opentelemetry-observability",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "otel001",
+      "type": "fundamentals",
+      "name": "OTel Overview",
+      "description": "Observability framework",
+      "pattern": "Traces, metrics, logs, vendor-neutral",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "otel002",
+      "type": "fundamentals",
+      "name": "Three Pillars",
+      "description": "Observability signals",
+      "pattern": "Traces, metrics, logs correlation",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "otel003",
+      "type": "traces",
+      "name": "Distributed Tracing",
+      "description": "Request flow tracking",
+      "pattern": "Trace ID, span ID, parent span",
+      "example": "Traces usage"
+    },
+    {
+      "id": "otel004",
+      "type": "traces",
+      "name": "Spans",
+      "description": "Operation representation",
+      "pattern": "Name, attributes, events, status",
+      "example": "Traces usage"
+    },
+    {
+      "id": "otel005",
+      "type": "traces",
+      "name": "Context Propagation",
+      "description": "Cross-service context",
+      "pattern": "W3C Trace Context, Baggage",
+      "example": "Traces usage"
+    },
+    {
+      "id": "otel006",
+      "type": "traces",
+      "name": "Span Kinds",
+      "description": "Span classification",
+      "pattern": "Client, server, producer, consumer, internal",
+      "example": "Traces usage"
+    },
+    {
+      "id": "otel007",
+      "type": "metrics",
+      "name": "Metric Types",
+      "description": "Measurement types",
+      "pattern": "Counter, Gauge, Histogram, UpDownCounter",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "otel008",
+      "type": "metrics",
+      "name": "Metric Views",
+      "description": "Metric customization",
+      "pattern": "Aggregation, attributes, rename",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "otel009",
+      "type": "metrics",
+      "name": "Exemplars",
+      "description": "Metric-trace correlation",
+      "pattern": "Trace context in metrics",
+      "example": "Metrics usage"
+    },
+    {
+      "id": "otel010",
+      "type": "logs",
+      "name": "Log Correlation",
+      "description": "Logs with traces",
+      "pattern": "Trace ID injection, structured logs",
+      "example": "Logs usage"
+    },
+    {
+      "id": "otel011",
+      "type": "logs",
+      "name": "Log Bridge API",
+      "description": "Log integration",
+      "pattern": "Existing logger bridges",
+      "example": "Logs usage"
+    },
+    {
+      "id": "otel012",
+      "type": "sdk",
+      "name": "SDK Configuration",
+      "description": "OTel setup",
+      "pattern": "TracerProvider, MeterProvider, env vars",
+      "example": "Sdk usage"
+    },
+    {
+      "id": "otel013",
+      "type": "sdk",
+      "name": "Resource",
+      "description": "Service metadata",
+      "pattern": "Service name, version, instance",
+      "example": "Sdk usage"
+    },
+    {
+      "id": "otel014",
+      "type": "sdk",
+      "name": "Exporters",
+      "description": "Data export",
+      "pattern": "OTLP, Jaeger, Zipkin, Prometheus",
+      "example": "Sdk usage"
+    },
+    {
+      "id": "otel015",
+      "type": "sdk",
+      "name": "Processors",
+      "description": "Data processing",
+      "pattern": "Batch, simple, attribute processors",
+      "example": "Sdk usage"
+    },
+    {
+      "id": "otel016",
+      "type": "sdk",
+      "name": "Samplers",
+      "description": "Trace sampling",
+      "pattern": "AlwaysOn, AlwaysOff, TraceIdRatio, ParentBased",
+      "example": "Sdk usage"
+    },
+    {
+      "id": "otel017",
+      "type": "instrumentation",
+      "name": "Auto-instrumentation",
+      "description": "Automatic tracing",
+      "pattern": "Java agent, Node.js, Python",
+      "example": "Instrumentation usage"
+    },
+    {
+      "id": "otel018",
+      "type": "instrumentation",
+      "name": "Manual Instrumentation",
+      "description": "Custom spans",
+      "pattern": "StartSpan, SetAttributes, End",
+      "example": "Instrumentation usage"
+    },
+    {
+      "id": "otel019",
+      "type": "instrumentation",
+      "name": "Libraries",
+      "description": "Framework support",
+      "pattern": "HTTP, gRPC, database clients",
+      "example": "Instrumentation usage"
+    },
+    {
+      "id": "otel020",
+      "type": "collector",
+      "name": "OTel Collector",
+      "description": "Telemetry pipeline",
+      "pattern": "Receivers, processors, exporters",
+      "example": "Collector usage"
+    },
+    {
+      "id": "otel021",
+      "type": "collector",
+      "name": "Collector Config",
+      "description": "YAML configuration",
+      "pattern": "Pipelines, extensions, connectors",
+      "example": "Collector usage"
+    },
+    {
+      "id": "otel022",
+      "type": "collector",
+      "name": "Collector Deployment",
+      "description": "Deployment patterns",
+      "pattern": "Agent, gateway, sidecar",
+      "example": "Collector usage"
+    },
+    {
+      "id": "otel023",
+      "type": "backends",
+      "name": "Jaeger",
+      "description": "Trace backend",
+      "pattern": "Trace storage, query, UI",
+      "example": "Backends usage"
+    },
+    {
+      "id": "otel024",
+      "type": "backends",
+      "name": "Tempo",
+      "description": "Grafana traces",
+      "pattern": "Object storage, TraceQL",
+      "example": "Backends usage"
+    },
+    {
+      "id": "otel025",
+      "type": "backends",
+      "name": "Prometheus/Mimir",
+      "description": "Metrics backend",
+      "pattern": "PromQL, remote write",
+      "example": "Backends usage"
+    },
+    {
+      "id": "otel026",
+      "type": "backends",
+      "name": "Loki",
+      "description": "Log backend",
+      "pattern": "LogQL, labels, chunks",
+      "example": "Backends usage"
+    },
+    {
+      "id": "otel027",
+      "type": "kubernetes",
+      "name": "OTel Operator",
+      "description": "K8s integration",
+      "pattern": "Instrumentation CRD, sidecar injection",
+      "example": "Kubernetes usage"
+    },
+    {
+      "id": "otel028",
+      "type": "advanced",
+      "name": "Semantic Conventions",
+      "description": "Standard attributes",
+      "pattern": "http.*, db.*, messaging.*",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "otel029",
+      "type": "advanced",
+      "name": "Baggage",
+      "description": "Cross-service context",
+      "pattern": "Custom context propagation",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "otel030",
+      "type": "visualization",
+      "name": "Grafana",
+      "description": "Observability UI",
+      "pattern": "Dashboards, Explore, correlations",
+      "example": "Visualization usage"
+    }
+  ]
+}

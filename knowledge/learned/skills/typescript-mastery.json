@@ -1,0 +1,246 @@
+{
+  "category": "typescript-mastery",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ts001",
+      "type": "basics",
+      "name": "Type Inference",
+      "description": "Automatic types",
+      "pattern": "const x = 5; // inferred as number, const arr = [1,2]; // number[]",
+      "example": "Basics usage"
+    },
+    {
+      "id": "ts002",
+      "type": "basics",
+      "name": "Type Annotations",
+      "description": "Explicit types",
+      "pattern": "const name: string = 'hello'; function greet(name: string): void {}",
+      "example": "Basics usage"
+    },
+    {
+      "id": "ts003",
+      "type": "basics",
+      "name": "Union Types",
+      "description": "Multiple types",
+      "pattern": "type StringOrNumber = string | number; function process(val: StringOrNumber)",
+      "example": "Basics usage"
+    },
+    {
+      "id": "ts004",
+      "type": "basics",
+      "name": "Intersection Types",
+      "description": "Combine types",
+      "pattern": "type Employee = Person & Worker; // has all properties of both",
+      "example": "Basics usage"
+    },
+    {
+      "id": "ts005",
+      "type": "basics",
+      "name": "Literal Types",
+      "description": "Specific values",
+      "pattern": "type Direction = 'north' | 'south' | 'east' | 'west';",
+      "example": "Basics usage"
+    },
+    {
+      "id": "ts006",
+      "type": "advanced",
+      "name": "Generics",
+      "description": "Type parameters",
+      "pattern": "function identity<T>(arg: T): T { return arg; }",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ts007",
+      "type": "advanced",
+      "name": "Generic Constraints",
+      "description": "Bounded generics",
+      "pattern": "function getLength<T extends { length: number }>(arg: T): number",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ts008",
+      "type": "advanced",
+      "name": "Conditional Types",
+      "description": "Type branching",
+      "pattern": "type IsString<T> = T extends string ? true : false;",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ts009",
+      "type": "advanced",
+      "name": "Mapped Types",
+      "description": "Transform types",
+      "pattern": "type Readonly<T> = { readonly [K in keyof T]: T[K] };",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ts010",
+      "type": "advanced",
+      "name": "Template Literal Types",
+      "description": "String manipulation",
+      "pattern": "type EventName = `on${Capitalize<string>}`; // 'onClick', 'onHover'",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "ts011",
+      "type": "utility",
+      "name": "Partial/Required",
+      "description": "Optional properties",
+      "pattern": "Partial<User> // all optional, Required<User> // all required",
+      "example": "Utility usage"
+    },
+    {
+      "id": "ts012",
+      "type": "utility",
+      "name": "Pick/Omit",
+      "description": "Property selection",
+      "pattern": "Pick<User, 'name' | 'email'>, Omit<User, 'password'>",
+      "example": "Utility usage"
+    },
+    {
+      "id": "ts013",
+      "type": "utility",
+      "name": "Record",
+      "description": "Object type",
+      "pattern": "Record<string, number> // { [key: string]: number }",
+      "example": "Utility usage"
+    },
+    {
+      "id": "ts014",
+      "type": "utility",
+      "name": "Extract/Exclude",
+      "description": "Union filtering",
+      "pattern": "Extract<T, U> // types in T assignable to U",
+      "example": "Utility usage"
+    },
+    {
+      "id": "ts015",
+      "type": "utility",
+      "name": "ReturnType/Parameters",
+      "description": "Function types",
+      "pattern": "ReturnType<typeof fn>, Parameters<typeof fn>[0]",
+      "example": "Utility usage"
+    },
+    {
+      "id": "ts016",
+      "type": "utility",
+      "name": "Awaited",
+      "description": "Unwrap promises",
+      "pattern": "Awaited<Promise<string>> // string",
+      "example": "Utility usage"
+    },
+    {
+      "id": "ts017",
+      "type": "inference",
+      "name": "infer Keyword",
+      "description": "Type extraction",
+      "pattern": "type ElementType<T> = T extends (infer U)[] ? U : never;",
+      "example": "Inference usage"
+    },
+    {
+      "id": "ts018",
+      "type": "inference",
+      "name": "const Assertions",
+      "description": "Narrow inference",
+      "pattern": "const routes = ['home', 'about'] as const; // readonly tuple",
+      "example": "Inference usage"
+    },
+    {
+      "id": "ts019",
+      "type": "inference",
+      "name": "satisfies Operator",
+      "description": "Validate without widen",
+      "pattern": "const config = {...} satisfies Config; // keeps narrow types",
+      "example": "Inference usage"
+    },
+    {
+      "id": "ts020",
+      "type": "narrowing",
+      "name": "Type Guards",
+      "description": "Narrow types",
+      "pattern": "function isString(x: unknown): x is string { return typeof x === 'string'; }",
+      "example": "Narrowing usage"
+    },
+    {
+      "id": "ts021",
+      "type": "narrowing",
+      "name": "Discriminated Unions",
+      "description": "Tagged unions",
+      "pattern": "type Result = { status: 'ok', data: T } | { status: 'error', error: E }",
+      "example": "Narrowing usage"
+    },
+    {
+      "id": "ts022",
+      "type": "narrowing",
+      "name": "Exhaustive Checks",
+      "description": "Handle all cases",
+      "pattern": "const _exhaustive: never = value; // error if case unhandled",
+      "example": "Narrowing usage"
+    },
+    {
+      "id": "ts023",
+      "type": "modules",
+      "name": "Declaration Files",
+      "description": ".d.ts files",
+      "pattern": "declare module 'lib' { export function fn(): void; }",
+      "example": "Modules usage"
+    },
+    {
+      "id": "ts024",
+      "type": "modules",
+      "name": "Triple-Slash Directives",
+      "description": "Reference types",
+      "pattern": "/// <reference types='node' />",
+      "example": "Modules usage"
+    },
+    {
+      "id": "ts025",
+      "type": "modules",
+      "name": "Module Augmentation",
+      "description": "Extend modules",
+      "pattern": "declare module 'express' { interface Request { user: User; } }",
+      "example": "Modules usage"
+    },
+    {
+      "id": "ts026",
+      "type": "config",
+      "name": "tsconfig Strict Mode",
+      "description": "Strict checks",
+      "pattern": "strict: true, noImplicitAny, strictNullChecks, strictFunctionTypes",
+      "example": "Config usage"
+    },
+    {
+      "id": "ts027",
+      "type": "config",
+      "name": "Project References",
+      "description": "Multi-project",
+      "pattern": "references: [{path: '../shared'}], composite: true",
+      "example": "Config usage"
+    },
+    {
+      "id": "ts028",
+      "type": "patterns",
+      "name": "Branded Types",
+      "description": "Type branding",
+      "pattern": "type UserId = string & { readonly brand: unique symbol };",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ts029",
+      "type": "patterns",
+      "name": "Builder Pattern",
+      "description": "Fluent API types",
+      "pattern": "class Builder<T> { with<K>(key, val): Builder<T & {[key]: val}>; }",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "ts030",
+      "type": "patterns",
+      "name": "Zod Integration",
+      "description": "Runtime + types",
+      "pattern": "const schema = z.object({...}); type User = z.infer<typeof schema>;",
+      "example": "Patterns usage"
+    }
+  ]
+}

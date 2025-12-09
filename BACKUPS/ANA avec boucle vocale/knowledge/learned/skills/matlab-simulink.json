@@ -1,0 +1,246 @@
+{
+  "category": "matlab-simulink",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "mat001",
+      "type": "fundamentals",
+      "name": "MATLAB Basics",
+      "description": "MATLAB programming",
+      "pattern": "Variables, matrices, arrays, operators",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "mat002",
+      "type": "fundamentals",
+      "name": "Matrix Operations",
+      "description": "Linear algebra",
+      "pattern": "inv(), eig(), det(), svd(), transpose",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "mat003",
+      "type": "fundamentals",
+      "name": "Scripting",
+      "description": "MATLAB scripts",
+      "pattern": ".m files, functions, control flow",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "mat004",
+      "type": "data",
+      "name": "Data Import/Export",
+      "description": "File I/O",
+      "pattern": "readtable, writetable, csvread, xlsread",
+      "example": "Data usage"
+    },
+    {
+      "id": "mat005",
+      "type": "data",
+      "name": "Data Visualization",
+      "description": "Plotting",
+      "pattern": "plot, scatter, histogram, surf, mesh",
+      "example": "Data usage"
+    },
+    {
+      "id": "mat006",
+      "type": "data",
+      "name": "Data Analysis",
+      "description": "Statistics",
+      "pattern": "mean, std, corr, fit, regression",
+      "example": "Data usage"
+    },
+    {
+      "id": "mat007",
+      "type": "simulink",
+      "name": "Simulink Basics",
+      "description": "Block diagrams",
+      "pattern": "Blocks, signals, subsystems, libraries",
+      "example": "Simulink usage"
+    },
+    {
+      "id": "mat008",
+      "type": "simulink",
+      "name": "Model Building",
+      "description": "System modeling",
+      "pattern": "Sources, sinks, math operations, routing",
+      "example": "Simulink usage"
+    },
+    {
+      "id": "mat009",
+      "type": "simulink",
+      "name": "Simulation",
+      "description": "Running simulations",
+      "pattern": "Solvers, step size, simulation time",
+      "example": "Simulink usage"
+    },
+    {
+      "id": "mat010",
+      "type": "simulink",
+      "name": "Signal Processing",
+      "description": "DSP blocks",
+      "pattern": "Filters, FFT, spectrum analysis",
+      "example": "Simulink usage"
+    },
+    {
+      "id": "mat011",
+      "type": "toolbox",
+      "name": "Signal Processing Toolbox",
+      "description": "DSP tools",
+      "pattern": "fft, filter, spectrogram, cwt",
+      "example": "Toolbox usage"
+    },
+    {
+      "id": "mat012",
+      "type": "toolbox",
+      "name": "Control System Toolbox",
+      "description": "Control theory",
+      "pattern": "tf, ss, bode, nyquist, pid",
+      "example": "Toolbox usage"
+    },
+    {
+      "id": "mat013",
+      "type": "toolbox",
+      "name": "Image Processing Toolbox",
+      "description": "Image analysis",
+      "pattern": "imread, imshow, edge, regionprops",
+      "example": "Toolbox usage"
+    },
+    {
+      "id": "mat014",
+      "type": "toolbox",
+      "name": "Statistics Toolbox",
+      "description": "Statistical analysis",
+      "pattern": "fitlm, anova, pca, kmeans",
+      "example": "Toolbox usage"
+    },
+    {
+      "id": "mat015",
+      "type": "toolbox",
+      "name": "Optimization Toolbox",
+      "description": "Optimization",
+      "pattern": "fmincon, linprog, quadprog, ga",
+      "example": "Toolbox usage"
+    },
+    {
+      "id": "mat016",
+      "type": "toolbox",
+      "name": "Machine Learning Toolbox",
+      "description": "ML in MATLAB",
+      "pattern": "fitcensemble, fitcsvm, classify",
+      "example": "Toolbox usage"
+    },
+    {
+      "id": "mat017",
+      "type": "toolbox",
+      "name": "Deep Learning Toolbox",
+      "description": "Neural networks",
+      "pattern": "trainNetwork, CNN, LSTM, transfer",
+      "example": "Toolbox usage"
+    },
+    {
+      "id": "mat018",
+      "type": "advanced",
+      "name": "MEX Functions",
+      "description": "C/C++ integration",
+      "pattern": "mex, mexFunction, C API",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "mat019",
+      "type": "advanced",
+      "name": "Parallel Computing",
+      "description": "Parallel MATLAB",
+      "pattern": "parfor, parpool, gpuArray, spmd",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "mat020",
+      "type": "advanced",
+      "name": "App Designer",
+      "description": "GUI development",
+      "pattern": "uiaxes, uibutton, callbacks, mlapp",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "mat021",
+      "type": "stateflow",
+      "name": "Stateflow",
+      "description": "State machines",
+      "pattern": "States, transitions, charts, logic",
+      "example": "Stateflow usage"
+    },
+    {
+      "id": "mat022",
+      "type": "stateflow",
+      "name": "Event-Driven Logic",
+      "description": "Event handling",
+      "pattern": "Events, conditions, actions",
+      "example": "Stateflow usage"
+    },
+    {
+      "id": "mat023",
+      "type": "code-gen",
+      "name": "MATLAB Coder",
+      "description": "Code generation",
+      "pattern": "codegen, C/C++ generation, embedded",
+      "example": "Code-gen usage"
+    },
+    {
+      "id": "mat024",
+      "type": "code-gen",
+      "name": "Simulink Coder",
+      "description": "Model to code",
+      "pattern": "Build, deploy, real-time targets",
+      "example": "Code-gen usage"
+    },
+    {
+      "id": "mat025",
+      "type": "code-gen",
+      "name": "Embedded Coder",
+      "description": "Embedded code",
+      "pattern": "Optimized code, production, cert",
+      "example": "Code-gen usage"
+    },
+    {
+      "id": "mat026",
+      "type": "testing",
+      "name": "Simulink Test",
+      "description": "Model testing",
+      "pattern": "Test harness, coverage, requirements",
+      "example": "Testing usage"
+    },
+    {
+      "id": "mat027",
+      "type": "modeling",
+      "name": "Physical Modeling",
+      "description": "Simscape",
+      "pattern": "Mechanical, electrical, hydraulic",
+      "example": "Modeling usage"
+    },
+    {
+      "id": "mat028",
+      "type": "modeling",
+      "name": "System Identification",
+      "description": "Model estimation",
+      "pattern": "iddata, tfest, ssest, armax",
+      "example": "Modeling usage"
+    },
+    {
+      "id": "mat029",
+      "type": "deployment",
+      "name": "MATLAB Production Server",
+      "description": "Deployment",
+      "pattern": "REST API, scaling, enterprise",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "mat030",
+      "type": "deployment",
+      "name": "MATLAB Compiler",
+      "description": "Standalone apps",
+      "pattern": "mcc, deploytool, runtime",
+      "example": "Deployment usage"
+    }
+  ]
+}

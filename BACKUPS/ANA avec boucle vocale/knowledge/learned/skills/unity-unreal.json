@@ -1,0 +1,246 @@
+{
+  "category": "unity-unreal",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "ue001",
+      "type": "unity",
+      "name": "Unity Basics",
+      "description": "Game engine",
+      "pattern": "GameObjects, Components, Scenes, Prefabs",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue002",
+      "type": "unity",
+      "name": "C# Scripting",
+      "description": "Unity C#",
+      "pattern": "MonoBehaviour, Start(), Update(), FixedUpdate",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue003",
+      "type": "unity",
+      "name": "Physics System",
+      "description": "Unity physics",
+      "pattern": "Rigidbody, Colliders, OnCollisionEnter",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue004",
+      "type": "unity",
+      "name": "Animation System",
+      "description": "Animator controller",
+      "pattern": "Animator, Animation Clips, Blend Trees",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue005",
+      "type": "unity",
+      "name": "UI System",
+      "description": "Canvas UI",
+      "pattern": "Canvas, UI Elements, EventSystem",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue006",
+      "type": "unity",
+      "name": "Asset Management",
+      "description": "Resources",
+      "pattern": "AssetBundle, Addressables, Resources.Load",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue007",
+      "type": "unity",
+      "name": "Lighting",
+      "description": "Unity lighting",
+      "pattern": "Baked, Realtime, Global Illumination, HDRP",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue008",
+      "type": "unity",
+      "name": "Audio System",
+      "description": "Unity audio",
+      "pattern": "AudioSource, AudioMixer, 3D Sound",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue009",
+      "type": "unity",
+      "name": "Networking",
+      "description": "Multiplayer",
+      "pattern": "Netcode, Mirror, Photon, RPC",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue010",
+      "type": "unity",
+      "name": "Scriptable Objects",
+      "description": "Data assets",
+      "pattern": "ScriptableObject, asset-based data",
+      "example": "Unity usage"
+    },
+    {
+      "id": "ue011",
+      "type": "unreal",
+      "name": "Unreal Basics",
+      "description": "UE Engine",
+      "pattern": "Actors, Components, Levels, Blueprints",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue012",
+      "type": "unreal",
+      "name": "Blueprint Visual",
+      "description": "Visual scripting",
+      "pattern": "Blueprint nodes, Event Graph, Functions",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue013",
+      "type": "unreal",
+      "name": "C++ Programming",
+      "description": "Unreal C++",
+      "pattern": "AActor, UObject, UCLASS, UPROPERTY",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue014",
+      "type": "unreal",
+      "name": "Materials",
+      "description": "Material editor",
+      "pattern": "Material instances, nodes, shaders",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue015",
+      "type": "unreal",
+      "name": "Niagara VFX",
+      "description": "Particle system",
+      "pattern": "Niagara, emitters, modules, VFX",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue016",
+      "type": "unreal",
+      "name": "Sequencer",
+      "description": "Cinematics",
+      "pattern": "Level Sequencer, cutscenes, animation",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue017",
+      "type": "unreal",
+      "name": "AI Behavior",
+      "description": "AI system",
+      "pattern": "Behavior Trees, Blackboard, AI Controller",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue018",
+      "type": "unreal",
+      "name": "Chaos Physics",
+      "description": "Physics system",
+      "pattern": "Chaos, destruction, rigid bodies",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue019",
+      "type": "unreal",
+      "name": "Lumen/Nanite",
+      "description": "UE5 rendering",
+      "pattern": "Lumen GI, Nanite geometry, UE5",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue020",
+      "type": "unreal",
+      "name": "MetaHumans",
+      "description": "Digital humans",
+      "pattern": "MetaHuman Creator, facial animation",
+      "example": "Unreal usage"
+    },
+    {
+      "id": "ue021",
+      "type": "common",
+      "name": "Level Design",
+      "description": "World building",
+      "pattern": "Blocking, whiteboxing, iteration",
+      "example": "Common usage"
+    },
+    {
+      "id": "ue022",
+      "type": "common",
+      "name": "Shader Programming",
+      "description": "Graphics shaders",
+      "pattern": "Vertex, fragment, HLSL, ShaderGraph",
+      "example": "Common usage"
+    },
+    {
+      "id": "ue023",
+      "type": "common",
+      "name": "Performance Profiling",
+      "description": "Optimization",
+      "pattern": "Profiler, draw calls, LOD, culling",
+      "example": "Common usage"
+    },
+    {
+      "id": "ue024",
+      "type": "common",
+      "name": "Version Control",
+      "description": "Asset versioning",
+      "pattern": "Perforce, Git LFS, binary assets",
+      "example": "Common usage"
+    },
+    {
+      "id": "ue025",
+      "type": "common",
+      "name": "Mobile Build",
+      "description": "Mobile games",
+      "pattern": "iOS, Android, optimization, touch",
+      "example": "Common usage"
+    },
+    {
+      "id": "ue026",
+      "type": "common",
+      "name": "Console Build",
+      "description": "Console dev",
+      "pattern": "PlayStation, Xbox, certification",
+      "example": "Common usage"
+    },
+    {
+      "id": "ue027",
+      "type": "common",
+      "name": "VR Development",
+      "description": "Virtual reality",
+      "pattern": "OpenXR, controllers, locomotion",
+      "example": "Common usage"
+    },
+    {
+      "id": "ue028",
+      "type": "common",
+      "name": "AR Development",
+      "description": "Augmented reality",
+      "pattern": "ARKit, ARCore, plane detection",
+      "example": "Common usage"
+    },
+    {
+      "id": "ue029",
+      "type": "common",
+      "name": "Procedural Generation",
+      "description": "PCG content",
+      "pattern": "Procedural meshes, terrain, dungeons",
+      "example": "Common usage"
+    },
+    {
+      "id": "ue030",
+      "type": "common",
+      "name": "Game Analytics",
+      "description": "Player analytics",
+      "pattern": "Telemetry, events, A/B testing",
+      "example": "Common usage"
+    }
+  ]
+}

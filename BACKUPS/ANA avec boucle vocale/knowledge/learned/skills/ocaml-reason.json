@@ -1,0 +1,246 @@
+{
+  "category": "ocaml-reason",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "oml001",
+      "type": "fundamentals",
+      "name": "OCaml Basics",
+      "description": "OCaml syntax",
+      "pattern": "let, match, type, function",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "oml002",
+      "type": "fundamentals",
+      "name": "Type System",
+      "description": "Strong types",
+      "pattern": "Type inference, algebraic types",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "oml003",
+      "type": "fundamentals",
+      "name": "Pattern Matching",
+      "description": "Match expressions",
+      "pattern": "match, when, as, or patterns",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "oml004",
+      "type": "types",
+      "name": "Algebraic Data Types",
+      "description": "ADTs",
+      "pattern": "Variants, records, tuples",
+      "example": "Types usage"
+    },
+    {
+      "id": "oml005",
+      "type": "types",
+      "name": "Polymorphism",
+      "description": "Generics",
+      "pattern": "'a, parametric types, functors",
+      "example": "Types usage"
+    },
+    {
+      "id": "oml006",
+      "type": "types",
+      "name": "Option and Result",
+      "description": "Error handling",
+      "pattern": "Some, None, Ok, Error",
+      "example": "Types usage"
+    },
+    {
+      "id": "oml007",
+      "type": "modules",
+      "name": "Module System",
+      "description": "Modular code",
+      "pattern": "module, sig, struct, functor",
+      "example": "Modules usage"
+    },
+    {
+      "id": "oml008",
+      "type": "modules",
+      "name": "Functors",
+      "description": "Module functions",
+      "pattern": "Functor signatures, application",
+      "example": "Modules usage"
+    },
+    {
+      "id": "oml009",
+      "type": "modules",
+      "name": "First-Class Modules",
+      "description": "Dynamic modules",
+      "pattern": "pack, unpack, local modules",
+      "example": "Modules usage"
+    },
+    {
+      "id": "oml010",
+      "type": "functional",
+      "name": "Higher-Order Functions",
+      "description": "FP patterns",
+      "pattern": "map, fold, filter, compose",
+      "example": "Functional usage"
+    },
+    {
+      "id": "oml011",
+      "type": "functional",
+      "name": "Recursion",
+      "description": "Recursive patterns",
+      "pattern": "let rec, tail recursion",
+      "example": "Functional usage"
+    },
+    {
+      "id": "oml012",
+      "type": "functional",
+      "name": "Currying",
+      "description": "Partial application",
+      "pattern": "Curried functions, fun",
+      "example": "Functional usage"
+    },
+    {
+      "id": "oml013",
+      "type": "imperative",
+      "name": "Mutable State",
+      "description": "References",
+      "pattern": "ref, :=, !, mutable",
+      "example": "Imperative usage"
+    },
+    {
+      "id": "oml014",
+      "type": "imperative",
+      "name": "Arrays",
+      "description": "Mutable arrays",
+      "pattern": "Array module, indexing",
+      "example": "Imperative usage"
+    },
+    {
+      "id": "oml015",
+      "type": "imperative",
+      "name": "Loops",
+      "description": "Iteration",
+      "pattern": "for, while, iter",
+      "example": "Imperative usage"
+    },
+    {
+      "id": "oml016",
+      "type": "concurrency",
+      "name": "Lwt",
+      "description": "Async programming",
+      "pattern": "Lwt.t, bind, >>=, Lwt_main",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "oml017",
+      "type": "concurrency",
+      "name": "Async",
+      "description": "Jane Street async",
+      "pattern": "Deferred.t, bind, upon",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "oml018",
+      "type": "concurrency",
+      "name": "Multicore OCaml",
+      "description": "Parallelism",
+      "pattern": "Domain, Effect handlers",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "oml019",
+      "type": "tooling",
+      "name": "Dune",
+      "description": "Build system",
+      "pattern": "dune files, libraries, executables",
+      "example": "Tooling usage"
+    },
+    {
+      "id": "oml020",
+      "type": "tooling",
+      "name": "OPAM",
+      "description": "Package manager",
+      "pattern": "opam install, switch, pin",
+      "example": "Tooling usage"
+    },
+    {
+      "id": "oml021",
+      "type": "tooling",
+      "name": "Merlin",
+      "description": "IDE support",
+      "pattern": "Type info, completion, errors",
+      "example": "Tooling usage"
+    },
+    {
+      "id": "oml022",
+      "type": "reason",
+      "name": "ReasonML",
+      "description": "Reason syntax",
+      "pattern": "Reason syntax, BuckleScript",
+      "example": "Reason usage"
+    },
+    {
+      "id": "oml023",
+      "type": "reason",
+      "name": "ReScript",
+      "description": "JS compilation",
+      "pattern": "ReScript syntax, JS interop",
+      "example": "Reason usage"
+    },
+    {
+      "id": "oml024",
+      "type": "reason",
+      "name": "React Reason",
+      "description": "ReasonReact",
+      "pattern": "Components, hooks, JSX",
+      "example": "Reason usage"
+    },
+    {
+      "id": "oml025",
+      "type": "web",
+      "name": "Dream",
+      "description": "Web framework",
+      "pattern": "Routes, handlers, middleware",
+      "example": "Web usage"
+    },
+    {
+      "id": "oml026",
+      "type": "web",
+      "name": "Js_of_ocaml",
+      "description": "JS compilation",
+      "pattern": "Compilation, bindings, DOM",
+      "example": "Web usage"
+    },
+    {
+      "id": "oml027",
+      "type": "testing",
+      "name": "Testing OCaml",
+      "description": "Unit tests",
+      "pattern": "Alcotest, OUnit, expect tests",
+      "example": "Testing usage"
+    },
+    {
+      "id": "oml028",
+      "type": "advanced",
+      "name": "GADTs",
+      "description": "Generalized ADTs",
+      "pattern": "Type equality, type-level",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "oml029",
+      "type": "advanced",
+      "name": "PPX",
+      "description": "Preprocessing",
+      "pattern": "ppx_deriving, code generation",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "oml030",
+      "type": "ecosystem",
+      "name": "Jane Street Libraries",
+      "description": "Core ecosystem",
+      "pattern": "Core, Base, Async, Sexp",
+      "example": "Ecosystem usage"
+    }
+  ]
+}

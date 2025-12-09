@@ -1,0 +1,51 @@
+{
+  "id": "plan_1765101963316",
+  "title": "Multi-file update",
+  "description": "Multi-file update",
+  "status": "active",
+  "createdAt": "2025-12-07T10:06:03.316Z",
+  "updatedAt": "2025-12-07T10:06:03.317Z",
+  "steps": [
+    {
+      "id": 0,
+      "action": "Create files",
+      "status": "completed",
+      "tools": [],
+      "validation": "",
+      "critical": false,
+      "dependencies": [],
+      "result": null,
+      "startedAt": "2025-12-07T10:06:03.316Z",
+      "completedAt": "2025-12-07T10:06:03.317Z"
+    },
+    {
+      "id": 1,
+      "action": "Verify",
+      "status": "completed",
+      "tools": [],
+      "validation": "",
+      "critical": false,
+      "dependencies": [],
+      "result": null,
+      "startedAt": "2025-12-07T10:06:03.317Z",
+      "completedAt": "2025-12-07T10:06:03.317Z"
+    },
+    {
+      "id": 2,
+      "action": "Commit",
+      "status": "completed",
+      "tools": [],
+      "validation": "",
+      "critical": false,
+      "dependencies": [],
+      "result": "Simulated commit",
+      "startedAt": "2025-12-07T10:06:03.317Z",
+      "completedAt": "2025-12-07T10:06:03.317Z"
+    }
+  ],
+  "risks": [],
+  "dependencies": [],
+  "estimatedDuration": null,
+  "actualDuration": null,
+  "metadata": {}
+}

@@ -1,0 +1,7 @@
+# ChromaDB Configuration for Ana SUPERIA
+# Fixes CORS issue for Node.js client
+
+chroma_server_cors_allow_origins: "*"
+persist_directory: "E:/ANA/server/memory/chroma_data"
+chroma_server_host: "0.0.0.0"
+chroma_server_http_port: 8000

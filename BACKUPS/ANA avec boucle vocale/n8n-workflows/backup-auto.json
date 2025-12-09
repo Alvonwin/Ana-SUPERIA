@@ -1,0 +1,162 @@
+{
+  "name": "Ana Backup Auto",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Every 6 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:3338/api/memory/export",
+        "options": {}
+      },
+      "id": "export-memory",
+      "name": "Export Memory",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare backup data\nconst memoryData = $input.first().json;\nconst timestamp = new Date().toISOString().replace(/[:.]/g, '-');\nconst backupName = `ana-memory-backup-${timestamp}`;\n\n// Get stats\nconst stats = {\n  totalEntries: memoryData.entries?.length || 0,\n  backupTimestamp: new Date().toISOString(),\n  backupName: backupName\n};\n\nreturn [{\n  json: {\n    filename: `${backupName}.json`,\n    content: JSON.stringify(memoryData, null, 2),\n    stats: stats\n  }\n}];"
+      },
+      "id": "prepare-backup",
+      "name": "Prepare Backup",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $json.filename }}",
+        "fileContent": "={{ $json.content }}",
+        "options": {}
+      },
+      "id": "write-backup-file",
+      "name": "Write Backup File",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:3338/api/memory/store",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": \"backup_log\",\n  \"status\": \"success\",\n  \"filename\": \"{{ $json.filename }}\",\n  \"entries\": {{ $json.stats.totalEntries }},\n  \"timestamp\": \"{{ $json.stats.backupTimestamp }}\"\n}",
+        "options": {}
+      },
+      "id": "log-backup",
+      "name": "Log Backup Success",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Cleanup old backups (keep last 10)\nconst fs = require('fs');\nconst path = require('path');\n\nconst backupDir = 'E:/ANA/backups';\n\ntry {\n  if (!fs.existsSync(backupDir)) {\n    fs.mkdirSync(backupDir, { recursive: true });\n  }\n  \n  const files = fs.readdirSync(backupDir)\n    .filter(f => f.startsWith('ana-memory-backup-'))\n    .sort()\n    .reverse();\n  \n  // Delete files beyond the 10 most recent\n  const toDelete = files.slice(10);\n  for (const file of toDelete) {\n    fs.unlinkSync(path.join(backupDir, file));\n  }\n  \n  return [{ json: { cleaned: toDelete.length, kept: Math.min(files.length, 10) } }];\n} catch (e) {\n  return [{ json: { error: e.message } }];\n}"
+      },
+      "id": "cleanup-old",
+      "name": "Cleanup Old Backups",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "content": "## Ana Backup Auto\n\nSauvegarde automatique de la mémoire Ana.\n\n### Fréquence:\n- Toutes les 6 heures\n- Garde les 10 derniers backups\n\n### Actions:\n1. Exporte la mémoire via API\n2. Sauvegarde en fichier JSON\n3. Log le backup dans la mémoire\n4. Nettoie les vieux backups\n\n### Fichiers:\n`E:/ANA/backups/ana-memory-backup-*.json`\n\n### Personnalisation:\n- Modifier l'intervalle\n- Ajouter upload cloud (S3, GDrive)\n- Changer le nombre de backups gardés",
+        "height": 400,
+        "width": 320
+      },
+      "id": "sticky-note",
+      "name": "Documentation",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 480]
+    }
+  ],
+  "connections": {
+    "Every 6 Hours": {
+      "main": [
+        [
+          {
+            "node": "Export Memory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Export Memory": {
+      "main": [
+        [
+          {
+            "node": "Prepare Backup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Backup": {
+      "main": [
+        [
+          {
+            "node": "Write Backup File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Backup File": {
+      "main": [
+        [
+          {
+            "node": "Log Backup Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Backup Success": {
+      "main": [
+        [
+          {
+            "node": "Cleanup Old Backups",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "Ana",
+      "createdAt": "2025-11-29T00:00:00.000Z"
+    },
+    {
+      "name": "Backup",
+      "createdAt": "2025-11-29T00:00:00.000Z"
+    }
+  ]
+}

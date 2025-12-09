@@ -1,0 +1,246 @@
+{
+  "category": "sre-practices",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "sre001",
+      "type": "fundamentals",
+      "name": "SRE Definition",
+      "description": "Site Reliability Engineering",
+      "pattern": "Software engineering approach to operations, Google origin",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sre002",
+      "type": "fundamentals",
+      "name": "SRE vs DevOps",
+      "description": "Relationship",
+      "pattern": "SRE implements DevOps, class implements interface",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sre003",
+      "type": "fundamentals",
+      "name": "Toil Reduction",
+      "description": "Eliminate toil",
+      "pattern": "Automate repetitive work, free time for engineering",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sre004",
+      "type": "slo",
+      "name": "SLI",
+      "description": "Service Level Indicator",
+      "pattern": "Measurable metric: latency, error rate, throughput",
+      "example": "Slo usage"
+    },
+    {
+      "id": "sre005",
+      "type": "slo",
+      "name": "SLO",
+      "description": "Service Level Objective",
+      "pattern": "Target for SLI: 99.9% availability, p99 < 200ms",
+      "example": "Slo usage"
+    },
+    {
+      "id": "sre006",
+      "type": "slo",
+      "name": "SLA",
+      "description": "Service Level Agreement",
+      "pattern": "Contract with consequences, SLO + business terms",
+      "example": "Slo usage"
+    },
+    {
+      "id": "sre007",
+      "type": "slo",
+      "name": "Error Budget",
+      "description": "Allowed failures",
+      "pattern": "100% - SLO = budget for risk, deploy if budget remains",
+      "example": "Slo usage"
+    },
+    {
+      "id": "sre008",
+      "type": "slo",
+      "name": "Error Budget Policy",
+      "description": "Budget actions",
+      "pattern": "Freeze features if budget exhausted, focus on reliability",
+      "example": "Slo usage"
+    },
+    {
+      "id": "sre009",
+      "type": "monitoring",
+      "name": "Four Golden Signals",
+      "description": "Key metrics",
+      "pattern": "Latency, Traffic, Errors, Saturation",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "sre010",
+      "type": "monitoring",
+      "name": "RED Method",
+      "description": "Request metrics",
+      "pattern": "Rate, Errors, Duration for request-driven services",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "sre011",
+      "type": "monitoring",
+      "name": "USE Method",
+      "description": "Resource metrics",
+      "pattern": "Utilization, Saturation, Errors for resources",
+      "example": "Monitoring usage"
+    },
+    {
+      "id": "sre012",
+      "type": "alerting",
+      "name": "Alerting Philosophy",
+      "description": "Alert design",
+      "pattern": "Alert on symptoms, not causes, actionable alerts only",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "sre013",
+      "type": "alerting",
+      "name": "Alert Fatigue",
+      "description": "Avoid burnout",
+      "pattern": "Reduce noise, tune thresholds, meaningful alerts",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "sre014",
+      "type": "alerting",
+      "name": "Runbooks",
+      "description": "Response guides",
+      "pattern": "Step-by-step remediation, linked from alerts",
+      "example": "Alerting usage"
+    },
+    {
+      "id": "sre015",
+      "type": "incidents",
+      "name": "Incident Management",
+      "description": "Handle outages",
+      "pattern": "Roles: IC, comms, ops. Severity levels, escalation",
+      "example": "Incidents usage"
+    },
+    {
+      "id": "sre016",
+      "type": "incidents",
+      "name": "Incident Commander",
+      "description": "Lead incidents",
+      "pattern": "Coordinate response, delegate, communicate status",
+      "example": "Incidents usage"
+    },
+    {
+      "id": "sre017",
+      "type": "incidents",
+      "name": "Blameless Postmortems",
+      "description": "Learn from failures",
+      "pattern": "Focus on systems, not people, action items",
+      "example": "Incidents usage"
+    },
+    {
+      "id": "sre018",
+      "type": "incidents",
+      "name": "Postmortem Template",
+      "description": "Document format",
+      "pattern": "Summary, timeline, impact, root cause, action items",
+      "example": "Incidents usage"
+    },
+    {
+      "id": "sre019",
+      "type": "oncall",
+      "name": "On-Call Practices",
+      "description": "Handle pages",
+      "pattern": "Rotations, escalation, compensation, sustainable",
+      "example": "Oncall usage"
+    },
+    {
+      "id": "sre020",
+      "type": "oncall",
+      "name": "On-Call Handoff",
+      "description": "Shift handover",
+      "pattern": "Document ongoing issues, context transfer",
+      "example": "Oncall usage"
+    },
+    {
+      "id": "sre021",
+      "type": "capacity",
+      "name": "Capacity Planning",
+      "description": "Resource planning",
+      "pattern": "Forecast growth, provision ahead, load testing",
+      "example": "Capacity usage"
+    },
+    {
+      "id": "sre022",
+      "type": "capacity",
+      "name": "Performance Modeling",
+      "description": "Predict behavior",
+      "pattern": "Load curves, bottleneck analysis, scaling models",
+      "example": "Capacity usage"
+    },
+    {
+      "id": "sre023",
+      "type": "reliability",
+      "name": "Reliability Patterns",
+      "description": "Build reliable systems",
+      "pattern": "Redundancy, graceful degradation, isolation",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "sre024",
+      "type": "reliability",
+      "name": "Failure Domains",
+      "description": "Blast radius",
+      "pattern": "Isolate failures, limit impact, bulkheads",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "sre025",
+      "type": "reliability",
+      "name": "Disaster Recovery",
+      "description": "DR planning",
+      "pattern": "RTO/RPO, backup strategies, DR drills",
+      "example": "Reliability usage"
+    },
+    {
+      "id": "sre026",
+      "type": "automation",
+      "name": "SRE Automation",
+      "description": "Automate everything",
+      "pattern": "Self-healing, auto-scaling, infrastructure as code",
+      "example": "Automation usage"
+    },
+    {
+      "id": "sre027",
+      "type": "automation",
+      "name": "Deployment Automation",
+      "description": "Safe deploys",
+      "pattern": "Canary, blue-green, progressive rollout, rollback",
+      "example": "Automation usage"
+    },
+    {
+      "id": "sre028",
+      "type": "culture",
+      "name": "Production Readiness",
+      "description": "Launch checklist",
+      "pattern": "Review before launch, monitoring, runbooks, capacity",
+      "example": "Culture usage"
+    },
+    {
+      "id": "sre029",
+      "type": "culture",
+      "name": "50% Rule",
+      "description": "Time allocation",
+      "pattern": "50% ops, 50% development, maintain balance",
+      "example": "Culture usage"
+    },
+    {
+      "id": "sre030",
+      "type": "culture",
+      "name": "Reliability Culture",
+      "description": "Organization",
+      "pattern": "Shared responsibility, embed SRE, training",
+      "example": "Culture usage"
+    }
+  ]
+}

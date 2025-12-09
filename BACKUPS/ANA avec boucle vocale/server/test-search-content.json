@@ -1,0 +1,11 @@
+{
+  "pattern": "SearchTools",
+  "files": [
+    "E:\\ANA\\server\\tools\\search-tools.cjs",
+    "E:\\ANA\\server\\ana-core.cjs"
+  ],
+  "caseSensitive": false,
+  "wholeWord": false,
+  "includeContext": true,
+  "limit": 50
+}

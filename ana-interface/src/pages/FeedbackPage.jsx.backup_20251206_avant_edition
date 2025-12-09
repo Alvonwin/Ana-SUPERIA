@@ -1,0 +1,277 @@
+﻿import { useState, useEffect } from 'react';
+import {
+  IconRefreshCw,
+  IconThumbsUp,
+  IconThumbsDown,
+  IconActivity,
+  IconFilter
+} from '../components/Icons';
+import './FeedbackPage.css';
+
+const API_URL = 'http://localhost:3338';
+
+function FeedbackPage() {
+  const [stats, setStats] = useState(null);
+  const [patterns, setPatterns] = useState([]);
+  const [allPatterns, setAllPatterns] = useState({ codePatterns: [], errorPatterns: [], avoid: [] });
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState('all'); // all, positive, negative
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      // Fetch feedback stats
+      const statsRes = await fetch(`${API_URL}/api/feedback/stats`);
+      const statsData = await statsRes.json();
+      if (statsData.success) {
+        setStats(statsData);
+      }
+
+      // Fetch patterns (anti-patterns learned)
+      const patternsRes = await fetch(`${API_URL}/api/skills/intelligence`);
+      const patternsData = await patternsRes.json();
+      if (patternsData.success) {
+        setPatterns(patternsData.patterns || {});
+      }
+
+      // Fetch all patterns (good and bad)
+      const allPatternsRes = await fetch(`${API_URL}/api/patterns/all`);
+      const allPatternsData = await allPatternsRes.json();
+      if (allPatternsData.success) {
+        setAllPatterns({
+          codePatterns: allPatternsData.codePatterns || [],
+          errorPatterns: allPatternsData.errorPatterns || [],
+          avoid: allPatternsData.avoid || []
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching feedback data:', error);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const formatDate = (timestamp) => {
+    if (!timestamp) return 'N/A';
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('fr-CA') + ' ' + date.toLocaleTimeString('fr-CA', { hour: '2-digit', minute: '2-digit' });
+  };
+
+  const getFilteredRecent = () => {
+    if (!stats?.recent) return [];
+    if (filter === 'all') return stats.recent;
+    return stats.recent.filter(fb => fb.type === filter);
+  };
+
+  return (
+    <div className="feedback-page">
+      <div className="page-header">
+        <h1>Feedback & Apprentissage</h1>
+        <button className="refresh-btn" onClick={fetchData} disabled={loading}>
+          <IconRefreshCw size={18} className={loading ? 'spinning' : ''} />
+          Actualiser
+        </button>
+      </div>
+
+      {loading && !stats ? (
+        <div className="loading-state">Chargement...</div>
+      ) : (
+        <>
+          {/* Stats Overview */}
+          <div className="stats-grid">
+            <div className="stat-card positive">
+              <div className="stat-icon">
+                <IconThumbsUp size={24} />
+              </div>
+              <div className="stat-content">
+                <div className="stat-value">{stats?.positive || 0}</div>
+                <div className="stat-label">Positifs</div>
+              </div>
+            </div>
+
+            <div className="stat-card negative">
+              <div className="stat-icon">
+                <IconThumbsDown size={24} />
+              </div>
+              <div className="stat-content">
+                <div className="stat-value">{stats?.negative || 0}</div>
+                <div className="stat-label">Negatifs</div>
+              </div>
+            </div>
+
+            <div className="stat-card rate">
+              <div className="stat-icon">
+                <IconActivity size={24} />
+              </div>
+              <div className="stat-content">
+                <div className="stat-value">{stats?.positiveRate || 0}%</div>
+                <div className="stat-label">Taux positif</div>
+              </div>
+            </div>
+
+            <div className="stat-card patterns">
+              <div className="stat-icon">
+                <IconFilter size={24} />
+              </div>
+              <div className="stat-content">
+                <div className="stat-value">{patterns?.avoid || 0}</div>
+                <div className="stat-label">Anti-patterns appris</div>
+              </div>
+            </div>
+          </div>
+
+          {/* By Model */}
+          {stats?.byModel && Object.keys(stats.byModel).length > 0 && (
+            <div className="section">
+              <h2>Par Modele LLM</h2>
+              <div className="model-grid">
+                {Object.entries(stats.byModel).map(([model, counts]) => (
+                  <div key={model} className="model-card">
+                    <div className="model-name">{model}</div>
+                    <div className="model-stats">
+                      <span className="positive-count">+{counts.positive || 0}</span>
+                      <span className="negative-count">-{counts.negative || 0}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* By Source */}
+          {stats?.bySource && Object.keys(stats.bySource).length > 0 && (
+            <div className="section">
+              <h2>Par Source</h2>
+              <div className="source-grid">
+                {Object.entries(stats.bySource).map(([source, counts]) => (
+                  <div key={source} className="source-card">
+                    <div className="source-name">{source}</div>
+                    <div className="source-stats">
+                      <span className="positive-count">+{counts.positive || 0}</span>
+                      <span className="negative-count">-{counts.negative || 0}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Recent Feedback */}
+          <div className="section">
+            <div className="section-header">
+              <h2>Feedback Recent</h2>
+              <div className="filter-buttons">
+                <button
+                  className={filter === 'all' ? 'active' : ''}
+                  onClick={() => setFilter('all')}
+                >
+                  Tous
+                </button>
+                <button
+                  className={filter === 'positive' ? 'active' : ''}
+                  onClick={() => setFilter('positive')}
+                >
+                  Positifs
+                </button>
+                <button
+                  className={filter === 'negative' ? 'active' : ''}
+                  onClick={() => setFilter('negative')}
+                >
+                  Negatifs
+                </button>
+              </div>
+            </div>
+
+            <div className="feedback-list">
+              {getFilteredRecent().length === 0 ? (
+                <div className="empty-state">Aucun feedback pour ce filtre</div>
+              ) : (
+                getFilteredRecent().map((fb, idx) => (
+                  <div key={fb.id || idx} className={`feedback-item ${fb.type}`}>
+                    <div className="feedback-icon">
+                      {fb.type === 'positive' ? <IconThumbsUp size={16} /> : <IconThumbsDown size={16} />}
+                    </div>
+                    <div className="feedback-content">
+                      <div className="feedback-meta">
+                        <span className="feedback-time">{formatDate(fb.timestamp)}</span>
+                        {fb.llmModel && <span className="feedback-model">{fb.llmModel}</span>}
+                        {fb.source && <span className="feedback-source">{fb.source}</span>}
+                      </div>
+                      {fb.question && (
+                        <div className="feedback-question">Q: {fb.question.substring(0, 100)}...</div>
+                      )}
+                      {fb.comment && (
+                        <div className="feedback-comment">{fb.comment}</div>
+                      )}
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* Good Patterns Section */}
+          <div className="section">
+            <div className="section-header">
+              <h2>Bons Patterns Appris</h2>
+              <span className="pattern-count">{allPatterns.codePatterns.length + allPatterns.errorPatterns.length} patterns</span>
+            </div>
+            <div className="patterns-list">
+              {allPatterns.codePatterns.length === 0 && allPatterns.errorPatterns.length === 0 ? (
+                <div className="empty-state">Aucun bon pattern appris</div>
+              ) : (
+                <>
+                  {allPatterns.codePatterns.map((pattern, idx) => (
+                    <div key={`code-${idx}`} className="pattern-item good">
+                      <div className="pattern-type">{pattern.name || 'Code Pattern'}</div>
+                      <div className="pattern-content">{pattern.pattern || String(pattern)}</div>
+                      {pattern.usage && <div className="pattern-rule">Usage: {pattern.usage}</div>}
+                    </div>
+                  ))}
+                  {allPatterns.errorPatterns.map((pattern, idx) => (
+                    <div key={`error-${idx}`} className="pattern-item good">
+                      <div className="pattern-type">{pattern.error_type || 'Error Fix'}</div>
+                      <div className="pattern-content">{pattern.cause || String(pattern)}</div>
+                      {pattern.fix && <div className="pattern-rule">Fix: {pattern.fix}</div>}
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Anti-patterns Section */}
+          <div className="section">
+            <div className="section-header">
+              <h2>Anti-patterns Appris</h2>
+              <span className="pattern-count">{allPatterns.avoid.length} anti-patterns</span>
+            </div>
+            <div className="patterns-list">
+              {allPatterns.avoid.length === 0 ? (
+                <div className="empty-state">Aucun anti-pattern appris</div>
+              ) : (
+                allPatterns.avoid.map((pattern, idx) => (
+                  <div key={`avoid-${idx}`} className="pattern-item bad">
+                    <div className="pattern-type">{pattern.mistake_type || 'Anti-pattern'}</div>
+                    <div className="pattern-content">{pattern.what_went_wrong || pattern.anti_pattern || pattern}</div>
+                    {pattern.improvement_rule && <div className="pattern-rule">Regle: {pattern.improvement_rule}</div>}
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* Last Updated */}
+          <div className="last-updated">
+            Derniere mise a jour: {formatDate(stats?.lastUpdated)}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default FeedbackPage;

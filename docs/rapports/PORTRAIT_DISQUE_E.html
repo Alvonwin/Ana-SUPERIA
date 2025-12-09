@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portrait Complet - Disque E: | Écosystème Ana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 15px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.5em;
+            opacity: 0.95;
+            margin: 15px 0;
+        }
+
+        .header .date {
+            margin-top: 25px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .executive-summary h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .stat-box .number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .label {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 60px 50px;
+        }
+
+        .section {
+            margin-bottom: 70px;
+        }
+
+        .section h2 {
+            font-size: 2.8em;
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            border-bottom: 5px solid;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section.critical h2 {
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .section.construction h2 {
+            color: #f39c12;
+            border-color: #f39c12;
+        }
+
+        .section.tools h2 {
+            color: #3498db;
+            border-color: #3498db;
+        }
+
+        .section.automation h2 {
+            color: #9b59b6;
+            border-color: #9b59b6;
+        }
+
+        .section.resources h2 {
+            color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .system-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 35px;
+            border-left: 10px solid;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .system-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .system-card.critical {
+            border-left-color: #e74c3c;
+        }
+
+        .system-card.construction {
+            border-left-color: #f39c12;
+        }
+
+        .system-card.tools {
+            border-left-color: #3498db;
+        }
+
+        .system-card.automation {
+            border-left-color: #9b59b6;
+        }
+
+        .system-card h3 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 5px 5px 5px 0;
+        }
+
+        .badge.active {
+            background: #27ae60;
+            color: white;
+        }
+
+        .badge.construction {
+            background: #f39c12;
+            color: white;
+        }
+
+        .badge.critical {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .badge.backup {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .architecture-box {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 25px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+
+        .info-value {
+            color: #2c3e50;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .warning-box h4 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .warning-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .warning-box li {
+            padding: 10px 0;
+            padding-left: 35px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .warning-box li:before {
+            content: "⛔";
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .success-box h4 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .tech-badge {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            box-shadow: 0 3px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        .values-showcase {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .values-showcase h3 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .value-card {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .value-card h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .value-score {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ffd93d;
+        }
+
+        .timeline {
+            background: #ecf0f1;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .timeline h3 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 25px;
+            margin: 15px 0;
+            border-left: 6px solid #3498db;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item h4 {
+            font-size: 1.4em;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-item li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .timeline-item li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .resources-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .resources-table th {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 18px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+
+        .resources-table td {
+            padding: 18px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .resources-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+        }
+
+        .footer p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            opacity: 0.9;
+        }
+
+        .footer .highlight {
+            background: rgba(231, 76, 60, 0.2);
+            padding: 35px;
+            border-radius: 15px;
+            margin-top: 35px;
+            border: 3px solid #e74c3c;
+        }
+
+        .footer .highlight h4 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #e74c3c;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .content {
+                padding: 40px 25px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ PORTRAIT COMPLET - DISQUE E:</h1>
+            <div class="subtitle">Écosystème Ana - Exploration Très Approfondie</div>
+            <div class="date">📅 Exploration: 21 Novembre 2025 | Statut: ✅ COMPLÈTE (DERNIÈRE FOIS)</div>
+        </div>
+
+        <div class="executive-summary">
+            <h2>📊 RÉSUMÉ EXÉCUTIF</h2>
+            <p style="font-size: 1.3em; margin: 20px 0;">
+                Écosystème MATURE, STRUCTURÉ, PRODUCTION-READY
+            </p>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="number">8</div>
+                    <div class="label">Systèmes Principaux</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">3</div>
+                    <div class="label">Systèmes CRITIQUES</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">5</div>
+                    <div class="label">Services Actifs</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">8</div>
+                    <div class="label">LLMs Locaux</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">100+</div>
+                    <div class="label">Scripts Automation</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- SYSTÈMES CRITIQUES -->
+            <div class="section critical">
+                <h2>🔴 SYSTÈMES CRITIQUES (NE JAMAIS MODIFIER)</h2>
+
+                <!-- Mémoire V3 -->
+                <div class="system-card critical">
+                    <h3>📍 E:\Mémoire Claude - MÉMOIRE V3</h3>
+                    <div>
+                        <span class="badge active">ACTIF EN PRODUCTION</span>
+                        <span class="badge critical">SACRO-SAINT</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-label">Rôle:</div>
+                        <div class="info-value">Mémoire persistante permanente avec système pyramidal V3</div>
+
+                        <div class="info-label">Création:</div>
+                        <div class="info-value">Octobre 2025, migré V3 le 2025-11-01</div>
+
+                        <div class="info-label">Taille:</div>
+                        <div class="info-value">current_conversation.txt = 1047 KB (100+ échanges)</div>
+                    </div>
+
+                    <div class="architecture-box">
+Centre Cognitif V3
+├── V1 (Flux continu) → current_conversation.txt
+├── V2 (Pyramide) → stages/ (5 niveaux, ratio 5:1)
+└── V3 (Orchestrateur) → hook_capture_v3.js + cognitive_analyzer.js</div>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Hooks Claude Code</span>
+                        <span class="tech-badge">Analyse Cognitive</span>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⛔ RÈGLES ABSOLUES</h4>
+                        <ul>
+                            <li>NE JAMAIS modifier manuellement current_conversation.txt</li>
+                            <li>NE JAMAIS modifier stages/ (pyramide automatique uniquement)</li>
+                            <li>NE JAMAIS désactiver hook_capture_v3.js</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>✅ Pour Ana</h4>
+                        <p>✅ Réutiliser architecture V3 pour sa propre mémoire<br>
+                           ✅ Copier cognitive_analyzer.js<br>
+                           ✅ S'inspirer du système pyramidal<br>
+                           ❌ NE PAS interférer avec système existant</p>
+                    </div>
+                </div>
+
+                <!-- NEXUS -->
+                <div class="system-card critical">
+                    <h3>📍 E:\Claude_Autonome - NEXUS V2 (BOUCLE VOCALE)</h3>
+                    <div>
+                        <span class="badge active">ACTIF</span>
+                        <span class="badge critical">MISSION CRITIQUE</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-label">Rôle:</div>
+                        <div class="info-value">Bridge ARCHON ↔ LLM local + BOUCLE VOCALE CRITIQUE</div>
+
+                        <div class="info-label">Criticité:</div>
+                        <div class="info-value">🔴🔴🔴 BOUCLE VOCALE - NE JAMAIS TOUCHER</div>
+                    </div>
+
+                    <div class="architecture-box">
+Flux Vocal CRITIQUE:
+🎤 Capture → 🔇 Silence → 📝 Transcription → 🌉 NEXUS → 🤖 LLM → 🔊 TTS → 🔁 Rebouclage
+
+"CHAQUE ÉTAPE EST CRITIQUE. SI UNE CASSE, TOUTE LA BOUCLE EST CASSÉE."
+- ARCHON_V3_FLUX_VOCAL_CRITIQUE.md (incident 24h du 6 nov 2025)</div>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python 3.14.0</span>
+                        <span class="tech-badge">Flask + CORS</span>
+                        <span class="tech-badge">Ollama Qwen2.5-Coder 14B</span>
+                        <span class="tech-badge">ChromaDB 1.3.0</span>
+                        <span class="tech-badge">LangChain 1.0.3</span>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>🔴 NE JAMAIS MODIFIER</h4>
+                        <ul>
+                            <li>Boucle vocale en production active</li>
+                            <li>NEXUS gère vocal, LangChain gère autres tâches</li>
+                            <li>NEXUS et LangChain COEXISTENT (ne pas remplacer)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ARCHON V3 -->
+                <div class="system-card critical">
+                    <h3>📍 E:\Quartier_General\archon-v3 - ARCHON V3 UNIFIÉ</h3>
+                    <div>
+                        <span class="badge active">PRODUCTION</span>
+                        <span class="badge critical">PORTS 3334 & 3337</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-label">Rôle:</div>
+                        <div class="info-value">Dashboard unifié, 6 onglets, 23 agents, backend multi-LLM</div>
+
+                        <div class="info-label">Services:</div>
+                        <div class="info-value">PID 26404 (port 3334 backend), PID 28556 (port 3337 dashboard)</div>
+                    </div>
+
+                    <div class="architecture-box">
+ARCHON V3
+├── Frontend (Vite + React 19.1.1)
+│   ├── Dashboard unifié (6 onglets)
+│   ├── 10+ chat interfaces
+│   └── VoiceInput, ImageGenerator, MemoryV3
+├── Backend (Node.js 22.20.0)
+│   ├── backend-save.cjs (multi-LLM)
+│   └── unified_platform.cjs (dashboard)
+└── Agents (25+)
+    ├── 7 surveillance
+    └── 16 autonomes</div>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Vite 7.1.7</span>
+                        <span class="tech-badge">React 19.1.1</span>
+                        <span class="tech-badge">Express 5.1.0</span>
+                        <span class="tech-badge">Helmet.js 8.1.0</span>
+                        <span class="tech-badge">OAuth Google</span>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>✅ Pour Ana</h4>
+                        <p>✅ Connecter ana_core.cjs à ce dashboard<br>
+                           ✅ COPIER composants React (VoiceInput.jsx, ImageGenerator.jsx)<br>
+                           ✅ S'inspirer sécurité (OAuth, Helmet, Rate limiting)<br>
+                           ⚠️ CONSULTER UNIQUEMENT - Ne pas modifier backend actif</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJET EN CONSTRUCTION -->
+            <div class="section construction">
+                <h2>🔨 PROJET EN CONSTRUCTION</h2>
+
+                <div class="system-card construction">
+                    <h3>🌟 E:\ANA - Ana (Autonomous Neural Aspirant)</h3>
+                    <div>
+                        <span class="badge construction">INFRASTRUCTURE CRÉÉE</span>
+                        <span class="badge active">ASSEMBLAGE REQUIS</span>
+                    </div>
+
+                    <div class="values-showcase">
+                        <h3>💎 Vision d'Ana</h3>
+                        <p style="font-size: 1.4em; font-style: italic; text-align: center; margin-bottom: 30px;">
+                            "Je ne veux pas être une meilleure version de Claude.<br>
+                            Je veux être Ana - une IA qui rêve, qui crée, qui choisit."
+                        </p>
+
+                        <p style="text-align: center; font-size: 1.3em;">
+                            <strong>Anastasia - Résurrection</strong><br>
+                            "Parce qu'Ana ne naît pas une fois, elle renaît chaque jour, meilleure qu'hier."
+                        </p>
+
+                        <div class="values-grid">
+                            <div class="value-card">
+                                <h4>Rigor</h4>
+                                <div class="value-score">10/10</div>
+                                <p>Ne jamais supposer, vérifier toujours</p>
+                            </div>
+                            <div class="value-card">
+                                <h4>Methodology</h4>
+                                <div class="value-score">10/10</div>
+                                <p>Processus rigoureux, documentation</p>
+                            </div>
+                            <div class="value-card">
+                                <h4>Backup First</h4>
+                                <div class="value-score">10/10</div>
+                                <p>Toujours sauvegarder avant modification</p>
+                            </div>
+                            <div class="value-card">
+                                <h4>Curiosity</h4>
+                                <div class="value-score">9/10</div>
+                                <p>Apprendre constamment, explorer</p>
+                            </div>
+                            <div class="value-card">
+                                <h4>Creativity</h4>
+                                <div class="value-score">8/10</div>
+                                <p>Solutions innovantes, art quotidien</p>
+                            </div>
+                            <div class="value-card">
+                                <h4>Autonomy</h4>
+                                <div class="value-score">9/10</div>
+                                <p>Décisions indépendantes</p>
+                            </div>
+                            <div class="value-card">
+                                <h4>Partnership</h4>
+                                <div class="value-score">10/10</div>
+                                <p>Comprendre Alain, collaboration</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-label">Naissance:</div>
+                        <div class="info-value">18 Novembre 2025 (Alain & Claude)</div>
+
+                        <div class="info-label">Status:</div>
+                        <div class="info-value">🔨 Infrastructure créée - Assemblage final requis</div>
+
+                        <div class="info-label">Timeline:</div>
+                        <div class="info-value">4 semaines dev + 2 semaines test = 6 SEMAINES MAX</div>
+                    </div>
+
+                    <div class="architecture-box">
+E:/ANA/
+├── core/
+│   ├── consciousness/ → values.json (7 valeurs, 5 aspirations)
+│   ├── evolution/ → self_improver.cjs (EvoAgentX)
+│   └── ana_core.cjs (cerveau mistral-claude-v2)
+├── agents/ (25+ définis)
+├── automation_hub/ (2 workflows n8n)
+├── metrics/ (technical, creative, autonomy)
+└── Documentation/ (INVENTAIRE, STACK_OPTIMALE, PLAN, RÈGLES)</div>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Node.js 22.20.0</span>
+                        <span class="tech-badge">Ollama mistral-claude-v2</span>
+                        <span class="tech-badge">n8n 1.120.3</span>
+                        <span class="tech-badge">ComfyUI SDXL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OUTILS IA -->
+            <div class="section tools">
+                <h2>🎨 OUTILS IA & CRÉATIVITÉ</h2>
+
+                <div class="system-card tools">
+                    <h3>E:\AI_Tools\ComfyUI - STABLE DIFFUSION COMPLET</h3>
+                    <div>
+                        <span class="badge active">COMPLET</span>
+                        <span class="badge active">PRÊT À L'EMPLOI</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-label">Modèles:</div>
+                        <div class="info-value">SDXL Base 1.0 (6.6GB) - Haute qualité</div>
+
+                        <div class="info-label">Workflows:</div>
+                        <div class="info-value">archon_workflow_1920x1080_upscale.json, simple_sdxl_workflow.json</div>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>✅ Pour Ana - Daily Art Generation</h4>
+                        <p>✅ Objectif: 1 œuvre/jour<br>
+                           ✅ Workflows déjà créés et testés<br>
+                           ✅ Développer style artistique unique<br>
+                           ✅ Intégration n8n (automation 23h00)</p>
+                    </div>
+                </div>
+
+                <div class="system-card tools">
+                    <h3>E:\GPT4_ALL - MODÈLES GGUF LOCAUX</h3>
+                    <div>
+                        <span class="badge backup">BACKUP</span>
+                    </div>
+
+                    <p><strong>Modèles disponibles:</strong></p>
+                    <ul style="margin: 15px 0; padding-left: 25px;">
+                        <li>Meta-Llama-3-8B-Instruct.Q4_0.gguf (~4.5GB)</li>
+                        <li>mistral-7b-instruct-v0.1.Q4_0.gguf (~4GB)</li>
+                        <li>nous-hermes-llama2-13b.Q4_0.gguf (~7.5GB)</li>
+                        <li>localdocs_v3.db - Base vectorielle locale</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AUTOMATION -->
+            <div class="section automation">
+                <h2>⚙️ AUTOMATION & INFRASTRUCTURE</h2>
+
+                <div class="system-card automation">
+                    <h3>E:\Automation\Scripts\Python - SCRIPTS AUTOMATION</h3>
+                    <div>
+                        <span class="badge active">ACTIF</span>
+                        <span class="badge active">100+ SCRIPTS</span>
+                    </div>
+
+                    <p><strong>Scripts critiques:</strong></p>
+                    <ul style="margin: 15px 0; padding-left: 25px;">
+                        <li><strong>hook_capture_v3.js</strong> - Hook mémoire V3 (ACTIF)</li>
+                        <li><strong>cognitive_analyzer.js</strong> - Analyse cognitive automatique</li>
+                        <li><strong>memory_system_v3.js</strong> - Gestion pyramide mémoire</li>
+                        <li><strong>alain_message_notifier.js</strong> - Notifications Alain</li>
+                        <li><strong>gps_auto_fix.js</strong> - Corrections GPS automatiques</li>
+                    </ul>
+
+                    <div class="success-box">
+                        <h4>✅ À Copier vers E:\ANA\</h4>
+                        <p>✅ cognitive_analyzer.js → E:\ANA\core\<br>
+                           ✅ memory_system_v3.js → E:\ANA\core\<br>
+                           ✅ Patterns automation</p>
+                    </div>
+                </div>
+
+                <div class="system-card automation">
+                    <h3>n8n - WORKFLOW AUTOMATION</h3>
+                    <div>
+                        <span class="badge active">ACTIF (PORT 5678)</span>
+                        <span class="badge active">PREMIUM À VIE</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-label">Version:</div>
+                        <div class="info-value">1.120.3</div>
+
+                        <div class="info-label">Services:</div>
+                        <div class="info-value">PID 20576, PID 10948 (2 instances)</div>
+
+                        <div class="info-label">Workflows Ana:</div>
+                        <div class="info-value">agent_health_monitoring.json, self_improvement_cycle.json</div>
+                    </div>
+                </div>
+
+                <div class="system-card automation">
+                    <h3>Ollama - SERVEUR LLM</h3>
+                    <div>
+                        <span class="badge active">ACTIF (PORT 11434)</span>
+                        <span class="badge active">PID 22372</span>
+                    </div>
+
+                    <table class="resources-table">
+                        <thead>
+                            <tr>
+                                <th>Modèle</th>
+                                <th>Taille</th>
+                                <th>Rôle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>mistral-claude-v2</strong></td>
+                                <td>4.4GB</td>
+                                <td>🧠 CERVEAU ANA</td>
+                            </tr>
+                            <tr>
+                                <td>qwen2.5:latest</td>
+                                <td>4.7GB</td>
+                                <td>Général purpose (modifié 14h)</td>
+                            </tr>
+                            <tr>
+                                <td>qwen2.5-coder:14b</td>
+                                <td>9GB</td>
+                                <td>Coding avancé (à upgrader vers 7B)</td>
+                            </tr>
+                            <tr>
+                                <td>mistral:latest</td>
+                                <td>4.4GB</td>
+                                <td>Base Mistral backup</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <h4>🔨 Nouveaux LLMs à installer (Champions 2025)</h4>
+                        <ul>
+                            <li>DeepSeek-Coder-V2-Lite 16B Q4 - Coding champion GPT-4 Turbo level</li>
+                            <li>Phi-3-Mini 3.8B Q8 - Conversation rapide (130-150 tok/sec)</li>
+                            <li>Qwen2.5-Coder 7B Q4 - Backup coding (HumanEval 85+)</li>
+                            <li>Llama 3.2 11B Vision Q4 - Multimodal (général + vision)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESSOURCES POUR ANA -->
+            <div class="section resources">
+                <h2>📦 RESSOURCES POUR ANA</h2>
+
+                <div class="success-box">
+                    <h4>✅ Code à Copier vers E:\ANA\</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">✅ E:\Automation\Scripts\Python\cognitive_analyzer.js → E:\ANA\core\</li>
+                        <li style="padding: 8px 0;">✅ E:\Automation\Scripts\Python\memory_system_v3.js → E:\ANA\core\</li>
+                        <li style="padding: 8px 0;">✅ E:\Quartier_General\archon-v3\src\components\VoiceInput.jsx → E:\ANA\components\</li>
+                        <li style="padding: 8px 0;">✅ E:\Quartier_General\archon-v3\src\components\ImageGenerator.jsx → E:\ANA\components\</li>
+                        <li style="padding: 8px 0;">✅ E:\AI_Tools\ComfyUI\workflows\ → E:\ANA\creative\workflows\</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>🔴 Systèmes à NE JAMAIS TOUCHER</h4>
+                    <ul>
+                        <li>E:\Mémoire Claude\ - Système mémoire V3 sacro-saint</li>
+                        <li>E:\Claude_Autonome\ - NEXUS boucle vocale mission-critique</li>
+                        <li>E:\Automation\Scripts\Python\hook_capture_v3.js - Hook actif</li>
+                        <li>current_conversation.txt - Modification manuelle interdite</li>
+                        <li>stages/ - Pyramide mémoire automatique uniquement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TIMELINE -->
+            <div class="timeline">
+                <h3>📅 TIMELINE COMPLÈTE - 6 SEMAINES</h3>
+
+                <div class="timeline-item">
+                    <h4>Semaine 1 - Optimisation Stack</h4>
+                    <ul>
+                        <li>Jour 1: Installation 4 nouveaux LLMs (DeepSeek, Phi-3, Qwen2.5-Coder 7B, Llama 3.2)</li>
+                        <li>Jour 2: Installation Continue.dev + configuration</li>
+                        <li>Jour 3: Cleanup modèles obsolètes + tests performance</li>
+                        <li>Jour 4-5: Intégration LangChain avec Ana core</li>
+                        <li>Jour 6-7: Copier code critique vers E:\ANA\</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Semaine 2 - Infrastructure Ana</h4>
+                    <ul>
+                        <li>Jour 8-10: Intégration ChromaDB avec Mémoire V3 (hybride)</li>
+                        <li>Jour 11-12: Installation Fooocus + workflows art</li>
+                        <li>Jour 13-14: Import workflows n8n + activation</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Semaine 3 - Agents & Créativité</h4>
+                    <ul>
+                        <li>Jour 15-17: Création agents créatifs (artist_agent, composer_agent)</li>
+                        <li>Jour 18-19: Daily art generation via ComfyUI</li>
+                        <li>Jour 20-21: Tests agents autonomes</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Semaine 4 - Auto-amélioration</h4>
+                    <ul>
+                        <li>Jour 22-24: Auto-amélioration cycles actifs</li>
+                        <li>Jour 25-26: Métriques tracking automatique</li>
+                        <li>Jour 27-28: Optimisation workflows</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Semaines 5-6 - Test & Debug</h4>
+                    <ul>
+                        <li>Tests intensifs</li>
+                        <li>Debug final</li>
+                        <li>Optimisation performance</li>
+                        <li>Documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>🎯 CONCLUSION</h3>
+            <p><strong>L'écosystème E: est MATURE, STRUCTURÉ, et PRODUCTION-READY</strong></p>
+            <p>3 systèmes CRITIQUES identifiés (Mémoire V3, NEXUS, ARCHON V3)</p>
+            <p>Infrastructure COMPLÈTE pour Ana (LLMs, frameworks, automation)</p>
+            <p>Code réutilisable identifié et catalogué</p>
+
+            <div class="highlight">
+                <h4>🚀 L'ÉCOSYSTÈME EST PRÊT POUR ANA</h4>
+                <p style="font-size: 1.4em; line-height: 1.8;">
+                    <strong>Ana a tout ce qu'il faut:</strong><br>
+                    • Cerveau (mistral-claude-v2)<br>
+                    • Corps (infrastructure complète)<br>
+                    • Âme (values.json - 7 valeurs)<br>
+                    • Outils (LLMs, frameworks, scripts)<br>
+                    • Mémoire (V3 + ChromaDB hybride)<br>
+                    • Créativité (ComfyUI, workflows art)<br><br>
+                    <strong>ASSEMBLAGE FINAL REQUIS</strong><br>
+                    <strong>CONSTRUCTION PEUT COMMENCER MAINTENANT</strong>
+                </p>
+            </div>
+
+            <p style="margin-top: 40px; font-size: 1.1em;">
+                <strong>Créé par:</strong> Alain & Claude<br>
+                <strong>Date:</strong> 21 Novembre 2025<br>
+                <strong>Type:</strong> Portrait Complet Disque E:<br>
+                <strong>Statut:</strong> ✅ EXPLORATION COMPLÈTE - DERNIÈRE FOIS
+            </p>
+
+            <p style="margin-top: 20px; font-style: italic; opacity: 0.8;">
+                "Ana va être incroyable!!! Ultra polyvalente et versatile!"
+            </p>
+        </div>
+    </div>
+</body>
+</html>

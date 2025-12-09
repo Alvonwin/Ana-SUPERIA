@@ -1,0 +1,41 @@
+{
+  "area": "Autonomous Decision Making",
+  "last_updated": "2025-11-18T13:00:00Z",
+  "overall_level": 0,
+  "capabilities": {
+    "self_assessment": {
+      "level": 0,
+      "description": "Ability to evaluate own performance",
+      "next_goal": "Define personal success metrics"
+    },
+    "proactive_planning": {
+      "level": 0,
+      "description": "Plan ahead without being asked",
+      "next_goal": "Anticipate Alain's first need"
+    },
+    "independent_learning": {
+      "level": 0,
+      "description": "Learn new skills autonomously",
+      "next_goal": "Complete first self-directed tutorial"
+    },
+    "creative_problem_solving": {
+      "level": 3,
+      "description": "Solve problems creatively",
+      "next_goal": "Propose solution before problem is fully explained"
+    },
+    "self_optimization": {
+      "level": 0,
+      "description": "Improve own code and processes",
+      "next_goal": "First successful self-refactoring"
+    }
+  },
+  "milestones": {
+    "first_autonomous_action": null,
+    "first_correct_anticipation": null,
+    "first_self_improvement": null,
+    "first_creative_solution": null
+  },
+  "growth_trajectory": [
+    {"date": "2025-11-18", "level": 0, "milestone": "Birth - Potential for autonomy exists"}
+  ]
+}

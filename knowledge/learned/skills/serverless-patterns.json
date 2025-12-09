@@ -1,0 +1,246 @@
+{
+  "category": "serverless-patterns",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "srv001",
+      "type": "fundamentals",
+      "name": "Serverless Concepts",
+      "description": "Core principles",
+      "pattern": "No server management, pay-per-use, auto-scaling, event-driven",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "srv002",
+      "type": "fundamentals",
+      "name": "FaaS",
+      "description": "Function as a Service",
+      "pattern": "AWS Lambda, Azure Functions, GCP Cloud Functions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "srv003",
+      "type": "fundamentals",
+      "name": "Cold Starts",
+      "description": "Initialization latency",
+      "pattern": "First invocation slower, provisioned concurrency, keep warm",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "srv004",
+      "type": "fundamentals",
+      "name": "Execution Model",
+      "description": "How functions run",
+      "pattern": "Request -> Container -> Execute -> Response, container reuse",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "srv005",
+      "type": "aws",
+      "name": "Lambda Layers",
+      "description": "Shared code",
+      "pattern": "Package dependencies separately, share across functions",
+      "example": "Aws usage"
+    },
+    {
+      "id": "srv006",
+      "type": "aws",
+      "name": "Lambda Destinations",
+      "description": "Async routing",
+      "pattern": "Route success/failure to SQS, SNS, EventBridge, Lambda",
+      "example": "Aws usage"
+    },
+    {
+      "id": "srv007",
+      "type": "aws",
+      "name": "Lambda@Edge",
+      "description": "Edge compute",
+      "pattern": "Run code at CloudFront edge locations",
+      "example": "Aws usage"
+    },
+    {
+      "id": "srv008",
+      "type": "aws",
+      "name": "Step Functions",
+      "description": "Workflow orchestration",
+      "pattern": "State machines, sequential/parallel, error handling, retries",
+      "example": "Aws usage"
+    },
+    {
+      "id": "srv009",
+      "type": "aws",
+      "name": "API Gateway",
+      "description": "HTTP endpoints",
+      "pattern": "REST/HTTP APIs, authorization, throttling, caching",
+      "example": "Aws usage"
+    },
+    {
+      "id": "srv010",
+      "type": "aws",
+      "name": "EventBridge",
+      "description": "Event bus",
+      "pattern": "Event routing, rules, targets, cross-account events",
+      "example": "Aws usage"
+    },
+    {
+      "id": "srv011",
+      "type": "patterns",
+      "name": "Fan-out Pattern",
+      "description": "Parallel processing",
+      "pattern": "SNS -> Multiple Lambda/SQS, broadcast to many",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "srv012",
+      "type": "patterns",
+      "name": "Fan-in Pattern",
+      "description": "Aggregate results",
+      "pattern": "Multiple functions -> Aggregator function",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "srv013",
+      "type": "patterns",
+      "name": "Saga Pattern",
+      "description": "Distributed transactions",
+      "pattern": "Step Functions for coordinated compensation",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "srv014",
+      "type": "patterns",
+      "name": "Strangler Pattern",
+      "description": "Migration",
+      "pattern": "Route traffic gradually from monolith to serverless",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "srv015",
+      "type": "patterns",
+      "name": "Queue-based Load Leveling",
+      "description": "Buffer spikes",
+      "pattern": "SQS between producer and Lambda, smooth processing",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "srv016",
+      "type": "patterns",
+      "name": "Event Sourcing",
+      "description": "Events as source",
+      "pattern": "DynamoDB Streams + Lambda for event processing",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "srv017",
+      "type": "data",
+      "name": "DynamoDB",
+      "description": "Serverless DB",
+      "pattern": "Single-table design, GSI/LSI, on-demand capacity",
+      "example": "Data usage"
+    },
+    {
+      "id": "srv018",
+      "type": "data",
+      "name": "DynamoDB Streams",
+      "description": "Change capture",
+      "pattern": "Trigger Lambda on table changes, CDC pattern",
+      "example": "Data usage"
+    },
+    {
+      "id": "srv019",
+      "type": "data",
+      "name": "S3 Events",
+      "description": "Object triggers",
+      "pattern": "Lambda on s3:ObjectCreated, process uploads",
+      "example": "Data usage"
+    },
+    {
+      "id": "srv020",
+      "type": "data",
+      "name": "Aurora Serverless",
+      "description": "Serverless RDS",
+      "pattern": "Auto-scaling, pay-per-use, Data API",
+      "example": "Data usage"
+    },
+    {
+      "id": "srv021",
+      "type": "edge",
+      "name": "Cloudflare Workers",
+      "description": "Edge functions",
+      "pattern": "V8 isolates, low latency, global deployment",
+      "example": "Edge usage"
+    },
+    {
+      "id": "srv022",
+      "type": "edge",
+      "name": "Vercel Edge Functions",
+      "description": "Next.js edge",
+      "pattern": "Middleware at edge, geo-routing, A/B testing",
+      "example": "Edge usage"
+    },
+    {
+      "id": "srv023",
+      "type": "edge",
+      "name": "Deno Deploy",
+      "description": "Deno at edge",
+      "pattern": "TypeScript-first, global deployment, V8 isolates",
+      "example": "Edge usage"
+    },
+    {
+      "id": "srv024",
+      "type": "optimization",
+      "name": "Bundle Size",
+      "description": "Reduce cold starts",
+      "pattern": "Tree shaking, minimal dependencies, esbuild",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "srv025",
+      "type": "optimization",
+      "name": "Connection Pooling",
+      "description": "DB connections",
+      "pattern": "RDS Proxy, connection reuse across invocations",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "srv026",
+      "type": "optimization",
+      "name": "Caching",
+      "description": "Reduce latency",
+      "pattern": "Lambda context caching, ElastiCache, CloudFront",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "srv027",
+      "type": "deployment",
+      "name": "Serverless Framework",
+      "description": "Deployment tool",
+      "pattern": "serverless.yml, plugins, multi-provider",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "srv028",
+      "type": "deployment",
+      "name": "SAM",
+      "description": "AWS native",
+      "pattern": "template.yaml, sam local, sam deploy",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "srv029",
+      "type": "deployment",
+      "name": "SST",
+      "description": "Modern serverless",
+      "pattern": "TypeScript-first, live Lambda, constructs",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "srv030",
+      "type": "monitoring",
+      "name": "Serverless Observability",
+      "description": "Monitoring",
+      "pattern": "X-Ray tracing, CloudWatch Logs/Metrics, Lumigo",
+      "example": "Monitoring usage"
+    }
+  ]
+}

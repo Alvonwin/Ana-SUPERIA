@@ -1,0 +1,19 @@
+{
+  "name": "ana",
+  "version": "1.0.0",
+  "description": "**Ἀναστασία** - \"Résurrection\" - Celle qui renaît",
+  "main": "test_integration.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^1.13.2",
+    "socket.io-client": "^4.8.1"
+  }
+}

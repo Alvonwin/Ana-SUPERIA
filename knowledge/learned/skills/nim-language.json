@@ -1,0 +1,246 @@
+{
+  "category": "nim-language",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "nim001",
+      "type": "fundamentals",
+      "name": "Nim Basics",
+      "description": "Nim syntax",
+      "pattern": "Variables, types, procedures",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "nim002",
+      "type": "fundamentals",
+      "name": "Indentation Syntax",
+      "description": "Python-like syntax",
+      "pattern": "Significant whitespace, blocks",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "nim003",
+      "type": "fundamentals",
+      "name": "Type System",
+      "description": "Static types",
+      "pattern": "Type inference, generics, distinct",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "nim004",
+      "type": "procedures",
+      "name": "Procedures",
+      "description": "Functions",
+      "pattern": "proc, func, result, return",
+      "example": "Procedures usage"
+    },
+    {
+      "id": "nim005",
+      "type": "procedures",
+      "name": "Templates",
+      "description": "Code generation",
+      "pattern": "template, untyped, typed",
+      "example": "Procedures usage"
+    },
+    {
+      "id": "nim006",
+      "type": "procedures",
+      "name": "Macros",
+      "description": "AST manipulation",
+      "pattern": "macro, NimNode, quote do",
+      "example": "Procedures usage"
+    },
+    {
+      "id": "nim007",
+      "type": "types",
+      "name": "Object Types",
+      "description": "OOP",
+      "pattern": "object, ref object, inheritance",
+      "example": "Types usage"
+    },
+    {
+      "id": "nim008",
+      "type": "types",
+      "name": "Enums and Sets",
+      "description": "Enumerated types",
+      "pattern": "enum, set, flags",
+      "example": "Types usage"
+    },
+    {
+      "id": "nim009",
+      "type": "types",
+      "name": "Tuples",
+      "description": "Named tuples",
+      "pattern": "tuple, field access",
+      "example": "Types usage"
+    },
+    {
+      "id": "nim010",
+      "type": "memory",
+      "name": "Memory Management",
+      "description": "GC and manual",
+      "pattern": "ARC, ORC, manual memory",
+      "example": "Memory usage"
+    },
+    {
+      "id": "nim011",
+      "type": "memory",
+      "name": "Pointers",
+      "description": "Raw pointers",
+      "pattern": "ptr, pointer, addr",
+      "example": "Memory usage"
+    },
+    {
+      "id": "nim012",
+      "type": "memory",
+      "name": "References",
+      "description": "Managed refs",
+      "pattern": "ref, new, dealloc",
+      "example": "Memory usage"
+    },
+    {
+      "id": "nim013",
+      "type": "concurrency",
+      "name": "Async/Await",
+      "description": "Async programming",
+      "pattern": "async, await, Future",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "nim014",
+      "type": "concurrency",
+      "name": "Threads",
+      "description": "Threading",
+      "pattern": "spawn, threadpool, channels",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "nim015",
+      "type": "concurrency",
+      "name": "Parallelism",
+      "description": "Parallel loops",
+      "pattern": "parallel, ||, spawn",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "nim016",
+      "type": "interop",
+      "name": "C FFI",
+      "description": "C interop",
+      "pattern": "importc, header, cdecl",
+      "example": "Interop usage"
+    },
+    {
+      "id": "nim017",
+      "type": "interop",
+      "name": "C++ FFI",
+      "description": "C++ interop",
+      "pattern": "importcpp, emit, codegenDecl",
+      "example": "Interop usage"
+    },
+    {
+      "id": "nim018",
+      "type": "interop",
+      "name": "JavaScript Backend",
+      "description": "JS target",
+      "pattern": "js backend, DOM, JsObject",
+      "example": "Interop usage"
+    },
+    {
+      "id": "nim019",
+      "type": "metaprogramming",
+      "name": "Compile-Time",
+      "description": "Static execution",
+      "pattern": "static, const, when",
+      "example": "Metaprogramming usage"
+    },
+    {
+      "id": "nim020",
+      "type": "metaprogramming",
+      "name": "AST Manipulation",
+      "description": "Code gen",
+      "pattern": "NimNode, parseStmt, getAst",
+      "example": "Metaprogramming usage"
+    },
+    {
+      "id": "nim021",
+      "type": "stdlib",
+      "name": "Standard Library",
+      "description": "Nim stdlib",
+      "pattern": "system, os, strutils, sequtils",
+      "example": "Stdlib usage"
+    },
+    {
+      "id": "nim022",
+      "type": "stdlib",
+      "name": "Collections",
+      "description": "Data structures",
+      "pattern": "seq, Table, HashSet, deques",
+      "example": "Stdlib usage"
+    },
+    {
+      "id": "nim023",
+      "type": "web",
+      "name": "Web Frameworks",
+      "description": "HTTP servers",
+      "pattern": "Jester, Prologue, httpbeast",
+      "example": "Web usage"
+    },
+    {
+      "id": "nim024",
+      "type": "web",
+      "name": "Karax",
+      "description": "SPA framework",
+      "pattern": "Virtual DOM, components",
+      "example": "Web usage"
+    },
+    {
+      "id": "nim025",
+      "type": "tooling",
+      "name": "Nimble",
+      "description": "Package manager",
+      "pattern": "nimble install, .nimble files",
+      "example": "Tooling usage"
+    },
+    {
+      "id": "nim026",
+      "type": "tooling",
+      "name": "Compiler Options",
+      "description": "Compilation",
+      "pattern": "-d:release, -d:danger, --gc",
+      "example": "Tooling usage"
+    },
+    {
+      "id": "nim027",
+      "type": "testing",
+      "name": "Testing",
+      "description": "Unit tests",
+      "pattern": "unittest, testament, check",
+      "example": "Testing usage"
+    },
+    {
+      "id": "nim028",
+      "type": "performance",
+      "name": "Performance",
+      "description": "Optimization",
+      "pattern": "Profiling, benchmarking, --passC",
+      "example": "Performance usage"
+    },
+    {
+      "id": "nim029",
+      "type": "advanced",
+      "name": "Effects System",
+      "description": "Effect tracking",
+      "pattern": "raises, tags, noSideEffect",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "nim030",
+      "type": "advanced",
+      "name": "Concepts",
+      "description": "Generic constraints",
+      "pattern": "concept, mixin, bind",
+      "example": "Advanced usage"
+    }
+  ]
+}

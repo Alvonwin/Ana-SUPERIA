@@ -1,0 +1,246 @@
+{
+  "category": "prolog-logic",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "pro001",
+      "type": "fundamentals",
+      "name": "Prolog Basics",
+      "description": "Logic programming",
+      "pattern": "Facts, rules, queries",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pro002",
+      "type": "fundamentals",
+      "name": "Unification",
+      "description": "Pattern matching",
+      "pattern": "Unification, binding, =",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pro003",
+      "type": "fundamentals",
+      "name": "Backtracking",
+      "description": "Search",
+      "pattern": "Backtracking, choice points",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pro004",
+      "type": "syntax",
+      "name": "Terms",
+      "description": "Data representation",
+      "pattern": "Atoms, numbers, structures",
+      "example": "Syntax usage"
+    },
+    {
+      "id": "pro005",
+      "type": "syntax",
+      "name": "Lists",
+      "description": "List processing",
+      "pattern": "[H|T], append, member, length",
+      "example": "Syntax usage"
+    },
+    {
+      "id": "pro006",
+      "type": "syntax",
+      "name": "Operators",
+      "description": "Custom operators",
+      "pattern": "op/3, infix, prefix, postfix",
+      "example": "Syntax usage"
+    },
+    {
+      "id": "pro007",
+      "type": "control",
+      "name": "Cut",
+      "description": "Control flow",
+      "pattern": "!, cut, green/red cuts",
+      "example": "Control usage"
+    },
+    {
+      "id": "pro008",
+      "type": "control",
+      "name": "Negation",
+      "description": "Negation as failure",
+      "pattern": "\\+, not, negation",
+      "example": "Control usage"
+    },
+    {
+      "id": "pro009",
+      "type": "control",
+      "name": "If-Then-Else",
+      "description": "Conditionals",
+      "pattern": "-> ; , soft cut",
+      "example": "Control usage"
+    },
+    {
+      "id": "pro010",
+      "type": "meta",
+      "name": "Meta-Predicates",
+      "description": "Higher-order",
+      "pattern": "call, maplist, findall, bagof",
+      "example": "Meta usage"
+    },
+    {
+      "id": "pro011",
+      "type": "meta",
+      "name": "Assert/Retract",
+      "description": "Dynamic DB",
+      "pattern": "assert, retract, abolish",
+      "example": "Meta usage"
+    },
+    {
+      "id": "pro012",
+      "type": "meta",
+      "name": "Term Manipulation",
+      "description": "Meta-programming",
+      "pattern": "functor, arg, =.., copy_term",
+      "example": "Meta usage"
+    },
+    {
+      "id": "pro013",
+      "type": "arithmetic",
+      "name": "Arithmetic",
+      "description": "Math operations",
+      "pattern": "is, <, >, =:=, =\\=",
+      "example": "Arithmetic usage"
+    },
+    {
+      "id": "pro014",
+      "type": "io",
+      "name": "Input/Output",
+      "description": "IO operations",
+      "pattern": "read, write, see, seen",
+      "example": "Io usage"
+    },
+    {
+      "id": "pro015",
+      "type": "io",
+      "name": "DCG",
+      "description": "Definite clause grammar",
+      "pattern": "-->  phrase, parsing",
+      "example": "Io usage"
+    },
+    {
+      "id": "pro016",
+      "type": "constraints",
+      "name": "CLP(FD)",
+      "description": "Finite domains",
+      "pattern": "#=, ins, label, all_different",
+      "example": "Constraints usage"
+    },
+    {
+      "id": "pro017",
+      "type": "constraints",
+      "name": "CLP(R)",
+      "description": "Real constraints",
+      "pattern": "Real arithmetic constraints",
+      "example": "Constraints usage"
+    },
+    {
+      "id": "pro018",
+      "type": "constraints",
+      "name": "CLP(B)",
+      "description": "Boolean constraints",
+      "pattern": "sat, taut, labeling",
+      "example": "Constraints usage"
+    },
+    {
+      "id": "pro019",
+      "type": "algorithms",
+      "name": "Search",
+      "description": "Search algorithms",
+      "pattern": "DFS, BFS, iterative deepening",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "pro020",
+      "type": "algorithms",
+      "name": "Sorting",
+      "description": "Sort algorithms",
+      "pattern": "msort, keysort, predsort",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "pro021",
+      "type": "algorithms",
+      "name": "Graph Algorithms",
+      "description": "Graph processing",
+      "pattern": "Path finding, transitive closure",
+      "example": "Algorithms usage"
+    },
+    {
+      "id": "pro022",
+      "type": "applications",
+      "name": "Expert Systems",
+      "description": "Knowledge systems",
+      "pattern": "Rules, inference, explanation",
+      "example": "Applications usage"
+    },
+    {
+      "id": "pro023",
+      "type": "applications",
+      "name": "NLP",
+      "description": "Natural language",
+      "pattern": "Parsing, DCG, semantics",
+      "example": "Applications usage"
+    },
+    {
+      "id": "pro024",
+      "type": "applications",
+      "name": "Planning",
+      "description": "AI planning",
+      "pattern": "STRIPS, state space, plans",
+      "example": "Applications usage"
+    },
+    {
+      "id": "pro025",
+      "type": "implementations",
+      "name": "SWI-Prolog",
+      "description": "Popular impl",
+      "pattern": "SWI, libraries, REPL",
+      "example": "Implementations usage"
+    },
+    {
+      "id": "pro026",
+      "type": "implementations",
+      "name": "SICStus Prolog",
+      "description": "Commercial",
+      "pattern": "SICStus, constraints, optimization",
+      "example": "Implementations usage"
+    },
+    {
+      "id": "pro027",
+      "type": "implementations",
+      "name": "GNU Prolog",
+      "description": "Compiler",
+      "pattern": "gprolog, native code, FD",
+      "example": "Implementations usage"
+    },
+    {
+      "id": "pro028",
+      "type": "advanced",
+      "name": "Tabling",
+      "description": "Memoization",
+      "pattern": "table, memo, termination",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "pro029",
+      "type": "advanced",
+      "name": "Modules",
+      "description": "Modularity",
+      "pattern": "module, export, import",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "pro030",
+      "type": "advanced",
+      "name": "Attributed Variables",
+      "description": "Extensions",
+      "pattern": "put_attr, get_attr, verify_attributes",
+      "example": "Advanced usage"
+    }
+  ]
+}

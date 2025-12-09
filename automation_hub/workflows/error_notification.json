@@ -1,0 +1,115 @@
+{
+  "name": "Error Notification",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ana-error",
+        "httpMethod": "POST",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Error Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [250, 300],
+      "webhookId": "ana-error-notification"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format error for logging\nconst error = $input.first().json;\n\nconst formattedError = {\n  timestamp: new Date().toISOString(),\n  severity: error.severity || 'ERROR',\n  source: error.source || 'unknown',\n  message: error.message || 'No message provided',\n  stack: error.stack || null,\n  context: error.context || {}\n};\n\nreturn [{ json: formattedError }];"
+      },
+      "id": "format-error",
+      "name": "Format Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "content": "=🚨 ANA ERROR ALERT\n\n📅 Time: {{ $json.timestamp }}\n⚠️ Severity: {{ $json.severity }}\n📍 Source: {{ $json.source }}\n\n💬 Message:\n{{ $json.message }}\n\n{{ $json.stack ? '📜 Stack:\\n' + $json.stack : '' }}\n\n---\n",
+        "fileName": "E:/ANA/logs/errors.log",
+        "options": {
+          "append": true
+        }
+      },
+      "id": "write-error-log",
+      "name": "Write Error Log",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [750, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.severity }}",
+              "operation": "equals",
+              "value2": "CRITICAL"
+            }
+          ]
+        }
+      },
+      "id": "check-critical",
+      "name": "Is Critical?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1000, 300]
+    },
+    {
+      "parameters": {
+        "content": "=🔴 CRITICAL ERROR in Ana!\n\nSource: {{ $json.source }}\nMessage: {{ $json.message }}\n\nCheck E:/ANA/logs/errors.log for details."
+      },
+      "id": "critical-alert",
+      "name": "Critical Alert Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1250, 200]
+    }
+  ],
+  "connections": {
+    "Error Webhook": {
+      "main": [
+        [
+          {
+            "node": "Format Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Error": {
+      "main": [
+        [
+          {
+            "node": "Write Error Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Error Log": {
+      "main": [
+        [
+          {
+            "node": "Is Critical?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "instanceId": "ana-local",
+    "description": "Reçoit les erreurs d'Ana via webhook et les log. Alerte pour erreurs critiques.",
+    "createdBy": "Ana SUPERIA",
+    "createdAt": "2025-11-25T15:30:00.000Z"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "name": "Ana Email Alerts",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ana-alert",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Alert Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [240, 300],
+      "webhookId": "ana-alert-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process incoming alert\nconst alert = $input.first().json;\n\nconst severity = alert.severity || 'info';\nconst severityEmoji = {\n  'critical': '🚨',\n  'warning': '⚠️',\n  'info': 'ℹ️',\n  'success': '✅'\n};\n\nconst formattedAlert = {\n  subject: `${severityEmoji[severity] || '📢'} Ana Alert: ${alert.title || 'Notification'}`,\n  severity: severity,\n  message: alert.message || 'No message provided',\n  source: alert.source || 'Ana System',\n  timestamp: new Date().toISOString(),\n  details: alert.details || null\n};\n\nreturn [{ json: formattedAlert }];"
+      },
+      "id": "format-alert",
+      "name": "Format Alert",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.severity }}",
+              "operation": "equals",
+              "value2": "critical"
+            }
+          ]
+        }
+      },
+      "id": "is-critical",
+      "name": "Is Critical?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "ana@localhost",
+        "toEmail": "={{ $env.ALERT_EMAIL || 'admin@localhost' }}",
+        "subject": "={{ $json.subject }}",
+        "text": "=ALERTE CRITIQUE ANA\n========================\n\nSource: {{ $json.source }}\nMessage: {{ $json.message }}\nTimestamp: {{ $json.timestamp }}\n\nDétails:\n{{ JSON.stringify($json.details, null, 2) }}\n\n--\nAna SUPERIA Monitoring"
+      },
+      "id": "send-critical-email",
+      "name": "Send Critical Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [900, 180]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:3338/api/memory/store",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": \"alert_log\",\n  \"severity\": \"{{ $json.severity }}\",\n  \"message\": \"{{ $json.message }}\",\n  \"source\": \"{{ $json.source }}\",\n  \"timestamp\": \"{{ $json.timestamp }}\"\n}",
+        "options": {}
+      },
+      "id": "log-alert",
+      "name": "Log Alert to Memory",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [900, 420]
+    },
+    {
+      "parameters": {
+        "content": "## Ana Email Alerts\n\nEnvoie des notifications email sur événements critiques.\n\n### Usage:\nAppeler le webhook avec POST:\n```json\n{\n  \"title\": \"Agent Down\",\n  \"message\": \"Research Agent offline\",\n  \"severity\": \"critical\",\n  \"source\": \"AgentMonitor\"\n}\n```\n\n### Severity levels:\n- critical (email immédiat)\n- warning (log seulement)\n- info (log seulement)\n\n### Configuration:\nConfigurer SMTP dans n8n Settings > Credentials",
+        "height": 380,
+        "width": 320
+      },
+      "id": "sticky-note",
+      "name": "Documentation",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 480]
+    }
+  ],
+  "connections": {
+    "Alert Webhook": {
+      "main": [
+        [
+          {
+            "node": "Format Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Alert": {
+      "main": [
+        [
+          {
+            "node": "Is Critical?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Critical?": {
+      "main": [
+        [
+          {
+            "node": "Send Critical Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Alert to Memory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Critical Email": {
+      "main": [
+        [
+          {
+            "node": "Log Alert to Memory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "Ana",
+      "createdAt": "2025-11-29T00:00:00.000Z"
+    },
+    {
+      "name": "Alerts",
+      "createdAt": "2025-11-29T00:00:00.000Z"
+    }
+  ]
+}

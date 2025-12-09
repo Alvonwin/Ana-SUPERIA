@@ -1,0 +1,246 @@
+{
+  "category": "react-ecosystem",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "rct001",
+      "type": "core",
+      "name": "React 18 Features",
+      "description": "Latest React",
+      "pattern": "Concurrent rendering, automatic batching, Suspense, transitions",
+      "example": "Core usage"
+    },
+    {
+      "id": "rct002",
+      "type": "core",
+      "name": "Server Components",
+      "description": "RSC",
+      "pattern": "Server-only components, zero client JS, async components",
+      "example": "Core usage"
+    },
+    {
+      "id": "rct003",
+      "type": "core",
+      "name": "Suspense",
+      "description": "Loading states",
+      "pattern": "<Suspense fallback={<Loading/>}><AsyncComponent/></Suspense>",
+      "example": "Core usage"
+    },
+    {
+      "id": "rct004",
+      "type": "core",
+      "name": "useTransition",
+      "description": "Non-urgent updates",
+      "pattern": "const [isPending, startTransition] = useTransition();",
+      "example": "Core usage"
+    },
+    {
+      "id": "rct005",
+      "type": "core",
+      "name": "useDeferredValue",
+      "description": "Defer updates",
+      "pattern": "const deferredQuery = useDeferredValue(query);",
+      "example": "Core usage"
+    },
+    {
+      "id": "rct006",
+      "type": "hooks",
+      "name": "Custom Hooks",
+      "description": "Reusable logic",
+      "pattern": "function useLocalStorage(key, initial) { /* stateful logic */ }",
+      "example": "Hooks usage"
+    },
+    {
+      "id": "rct007",
+      "type": "hooks",
+      "name": "useReducer",
+      "description": "Complex state",
+      "pattern": "const [state, dispatch] = useReducer(reducer, initialState);",
+      "example": "Hooks usage"
+    },
+    {
+      "id": "rct008",
+      "type": "hooks",
+      "name": "useCallback",
+      "description": "Memoize functions",
+      "pattern": "const memoFn = useCallback(() => {}, [deps]);",
+      "example": "Hooks usage"
+    },
+    {
+      "id": "rct009",
+      "type": "hooks",
+      "name": "useMemo",
+      "description": "Memoize values",
+      "pattern": "const computed = useMemo(() => expensive(a, b), [a, b]);",
+      "example": "Hooks usage"
+    },
+    {
+      "id": "rct010",
+      "type": "hooks",
+      "name": "useRef",
+      "description": "Mutable refs",
+      "pattern": "const ref = useRef(null); ref.current = value;",
+      "example": "Hooks usage"
+    },
+    {
+      "id": "rct011",
+      "type": "hooks",
+      "name": "useImperativeHandle",
+      "description": "Expose API",
+      "pattern": "useImperativeHandle(ref, () => ({ focus: () => inputRef.current.focus() }));",
+      "example": "Hooks usage"
+    },
+    {
+      "id": "rct012",
+      "type": "hooks",
+      "name": "useId",
+      "description": "Unique IDs",
+      "pattern": "const id = useId(); // stable across server/client",
+      "example": "Hooks usage"
+    },
+    {
+      "id": "rct013",
+      "type": "patterns",
+      "name": "Compound Components",
+      "description": "Implicit state sharing",
+      "pattern": "<Select><Option/><Option/></Select> with context",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rct014",
+      "type": "patterns",
+      "name": "Render Props",
+      "description": "Share behavior",
+      "pattern": "<DataFetcher render={(data) => <Component data={data}/>}/>",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rct015",
+      "type": "patterns",
+      "name": "HOC",
+      "description": "Component wrapper",
+      "pattern": "const Enhanced = withAuth(Component);",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rct016",
+      "type": "patterns",
+      "name": "Controlled Components",
+      "description": "Form state",
+      "pattern": "<input value={val} onChange={e => setVal(e.target.value)}/>",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "rct017",
+      "type": "state",
+      "name": "Context API",
+      "description": "Prop drilling solution",
+      "pattern": "createContext, Provider, useContext - global state",
+      "example": "State usage"
+    },
+    {
+      "id": "rct018",
+      "type": "state",
+      "name": "Context + Reducer",
+      "description": "Redux-lite",
+      "pattern": "Context for dispatch + state, useReducer for logic",
+      "example": "State usage"
+    },
+    {
+      "id": "rct019",
+      "type": "perf",
+      "name": "React.memo",
+      "description": "Skip re-renders",
+      "pattern": "const MemoComp = React.memo(Component, arePropsEqual);",
+      "example": "Perf usage"
+    },
+    {
+      "id": "rct020",
+      "type": "perf",
+      "name": "Code Splitting",
+      "description": "Lazy loading",
+      "pattern": "const LazyComp = React.lazy(() => import('./Heavy'));",
+      "example": "Perf usage"
+    },
+    {
+      "id": "rct021",
+      "type": "perf",
+      "name": "Virtualization",
+      "description": "Large lists",
+      "pattern": "react-window, react-virtuoso - render visible only",
+      "example": "Perf usage"
+    },
+    {
+      "id": "rct022",
+      "type": "perf",
+      "name": "React DevTools Profiler",
+      "description": "Performance analysis",
+      "pattern": "Identify re-renders, measure commit times",
+      "example": "Perf usage"
+    },
+    {
+      "id": "rct023",
+      "type": "testing",
+      "name": "React Testing Library",
+      "description": "User-centric tests",
+      "pattern": "render, screen, fireEvent, waitFor, userEvent",
+      "example": "Testing usage"
+    },
+    {
+      "id": "rct024",
+      "type": "testing",
+      "name": "Component Testing",
+      "description": "Test behavior",
+      "pattern": "Test what user sees/does, not implementation details",
+      "example": "Testing usage"
+    },
+    {
+      "id": "rct025",
+      "type": "forms",
+      "name": "React Hook Form",
+      "description": "Performant forms",
+      "pattern": "useForm, register, handleSubmit, watch, errors",
+      "example": "Forms usage"
+    },
+    {
+      "id": "rct026",
+      "type": "forms",
+      "name": "Formik",
+      "description": "Form library",
+      "pattern": "useFormik, Field, ErrorMessage, validation schemas",
+      "example": "Forms usage"
+    },
+    {
+      "id": "rct027",
+      "type": "data",
+      "name": "TanStack Query",
+      "description": "Server state",
+      "pattern": "useQuery, useMutation, caching, refetching, optimistic",
+      "example": "Data usage"
+    },
+    {
+      "id": "rct028",
+      "type": "data",
+      "name": "SWR",
+      "description": "Data fetching",
+      "pattern": "useSWR(key, fetcher), stale-while-revalidate, caching",
+      "example": "Data usage"
+    },
+    {
+      "id": "rct029",
+      "type": "routing",
+      "name": "React Router v6",
+      "description": "Client routing",
+      "pattern": "Routes, Route, useNavigate, useParams, Outlet",
+      "example": "Routing usage"
+    },
+    {
+      "id": "rct030",
+      "type": "animation",
+      "name": "Framer Motion",
+      "description": "Animation library",
+      "pattern": "motion.div, animate, variants, AnimatePresence",
+      "example": "Animation usage"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "category": "ethereum-solidity",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "eth001",
+      "type": "fundamentals",
+      "name": "Ethereum Basics",
+      "description": "Blockchain",
+      "pattern": "EVM, gas, accounts, transactions",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "eth002",
+      "type": "fundamentals",
+      "name": "Solidity Basics",
+      "description": "Smart contract language",
+      "pattern": "Contract, functions, modifiers",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "eth003",
+      "type": "fundamentals",
+      "name": "State Variables",
+      "description": "Storage",
+      "pattern": "storage, memory, calldata",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "eth004",
+      "type": "types",
+      "name": "Value Types",
+      "description": "Primitive types",
+      "pattern": "uint, int, bool, address, bytes",
+      "example": "Types usage"
+    },
+    {
+      "id": "eth005",
+      "type": "types",
+      "name": "Reference Types",
+      "description": "Complex types",
+      "pattern": "Arrays, mappings, structs",
+      "example": "Types usage"
+    },
+    {
+      "id": "eth006",
+      "type": "types",
+      "name": "Enums",
+      "description": "Enumerated types",
+      "pattern": "enum, state machines",
+      "example": "Types usage"
+    },
+    {
+      "id": "eth007",
+      "type": "functions",
+      "name": "Function Visibility",
+      "description": "Access control",
+      "pattern": "public, private, internal, external",
+      "example": "Functions usage"
+    },
+    {
+      "id": "eth008",
+      "type": "functions",
+      "name": "Function Modifiers",
+      "description": "Decorators",
+      "pattern": "modifier, require, _",
+      "example": "Functions usage"
+    },
+    {
+      "id": "eth009",
+      "type": "functions",
+      "name": "View/Pure Functions",
+      "description": "State access",
+      "pattern": "view, pure, state mutability",
+      "example": "Functions usage"
+    },
+    {
+      "id": "eth010",
+      "type": "events",
+      "name": "Events",
+      "description": "Logging",
+      "pattern": "event, emit, indexed",
+      "example": "Events usage"
+    },
+    {
+      "id": "eth011",
+      "type": "events",
+      "name": "Event Filtering",
+      "description": "Log queries",
+      "pattern": "Topics, filters, getLogs",
+      "example": "Events usage"
+    },
+    {
+      "id": "eth012",
+      "type": "security",
+      "name": "Reentrancy",
+      "description": "Security vulnerability",
+      "pattern": "ReentrancyGuard, checks-effects-interactions",
+      "example": "Security usage"
+    },
+    {
+      "id": "eth013",
+      "type": "security",
+      "name": "Access Control",
+      "description": "Permissions",
+      "pattern": "Ownable, AccessControl, roles",
+      "example": "Security usage"
+    },
+    {
+      "id": "eth014",
+      "type": "security",
+      "name": "Integer Overflow",
+      "description": "Math safety",
+      "pattern": "SafeMath, Solidity 0.8+",
+      "example": "Security usage"
+    },
+    {
+      "id": "eth015",
+      "type": "patterns",
+      "name": "Proxy Pattern",
+      "description": "Upgradability",
+      "pattern": "Proxy, implementation, delegatecall",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "eth016",
+      "type": "patterns",
+      "name": "Factory Pattern",
+      "description": "Contract creation",
+      "pattern": "create, create2, clones",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "eth017",
+      "type": "patterns",
+      "name": "ERC Standards",
+      "description": "Token standards",
+      "pattern": "ERC-20, ERC-721, ERC-1155",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "eth018",
+      "type": "gas",
+      "name": "Gas Optimization",
+      "description": "Cost reduction",
+      "pattern": "Storage packing, calldata, loops",
+      "example": "Gas usage"
+    },
+    {
+      "id": "eth019",
+      "type": "gas",
+      "name": "Gas Estimation",
+      "description": "Cost prediction",
+      "pattern": "estimateGas, gas limits",
+      "example": "Gas usage"
+    },
+    {
+      "id": "eth020",
+      "type": "tools",
+      "name": "Hardhat",
+      "description": "Development env",
+      "pattern": "compile, test, deploy, console",
+      "example": "Tools usage"
+    },
+    {
+      "id": "eth021",
+      "type": "tools",
+      "name": "Foundry",
+      "description": "Rust tooling",
+      "pattern": "forge, cast, anvil, chisel",
+      "example": "Tools usage"
+    },
+    {
+      "id": "eth022",
+      "type": "tools",
+      "name": "OpenZeppelin",
+      "description": "Contracts library",
+      "pattern": "Secure contracts, wizards",
+      "example": "Tools usage"
+    },
+    {
+      "id": "eth023",
+      "type": "testing",
+      "name": "Unit Testing",
+      "description": "Contract tests",
+      "pattern": "Hardhat tests, Foundry tests",
+      "example": "Testing usage"
+    },
+    {
+      "id": "eth024",
+      "type": "testing",
+      "name": "Fuzzing",
+      "description": "Property testing",
+      "pattern": "Foundry fuzzing, invariants",
+      "example": "Testing usage"
+    },
+    {
+      "id": "eth025",
+      "type": "deployment",
+      "name": "Deployment",
+      "description": "Contract deployment",
+      "pattern": "Deploy scripts, verification",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "eth026",
+      "type": "deployment",
+      "name": "Verification",
+      "description": "Source verification",
+      "pattern": "Etherscan, Sourcify",
+      "example": "Deployment usage"
+    },
+    {
+      "id": "eth027",
+      "type": "frontend",
+      "name": "Ethers.js",
+      "description": "JS library",
+      "pattern": "Provider, Signer, Contract",
+      "example": "Frontend usage"
+    },
+    {
+      "id": "eth028",
+      "type": "frontend",
+      "name": "Web3.js",
+      "description": "JS library",
+      "pattern": "Web3 provider, contract ABI",
+      "example": "Frontend usage"
+    },
+    {
+      "id": "eth029",
+      "type": "l2",
+      "name": "Layer 2",
+      "description": "Scaling",
+      "pattern": "Optimism, Arbitrum, zkSync",
+      "example": "L2 usage"
+    },
+    {
+      "id": "eth030",
+      "type": "defi",
+      "name": "DeFi Protocols",
+      "description": "Finance",
+      "pattern": "AMM, lending, staking, flash loans",
+      "example": "Defi usage"
+    }
+  ]
+}

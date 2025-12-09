@@ -1,0 +1,389 @@
+.n8n-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #1a1a1a;
+}
+
+.n8n-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  background: #2c3e50;
+  border-bottom: 1px solid #34495e;
+}
+
+.n8n-header h2 {
+  color: #ecf0f1;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 0.9em;
+  color: #95a5a6;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #3498db;
+}
+
+.btn-primary:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #2ecc71;
+}
+
+.btn-secondary:hover {
+  background: #27ae60;
+  transform: translateY(-2px);
+}
+
+/* ===== CONTENT ===== */
+.n8n-content {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ===== CONNECTION STATUS ===== */
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.connection-status.connected {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.4);
+}
+
+.connection-status.disconnected {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.connected .status-dot {
+  background: #2ecc71;
+}
+
+.disconnected .status-dot {
+  background: #e74c3c;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ===== WORKFLOWS ===== */
+.workflows-section h3 {
+  color: #ecf0f1;
+  margin-bottom: 15px;
+}
+
+.workflows-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.workflow-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #34495e;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+.workflow-card:hover {
+  border-color: #3498db;
+  transform: translateY(-2px);
+}
+
+.workflow-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 15px;
+}
+
+.workflow-header h4 {
+  color: #ecf0f1;
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.status-badge.inactive {
+  background: rgba(149, 165, 166, 0.2);
+  color: #95a5a6;
+}
+
+.workflow-info {
+  display: flex;
+  gap: 15px;
+  color: #95a5a6;
+  font-size: 0.85em;
+  margin-bottom: 15px;
+}
+
+.workflow-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-start,
+.btn-stop {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-start {
+  background: #2ecc71;
+}
+
+.btn-start:hover {
+  background: #27ae60;
+}
+
+.btn-stop {
+  background: #e74c3c;
+}
+
+.btn-stop:hover {
+  background: #c0392b;
+}
+
+/* ===== EXECUTIONS ===== */
+.executions-section h3 {
+  color: #ecf0f1;
+  margin-bottom: 15px;
+}
+
+.executions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.execution-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #34495e;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.execution-item:hover {
+  border-color: #3498db;
+}
+
+.exec-status {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+.exec-status.success {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.exec-status.running {
+  background: rgba(52, 152, 219, 0.2);
+  color: #3498db;
+}
+
+.exec-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exec-info strong {
+  color: #ecf0f1;
+}
+
+.exec-time {
+  color: #95a5a6;
+  font-size: 0.85em;
+}
+
+.exec-duration {
+  color: #95a5a6;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+/* ===== TEMPLATES ===== */
+.templates-section h3 {
+  color: #ecf0f1;
+  margin-bottom: 15px;
+}
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.template-card {
+  background: rgba(52, 152, 219, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+.template-card:hover {
+  border-color: #3498db;
+  transform: translateY(-2px);
+}
+
+.template-card h4 {
+  color: #ecf0f1;
+  margin: 0 0 10px 0;
+}
+
+.template-card p {
+  color: #95a5a6;
+  font-size: 0.9em;
+  margin: 0 0 15px 0;
+}
+
+.btn-template {
+  width: 100%;
+  padding: 8px 16px;
+  background: #3498db;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-template:hover {
+  background: #2980b9;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  padding: 40px;
+  text-align: center;
+  color: #95a5a6;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+}
+
+.empty-state h4 {
+  color: #ecf0f1;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.empty-state p {
+  margin-bottom: 15px;
+}
+
+.empty-state-warning {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.empty-state-instructions {
+  margin: 20px 0;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+
+.empty-state-instructions p {
+  margin-bottom: 8px;
+}
+
+.empty-state-instructions code {
+  display: block;
+  background: #1a1a1a;
+  color: #2ecc71;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-family: 'Fira Code', 'Monaco', monospace;
+  margin: 8px 0;
+  font-size: 0.9em;
+}
+
+.empty-state-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}

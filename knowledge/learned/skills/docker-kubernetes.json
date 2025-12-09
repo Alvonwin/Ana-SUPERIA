@@ -1,0 +1,247 @@
+{
+  "category": "docker-kubernetes",
+  "version": "1.0.0",
+  "generatedBy": "Ana SUPERIA (DeepSeek Coder) - Supervisé et complété par Claude",
+  "skills": [
+    {
+      "id": "dk01",
+      "type": "dockerfile",
+      "name": "Dockerfile Creation",
+      "description": "Create Dockerfile with build instructions",
+      "pattern": "FROM node:18-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm install\nCOPY . .\nEXPOSE 3000\nCMD [\"node\", \"index.js\"]",
+      "example": "Dockerfile usage"
+    },
+    {
+      "id": "dk02",
+      "type": "compose",
+      "name": "Docker Compose",
+      "description": "Define multi-container applications",
+      "pattern": "version: '3.8'\nservices:\n  app:\n    build: .\n    ports:\n      - '3000:3000'\n    depends_on:\n      - db",
+      "example": "Compose usage"
+    },
+    {
+      "id": "dk03",
+      "type": "images",
+      "name": "Image Management",
+      "description": "Build, tag, and push Docker images",
+      "pattern": "docker build -t myapp:latest .\ndocker tag myapp:latest registry/myapp:v1\ndocker push registry/myapp:v1",
+      "example": "Images usage"
+    },
+    {
+      "id": "dk04",
+      "type": "volumes",
+      "name": "Docker Volumes",
+      "description": "Manage persistent data with volumes",
+      "pattern": "docker volume create mydata\ndocker run -v mydata:/app/data myimage",
+      "example": "Volumes usage"
+    },
+    {
+      "id": "dk05",
+      "type": "networks",
+      "name": "Docker Networks",
+      "description": "Create and manage container networks",
+      "pattern": "docker network create mynet\ndocker run --network mynet myimage",
+      "example": "Networks usage"
+    },
+    {
+      "id": "dk06",
+      "type": "registries",
+      "name": "Container Registry",
+      "description": "Push/pull from container registries",
+      "pattern": "docker login registry.io\ndocker push registry.io/myapp:latest",
+      "example": "Registries usage"
+    },
+    {
+      "id": "dk07",
+      "type": "pods",
+      "name": "Kubernetes Pods",
+      "description": "Create and manage pods",
+      "pattern": "apiVersion: v1\nkind: Pod\nmetadata:\n  name: myapp\nspec:\n  containers:\n  - name: myapp\n    image: myapp:latest",
+      "example": "Pods usage"
+    },
+    {
+      "id": "dk08",
+      "type": "deployments",
+      "name": "Kubernetes Deployments",
+      "description": "Manage replicated applications",
+      "pattern": "kubectl create deployment myapp --image=myapp:latest --replicas=3",
+      "example": "Deployments usage"
+    },
+    {
+      "id": "dk09",
+      "type": "services",
+      "name": "Kubernetes Services",
+      "description": "Expose applications as network services",
+      "pattern": "kubectl expose deployment myapp --port=80 --target-port=3000 --type=LoadBalancer",
+      "example": "Services usage"
+    },
+    {
+      "id": "dk10",
+      "type": "ingress",
+      "name": "Kubernetes Ingress",
+      "description": "HTTP routing and load balancing",
+      "pattern": "apiVersion: networking.k8s.io/v1\nkind: Ingress\nmetadata:\n  name: myingress\nspec:\n  rules:\n  - host: app.example.com",
+      "example": "Ingress usage"
+    },
+    {
+      "id": "dk11",
+      "type": "configmaps",
+      "name": "ConfigMaps",
+      "description": "Store configuration data",
+      "pattern": "kubectl create configmap myconfig --from-literal=KEY=value",
+      "example": "Configmaps usage"
+    },
+    {
+      "id": "dk12",
+      "type": "secrets",
+      "name": "Kubernetes Secrets",
+      "description": "Store sensitive data",
+      "pattern": "kubectl create secret generic mysecret --from-literal=password=secret123",
+      "example": "Secrets usage"
+    },
+    {
+      "id": "dk13",
+      "type": "namespaces",
+      "name": "Namespaces",
+      "description": "Isolate resources in namespaces",
+      "pattern": "kubectl create namespace production\nkubectl -n production apply -f deployment.yaml",
+      "example": "Namespaces usage"
+    },
+    {
+      "id": "dk14",
+      "type": "helm",
+      "name": "Helm Charts",
+      "description": "Package manager for Kubernetes",
+      "pattern": "helm create mychart\nhelm install myrelease ./mychart\nhelm upgrade myrelease ./mychart",
+      "example": "Helm usage"
+    },
+    {
+      "id": "dk15",
+      "type": "kubectl",
+      "name": "kubectl Commands",
+      "description": "Kubernetes CLI operations",
+      "pattern": "kubectl get pods\nkubectl describe pod myapp\nkubectl logs myapp\nkubectl exec -it myapp -- /bin/sh",
+      "example": "Kubectl usage"
+    },
+    {
+      "id": "dk16",
+      "type": "scaling",
+      "name": "Auto Scaling",
+      "description": "Scale applications automatically",
+      "pattern": "kubectl autoscale deployment myapp --min=2 --max=10 --cpu-percent=80",
+      "example": "Scaling usage"
+    },
+    {
+      "id": "dk17",
+      "type": "probes",
+      "name": "Health Probes",
+      "description": "Liveness and readiness probes",
+      "pattern": "livenessProbe:\n  httpGet:\n    path: /health\n    port: 3000\n  initialDelaySeconds: 30",
+      "example": "Probes usage"
+    },
+    {
+      "id": "dk18",
+      "type": "resources",
+      "name": "Resource Limits",
+      "description": "Set CPU and memory limits",
+      "pattern": "resources:\n  requests:\n    memory: '256Mi'\n    cpu: '250m'\n  limits:\n    memory: '512Mi'\n    cpu: '500m'",
+      "example": "Resources usage"
+    },
+    {
+      "id": "dk19",
+      "type": "pv",
+      "name": "Persistent Volumes",
+      "description": "Manage persistent storage",
+      "pattern": "apiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: mypvc\nspec:\n  accessModes:\n    - ReadWriteOnce\n  resources:\n    requests:\n      storage: 10Gi",
+      "example": "Pv usage"
+    },
+    {
+      "id": "dk20",
+      "type": "statefulsets",
+      "name": "StatefulSets",
+      "description": "Manage stateful applications",
+      "pattern": "apiVersion: apps/v1\nkind: StatefulSet\nmetadata:\n  name: mysql\nspec:\n  serviceName: mysql\n  replicas: 3",
+      "example": "Statefulsets usage"
+    },
+    {
+      "id": "dk21",
+      "type": "daemonsets",
+      "name": "DaemonSets",
+      "description": "Run pods on all nodes",
+      "pattern": "apiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: fluentd\nspec:\n  selector:\n    matchLabels:\n      name: fluentd",
+      "example": "Daemonsets usage"
+    },
+    {
+      "id": "dk22",
+      "type": "jobs",
+      "name": "Kubernetes Jobs",
+      "description": "Run batch tasks to completion",
+      "pattern": "apiVersion: batch/v1\nkind: Job\nmetadata:\n  name: backup\nspec:\n  template:\n    spec:\n      containers:\n      - name: backup\n        image: backup:latest",
+      "example": "Jobs usage"
+    },
+    {
+      "id": "dk23",
+      "type": "cronjobs",
+      "name": "CronJobs",
+      "description": "Schedule periodic tasks",
+      "pattern": "apiVersion: batch/v1\nkind: CronJob\nmetadata:\n  name: daily-backup\nspec:\n  schedule: '0 2 * * *'",
+      "example": "Cronjobs usage"
+    },
+    {
+      "id": "dk24",
+      "type": "hpa",
+      "name": "Horizontal Pod Autoscaler",
+      "description": "Auto-scale based on metrics",
+      "pattern": "apiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: myapp-hpa\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: myapp",
+      "example": "Hpa usage"
+    },
+    {
+      "id": "dk25",
+      "type": "clusterautoscaler",
+      "name": "Cluster Autoscaler",
+      "description": "Auto-scale cluster nodes",
+      "pattern": "cluster-autoscaler --nodes=1:10:my-node-pool --scale-down-enabled=true",
+      "example": "Clusterautoscaler usage"
+    },
+    {
+      "id": "dk26",
+      "type": "rollouts",
+      "name": "Rollouts and Rollbacks",
+      "description": "Manage deployment updates",
+      "pattern": "kubectl set image deployment/myapp container=myapp:v2\nkubectl rollout status deployment/myapp\nkubectl rollout undo deployment/myapp",
+      "example": "Rollouts usage"
+    },
+    {
+      "id": "dk27",
+      "type": "affinity",
+      "name": "Node Affinity",
+      "description": "Control pod scheduling to nodes",
+      "pattern": "affinity:\n  nodeAffinity:\n    requiredDuringSchedulingIgnoredDuringExecution:\n      nodeSelectorTerms:\n      - matchExpressions:\n        - key: disktype\n          operator: In\n          values:\n          - ssd",
+      "example": "Affinity usage"
+    },
+    {
+      "id": "dk28",
+      "type": "taints",
+      "name": "Taints and Tolerations",
+      "description": "Control node scheduling restrictions",
+      "pattern": "kubectl taint nodes node1 key=value:NoSchedule\ntolerations:\n- key: 'key'\n  operator: 'Equal'\n  value: 'value'\n  effect: 'NoSchedule'",
+      "example": "Taints usage"
+    },
+    {
+      "id": "dk29",
+      "type": "istio",
+      "name": "Istio Service Mesh",
+      "description": "Deploy and configure Istio",
+      "pattern": "istioctl install --set profile=default\nkubectl label namespace default istio-injection=enabled",
+      "example": "Istio usage"
+    },
+    {
+      "id": "dk30",
+      "type": "operators",
+      "name": "Kubernetes Operators",
+      "description": "Develop custom operators",
+      "pattern": "operator-sdk create api --group app --version v1 --kind MyApp\nmake manifests\nmake install\nmake run",
+      "example": "Operators usage"
+    }
+  ]
+}

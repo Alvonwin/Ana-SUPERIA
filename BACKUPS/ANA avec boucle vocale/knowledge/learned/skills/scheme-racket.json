@@ -1,0 +1,246 @@
+{
+  "category": "scheme-racket",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "sch001",
+      "type": "fundamentals",
+      "name": "Scheme Basics",
+      "description": "Scheme syntax",
+      "pattern": "S-expressions, define, lambda",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sch002",
+      "type": "fundamentals",
+      "name": "Recursion",
+      "description": "Recursive thinking",
+      "pattern": "Recursion, tail recursion, base case",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sch003",
+      "type": "fundamentals",
+      "name": "Lists",
+      "description": "List processing",
+      "pattern": "cons, car, cdr, list",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sch004",
+      "type": "functions",
+      "name": "First-Class Functions",
+      "description": "Functions as values",
+      "pattern": "lambda, apply, map",
+      "example": "Functions usage"
+    },
+    {
+      "id": "sch005",
+      "type": "functions",
+      "name": "Higher-Order",
+      "description": "HOF patterns",
+      "pattern": "map, filter, fold, compose",
+      "example": "Functions usage"
+    },
+    {
+      "id": "sch006",
+      "type": "functions",
+      "name": "Closures",
+      "description": "Lexical closure",
+      "pattern": "Lexical scope, captured variables",
+      "example": "Functions usage"
+    },
+    {
+      "id": "sch007",
+      "type": "control",
+      "name": "Conditionals",
+      "description": "Control flow",
+      "pattern": "if, cond, case, when, unless",
+      "example": "Control usage"
+    },
+    {
+      "id": "sch008",
+      "type": "control",
+      "name": "Let Forms",
+      "description": "Local binding",
+      "pattern": "let, let*, letrec, named let",
+      "example": "Control usage"
+    },
+    {
+      "id": "sch009",
+      "type": "control",
+      "name": "Continuations",
+      "description": "Control abstraction",
+      "pattern": "call/cc, continuation passing",
+      "example": "Control usage"
+    },
+    {
+      "id": "sch010",
+      "type": "macros",
+      "name": "Hygienic Macros",
+      "description": "syntax-rules",
+      "pattern": "define-syntax, syntax-rules",
+      "example": "Macros usage"
+    },
+    {
+      "id": "sch011",
+      "type": "macros",
+      "name": "Syntax-Case",
+      "description": "Advanced macros",
+      "pattern": "syntax-case, with-syntax, datum",
+      "example": "Macros usage"
+    },
+    {
+      "id": "sch012",
+      "type": "macros",
+      "name": "Pattern Matching",
+      "description": "Macro patterns",
+      "pattern": "Patterns, ellipsis, literals",
+      "example": "Macros usage"
+    },
+    {
+      "id": "sch013",
+      "type": "racket",
+      "name": "Racket Basics",
+      "description": "Racket language",
+      "pattern": "#lang racket, modules, requires",
+      "example": "Racket usage"
+    },
+    {
+      "id": "sch014",
+      "type": "racket",
+      "name": "Contracts",
+      "description": "Design by contract",
+      "pattern": "provide/contract, ->, any/c",
+      "example": "Racket usage"
+    },
+    {
+      "id": "sch015",
+      "type": "racket",
+      "name": "Structs",
+      "description": "Data structures",
+      "pattern": "struct, #:transparent, accessors",
+      "example": "Racket usage"
+    },
+    {
+      "id": "sch016",
+      "type": "racket",
+      "name": "Pattern Matching",
+      "description": "match form",
+      "pattern": "match, patterns, quasiquote",
+      "example": "Racket usage"
+    },
+    {
+      "id": "sch017",
+      "type": "racket",
+      "name": "Typed Racket",
+      "description": "Static types",
+      "pattern": "#lang typed/racket, annotations",
+      "example": "Racket usage"
+    },
+    {
+      "id": "sch018",
+      "type": "racket",
+      "name": "Classes",
+      "description": "OOP",
+      "pattern": "class, object%, send, inherit",
+      "example": "Racket usage"
+    },
+    {
+      "id": "sch019",
+      "type": "gui",
+      "name": "GUI Programming",
+      "description": "racket/gui",
+      "pattern": "frame%, button%, canvas%",
+      "example": "Gui usage"
+    },
+    {
+      "id": "sch020",
+      "type": "web",
+      "name": "Web Development",
+      "description": "Web server",
+      "pattern": "web-server, servlets, dispatch",
+      "example": "Web usage"
+    },
+    {
+      "id": "sch021",
+      "type": "dsl",
+      "name": "Language-Oriented",
+      "description": "DSL creation",
+      "pattern": "#lang, reader, expander",
+      "example": "Dsl usage"
+    },
+    {
+      "id": "sch022",
+      "type": "dsl",
+      "name": "Custom Languages",
+      "description": "Language creation",
+      "pattern": "#lang creation, syntax objects",
+      "example": "Dsl usage"
+    },
+    {
+      "id": "sch023",
+      "type": "io",
+      "name": "I/O",
+      "description": "Input/Output",
+      "pattern": "ports, read, write, display",
+      "example": "Io usage"
+    },
+    {
+      "id": "sch024",
+      "type": "io",
+      "name": "File Handling",
+      "description": "File operations",
+      "pattern": "with-input-from-file, read-line",
+      "example": "Io usage"
+    },
+    {
+      "id": "sch025",
+      "type": "data",
+      "name": "Data Structures",
+      "description": "Collections",
+      "pattern": "hash, vector, set, dict",
+      "example": "Data usage"
+    },
+    {
+      "id": "sch026",
+      "type": "testing",
+      "name": "Testing",
+      "description": "Unit tests",
+      "pattern": "rackunit, check-equal?, test-suite",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sch027",
+      "type": "concurrency",
+      "name": "Threads",
+      "description": "Concurrency",
+      "pattern": "thread, channel, sync",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "sch028",
+      "type": "concurrency",
+      "name": "Places",
+      "description": "Parallelism",
+      "pattern": "place, place-channel",
+      "example": "Concurrency usage"
+    },
+    {
+      "id": "sch029",
+      "type": "ffi",
+      "name": "FFI",
+      "description": "Foreign interface",
+      "pattern": "ffi/unsafe, _fun, ctype",
+      "example": "Ffi usage"
+    },
+    {
+      "id": "sch030",
+      "type": "standards",
+      "name": "R5RS/R6RS/R7RS",
+      "description": "Scheme standards",
+      "pattern": "Standard compliance, portability",
+      "example": "Standards usage"
+    }
+  ]
+}

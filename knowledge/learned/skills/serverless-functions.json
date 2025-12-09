@@ -1,0 +1,246 @@
+{
+  "category": "serverless-functions",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "sls001",
+      "type": "fundamentals",
+      "name": "Serverless Concepts",
+      "description": "FaaS paradigm",
+      "pattern": "Event-driven, auto-scale, pay-per-use",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sls002",
+      "type": "fundamentals",
+      "name": "Cold Starts",
+      "description": "Latency issue",
+      "pattern": "Provisioned concurrency, warmers, SnapStart",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "sls003",
+      "type": "lambda",
+      "name": "AWS Lambda",
+      "description": "AWS FaaS",
+      "pattern": "Handler, context, event, layers",
+      "example": "Lambda usage"
+    },
+    {
+      "id": "sls004",
+      "type": "lambda",
+      "name": "Lambda Triggers",
+      "description": "Event sources",
+      "pattern": "API Gateway, S3, SQS, EventBridge",
+      "example": "Lambda usage"
+    },
+    {
+      "id": "sls005",
+      "type": "lambda",
+      "name": "Lambda Layers",
+      "description": "Code sharing",
+      "pattern": "Dependencies, runtime, ARN",
+      "example": "Lambda usage"
+    },
+    {
+      "id": "sls006",
+      "type": "lambda",
+      "name": "Lambda@Edge",
+      "description": "Edge computing",
+      "pattern": "CloudFront events, viewer/origin",
+      "example": "Lambda usage"
+    },
+    {
+      "id": "sls007",
+      "type": "azure",
+      "name": "Azure Functions",
+      "description": "Azure FaaS",
+      "pattern": "Bindings, triggers, Durable Functions",
+      "example": "Azure usage"
+    },
+    {
+      "id": "sls008",
+      "type": "azure",
+      "name": "Azure Bindings",
+      "description": "Declarative I/O",
+      "pattern": "Input, output, Blob, Queue, Cosmos",
+      "example": "Azure usage"
+    },
+    {
+      "id": "sls009",
+      "type": "gcp",
+      "name": "Cloud Functions",
+      "description": "GCP FaaS",
+      "pattern": "HTTP, Pub/Sub, Cloud Storage triggers",
+      "example": "Gcp usage"
+    },
+    {
+      "id": "sls010",
+      "type": "gcp",
+      "name": "Cloud Run",
+      "description": "Container serverless",
+      "pattern": "Container, scale to zero, traffic",
+      "example": "Gcp usage"
+    },
+    {
+      "id": "sls011",
+      "type": "edge",
+      "name": "Cloudflare Workers",
+      "description": "Edge functions",
+      "pattern": "V8 isolates, KV, Durable Objects",
+      "example": "Edge usage"
+    },
+    {
+      "id": "sls012",
+      "type": "edge",
+      "name": "Vercel Functions",
+      "description": "Frontend serverless",
+      "pattern": "Edge, serverless, ISR",
+      "example": "Edge usage"
+    },
+    {
+      "id": "sls013",
+      "type": "edge",
+      "name": "Netlify Functions",
+      "description": "JAMstack FaaS",
+      "pattern": "Background functions, scheduled",
+      "example": "Edge usage"
+    },
+    {
+      "id": "sls014",
+      "type": "frameworks",
+      "name": "Serverless Framework",
+      "description": "Deployment tool",
+      "pattern": "serverless.yml, plugins, deploy",
+      "example": "Frameworks usage"
+    },
+    {
+      "id": "sls015",
+      "type": "frameworks",
+      "name": "AWS SAM",
+      "description": "AWS native",
+      "pattern": "template.yaml, sam build, sam deploy",
+      "example": "Frameworks usage"
+    },
+    {
+      "id": "sls016",
+      "type": "frameworks",
+      "name": "SST",
+      "description": "Modern framework",
+      "pattern": "Constructs, live Lambda, stacks",
+      "example": "Frameworks usage"
+    },
+    {
+      "id": "sls017",
+      "type": "patterns",
+      "name": "API Patterns",
+      "description": "REST/GraphQL",
+      "pattern": "API Gateway, AppSync, HTTP APIs",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "sls018",
+      "type": "patterns",
+      "name": "Event Processing",
+      "description": "Async patterns",
+      "pattern": "SQS, EventBridge, Step Functions",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "sls019",
+      "type": "patterns",
+      "name": "Orchestration",
+      "description": "Workflow",
+      "pattern": "Step Functions, Durable Functions",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "sls020",
+      "type": "patterns",
+      "name": "Fan-Out",
+      "description": "Parallel processing",
+      "pattern": "SNS, parallel states, map",
+      "example": "Patterns usage"
+    },
+    {
+      "id": "sls021",
+      "type": "data",
+      "name": "Serverless Databases",
+      "description": "Data storage",
+      "pattern": "DynamoDB, Aurora Serverless, PlanetScale",
+      "example": "Data usage"
+    },
+    {
+      "id": "sls022",
+      "type": "data",
+      "name": "Object Storage",
+      "description": "File storage",
+      "pattern": "S3, Blob Storage, Cloud Storage",
+      "example": "Data usage"
+    },
+    {
+      "id": "sls023",
+      "type": "optimization",
+      "name": "Performance",
+      "description": "Speed optimization",
+      "pattern": "Bundle size, memory, provisioned",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "sls024",
+      "type": "optimization",
+      "name": "Cost Optimization",
+      "description": "Cost control",
+      "pattern": "Reserved concurrency, batching, right-sizing",
+      "example": "Optimization usage"
+    },
+    {
+      "id": "sls025",
+      "type": "security",
+      "name": "IAM",
+      "description": "Permissions",
+      "pattern": "Least privilege, resource policies",
+      "example": "Security usage"
+    },
+    {
+      "id": "sls026",
+      "type": "security",
+      "name": "Secrets",
+      "description": "Secret management",
+      "pattern": "Secrets Manager, Parameter Store",
+      "example": "Security usage"
+    },
+    {
+      "id": "sls027",
+      "type": "observability",
+      "name": "Logging",
+      "description": "Function logs",
+      "pattern": "CloudWatch, structured logs, correlation",
+      "example": "Observability usage"
+    },
+    {
+      "id": "sls028",
+      "type": "observability",
+      "name": "Tracing",
+      "description": "Distributed tracing",
+      "pattern": "X-Ray, Lumigo, Datadog",
+      "example": "Observability usage"
+    },
+    {
+      "id": "sls029",
+      "type": "testing",
+      "name": "Local Development",
+      "description": "Local testing",
+      "pattern": "SAM local, serverless-offline, LocalStack",
+      "example": "Testing usage"
+    },
+    {
+      "id": "sls030",
+      "type": "testing",
+      "name": "Testing Strategies",
+      "description": "Test patterns",
+      "pattern": "Unit, integration, contract testing",
+      "example": "Testing usage"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "category": "pytorch-deep-learning",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "pt001",
+      "type": "fundamentals",
+      "name": "PyTorch Basics",
+      "description": "Deep learning framework",
+      "pattern": "Tensors, autograd, dynamic computation graph",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pt002",
+      "type": "fundamentals",
+      "name": "Tensors",
+      "description": "N-D arrays",
+      "pattern": "torch.tensor(), cuda(), requires_grad=True",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pt003",
+      "type": "fundamentals",
+      "name": "Tensor Operations",
+      "description": "Math operations",
+      "pattern": "add, matmul, view, reshape, squeeze, unsqueeze",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pt004",
+      "type": "fundamentals",
+      "name": "GPU Acceleration",
+      "description": "CUDA tensors",
+      "pattern": "tensor.to('cuda'), device selection",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "pt005",
+      "type": "autograd",
+      "name": "Automatic Differentiation",
+      "description": "Gradients",
+      "pattern": "loss.backward(), tensor.grad, requires_grad",
+      "example": "Autograd usage"
+    },
+    {
+      "id": "pt006",
+      "type": "autograd",
+      "name": "Computation Graph",
+      "description": "Dynamic graph",
+      "pattern": "Built on-the-fly, easy debugging, no trace",
+      "example": "Autograd usage"
+    },
+    {
+      "id": "pt007",
+      "type": "nn",
+      "name": "nn.Module",
+      "description": "Base class",
+      "pattern": "class Net(nn.Module): def __init__, forward",
+      "example": "Nn usage"
+    },
+    {
+      "id": "pt008",
+      "type": "nn",
+      "name": "Linear Layers",
+      "description": "Fully connected",
+      "pattern": "nn.Linear(in_features, out_features)",
+      "example": "Nn usage"
+    },
+    {
+      "id": "pt009",
+      "type": "nn",
+      "name": "Convolution Layers",
+      "description": "CNNs",
+      "pattern": "nn.Conv2d(in_ch, out_ch, kernel_size)",
+      "example": "Nn usage"
+    },
+    {
+      "id": "pt010",
+      "type": "nn",
+      "name": "Recurrent Layers",
+      "description": "RNNs",
+      "pattern": "nn.LSTM, nn.GRU, nn.RNN, hidden states",
+      "example": "Nn usage"
+    },
+    {
+      "id": "pt011",
+      "type": "nn",
+      "name": "Activation Functions",
+      "description": "Non-linearity",
+      "pattern": "nn.ReLU, Sigmoid, Tanh, Softmax, LeakyReLU",
+      "example": "Nn usage"
+    },
+    {
+      "id": "pt012",
+      "type": "nn",
+      "name": "Pooling",
+      "description": "Downsampling",
+      "pattern": "nn.MaxPool2d, AvgPool2d, AdaptiveAvgPool2d",
+      "example": "Nn usage"
+    },
+    {
+      "id": "pt013",
+      "type": "nn",
+      "name": "Normalization",
+      "description": "Normalize activations",
+      "pattern": "nn.BatchNorm2d, LayerNorm, GroupNorm",
+      "example": "Nn usage"
+    },
+    {
+      "id": "pt014",
+      "type": "nn",
+      "name": "Dropout",
+      "description": "Regularization",
+      "pattern": "nn.Dropout(p=0.5), train vs eval mode",
+      "example": "Nn usage"
+    },
+    {
+      "id": "pt015",
+      "type": "training",
+      "name": "Loss Functions",
+      "description": "Objectives",
+      "pattern": "nn.CrossEntropyLoss, MSELoss, BCELoss",
+      "example": "Training usage"
+    },
+    {
+      "id": "pt016",
+      "type": "training",
+      "name": "Optimizers",
+      "description": "Update weights",
+      "pattern": "torch.optim.Adam, SGD, lr_scheduler",
+      "example": "Training usage"
+    },
+    {
+      "id": "pt017",
+      "type": "training",
+      "name": "Training Loop",
+      "description": "Iterate epochs",
+      "pattern": "zero_grad, forward, loss, backward, step",
+      "example": "Training usage"
+    },
+    {
+      "id": "pt018",
+      "type": "training",
+      "name": "Validation",
+      "description": "Evaluate model",
+      "pattern": "model.eval(), torch.no_grad(), metrics",
+      "example": "Training usage"
+    },
+    {
+      "id": "pt019",
+      "type": "data",
+      "name": "Dataset",
+      "description": "Data abstraction",
+      "pattern": "class MyDataset(Dataset): __len__, __getitem__",
+      "example": "Data usage"
+    },
+    {
+      "id": "pt020",
+      "type": "data",
+      "name": "DataLoader",
+      "description": "Batch loading",
+      "pattern": "DataLoader(dataset, batch_size=32, shuffle=True)",
+      "example": "Data usage"
+    },
+    {
+      "id": "pt021",
+      "type": "data",
+      "name": "Transforms",
+      "description": "Data augmentation",
+      "pattern": "torchvision.transforms, Compose, ToTensor",
+      "example": "Data usage"
+    },
+    {
+      "id": "pt022",
+      "type": "models",
+      "name": "Pretrained Models",
+      "description": "Transfer learning",
+      "pattern": "torchvision.models.resnet18(pretrained=True)",
+      "example": "Models usage"
+    },
+    {
+      "id": "pt023",
+      "type": "models",
+      "name": "Fine-tuning",
+      "description": "Adapt pretrained",
+      "pattern": "Freeze layers, replace classifier, train",
+      "example": "Models usage"
+    },
+    {
+      "id": "pt024",
+      "type": "save",
+      "name": "Save/Load Models",
+      "description": "Persistence",
+      "pattern": "torch.save(model.state_dict()), load_state_dict",
+      "example": "Save usage"
+    },
+    {
+      "id": "pt025",
+      "type": "advanced",
+      "name": "Custom Layers",
+      "description": "Extend nn.Module",
+      "pattern": "class MyLayer(nn.Module), register_parameter",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "pt026",
+      "type": "advanced",
+      "name": "Hooks",
+      "description": "Inspect layers",
+      "pattern": "register_forward_hook, gradient hooks",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "pt027",
+      "type": "advanced",
+      "name": "Mixed Precision",
+      "description": "FP16 training",
+      "pattern": "torch.cuda.amp, autocast, GradScaler",
+      "example": "Advanced usage"
+    },
+    {
+      "id": "pt028",
+      "type": "distributed",
+      "name": "Distributed Training",
+      "description": "Multi-GPU",
+      "pattern": "DataParallel, DistributedDataParallel, DDP",
+      "example": "Distributed usage"
+    },
+    {
+      "id": "pt029",
+      "type": "ecosystem",
+      "name": "TorchVision",
+      "description": "Vision tools",
+      "pattern": "Datasets, models, transforms for images",
+      "example": "Ecosystem usage"
+    },
+    {
+      "id": "pt030",
+      "type": "ecosystem",
+      "name": "Lightning",
+      "description": "High-level API",
+      "pattern": "PyTorch Lightning, LightningModule, Trainer",
+      "example": "Ecosystem usage"
+    }
+  ]
+}

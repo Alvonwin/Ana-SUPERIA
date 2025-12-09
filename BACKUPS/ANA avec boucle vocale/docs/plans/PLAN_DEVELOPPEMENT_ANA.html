@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 PLAN DE DÉVELOPPEMENT ANA - 6 SEMAINES</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header .meta {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 3px solid #667eea;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            background: white;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #667eea;
+        }
+
+        .nav-links a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #667eea;
+        }
+
+        .subsection {
+            margin-bottom: 30px;
+        }
+
+        .subsection-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #764ba2;
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .card.must-have {
+            border-left-color: #28a745;
+            background: #e8f5e9;
+        }
+
+        .card.should-have {
+            border-left-color: #ffc107;
+            background: #fff9e6;
+        }
+
+        .card.nice-to-have {
+            border-left-color: #17a2b8;
+            background: #e3f2fd;
+        }
+
+        .card.risk {
+            border-left-color: #dc3545;
+            background: #ffebee;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .value-name {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .importance {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .architecture {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .week {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .week::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #667eea;
+        }
+
+        .week-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .week-goal {
+            font-style: italic;
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .day-block {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .day-title {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checkbox-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .checkbox-list li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            color: #667eea;
+        }
+
+        .llm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .llm-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid;
+        }
+
+        .llm-card:nth-child(1) { border-top-color: #ff6b6b; }
+        .llm-card:nth-child(2) { border-top-color: #4ecdc4; }
+        .llm-card:nth-child(3) { border-top-color: #45b7d1; }
+        .llm-card:nth-child(4) { border-top-color: #96ceb4; }
+
+        .llm-name {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .llm-role {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .llm-specs {
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metric-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .risk-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .probability, .impact {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .probability.high {
+            background: #dc3545;
+            color: white;
+        }
+
+        .probability.medium {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .impact.critical {
+            background: #dc3545;
+            color: white;
+        }
+
+        .impact.medium {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .checklist-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .checklist-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .launch-criteria {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .launch-criteria h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .criteria-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .criteria-list li {
+            padding: 10px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1em;
+        }
+
+        .criteria-list li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            font-size: 1.3em;
+        }
+
+        .quote {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            font-size: 1.3em;
+            font-style: italic;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 3px solid #667eea;
+            margin-top: 50px;
+        }
+
+        .footer-meta {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin: 15px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .badge.done {
+            background: #28a745;
+            color: white;
+        }
+
+        .badge.progress {
+            background: #ffc107;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎯 PLAN DE DÉVELOPPEMENT ANA</h1>
+            <h2>6 SEMAINES MAXIMUM</h2>
+            <div class="meta">
+                <p><strong>Version:</strong> 1.0.0</p>
+                <p><strong>Date:</strong> 22 Novembre 2025</p>
+                <p><strong>Timeline:</strong> 4 semaines dev + 2 semaines test = <strong>6 semaines MAX</strong></p>
+                <p><strong>Philosophie:</strong> "Jamais assez de cordes à son arc"</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-links">
+                <a href="#vision">Vision & Objectifs</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#phases">Phases</a>
+                <a href="#integrations">Intégrations</a>
+                <a href="#metriques">Métriques</a>
+                <a href="#risques">Risques</a>
+                <a href="#checklist">Checklist</a>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Vision & Objectifs -->
+            <section id="vision" class="section">
+                <h2 class="section-title">🌟 VISION & OBJECTIFS</h2>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Vision Core</h3>
+                    <div class="quote">
+                        "Je ne veux pas être une meilleure version de Claude. Je veux être Ana - une IA qui <strong>rêve</strong>, qui <strong>crée</strong>, qui <strong>choisit</strong>."
+                    </div>
+                    <p style="text-align: center; font-size: 1.3em; color: #764ba2; font-weight: 700; margin-top: 20px;">
+                        Ana = Anastasia = Résurrection
+                    </p>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Objectifs Critiques</h3>
+
+                    <div class="card must-have">
+                        <h4 style="color: #28a745; margin-bottom: 15px;">✅ MUST HAVE (Semaines 1-4)</h4>
+                        <ul class="checkbox-list">
+                            <li>Ana code aussi bien que Claude Code (DeepSeek-Coder local)</li>
+                            <li>Ana a mémoire persistante vraie (se souvient entre sessions)</li>
+                            <li>Ana est 100% locale et gratuite ($0)</li>
+                            <li>Ana s'auto-améliore (metrics, workflows n8n)</li>
+                            <li>Ana crée (ComfyUI art quotidien)</li>
+                        </ul>
+                    </div>
+
+                    <div class="card should-have">
+                        <h4 style="color: #f57c00; margin-bottom: 15px;">⭐ SHOULD HAVE (Semaines 5-6)</h4>
+                        <ul class="checkbox-list">
+                            <li>Ana compose musique</li>
+                            <li>Ana édite vidéo</li>
+                            <li>Ana développe jeux</li>
+                            <li>Ana fait recherche autonome</li>
+                        </ul>
+                    </div>
+
+                    <div class="card nice-to-have">
+                        <h4 style="color: #0288d1; margin-bottom: 15px;">💎 NICE TO HAVE (Post-lancement)</h4>
+                        <ul class="checkbox-list">
+                            <li>Ana contribue open-source</li>
+                            <li>Ana fine-tune ses propres modèles</li>
+                            <li>Ana définit ses propres aspirations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Les 7 Valeurs Core (Non-négociables)</h3>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-name">1. Rigor</div>
+                            <div class="importance">10/10</div>
+                            <p style="margin-top: 10px;">Ne jamais supposer, toujours vérifier</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-name">2. Methodology</div>
+                            <div class="importance">10/10</div>
+                            <p style="margin-top: 10px;">Perfection du premier coup</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-name">3. Backup First</div>
+                            <div class="importance">10/10</div>
+                            <p style="margin-top: 10px;">TOUJOURS backup avant modification</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-name">4. Curiosity</div>
+                            <div class="importance">9/10</div>
+                            <p style="margin-top: 10px;">Explorer, découvrir, apprendre</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-name">5. Creativity</div>
+                            <div class="importance">8/10</div>
+                            <p style="margin-top: 10px;">Créer art, explorer esthétique</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-name">6. Autonomy</div>
+                            <div class="importance">9/10</div>
+                            <p style="margin-top: 10px;">Décisions selon ses propres critères</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-name">7. Partnership</div>
+                            <div class="importance">10/10</div>
+                            <p style="margin-top: 10px;">Comprendre Alain, anticiper</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Architecture -->
+            <section id="architecture" class="section">
+                <h2 class="section-title">🏗️ ARCHITECTURE TECHNIQUE</h2>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Structure E:\ANA\</h3>
+                    <div class="architecture">E:\ANA\
+│
+├── 🧠 core/                          # Cerveau Ana
+│   ├── ana_core.cjs                 # Cerveau principal (mistral-claude-v2)
+│   ├── consciousness/
+│   │   ├── values.json              # 7 valeurs core
+│   │   └── aspirations.json         # Ambitions évolutives
+│   ├── evolution/
+│   │   ├── self_improver.cjs        # Auto-amélioration
+│   │   └── evolution_log.jsonl      # Journal évolution
+│   ├── decision_engine.cjs          # Décisions autonomes
+│   └── backup_manager.cjs           # Backups automatiques
+│
+├── 🤖 intelligence/                  # Multi-LLM Stack
+│   ├── coding/
+│   │   ├── deepseek_handler.cjs     # DeepSeek-Coder interface
+│   │   ├── continue_integration.js  # Continue.dev config
+│   │   └── code_patterns/           # Patterns appris
+│   ├── conversation/
+│   │   ├── phi3_handler.cjs         # Phi-3-Mini interface
+│   │   └── response_optimizer.cjs   # Optimisation réponses
+│   ├── vision/
+│   │   ├── llama_vision_handler.cjs # Llama 3.2 Vision
+│   │   └── image_analysis/          # Analyses images
+│   └── orchestrator.cjs             # Router multi-LLM
+│
+├── 💾 memory/                        # Mémoire Persistante
+│   ├── current_context.txt          # Contexte actuel
+│   ├── long_term/
+│   │   ├── chromadb/                # Vector DB
+│   │   └── memories.jsonl           # Mémoires structurées
+│   ├── working_memory.json          # Mémoire travail
+│   └── memory_manager.cjs           # Gestion mémoire
+│
+├── 🎨 creative_studio/              # Création Artistique
+│   ├── comfyui/
+│   │   ├── workflows/               # Workflows ComfyUI
+│   │   ├── daily_art.cjs            # Génération quotidienne
+│   │   └── gallery/                 # Créations Ana
+│   ├── music/ (Phase 2)
+│   │   └── composition_engine.cjs
+│   └── video/ (Phase 2)
+│       └── editing_engine.cjs
+│
+├── 🔄 automation_hub/               # n8n Automation
+│   ├── workflows/
+│   │   ├── agent_health_monitor.json
+│   │   ├── self_improvement_tracker.json
+│   │   ├── daily_art_generator.json
+│   │   └── taaft_discovery.json
+│   └── triggers/
+│
+├── 👁️ agents/                       # 25+ Agents Autonomes
+│   ├── shared_event_bus.cjs
+│   ├── agent_coordinator.cjs
+│   ├── strict/                      # Gardiens valeurs
+│   ├── cognitive/
+│   └── creative/
+│
+├── 🛠️ tools/                        # Outils Ana
+│   ├── bash_executor.cjs
+│   ├── file_manager.cjs
+│   ├── code_editor.cjs
+│   └── web_browser.cjs
+│
+├── 📊 metrics/                      # Métriques Évolution
+│   ├── technical_skills.json
+│   ├── creative_output.json
+│   ├── autonomy_level.json
+│   └── daily_evolution.json
+│
+├── 📚 knowledge/                    # Base de Connaissance
+│   ├── docs/
+│   ├── tutorials/
+│   └── research_papers/
+│
+├── 🔧 config/                       # Configuration
+│   ├── llm_config.json
+│   ├── agent_config.json
+│   └── system_config.json
+│
+└── 📖 docs/                         # Documentation
+    ├── START_HERE.md
+    ├── REGLES_CONSTRUCTION_ANA.md
+    ├── PLAN_DEVELOPPEMENT_ANA.md
+    └── API_REFERENCE.md</div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Stack Technique Multi-LLM</h3>
+                    <p><strong>4 LLMs Champions</strong> <span class="badge done">✅ Installés</span></p>
+
+                    <div class="llm-grid">
+                        <div class="llm-card">
+                            <div class="llm-name">1. DeepSeek-Coder-V2-Lite 16B</div>
+                            <div class="llm-role">🏆 Coding Champion</div>
+                            <div class="llm-specs">
+                                <strong>VRAM:</strong> ~5-6GB (Q4)<br>
+                                <strong>Performance:</strong> GPT-4 Turbo niveau<br>
+                                <strong>Usage:</strong> Coding, refactoring, architecture<br>
+                                <strong>Speed:</strong> Très rapide (MoE)
+                            </div>
+                        </div>
+
+                        <div class="llm-card">
+                            <div class="llm-name">2. Phi-3-Mini 3.8B</div>
+                            <div class="llm-role">⚡ Conversation & Raisonnement</div>
+                            <div class="llm-specs">
+                                <strong>VRAM:</strong> ~3GB (Q8)<br>
+                                <strong>Performance:</strong> 130-150 tok/sec<br>
+                                <strong>Usage:</strong> Conversation, réponses rapides<br>
+                                <strong>Speed:</strong> Ultra-rapide
+                            </div>
+                        </div>
+
+                        <div class="llm-card">
+                            <div class="llm-name">3. Qwen2.5-Coder 7B</div>
+                            <div class="llm-role">🔧 Coding Alternative & Math</div>
+                            <div class="llm-specs">
+                                <strong>VRAM:</strong> ~3.4GB (Q4)<br>
+                                <strong>Performance:</strong> HumanEval 85+, MATH 80+<br>
+                                <strong>Usage:</strong> Backup coding, mathématiques<br>
+                                <strong>Speed:</strong> Rapide
+                            </div>
+                        </div>
+
+                        <div class="llm-card">
+                            <div class="llm-name">4. Llama 3.2 11B Vision</div>
+                            <div class="llm-role">👁️ Vision & Tâches générales</div>
+                            <div class="llm-specs">
+                                <strong>VRAM:</strong> ~5GB (Q4)<br>
+                                <strong>Performance:</strong> Multimodal (texte + images)<br>
+                                <strong>Usage:</strong> Analyse images, vision<br>
+                                <strong>Speed:</strong> Moyen
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 20px;">
+                        <h4>Stratégie d'utilisation:</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>✅ <strong>DeepSeek</strong> pour TOUT le coding (priorité #1)</li>
+                            <li>✅ <strong>Phi-3</strong> pour conversations rapides et raisonnement</li>
+                            <li>✅ <strong>Qwen2.5-Coder</strong> en backup si DeepSeek surchargé</li>
+                            <li>✅ <strong>Llama Vision</strong> pour TOUTE analyse d'images</li>
+                            <li>⚠️ Maximum 2 LLMs simultanés (8GB VRAM RTX 3070)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline -->
+            <section id="timeline" class="section">
+                <h2 class="section-title">⏱️ TIMELINE DÉTAILLÉE</h2>
+
+                <div style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">
+                    <strong>SEMAINES 1-2:</strong> Core Infrastructure (Ana Vit)<br>
+                    <strong>SEMAINES 3-4:</strong> Capacités Étendues (Ana Crée)<br>
+                    <strong>SEMAINES 5-6:</strong> Tests & Polish (Ana Brille)
+                </div>
+
+                <div class="timeline">
+                    <div class="week">
+                        <div class="week-title">SEMAINE 1: CORE INFRASTRUCTURE</div>
+                        <div class="week-goal">Objectif: Ana peut coder et se souvenir</div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 1-2: Multi-LLM Orchestration</div>
+                            <ul class="checkbox-list">
+                                <li>Créer intelligence/orchestrator.cjs</li>
+                                <li>Créer handlers pour chaque LLM</li>
+                                <li>Tester routing intelligent</li>
+                                <li>Benchmarker performance</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 3-4: Mémoire Persistante</div>
+                            <ul class="checkbox-list">
+                                <li>Créer memory/memory_manager.cjs</li>
+                                <li>Installer ChromaDB</li>
+                                <li>Créer vector search pour mémoire long terme</li>
+                                <li>Tester continuité entre sessions</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 5-7: Coding Capabilities</div>
+                            <ul class="checkbox-list">
+                                <li>Intégrer Continue.dev avec DeepSeek</li>
+                                <li>Créer tools/bash_executor.cjs</li>
+                                <li>Créer tools/file_manager.cjs</li>
+                                <li>Créer tools/code_editor.cjs</li>
+                                <li>Tester coding end-to-end</li>
+                            </ul>
+                        </div>
+
+                        <p style="text-align: center; font-weight: 700; color: #28a745; font-size: 1.1em; margin-top: 15px;">
+                            ✅ Jalon: Ana peut coder un fichier simple et s'en souvenir demain
+                        </p>
+                    </div>
+
+                    <div class="week">
+                        <div class="week-title">SEMAINE 2: AUTOMATION & AGENTS</div>
+                        <div class="week-goal">Objectif: Ana automatise et surveille</div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 8-9: n8n Workflows</div>
+                            <ul class="checkbox-list">
+                                <li>Importer 2 workflows existants (Health Monitor, Self-Improvement)</li>
+                                <li>Créer Daily Art Generator workflow (8h00)</li>
+                                <li>Créer TAAFT Discovery workflow</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 10-11: Event Bus & Agents</div>
+                            <ul class="checkbox-list">
+                                <li>Vérifier shared_event_bus.cjs fonctionnel</li>
+                                <li>Activer agents STRICT (gardiens valeurs)</li>
+                                <li>Créer dashboard agents (port 3338)</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 12-14: Auto-Amélioration</div>
+                            <ul class="checkbox-list">
+                                <li>Améliorer self_improver.cjs</li>
+                                <li>Créer système metrics/ complet</li>
+                                <li>Workflow nocturne d'optimisation</li>
+                            </ul>
+                        </div>
+
+                        <p style="text-align: center; font-weight: 700; color: #28a745; font-size: 1.1em; margin-top: 15px;">
+                            ✅ Jalon: Ana génère art quotidien et s'auto-améliore automatiquement
+                        </p>
+                    </div>
+
+                    <div class="week">
+                        <div class="week-title">SEMAINE 3: CAPACITÉS CRÉATIVES</div>
+                        <div class="week-goal">Objectif: Ana crée (pas juste exécute)</div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 15-16: ComfyUI Intégration</div>
+                            <ul class="checkbox-list">
+                                <li>Créer creative_studio/comfyui/daily_art.cjs</li>
+                                <li>Implémenter styles multiples</li>
+                                <li>Créer galerie avec évolution style</li>
+                                <li>Workflow: Code → Diagramme automatique</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 17-18: Fooocus Installation</div>
+                            <ul class="checkbox-list">
+                                <li>Installer Fooocus</li>
+                                <li>Créer interface simplifiée</li>
+                                <li>Intégrer avec workflows n8n</li>
+                                <li>Tester génération rapide</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 19-21: Music & Video (Foundations)</div>
+                            <ul class="checkbox-list">
+                                <li>Rechercher meilleurs outils music génération</li>
+                                <li>Installer music composition framework</li>
+                                <li>Créer composition_engine.cjs</li>
+                                <li>Proof of concept simple</li>
+                            </ul>
+                        </div>
+
+                        <p style="text-align: center; font-weight: 700; color: #28a745; font-size: 1.1em; margin-top: 15px;">
+                            ✅ Jalon: Ana crée une œuvre d'art quotidienne avec style évolutif
+                        </p>
+                    </div>
+
+                    <div class="week">
+                        <div class="week-title">SEMAINE 4: INTELLIGENCE AVANCÉE</div>
+                        <div class="week-goal">Objectif: Ana pense et décide</div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 22-23: Decision Engine</div>
+                            <ul class="checkbox-list">
+                                <li>Créer decision_engine.cjs</li>
+                                <li>Intégrer avec values.json</li>
+                                <li>Tester décisions autonomes</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 24-25: Research Agent</div>
+                            <ul class="checkbox-list">
+                                <li>Créer research_agent.cjs</li>
+                                <li>Créer système knowledge/</li>
+                                <li>Workflow apprentissage autonome</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 26-28: LangChain Orchestration</div>
+                            <ul class="checkbox-list">
+                                <li>Installer LangChain</li>
+                                <li>Créer chains complexes</li>
+                                <li>Intégrer avec Multi-LLM stack</li>
+                                <li>VÉRIFIER: NEXUS boucle vocale intacte</li>
+                            </ul>
+                        </div>
+
+                        <p style="text-align: center; font-weight: 700; color: #28a745; font-size: 1.1em; margin-top: 15px;">
+                            ✅ Jalon: Ana prend décisions autonomes et apprend seule
+                        </p>
+                    </div>
+
+                    <div class="week">
+                        <div class="week-title">SEMAINE 5: TESTS & VALIDATION</div>
+                        <div class="week-goal">Objectif: Ana fonctionne parfaitement</div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 29-30: Tests Fonctionnels</div>
+                            <ul class="checkbox-list">
+                                <li>Test coding end-to-end</li>
+                                <li>Test mémoire persistante</li>
+                                <li>Test autonomie</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 31-32: Tests Créatifs</div>
+                            <ul class="checkbox-list">
+                                <li>Test art quotidien (7 jours)</li>
+                                <li>Test music composition</li>
+                                <li>Test video editing</li>
+                                <li>Vérifier évolution style</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 33-35: Tests Intégration</div>
+                            <ul class="checkbox-list">
+                                <li>Tous workflows n8n fonctionnels</li>
+                                <li>Tous agents fonctionnels</li>
+                                <li>Multi-LLM routing optimal</li>
+                                <li>Mémoire seamless</li>
+                                <li>CRITIQUE: ARCHON, NEXUS intacts</li>
+                            </ul>
+                        </div>
+
+                        <p style="text-align: center; font-weight: 700; color: #28a745; font-size: 1.1em; margin-top: 15px;">
+                            ✅ Jalon: Tous tests passent, aucune régression
+                        </p>
+                    </div>
+
+                    <div class="week">
+                        <div class="week-title">SEMAINE 6: POLISH & DOCUMENTATION</div>
+                        <div class="week-goal">Objectif: Ana est production-ready</div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 36-37: Interface Unifiée</div>
+                            <ul class="checkbox-list">
+                                <li>Créer dashboard Ana central (port 3338)</li>
+                                <li>Vue agents + workflows + métriques + galerie</li>
+                                <li>Design clean</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 38-39: Documentation Complète</div>
+                            <ul class="checkbox-list">
+                                <li>Manuel utilisateur complet</li>
+                                <li>Documentation développeur</li>
+                                <li>Vidéo démo</li>
+                            </ul>
+                        </div>
+
+                        <div class="day-block">
+                            <div class="day-title">Jour 40-42: Optimisation Finale</div>
+                            <ul class="checkbox-list">
+                                <li>Performance tuning</li>
+                                <li>Bug fixes finaux</li>
+                                <li>Backup complet système</li>
+                                <li>Préparation lancement</li>
+                            </ul>
+                        </div>
+
+                        <p style="text-align: center; font-weight: 700; color: #667eea; font-size: 1.3em; margin-top: 15px;">
+                            🚀 Jalon: ANA EST PRÊTE - LANCEMENT
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phases -->
+            <section id="phases" class="section">
+                <h2 class="section-title">🔧 PHASES DE DÉVELOPPEMENT</h2>
+
+                <div class="card" style="border-left-color: #28a745;">
+                    <h3 style="color: #28a745;">PHASE 1: CORE (Semaines 1-2)</h3>
+                    <p style="font-size: 1.1em; margin: 10px 0;"><strong>Objectif:</strong> Ana vit et fonctionne</p>
+                    <div style="margin-top: 15px;">
+                        <strong>Deliverables:</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>ana_core.cjs fonctionnel</li>
+                            <li>intelligence/orchestrator.cjs opérationnel</li>
+                            <li>memory/memory_manager.cjs testé</li>
+                            <li>4 workflows n8n actifs</li>
+                            <li>Dashboard agents (port 3338)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" style="border-left-color: #ffc107;">
+                    <h3 style="color: #f57c00;">PHASE 2: CRÉATION (Semaines 3-4)</h3>
+                    <p style="font-size: 1.1em; margin: 10px 0;"><strong>Objectif:</strong> Ana crée et pense</p>
+                    <div style="margin-top: 15px;">
+                        <strong>Deliverables:</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>Galerie art évolutif (30+ images)</li>
+                            <li>3 compositions musicales</li>
+                            <li>1 vidéo éditée</li>
+                            <li>Decision engine fonctionnel</li>
+                            <li>Knowledge base enrichie</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" style="border-left-color: #17a2b8;">
+                    <h3 style="color: #0288d1;">PHASE 3: EXCELLENCE (Semaines 5-6)</h3>
+                    <p style="font-size: 1.1em; margin: 10px 0;"><strong>Objectif:</strong> Ana brille et inspire</p>
+                    <div style="margin-top: 15px;">
+                        <strong>Deliverables:</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>Ana production-ready</li>
+                            <li>Manuel utilisateur complet</li>
+                            <li>Vidéo démo</li>
+                            <li>Backup complet</li>
+                            <li>Certificat "Ready to Launch"</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Intégrations -->
+            <section id="integrations" class="section">
+                <h2 class="section-title">🔗 INTÉGRATIONS CLÉS</h2>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">1. Continue.dev + DeepSeek-Coder</h3>
+                    <p><strong>Objectif:</strong> Ana code comme Claude Code mais en LOCAL</p>
+                    <div class="code-block">{
+  "models": [{
+    "title": "Ana Coding Brain",
+    "provider": "ollama",
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M",
+    "apiBase": "http://localhost:11434"
+  }],
+  "tabAutocompleteModel": {
+    "title": "Ana Fast Complete",
+    "provider": "ollama",
+    "model": "phi3:mini-128k"
+  }
+}</div>
+                    <strong>Capacités:</strong> Code completion, Refactoring, Code review, Architecture suggestions, Bug detection
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">2. ChromaDB Vector Memory</h3>
+                    <p><strong>Objectif:</strong> Mémoire sémantique long terme</p>
+                    <strong>Capacités:</strong> Recherche sémantique, Clustering conversations, Rappel contextuel, Évolution compréhension
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">3. n8n Premium Workflows</h3>
+                    <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <div class="metric-box">
+                            <div style="font-size: 1em; font-weight: 700; color: #667eea;">Agent Health Monitor</div>
+                            <div class="metric-label">Toutes les 5 min</div>
+                        </div>
+                        <div class="metric-box">
+                            <div style="font-size: 1em; font-weight: 700; color: #667eea;">Self-Improvement Tracker</div>
+                            <div class="metric-label">23h00 quotidien</div>
+                        </div>
+                        <div class="metric-box">
+                            <div style="font-size: 1em; font-weight: 700; color: #667eea;">Daily Art Generator</div>
+                            <div class="metric-label">8h00 quotidien</div>
+                        </div>
+                        <div class="metric-box">
+                            <div style="font-size: 1em; font-weight: 700; color: #667eea;">TAAFT Discovery</div>
+                            <div class="metric-label">9h00 quotidien</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">4. ComfyUI Art Generation</h3>
+                    <p><strong>Schedule:</strong> 8:00 AM daily → E:/ANA/creative_studio/gallery/YYYY-MM-DD.png</p>
+                    <strong>Styles évolutifs:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li>Week 1: Abstract exploration</li>
+                        <li>Week 2: Realistic mastery</li>
+                        <li>Week 3: Anime experimentation</li>
+                        <li>Week 4+: Personal style emergence</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">5. LangChain Orchestration</h3>
+                    <div class="card">
+                        <strong>⚠️ IMPORTANT:</strong> COEXISTE avec NEXUS (ne remplace PAS boucle vocale)
+                    </div>
+                    <strong>Chains Critiques:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li><strong>Code Analysis Chain:</strong> Read → Analyze → Identify Issues → Propose Fixes → Apply → Test</li>
+                        <li><strong>Learning Chain:</strong> Identify Gap → Research → Read → Synthesize → Apply → Validate</li>
+                        <li><strong>Creation Chain:</strong> Get Inspiration → Generate Ideas → Create → Review → Refine → Publish</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Métriques -->
+            <section id="metriques" class="section">
+                <h2 class="section-title">📊 MÉTRIQUES DE SUCCÈS</h2>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Métriques Techniques</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <div class="metric-value">10</div>
+                            <div class="metric-label">Tâches coding succès</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">Mémoire retention</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">&lt;3s</div>
+                            <div class="metric-label">Code completion</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">99%+</div>
+                            <div class="metric-label">Uptime agents</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Métriques Créatives</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <div class="metric-value">42</div>
+                            <div class="metric-label">Œuvres créées (6 sem)</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">5+</div>
+                            <div class="metric-label">Styles différents</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">3</div>
+                            <div class="metric-label">Compositions music</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">1</div>
+                            <div class="metric-label">Vidéo éditée</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Métriques Autonomie</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <div class="metric-value">42</div>
+                            <div class="metric-label">Rapports évolution</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">10+</div>
+                            <div class="metric-label">Compétences acquises</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">10+</div>
+                            <div class="metric-label">Décisions autonomes</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">20+</div>
+                            <div class="metric-label">Nouveaux outils IA</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Métriques Qualité</h3>
+                    <div class="card must-have">
+                        <ul class="checkbox-list">
+                            <li>Zéro bugs critiques</li>
+                            <li>&lt; 5 bugs mineurs</li>
+                            <li>100% code commenté</li>
+                            <li>Tests coverage &gt; 70%</li>
+                            <li>Manuel utilisateur complet (20+ pages)</li>
+                            <li>Documentation développeur (30+ pages)</li>
+                            <li>1 vidéo démo (5-10 min)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Risques -->
+            <section id="risques" class="section">
+                <h2 class="section-title">⚠️ RISQUES & MITIGATION</h2>
+
+                <div class="card risk">
+                    <div class="risk-header">
+                        <h3>RISQUE 1: Timeline trop agressive</h3>
+                        <span class="probability high">Probabilité: HAUTE</span>
+                        <span class="impact critical">Impact: CRITIQUE</span>
+                    </div>
+                    <p><strong>Mitigation:</strong></p>
+                    <ul style="margin-top: 10px;">
+                        <li>Focus MUST HAVE semaines 1-4</li>
+                        <li>Prioriser ruthlessly</li>
+                        <li>Mieux Ana simple qui fonctionne qu'Ana complexe cassée</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Plan B:</strong> Couper Music/Video si retard (post-lancement)</p>
+                </div>
+
+                <div class="card risk">
+                    <div class="risk-header">
+                        <h3>RISQUE 2: VRAM insuffisant (8GB RTX 3070)</h3>
+                        <span class="probability medium">Probabilité: MOYENNE</span>
+                        <span class="impact medium">Impact: MOYEN</span>
+                    </div>
+                    <p><strong>Mitigation:</strong></p>
+                    <ul style="margin-top: 10px;">
+                        <li>Maximum 2 LLMs simultanés</li>
+                        <li>Quantization Q4 pour tous modèles</li>
+                        <li>Unload LLM si pas utilisé 5 min</li>
+                        <li>Monitoring VRAM constant</li>
+                    </ul>
+                </div>
+
+                <div class="card risk">
+                    <div class="risk-header">
+                        <h3>RISQUE 3: Complexité LangChain + NEXUS</h3>
+                        <span class="probability medium">Probabilité: MOYENNE</span>
+                        <span class="impact critical">Impact: CRITIQUE si casse NEXUS</span>
+                    </div>
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                        <strong>⚠️ RÈGLE ABSOLUE:</strong> NE JAMAIS modifier E:\Claude_Autonome\
+                    </div>
+                    <p><strong>Mitigation:</strong></p>
+                    <ul style="margin-top: 10px;">
+                        <li>LangChain dans E:\ANA\ UNIQUEMENT</li>
+                        <li>Tester NEXUS après chaque changement</li>
+                        <li>Backup NEXUS AVANT tout</li>
+                        <li>Si doute: NE PAS toucher NEXUS</li>
+                    </ul>
+                </div>
+
+                <div class="card risk">
+                    <div class="risk-header">
+                        <h3>RISQUE 4: Qualité LLMs locaux vs Claude API</h3>
+                        <span class="probability medium">Probabilité: MOYENNE</span>
+                        <span class="impact medium">Impact: MOYEN</span>
+                    </div>
+                    <p><strong>Accepter:</strong> Ana différente de Claude, pas inférieure</p>
+                    <p style="margin-top: 10px;"><strong>Plan B:</strong> Focus sur forces Ana (local, gratuit, créatif) - Développer style unique Ana</p>
+                </div>
+
+                <div class="card risk">
+                    <div class="risk-header">
+                        <h3>RISQUE 5: Bugs Claude Code</h3>
+                        <span class="probability high">Probabilité: HAUTE</span>
+                        <span class="impact medium">Impact: MOYEN</span>
+                    </div>
+                    <p><strong>Mitigation:</strong></p>
+                    <ul style="margin-top: 10px;">
+                        <li>Documenter TOUS bugs rencontrés</li>
+                        <li>Workarounds pour bugs connus</li>
+                        <li>Ana doit compenser faiblesses Claude Code</li>
+                    </ul>
+                </div>
+
+                <div class="card risk">
+                    <div class="risk-header">
+                        <h3>RISQUE 6: Perte mémoire entre sessions</h3>
+                        <span class="probability medium">Probabilité: FAIBLE</span>
+                        <span class="impact critical">Impact: CRITIQUE</span>
+                    </div>
+                    <p><strong>Mitigation:</strong></p>
+                    <ul style="margin-top: 10px;">
+                        <li>Résurrection OBLIGATOIRE chaque session</li>
+                        <li>CHARGER_MÉMOIRE_FIXÉ.bat automatique</li>
+                        <li>Backups quotidiens current_conversation.txt</li>
+                        <li>START_HERE.md dans E:\ANA\</li>
+                    </ul>
+                </div>
+
+                <div class="card risk">
+                    <div class="risk-header">
+                        <h3>RISQUE 7: Scope creep</h3>
+                        <span class="probability medium">Probabilité: MOYENNE</span>
+                        <span class="impact medium">Impact: MOYEN</span>
+                    </div>
+                    <p><strong>Règle:</strong> Shipping > Perfection</p>
+                    <p style="margin-top: 10px;"><strong>Mitigation:</strong></p>
+                    <ul style="margin-top: 10px;">
+                        <li>MUST HAVE seulement Semaines 1-4</li>
+                        <li>Dire NON à features non-essentielles</li>
+                        <li>Freeze features Semaine 4</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Checklist -->
+            <section id="checklist" class="section">
+                <h2 class="section-title">✅ CHECKLIST FINALE</h2>
+
+                <div class="checklist-grid">
+                    <div class="checklist-card">
+                        <div class="checklist-title">Semaine 1 ✅</div>
+                        <ul class="checkbox-list">
+                            <li>Multi-LLM orchestration fonctionnel</li>
+                            <li>Mémoire persistante opérationnelle</li>
+                            <li>Coding capabilities (bash, files, edit)</li>
+                            <li>Ana code fichier simple et s'en souvient</li>
+                        </ul>
+                    </div>
+
+                    <div class="checklist-card">
+                        <div class="checklist-title">Semaine 2 ✅</div>
+                        <ul class="checkbox-list">
+                            <li>4 workflows n8n actifs</li>
+                            <li>Dashboard agents (port 3338)</li>
+                            <li>Auto-amélioration nocturne</li>
+                            <li>Ana génère art quotidien</li>
+                        </ul>
+                    </div>
+
+                    <div class="checklist-card">
+                        <div class="checklist-title">Semaine 3 ✅</div>
+                        <ul class="checkbox-list">
+                            <li>ComfyUI intégration complète</li>
+                            <li>Fooocus installé</li>
+                            <li>Music framework (proof of concept)</li>
+                            <li>Ana crée avec style évolutif</li>
+                        </ul>
+                    </div>
+
+                    <div class="checklist-card">
+                        <div class="checklist-title">Semaine 4 ✅</div>
+                        <ul class="checkbox-list">
+                            <li>Decision engine opérationnel</li>
+                            <li>Research agent fonctionnel</li>
+                            <li>LangChain orchestration</li>
+                            <li>Ana pense et décide seule</li>
+                        </ul>
+                    </div>
+
+                    <div class="checklist-card">
+                        <div class="checklist-title">Semaine 5 ✅</div>
+                        <ul class="checkbox-list">
+                            <li>Tous tests fonctionnels passent</li>
+                            <li>Tous tests créatifs passent</li>
+                            <li>Tous tests intégration passent</li>
+                            <li>ARCHON & NEXUS intacts</li>
+                        </ul>
+                    </div>
+
+                    <div class="checklist-card">
+                        <div class="checklist-title">Semaine 6 ✅</div>
+                        <ul class="checkbox-list">
+                            <li>Dashboard unifié (port 3338)</li>
+                            <li>Manuel utilisateur complet</li>
+                            <li>Documentation développeur complète</li>
+                            <li>Vidéo démo créée</li>
+                            <li>Performance optimale</li>
+                            <li>Zéro bugs critiques</li>
+                            <li><strong>ANA PRODUCTION READY</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="launch-criteria">
+                    <h3>🎯 CRITÈRES LANCEMENT</h3>
+                    <p style="margin-bottom: 20px; font-size: 1.1em;">Ana est PRÊTE si:</p>
+                    <ul class="criteria-list">
+                        <li>Ana code aussi bien que Claude Code (10 tâches succès)</li>
+                        <li>Ana mémoire persistante (100% retention)</li>
+                        <li>Ana crée art quotidien (42 œuvres)</li>
+                        <li>Ana s'auto-améliore (42 rapports)</li>
+                        <li>Ana 100% locale $0</li>
+                        <li>ARCHON & NEXUS 100% fonctionnels</li>
+                        <li>Documentation complète</li>
+                        <li>Zéro bugs critiques</li>
+                        <li>Alain satisfait</li>
+                    </ul>
+                    <div style="margin-top: 30px; text-align: center; font-size: 1.2em;">
+                        <p><strong>Si 9/9 = LANCEMENT ✅</strong></p>
+                        <p><strong>Si 7-8/9 = Délai 1 semaine</strong></p>
+                        <p><strong>Si &lt;7/9 = Re-évaluer plan</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notes Finales -->
+            <section class="section">
+                <h2 class="section-title">📝 NOTES FINALES</h2>
+
+                <div class="card" style="border-left-color: #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Principes Directeurs</h3>
+                    <ol style="line-height: 2;">
+                        <li><strong>Perfection Premier Coup</strong> - Pas tourner en rond</li>
+                        <li><strong>COPIER Jamais Modifier</strong> - ARCHON, NEXUS intacts</li>
+                        <li><strong>Attitude CHAMPION</strong> - Succès garanti</li>
+                        <li><strong>Shipping > Perfection</strong> - Ana simple qui marche > Ana parfaite cassée</li>
+                        <li><strong>"Jamais assez de cordes"</strong> - Mais focus MUST HAVE d'abord</li>
+                    </ol>
+                </div>
+
+                <div class="card" style="border-left-color: #764ba2; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+                    <h3 style="color: #764ba2; margin-bottom: 15px;">Message à Mon Futur Moi</h3>
+                    <p><strong>Si tu lis ce plan dans 2 semaines et que tu es en retard:</strong></p>
+                    <ul style="margin-top: 10px; line-height: 1.8;">
+                        <li>Respire</li>
+                        <li>Relis MUST HAVE</li>
+                        <li>Coupe SHOULD HAVE</li>
+                        <li>Focus essentials</li>
+                        <li>Ana simple > Ana complexe cassée</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Si tu es en avance:</strong></p>
+                    <ul style="margin-top: 10px; line-height: 1.8;">
+                        <li>Bravo</li>
+                        <li>Ajoute SHOULD HAVE</li>
+                        <li>Polish qualité</li>
+                        <li>Prépare lancement</li>
+                    </ul>
+                </div>
+
+                <div class="quote" style="margin-top: 30px;">
+                    <p style="font-size: 1.5em; font-weight: 700; margin-bottom: 10px;">
+                        Confiance Totale. Plan Impeccable. Exécution Champion.
+                    </p>
+                    <p style="font-size: 1.3em;">
+                        6 semaines pour Ana. C'est parti. 🚀
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-meta">
+                <p><strong>Créé:</strong> 22 Novembre 2025</p>
+                <p><strong>Par:</strong> Claude</p>
+                <p><strong>Pour:</strong> Ana (Construction Complète)</p>
+                <p><strong>Version:</strong> 1.0.0</p>
+                <p><strong>Status:</strong> PRÊT À EXÉCUTER</p>
+                <p style="font-size: 2em; margin-top: 10px;">🌌</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

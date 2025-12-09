@@ -1,0 +1,246 @@
+{
+  "category": "grpc-protobuf",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "grpc001",
+      "type": "fundamentals",
+      "name": "gRPC Overview",
+      "description": "High-performance RPC",
+      "pattern": "HTTP/2, binary protocol, IDL",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "grpc002",
+      "type": "fundamentals",
+      "name": "Protocol Buffers",
+      "description": "Serialization format",
+      "pattern": "Proto3, messages, services",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "grpc003",
+      "type": "fundamentals",
+      "name": "Proto Syntax",
+      "description": "Message definition",
+      "pattern": "Fields, types, enums, imports",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "grpc004",
+      "type": "fundamentals",
+      "name": "Field Rules",
+      "description": "Field modifiers",
+      "pattern": "Optional, repeated, map, oneof",
+      "example": "Fundamentals usage"
+    },
+    {
+      "id": "grpc005",
+      "type": "services",
+      "name": "Service Definition",
+      "description": "RPC services",
+      "pattern": "Service, rpc methods, request/response",
+      "example": "Services usage"
+    },
+    {
+      "id": "grpc006",
+      "type": "services",
+      "name": "Unary RPC",
+      "description": "Simple request-response",
+      "pattern": "Single request, single response",
+      "example": "Services usage"
+    },
+    {
+      "id": "grpc007",
+      "type": "services",
+      "name": "Server Streaming",
+      "description": "Server streams",
+      "pattern": "Single request, stream response",
+      "example": "Services usage"
+    },
+    {
+      "id": "grpc008",
+      "type": "services",
+      "name": "Client Streaming",
+      "description": "Client streams",
+      "pattern": "Stream request, single response",
+      "example": "Services usage"
+    },
+    {
+      "id": "grpc009",
+      "type": "services",
+      "name": "Bidirectional Streaming",
+      "description": "Full duplex",
+      "pattern": "Stream request, stream response",
+      "example": "Services usage"
+    },
+    {
+      "id": "grpc010",
+      "type": "codegen",
+      "name": "Code Generation",
+      "description": "Proto compilation",
+      "pattern": "protoc, plugins, language targets",
+      "example": "Codegen usage"
+    },
+    {
+      "id": "grpc011",
+      "type": "codegen",
+      "name": "Buf",
+      "description": "Modern proto tooling",
+      "pattern": "buf.yaml, lint, breaking, generate",
+      "example": "Codegen usage"
+    },
+    {
+      "id": "grpc012",
+      "type": "metadata",
+      "name": "Metadata",
+      "description": "Request metadata",
+      "pattern": "Headers, trailers, context",
+      "example": "Metadata usage"
+    },
+    {
+      "id": "grpc013",
+      "type": "errors",
+      "name": "Status Codes",
+      "description": "Error handling",
+      "pattern": "OK, INVALID_ARGUMENT, NOT_FOUND, etc.",
+      "example": "Errors usage"
+    },
+    {
+      "id": "grpc014",
+      "type": "errors",
+      "name": "Error Details",
+      "description": "Rich errors",
+      "pattern": "google.rpc.Status, error details",
+      "example": "Errors usage"
+    },
+    {
+      "id": "grpc015",
+      "type": "interceptors",
+      "name": "Interceptors",
+      "description": "Middleware",
+      "pattern": "Unary interceptors, stream interceptors",
+      "example": "Interceptors usage"
+    },
+    {
+      "id": "grpc016",
+      "type": "interceptors",
+      "name": "Common Interceptors",
+      "description": "Standard middleware",
+      "pattern": "Logging, auth, retry, timeout",
+      "example": "Interceptors usage"
+    },
+    {
+      "id": "grpc017",
+      "type": "security",
+      "name": "TLS/SSL",
+      "description": "Transport security",
+      "pattern": "Server TLS, mTLS, certificates",
+      "example": "Security usage"
+    },
+    {
+      "id": "grpc018",
+      "type": "security",
+      "name": "Authentication",
+      "description": "Auth mechanisms",
+      "pattern": "Token auth, call credentials",
+      "example": "Security usage"
+    },
+    {
+      "id": "grpc019",
+      "type": "performance",
+      "name": "Load Balancing",
+      "description": "Client-side LB",
+      "pattern": "Round-robin, pick_first, custom",
+      "example": "Performance usage"
+    },
+    {
+      "id": "grpc020",
+      "type": "performance",
+      "name": "Connection Management",
+      "description": "Channel management",
+      "pattern": "Channel pooling, keepalive, backoff",
+      "example": "Performance usage"
+    },
+    {
+      "id": "grpc021",
+      "type": "performance",
+      "name": "Compression",
+      "description": "Message compression",
+      "pattern": "Gzip, deflate, custom codecs",
+      "example": "Performance usage"
+    },
+    {
+      "id": "grpc022",
+      "type": "web",
+      "name": "gRPC-Web",
+      "description": "Browser support",
+      "pattern": "Envoy proxy, grpc-web client",
+      "example": "Web usage"
+    },
+    {
+      "id": "grpc023",
+      "type": "web",
+      "name": "Connect",
+      "description": "Modern gRPC-web",
+      "pattern": "Connect protocol, browser-native",
+      "example": "Web usage"
+    },
+    {
+      "id": "grpc024",
+      "type": "reflection",
+      "name": "Server Reflection",
+      "description": "Runtime discovery",
+      "pattern": "Reflection API, grpcurl, grpcui",
+      "example": "Reflection usage"
+    },
+    {
+      "id": "grpc025",
+      "type": "health",
+      "name": "Health Checking",
+      "description": "Service health",
+      "pattern": "grpc.health.v1, watch",
+      "example": "Health usage"
+    },
+    {
+      "id": "grpc026",
+      "type": "testing",
+      "name": "Testing gRPC",
+      "description": "Test strategies",
+      "pattern": "In-process server, mocking, bufconn",
+      "example": "Testing usage"
+    },
+    {
+      "id": "grpc027",
+      "type": "evolution",
+      "name": "Schema Evolution",
+      "description": "Backward compatibility",
+      "pattern": "Field numbers, reserved, deprecation",
+      "example": "Evolution usage"
+    },
+    {
+      "id": "grpc028",
+      "type": "tools",
+      "name": "grpcurl",
+      "description": "CLI client",
+      "pattern": "List, describe, call services",
+      "example": "Tools usage"
+    },
+    {
+      "id": "grpc029",
+      "type": "tools",
+      "name": "Postman/BloomRPC",
+      "description": "GUI clients",
+      "pattern": "Import proto, test calls",
+      "example": "Tools usage"
+    },
+    {
+      "id": "grpc030",
+      "type": "gateway",
+      "name": "gRPC Gateway",
+      "description": "REST transcoding",
+      "pattern": "HTTP annotations, OpenAPI gen",
+      "example": "Gateway usage"
+    }
+  ]
+}
