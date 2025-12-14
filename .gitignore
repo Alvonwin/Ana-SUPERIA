@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Logs
+logs/
+*.log
+
+# Cache
+cache/
+.cache/
+chroma/
+
+# Temp
+temp/
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Models (too large)
+models/
+
+# Backups (too large)
+BACKUPS/
+
+# Output files
+output/
+
+# Windows reserved names
+nul
+ana-interface/nul
+archives/nul
