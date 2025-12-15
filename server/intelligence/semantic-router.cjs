@@ -88,9 +88,9 @@ const TASK_TYPES = {
       'Hello how are you',
       'Tell me about yourself'
     ],
-    preferredModel: 'ana-superia-v3',
-    fallbackModel: 'qwen3:8b',
-    provider: 'ollama'
+    preferredModel: 'llama-3.3-70b',
+    fallbackModel: 'llama-3.3-70b',
+    provider: 'cerebras'
   },
   CREATIVE: {
     name: 'creative',
@@ -102,9 +102,9 @@ const TASK_TYPES = {
       'Create a story about',
       'Suggest names for my project'
     ],
-    preferredModel: 'qwen3:8b',
-    fallbackModel: 'qwen3:8b',
-    provider: 'ollama'
+    preferredModel: 'llama-3.3-70b',
+    fallbackModel: 'llama-3.3-70b',
+    provider: 'cerebras'
   },
   TOOLS: {
     name: 'tools',
@@ -135,7 +135,22 @@ const TASK_TYPES = {
       'Ajoute une tache',
       'Modifie le notebook',
       'Entre en mode planification',
-      'Lance un agent'
+      'Lance un agent',
+      'Quel est l usage du CPU',
+      'usage CPU',
+      'utilisation du processeur',
+      'Quelle est la memoire RAM utilisee',
+      'combien de RAM',
+      'memoire utilisee',
+      'espace disque',
+      'combien de place sur le disque',
+      'fais un ping vers',
+      'ping google',
+      'infos systeme',
+      'calcule',
+      'genere un mot de passe',
+      'hash du fichier',
+      'convertis en miles'
     ],
     preferredModel: 'qwen2.5-coder:7b',
     fallbackModel: 'qwen2.5-coder:7b',
@@ -159,9 +174,9 @@ const TASK_TYPES = {
       'On en a parle avant',
       'Precedemment je t ai dit'
     ],
-    preferredModel: 'qwen3:8b',
-    fallbackModel: 'qwen3:8b',
-    provider: 'ollama'
+    preferredModel: 'llama-3.3-70b',
+    fallbackModel: 'llama-3.3-70b',
+    provider: 'cerebras'
   }
 };
 
@@ -264,14 +279,15 @@ class SemanticRouter {
     // PRIORITY: Check for TOOLS keywords BEFORE semantic routing
     const msgLower = message.toLowerCase();
     const toolsKeywords = [
-      'heure', 'quelle heure', 'meteo', 'météo', 'temps qu', 'température',
+      'heure', 'quelle heure', 'meteo', 'météo', 'temps qu', 'temps fait', 'température', 'weather',
+      'whois', 'dns', 'dns lookup', 'ip publique', 'public ip', 'check_url', 'http_request', 'web_fetch',
       'fichier', 'lis le', 'lire', 'ouvre', 'crée', 'créer', 'liste les', 'lister', 'quels fichiers', 'trouve', 'trouver',
       'execute', 'exécute', 'commande', 'shell', 'dir ', 'ls ',
       'cherche', 'recherche', 'récupère', 'recupere', 'contenu de', 'web',
       'wikipedia', 'groq', 'cerebras', 'demande à', 'demande a',
       'agent', 'mémoire', 'memoire', 'rappelles', 'souviens', 'rappelle',
       'modifie', 'modifier', 'glob', 'grep', 'pose-moi', 'processus', 'pid', 'tâche', 'tache', 'notebook', 'planification',
-      'arrête le', 'lance ', 'ajoute une tâche', 'en arrière-plan'
+      'arrête le', 'lance ', 'ajoute une tâche', 'en arrière-plan',
     ];
     if (toolsKeywords.some(kw => msgLower.includes(kw))) {
       this.updateStats('TOOLS');

@@ -29,10 +29,11 @@ class CerebrasService {
     // Available models on Cerebras (free tier)
     this.models = {
       LLAMA_8B: 'llama3.1-8b',     // Fastest (~2000 tok/s)
-      LLAMA_70B: 'llama3.1-70b'    // Best quality (~1000 tok/s)
+      LLAMA_70B: 'llama-3.3-70b',  // Best quality (~1000 tok/s) - UPDATED 2025-12-15
+      QWEN_235B: 'qwen-3-235b-a22b-instruct-2507'  // Massive model
     };
 
-    this.defaultModel = this.models.LLAMA_8B;
+    this.defaultModel = this.models.LLAMA_70B;  // Use 70B for quality
   }
 
   initialize() {
@@ -122,6 +123,83 @@ class CerebrasService {
     } catch (error) {
       this.stats.errors++;
       console.error('❌ Cerebras chat error:', error.response?.data || error.message);
+      return {
+        success: false,
+        error: error.response?.data?.error?.message || error.message,
+        provider: 'cerebras'
+      };
+    }
+  }
+
+  /**
+   * Chat avec support tool calling (OpenAI-compatible)
+   * AJOUTE: 2025-12-15 - Support tools pour Ana SUPERIA
+   */
+  async chatWithTools(messages, tools, options = {}) {
+    if (!this.initialized) {
+      this.initialize();
+    }
+
+    if (!this.apiKey) {
+      return {
+        success: false,
+        error: 'Cerebras service not available - check API key',
+        provider: 'cerebras'
+      };
+    }
+
+    const {
+      model = this.models.LLAMA_70B,  // 70B pour meilleure qualité
+      temperature = 0.1,
+      maxTokens = 4096
+    } = options;
+
+    try {
+      this.stats.totalRequests++;
+      const startTime = Date.now();
+
+      const response = await axios.post(
+        `${this.baseUrl}/chat/completions`,
+        {
+          model,
+          messages,
+          tools,
+          tool_choice: 'auto',
+          temperature,
+          max_tokens: maxTokens
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${this.apiKey}`,
+            'Content-Type': 'application/json'
+          },
+          timeout: 120000  // 2 minutes max
+        }
+      );
+
+      const result = response.data;
+      const msg = result.choices[0]?.message || {};
+      const latencyMs = Date.now() - startTime;
+
+      // Update stats
+      this.stats.totalTokens += result.usage?.total_tokens || 0;
+
+      console.log(`⚡ Cerebras tool-call (${model}): ${latencyMs}ms`);
+
+      return {
+        success: true,
+        message: msg,
+        tool_calls: msg.tool_calls || [],
+        content: msg.content || '',
+        model,
+        latencyMs,
+        usage: result.usage,
+        provider: 'cerebras'
+      };
+
+    } catch (error) {
+      this.stats.errors++;
+      console.error('❌ Cerebras tool-call error:', error.response?.data || error.message);
       return {
         success: false,
         error: error.response?.data?.error?.message || error.message,

@@ -1,4 +1,4 @@
-// TOUCH_RELOAD: 1765228837422
+﻿// TOUCH_RELOAD: 1765228837422
 ﻿/**
  * ANA CORE - Backend Orchestrator
  *
@@ -49,7 +49,58 @@ function buildMemoPersonalBlock() {
   return block;
 }
 // === END PERSONAL FACTS LOADER ===
+
+// === ANA MEMORIES LOADER (souvenirs importants) ===
+const ANA_MEMORIES_PATH = require('path').join(__dirname, '..', 'memory', 'ana_memories.json');
+
+function loadAnaMemories(query = '', limit = 10) {
+  try {
+    if (!require('fs').existsSync(ANA_MEMORIES_PATH)) return [];
+    const memories = JSON.parse(require('fs').readFileSync(ANA_MEMORIES_PATH, 'utf8'));
+    if (!Array.isArray(memories)) return [];
+
+    // Si query fourni, filtrer par pertinence
+    if (query) {
+      const queryLower = query.toLowerCase();
+      const keywords = queryLower.split(/\s+/).filter(w => w.length > 2);
+      return memories
+        .filter(m => {
+          const content = (m.content || '').toLowerCase();
+          return keywords.some(kw => content.includes(kw));
+        })
+        .slice(0, limit);
+    }
+    // Sinon retourner les plus récents
+    return memories.slice(-limit);
+  } catch (e) {
+    console.log('[MEMO] Error loading ana_memories:', e.message);
+    return [];
+  }
+}
+
+function buildAnaMemoriesBlock(query = '') {
+  const memories = loadAnaMemories(query, 15);
+  if (memories.length === 0) return '';
+
+  let block = '[SOUVENIRS ANA - INFORMATIONS MEMORISEES]\n';
+  for (const m of memories) {
+    block += `* ${m.content}\n`;
+  }
+  block += '[FIN SOUVENIRS]\n\n';
+  console.log('[MEMO] Ana memories block built:', memories.length, 'items');
+  return block;
+}
+// === END ANA MEMORIES LOADER ===
+
+// === ANA CONSCIOUSNESS - Module de Conscience Supérieure ===
+const anaConsciousness = require('./intelligence/ana-consciousness.cjs');
+// === ANA DIRECT - Appel Direct (1 seul LLM call) - Remplace Thinker->Expert->Talker ===
+const anaDirect = require('./intelligence/ana-direct.cjs');
+
 const { createProxyMiddleware } = require('http-proxy-middleware');
+// Games routes
+const gamesRoutes = require('./routes/games-routes.cjs');
+
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm'); // For sandboxed code execution (Fix #3)
@@ -85,6 +136,14 @@ const semanticRouter = require('./intelligence/semantic-router.cjs');
 const contextSelector = require('./intelligence/context-selector.cjs');
 const tieredMemory = require('./memory/tiered-memory.cjs');
 const langchainWebSearch = require('./services/langchain-web-search.cjs');
+const factClassifier = require('./memory/fact-classifier.cjs');
+
+// === NEW MEMORY MODULES (14 Dec 2025) - Ana Consciente Phase ===
+const memoryCurator = require('./memory/memory-curator.cjs');
+const proactiveRecall = require('./memory/proactive-recall.cjs');
+const episodicMemory = require('./memory/episodic-memory.cjs');
+const zettelkastenMemory = require('./memory/zettelkasten-memory.cjs');
+const sleepConsolidation = require('./memory/sleep-consolidation.cjs');
 
 // Core V2 Modules
 const { globalDetector } = require('./core/repetition-detector.cjs');
@@ -106,8 +165,8 @@ const LLMS = {
   QWEN3: 'qwen3:8b',                    // #1 Conversation/Reasoning (MMLU 0.743)
   QWEN3_EMBED: 'dengcao/Qwen3-Embedding-8B:Q5_K_M',  // #1 MTEB Multilingual
   QWEN3_RERANK: 'dengcao/Qwen3-Reranker-4B:Q5_K_M',  // Cross-encoder +31% precision
-  // === FRENCH TUTOIEMENT MODEL (8 Dec 2025) ===
-  FRENCH: 'ana-superia-v3',                 // French with forced tutoiement
+  // === FRENCH TUTOIEMENT MODEL (15 Dec 2025) ===
+  FRENCH: 'cerebras/llama-3.3-70b',         // Cerebras unlimited + ultra-fast + tool calling
   // === GLM-4-32B - ANA CODE (8 Dec 2025) ===
   // Expert tool calling + coding - Parité Claude Code
   GLM4: 'qwen2.5-coder:7b'      // 32B, tool calling natif, coding expert
@@ -327,6 +386,10 @@ app.use('/api/n8n', createProxyMiddleware({
 }));
 console.log('? n8n Proxy configured: /api/n8n ? localhost:5678');
 
+// Games API
+app.use('/api/games', gamesRoutes);
+console.log('🎮 Games API configured: /api/games');
+
 // PERF OPTIM 2025-12-08: Routing cache pour classifyTask
 const routingCache = new Map();
 const ROUTING_CACHE_MAX = 100;
@@ -355,6 +418,12 @@ class IntelligenceRouter {
     }
     const msgLower = message.toLowerCase();
 
+    // BYPASS DIRECT pour questions d'heure (evite hallucination LLM)
+    const timeKeywords = ['quelle heure', 'heure est-il', 'heure actuelle'];
+    if (timeKeywords.some(kw => msgLower.includes(kw))) {
+      return { model: 'time_bypass', reason: 'Question heure - bypass direct' };
+    }
+
     // TOOLS tasks - PRIORITY routing to ToolAgent (EXPANDED 2025-12-08)
     const toolsKeywords = [
       // Time & Weather
@@ -362,8 +431,17 @@ class IntelligenceRouter {
       // Files - EXPANDED for edit/write/read
       'fichier', 'lis le', 'lire', 'ouvre', 'crée', 'cree', 'créer', 'liste les', 'lister', 'quels fichiers', 'trouve', 'trouver',
       'écris', 'écrire', 'write_file', 'read_file', 'edit_file', 'package.json', '.txt', '.js', '.cjs', 'E:/', 'E:\\',
-      // Shell
+      // Shell - EXPANDED 2025-12-10 for explicit commands
       'execute', 'exécute', 'commande', 'shell', 'dir ', 'ls ', 'run_shell',
+      // Shell commands explicit (cp, mv, mkdir, rm, etc.)
+      'cp ', 'copy ', 'copie ', 'mv ', 'move ', 'deplace ', 'déplace ',
+      'mkdir ', 'rmdir ', 'rm ', 'del ', 'touch ', 'cat ', 'echo ',
+      'pwd', 'cd ', 'grep ', 'find ', 'type ', 'more ', 'head ', 'tail ',
+      // Backup patterns
+      'backup', 'sauvegarde le fichier', 'copie de securite', 'copie de sécurité',
+      // Tool explicit requests
+      'utilise l\'outil', 'utilise ton outil', 'avec la commande', 'lance la commande',
+      'utilise run_shell', 'utilise edit_file', 'utilise read_file', 'utilise list_files',
       // Web & News
       'cherche sur', 'recherche sur', 'récupère', 'recupere', 'contenu de', 'web', 'nouvelles', 'actualités', 'news du jour',
       'web_search', 'recherche web', 'cherche sur le web', 'search on web',
@@ -377,10 +455,32 @@ class IntelligenceRouter {
       // Nouveaux outils parité
       'convertis', 'conversion', 'miles', 'kilomètres', 'génère une image', 'générer', 'execute ce code', 'print(',
       'requête http', 'http get', 'http post', 'httpbin', 'transcris', 'transcription', 'sous-titres',
+      // SYSTEM TOOLS (2025-12-10) - 181 outils
+      'cpu', 'processeur', 'ram', 'mémoire utilisée', 'memoire utilisee', 'disque', 'espace disque', 'système', 'systeme',
+      'ping', 'mot de passe', 'password', 'hash', 'checksum', 'md5', 'sha256', 'sha1',
+      'compresse', 'zipper', 'zip', 'décompresse', 'unzip', 'extraire',
+      'dns', 'ip', 'réseau', 'network', 'port', 'ports ouverts',
+      'calcule', 'sqrt', 'cos', 'sin', 'tan', 'log', 'exp', 'pow', 'abs', 'round', 'factorial',
+      'docker', 'container', 'ollama', 'modèle ollama', 'pull', 'liste les modèles',
+      'sqlite', 'base de données', 'database', 'query', 'sql',
+      'presse-papier', 'clipboard', 'copie le texte', 'colle',
+      'notification', 'alerte', 'notifie',
+      'valide', 'validation', 'email valide', 'url valide', 'json valide',
+      'date actuelle', 'timestamp', 'fuseau horaire', 'timezone',
+      'uuid', 'guid', 'identifiant unique',
+      'encode', 'decode', 'base64', 'url encode',
+      'image', 'redimensionne', 'resize', 'thumbnail',
+      'audio', 'durée audio', 'metadata',
       // Mémoire - DOIT passer par tools pour save_memory/search_memory
       'retiens', 'mémorise', 'memorise', 'sauvegarde', 'note ceci', 'enregistre ceci', 'noublie pas',
       'rappelle-toi de', 'souviens-toi de', 'rappelle toi de', 'tu te souviens de', 'te souviens-tu de',
-      'date de naissance', 'ma naissance', 'mon anniversaire'
+      'date de naissance', 'ma naissance', 'mon anniversaire',
+      // FIX 2025-12-14: QUESTIONS sur possessions/infos personnelles → tools pour search_memory
+      // Patterns interrogatifs uniquement (pas "Ma voiture est blanche" qui est un statement)
+      'quelle couleur', 'quel couleur', 'quelle est ma', 'quel est mon',
+      'c\'est quoi mon', 'c\'est quoi ma', 'tu connais mon', 'tu connais ma',
+      'qu\'est-ce que tu sais', 'tu sais quoi sur', 'infos sur moi',
+      'de quelle couleur', 'comment s\'appelle mon', 'comment s\'appelle ma'
     ];
     if (toolsKeywords.some(kw => msgLower.includes(kw))) {
       return { model: 'tools', reason: 'Tâche nécessitant un outil', method: 'tools' };
@@ -399,8 +499,9 @@ class IntelligenceRouter {
     }
 
     // Memory/context questions - French model (tutoiement + mémoire)
-    // Modèle ana-superia-v3 basé sur OpenEuroLLM-French
-    const memoryKeywords = ['souviens', 'rappelle', 'dit', 'conversation', 'mémoire', 'historique', 'ma voiture', 'mon ', 'ma ', 'mes ', 'regarde', 'précédemment', 'avant', 'déjà', 'voiture', 'marque', 'quelle est'];
+    // Modèle ana-superia-v6 basé sur OpenEuroLLM-French
+    // FIX 2025-12-14: Retiré 'ma voiture', 'voiture', 'mon ', 'ma ', 'mes ', 'quelle est' - gérés par tools/search_memory
+    const memoryKeywords = ['souviens', 'rappelle', 'dit', 'conversation', 'mémoire', 'historique', 'regarde', 'précédemment', 'avant', 'déjà', 'marque'];
     if (memoryKeywords.some(kw => msgLower.includes(kw))) {
       return { model: LLMS.FRENCH, reason: 'Question de mémoire - French model' };
     }
@@ -469,7 +570,11 @@ class MemoryManager {
     this.contextPath = path.join(MEMORY_PATH, 'current_conversation.txt');
     this.anaContextPath = 'E:/ANA/memory/current_conversation_ana.txt';
     this.currentContext = '';
+    // SESSION MEMORY: Buffer RAM des 20 derniers messages (priorite maximale)
+    this.sessionMessages = [];
+    this.MAX_SESSION_MESSAGES = 20; // Grande capacite, petit buffer
     this.loadContext();
+    console.log('[MEMORY] Session buffer initialise: max', this.MAX_SESSION_MESSAGES, 'messages');
   }
 
   loadContext() {
@@ -551,6 +656,30 @@ class MemoryManager {
   appendToContext(text) {
     this.currentContext += '\n' + text;
     this.saveContext();
+
+    // Ajouter au buffer de session (priorite maximale)
+    this.sessionMessages.push({
+      text: text,
+      timestamp: Date.now()
+    });
+    // Garder seulement les N derniers messages
+    if (this.sessionMessages.length > this.MAX_SESSION_MESSAGES) {
+      this.sessionMessages.shift();
+    }
+    console.log('[SESSION] Buffer:', this.sessionMessages.length, '/', this.MAX_SESSION_MESSAGES, 'messages');
+  }
+
+  // Retourne les derniers messages de la session en cours (RAM)
+  getSessionContext() {
+    if (this.sessionMessages.length === 0) return '';
+    const sessionText = this.sessionMessages.map(m => m.text).join('\n');
+    return sessionText;
+  }
+
+  // Efface le buffer de session (pour nouvelle conversation)
+  clearSession() {
+    this.sessionMessages = [];
+    console.log('[SESSION] Buffer efface');
   }
 
   saveContext() {
@@ -725,6 +854,53 @@ app.post('/api/voice/history', (req, res) => {
       success: false,
       error: error.message,
       timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// ================== SPELL CHECK API (13-Dec-2025) ==================
+// Correction orthographique pour la capture vocale
+app.post('/api/spellcheck', async (req, res) => {
+  try {
+    const { text } = req.body;
+
+    if (!text || typeof text !== 'string') {
+      return res.status(400).json({
+        success: false,
+        error: 'Le champ "text" est requis'
+      });
+    }
+
+    // Corrections forcées spécifiques (reconnaissance vocale)
+    let corrected = text.trim();
+
+    // Anna → Ana (nom propre, forcer)
+    corrected = corrected.replace(/\bAnna\b/gi, 'Ana');
+
+    // Appliquer le spell checker français
+    corrected = spellChecker.correctText(corrected);
+
+    // Majuscule en début de phrase
+    if (corrected.length > 0) {
+      corrected = corrected.charAt(0).toUpperCase() + corrected.slice(1);
+    }
+
+    // Point à la fin si pas de ponctuation finale
+    if (corrected.length > 0 && !/[.!?]$/.test(corrected)) {
+      corrected = corrected + '.';
+    }
+
+    res.json({
+      success: true,
+      original: text,
+      corrected: corrected,
+      changed: text !== corrected
+    });
+  } catch (error) {
+    console.error('Erreur spellcheck:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
     });
   }
 });
@@ -1517,6 +1693,7 @@ app.post('/api/shutdown', async (req, res) => {
     await killByPort(8000, 'ChromaDB');
     await killByPort(5173, 'Frontend Vite');
     await killByPort(3336, 'Agents');
+    await killByPort(8188, 'ComfyUI');
 
     // Note: La fenêtre de démarrage se ferme automatiquement après 5s (exit dans START_ANA.bat)
     // Les autres terminaux utilisent cmd /c donc se ferment quand leur processus meurt
@@ -1658,6 +1835,14 @@ app.post('/api/chat', async (req, res) => {
     return res.status(400).json({ error: 'Message requis' });
   }
 
+  // FIX 2025-12-14: Fact Classifier - extraction automatique de faits personnels
+  // Runs in background ("subconscious memory") - ne bloque pas la réponse
+  factClassifier.processMessage(message).then(result => {
+    if (result.factsSaved > 0) {
+      console.log(`[FactClassifier] Auto-saved ${result.factsSaved} fact(s) from message`);
+    }
+  }).catch(err => console.error('[FactClassifier] Error:', err.message));
+
   try {
     // 1. Choose best LLM - RESPECT explicit model from request if provided
     let model, reason;
@@ -1678,9 +1863,16 @@ app.post('/api/chat', async (req, res) => {
     console.log(`?? Routing to ${model} - Raison: ${reason}`);
 
     // 2. PERF OPTIM 2025-12-08: Load memory context IN PARALLEL
+    // FIX 2025-12-10: Priorité au buffer SESSION (20 derniers messages en RAM)
     // Gain estime: 200-500ms (les deux recherches simultanées)
-    const [memoryContext, chromaResults] = await Promise.all([
-      Promise.resolve(memory.getContext()),
+    const sessionBuffer = memory.getSessionContext(); // 20 derniers messages (RAM)
+    const fileContext = memory.getContext(10); // 10KB max du fichier (backup)
+    // Priorité: Session > Fichier (session = conversation actuelle)
+    const memoryContext = sessionBuffer || fileContext;
+    console.log('[MEMORY] Session buffer:', sessionBuffer ? sessionBuffer.length + ' chars' : 'vide', '| File context:', fileContext ? fileContext.length + ' chars' : 'vide');
+
+    const [_, chromaResults] = await Promise.all([
+      Promise.resolve(null), // placeholder pour garder la structure
       (tieredMemory && tieredMemory.initialized)
         ? tieredMemory.search(message, { limit: 15 }).catch(err => {
             console.log('[CHROMADB] Search error:', err.message);
@@ -1698,8 +1890,19 @@ app.post('/api/chat', async (req, res) => {
       console.log('[CHROMADB] Found', chromaResults.length, 'relevant memories for:', message.substring(0, 50));
     }
 
+    // Charger les faits personnels d'Alain (date naissance, voiture, etc.)
+    const personalFactsBlock = buildMemoPersonalBlock();
+    // Charger les souvenirs pertinents de ana_memories.json
+    const anaMemoriesBlock = buildAnaMemoriesBlock(message);
+
     // Formatter le contexte avec des instructions claires pour le LLM
-    const contextInstructions = (memoryContext || chromaMemories) ? `
+    const contextInstructions = (memoryContext || chromaMemories || personalFactsBlock || anaMemoriesBlock) ? `
+=== FAITS PERSONNELS D'ALAIN ===
+${personalFactsBlock}
+=== FIN FAITS PERSONNELS ===
+
+${anaMemoriesBlock}
+
 === M�MOIRE DE CONVERSATION ===
 **IMPORTANT: LIS ATTENTIVEMENT L'HISTORIQUE CI-DESSOUS.**
 Tu dois UTILISER ces informations pour r�pondre aux questions d'Alain.
@@ -1720,32 +1923,105 @@ ${chromaMemories}
 ` : '';
     const fullPrompt = contextInstructions + `Alain: ${message}`;
 
-    // 3. Query LLM (or ToolAgent)
-    globalDetector.setQuestion(message, 'chat_main'); // Enregistre la question pour analyser le type
+    // 3. Query via CONSCIENCE SUPÉRIEURE (Ana-superia-v3 = cerveau conscient)
+    globalDetector.setQuestion(message, 'chat_main');
 
     let response;
 
-    // TOOLS routing - call ToolAgent directly
-    if (model === 'tools') {
-      console.log('🛠 [TOOLS] Routing to ToolAgent for:', message.substring(0, 50));
+    // TIME BYPASS - Retourne heure directement sans LLM (optimisation)
+    if (model === 'time_bypass') {
+      console.log('⏰ [TIME_BYPASS] Reponse directe heure');
+      const now = new Date();
+      const options = {
+        timeZone: 'America/Montreal',
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      };
+      const heureLocale = now.toLocaleString('fr-CA', options);
+      response = { response: `Il est ${heureLocale}.` };
+    }
+    // CONSCIENCE SUPÉRIEURE - Ana réfléchit, consulte ses experts, puis ELLE répond
+    else {
+      console.log('🌟 [CONSCIOUSNESS] Activation conscience supérieure...');
+
+      // Callback pour appeler les experts quand Ana en a besoin
+      const expertCallback = async (expertType, expertQuery) => {
+        console.log(`🔧 [CONSCIOUSNESS] Expert ${expertType} appelé avec: ${expertQuery.substring(0, 50)}`);
+
+        if (expertType === 'tools') {
+          // Utiliser le ToolAgent pour les outils
+          // FIX 2025-12-13: Passer MESSAGE original (pas expertQuery qui contient instructions)
+          const toolResult = await toolAgent.runToolAgentV2(message, {
+            sessionId: req.body.sessionId || 'chat_main',
+            context: memoryContext
+          });
+          return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur outil';
+        }
+        else if (expertType === 'research') {
+          // Recherche web via toolAgent (web_search, wikipedia, get_yt_transcript, etc.)
+          // FIX 2025-12-13: Passer MESSAGE original (pas expertQuery qui contient instructions)
+          try {
+            const toolResult = await toolAgent.runToolAgentV2(message, {
+              model: 'ana-superia-v6',  // 2025-12-13: Utilise le modèle principal
+              sessionId: req.body.sessionId || 'chat_main',
+              context: memoryContext
+            });
+            return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur recherche';
+          } catch (e) {
+            return `Erreur recherche: ${e.message}`;
+          }
+        }
+        else if (expertType === 'code') {
+          // Expert code via DeepSeek
+          try {
+            const codeResult = await router.query(LLMS.DEEPSEEK, expertQuery, false);
+            return codeResult.response;
+          } catch (e) {
+            return `Erreur code: ${e.message}`;
+          }
+        }
+        return null;
+      };
+
       try {
-        const toolResult = await toolAgent.runToolAgentV2(message, {
-          sessionId: req.body.sessionId || 'chat_main',
-          context: memoryContext
-        });
-        if (toolResult.success) {
-          response = { response: toolResult.answer };
-          console.log('✅ [TOOLS] ToolAgent succeeded');
+        // Émettre le modèle actif à l'interface (dynamique, pas hardcodé)
+        // FIX 2025-12-13: Vérifier que socket existe avant emit (HTTP requests n'ont pas socket)
+        if (typeof socket !== 'undefined' && socket && socket.emit) {
+          socket.emit('chat:model_selected', {
+            model: anaConsciousness.CONSCIOUSNESS_MODEL || 'ana-superia-v6',
+            reason: 'Conscience Supérieure'
+          });
+        }
+
+        // Appel DIRECT à Ana (1 seul LLM call au lieu de 3)
+        const consciousnessResult = await anaDirect.processDirectly(
+          message,
+          { memoryContext: fullPrompt, sessionId: 'chat_main' }
+        );
+
+        if (consciousnessResult.success && consciousnessResult.response) {
+          response = { response: consciousnessResult.response };
+          console.log('✅ [CONSCIOUSNESS] Traitement réussi via conscience supérieure');
+          // Log des phases pour debug
+          console.log('[CONSCIOUSNESS] Phases:', {
+            expertCalled: consciousnessResult.phases?.expertCalled,
+            expertType: consciousnessResult.phases?.expertType
+          });
         } else {
-          console.log('⚠️ [TOOLS] ToolAgent failed, falling back to LLM');
+          // Fallback: réponse directe classique si conscience échoue
+          console.log('⚠️ [CONSCIOUSNESS] Fallback vers routing classique');
           response = await router.query(LLMS.FRENCH, fullPrompt, false);
         }
-      } catch (toolError) {
-        console.error('❌ [TOOLS] ToolAgent error:', toolError.message);
+      } catch (consciousnessError) {
+        console.error('❌ [CONSCIOUSNESS] Erreur:', consciousnessError.message);
+        // Fallback complet
         response = await router.query(LLMS.FRENCH, fullPrompt, false);
       }
-    } else {
-      response = await router.query(model, fullPrompt, false);
     }
 
     // 3.5. Check for repetitive response (Anti-Repetition V2 - BLOCKING)
@@ -1800,6 +2076,39 @@ app.get('/api/memory', (req, res) => {
     context: memory.getContext(),
     stats: memory.getStats()
   });
+});
+
+// Memory notifications endpoint (ChatGPT style "Memory updated")
+app.get('/api/memory/notifications', (req, res) => {
+  const notifPath = 'E:/ANA/memory/memory_notifications.json';
+  try {
+    if (fs.existsSync(notifPath)) {
+      const notifications = JSON.parse(fs.readFileSync(notifPath, 'utf-8'));
+      const unread = notifications.filter(n => !n.read);
+      res.json({ notifications: unread, total: notifications.length });
+    } else {
+      res.json({ notifications: [], total: 0 });
+    }
+  } catch (err) {
+    res.json({ notifications: [], error: err.message });
+  }
+});
+
+// Mark notifications as read
+app.post('/api/memory/notifications/read', (req, res) => {
+  const notifPath = 'E:/ANA/memory/memory_notifications.json';
+  try {
+    if (fs.existsSync(notifPath)) {
+      const notifications = JSON.parse(fs.readFileSync(notifPath, 'utf-8'));
+      notifications.forEach(n => n.read = true);
+      fs.writeFileSync(notifPath, JSON.stringify(notifications, null, 2), 'utf-8');
+      res.json({ success: true, markedRead: notifications.length });
+    } else {
+      res.json({ success: true, markedRead: 0 });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // Helper: Search files in a specific directory
@@ -2786,6 +3095,206 @@ app.get('/api/memory/tiered/context', (req, res) => {
   }
 });
 
+// ================== NEW MEMORY MODULES API (14 Dec 2025) ==================
+
+// --- Memory Curator (Strategic Forgetting) ---
+app.get('/api/memory/curator/status', (req, res) => {
+  try {
+    const status = memoryCurator.getStatus();
+    res.json({ success: true, ...status });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/curator/analyze', async (req, res) => {
+  try {
+    const analysis = await memoryCurator.analyze();
+    res.json({ success: true, ...analysis });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/curator/decay', async (req, res) => {
+  try {
+    const result = await memoryCurator.applyDecay();
+    res.json({ success: true, ...result });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/curator/mode', (req, res) => {
+  try {
+    const { mode } = req.body; // permission | notify | automatic
+    const result = memoryCurator.setMode(mode);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// --- Proactive Recall ---
+app.post('/api/memory/proactive/context', async (req, res) => {
+  try {
+    const { message } = req.body;
+    const context = await proactiveRecall.generateContext(message);
+    res.json({ success: true, ...context });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// --- Episodic Memory ---
+app.post('/api/memory/episodic/start', (req, res) => {
+  try {
+    const { type, context } = req.body;
+    const episodeId = episodicMemory.startEpisode(type, context);
+    res.json({ success: true, episode_id: episodeId });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/episodic/event', (req, res) => {
+  try {
+    const { role, content } = req.body;
+    episodicMemory.addEvent(role, content);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/episodic/end', async (req, res) => {
+  try {
+    const { outcome } = req.body;
+    const result = await episodicMemory.endEpisode(outcome);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/episodic/search', async (req, res) => {
+  try {
+    const { query, type, maxResults } = req.body;
+    const episodes = await episodicMemory.searchEpisodes(query, { type, maxResults });
+    res.json({ success: true, episodes });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/api/memory/episodic/stats', (req, res) => {
+  try {
+    const stats = episodicMemory.getStats();
+    res.json({ success: true, ...stats });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// --- Zettelkasten (Graph Memory) ---
+app.post('/api/memory/zettelkasten/link', (req, res) => {
+  try {
+    const { sourceId, targetId, relation, strength, bidirectional } = req.body;
+    const result = bidirectional
+      ? zettelkastenMemory.createBidirectionalLink(sourceId, targetId, relation, strength)
+      : zettelkastenMemory.createLink(sourceId, targetId, relation, strength);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/api/memory/zettelkasten/links/:memoryId', (req, res) => {
+  try {
+    const { memoryId } = req.params;
+    const { direction } = req.query;
+    const links = zettelkastenMemory.findLinks(memoryId, direction || 'both');
+    res.json({ success: true, links });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/zettelkasten/query', async (req, res) => {
+  try {
+    const { startId, maxHops } = req.body;
+    const paths = await zettelkastenMemory.multiHopQuery(startId, maxHops || 3);
+    res.json({ success: true, paths });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/api/memory/zettelkasten/graph', (req, res) => {
+  try {
+    const graph = zettelkastenMemory.getGraph();
+    res.json({ success: true, ...graph });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/api/memory/zettelkasten/stats', (req, res) => {
+  try {
+    const stats = zettelkastenMemory.getStats();
+    res.json({ success: true, ...stats });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// --- Sleep Consolidation ---
+app.get('/api/memory/consolidation/stats', (req, res) => {
+  try {
+    const stats = sleepConsolidation.getStats();
+    res.json({ success: true, ...stats });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/api/memory/consolidation/logs', (req, res) => {
+  try {
+    const { limit } = req.query;
+    const logs = sleepConsolidation.getLogs(parseInt(limit) || 10);
+    res.json({ success: true, logs });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/consolidation/run', async (req, res) => {
+  try {
+    const report = await sleepConsolidation.forceRun();
+    res.json({ success: true, report });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/consolidation/stop', (req, res) => {
+  try {
+    const result = sleepConsolidation.stop();
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/memory/consolidation/start', (req, res) => {
+  try {
+    const { interval } = req.body;
+    const result = sleepConsolidation.start(interval);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
 // ================== CODING AGENT API ==================
 
@@ -2855,12 +3364,71 @@ app.post('/api/chat/v2', async (req, res) => {
       ? `Context: ${memoryContext}\n\nAlain: ${message}`
       : message;
 
-    // 2. Use orchestrator with automatic routing and failover
-    const result = await orchestrator.chat({
-      prompt: fullPrompt,
-      taskType,
-      model
-    });
+    // 2. CONSCIENCE SUPÉRIEURE (2025-12-13) - ana-superia-v6
+    let result;
+
+    try {
+      // Callback pour appeler les experts
+      const expertCallback = async (expertType, expertQuery) => {
+        console.log(`🔧 [CONSCIOUSNESS-V2] Expert ${expertType} appelé`);
+
+        if (expertType === 'tools') {
+          const toolResult = await toolAgent.runToolAgentV2(message, {
+            sessionId: 'chat_v2',
+            context: memoryContext
+          });
+          return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur outil';
+        }
+        else if (expertType === 'research') {
+          const toolResult = await toolAgent.runToolAgentV2(message, {
+            model: 'ana-superia-v6',
+            sessionId: 'chat_v2',
+            context: memoryContext
+          });
+          return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur recherche';
+        }
+        else if (expertType === 'code') {
+          const codeResult = await router.query(LLMS.DEEPSEEK, expertQuery, false);
+          return codeResult.response;
+        }
+        return null;
+      };
+
+      // Appel DIRECT à Ana (1 seul LLM call)
+      const consciousnessResult = await anaDirect.processDirectly(
+        message,
+        { memoryContext: fullPrompt, sessionId: 'chat_v2' }
+      );
+
+      if (consciousnessResult.success && consciousnessResult.response) {
+        result = {
+          success: true,
+          response: consciousnessResult.response,
+          model: anaConsciousness.CONSCIOUSNESS_MODEL,
+          modelKey: 'ANA-SUPERIA-V5',
+          taskType: consciousnessResult.phases?.expertType || 'conversation',
+          latencyMs: 0,
+          failover: false
+        };
+        console.log('✅ [CONSCIOUSNESS-V2] Traitement réussi');
+      } else {
+        console.log('⚠️ [CONSCIOUSNESS-V2] Fallback vers orchestrator');
+        // Fallback: orchestrator
+        result = await orchestrator.chat({
+          prompt: fullPrompt,
+          taskType,
+          model
+        });
+      }
+    } catch (consciousnessError) {
+      console.error('❌ [CONSCIOUSNESS-V2] Erreur:', consciousnessError.message);
+      // Fallback: orchestrator
+      result = await orchestrator.chat({
+        prompt: fullPrompt,
+        taskType,
+        model
+      });
+    }
 
     if (!result.success) {
       return res.status(500).json({
@@ -4364,9 +4932,114 @@ io.on('connection', (socket) => {
 
   // Chat streaming
   socket.on('chat:message', async (data) => {
-    const { message, context, images } = data;
+    let { message, context, images } = data;
+
+    // Appliquer corrections orthographiques au message entrant (astuce → est-ce, etc.)
+    message = spellChecker.correctText(message);
 
     try {
+      // === CONSCIENCE SUPÉRIEURE (2025-12-13) ===
+      // Ana-superia-v5 pense, consulte ses experts, puis répond
+      console.log('🌟 [CONSCIOUSNESS-WS] Activation conscience supérieure...');
+
+      try {
+        // Émettre le modèle actif à l'interface
+        socket.emit('chat:model_selected', {
+          model: anaConsciousness.CONSCIOUSNESS_MODEL || 'ana-superia-v6',
+          reason: 'Conscience Supérieure'
+        });
+
+        // Récupérer contexte mémoire + conversation récente
+        const sessionContext = memory.getSessionContext(); // 20 derniers messages
+        const fileContext = memory.getContext(); // Mémoire long terme
+        const memoryContext = sessionContext || fileContext;
+        console.log('[WS-MEMORY] Session:', sessionContext ? sessionContext.length + ' chars' : 'vide');
+        const fullPrompt = memoryContext ? `${memoryContext}\n\nQuestion: ${message}` : message;
+
+        // Callback pour appeler les experts quand Ana en a besoin
+        const expertCallback = async (expertType, expertQuery) => {
+          console.log(`🔧 [CONSCIOUSNESS-WS] Expert ${expertType} appelé`);
+
+          if (expertType === 'tools') {
+            const toolResult = await toolAgent.runToolAgentV2(message, {
+              sessionId: 'chat_main',
+              context: memoryContext
+            });
+            return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur outil';
+          }
+          else if (expertType === 'research') {
+            const toolResult = await toolAgent.runToolAgentV2(message, {
+              model: 'ana-superia-v6',
+              sessionId: 'chat_main',
+              context: memoryContext
+            });
+            return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur recherche';
+          }
+          else if (expertType === 'code') {
+            const codeResult = await router.query(LLMS.DEEPSEEK, expertQuery, false);
+            return codeResult.response;
+          }
+          return null;
+        };
+
+        // Appel DIRECT à Ana (1 seul LLM call)
+        const consciousnessResult = await anaDirect.processDirectly(
+          message,
+          { memoryContext: fullPrompt, sessionId: 'chat_ws' }
+        );
+
+        if (consciousnessResult.success && consciousnessResult.response) {
+          let finalResponse = consciousnessResult.response;
+
+          // Force tutoiement
+          finalResponse = forceTutoiement(finalResponse);
+
+          // Spell check
+          finalResponse = spellChecker.correctText(finalResponse);
+
+          // Simuler le streaming (envoyer chunk par chunk)
+          const chunkSize = 5; // Nombre de mots par chunk
+          const words = finalResponse.split(' ');
+
+          for (let i = 0; i < words.length; i += chunkSize) {
+            const chunk = words.slice(i, i + chunkSize).join(' ') + (i + chunkSize < words.length ? ' ' : '');
+            socket.emit('chat:chunk', { chunk });
+            // Petit délai pour simuler le streaming naturel
+            await new Promise(resolve => setTimeout(resolve, 50));
+          }
+
+          socket.emit('chat:complete', {
+            response: finalResponse,
+            model: consciousnessResult.model || 'ana-superia-v6'
+          });
+
+          // Émettre le vrai modèle utilisé
+          socket.emit('chat:model_selected', {
+            model: consciousnessResult.model || 'ana-superia-v6',
+            reason: 'Modèle réel'
+          });
+
+          // Memory capture
+          memory.appendToContext(`Alain: ${message}\nAna (${anaConsciousness.CONSCIOUSNESS_MODEL}): ${finalResponse}`);
+
+          // V2 capture
+          memoryCaptureV2.capture({
+            userMessage: message,
+            anaResponse: finalResponse,
+            model: anaConsciousness.CONSCIOUSNESS_MODEL
+          }).catch(err => console.error("Memory V2 capture error (consciousness):", err.message));
+
+          console.log('✅ [CONSCIOUSNESS-WS] Traitement réussi via conscience supérieure');
+          return; // SUCCÈS - On arrête ici, pas besoin du semantic router
+        } else {
+          console.log('⚠️ [CONSCIOUSNESS-WS] Fallback vers semantic router');
+        }
+      } catch (consciousnessError) {
+        console.error('❌ [CONSCIOUSNESS-WS] Erreur:', consciousnessError.message);
+        console.log('⚠️ [CONSCIOUSNESS-WS] Fallback vers semantic router');
+      }
+
+      // === SI ON ARRIVE ICI: Fallback vers le code existant ===
       // === D�TECTION DIRECTE TOOLS (AVANT semantic router) ===
       // Mots-cl�s qui DOIVENT passer par le tool agent
       const msgLower = message.toLowerCase();
@@ -4425,7 +5098,8 @@ io.on('connection', (socket) => {
       if (images && images.length > 0) {
         console.log(`?? ${images.length} image(s) d�tect�e(s), envoi � ${model}`);
       }
-      socket.emit('chat:model_selected', { model, reason, provider });
+      // DÉSACTIVÉ 2025-12-13: Consciousness émet déjà le bon modèle (ana-superia-v6) ligne 1913
+      // socket.emit('chat:model_selected', { model, reason, provider });
 
       // === CLOUD LLM ROUTING (GROQ / CEREBRAS) ===
       // Route to cloud providers when semantic router specifies it
@@ -4569,6 +5243,7 @@ io.on('connection', (socket) => {
       // === M�T�O EARLY DETECTION (AVANT tout le reste) ===
       // D�tection m�t�o en premier pour �viter qu'elle soit saut�e par des erreurs
       let earlyWeatherData = null;
+      let earlySystemData = null;  // Pour CPU/RAM/Disk (2025-12-10)
       const messageLower = message.toLowerCase();
       const weatherKeywords = ['m�t�o', 'meteo', 'temps qu\'il fait', 'temp�rature', 'pluie demain', 'fera-t-il', 'quel temps'];
 
@@ -4908,7 +5583,62 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
           }
         }
 
+        // 9.5. System Info Intelligence - Auto-detect CPU/RAM/Disk requests (2025-12-10)
+        const sysInfoKeywords = ['cpu', 'processeur', 'ram', 'mémoire utilisée', 'memoire utilisee', 'disque', 'espace disque', 'infos système', 'system info'];
+        if (sysInfoKeywords.some(kw => messageLower.includes(kw))) {
+          console.log('💻 Tools Intelligence: Détection requête système');
+          try {
+            const { TOOL_IMPLEMENTATIONS } = require('./agents/tool-agent.cjs');
+            let sysData = {};
 
+            // CPU
+            if (messageLower.includes('cpu') || messageLower.includes('processeur')) {
+              const cpuResult = await TOOL_IMPLEMENTATIONS.get_cpu_usage({});
+              if (cpuResult.success) {
+                sysData.cpu = cpuResult;
+                console.log('💻 CPU récupéré:', cpuResult.average);
+              }
+            }
+
+            // RAM/Mémoire
+            if (messageLower.includes('ram') || messageLower.includes('mémoire') || messageLower.includes('memoire')) {
+              const memResult = await TOOL_IMPLEMENTATIONS.get_memory_usage({});
+              if (memResult.success) {
+                sysData.memory = memResult;
+                console.log('💻 Mémoire récupérée:', memResult.usedPercent);
+              }
+            }
+
+            // Disque
+            if (messageLower.includes('disque') || messageLower.includes('disk') || messageLower.includes('espace')) {
+              const diskResult = await TOOL_IMPLEMENTATIONS.get_disk_usage({});
+              if (diskResult.success) {
+                sysData.disk = diskResult;
+                console.log('💻 Disque récupéré');
+              }
+            }
+
+            // Ajouter au contexte - MÉTHODE DIRECTE comme météo (earlySystemData)
+            if (Object.keys(sysData).length > 0) {
+              let sysInfo = '';
+              if (sysData.cpu) sysInfo += `CPU: ${sysData.cpu.average} (${sysData.cpu.cores?.length || '?'} coeurs)\n`;
+              if (sysData.memory) sysInfo += `RAM: ${sysData.memory.usedPercent} utilisé (${sysData.memory.used} / ${sysData.memory.total})\n`;
+              if (sysData.disk) sysInfo += `Disque: ${JSON.stringify(sysData.disk.drives || sysData.disk)}\n`;
+
+              // IMPORTANT: Stocker dans earlySystemData pour injection directe dans system prompt
+              earlySystemData = sysInfo;
+              console.log('💻 [SYSTEM] Données stockées pour injection:', sysInfo.substring(0, 50));
+
+              sources.push({
+                type: 'system_info',
+                data: '[DONNÉES SYSTÈME EN TEMPS RÉEL]\n' + sysInfo
+              });
+              socket.emit('chat:tool_used', { type: 'system', data: sysData, success: true });
+            }
+          } catch (e) {
+            console.log('⚠️ System info error:', e.message);
+          }
+        }
 
         // 10. Skills Intelligence - SEMANTIC SEARCH across all skills (Phase 2 - 30 Nov 2025)
         // Uses skillLearner.searchSkills() to find relevant skills by content, not just filename
@@ -5058,6 +5788,12 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
         if (earlyWeatherData) {
           unifiedSystemContent += '\n\n=== MÉTÉO EN TEMPS RÉEL ===\n' + earlyWeatherData;
           console.log('[UNIFIED] Météo ajoutée au system prompt');
+        }
+
+        // 2.5. Ajouter données système si disponibles (CPU/RAM/Disk - 2025-12-10)
+        if (earlySystemData) {
+          unifiedSystemContent += '\n\n=== DONNÉES SYSTÈME EN TEMPS RÉEL ===\nUTILISE CES DONNÉES POUR RÉPONDRE:\n' + earlySystemData;
+          console.log('[UNIFIED] Données système ajoutées au system prompt');
         }
 
         // 3. Ajouter contexte mémoire (conversation history)
@@ -5542,6 +6278,10 @@ async function startServer() {
       console.log('?? Tiered Memory initialization failed:', result.error);
     }
   });
+
+  // === Start Sleep Consolidation (14 Dec 2025) ===
+  sleepConsolidation.start();
+  console.log('? Sleep Consolidation started (30min cycles)');
 
   server.listen(PORT, () => {
     console.log('?? ============================================');
