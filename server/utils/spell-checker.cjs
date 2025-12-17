@@ -92,6 +92,7 @@ const ENGLISH_WORDS_TO_PRESERVE = [
   'map', 'filter', 'reduce', 'some', 'every', 'includes',
   'push', 'pop', 'shift', 'slice', 'splice', 'concat', 'join', 'split',
   'console', 'log', 'warn', 'require', 'module', 'exports', 'type', 'interface',
+  'regex', 'regexp', 'pattern', 'match', 'test', 'exec',
   // Git
   'git', 'commit', 'push', 'pull', 'merge', 'branch', 'checkout', 'clone', 'fetch', 'rebase'
 ];
