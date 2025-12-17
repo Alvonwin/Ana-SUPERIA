@@ -49,6 +49,8 @@ class GrammarService {
       /Button/,                        // Common component names
       /Component/,
       /useState|useEffect|useRef/,     // React hooks
+      /VRAM|GPU|CPU|CUDA|ComfyUI|Ollama|ChromaDB/i, // Tech terms
+      /system32|cmd|powershell/i,
     ];
 
     for (const pattern of codeIndicators) {

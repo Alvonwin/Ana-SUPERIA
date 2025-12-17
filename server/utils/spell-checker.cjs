@@ -94,7 +94,12 @@ const ENGLISH_WORDS_TO_PRESERVE = [
   'console', 'log', 'warn', 'require', 'module', 'exports', 'type', 'interface',
   'regex', 'regexp', 'pattern', 'match', 'test', 'exec',
   // Git
-  'git', 'commit', 'push', 'pull', 'merge', 'branch', 'checkout', 'clone', 'fetch', 'rebase'
+  'git', 'commit', 'push', 'pull', 'merge', 'branch', 'checkout', 'clone', 'fetch', 'rebase',
+  // Technical terms (FIX 2025-12-17)
+  'vram', 'gpu', 'cpu', 'ram', 'ssd', 'hdd', 'cmd', 'powershell', 'bash', 'terminal',
+  'comfyui', 'ollama', 'langchain', 'chromadb', 'pytorch', 'tensorflow', 'cuda', 'nvidia',
+  'system32', 'windows', 'linux', 'macos', 'localhost', 'webhook', 'api', 'sdk',
+  'overnight', 'workflow', 'pipeline', 'docker', 'kubernetes', 'nginx', 'apache'
 ];
 
 /**

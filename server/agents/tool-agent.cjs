@@ -943,19 +943,20 @@ const TOOL_DEFINITIONS = [
     }
   },
   // ============ VISION TOOLS - Phase 3.2 ANA CODE ============
+  // FIX 2025-12-17: Description explicite pour forcer utilisation chemin exact
   {
     type: 'function',
     function: {
       name: 'describe_image',
-      description: 'Analyser et decrire une image en detail.',
+      description: 'Analyser une image LOCALE sur le PC. REGLE CRITIQUE: Quand l\'utilisateur fournit un chemin comme "C:\\Users\\...\\image.jpg", tu DOIS utiliser CE CHEMIN EXACT dans image_path. NE JAMAIS inventer de chemin ni d\'URL. Copie EXACTEMENT le chemin fourni.',
       parameters: {
         type: 'object',
         properties: {
-          image_path: { type: 'string', description: 'Chemin vers l\'image a analyser' },
-          image_base64: { type: 'string', description: 'Image en base64 (alternative a image_path)' },
-          prompt: { type: 'string', description: 'Question ou instruction specifique pour l\'analyse' }
+          image_path: { type: 'string', description: 'Chemin EXACT vers l\'image locale fourni par l\'utilisateur. OBLIGATOIRE. Ne pas modifier ni inventer. Exemple: C:\\Users\\nom\\Photos\\315.jpg' },
+          image_base64: { type: 'string', description: 'Image en base64 (uniquement pour images web ou captures)' },
+          prompt: { type: 'string', description: 'Question specifique pour l\'analyse (optionnel)' }
         },
-        required: []
+        required: ['image_path']
       }
     }
   },

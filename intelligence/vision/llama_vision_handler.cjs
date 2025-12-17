@@ -43,12 +43,30 @@ class LlamaVisionHandler {
    * @returns {string} - Base64 encoded image
    */
   imageToBase64(imagePath) {
-    const ext = path.extname(imagePath).toLowerCase();
-    if (!this.supportedFormats.includes(ext)) {
-      throw new Error(`Unsupported image format: ${ext}. Supported: ${this.supportedFormats.join(', ')}`);
+    // FIX 2025-12-17: Better path validation
+
+    // 1. Reject URLs - we only handle LOCAL files
+    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+      throw new Error(`Cette fonction ne supporte que les images LOCALES. "${imagePath}" est une URL. Utilise un chemin local comme "C:\\Users\\...\\image.jpg"`);
     }
 
-    const imageBuffer = fs.readFileSync(imagePath);
+    // 2. Normalize Windows path (convert forward slashes if needed)
+    let normalizedPath = imagePath.replace(/\//g, path.sep);
+
+    // 3. Check if file exists
+    if (!fs.existsSync(normalizedPath)) {
+      throw new Error(`Fichier image introuvable: "${normalizedPath}". Verifie que le chemin est correct et que le fichier existe.`);
+    }
+
+    // 4. Check format
+    const ext = path.extname(normalizedPath).toLowerCase();
+    if (!this.supportedFormats.includes(ext)) {
+      throw new Error(`Format image non supporte: ${ext}. Formats supportes: ${this.supportedFormats.join(', ')}`);
+    }
+
+    // 5. Read and convert to base64
+    const imageBuffer = fs.readFileSync(normalizedPath);
+    this.log(`Image loaded: ${normalizedPath} (${Math.round(imageBuffer.length / 1024)} KB)`);
     return imageBuffer.toString('base64');
   }
 
