@@ -1,0 +1,924 @@
+{
+  "date": "2025-12-11T17:24:35.329Z",
+  "summary": {
+    "ok": 104,
+    "fail": 5,
+    "error": 3,
+    "skip": 69
+  },
+  "details": {
+    "OK": [
+      {
+        "name": "web_search",
+        "status": "OK",
+        "result": "{\"success\":true,\"query\":\"test\",\"engine\":\"brave\",\"results\":[{\"title\":\"Speedtest by Ookla - The Global"
+      },
+      {
+        "name": "get_time",
+        "status": "OK",
+        "result": "{\"success\":true,\"datetime\":\"jeudi 11 décembre 2025 à 12 h 17 min 41 s\",\"iso\":\"2025-12-11T17:17:41.41"
+      },
+      {
+        "name": "read_file",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:\\\\ANA\\\\package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"ana\\\",\\n  \\\"version\\\": \\\""
+      },
+      {
+        "name": "search_in_file",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:/ANA/package.json\",\"pattern\":\"name\",\"total_matches\":1,\"matches\":[{\"line_nu"
+      },
+      {
+        "name": "read_file_chunk",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:/ANA/package.json\",\"start_line\":1,\"end_line\":29,\"total_lines\":29,\"content\""
+      },
+      {
+        "name": "file_info",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:/ANA/package.json\",\"size_bytes\":624,\"size_readable\":\"624 bytes\",\"lines\":29"
+      },
+      {
+        "name": "write_file",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:\\\\ANA\\\\temp\\\\test_write.txt\",\"bytesWritten\":10,\"backupPath\":\"E:\\\\ANA\\\\temp"
+      },
+      {
+        "name": "list_files",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:\\\\ANA\\\\temp\",\"entries\":[{\"name\":\"add-conversation-history.js\",\"path\":\"E:\\\\"
+      },
+      {
+        "name": "run_shell",
+        "status": "OK",
+        "result": "{\"success\":true,\"stdout\":\"test\\r\\n\",\"stderr\":\"\",\"exitCode\":0,\"duration\":0}"
+      },
+      {
+        "name": "web_fetch",
+        "status": "OK",
+        "result": "{\"success\":true,\"url\":\"https://example.com\",\"title\":\"Example Domain\",\"description\":null,\"charset\":\"t"
+      },
+      {
+        "name": "wikipedia",
+        "status": "OK",
+        "result": "{\"success\":true,\"query\":\"Montreal\",\"totalHits\":57471,\"results\":[{\"title\":\"Montréal\",\"pageId\":5525,\"u"
+      },
+      {
+        "name": "ask_groq",
+        "status": "OK",
+        "result": "{\"success\":true,\"provider\":\"groq\",\"model\":\"llama-3.3-70b-versatile\",\"answer\":\"C'est un test, n'est-c"
+      },
+      {
+        "name": "ask_cerebras",
+        "status": "OK",
+        "result": "{\"success\":true,\"provider\":\"cerebras\",\"model\":\"llama3.1-8b\",\"answer\":\"C'est un test simple, n'est-ce"
+      },
+      {
+        "name": "search_memory",
+        "status": "OK",
+        "result": "{\"success\":true,\"query\":\"test\",\"found\":true,\"totalMatches\":25,\"sources\":[{\"source\":\"ana_memories\",\"m"
+      },
+      {
+        "name": "save_memory",
+        "status": "OK",
+        "result": "{\"success\":true,\"message\":\"J'ai memorise: Test memory save\",\"id\":\"1765473464232\",\"category\":\"test\"}"
+      },
+      {
+        "name": "edit_file",
+        "status": "OK",
+        "result": "{\"success\":true,\"message\":\"Fichier modifié avec succès\"}"
+      },
+      {
+        "name": "glob",
+        "status": "OK",
+        "result": "{\"success\":true,\"files\":[\"E:/ANA/agents/package-lock.json\",\"E:/ANA/agents/package.json\",\"E:/ANA/agen"
+      },
+      {
+        "name": "grep",
+        "status": "OK",
+        "result": "{\"success\":true,\"matches\":[\"E:/ANA/agents/agent_assumption_detector.cjs:148:        if (pattern.test"
+      },
+      {
+        "name": "run_background",
+        "status": "OK",
+        "result": "{\"success\":true,\"pid\":6456,\"message\":\"Commande lancée en arrière-plan (PID: 6456)\"}"
+      },
+      {
+        "name": "todo_write",
+        "status": "OK",
+        "result": "{\"success\":true,\"message\":\"1 tâches enregistrées\",\"todos\":[{\"id\":1765473464281,\"task\":\"test\",\"status"
+      },
+      {
+        "name": "execute_code",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"test\",\"error\":\"\",\"exitCode\":0}"
+      },
+      {
+        "name": "http_request",
+        "status": "OK",
+        "result": "{\"success\":true,\"status\":200,\"headers\":{\"accept-ranges\":\"bytes\",\"content-type\":\"text/html\",\"etag\":\"\\"
+      },
+      {
+        "name": "git_status",
+        "status": "OK",
+        "result": "{\"success\":true,\"branch\":\"master\",\"lastCommit\":\"f2bebf8 Initial commit - Ana SUPERIA 9 Dec 2025\",\"fi"
+      },
+      {
+        "name": "git_log",
+        "status": "OK",
+        "result": "{\"success\":true,\"commits\":[{\"hash\":\"f2bebf8\",\"message\":\"Initial commit - Ana SUPERIA 9 Dec 2025\"}]}"
+      },
+      {
+        "name": "git_branch",
+        "status": "OK",
+        "result": "{\"success\":true,\"branches\":[\"master\"],\"current\":\"master\"}"
+      },
+      {
+        "name": "search_codebase",
+        "status": "OK",
+        "result": "{\"success\":true,\"query\":\"function\",\"projectPath\":\"E:/ANA/server\",\"results\":[{\"file\":\"agents\\\\tool-ag"
+      },
+      {
+        "name": "get_project_structure",
+        "status": "OK",
+        "result": "{\"name\":\"src\",\"path\":\"E:/ANA/ana-interface/src\",\"type\":\"directory\",\"children\":[{\"name\":\"App.css\",\"ty"
+      },
+      {
+        "name": "describe_image",
+        "status": "OK",
+        "result": "{\"success\":true,\"response\":\"The image depicts a cartoon robot with a smiling face, set against a sol"
+      },
+      {
+        "name": "execute_voice_command",
+        "status": "OK",
+        "result": "{\"success\":true,\"matched\":false,\"message\":\"Commande vocale non reconnue. Traitement en langage natur"
+      },
+      {
+        "name": "ask_architect",
+        "status": "OK",
+        "result": "{\"success\":true,\"request\":\"How to structure a React component?\",\"plan\":{\"parsed\":false,\"error\":\"Cann"
+      },
+      {
+        "name": "review_code",
+        "status": "OK",
+        "result": "{\"success\":true,\"review\":{\"parsed\":false},\"model\":\"qwen3:8b\"}"
+      },
+      {
+        "name": "analyze_component",
+        "status": "OK",
+        "result": "{\"success\":true,\"component\":\"Sidebar\",\"analysis\":{\"imports\":19,\"hooks\":[\"useLocation\",\"useEffect\",\"u"
+      },
+      {
+        "name": "hot_reload_check",
+        "status": "OK",
+        "result": "{\"success\":true,\"running\":true,\"port\":5173,\"statusCode\":200,\"message\":\"Serveur Vite actif sur port 5"
+      },
+      {
+        "name": "list_available_icons",
+        "status": "OK",
+        "result": "{\"success\":true,\"count\":70,\"icons\":[\"IconMessageSquare\",\"IconCode2\",\"IconSearch\",\"IconLayoutDashboar"
+      },
+      {
+        "name": "get_css_variables",
+        "status": "OK",
+        "result": "{\"success\":true,\"count\":25,\"variables\":{\"--bg-primary\":\"#f5f7fa\",\"--bg-secondary\":\"#ffffff\",\"--bg-te"
+      },
+      {
+        "name": "create_backup",
+        "status": "OK",
+        "result": "{\"success\":true,\"original\":\"E:/ANA/temp/test_write.txt\",\"backup\":\"E:/ANA/temp/test_write.txt.backup_"
+      },
+      {
+        "name": "copy_file",
+        "status": "OK",
+        "result": "{\"success\":true,\"message\":\"Copié: E:/ANA/temp/test_write.txt → E:/ANA/temp/test_copy_cycle.txt\"}"
+      },
+      {
+        "name": "create_directory",
+        "status": "OK",
+        "result": "{\"success\":true,\"message\":\"Dossier créé: E:/ANA/temp/test_dir_cycle\"}"
+      },
+      {
+        "name": "get_file_stats",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:/ANA/package.json\",\"size\":624,\"sizeHuman\":\"0.61 KB\",\"created\":\"2025-11-23T"
+      },
+      {
+        "name": "compare_files",
+        "status": "OK",
+        "result": "{\"success\":true,\"identical\":true,\"differences\":[],\"totalDifferences\":0}"
+      },
+      {
+        "name": "get_directory_size",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:/ANA/temp\",\"sizeBytes\":2972794,\"sizeKB\":\"2903.12\",\"sizeMB\":\"2.84\",\"sizeGB\""
+      },
+      {
+        "name": "tree_view",
+        "status": "OK",
+        "result": "{\"success\":true,\"tree\":\"E:/ANA/temp\\n├── add-conversation-history.js\\n├── add-git-tools.cjs\\n├── add"
+      },
+      {
+        "name": "ping",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"\\r\\nEnvoi d'une requ�te 'ping' sur google.com [142.250.190.110] avec 32 oc"
+      },
+      {
+        "name": "check_url",
+        "status": "OK",
+        "result": "{\"success\":true,\"accessible\":true,\"statusCode\":301,\"statusMessage\":\"Moved Permanently\",\"headers\":{\"l"
+      },
+      {
+        "name": "get_public_ip",
+        "status": "OK",
+        "result": "{\"success\":true,\"ip\":\"23.233.141.87\"}"
+      },
+      {
+        "name": "dns_lookup",
+        "status": "OK",
+        "result": "{\"success\":true,\"domain\":\"google.com\",\"type\":\"A\",\"records\":[\"142.250.190.78\"]}"
+      },
+      {
+        "name": "port_scan",
+        "status": "OK",
+        "result": "{\"success\":true,\"host\":\"localhost\",\"results\":[{\"port\":3338,\"open\":true}]}"
+      },
+      {
+        "name": "hash_file",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:/ANA/package.json\",\"algorithm\":\"md5\",\"hash\":\"40d4b90cffb3435569b4bba1e8110"
+      },
+      {
+        "name": "hash_text",
+        "status": "OK",
+        "result": "{\"success\":true,\"algorithm\":\"sha256\",\"hash\":\"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c1"
+      },
+      {
+        "name": "generate_uuid",
+        "status": "OK",
+        "result": "{\"success\":true,\"uuid\":\"d44e9c88-43d4-4c67-8bf0-4b4c1480df3c\"}"
+      },
+      {
+        "name": "generate_password",
+        "status": "OK",
+        "result": "{\"success\":true,\"password\":\"?]bHNoXhjxqob8@T\",\"length\":16}"
+      },
+      {
+        "name": "encrypt_text",
+        "status": "OK",
+        "result": "{\"success\":true,\"encrypted\":\"5138084dd3382e9fa84640e1eb03555a:0cd4d821d7e80c9d8f4bc8a132413e91\"}"
+      },
+      {
+        "name": "base64_encode",
+        "status": "OK",
+        "result": "{\"success\":true,\"encoded\":\"dGVzdA==\"}"
+      },
+      {
+        "name": "base64_decode",
+        "status": "OK",
+        "result": "{\"success\":true,\"decoded\":\"test\"}"
+      },
+      {
+        "name": "get_system_info",
+        "status": "OK",
+        "result": "{\"success\":true,\"platform\":\"win32\",\"arch\":\"x64\",\"hostname\":\"Desktop-Alain\",\"type\":\"Windows_NT\",\"rele"
+      },
+      {
+        "name": "get_cpu_usage",
+        "status": "OK",
+        "result": "{\"success\":true,\"cores\":[{\"core\":0,\"usage\":\"39.97%\"},{\"core\":1,\"usage\":\"35.10%\"},{\"core\":2,\"usage\":\""
+      },
+      {
+        "name": "get_memory_usage",
+        "status": "OK",
+        "result": "{\"success\":true,\"total\":\"31.91 GB\",\"used\":\"13.46 GB\",\"free\":\"18.44 GB\",\"usagePercent\":\"42.19%\"}"
+      },
+      {
+        "name": "get_disk_usage",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"Caption  FreeSpace      Size           \\r\\r\\nC:       222076264448   99924"
+      },
+      {
+        "name": "list_processes",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"\\\"Nom de l'image\\\",\\\"PID\\\",\\\"Nom de la session\\\",\\\"Num�ro de session\\\",\\\"U"
+      },
+      {
+        "name": "get_environment_variable",
+        "status": "OK",
+        "result": "{\"success\":true,\"name\":\"PATH\",\"value\":\"C:\\\\Users\\\\niwno\\\\bin;C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin;C:"
+      },
+      {
+        "name": "get_network_interfaces",
+        "status": "OK",
+        "result": "{\"success\":true,\"interfaces\":{\"Ethernet\":[{\"family\":\"IPv6\",\"address\":\"fe80::c019:5e9c:c5a8:fe17\",\"ne"
+      },
+      {
+        "name": "json_to_csv",
+        "status": "OK",
+        "result": "{\"success\":true,\"csv\":\"a,b\\n1,2\"}"
+      },
+      {
+        "name": "xml_to_json",
+        "status": "OK",
+        "result": "{\"success\":true,\"note\":\"Pour XML complexe, installer xml2js: npm install xml2js\",\"xml\":\"<root><item>"
+      },
+      {
+        "name": "json_to_xml",
+        "status": "OK",
+        "result": "{\"success\":true,\"xml\":\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<root>\\n  <root>\\n    <item>test<"
+      },
+      {
+        "name": "yaml_to_json",
+        "status": "OK",
+        "result": "{\"success\":true,\"data\":\"undefined\"}"
+      },
+      {
+        "name": "json_to_yaml",
+        "status": "OK",
+        "result": "{\"success\":true,\"yaml\":\"key: value\\n\"}"
+      },
+      {
+        "name": "parse_html",
+        "status": "OK",
+        "result": "{\"success\":true,\"count\":1,\"results\":[\"content\"]}"
+      },
+      {
+        "name": "format_json",
+        "status": "OK",
+        "result": "{\"success\":true,\"formatted\":\"{\\n  \\\"a\\\": 1\\n}\"}"
+      },
+      {
+        "name": "minify_json",
+        "status": "OK",
+        "result": "{\"success\":true,\"minified\":\"{\\\"a\\\":1}\"}"
+      },
+      {
+        "name": "count_lines",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:/ANA/package.json\",\"lines\":29}"
+      },
+      {
+        "name": "count_words",
+        "status": "OK",
+        "result": "{\"success\":true,\"path\":\"E:/ANA/package.json\",\"words\":63,\"characters\":612}"
+      },
+      {
+        "name": "head_file",
+        "status": "OK",
+        "result": "{\"success\":true,\"content\":\"{\\n  \\\"name\\\": \\\"ana\\\",\\n  \\\"version\\\": \\\"1.0.0\\\",\\n  \\\"description\\\": \\\""
+      },
+      {
+        "name": "tail_file",
+        "status": "OK",
+        "result": "{\"success\":true,\"content\":\"    \\\"sharp\\\": \\\"^0.34.5\\\",\\n    \\\"turndown\\\": \\\"^7.2.2\\\"\\n  }\\n}\\n\"}"
+      },
+      {
+        "name": "format_date",
+        "status": "OK",
+        "result": "{\"success\":true,\"formatted\":\"2025-12-11 12 h 17 min 25 s\",\"iso\":\"2025-12-11T17:17:25.960Z\"}"
+      },
+      {
+        "name": "date_diff",
+        "status": "OK",
+        "result": "{\"success\":true,\"difference\":344,\"unit\":\"days\"}"
+      },
+      {
+        "name": "add_to_date",
+        "status": "OK",
+        "result": "{\"success\":true,\"result\":\"2025-01-31T00:00:00.000Z\"}"
+      },
+      {
+        "name": "timestamp_to_date",
+        "status": "OK",
+        "result": "{\"success\":true,\"date\":\"2025-12-11T17:17:25.961Z\",\"local\":\"2025-12-11 12 h 17 min 25 s\"}"
+      },
+      {
+        "name": "date_to_timestamp",
+        "status": "OK",
+        "result": "{\"success\":true,\"timestamp\":1765411200,\"timestampMs\":1765411200000}"
+      },
+      {
+        "name": "calculate",
+        "status": "OK",
+        "result": "{\"success\":true,\"expression\":\"2 + 2 * 3\",\"result\":8}"
+      },
+      {
+        "name": "convert_units",
+        "status": "OK",
+        "result": "{\"success\":true,\"value\":1,\"from\":\"km\",\"to\":\"miles\",\"result\":0.621371}"
+      },
+      {
+        "name": "random_number",
+        "status": "OK",
+        "result": "{\"success\":true,\"result\":34,\"min\":1,\"max\":100}"
+      },
+      {
+        "name": "statistics",
+        "status": "OK",
+        "result": "{\"success\":true,\"count\":5,\"sum\":15,\"mean\":3,\"median\":3,\"min\":1,\"max\":5,\"range\":4,\"variance\":2,\"stand"
+      },
+      {
+        "name": "npm_list",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"ana@1.0.0 E:\\\\ANA\\n├── adm-zip@0.5.16\\n├── archiver@7.0.1\\n├── axios@1.13."
+      },
+      {
+        "name": "npm_outdated",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"Tous les packages sont à jour\"}"
+      },
+      {
+        "name": "npm_search",
+        "status": "OK",
+        "result": "{\"success\":true,\"results\":[{\"name\":\"express\",\"keywords\":[\"express\",\"framework\",\"sinatra\",\"web\",\"http"
+      },
+      {
+        "name": "npm_info",
+        "status": "OK",
+        "result": "{\"success\":true,\"name\":\"express\",\"version\":\"5.2.1\",\"description\":\"Fast, unopinionated, minimalist we"
+      },
+      {
+        "name": "dom_query",
+        "status": "OK",
+        "result": "{\"success\":true,\"found\":true,\"tag\":\"div\",\"text\":\"content\",\"html\":\"content\"}"
+      },
+      {
+        "name": "dom_get_element_by_id",
+        "status": "OK",
+        "result": "{\"success\":true,\"found\":true,\"tag\":\"div\",\"text\":\"content\",\"html\":\"content\"}"
+      },
+      {
+        "name": "dom_get_elements_by_class",
+        "status": "OK",
+        "result": "{\"success\":true,\"count\":1,\"elements\":[{\"tag\":\"div\",\"text\":\"content\",\"html\":\"content\"}]}"
+      },
+      {
+        "name": "dom_get_elements_by_tag",
+        "status": "OK",
+        "result": "{\"success\":true,\"count\":1,\"elements\":[{\"tag\":\"div\",\"text\":\"content\",\"html\":\"content\"}]}"
+      },
+      {
+        "name": "docker_ps",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"CONTAINER ID   IMAGE                                COMMAND               "
+      },
+      {
+        "name": "docker_images",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"REPOSITORY                      TAG         IMAGE ID       CREATED        "
+      },
+      {
+        "name": "docker_logs",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"\\n ██████╗ ██████╗ ███████╗███╗   ██╗    ██╗    ██╗███████╗██████╗ ██╗   █"
+      },
+      {
+        "name": "ollama_list",
+        "status": "OK",
+        "result": "{\"success\":true,\"output\":\"NAME                                          ID              SIZE      MO"
+      },
+      {
+        "name": "ollama_pull",
+        "status": "OK",
+        "result": "{\"success\":true,\"message\":\"Modèle llama3.2:1b téléchargé\",\"output\":\"\\u001b[?2026h\\u001b[?25l\\u001b[1"
+      },
+      {
+        "name": "ollama_chat",
+        "status": "OK",
+        "result": "{\"success\":true,\"response\":\"How can I help you today?\"}"
+      },
+      {
+        "name": "clipboard_read",
+        "status": "OK",
+        "result": "{\"success\":true,\"content\":\"\\r\\n  RAPPORT CYCLE TEST - 181 OUTILS ANA\\r\\n\\r\\n  ? OK (107 outils) - Fo"
+      },
+      {
+        "name": "clipboard_write",
+        "status": "OK",
+        "result": "{\"success\":true,\"message\":\"Contenu copié dans le presse-papiers\"}"
+      },
+      {
+        "name": "set_reminder",
+        "status": "OK",
+        "result": "{\"success\":true,\"message\":\"Rappel créé pour 2025-12-31T12:00:00\",\"reminder\":{\"id\":\"1765473875327\",\"m"
+      },
+      {
+        "name": "list_reminders",
+        "status": "OK",
+        "result": "{\"success\":true,\"count\":8,\"reminders\":[{\"id\":\"1765455879764\",\"message\":\"Test reminder\",\"datetime\":\"2"
+      },
+      {
+        "name": "test_regex",
+        "status": "OK",
+        "result": "{\"success\":true,\"matches\":[\"123\"],\"count\":1,\"test\":true}"
+      },
+      {
+        "name": "validate_json",
+        "status": "OK",
+        "result": "{\"success\":true,\"valid\":true}"
+      },
+      {
+        "name": "validate_email",
+        "status": "OK",
+        "result": "{\"success\":true,\"email\":\"test@example.com\",\"valid\":true}"
+      },
+      {
+        "name": "validate_url",
+        "status": "OK",
+        "result": "{\"success\":true,\"url\":\"https://example.com\",\"valid\":true}"
+      }
+    ],
+    "FAIL": [
+      {
+        "name": "generate_image",
+        "status": "FAIL",
+        "error": "ComfyUI n'est pas démarré. Lance ComfyUI d'abord."
+      },
+      {
+        "name": "generate_animation",
+        "status": "FAIL",
+        "error": "ComfyUI n'est pas demarre."
+      },
+      {
+        "name": "generate_video",
+        "status": "FAIL",
+        "error": "ComfyUI n'est pas demarre."
+      },
+      {
+        "name": "image_to_image",
+        "status": "FAIL",
+        "error": "ComfyUI n'est pas demarre."
+      },
+      {
+        "name": "inpaint_image",
+        "status": "FAIL",
+        "error": "ComfyUI n'est pas demarre."
+      }
+    ],
+    "ERROR": [
+      {
+        "name": "get_weather",
+        "status": "ERROR",
+        "error": "TIMEOUT"
+      },
+      {
+        "name": "debug_screenshot",
+        "status": "ERROR",
+        "error": "TIMEOUT"
+      },
+      {
+        "name": "analyze_code_screenshot",
+        "status": "ERROR",
+        "error": "TIMEOUT"
+      }
+    ],
+    "SKIP": [
+      {
+        "name": "ask_user",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "kill_process",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "notebook_edit",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "plan_mode",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "get_yt_transcript",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "launch_agent",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "git_commit",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "create_react_component",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "add_route",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "add_api_endpoint",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "install_npm_package",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "validate_jsx_syntax",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "move_file",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "delete_file",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "find_files",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "watch_file",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "download_file",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "whois",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "create_zip",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "extract_zip",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "list_archive",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "compress_gzip",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "decompress_gzip",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "decrypt_text",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "kill_process_by_name",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "set_environment_variable",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "open_application",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "open_url_in_browser",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "csv_to_json",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "markdown_to_html",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "html_to_markdown",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "resize_image",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "convert_image",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "get_image_info",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "crop_image",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "rotate_image",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "take_screenshot",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "git_diff",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "git_stash",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "git_pull",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "git_push",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "git_clone",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "git_checkout",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "git_merge",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "git_reset",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "search_replace_in_file",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "append_to_file",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "prepend_to_file",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "get_audio_info",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "text_to_speech",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "play_audio",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "send_notification",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "npm_run",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "browser_open",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "browser_screenshot",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "browser_pdf",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "browser_click",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "browser_type",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "browser_evaluate",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "browser_extract",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "dom_modify",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "sqlite_query",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "sqlite_tables",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "sqlite_schema",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "docker_exec",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "docker_start",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "docker_stop",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "ollama_delete",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      },
+      {
+        "name": "cancel_reminder",
+        "status": "SKIP",
+        "reason": "Needs special setup or modifies system"
+      }
+    ]
+  }
+}

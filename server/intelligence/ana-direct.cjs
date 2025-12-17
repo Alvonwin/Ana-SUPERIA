@@ -154,13 +154,13 @@ async function processDirectly(message, options = {}) {
 
   try {
 
-    // ══ GROQ BYPASS pour messages simples ══
+    // ══ CEREBRAS BYPASS pour messages simples ══
     if (isSimpleMessage(message)) {
-      console.log('[ANA-DIRECT] Simple → Groq');
-      const groqSvc = require('../services/groq-service.cjs');
-      groqSvc.initialize();
+      console.log('[ANA-DIRECT] Simple → Cerebras');
+      const cerebrasSvc = require('../services/cerebras-service.cjs');
+      cerebrasSvc.initialize();
 
-      // Construire l'historique de conversation pour Groq
+      // Construire l'historique de conversation pour Cerebras
       const conversationHistory = [];
       if (options.memoryContext) {
         // Parser le contexte pour extraire les messages précédents
@@ -175,13 +175,13 @@ async function processDirectly(message, options = {}) {
         console.log('[ANA-DIRECT] Contexte conversation:', conversationHistory.length, 'messages');
       }
 
-      const gr = await groqSvc.chat(message, { conversationHistory });
-      if (gr.success) {
-        console.log('[ANA-DIRECT] Groq OK');
-        return { success: true, response: cleanAsterisks(gr.response), model: 'groq', duration: Date.now() - startTime };
+      const cr = await cerebrasSvc.chat(message, { conversationHistory });
+      if (cr.success) {
+        console.log('[ANA-DIRECT] Cerebras OK');
+        return { success: true, response: cleanAsterisks(cr.response), model: 'llama-3.3-70b', provider: 'cerebras', duration: Date.now() - startTime };
       }
     }
-    // ══ FIN GROQ BYPASS ══
+    // ══ FIN CEREBRAS BYPASS ══
 
     // ══════════════════════════════════════════════════════════════
     // ÉTAPE 1: Proactive Recall - Injecter mémoires pertinentes
@@ -205,7 +205,7 @@ async function processDirectly(message, options = {}) {
     // ══════════════════════════════════════════════════════════════
     // ÉTAPE 2: Appel DIRECT à Ana-superia-v6 (DeepSeek R1 8B) via tool-agent
     // ══════════════════════════════════════════════════════════════
-    console.log('[ANA-DIRECT] Appel ana-superia-v6...');
+    console.log('[ANA-DIRECT] Appel orchestrateur (Cerebras)...');
 
     const result = await toolAgent.runToolAgentV2(message, {
       model: 'cerebras/llama-3.3-70b',
@@ -213,6 +213,23 @@ async function processDirectly(message, options = {}) {
       context: enhancedContext,
       timeoutMs: 120000  // 2 minutes max
     });
+
+    // FIX 2025-12-17: Extraire tool patterns pour apprentissage
+    const toolsUsedDirect = result?.stats?.toolCallCounts || {};
+    if (Object.keys(toolsUsedDirect).length > 0) {
+      try {
+        const skillLearner = require('./skill-learner.cjs');
+        skillLearner.extractSkillsFromConversation({
+          userMessage: message,
+          anaResponse: result.answer || '',
+          model: result.model || 'cerebras/llama-3.3-70b',
+          success: result.success,
+          toolsUsed: toolsUsedDirect
+        }).catch(e => console.log('📚 Skill extraction skipped:', e.message));
+      } catch (e) {
+        console.log('📚 Skill extraction error:', e.message);
+      }
+    }
 
     const duration = Date.now() - startTime;
     console.log(`[ANA-DIRECT] Réponse reçue en ${duration}ms`);
@@ -274,13 +291,17 @@ async function processDirectly(message, options = {}) {
     // ══════════════════════════════════════════════════════════════
     // ÉTAPE 3: Retourner la réponse d'Ana
     // ══════════════════════════════════════════════════════════════
-    console.log('[ANA-DIRECT] Succès - Réponse directe');
+    // FIX 2025-12-15: Retourner le model/provider RÉEL de l'orchestrateur (pas hardcodé)
+    const realModel = result.model || 'unknown';
+    const realProvider = result.provider || 'unknown';
+    console.log(`[ANA-DIRECT] Succès - Provider RÉEL: ${realProvider}/${realModel}`);
     console.log('[ANA-DIRECT] ═══════════════════════════════════════');
 
     return {
       success: true,
       response: cleanAsterisks(result.answer),
-      model: 'ana-superia-r1',
+      model: realModel,
+      provider: realProvider,
       fallbackUsed: false,
       duration,
       stats: result.stats

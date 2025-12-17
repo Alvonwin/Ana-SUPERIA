@@ -1,0 +1,4 @@
+{
+  "code": "console.log('Hello from sandbox!'); const x = 2 + 2; console.log('2 + 2 =', x); x * 10",
+  "language": "javascript"
+}

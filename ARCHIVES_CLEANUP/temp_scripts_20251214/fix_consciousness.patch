@@ -1,0 +1,21 @@
+--- ana-core.cjs.orig
++++ ana-core.cjs
+@@ -1775,9 +1775,13 @@
+       console.log('[EXPLICIT MODEL] Using requested model:', model);
+     } else {
+-      // Auto-routing based on message content
+-      const routing = router.classifyTask(message, context || {});
+-      model = routing.model;
+-      reason = routing.reason;
++      // FORCE CONSCIOUSNESS - Ana Superia V4 always decides
++      model = 'consciousness';
++      reason = 'Ana Superia V4 Conscience';
++      // OLD: Semantic routing (disabled)
++      // const routing = router.classifyTask(message, context || {});
++      // model = routing.model;
++      // reason = routing.reason;
+     }
+-    router.activeModel = model;
+-    router.updateStats(model);
++    router.activeModel = model || 'consciousness';
++    router.updateStats(model || 'consciousness');

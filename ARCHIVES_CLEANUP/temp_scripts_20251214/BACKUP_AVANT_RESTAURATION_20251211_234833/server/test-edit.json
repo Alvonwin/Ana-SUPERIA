@@ -1,0 +1,11 @@
+{
+  "path": "E:\\ANA\\test-ana-tools.txt",
+  "operations": [
+    {
+      "search": "autonomous backend API",
+      "replace": "AUTONOMOUS Ana - File Tools Working!",
+      "all": false
+    }
+  ],
+  "backup": true
+}

@@ -1,0 +1,28 @@
+{
+  "date": "2025-12-13T09:10:00.000Z",
+  "groupe": "WEB",
+  "total_outils": 11,
+  "tests": [
+    {
+      "numero": 1,
+      "nom": "web_search",
+      "question": "Cherche les dernières nouvelles sur Claude AI",
+      "status": "OK",
+      "model": "ana-superia-v5",
+      "latencyMs": 153000,
+      "validation": {
+        "outil_utilise": true,
+        "resultats_recents": true,
+        "sources_legitimes": true,
+        "informations_factuelles": true
+      },
+      "notes": "Données réelles d'Anthropic. Amélioration majeure vs version précédente (DeepSeek inventait tout)."
+    }
+  ],
+  "stats": {
+    "ok": 1,
+    "fail": 0,
+    "partial": 0,
+    "remaining": 10
+  }
+}

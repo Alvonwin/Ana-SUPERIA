@@ -1,0 +1,462 @@
+/**
+ * ANA SEMANTIC ROUTER - Intelligent Task Classification
+ *
+ * Replaces keyword-based routing with semantic analysis
+ * Uses embeddings to classify tasks and route to optimal LLM
+ *
+ * Best Practices 2025:
+ * - Source: https://github.com/lm-sys/RouteLLM
+ * - Source: https://blog.langchain.dev/semantic-routing/
+ */
+
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
+const OLLAMA_URL = 'http://localhost:11434';
+const CACHE_PATH = path.join('E:', 'ANA', 'knowledge', 'learned', 'router_cache.json');
+
+// Task type definitions with semantic descriptions
+// Provider: 'ollama' (local), 'groq' (cloud fast), 'cerebras' (cloud ultra-fast)
+const TASK_TYPES = {
+  CODING: {
+    name: 'coding',
+    description: 'Writing code, programming, fixing bugs, debugging, creating functions, classes, implementing features',
+    examples: [
+      'Write a function to sort an array',
+      'Fix this bug in my code',
+      'Create a class for user authentication',
+      'Debug this error',
+      'Implement a REST API endpoint'
+    ],
+    preferredModel: 'deepseek-coder-v2:16b-lite-instruct-q4_K_M',
+    fallbackModel: 'qwen2.5-coder:7b',
+    provider: 'ollama'  // Code stays LOCAL for privacy
+  },
+  MATH: {
+    name: 'math',
+    description: 'Mathematical calculations, equations, statistics, numerical analysis, data processing',
+    examples: [
+      'Calculate the derivative of x^2',
+      'Solve this equation',
+      'What is 15% of 340',
+      'Compute the standard deviation',
+      'Parse this numerical data'
+    ],
+    preferredModel: 'llama-3.3-70b-versatile',
+    fallbackModel: 'qwen2.5-coder:7b',
+    provider: 'groq'  // GROQ for speed
+  },
+  VISION: {
+    name: 'vision',
+    description: 'Image analysis, visual content, pictures, photos, screenshots, diagrams',
+    examples: [
+      'What do you see in this image',
+      'Analyze this screenshot',
+      'Describe this photo',
+      'Read the text in this picture',
+      'What is shown in this diagram'
+    ],
+    preferredModel: 'llama3.2-vision:11b',
+    fallbackModel: 'phi3:mini-128k',
+    provider: 'ollama'  // Vision stays local (Ollama only)
+  },
+  REASONING: {
+    name: 'reasoning',
+    description: 'Complex reasoning, analysis, planning, strategy, explaining concepts, research',
+    examples: [
+      'Explain how neural networks work',
+      'Plan a migration strategy',
+      'Analyze these requirements',
+      'Compare these approaches',
+      'What are the pros and cons'
+    ],
+    preferredModel: 'llama-3.3-70b-versatile',
+    fallbackModel: 'deepseek-coder-v2:16b-lite-instruct-q4_K_M',
+    provider: 'groq'  // GROQ 70B for complex reasoning
+  },
+  CONVERSATION: {
+    name: 'conversation',
+    description: 'General chat, greetings, questions, simple requests, help, information',
+    examples: [
+      'Hello how are you',
+      'What time is it',
+      'Tell me about yourself',
+      'Thank you',
+      'Can you help me'
+    ],
+    preferredModel: 'llama-3.3-70b-versatile',
+    fallbackModel: 'qwen2.5-coder:7b',
+    provider: 'groq'  // GROQ for fast French responses
+  },
+  CREATIVE: {
+    name: 'creative',
+    description: 'Writing, storytelling, creative content, poetry, brainstorming ideas',
+    examples: [
+      'Write a poem about nature',
+      'Generate creative ideas for',
+      'Help me brainstorm',
+      'Create a story about',
+      'Suggest names for my project'
+    ],
+    preferredModel: 'llama-3.3-70b-versatile',
+    fallbackModel: 'qwen2.5-coder:7b',
+    provider: 'groq'  // GROQ for creative French
+  },
+  TOOLS: {
+    name: 'tools',
+    description: 'Questions nécessitant des outils externes: heure, météo, date, recherche web, lecture/écriture fichiers, commandes shell, Wikipedia',
+    examples: [
+      'Quelle heure est-il',
+      'Il est quelle heure',
+      'Donne-moi l\'heure',
+      'Quelle est la météo à Longueuil',
+      'Quel temps fait-il',
+      'C\'est quoi la météo',
+      'Cherche sur internet',
+      'Recherche des informations sur',
+      'Lis le fichier',
+      'Montre-moi le contenu de',
+      'Liste les fichiers dans',
+      'Exécute la commande',
+      'Cherche sur Wikipedia',
+      'Quelle date sommes-nous',
+      'On est quel jour'
+    ],
+    preferredModel: 'qwen2.5-coder:7b',
+    fallbackModel: 'qwen2.5-coder:7b',
+    provider: 'ollama',  // Tools need local Ollama for function calling
+    method: 'tools'  // Flag spécial pour indiquer tool calling
+  }
+};
+
+class SemanticRouter {
+  constructor() {
+    this.embedCache = new Map();
+    this.taskTypeEmbeddings = null;
+    this.initialized = false;
+    this.stats = {
+      totalRoutes: 0,
+      byTaskType: {},
+      cacheHits: 0,
+      cacheMisses: 0
+    };
+  }
+
+  async initialize() {
+    try {
+      console.log('[SemanticRouter] Initializing...');
+
+      // Pre-compute embeddings for task type descriptions
+      await this.precomputeTaskTypeEmbeddings();
+
+      // Load cache if exists
+      await this.loadCache();
+
+      this.initialized = true;
+      console.log('[SemanticRouter] Ready with', Object.keys(TASK_TYPES).length, 'task types');
+      return { success: true };
+    } catch (error) {
+      console.error('[SemanticRouter] Init error:', error.message);
+      return { success: false, error: error.message };
+    }
+  }
+
+  /**
+   * Get embedding for text using Ollama
+   */
+  async getEmbedding(text) {
+    try {
+      // Check cache first
+      const cacheKey = this.hashText(text.substring(0, 200));
+      if (this.embedCache.has(cacheKey)) {
+        this.stats.cacheHits++;
+        return this.embedCache.get(cacheKey);
+      }
+      this.stats.cacheMisses++;
+
+      const response = await axios.post(`${OLLAMA_URL}/api/embeddings`, {
+        model: 'nomic-embed-text',
+        prompt: text
+      }, { timeout: 10000 });
+
+      const embedding = response.data.embedding;
+
+      // Cache the result
+      this.embedCache.set(cacheKey, embedding);
+
+      return embedding;
+    } catch (error) {
+      // Fallback: try with mxbai-embed-large
+      try {
+        const response = await axios.post(`${OLLAMA_URL}/api/embeddings`, {
+          model: 'mxbai-embed-large',
+          prompt: text
+        }, { timeout: 10000 });
+        return response.data.embedding;
+      } catch (fallbackError) {
+        console.error('[SemanticRouter] Embedding error:', error.message);
+        return null;
+      }
+    }
+  }
+
+  /**
+   * Pre-compute embeddings for all task type descriptions
+   */
+  async precomputeTaskTypeEmbeddings() {
+    this.taskTypeEmbeddings = {};
+
+    for (const [key, taskType] of Object.entries(TASK_TYPES)) {
+      // Combine description and examples for richer semantic representation
+      const fullText = `${taskType.description}. Examples: ${taskType.examples.join('. ')}`;
+      const embedding = await this.getEmbedding(fullText);
+
+      if (embedding) {
+        this.taskTypeEmbeddings[key] = {
+          ...taskType,
+          embedding: embedding
+        };
+      }
+    }
+  }
+
+  /**
+   * Compute cosine similarity between two vectors
+   */
+  cosineSimilarity(vecA, vecB) {
+    if (!vecA || !vecB || vecA.length !== vecB.length) return 0;
+
+    let dotProduct = 0;
+    let normA = 0;
+    let normB = 0;
+
+    for (let i = 0; i < vecA.length; i++) {
+      dotProduct += vecA[i] * vecB[i];
+      normA += vecA[i] * vecA[i];
+      normB += vecB[i] * vecB[i];
+    }
+
+    return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+  }
+
+  /**
+   * Route a message to the best LLM based on semantic analysis
+   */
+  async route(message, context = {}) {
+    this.stats.totalRoutes++;
+
+    // Handle vision context override
+    if (context.hasImage || context.images?.length > 0) {
+      this.updateStats('VISION');
+      return {
+        model: TASK_TYPES.VISION.preferredModel,
+        taskType: 'vision',
+        reason: 'Image detected in context',
+        confidence: 1.0,
+        method: 'context_override'
+      };
+    }
+
+    // Get embedding for user message
+    const messageEmbedding = await this.getEmbedding(message);
+
+    // If embedding failed, fall back to keyword-based routing
+    if (!messageEmbedding || !this.taskTypeEmbeddings) {
+      return this.fallbackRoute(message);
+    }
+
+    // Calculate similarity with each task type
+    const similarities = [];
+    for (const [key, taskType] of Object.entries(this.taskTypeEmbeddings)) {
+      const similarity = this.cosineSimilarity(messageEmbedding, taskType.embedding);
+      similarities.push({
+        key,
+        taskType,
+        similarity
+      });
+    }
+
+    // Sort by similarity (highest first)
+    similarities.sort((a, b) => b.similarity - a.similarity);
+    const best = similarities[0];
+
+    // Update stats
+    this.updateStats(best.key);
+
+    return {
+      model: best.taskType.preferredModel,
+      taskType: best.taskType.name,
+      reason: `Semantic match: ${best.taskType.description.substring(0, 50)}...`,
+      confidence: best.similarity,
+      method: best.taskType.method || 'semantic',  // Utilise le method du taskType si défini (ex: 'tools')
+      provider: best.taskType.provider || 'ollama',  // Provider: ollama, groq, cerebras
+      fallbackModel: best.taskType.fallbackModel,
+      alternatives: similarities.slice(1, 3).map(s => ({
+        taskType: s.taskType.name,
+        model: s.taskType.preferredModel,
+        provider: s.taskType.provider || 'ollama',
+        confidence: s.similarity
+      }))
+    };
+  }
+
+  /**
+   * Fallback to keyword-based routing
+   */
+  fallbackRoute(message) {
+    const msgLower = message.toLowerCase();
+
+    // Coding keywords
+    const codingKeywords = ['code', 'function', 'bug', 'debug', 'class', 'variable', 'error', 'fix', 'implement', 'refactor', 'script', 'program'];
+    if (codingKeywords.some(kw => msgLower.includes(kw))) {
+      this.updateStats('CODING');
+      return {
+        model: TASK_TYPES.CODING.preferredModel,
+        taskType: 'coding',
+        reason: 'Keyword match: coding task',
+        confidence: 0.7,
+        method: 'keyword_fallback',
+        provider: TASK_TYPES.CODING.provider,
+        fallbackModel: TASK_TYPES.CODING.fallbackModel
+      };
+    }
+
+    // Math keywords
+    const mathKeywords = ['calcul', 'math', 'équation', 'nombre', 'statistique', 'formule', '%', '+', '-', '*', '/'];
+    if (mathKeywords.some(kw => msgLower.includes(kw)) || /\d+[\+\-\*\/]\d+/.test(message)) {
+      this.updateStats('MATH');
+      return {
+        model: TASK_TYPES.MATH.preferredModel,
+        taskType: 'math',
+        reason: 'Keyword match: math task',
+        confidence: 0.7,
+        method: 'keyword_fallback',
+        provider: TASK_TYPES.MATH.provider,
+        fallbackModel: TASK_TYPES.MATH.fallbackModel
+      };
+    }
+
+    // Creative keywords
+    const creativeKeywords = ['écris', 'histoire', 'poème', 'créatif', 'idée', 'brainstorm', 'invente'];
+    if (creativeKeywords.some(kw => msgLower.includes(kw))) {
+      this.updateStats('CREATIVE');
+      return {
+        model: TASK_TYPES.CREATIVE.preferredModel,
+        taskType: 'creative',
+        reason: 'Keyword match: creative task',
+        confidence: 0.7,
+        method: 'keyword_fallback',
+        provider: TASK_TYPES.CREATIVE.provider,
+        fallbackModel: TASK_TYPES.CREATIVE.fallbackModel
+      };
+    }
+
+    // Default to conversation (GROQ)
+    this.updateStats('CONVERSATION');
+    return {
+      model: TASK_TYPES.CONVERSATION.preferredModel,
+      taskType: 'conversation',
+      reason: 'Default: general conversation',
+      confidence: 0.5,
+      method: 'default',
+      provider: TASK_TYPES.CONVERSATION.provider,
+      fallbackModel: TASK_TYPES.CONVERSATION.fallbackModel
+    };
+  }
+
+  /**
+   * Update routing statistics
+   */
+  updateStats(taskType) {
+    if (!this.stats.byTaskType[taskType]) {
+      this.stats.byTaskType[taskType] = 0;
+    }
+    this.stats.byTaskType[taskType]++;
+  }
+
+  /**
+   * Simple hash function for cache keys
+   */
+  hashText(text) {
+    let hash = 0;
+    for (let i = 0; i < text.length; i++) {
+      const char = text.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash;
+    }
+    return hash.toString(36);
+  }
+
+  /**
+   * Load cache from disk
+   */
+  async loadCache() {
+    try {
+      if (fs.existsSync(CACHE_PATH)) {
+        const data = JSON.parse(fs.readFileSync(CACHE_PATH, 'utf-8'));
+        if (data.embedCache) {
+          this.embedCache = new Map(Object.entries(data.embedCache));
+        }
+        if (data.stats) {
+          this.stats = { ...this.stats, ...data.stats };
+        }
+        console.log('[SemanticRouter] Loaded cache with', this.embedCache.size, 'entries');
+      }
+    } catch (error) {
+      console.log('[SemanticRouter] Cache load skipped:', error.message);
+    }
+  }
+
+  /**
+   * Save cache to disk
+   */
+  async saveCache() {
+    try {
+      const dir = path.dirname(CACHE_PATH);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+
+      // Convert Map to object for JSON
+      const cacheObj = {};
+      this.embedCache.forEach((value, key) => {
+        cacheObj[key] = value;
+      });
+
+      fs.writeFileSync(CACHE_PATH, JSON.stringify({
+        embedCache: cacheObj,
+        stats: this.stats,
+        savedAt: new Date().toISOString()
+      }, null, 2), 'utf-8');
+    } catch (error) {
+      console.error('[SemanticRouter] Cache save error:', error.message);
+    }
+  }
+
+  /**
+   * Get router statistics
+   */
+  getStats() {
+    return {
+      initialized: this.initialized,
+      ...this.stats,
+      cacheSize: this.embedCache.size,
+      taskTypes: Object.keys(TASK_TYPES).length
+    };
+  }
+
+  /**
+   * Get available task types
+   */
+  getTaskTypes() {
+    return Object.entries(TASK_TYPES).map(([key, value]) => ({
+      key,
+      name: value.name,
+      description: value.description,
+      preferredModel: value.preferredModel
+    }));
+  }
+}
+
+module.exports = new SemanticRouter();

@@ -5,7 +5,7 @@ const isLocalhost = window.location.hostname === 'localhost' || window.location.
 
 export const BACKEND_URL = isLocalhost
   ? 'http://localhost:3338'
-  : 'https://logs-network-amazing-murray.trycloudflare.com';
+  : 'https://mistress-reflections-provision-heaven.trycloudflare.com';
 
 export const COMFYUI_URL = 'http://localhost:8188';
 

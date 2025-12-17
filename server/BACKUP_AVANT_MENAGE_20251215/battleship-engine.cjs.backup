@@ -1,0 +1,412 @@
+/**
+ * Battleship (Bataille Navale) Engine for Ana
+ * Un jeu plus développé avec placement de bateaux et combat stratégique
+ */
+
+const games = new Map();
+
+// Définition des bateaux
+const SHIPS = {
+  carrier: { name: 'Porte-avions', size: 5, symbol: 'P' },
+  battleship: { name: 'Croiseur', size: 4, symbol: 'C' },
+  destroyer: { name: 'Destroyer', size: 3, symbol: 'D' },
+  submarine: { name: 'Sous-marin', size: 3, symbol: 'S' },
+  patrol: { name: 'Torpilleur', size: 2, symbol: 'T' }
+};
+
+const GRID_SIZE = 10;
+const COLS = 'ABCDEFGHIJ';
+
+// Créer une grille vide
+function createGrid() {
+  return Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(null));
+}
+
+// Convertir coordonnées (ex: "B5" -> {row: 4, col: 1})
+function parseCoord(coord) {
+  if (!coord || coord.length < 2) return null;
+  const col = COLS.indexOf(coord[0].toUpperCase());
+  const row = parseInt(coord.slice(1)) - 1;
+  if (col === -1 || isNaN(row) || row < 0 || row >= GRID_SIZE) return null;
+  return { row, col };
+}
+
+// Convertir index en coordonnée (ex: {row: 4, col: 1} -> "B5")
+function toCoord(row, col) {
+  return `${COLS[col]}${row + 1}`;
+}
+
+// Vérifier si un bateau peut être placé
+function canPlaceShip(grid, row, col, size, horizontal) {
+  for (let i = 0; i < size; i++) {
+    const r = horizontal ? row : row + i;
+    const c = horizontal ? col + i : col;
+    if (r >= GRID_SIZE || c >= GRID_SIZE || grid[r][c] !== null) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// Placer un bateau sur la grille
+function placeShip(grid, row, col, size, horizontal, symbol) {
+  const positions = [];
+  for (let i = 0; i < size; i++) {
+    const r = horizontal ? row : row + i;
+    const c = horizontal ? col + i : col;
+    grid[r][c] = symbol;
+    positions.push({ row: r, col: c });
+  }
+  return positions;
+}
+
+// Placement aléatoire pour Ana
+function placeShipsRandomly(grid) {
+  const ships = {};
+  for (const [key, ship] of Object.entries(SHIPS)) {
+    let placed = false;
+    let attempts = 0;
+    while (!placed && attempts < 100) {
+      const horizontal = Math.random() > 0.5;
+      const row = Math.floor(Math.random() * GRID_SIZE);
+      const col = Math.floor(Math.random() * GRID_SIZE);
+      if (canPlaceShip(grid, row, col, ship.size, horizontal)) {
+        const positions = placeShip(grid, row, col, ship.size, horizontal, ship.symbol);
+        ships[key] = { ...ship, positions, hits: 0, sunk: false };
+        placed = true;
+      }
+      attempts++;
+    }
+  }
+  return ships;
+}
+
+// Nouvelle partie
+function newGame(sessionId) {
+  const playerGrid = createGrid();
+  const anaGrid = createGrid();
+  const playerShots = createGrid(); // Tirs du joueur sur Ana
+  const anaShots = createGrid();    // Tirs d'Ana sur le joueur
+
+  // Ana place ses bateaux
+  const anaShips = placeShipsRandomly(anaGrid);
+
+  const game = {
+    playerGrid,
+    anaGrid,
+    playerShots,
+    anaShots,
+    playerShips: {},
+    anaShips,
+    phase: 'placement', // 'placement' ou 'battle'
+    shipsToPlace: Object.keys(SHIPS),
+    currentShip: 0,
+    turn: 'player',
+    // IA de traque
+    aiMode: 'hunt', // 'hunt' ou 'target'
+    aiTargets: [],  // Cases à cibler en mode target
+    aiLastHit: null,
+    gameOver: false,
+    winner: null
+  };
+
+  games.set(sessionId, game);
+
+  return {
+    success: true,
+    phase: 'placement',
+    gridSize: GRID_SIZE,
+    playerGrid: formatGridForPlayer(playerGrid),
+    shipsToPlace: Object.entries(SHIPS).map(([key, ship]) => ({
+      id: key,
+      name: ship.name,
+      size: ship.size
+    })),
+    currentShip: SHIPS[game.shipsToPlace[0]],
+    message: `Place tes bateaux! Commence par le ${SHIPS.carrier.name} (${SHIPS.carrier.size} cases).`
+  };
+}
+
+// Placer un bateau (joueur)
+function placePlayerShip(sessionId, coord, horizontal = true) {
+  const game = games.get(sessionId);
+  if (!game) return { success: false, error: "Pas de partie en cours" };
+  if (game.phase !== 'placement') return { success: false, error: "Phase de placement terminée" };
+
+  const pos = parseCoord(coord);
+  if (!pos) return { success: false, error: "Coordonnée invalide (ex: A1, B5, J10)" };
+
+  const shipKey = game.shipsToPlace[game.currentShip];
+  const ship = SHIPS[shipKey];
+
+  if (!canPlaceShip(game.playerGrid, pos.row, pos.col, ship.size, horizontal)) {
+    return {
+      success: false,
+      error: `Impossible de placer le ${ship.name} ici. Vérifie que le bateau tient dans la grille et ne chevauche pas un autre.`
+    };
+  }
+
+  const positions = placeShip(game.playerGrid, pos.row, pos.col, ship.size, horizontal, ship.symbol);
+  game.playerShips[shipKey] = { ...ship, positions, hits: 0, sunk: false };
+  game.currentShip++;
+
+  // Tous les bateaux placés?
+  if (game.currentShip >= game.shipsToPlace.length) {
+    game.phase = 'battle';
+    return {
+      success: true,
+      placed: { ship: ship.name, positions: positions.map(p => toCoord(p.row, p.col)) },
+      phase: 'battle',
+      playerGrid: formatGridForPlayer(game.playerGrid),
+      message: "Tous tes bateaux sont placés! La bataille commence! Tire sur une case (ex: B5)"
+    };
+  }
+
+  const nextShip = SHIPS[game.shipsToPlace[game.currentShip]];
+  return {
+    success: true,
+    placed: { ship: ship.name, positions: positions.map(p => toCoord(p.row, p.col)) },
+    phase: 'placement',
+    playerGrid: formatGridForPlayer(game.playerGrid),
+    nextShip: { id: game.shipsToPlace[game.currentShip], name: nextShip.name, size: nextShip.size },
+    message: `${ship.name} placé! Maintenant place le ${nextShip.name} (${nextShip.size} cases).`
+  };
+}
+
+// Formater la grille pour l'affichage
+function formatGridForPlayer(grid) {
+  return grid.map((row, i) =>
+    row.map((cell, j) => ({
+      coord: toCoord(i, j),
+      content: cell || '~'
+    }))
+  );
+}
+
+// Formater la grille de tir (ce que le joueur voit des tirs sur Ana)
+function formatShotsGrid(shotsGrid) {
+  return shotsGrid.map((row, i) =>
+    row.map((cell, j) => ({
+      coord: toCoord(i, j),
+      content: cell === 'hit' ? 'X' : cell === 'miss' ? 'O' : '?'
+    }))
+  );
+}
+
+// Tirer (joueur)
+function fire(sessionId, coord) {
+  const game = games.get(sessionId);
+  if (!game) return { success: false, error: "Pas de partie en cours" };
+  if (game.phase !== 'battle') return { success: false, error: "La bataille n'a pas encore commencé" };
+  if (game.gameOver) return { success: false, error: "La partie est terminée" };
+
+  const pos = parseCoord(coord);
+  if (!pos) return { success: false, error: "Coordonnée invalide (ex: A1, B5, J10)" };
+
+  // Déjà tiré ici?
+  if (game.playerShots[pos.row][pos.col]) {
+    return { success: false, error: "Tu as déjà tiré ici!" };
+  }
+
+  // Résultat du tir
+  const target = game.anaGrid[pos.row][pos.col];
+  let result = { coord, hit: false, sunk: false, shipName: null };
+
+  if (target && target !== 'hit' && target !== 'miss') {
+    // Touché!
+    game.playerShots[pos.row][pos.col] = 'hit';
+    game.anaGrid[pos.row][pos.col] = 'hit';
+    result.hit = true;
+
+    // Trouver le bateau touché
+    for (const [key, ship] of Object.entries(game.anaShips)) {
+      if (ship.positions.some(p => p.row === pos.row && p.col === pos.col)) {
+        ship.hits++;
+        result.shipName = ship.name;
+        if (ship.hits >= ship.size) {
+          ship.sunk = true;
+          result.sunk = true;
+        }
+        break;
+      }
+    }
+  } else {
+    // Manqué
+    game.playerShots[pos.row][pos.col] = 'miss';
+    game.anaGrid[pos.row][pos.col] = 'miss';
+  }
+
+  // Vérifier victoire joueur
+  const allAnaSunk = Object.values(game.anaShips).every(s => s.sunk);
+  if (allAnaSunk) {
+    game.gameOver = true;
+    game.winner = 'player';
+    return {
+      success: true,
+      playerShot: result,
+      gameOver: true,
+      winner: 'player',
+      shotsGrid: formatShotsGrid(game.playerShots),
+      stats: getStats(game)
+    };
+  }
+
+  // Tour d'Ana
+  const anaResult = anaFire(game);
+
+  // Vérifier victoire Ana
+  const allPlayerSunk = Object.values(game.playerShips).every(s => s.sunk);
+  if (allPlayerSunk) {
+    game.gameOver = true;
+    game.winner = 'ana';
+    return {
+      success: true,
+      playerShot: result,
+      anaShot: anaResult,
+      gameOver: true,
+      winner: 'ana',
+      playerGrid: formatGridForPlayer(game.playerGrid),
+      shotsGrid: formatShotsGrid(game.playerShots),
+      stats: getStats(game)
+    };
+  }
+
+  return {
+    success: true,
+    playerShot: result,
+    anaShot: anaResult,
+    playerGrid: formatGridForPlayer(game.playerGrid),
+    shotsGrid: formatShotsGrid(game.playerShots),
+    playerShipsStatus: getShipsStatus(game.playerShips),
+    anaShipsStatus: getShipsStatus(game.anaShips, true) // Masquer les non-coulés
+  };
+}
+
+// IA de tir pour Ana
+function anaFire(game) {
+  let row, col;
+
+  if (game.aiMode === 'target' && game.aiTargets.length > 0) {
+    // Mode traque - cibler autour du dernier hit
+    const target = game.aiTargets.shift();
+    row = target.row;
+    col = target.col;
+  } else {
+    // Mode chasse - tir aléatoire intelligent (pattern en damier)
+    game.aiMode = 'hunt';
+    let attempts = 0;
+    do {
+      row = Math.floor(Math.random() * GRID_SIZE);
+      col = Math.floor(Math.random() * GRID_SIZE);
+      // Pattern en damier pour efficacité
+      if ((row + col) % 2 !== 0 && attempts < 50) {
+        attempts++;
+        continue;
+      }
+      attempts++;
+    } while (game.anaShots[row][col] !== null && attempts < 200);
+  }
+
+  // Effectuer le tir
+  const coord = toCoord(row, col);
+  const target = game.playerGrid[row][col];
+  let result = { coord, hit: false, sunk: false, shipName: null };
+
+  if (target && target !== 'hit' && target !== 'miss') {
+    // Touché!
+    game.anaShots[row][col] = 'hit';
+    game.playerGrid[row][col] = 'hit';
+    result.hit = true;
+
+    // Passer en mode traque
+    game.aiMode = 'target';
+    game.aiLastHit = { row, col };
+
+    // Ajouter les cases adjacentes comme cibles
+    const adjacent = [
+      { row: row - 1, col },
+      { row: row + 1, col },
+      { row, col: col - 1 },
+      { row, col: col + 1 }
+    ].filter(p =>
+      p.row >= 0 && p.row < GRID_SIZE &&
+      p.col >= 0 && p.col < GRID_SIZE &&
+      game.anaShots[p.row][p.col] === null
+    );
+
+    game.aiTargets = [...game.aiTargets, ...adjacent];
+
+    // Trouver le bateau touché
+    for (const [key, ship] of Object.entries(game.playerShips)) {
+      if (ship.positions.some(p => p.row === row && p.col === col)) {
+        ship.hits++;
+        result.shipName = ship.name;
+        if (ship.hits >= ship.size) {
+          ship.sunk = true;
+          result.sunk = true;
+          // Bateau coulé - revenir en mode chasse
+          game.aiMode = 'hunt';
+          game.aiTargets = [];
+        }
+        break;
+      }
+    }
+  } else {
+    // Manqué
+    game.anaShots[row][col] = 'miss';
+    if (target === null) game.playerGrid[row][col] = 'miss';
+  }
+
+  return result;
+}
+
+// Obtenir le statut des bateaux
+function getShipsStatus(ships, hideActive = false) {
+  return Object.entries(ships).map(([key, ship]) => ({
+    id: key,
+    name: ship.name,
+    size: ship.size,
+    hits: hideActive && !ship.sunk ? '?' : ship.hits,
+    sunk: ship.sunk
+  }));
+}
+
+// Statistiques de fin de partie
+function getStats(game) {
+  const playerHits = game.playerShots.flat().filter(c => c === 'hit').length;
+  const playerMisses = game.playerShots.flat().filter(c => c === 'miss').length;
+  const anaHits = game.anaShots.flat().filter(c => c === 'hit').length;
+  const anaMisses = game.anaShots.flat().filter(c => c === 'miss').length;
+
+  return {
+    player: { hits: playerHits, misses: playerMisses, accuracy: Math.round(playerHits / (playerHits + playerMisses) * 100) || 0 },
+    ana: { hits: anaHits, misses: anaMisses, accuracy: Math.round(anaHits / (anaHits + anaMisses) * 100) || 0 }
+  };
+}
+
+// État du jeu
+function getState(sessionId) {
+  const game = games.get(sessionId);
+  if (!game) return { exists: false };
+
+  return {
+    exists: true,
+    phase: game.phase,
+    gameOver: game.gameOver,
+    winner: game.winner,
+    playerGrid: formatGridForPlayer(game.playerGrid),
+    shotsGrid: formatShotsGrid(game.playerShots),
+    playerShipsStatus: getShipsStatus(game.playerShips),
+    anaShipsStatus: getShipsStatus(game.anaShips, !game.gameOver),
+    turn: game.turn
+  };
+}
+
+module.exports = {
+  newGame,
+  placePlayerShip,
+  fire,
+  getState,
+  SHIPS,
+  GRID_SIZE
+};

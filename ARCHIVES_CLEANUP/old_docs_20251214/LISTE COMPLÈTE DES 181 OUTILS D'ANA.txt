@@ -1,0 +1,90 @@
+  Les 181 outils sont organisés en 21 groupes :
+
+  📋 LISTE COMPLÈTE DES 181 OUTILS D'ANA
+
+  1. WEB (11 outils)
+
+  web_search, get_weather, get_time, web_fetch, wikipedia, http_request, check_url, get_public_ip, dns_lookup, whois, ping
+
+  2. FILES (25 outils)
+
+  read_file, write_file, edit_file, list_files, glob, grep, search_in_file, read_file_chunk, file_info, copy_file, move_file, delete_file, create_directory, get_file_stats, compare_files, find_files, tree_view, create_backup, search_replace_in_file, count_lines, count_words, head_file, tail_file, append_to_file, prepend_to_file
+
+  3. SYSTEM (15 outils)
+
+  get_system_info, get_cpu_usage, get_memory_usage, get_disk_usage, list_processes, kill_process, kill_process_by_name, get_environment_variable, set_environment_variable, get_network_interfaces, open_application, open_url_in_browser, run_shell, run_background, take_screenshot
+
+  4. GIT (12 outils)
+
+  git_status, git_commit, git_log, git_branch, git_diff, git_stash, git_pull, git_push, git_clone, git_checkout, git_merge, git_reset
+
+  5. DOCKER (6 outils)
+
+  docker_ps, docker_images, docker_logs, docker_exec, docker_start, docker_stop
+
+  6. OLLAMA (4 outils)
+
+  ollama_list, ollama_pull, ollama_delete, ollama_chat
+
+  7. IMAGE (13 outils)
+
+  generate_image, generate_animation, generate_video, image_to_image, inpaint_image, describe_image, debug_screenshot, analyze_code_screenshot, resize_image, convert_image, get_image_info, crop_image, rotate_image
+
+  8. CONVERSION (11 outils)
+
+  json_to_csv, csv_to_json, xml_to_json, json_to_xml, yaml_to_json, json_to_yaml, parse_html, markdown_to_html, html_to_markdown, format_json, minify_json
+
+  9. CRYPTO (8 outils)
+
+  hash_file, hash_text, generate_uuid, generate_password, encrypt_text, decrypt_text, base64_encode, base64_decode
+
+  10. NPM (6 outils)
+
+  npm_list, npm_outdated, npm_run, npm_search, npm_info, install_npm_package
+
+  11. ARCHIVE (6 outils)
+
+  create_zip, extract_zip, list_archive, compress_gzip, decompress_gzip, download_file
+
+  12. DATE/MATH (9 outils)
+
+  format_date, date_diff, add_to_date, timestamp_to_date, date_to_timestamp, calculate, convert_units, random_number, statistics
+
+  13. AUDIO (3 outils)
+
+  get_audio_info, text_to_speech, play_audio
+
+  14. BROWSER (12 outils)
+
+  browser_open, browser_screenshot, browser_pdf, browser_click, browser_type, browser_evaluate, browser_extract, dom_query, dom_get_element_by_id, dom_get_elements_by_class, dom_get_elements_by_tag, dom_modify
+
+  15. DATABASE (3 outils)
+
+  sqlite_query, sqlite_tables, sqlite_schema
+
+  16. MEMORY (2 outils)
+
+  search_memory, save_memory
+
+  17. CODE (11 outils)
+
+  execute_code, create_react_component, add_route, add_api_endpoint, analyze_component, hot_reload_check, validate_jsx_syntax, list_available_icons, get_css_variables, search_codebase, get_project_structure
+
+  18. AGENTS (5 outils)
+
+  ask_groq, ask_cerebras, launch_agent, ask_architect, review_code
+
+  19. VALIDATION (4 outils)
+
+  test_regex, validate_json, validate_email, validate_url
+
+  20. UTILS (7 outils)
+
+  ask_user, todo_write, notebook_edit, plan_mode, send_notification, clipboard_read, clipboard_write, set_reminder, list_reminders, cancel_reminder, execute_voice_command
+
+  21. YOUTUBE (3 outils)
+
+  youtube_search, get_yt_transcript, get_news
+
+  ---
+  📍 Fichier source: E:\ANA\server\core\tool-groups.cjs

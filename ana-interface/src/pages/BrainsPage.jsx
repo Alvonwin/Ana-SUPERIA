@@ -42,9 +42,6 @@ function BrainsPage() {
       if (provider === 'ollama') {
         endpoint = `${API_URL}/api/chat`;
         body = { message: testMessage };
-      } else if (provider === 'groq') {
-        endpoint = `${API_URL}/api/groq/chat`;
-        body = { message: testMessage, model };
       } else if (provider === 'cerebras') {
         endpoint = `${API_URL}/api/cerebras/chat`;
         body = { message: testMessage, model };
@@ -81,7 +78,6 @@ function BrainsPage() {
   const getProviderIcon = (provider) => {
     switch (provider) {
       case 'ollama': return '🦙';
-      case 'groq': return '🚀';
       case 'cerebras': return '⚡';
       default: return '🧠';
     }
@@ -90,7 +86,6 @@ function BrainsPage() {
   const getProviderColor = (provider) => {
     switch (provider) {
       case 'ollama': return '#8b5cf6';
-      case 'groq': return '#f97316';
       case 'cerebras': return '#06b6d4';
       default: return '#6b7280';
     }
@@ -108,7 +103,7 @@ function BrainsPage() {
     <div className="brains-page">
       <header className="brains-header">
         <h1>🧠 Cerveaux Ana</h1>
-        <p>12 modeles IA disponibles - Local + Cloud</p>
+        <p>Modeles IA disponibles - Local + Cloud</p>
         <button className="refresh-btn" onClick={fetchBrains}>
           Rafraichir
         </button>

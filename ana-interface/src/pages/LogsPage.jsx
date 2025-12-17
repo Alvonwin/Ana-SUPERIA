@@ -39,7 +39,7 @@ function LogsPage() {
         timestamp: now.toISOString(),
         level: 'info',
         source: 'system',
-        message: `LLM Stats - PHI3: ${data.llm_usage?.phi3 || 0}, DeepSeek: ${data.llm_usage?.deepseek || 0}, Qwen: ${data.llm_usage?.qwen || 0}`,
+        message: `LLM Stats - PHI3: ${data.llm_usage?.phi3 || 0}, DeepSeek: ${data.llm_usage?.deepseek || 0}`,
       });
 
       newLogs.push({

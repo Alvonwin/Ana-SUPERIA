@@ -1,0 +1,233 @@
+{
+  "passed": 14,
+  "failed": 1,
+  "details": [
+    {
+      "query": "Quelle heure est-il?",
+      "description": "Demande de l'heure",
+      "status": "passed",
+      "expected": [
+        "get_time"
+      ],
+      "found": [
+        "get_weather",
+        "get_time",
+        "file_info",
+        "search_memory",
+        "memory_update"
+      ]
+    },
+    {
+      "query": "Donne-moi mon horoscope, je suis Poissons",
+      "description": "Demande d'horoscope",
+      "status": "passed",
+      "expected": [
+        "get_zodiac_sign"
+      ],
+      "found": [
+        "get_weather",
+        "get_time",
+        "file_info",
+        "search_memory",
+        "save_memory"
+      ]
+    },
+    {
+      "query": "Quelle est la meteo a Montreal?",
+      "description": "Demande meteo",
+      "status": "passed",
+      "expected": [
+        "get_weather"
+      ],
+      "found": [
+        "get_weather",
+        "get_time",
+        "memory_update",
+        "memory_reflect",
+        "generate_image"
+      ]
+    },
+    {
+      "query": "Lis le fichier package.json dans E:\\ANA",
+      "description": "Lecture de fichier",
+      "status": "passed",
+      "expected": [
+        "read_file"
+      ],
+      "found": [
+        "read_file",
+        "file_info",
+        "write_file",
+        "edit_file",
+        "create_react_component"
+      ]
+    },
+    {
+      "query": "Cherche 'function' dans les fichiers .cjs",
+      "description": "Recherche dans code",
+      "status": "passed",
+      "expected": [
+        "grep",
+        "search_in_file",
+        "search_codebase"
+      ],
+      "found": [
+        "file_info",
+        "write_file",
+        "list_files",
+        "execute_code",
+        "search_codebase"
+      ]
+    },
+    {
+      "query": "Resume cette video YouTube: https://youtube.com/watch?v=test",
+      "description": "Transcription YouTube",
+      "status": "passed",
+      "expected": [
+        "get_yt_transcript"
+      ],
+      "found": [
+        "get_time",
+        "search_memory",
+        "memory_update",
+        "generate_animation",
+        "generate_video"
+      ]
+    },
+    {
+      "query": "Combien font 25 fois 48?",
+      "description": "Calcul mathematique",
+      "status": "failed",
+      "expected": [
+        "calculate"
+      ],
+      "found": [
+        "read_file",
+        "read_file_chunk",
+        "file_info",
+        "search_memory",
+        "download_file"
+      ]
+    },
+    {
+      "query": "Genere-moi un mot de passe securise de 20 caracteres",
+      "description": "Generation mot de passe",
+      "status": "passed",
+      "expected": [
+        "generate_password"
+      ],
+      "found": [
+        "read_file",
+        "file_info",
+        "save_memory",
+        "watch_file",
+        "download_file"
+      ]
+    },
+    {
+      "query": "Montre-moi le statut git du projet ANA",
+      "description": "Statut git",
+      "status": "passed",
+      "expected": [
+        "git_status"
+      ],
+      "found": [
+        "get_weather",
+        "file_info",
+        "memory_update",
+        "memory_reflect",
+        "git_status"
+      ]
+    },
+    {
+      "query": "Recherche sur le web: meilleures pratiques Node.js 2025",
+      "description": "Recherche web",
+      "status": "passed",
+      "expected": [
+        "web_search"
+      ],
+      "found": [
+        "web_search",
+        "web_fetch",
+        "memory_update",
+        "add_route",
+        "open_url_in_browser"
+      ]
+    },
+    {
+      "query": "Combien de RAM utilise mon PC en ce moment?",
+      "description": "Usage memoire",
+      "status": "passed",
+      "expected": [
+        "get_memory_usage"
+      ],
+      "found": [
+        "get_time",
+        "search_memory",
+        "save_memory",
+        "memory_update",
+        "memory_reflect"
+      ]
+    },
+    {
+      "query": "Liste les processus qui tournent",
+      "description": "Liste processus",
+      "status": "passed",
+      "expected": [
+        "list_processes"
+      ],
+      "found": [
+        "memory_reflect",
+        "memory_query_graph",
+        "run_background",
+        "kill_process",
+        "execute_code"
+      ]
+    },
+    {
+      "query": "Convertis ce JSON en YAML: {\"key\": \"value\"}",
+      "description": "Conversion JSON-YAML",
+      "status": "passed",
+      "expected": [
+        "json_to_yaml"
+      ],
+      "found": [
+        "memory_query_graph",
+        "search_codebase",
+        "review_code",
+        "base64_encode",
+        "base64_decode"
+      ]
+    },
+    {
+      "query": "Hashe le texte 'secret123' en SHA256",
+      "description": "Hashage texte",
+      "status": "passed",
+      "expected": [
+        "hash_text"
+      ],
+      "found": [
+        "read_file",
+        "file_info",
+        "memory_update",
+        "generate_image",
+        "git_status"
+      ]
+    },
+    {
+      "query": "Verifie si cette email est valide: test@example.com",
+      "description": "Validation email",
+      "status": "passed",
+      "expected": [
+        "validate_email"
+      ],
+      "found": [
+        "generate_image",
+        "hot_reload_check",
+        "validate_jsx_syntax",
+        "ping",
+        "check_url"
+      ]
+    }
+  ]
+}

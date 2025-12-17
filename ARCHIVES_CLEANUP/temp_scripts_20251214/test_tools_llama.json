@@ -1,0 +1,33 @@
+{
+  "model": "llama3.1:8b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Tu es un assistant. Si l'utilisateur demande de chercher sur le web, utilise l'outil web_search."
+    },
+    {
+      "role": "user",
+      "content": "Cherche sur le web qui a gagné la Coupe Stanley en 2024"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "web_search",
+        "description": "Recherche d'information générale sur le web (DuckDuckGo)",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Requête de recherche"
+            }
+          },
+          "required": ["query"]
+        }
+      }
+    }
+  ],
+  "stream": false
+}

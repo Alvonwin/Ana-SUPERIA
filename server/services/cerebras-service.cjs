@@ -14,40 +14,55 @@ const path = require('path');
 
 // Load .env from parent directory
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
+const llmProfiles = require('../config/llm-profiles.cjs');
 
 class CerebrasService {
   constructor() {
-    this.apiKey = null;
+    this.apiKeys = [];  // Rotation de cles API
+    this.currentKeyIndex = 0;
     this.baseUrl = 'https://api.cerebras.ai/v1';
     this.initialized = false;
     this.stats = {
       totalRequests: 0,
       totalTokens: 0,
-      errors: 0
+      errors: 0,
+      keyRotations: 0
     };
 
     // Available models on Cerebras (free tier)
     this.models = {
-      LLAMA_8B: 'llama3.1-8b',     // Fastest (~2000 tok/s)
-      LLAMA_70B: 'llama-3.3-70b',  // Best quality (~1000 tok/s) - UPDATED 2025-12-15
-      QWEN_235B: 'qwen-3-235b-a22b-instruct-2507'  // Massive model
+      LLAMA_8B: 'llama3.1-8b',
+      LLAMA_70B: 'llama-3.3-70b',
+      QWEN_235B: 'qwen-3-235b-a22b-instruct-2507'
     };
 
-    this.defaultModel = this.models.LLAMA_70B;  // Use 70B for quality
+    this.defaultModel = this.models.LLAMA_70B;
   }
 
   initialize() {
-    this.apiKey = process.env.CEREBRAS_API_KEY;
+    this.apiKeys = [];
+    if (process.env.CEREBRAS_API_KEY) this.apiKeys.push(process.env.CEREBRAS_API_KEY);
+    if (process.env.CEREBRAS_API_KEY_2) this.apiKeys.push(process.env.CEREBRAS_API_KEY_2);
+    if (process.env.CEREBRAS_API_KEY_3) this.apiKeys.push(process.env.CEREBRAS_API_KEY_3);
 
-    if (!this.apiKey) {
-      console.log('⚠️ CEREBRAS_API_KEY not found in .env - Cerebras service disabled');
-      console.log('   Get free API key at: https://cloud.cerebras.ai/');
-      return { success: false, error: 'CEREBRAS_API_KEY not configured' };
+    if (this.apiKeys.length === 0) {
+      console.log('CEREBRAS_API_KEY not found - disabled');
+      return { success: false, error: 'No API key' };
     }
 
     this.initialized = true;
-    console.log('✅ Cerebras service initialized');
+    console.log('Cerebras: ' + this.apiKeys.length + ' API key(s) loaded');
     return { success: true };
+  }
+
+  get apiKey() { return this.apiKeys[this.currentKeyIndex] || null; }
+
+  rotateKey() {
+    if (this.apiKeys.length <= 1) return false;
+    this.currentKeyIndex = (this.currentKeyIndex + 1) % this.apiKeys.length;
+    this.stats.keyRotations++;
+    console.log('[Cerebras] Key rotation -> ' + (this.currentKeyIndex + 1));
+    return true;
   }
 
   async chat(message, options = {}) {
@@ -64,10 +79,10 @@ class CerebrasService {
 
     const {
       model = this.defaultModel,
-      systemPrompt = "Tu es Ana, une IA française. Réponds toujours en français.",
+      systemPrompt = llmProfiles.getSystemPrompt(),
       conversationHistory = [],
-      temperature = 0.7,
-      maxTokens = 4096
+      temperature = llmProfiles.ACTIVE_PROFILE.temperature,
+      maxTokens = llmProfiles.ACTIVE_PROFILE.maxTokens
     } = options;
 
     try {
@@ -103,7 +118,9 @@ class CerebrasService {
       );
 
       const result = response.data;
-      const content = result.choices[0]?.message?.content || '';
+      let content = result.choices[0]?.message?.content || '';
+      // Auto-fix common French errors
+      content = content.replace(/puisage/gi, 'puis-je').replace(/aujourd'ener/gi, "aujourd'hui");
       const latencyMs = Date.now() - startTime;
 
       // Update stats
@@ -158,13 +175,30 @@ class CerebrasService {
       this.stats.totalRequests++;
       const startTime = Date.now();
 
+      // LOG DIAGNOSTIC 2025-12-16: Voir exactement ce qui est envoyé
+      console.log(`[Cerebras] Sending ${tools ? tools.length : 0} tools, ${messages.length} messages`);
+      if (tools && tools.length > 0) {
+        console.log(`[Cerebras] Tool names: ${tools.map(t => t.function?.name).join(', ')}`);
+      }
+
+      // FIX 2025-12-16: Ajouter strict:true selon documentation officielle Cerebras
+      // https://inference-docs.cerebras.ai/capabilities/tool-use
+      const formattedTools = tools ? tools.map(tool => ({
+        type: 'function',
+        function: {
+          ...tool.function,
+          strict: true  // REQUIS par Cerebras
+        }
+      })) : undefined;
+
       const response = await axios.post(
         `${this.baseUrl}/chat/completions`,
         {
           model,
           messages,
-          tools,
+          tools: formattedTools,
           tool_choice: 'auto',
+          parallel_tool_calls: false,  // Recommandé pour llama-3.3-70b
           temperature,
           max_tokens: maxTokens
         },
@@ -199,7 +233,14 @@ class CerebrasService {
 
     } catch (error) {
       this.stats.errors++;
-      console.error('❌ Cerebras tool-call error:', error.response?.data || error.message);
+
+      // ROTATION AUTO sur 429 rate limit
+      if (error.response?.status === 429 && this.rotateKey()) {
+        console.log('[Cerebras] 429 rate limit - rotating to next key...');
+        return this.chatWithTools(messages, tools, options);
+      }
+
+      console.error('Cerebras error:', error.response?.status || '', error.message);
       return {
         success: false,
         error: error.response?.data?.error?.message || error.message,

@@ -1,0 +1,48 @@
+{
+  "passed": 8,
+  "failed": 2,
+  "details": [
+    {
+      "name": "Fichiers: write → read → edit → backup",
+      "status": "failed",
+      "error": "edit_file failed"
+    },
+    {
+      "name": "Git: status → log → branch",
+      "status": "failed",
+      "error": "git_status failed"
+    },
+    {
+      "name": "Conversion: json → csv → json (via fichier)",
+      "status": "passed"
+    },
+    {
+      "name": "Web: search → fetch",
+      "status": "passed"
+    },
+    {
+      "name": "System: cpu → memory → disk → processes",
+      "status": "passed"
+    },
+    {
+      "name": "Crypto: generate_password → hash_text → base64_encode",
+      "status": "passed"
+    },
+    {
+      "name": "Date: get_time → format_date → add_to_date → date_diff",
+      "status": "passed"
+    },
+    {
+      "name": "Archive: create_zip → list_archive → extract_zip",
+      "status": "passed"
+    },
+    {
+      "name": "Validation: validate_json → validate_email → validate_url",
+      "status": "passed"
+    },
+    {
+      "name": "NPM: npm_search → npm_info",
+      "status": "passed"
+    }
+  ]
+}

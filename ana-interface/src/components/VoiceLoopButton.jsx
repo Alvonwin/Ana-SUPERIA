@@ -11,6 +11,28 @@
 
 import { useState, useEffect, useRef, useCallback, forwardRef, useImperativeHandle } from 'react';
 import { IconMic, IconMicOff } from './Icons';
+import { BACKEND_URL } from '../config.js';
+
+// Correction orthographique via backend (Anna -> Ana, majuscule, point)
+async function correctSpelling(text) {
+  try {
+    const response = await fetch(`${BACKEND_URL}/api/spellcheck`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text })
+    });
+    const data = await response.json();
+    if (data.success && data.corrected) {
+      if (data.changed) {
+        console.log('Correction ortho:', text, '->', data.corrected);
+      }
+      return data.corrected;
+    }
+  } catch (e) {
+    console.warn('Spell check failed:', e.message);
+  }
+  return text;
+}
 
 // Vérification initiale du support
 const SpeechRecognitionAPI = typeof window !== 'undefined'
@@ -83,7 +105,7 @@ const VoiceLoopButton = forwardRef(function VoiceLoopButton({
 
     try {
       const recognition = new SpeechRecognitionAPI();
-      recognition.lang = 'fr-FR';
+      recognition.lang = 'fr-CA' // Canadian French - plus tolerant aux mots anglais;
       recognition.continuous = true;
       // Mobile: désactiver interimResults pour éviter les doublons
       recognition.interimResults = !isMobile;
@@ -117,7 +139,7 @@ const VoiceLoopButton = forwardRef(function VoiceLoopButton({
         }
       };
 
-      recognition.onresult = (event) => {
+      recognition.onresult = async (event) => {
         let finalTranscript = '';
         for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcript = event.results[i][0].transcript;
@@ -140,8 +162,10 @@ const VoiceLoopButton = forwardRef(function VoiceLoopButton({
             lastTranscriptTimeRef.current = now;
           }
 
-          console.log('🎤 Transcript final:', trimmed);
-          onTranscript(trimmed);
+          // Correction orthographique avant envoi
+          const corrected = await correctSpelling(trimmed);
+          console.log('🎤 Transcript final (corrigé):', corrected);
+          onTranscript(corrected);
         }
       };
 

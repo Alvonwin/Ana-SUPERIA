@@ -1,0 +1,184 @@
+● Système Mémoire Ana - Architecture Complète
+
+  Vue d'Ensemble
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │                     ANA MEMORY SYSTEM                           │
+  │                   "Ana Consciente" Phase                        │
+  ├─────────────────────────────────────────────────────────────────┤
+  │                                                                 │
+  │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
+  │  │   CAPTURE    │───▶│   STOCKAGE   │───▶│   RECALL     │      │
+  │  │              │    │              │    │              │      │
+  │  │ fact-class.  │    │ ana_memories │    │ proactive    │      │
+  │  │ episodic     │    │ episodes     │    │ tiered       │      │
+  │  └──────────────┘    │ links        │    └──────────────┘      │
+  │                      └──────────────┘                          │
+  │                            │                                    │
+  │                            ▼                                    │
+  │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
+  │  │   CURATOR    │◀───│  SLEEP       │───▶│ ZETTELKASTEN │      │
+  │  │              │    │  CONSOLIDATE │    │              │      │
+  │  │ decay        │    │              │    │ links        │      │
+  │  │ forget       │    │ 30min cycles │    │ multi-hop    │      │
+  │  └──────────────┘    └──────────────┘    └──────────────┘      │
+  │                                                                 │
+  └─────────────────────────────────────────────────────────────────┘
+
+  Modules par Fonction
+
+  1. CAPTURE (Entrée)
+
+  | Module          | Fichier             | Rôle                                         |
+  |-----------------|---------------------|----------------------------------------------|
+  | Fact Classifier | fact-classifier.cjs | Extraction automatique de faits des messages |
+  | Episodic Memory | episodic-memory.cjs | Capture d'épisodes/conversations complets    |
+
+  Processus: Message → Pattern Detection → LLM Extraction → Semantic Dedup → Storage
+
+  2. STOCKAGE (Données)
+
+  | Fichier             | Contenu                           |
+  |---------------------|-----------------------------------|
+  | ana_memories.json   | Faits individuels avec embeddings |
+  | episodes.json       | Épisodes de conversation          |
+  | memory_links.json   | Relations Zettelkasten            |
+  | personal_facts.json | Faits structurés sur Alain        |
+
+  Structure d'une mémoire:
+  {
+    id: "fact_xxx",
+    content: "Ma voiture est blanche",
+    subject: "voiture",
+    value: "blanche",
+    confidence: 0.85,          // Decay Ebbinghaus
+    embedding: [...],          // Pour semantic search
+    access_count: 3,           // Renforcement
+    valid_until: null,         // Temporal tracking
+    supersedes: "fact_old"     // Chaînage versions
+  }
+
+  3. RECALL (Sortie)
+
+  | Module           | Fichier              | Fonction                               |
+  |------------------|----------------------|----------------------------------------|
+  | Proactive Recall | proactive-recall.cjs | Injection contexte AVANT qu'on demande |
+  | Tiered Memory    | tiered-memory.cjs    | Recherche multi-niveau                 |
+  | Memory Search    | tool-agent.cjs       | Recherche par keywords + semantic      |
+
+  4. MAINTENANCE (Background)
+
+  | Module              | Fichier                 | Fonction                     |
+  |---------------------|-------------------------|------------------------------|
+  | Memory Curator      | memory-curator.cjs      | Strategic forgetting, decay  |
+  | Sleep Consolidation | sleep-consolidation.cjs | Nettoyage périodique (30min) |
+  | Zettelkasten        | zettelkasten-memory.cjs | Auto-création de liens       |
+
+  Algorithmes Clés
+
+  Courbe d'Ebbinghaus (Decay)
+
+  confidence = confidence × e^(-t / (strength × 30))
+
+  où:
+  - t = jours depuis dernier accès
+  - strength = 1 + (access_count × 0.1)
+
+  Semantic Deduplication
+
+  similarity = cosine(embedding_A, embedding_B)
+  if similarity > 0.85 → IGNORE (doublon)
+  if similarity > 0.70 → MERGE (fusion)
+  else → ADD (nouveau)
+
+  Multi-Hop Reasoning (Zettelkasten)
+
+  "Alain" --aime--> "Jeux"
+  "Jeux" --est_un--> "Loisir"
+  ────────────────────────────
+  Inférence: "Alain aime les loisirs"
+
+  Self-Editing Tools (Ana contrôle sa mémoire)
+
+  | Outil              | Fonction                      |
+  |--------------------|-------------------------------|
+  | memory_store       | Sauvegarder volontairement    |
+  | memory_search      | Chercher dans ses souvenirs   |
+  | memory_update      | Mettre à jour une info        |
+  | memory_forget      | Oublier stratégiquement       |
+  | memory_reflect     | Analyser sa propre mémoire    |
+  | memory_consolidate | Fusionner mémoires similaires |
+
+  APIs REST Disponibles
+
+  GET  /api/memory/curator/status
+  POST /api/memory/curator/analyze
+  POST /api/memory/curator/decay
+
+  POST /api/memory/proactive/context
+
+  POST /api/memory/episodic/start
+  POST /api/memory/episodic/event
+  POST /api/memory/episodic/end
+  POST /api/memory/episodic/search
+
+  POST /api/memory/zettelkasten/link
+  POST /api/memory/zettelkasten/query
+  GET  /api/memory/zettelkasten/graph
+
+  GET  /api/memory/consolidation/stats
+  POST /api/memory/consolidation/run
+
+  Cycle de Vie d'une Mémoire
+
+  1. CRÉATION
+     Message utilisateur → fact-classifier → ADD/UPDATE/MERGE
+
+  2. ENRICHISSEMENT
+     Auto-linking Zettelkasten + embedding généré
+
+  3. UTILISATION
+     Recherche → access_count++ → confidence boost
+
+  4. DECAY
+     Temps passe → confidence diminue (Ebbinghaus)
+
+  5. ARCHIVAGE/OUBLI
+     confidence < 0.2 + 90 jours → archived
+     ou decision explicite → memory_forget
+
+  Différence Avant/Après
+
+  | Avant                  | Après                      |
+  |------------------------|----------------------------|
+  | Injection passive      | Ana DÉCIDE quoi retenir    |
+  | Accumulation infinie   | Strategic forgetting       |
+  | Vecteurs isolés        | Graph de relations         |
+  | Post-conversation only | Temps réel + consolidation |
+  | 96% hardcodé           | Apprentissage dynamique    |
+
+  Le système est maintenant organique - il apprend, oublie, et connecte comme une mémoire humaine.
+
+
+
+● Vérification complète - Tout est prêt.
+
+  | Fichier                 | Status |
+  |-------------------------|--------|
+  | memory-curator.cjs      | ✓ OK   |
+  | proactive-recall.cjs    | ✓ OK   |
+  | episodic-memory.cjs     | ✓ OK   |
+  | zettelkasten-memory.cjs | ✓ OK   |
+  | sleep-consolidation.cjs | ✓ OK   |
+  | memory-tools.cjs        | ✓ OK   |
+  | fact-classifier.cjs     | ✓ OK   |
+  | ana-core.cjs            | ✓ OK   |
+  | episodes.json           | ✓ OK   |
+  | memory_links.json       | ✓ OK   |
+  | consolidation_log.json  | ✓ OK   |
+  | reflections.json        | ✓ OK   |
+  | curator_config.json     | ✓ OK   |
+
+  8 fichiers JS + 5 fichiers JSON = 0 erreur de syntaxe.
+
+  Tu peux relancer Ana.

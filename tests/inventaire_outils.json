@@ -1,0 +1,1884 @@
+{
+  "metadata": {
+    "extracted_at": "2025-12-16T05:27:38.998Z",
+    "total_definitions": 189,
+    "total_implementations": 189,
+    "source_file": "E:\\ANA\\server\\agents\\tool-agent.cjs"
+  },
+  "summary": {
+    "by_risk": {
+      "safe": 100,
+      "moderate": 85,
+      "dangerous": 4,
+      "unknown": 0
+    },
+    "by_group": {
+      "web": 12,
+      "files": 27,
+      "system": 15,
+      "agents": 5,
+      "memory": 7,
+      "utils": 11,
+      "code": 11,
+      "image": 13,
+      "youtube": 3,
+      "git": 12,
+      "npm": 6,
+      "archive": 6,
+      "crypto": 8,
+      "conversion": 11,
+      "datetime": 10,
+      "audio": 3,
+      "browser": 12,
+      "database": 3,
+      "docker": 6,
+      "ollama": 4,
+      "validation": 4
+    },
+    "missing_implementation": [],
+    "missing_definition": []
+  },
+  "tools": {
+    "web_search": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "get_weather": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "get_time": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "read_file": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "search_in_file": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "read_file_chunk": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "file_info": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "write_file": {
+      "group": "files",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "list_files": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "run_shell": {
+      "group": "system",
+      "risk_level": "dangerous",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "web_fetch": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "wikipedia": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "ask_groq": {
+      "group": "agents",
+      "risk_level": "moderate",
+      "dependencies": [
+        "ollama"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "ask_cerebras": {
+      "group": "agents",
+      "risk_level": "moderate",
+      "dependencies": [
+        "ollama"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "search_memory": {
+      "group": "memory",
+      "risk_level": "safe",
+      "dependencies": [
+        "chromadb"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "save_memory": {
+      "group": "memory",
+      "risk_level": "moderate",
+      "dependencies": [
+        "chromadb"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "memory_update": {
+      "group": "memory",
+      "risk_level": "moderate",
+      "dependencies": [
+        "chromadb"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "memory_forget": {
+      "group": "memory",
+      "risk_level": "moderate",
+      "dependencies": [
+        "chromadb"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "memory_reflect": {
+      "group": "memory",
+      "risk_level": "safe",
+      "dependencies": [
+        "chromadb"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "memory_link": {
+      "group": "memory",
+      "risk_level": "moderate",
+      "dependencies": [
+        "chromadb"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "memory_query_graph": {
+      "group": "memory",
+      "risk_level": "safe",
+      "dependencies": [
+        "chromadb"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "edit_file": {
+      "group": "files",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "glob": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "grep": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "ask_user": {
+      "group": "utils",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "run_background": {
+      "group": "system",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "kill_process": {
+      "group": "system",
+      "risk_level": "dangerous",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "todo_write": {
+      "group": "utils",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "notebook_edit": {
+      "group": "utils",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "plan_mode": {
+      "group": "utils",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "execute_code": {
+      "group": "code",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "generate_image": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [
+        "comfyui"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "generate_animation": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [
+        "comfyui"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "generate_video": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [
+        "comfyui"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "image_to_image": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [
+        "comfyui"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "inpaint_image": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [
+        "comfyui"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "http_request": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "get_yt_transcript": {
+      "group": "youtube",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "youtube_search": {
+      "group": "youtube",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "get_news": {
+      "group": "youtube",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "launch_agent": {
+      "group": "agents",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_status": {
+      "group": "git",
+      "risk_level": "safe",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_commit": {
+      "group": "git",
+      "risk_level": "moderate",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_log": {
+      "group": "git",
+      "risk_level": "safe",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_branch": {
+      "group": "git",
+      "risk_level": "safe",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "search_codebase": {
+      "group": "code",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_project_structure": {
+      "group": "code",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "describe_image": {
+      "group": "image",
+      "risk_level": "safe",
+      "dependencies": [
+        "ollama"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "debug_screenshot": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "analyze_code_screenshot": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "execute_voice_command": {
+      "group": "utils",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "ask_architect": {
+      "group": "agents",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "review_code": {
+      "group": "agents",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "create_react_component": {
+      "group": "code",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "add_route": {
+      "group": "code",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "add_api_endpoint": {
+      "group": "code",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "install_npm_package": {
+      "group": "npm",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "analyze_component": {
+      "group": "code",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "hot_reload_check": {
+      "group": "code",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "validate_jsx_syntax": {
+      "group": "code",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "list_available_icons": {
+      "group": "code",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_css_variables": {
+      "group": "code",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "create_backup": {
+      "group": "files",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "copy_file": {
+      "group": "files",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "move_file": {
+      "group": "files",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "delete_file": {
+      "group": "files",
+      "risk_level": "dangerous",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "create_directory": {
+      "group": "files",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_file_stats": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "compare_files": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "find_files": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "watch_file": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_directory_size": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "tree_view": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "download_file": {
+      "group": "archive",
+      "risk_level": "moderate",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "ping": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "check_url": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "get_public_ip": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "dns_lookup": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "port_scan": {
+      "group": "web",
+      "risk_level": "moderate",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "whois": {
+      "group": "web",
+      "risk_level": "safe",
+      "dependencies": [
+        "internet"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "create_zip": {
+      "group": "archive",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "extract_zip": {
+      "group": "archive",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "list_archive": {
+      "group": "archive",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "compress_gzip": {
+      "group": "archive",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "decompress_gzip": {
+      "group": "archive",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "hash_file": {
+      "group": "crypto",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "hash_text": {
+      "group": "crypto",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "generate_uuid": {
+      "group": "crypto",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "generate_password": {
+      "group": "crypto",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "encrypt_text": {
+      "group": "crypto",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "decrypt_text": {
+      "group": "crypto",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "base64_encode": {
+      "group": "crypto",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "base64_decode": {
+      "group": "crypto",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_system_info": {
+      "group": "system",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_cpu_usage": {
+      "group": "system",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_memory_usage": {
+      "group": "system",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_disk_usage": {
+      "group": "system",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "list_processes": {
+      "group": "system",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "kill_process_by_name": {
+      "group": "system",
+      "risk_level": "dangerous",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_environment_variable": {
+      "group": "system",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "set_environment_variable": {
+      "group": "system",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_network_interfaces": {
+      "group": "system",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "open_application": {
+      "group": "system",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "open_url_in_browser": {
+      "group": "system",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "json_to_csv": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "csv_to_json": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "xml_to_json": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "json_to_xml": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "yaml_to_json": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "json_to_yaml": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "parse_html": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "markdown_to_html": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "html_to_markdown": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "format_json": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "minify_json": {
+      "group": "conversion",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "resize_image": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "convert_image": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_image_info": {
+      "group": "image",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "crop_image": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "rotate_image": {
+      "group": "image",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "take_screenshot": {
+      "group": "system",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_diff": {
+      "group": "git",
+      "risk_level": "safe",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_stash": {
+      "group": "git",
+      "risk_level": "moderate",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_pull": {
+      "group": "git",
+      "risk_level": "moderate",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_push": {
+      "group": "git",
+      "risk_level": "moderate",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_clone": {
+      "group": "git",
+      "risk_level": "moderate",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_checkout": {
+      "group": "git",
+      "risk_level": "moderate",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_merge": {
+      "group": "git",
+      "risk_level": "moderate",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "git_reset": {
+      "group": "git",
+      "risk_level": "moderate",
+      "dependencies": [
+        "git"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "search_replace_in_file": {
+      "group": "files",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "count_lines": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "count_words": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "head_file": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "tail_file": {
+      "group": "files",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "append_to_file": {
+      "group": "files",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "prepend_to_file": {
+      "group": "files",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "format_date": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "date_diff": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "add_to_date": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "timestamp_to_date": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "date_to_timestamp": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "calculate": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "convert_units": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "random_number": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "statistics": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_zodiac_sign": {
+      "group": "datetime",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "get_audio_info": {
+      "group": "audio",
+      "risk_level": "safe",
+      "dependencies": [
+        "audio"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "text_to_speech": {
+      "group": "audio",
+      "risk_level": "moderate",
+      "dependencies": [
+        "audio"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "play_audio": {
+      "group": "audio",
+      "risk_level": "moderate",
+      "dependencies": [
+        "audio"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "send_notification": {
+      "group": "utils",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "npm_list": {
+      "group": "npm",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "npm_outdated": {
+      "group": "npm",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "npm_run": {
+      "group": "npm",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "npm_search": {
+      "group": "npm",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "npm_info": {
+      "group": "npm",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "browser_open": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "browser_screenshot": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "browser_pdf": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "browser_click": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "browser_type": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "browser_evaluate": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "browser_extract": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "dom_query": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "dom_get_element_by_id": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "dom_get_elements_by_class": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "dom_get_elements_by_tag": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "dom_modify": {
+      "group": "browser",
+      "risk_level": "moderate",
+      "dependencies": [
+        "browser"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "sqlite_query": {
+      "group": "database",
+      "risk_level": "moderate",
+      "dependencies": [
+        "sqlite"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "sqlite_tables": {
+      "group": "database",
+      "risk_level": "safe",
+      "dependencies": [
+        "sqlite"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "sqlite_schema": {
+      "group": "database",
+      "risk_level": "safe",
+      "dependencies": [
+        "sqlite"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "docker_ps": {
+      "group": "docker",
+      "risk_level": "safe",
+      "dependencies": [
+        "docker"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "docker_images": {
+      "group": "docker",
+      "risk_level": "safe",
+      "dependencies": [
+        "docker"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "docker_logs": {
+      "group": "docker",
+      "risk_level": "safe",
+      "dependencies": [
+        "docker"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "docker_exec": {
+      "group": "docker",
+      "risk_level": "moderate",
+      "dependencies": [
+        "docker"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "docker_start": {
+      "group": "docker",
+      "risk_level": "moderate",
+      "dependencies": [
+        "docker"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "docker_stop": {
+      "group": "docker",
+      "risk_level": "moderate",
+      "dependencies": [
+        "docker"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "ollama_list": {
+      "group": "ollama",
+      "risk_level": "safe",
+      "dependencies": [
+        "ollama"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "ollama_pull": {
+      "group": "ollama",
+      "risk_level": "moderate",
+      "dependencies": [
+        "ollama"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "ollama_delete": {
+      "group": "ollama",
+      "risk_level": "moderate",
+      "dependencies": [
+        "ollama"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "ollama_chat": {
+      "group": "ollama",
+      "risk_level": "moderate",
+      "dependencies": [
+        "ollama"
+      ],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": false,
+      "status": "not_tested"
+    },
+    "clipboard_read": {
+      "group": "utils",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "clipboard_write": {
+      "group": "utils",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "set_reminder": {
+      "group": "utils",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "list_reminders": {
+      "group": "utils",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "cancel_reminder": {
+      "group": "utils",
+      "risk_level": "moderate",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "test_regex": {
+      "group": "validation",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "validate_json": {
+      "group": "validation",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "validate_email": {
+      "group": "validation",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    },
+    "validate_url": {
+      "group": "validation",
+      "risk_level": "safe",
+      "dependencies": [],
+      "has_definition": true,
+      "has_implementation": true,
+      "testable_offline": true,
+      "status": "not_tested"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "theme": "dark",
+  "ttsEnabled": true,
+  "ttsVoice": "",
+  "defaultLLM": "auto",
+  "notifications": true,
+  "autoScroll": true,
+  "streamingEnabled": true
+}

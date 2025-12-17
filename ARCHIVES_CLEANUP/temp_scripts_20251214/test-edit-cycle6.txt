@@ -1,0 +1,3 @@
+Test avant edit_file cycle 6
+// Cycle 6 Test OK é
+// Cycle 7 Test OK\n

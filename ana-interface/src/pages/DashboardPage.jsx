@@ -17,7 +17,7 @@ const DASHBOARD_URL = BACKEND_URL;
 
 function DashboardPage() {
   const [stats, setStats] = useState({
-    llm_usage: { phi3: 0, deepseek: 0, qwen: 0, llama_vision: 0 },
+    llm_usage: { phi3: 0, deepseek: 0, llama_vision: 0 },
     memory: { sizeKB: 0, lines: 0 },
     active_model: null
   });
@@ -307,15 +307,7 @@ function DashboardPage() {
             </div>
           </div>
 
-          <div className="llm-bar-item">
-            <div className="llm-bar-header">
-              <span>Qwen Coder (Math)</span>
-              <span>{stats.llm_usage.qwen || 0} requêtes</span>
-            </div>
-            <div className="llm-bar-track">
-              <div className="llm-bar-fill qwen" style={{width: `${(stats.llm_usage.qwen / 10) * 100}%`}}></div>
-            </div>
-          </div>
+          
 
           <div className="llm-bar-item">
             <div className="llm-bar-header">

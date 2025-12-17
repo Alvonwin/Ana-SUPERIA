@@ -1,0 +1,9 @@
+{
+  "repoPath": "E:\\ANA",
+  "files": [
+    "server/test-git-is-repo.json",
+    "server/test-git-status.json",
+    "server/test-git-log.json",
+    "server/test-git-diff.json"
+  ]
+}

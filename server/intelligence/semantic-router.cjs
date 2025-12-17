@@ -7,6 +7,8 @@
  * Best Practices 2025:
  * - Source: https://github.com/lm-sys/RouteLLM
  * - Source: https://blog.langchain.dev/semantic-routing/
+ *
+ * FIX 2025-12-17: Amélioration détection CODING vs TOOLS
  */
 
 const axios = require('axios');
@@ -21,13 +23,23 @@ const CACHE_PATH = path.join('E:', 'ANA', 'knowledge', 'learned', 'router_cache.
 const TASK_TYPES = {
   CODING: {
     name: 'coding',
-    description: 'Writing code, programming, fixing bugs, debugging, creating functions, classes, implementing features',
+    description: 'Writing code, programming, fixing bugs, debugging, creating functions, classes, implementing features, React components, JavaScript, Python, algorithms, refactoring, API development',
     examples: [
       'Write a function to sort an array',
       'Fix this bug in my code',
       'Create a class for user authentication',
       'Debug this error',
-      'Implement a REST API endpoint'
+      'Implement a REST API endpoint',
+      'Crée un composant React',
+      'Écris une fonction JavaScript',
+      'Analyse ce code',
+      'Refactorise cette classe',
+      'Corrige ce bug',
+      'Implémente un algorithme',
+      'Ajoute une méthode à la classe',
+      'Crée une API REST',
+      'Optimise cette fonction',
+      'Génère du code Python'
     ],
     preferredModel: 'deepseek-coder-v2:16b-lite-instruct-q4_K_M',
     fallbackModel: 'qwen2.5-coder:7b',
@@ -43,9 +55,9 @@ const TASK_TYPES = {
       'Compute the standard deviation',
       'Parse this numerical data'
     ],
-    preferredModel: 'llama-3.3-70b-versatile',
-    fallbackModel: 'qwen2.5-coder:7b',
-    provider: 'groq'
+    preferredModel: 'llama-3.3-70b',
+    fallbackModel: 'llama-3.3-70b',
+    provider: 'cerebras'
   },
   VISION: {
     name: 'vision',
@@ -71,9 +83,9 @@ const TASK_TYPES = {
       'Compare these approaches',
       'What are the pros and cons'
     ],
-    preferredModel: 'llama-3.3-70b-versatile',
-    fallbackModel: 'deepseek-coder-v2:16b-lite-instruct-q4_K_M',
-    provider: 'groq'
+    preferredModel: 'llama-3.3-70b',
+    fallbackModel: 'llama-3.3-70b',
+    provider: 'cerebras'
   },
   CONVERSATION: {
     name: 'conversation',
@@ -180,6 +192,30 @@ const TASK_TYPES = {
   }
 };
 
+// FIX 2025-12-17: Keywords pour détecter CODING avec priorité sur TOOLS
+const CODING_KEYWORDS = [
+  // Langages et frameworks
+  'react', 'javascript', 'python', 'typescript', 'java', 'nodejs', 'node.js',
+  'vue', 'angular', 'svelte', 'next.js', 'nextjs', 'express', 'django', 'flask',
+  // Termes de code FR
+  'composant', 'component', 'fonction', 'function', 'classe', 'class',
+  'méthode', 'method', 'variable', 'algorithme', 'algorithm',
+  'boucle', 'loop', 'condition', 'if else', 'switch', 'array', 'tableau',
+  'objet', 'object', 'interface', 'type', 'enum',
+  // Actions de code
+  'refactoriser', 'refactorise', 'refactor', 'optimiser', 'optimize',
+  'débugger', 'debug', 'debugger', 'corriger le bug', 'fix bug',
+  'implémenter', 'implement', 'implémente',
+  'coder', 'programmer', 'développer',
+  // Termes API/Backend
+  'api rest', 'endpoint', 'backend', 'frontend', 'fullstack',
+  'route', 'controller', 'middleware', 'service',
+  'base de données', 'database', 'query', 'requête sql',
+  // Code patterns
+  '.jsx', '.tsx', '.js', '.ts', '.py', '.java', '.cpp', '.cs',
+  'import ', 'export ', 'const ', 'let ', 'var ', 'def ', 'async ', 'await '
+];
+
 class SemanticRouter {
   constructor() {
     this.embedCache = new Map();
@@ -276,18 +312,38 @@ class SemanticRouter {
       };
     }
 
-    // PRIORITY: Check for TOOLS keywords BEFORE semantic routing
     const msgLower = message.toLowerCase();
+
+    // FIX 2025-12-17: Check CODING FIRST (before TOOLS)
+    // "Crée un composant React" = CODING, pas TOOLS
+    if (CODING_KEYWORDS.some(kw => msgLower.includes(kw))) {
+      this.updateStats('CODING');
+      console.log('[SemanticRouter] 🔧 CODING detected via keyword');
+      return {
+        model: TASK_TYPES.CODING.preferredModel,
+        taskType: 'coding',
+        reason: 'Priority keyword match: coding task',
+        confidence: 0.95,
+        method: 'keyword_priority',
+        provider: TASK_TYPES.CODING.provider,
+        fallbackModel: TASK_TYPES.CODING.fallbackModel
+      };
+    }
+
+    // TOOLS keywords (after CODING check)
     const toolsKeywords = [
       'heure', 'quelle heure', 'meteo', 'météo', 'temps qu', 'temps fait', 'température', 'weather',
       'whois', 'dns', 'dns lookup', 'ip publique', 'public ip', 'check_url', 'http_request', 'web_fetch',
-      'fichier', 'lis le', 'lire', 'ouvre', 'crée', 'créer', 'liste les', 'lister', 'quels fichiers', 'trouve', 'trouver',
+      'fichier', 'lis le', 'lire', 'ouvre', 'liste les', 'lister', 'quels fichiers', 'trouve les fichiers',
       'execute', 'exécute', 'commande', 'shell', 'dir ', 'ls ',
-      'cherche', 'recherche', 'récupère', 'recupere', 'contenu de', 'web',
+      'cherche sur', 'recherche web', 'récupère', 'recupere', 'contenu de http',
       'wikipedia', 'groq', 'cerebras', 'demande à', 'demande a',
-      'agent', 'mémoire', 'memoire', 'rappelles', 'souviens', 'rappelle',
-      'modifie', 'modifier', 'glob', 'grep', 'pose-moi', 'processus', 'pid', 'tâche', 'tache', 'notebook', 'planification',
+      'mémoire ana', 'memoire ana', 'rappelles', 'souviens', 'rappelle-toi',
+      'modifie le fichier', 'modifier le fichier', 'glob', 'grep', 'pose-moi', 'processus', 'pid',
+      'tâche', 'tache', 'notebook', 'planification',
       'arrête le', 'lance ', 'ajoute une tâche', 'en arrière-plan',
+      'cpu', 'ram', 'disque', 'disk', 'ping ', 'infos systeme',
+      'mot de passe', 'password', 'hash', 'convertis en'
     ];
     if (toolsKeywords.some(kw => msgLower.includes(kw))) {
       this.updateStats('TOOLS');
@@ -333,14 +389,29 @@ class SemanticRouter {
 
   fallbackRoute(message) {
     const msgLower = message.toLowerCase();
-    // Extended keywords for TOOLS detection - covers all 24 test cases
+
+    // CODING keywords (French + English)
+    if (CODING_KEYWORDS.some(kw => msgLower.includes(kw))) {
+      this.updateStats('CODING');
+      return {
+        model: TASK_TYPES.CODING.preferredModel,
+        taskType: 'coding',
+        reason: 'Keyword match: coding task',
+        confidence: 0.8,
+        method: 'keyword_fallback',
+        provider: TASK_TYPES.CODING.provider,
+        fallbackModel: TASK_TYPES.CODING.fallbackModel
+      };
+    }
+
+    // TOOLS keywords
     const toolsKeywords = [
       'heure', 'quelle heure', 'meteo', 'météo', 'temps qu',
-      'fichier', 'lis le', 'lire', 'ouvre', 'crée', 'cree', 'créer', 'liste les', 'lister', 'quels fichiers', 'trouve', 'trouver',
+      'fichier', 'lis le', 'lire', 'ouvre', 'liste les', 'lister', 'quels fichiers', 'trouve', 'trouver',
       'execute', 'exécute', 'commande', 'shell', 'dir ',
       'cherche sur', 'recherche', 'récupère', 'recupere', 'contenu de', 'web',
       'wikipedia', 'groq', 'cerebras', 'demande à', 'demande a',
-      'agent', 'mémoire', 'memoire', 'rappelles', 'souviens',
+      'mémoire', 'memoire', 'rappelles', 'souviens',
       'modifie', 'modifier', 'glob', 'grep', 'pose-moi', 'processus', 'pid', 'tâche', 'tache', 'notebook', 'planification'
     ];
     if (toolsKeywords.some(kw => msgLower.includes(kw))) {
@@ -355,19 +426,7 @@ class SemanticRouter {
         fallbackModel: TASK_TYPES.TOOLS.fallbackModel
       };
     }
-    const codingKeywords = ['code', 'function', 'bug', 'debug', 'class', 'variable', 'error', 'fix', 'implement', 'refactor', 'script', 'program'];
-    if (codingKeywords.some(kw => msgLower.includes(kw))) {
-      this.updateStats('CODING');
-      return {
-        model: TASK_TYPES.CODING.preferredModel,
-        taskType: 'coding',
-        reason: 'Keyword match: coding task',
-        confidence: 0.7,
-        method: 'keyword_fallback',
-        provider: TASK_TYPES.CODING.provider,
-        fallbackModel: TASK_TYPES.CODING.fallbackModel
-      };
-    }
+
     const mathKeywords = ['calcul', 'math', 'equation', 'nombre', 'statistique', 'formule', '%', '+', '-', '*', '/'];
     if (mathKeywords.some(kw => msgLower.includes(kw)) || /\d+[\+\-\*\/]\d+/.test(message)) {
       this.updateStats('MATH');
@@ -381,7 +440,7 @@ class SemanticRouter {
         fallbackModel: TASK_TYPES.MATH.fallbackModel
       };
     }
-    const creativeKeywords = ['ecris', 'histoire', 'poeme', 'creatif', 'idee', 'brainstorm', 'invente'];
+    const creativeKeywords = ['ecris une histoire', 'poeme', 'creatif', 'idee', 'brainstorm', 'invente'];
     if (creativeKeywords.some(kw => msgLower.includes(kw))) {
       this.updateStats('CREATIVE');
       return {

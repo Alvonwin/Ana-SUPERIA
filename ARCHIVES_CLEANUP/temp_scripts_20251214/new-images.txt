@@ -1,0 +1,6 @@
+image/gif
+image/bmp
+image/x-icon
+image/svg+xml
+image/tiff
+image/avif

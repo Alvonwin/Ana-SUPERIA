@@ -1,0 +1,8 @@
+# Ana Cloudflare Tunnel URLs
+# Generated: 2025-12-13 21:35:35
+#
+# Use the FRONTEND URL on your phone to access Ana
+# The backend URL is updated automatically in config.js
+
+FRONTEND=https://allowing-compact-excited-turn.trycloudflare.com
+BACKEND=https://phoenix-fundamentals-fascinating-considerations.trycloudflare.com

@@ -1,0 +1,52 @@
+[
+  {
+    "outil": "analyze_component",
+    "statut": "OK",
+    "duree": 103669
+  },
+  {
+    "outil": "list_available_icons",
+    "statut": "OK",
+    "duree": 15
+  },
+  {
+    "outil": "get_css_variables",
+    "statut": "OK",
+    "duree": 12
+  },
+  {
+    "outil": "create_backup",
+    "statut": "OK",
+    "duree": 12
+  },
+  {
+    "outil": "get_directory_size",
+    "statut": "OK",
+    "duree": 11
+  },
+  {
+    "outil": "tree_view",
+    "statut": "OK",
+    "duree": 27
+  },
+  {
+    "outil": "get_public_ip",
+    "statut": "OK",
+    "duree": 12
+  },
+  {
+    "outil": "dns_lookup",
+    "statut": "OK",
+    "duree": 28
+  },
+  {
+    "outil": "port_scan",
+    "statut": "OK",
+    "duree": 13
+  },
+  {
+    "outil": "hash_file",
+    "statut": "OK",
+    "duree": 11
+  }
+]

@@ -66,7 +66,6 @@ const VoicePage = () => {
   const models = [
     { id: 'deepseek-r1:8b', name: 'DeepSeek R1 8B' },
     { id: 'phi3:mini-128k', name: 'Phi-3 Mini 128K' },
-    { id: 'qwen2.5:7b', name: 'Qwen 2.5 7B' },
     { id: 'llama3.2-vision:11b', name: 'Llama Vision 11B' }
   ];
 

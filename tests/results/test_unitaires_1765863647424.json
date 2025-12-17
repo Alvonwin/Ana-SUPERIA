@@ -1,0 +1,2162 @@
+{
+  "timestamp": "2025-12-16T05:40:32.924Z",
+  "summary": {
+    "passed": 87,
+    "failed": 23,
+    "skipped": 72,
+    "no_params": 4,
+    "error": 3
+  },
+  "details": {
+    "add_api_endpoint": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "Template pour GET /api/test:",
+        "template": "\n// undefined\n// Paramètres: aucun\napp.get('/api/test', async (req, res) => {\n  try {\n    // TODO: Implémenter undefined\n    res.json({ success: true, message: 'Endpoint /api/test en construction' });\n  } catch (error) {\n    res.status(500).json({ success: false, error: error.message });\n  }\n});\n",
+        "instructions": [
+          "Ajouter ce code dans ana-core.cjs",
+          "Placer après les autres endpoints API",
+          "Implémenter la logique selon: undefined"
+        ]
+      },
+      "group": "code"
+    },
+    "add_route": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "Instructions pour ajouter la route /test:",
+        "instructions": [
+          "1. Ajouter l'import: import undefined from './pages/undefined'",
+          "2. Ajouter la route: <Route path=\"/test\" element={<undefined />} />",
+          "3. Ajouter au sidebar: { to: \"/test\", icon: <IconFile />, label: \"undefined\" }"
+        ],
+        "file": "E:/ANA/ana-interface/src/App.jsx"
+      },
+      "group": "code"
+    },
+    "add_to_date": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "result": "2025-12-23T00:00:00.000Z"
+      },
+      "group": "datetime"
+    },
+    "analyze_code_screenshot": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "analyze_component": {
+      "status": "failed",
+      "error": "The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined",
+      "group": "code"
+    },
+    "append_to_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "Contenu ajouté à E:\\ANA\\tests\\test_files\\test_file.txt"
+      },
+      "group": "files"
+    },
+    "ask_architect": {
+      "status": "error",
+      "error": "Cannot read properties of undefined (reading 'substring')",
+      "group": "agents"
+    },
+    "ask_cerebras": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "provider": "cerebras",
+        "model": "llama3.1-8b",
+        "answer": "Bonjour!",
+        "tokens": 314,
+        "latencyMs": 1035
+      },
+      "group": "agents"
+    },
+    "ask_groq": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile",
+        "answer": "Bonjour",
+        "tokens": 308,
+        "latencyMs": 152
+      },
+      "group": "agents"
+    },
+    "ask_user": {
+      "status": "skipped",
+      "group": "utils"
+    },
+    "base64_decode": {
+      "status": "failed",
+      "error": "The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined",
+      "group": "crypto"
+    },
+    "base64_encode": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "encoded": "SGVsbG8gV29ybGQ="
+      },
+      "group": "crypto"
+    },
+    "browser_click": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "browser_evaluate": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "browser_extract": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "browser_open": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "browser_pdf": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "browser_screenshot": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "browser_type": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "calculate": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "expression": "2 + 2 * 3",
+        "result": 8
+      },
+      "group": "datetime"
+    },
+    "cancel_reminder": {
+      "status": "skipped",
+      "group": "utils"
+    },
+    "check_url": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "accessible": true,
+        "statusCode": 301,
+        "statusMessage": "Moved Permanently",
+        "headers": {
+          "location": "https://www.google.com/",
+          "content-type": "text/html; charset=UTF-8",
+          "content-security-policy-report-only": "object-src 'none';base-uri 'self';script-src 'nonce-rpu261JPoYSmjbPwQHzrEw' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp",
+          "date": "Tue, 16 Dec 2025 05:40:36 GMT",
+          "expires": "Thu, 15 Jan 2026 05:40:36 GMT",
+          "cache-control": "public, max-age=2592000",
+          "server": "gws",
+          "content-length": "220",
+          "x-xss-protection": "0",
+          "x-frame-options": "SAMEORIGIN",
+          "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+        }
+      },
+      "group": "web"
+    },
+    "clipboard_read": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "content": "\"C:\\Users\\niwno\\Desktop\\Outils\\LISTE COMPL�TE DES 182 OUTILS D'ANA.txt\"\r\n"
+      },
+      "group": "utils"
+    },
+    "clipboard_write": {
+      "status": "skipped",
+      "group": "utils"
+    },
+    "compare_files": {
+      "status": "failed",
+      "error": "The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined",
+      "group": "files"
+    },
+    "compress_gzip": {
+      "status": "failed",
+      "error": "The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined",
+      "group": "archive"
+    },
+    "convert_image": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "convert_units": {
+      "status": "failed",
+      "error": "Conversion cm → m non supportée",
+      "group": "datetime"
+    },
+    "copy_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "Copié: E:\\ANA\\tests\\test_files\\test_file.txt → E:\\ANA\\tests\\test_files\\copy_test.txt"
+      },
+      "group": "files"
+    },
+    "count_lines": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files\\test_file.txt",
+        "lines": 5
+      },
+      "group": "files"
+    },
+    "count_words": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files\\test_file.txt",
+        "words": 12,
+        "characters": 62
+      },
+      "group": "files"
+    },
+    "create_backup": {
+      "status": "failed",
+      "error": "The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined",
+      "group": "files"
+    },
+    "create_directory": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "Dossier créé: E:\\ANA\\tests\\test_files\\new_dir"
+      },
+      "group": "files"
+    },
+    "create_react_component": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "Composant TestComponent créé avec succès!",
+        "files": {
+          "jsx": "E:/ANA/ana-interface/src/components/TestComponent.jsx",
+          "css": "E:/ANA/ana-interface/src/components/TestComponent.css"
+        },
+        "nextSteps": [
+          "Ajouter l'import dans App.jsx: import TestComponent from './pages/TestComponent'",
+          "Ajouter la route: <Route path=\"/testcomponent\" element={<TestComponent />} />"
+        ]
+      },
+      "group": "code"
+    },
+    "create_zip": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "file": "E:\\ANA\\tests\\test_files\\test.zip",
+        "size": 195
+      },
+      "group": "archive"
+    },
+    "crop_image": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "csv_to_json": {
+      "status": "failed",
+      "error": "The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined",
+      "group": "conversion"
+    },
+    "date_diff": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "difference": 349,
+        "unit": "days"
+      },
+      "group": "datetime"
+    },
+    "date_to_timestamp": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "timestamp": 1765843200,
+        "timestampMs": 1765843200000
+      },
+      "group": "datetime"
+    },
+    "debug_screenshot": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "decompress_gzip": {
+      "status": "failed",
+      "error": "The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined",
+      "group": "archive"
+    },
+    "decrypt_text": {
+      "status": "failed",
+      "error": "Cannot read properties of undefined (reading 'split')",
+      "group": "crypto"
+    },
+    "delete_file": {
+      "status": "skipped",
+      "group": "files"
+    },
+    "describe_image": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "dns_lookup": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "domain": "google.com",
+        "type": "A",
+        "records": [
+          "142.250.191.238"
+        ]
+      },
+      "group": "web"
+    },
+    "docker_exec": {
+      "status": "skipped",
+      "group": "docker"
+    },
+    "docker_images": {
+      "status": "skipped",
+      "group": "docker"
+    },
+    "docker_logs": {
+      "status": "skipped",
+      "group": "docker"
+    },
+    "docker_ps": {
+      "status": "skipped",
+      "group": "docker"
+    },
+    "docker_start": {
+      "status": "skipped",
+      "group": "docker"
+    },
+    "docker_stop": {
+      "status": "skipped",
+      "group": "docker"
+    },
+    "dom_get_element_by_id": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "dom_get_elements_by_class": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "dom_get_elements_by_tag": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "dom_modify": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "dom_query": {
+      "status": "skipped",
+      "group": "browser"
+    },
+    "download_file": {
+      "status": "error",
+      "error": "The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined",
+      "group": "archive"
+    },
+    "edit_file": {
+      "status": "failed",
+      "error": "Fichier non trouvé: undefined",
+      "group": "files"
+    },
+    "encrypt_text": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "encrypted": "42c6167e9d82e2c386a55dc88b00c139:2c2b56b0e22088b183ad38d7c160d6a5"
+      },
+      "group": "crypto"
+    },
+    "execute_code": {
+      "status": "failed",
+      "error": "Traceback (most recent call last):\r\n  File \"<string>\", line 1, in <module>\r\n    console.log(\"hello\")\r\n    ^^^^^^^\r\nNameError: name 'console' is not defined",
+      "group": "code"
+    },
+    "execute_voice_command": {
+      "status": "skipped",
+      "group": "utils"
+    },
+    "extract_zip": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "Extrait vers: E:\\ANA\\tests\\test_files\\extracted"
+      },
+      "group": "archive"
+    },
+    "file_info": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files\\test_file.txt",
+        "size_bytes": 62,
+        "size_readable": "62 bytes",
+        "lines": 5,
+        "extension": ".txt",
+        "type": "text",
+        "is_large": false,
+        "recommendation": "read_file",
+        "modified": "2025-12-16T05:40:32.930Z"
+      },
+      "group": "files"
+    },
+    "find_files": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "count": 0,
+        "files": []
+      },
+      "group": "files"
+    },
+    "format_date": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "formatted": "2025-12-15 19 h 00 min 00 s",
+        "iso": "2025-12-16T00:00:00.000Z"
+      },
+      "group": "datetime"
+    },
+    "format_json": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "formatted": "{\n  \"a\": 1\n}"
+      },
+      "group": "conversion"
+    },
+    "generate_animation": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "generate_image": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "generate_password": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "password": "96I]%+:Y0H7#X2Fw",
+        "length": 16
+      },
+      "group": "crypto"
+    },
+    "generate_uuid": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "uuid": "24a1e39a-c47f-43b7-86d0-55fba8a23869"
+      },
+      "group": "crypto"
+    },
+    "generate_video": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "get_audio_info": {
+      "status": "failed",
+      "error": "ENOENT: no such file or directory, stat 'E:\\ANA\\tests\\test_files\\test.mp3'",
+      "group": "audio"
+    },
+    "get_cpu_usage": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "cores": [
+          {
+            "core": 0,
+            "usage": "34.25%"
+          },
+          {
+            "core": 1,
+            "usage": "30.47%"
+          },
+          {
+            "core": 2,
+            "usage": "32.96%"
+          },
+          {
+            "core": 3,
+            "usage": "30.46%"
+          },
+          {
+            "core": 4,
+            "usage": "18.84%"
+          },
+          {
+            "core": 5,
+            "usage": "18.58%"
+          },
+          {
+            "core": 6,
+            "usage": "21.20%"
+          },
+          {
+            "core": 7,
+            "usage": "20.84%"
+          },
+          {
+            "core": 8,
+            "usage": "18.98%"
+          },
+          {
+            "core": 9,
+            "usage": "18.69%"
+          },
+          {
+            "core": 10,
+            "usage": "23.53%"
+          },
+          {
+            "core": 11,
+            "usage": "23.60%"
+          }
+        ],
+        "average": "24.37%"
+      },
+      "group": "system"
+    },
+    "get_css_variables": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "count": 25,
+        "variables": {
+          "--bg-primary": "#f5f7fa",
+          "--bg-secondary": "#ffffff",
+          "--bg-tertiary": "#e8ecf1",
+          "--card-bg": "#ffffff",
+          "--input-bg": "#f0f2f5",
+          "--text-primary": "#1a1a2e",
+          "--text-secondary": "#4a5568",
+          "--text-tertiary": "#718096",
+          "--text-muted": "#a0aec0",
+          "--border": "#e2e8f0",
+          "--border-color": "#e2e8f0",
+          "--border-light": "rgba(0, 0, 0, 0.1)",
+          "--primary": "#3498db",
+          "--primary-hover": "#2980b9",
+          "--primary-light": "rgba(52, 152, 219, 0.1)",
+          "--primary-dark": "#2563eb",
+          "--accent": "#8b5cf6",
+          "--accent-color": "#3498db",
+          "--accent-hover": "#2980b9",
+          "--success": "#2ecc71",
+          "--success-hover": "#27ae60",
+          "--danger": "#e74c3c",
+          "--warning": "#f39c12",
+          "--sidebar-bg": "linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%)",
+          "--sidebar-border": "#e2e8f0"
+        },
+        "usage": "var(--variable-name)"
+      },
+      "group": "code"
+    },
+    "get_directory_size": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files",
+        "sizeBytes": 319,
+        "sizeKB": "0.31",
+        "sizeMB": "0.00",
+        "sizeGB": "0.00"
+      },
+      "group": "files"
+    },
+    "get_disk_usage": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "output": "Caption  FreeSpace      Size           \r\r\nC:       143098789888   999241617408   \r\r\nD:       1735683477504  2000263573504  \r\r\nE:       642014568448   1000202752000  \r\r\n\r\r\n"
+      },
+      "group": "system"
+    },
+    "get_environment_variable": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "name": "PATH",
+        "value": "C:\\Users\\niwno\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\local\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\niwno\\bin;C:\\Python314\\Scripts;C:\\Python314;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\dotnet;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\OpenSSL-Win64;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR;C:\\Program Files\\Docker\\Docker\\resources\\bin;E:\\Program Files\\WezTerm;C:\\Program Files\\Go\\bin;C:\\Program Files\\Rust stable GNU 1.91\\bin;C:\\Users\\niwno\\AppData\\Roaming\\Python\\Python314\\Scripts;C:\\Program Files (x86)\\cloudflared;C:\\Users\\niwno\\AppData\\Local\\Programs\\Python\\Python310\\Scripts;C:\\Users\\niwno\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\niwno\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\niwno\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\niwno\\AppData\\Roaming\\npm;C:\\Users\\niwno\\AppData\\Local\\Programs\\Ollama;C:\\Users\\niwno\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-8.0.1-full_build\\bin;C:\\Users\\niwno\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\niwno\\go\\bin;C:\\Users\\niwno\\.dotnet\\tools;C:\\Users\\niwno\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin\\vendor_perl;C:\\Program Files\\Git\\usr\\bin\\core_perl"
+      },
+      "group": "system"
+    },
+    "get_file_stats": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files\\test_file.txt",
+        "size": 62,
+        "sizeHuman": "0.06 KB",
+        "created": "2025-12-16T05:32:03.812Z",
+        "modified": "2025-12-16T05:40:32.930Z",
+        "accessed": "2025-12-16T05:40:35.883Z",
+        "isFile": true,
+        "isDirectory": false,
+        "permissions": "100666"
+      },
+      "group": "files"
+    },
+    "get_image_info": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "get_memory_usage": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "total": "31.91 GB",
+        "used": "10.86 GB",
+        "free": "21.05 GB",
+        "usagePercent": "34.04%"
+      },
+      "group": "system"
+    },
+    "get_network_interfaces": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "interfaces": {
+          "Ethernet": [
+            {
+              "family": "IPv6",
+              "address": "fe80::c019:5e9c:c5a8:fe17",
+              "netmask": "ffff:ffff:ffff:ffff::",
+              "mac": "18:c0:4d:96:b4:dc",
+              "internal": false
+            },
+            {
+              "family": "IPv4",
+              "address": "10.0.0.95",
+              "netmask": "255.255.255.0",
+              "mac": "18:c0:4d:96:b4:dc",
+              "internal": false
+            }
+          ],
+          "Connexion au réseau local* 2": [
+            {
+              "family": "IPv6",
+              "address": "fe80::34cd:2603:72db:aed0",
+              "netmask": "ffff:ffff:ffff:ffff::",
+              "mac": "2e:db:07:a3:55:de",
+              "internal": false
+            },
+            {
+              "family": "IPv4",
+              "address": "192.168.137.1",
+              "netmask": "255.255.255.0",
+              "mac": "2e:db:07:a3:55:de",
+              "internal": false
+            }
+          ],
+          "Loopback Pseudo-Interface 1": [
+            {
+              "family": "IPv6",
+              "address": "::1",
+              "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+              "mac": "00:00:00:00:00:00",
+              "internal": true
+            },
+            {
+              "family": "IPv4",
+              "address": "127.0.0.1",
+              "netmask": "255.0.0.0",
+              "mac": "00:00:00:00:00:00",
+              "internal": true
+            }
+          ],
+          "vEthernet (WSL (Hyper-V firewall))": [
+            {
+              "family": "IPv6",
+              "address": "fe80::23f5:a602:3ba6:758e",
+              "netmask": "ffff:ffff:ffff:ffff::",
+              "mac": "00:15:5d:2d:38:9f",
+              "internal": false
+            },
+            {
+              "family": "IPv4",
+              "address": "172.17.64.1",
+              "netmask": "255.255.240.0",
+              "mac": "00:15:5d:2d:38:9f",
+              "internal": false
+            }
+          ]
+        }
+      },
+      "group": "system"
+    },
+    "get_news": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "topic": "technology",
+        "language": "fr",
+        "count": 3,
+        "articles": [
+          {
+            "title": "Meurtres non résolus: grâce aux nouvelles technologies de l’ADN, des tueurs «devraient être nerveux - Le Journal de Montréal",
+            "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPV0NmSUhaX0k4NV9OVGZEelowZVJqLThGSjlhZFEtQUxMcEJXd1YyQVY3OVpfVlNyX2pITmxfRkNkdU5GaGFCS3FDTEdHbWpORk9reUtHNF94VG1ubnV1QWxQQVpuRlNSQVNoTUZic3RVZWJ4TElDWHdYRzBKZEt0cFZ6SEF1ZTdGd25pYktPQ2pXQTdKdDY3a3FDTW9kWkhHRlBVVzIzNjBRT2FpMEdvd3NRZUJidG5wQkF6VWZRS25CNHc0SFBuU3kyU2ItSjN0OUV6MjlQcUwyQl96NnJr?oc=5",
+            "pubDate": "Sat, 13 Dec 2025 05:00:00 GMT",
+            "source": "Le Journal de Montréal"
+          },
+          {
+            "title": "Aurobay Technologies étend son partenariat avec HCLTech dans le domaine de la transformation numérique afin de stimuler l’excellence et l’innovation dans le secteur de la fabrication - Business Wire",
+            "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1Fd2JvWlN4WkxRQTNybmpCaXVheWVnQ1E3X0pSTDRRUkhCbk1aZTRSdGo2WFNrRDU3RGtVUG1RUDVQUHczY1RvQXJmUEdjc0NrMFVRem94RUhobDhKdm44YWNnS2ZEak0?oc=5",
+            "pubDate": "Mon, 15 Dec 2025 23:18:00 GMT",
+            "source": "Business Wire"
+          },
+          {
+            "title": "Technology Enabled Innovations in Language Learning Programs - Toronto Metropolitan University (TMU)",
+            "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPTTdKMFhIZUl4LUdyMXMxM3ZldlVGZHVlNV94VktxYUkySXhzTDMxeHhDWTlzcmdPVDItTWUtT0tfSU5rSGNFUUdqaU1JTFNsSl9WMUFjX2ZOSkNqQUctMjFTRTZ3U3VXSVpnWHJNNUJMcUNJZkVodGw1eXV6eEdIOVVCdlRzVzlCcF9lcFppd21YTFdOX2NaTmZpNFJOMDQ?oc=5",
+            "pubDate": "Wed, 29 Oct 2025 18:07:44 GMT",
+            "source": "Toronto Metropolitan University (TMU)"
+          }
+        ]
+      },
+      "group": "youtube"
+    },
+    "get_project_structure": {
+      "status": "error",
+      "error": "The \"path\" argument must be of type string. Received undefined",
+      "group": "code"
+    },
+    "get_public_ip": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "ip": "23.233.141.87"
+      },
+      "group": "web"
+    },
+    "get_system_info": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "platform": "win32",
+        "arch": "x64",
+        "hostname": "Desktop-Alain",
+        "type": "Windows_NT",
+        "release": "10.0.26200",
+        "cpus": 12,
+        "cpuModel": "AMD Ryzen 5 5600X 6-Core Processor             ",
+        "totalMemory": "31.91 GB",
+        "freeMemory": "21.06 GB",
+        "uptime": "28.30 hours",
+        "homeDir": "C:\\Users\\niwno",
+        "tempDir": "C:\\Users\\niwno\\AppData\\Local\\Temp",
+        "username": "Alain"
+      },
+      "group": "system"
+    },
+    "get_time": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "datetime": "mardi 16 décembre 2025 à 00 h 40 min 37 s",
+        "iso": "2025-12-16T05:40:37.099Z",
+        "timestamp": 1765863637099,
+        "timezone": "America/Montreal"
+      },
+      "group": "web"
+    },
+    "get_weather": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "location": {
+          "name": "Montréal",
+          "region": "Québec",
+          "country": "Canada"
+        },
+        "current": {
+          "temperature": "-8°C",
+          "feelsLike": "-13°C",
+          "humidity": "73%",
+          "description": "Nuageux",
+          "windSpeed": "12 km/h",
+          "windDirection": "215°"
+        },
+        "forecast": [
+          {
+            "date": "2025-12-16",
+            "jour": "mardi 16 décembre",
+            "maxTemp": "-4°C",
+            "minTemp": "-10°C",
+            "description": "Nuageux",
+            "chanceOfRain": "3%"
+          },
+          {
+            "date": "2025-12-17",
+            "jour": "mercredi 17 décembre",
+            "maxTemp": "2°C",
+            "minTemp": "-7°C",
+            "description": "Nuageux",
+            "chanceOfRain": "27%"
+          },
+          {
+            "date": "2025-12-18",
+            "jour": "jeudi 18 décembre",
+            "maxTemp": "1°C",
+            "minTemp": "-8°C",
+            "description": "Bruine légère",
+            "chanceOfRain": "53%"
+          }
+        ]
+      },
+      "group": "web"
+    },
+    "get_yt_transcript": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "videoId": "dQw4w9WgXcQ",
+        "message": "Sous-titres disponibles",
+        "note": "Pour la transcription complète, utilise un service comme youtubetranscript.com"
+      },
+      "group": "youtube"
+    },
+    "get_zodiac_sign": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "sign": "Poissons",
+        "emoji": "♓",
+        "element": "Eau",
+        "date_input": "14/3",
+        "message": "Le 14/3, le signe astrologique est ♓ Poissons (element: Eau)"
+      },
+      "group": "datetime"
+    },
+    "git_branch": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "branches": [
+          "master"
+        ],
+        "current": "master"
+      },
+      "group": "git"
+    },
+    "git_checkout": {
+      "status": "skipped",
+      "group": "git"
+    },
+    "git_clone": {
+      "status": "skipped",
+      "group": "git"
+    },
+    "git_commit": {
+      "status": "skipped",
+      "group": "git"
+    },
+    "git_diff": {
+      "status": "failed",
+      "error": "warning: in the working copy of 'ana-interface/src/App.jsx', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'ana-interface/src/components/Icons.jsx', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'ana-interface/src/components/VoiceInput.jsx', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'ana-interface/src/components/VoiceLoopButton.jsx', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'intelligence/vision/llama_vision_handler.cjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'knowledge/learned/feedback.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'knowledge/learned/skills.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'memory/ana_memories.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'memory/ana_todos.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'memory/current_conversation_ana.txt', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'package-lock.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/agents/tool-agent.cjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/ana-core.cjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/core/loop-controller.cjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/intelligence/semantic-router.cjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/services/cerebras-service.cjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/services/groq-service.cjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/tools/web-tools.cjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/utils/spell-checker.cjs', LF will be replaced by CRLF the next time Git touches it\n",
+      "group": "git"
+    },
+    "git_log": {
+      "status": "failed",
+      "error": "undefined n'est pas un repo git",
+      "group": "git"
+    },
+    "git_merge": {
+      "status": "skipped",
+      "group": "git"
+    },
+    "git_pull": {
+      "status": "skipped",
+      "group": "git"
+    },
+    "git_push": {
+      "status": "skipped",
+      "group": "git"
+    },
+    "git_reset": {
+      "status": "skipped",
+      "group": "git"
+    },
+    "git_stash": {
+      "status": "skipped",
+      "group": "git"
+    },
+    "git_status": {
+      "status": "failed",
+      "error": "undefined n'est pas un repo git",
+      "group": "git"
+    },
+    "glob": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "files": [
+          "E:/ANA/tests/test_files/copy_test.txt",
+          "E:/ANA/tests/test_files/test_file.txt"
+        ],
+        "count": 2,
+        "pattern": "*.txt",
+        "searchPath": "E:/ANA/tests/test_files"
+      },
+      "group": "files"
+    },
+    "grep": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "matches": [
+          "E:/ANA/tests/test_files/test_file.txt:1:Ceci est un fichier de test."
+        ],
+        "count": 1
+      },
+      "group": "files"
+    },
+    "hash_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files\\test_file.txt",
+        "algorithm": "md5",
+        "hash": "dcceee1b655aff43ccd0babbbefe9622"
+      },
+      "group": "crypto"
+    },
+    "hash_text": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "algorithm": "md5",
+        "hash": "098f6bcd4621d373cade4e832627b4f6"
+      },
+      "group": "crypto"
+    },
+    "head_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "content": "Ceci est un fichier de test.\nLigne 2."
+      },
+      "group": "files"
+    },
+    "hot_reload_check": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "running": true,
+        "port": 5173,
+        "statusCode": 200,
+        "message": "Serveur Vite actif sur port 5173"
+      },
+      "group": "code"
+    },
+    "html_to_markdown": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "markdown": "Test\n====\n\nParagraphe"
+      },
+      "group": "conversion"
+    },
+    "http_request": {
+      "status": "failed",
+      "error": "Request failed with status code 503",
+      "group": "web"
+    },
+    "image_to_image": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "inpaint_image": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "install_npm_package": {
+      "status": "no_params",
+      "message": "Pas de parametres de test definis",
+      "group": "npm"
+    },
+    "json_to_csv": {
+      "status": "failed",
+      "error": "\"undefined\" is not valid JSON",
+      "group": "conversion"
+    },
+    "json_to_xml": {
+      "status": "failed",
+      "error": "\"undefined\" is not valid JSON",
+      "group": "conversion"
+    },
+    "json_to_yaml": {
+      "status": "failed",
+      "error": "\"undefined\" is not valid JSON (js-yaml peut être requis: npm install js-yaml)",
+      "group": "conversion"
+    },
+    "kill_process": {
+      "status": "skipped",
+      "group": "system"
+    },
+    "kill_process_by_name": {
+      "status": "skipped",
+      "group": "system"
+    },
+    "launch_agent": {
+      "status": "skipped",
+      "group": "agents"
+    },
+    "list_archive": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "count": 0,
+        "entries": []
+      },
+      "group": "archive"
+    },
+    "list_available_icons": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "count": 71,
+        "icons": [
+          "IconMessageSquare",
+          "IconCode2",
+          "IconSearch",
+          "IconLayoutDashboard",
+          "IconBookOpen",
+          "IconSettings",
+          "IconWorkflow",
+          "IconPalette",
+          "IconFileText",
+          "IconActivity",
+          "IconCpu",
+          "IconDatabase",
+          "IconZap",
+          "IconCheckCircle",
+          "IconClock",
+          "IconRadio",
+          "IconDownload",
+          "IconSend",
+          "IconUpload",
+          "IconBrain",
+          "IconRotateCcw",
+          "IconPlay",
+          "IconPause",
+          "IconCopy",
+          "IconCheck",
+          "IconImage",
+          "IconSave",
+          "IconChevronDown",
+          "IconChevronUp",
+          "IconChevronRight",
+          "IconMic",
+          "IconMicOff",
+          "IconFolderOpen",
+          "IconTerminal",
+          "IconWand2",
+          "IconLoader2",
+          "IconFilter",
+          "IconCalendar",
+          "IconX",
+          "IconSquare",
+          "IconRefreshCw",
+          "IconTrash2",
+          "IconMoon",
+          "IconSun",
+          "IconVolume2",
+          "IconBell",
+          "IconBook",
+          "IconLightbulb",
+          "IconShield",
+          "IconGlobe",
+          "IconKeyboard",
+          "IconAlertTriangle",
+          "IconInfo",
+          "IconHelpCircle",
+          "IconHardDrive",
+          "IconWifi",
+          "IconVideo",
+          "IconGallery",
+          "IconFilm",
+          "IconSliders",
+          "IconVolume",
+          "IconVolumeX",
+          "IconSparkles",
+          "IconTag",
+          "IconArchive",
+          "IconThumbsUp",
+          "IconThumbsDown",
+          "IconMenu",
+          "IconMaximize",
+          "IconPower",
+          "IconGamepad"
+        ],
+        "usage": "import { IconName } from \"./components/Icons\""
+      },
+      "group": "code"
+    },
+    "list_files": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files",
+        "entries": [
+          {
+            "name": "copy_test.txt",
+            "path": "E:\\ANA\\tests\\test_files\\copy_test.txt",
+            "type": "file",
+            "size": 62,
+            "modified": "2025-12-16T05:40:32.930Z",
+            "created": "2025-12-16T05:40:34.498Z"
+          },
+          {
+            "name": "new_dir",
+            "path": "E:\\ANA\\tests\\test_files\\new_dir",
+            "type": "directory",
+            "size": 0,
+            "modified": "2025-12-16T05:40:34.500Z",
+            "created": "2025-12-16T05:40:34.500Z"
+          },
+          {
+            "name": "test.zip",
+            "path": "E:\\ANA\\tests\\test_files\\test.zip",
+            "type": "file",
+            "size": 195,
+            "modified": "2025-12-16T05:40:35.372Z",
+            "created": "2025-12-16T05:40:35.364Z"
+          },
+          {
+            "name": "test_file.txt",
+            "path": "E:\\ANA\\tests\\test_files\\test_file.txt",
+            "type": "file",
+            "size": 62,
+            "modified": "2025-12-16T05:40:32.930Z",
+            "created": "2025-12-16T05:32:03.812Z"
+          }
+        ],
+        "count": 4
+      },
+      "group": "files"
+    },
+    "list_processes": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "output": "\"Nom de l'image\",\"PID\",\"Nom de la session\",\"Num�ro de session\",\"Utilisation m�moire\"\r\n\"System Idle Process\",\"0\",\"Services\",\"0\",\"8 Ko\"\r\n\"System\",\"4\",\"Services\",\"0\",\"14�204 Ko\"\r\n\"Secure System\",\"188\",\"Services\",\"0\",\"109�416 Ko\"\r\n\"Registry\",\"232\",\"Services\",\"0\",\"36�832 Ko\"\r\n\"smss.exe\",\"720\",\"Services\",\"0\",\"248 Ko\"\r\n\"csrss.exe\",\"1140\",\"Services\",\"0\",\"2�536 Ko\"\r\n\"wininit.exe\",\"1236\",\"Services\",\"0\",\"1�184 Ko\"\r\n\"csrss.exe\",\"1244\",\"Console\",\"1\",\"3�420 Ko\"\r\n\"services.exe\",\"1328\",\"Services\",\"0\",\"7�336 Ko\"\r\n\"winlogon.exe\",\"1360\",\"Console\",\"1\",\"2�220 Ko\"\r\n\"LsaIso.exe\",\"1368\",\"Services\",\"0\",\"1�352 Ko\"\r\n\"lsass.exe\",\"1388\",\"Services\",\"0\",\"16�260 Ko\"\r\n\"svchost.exe\",\"1556\",\"Services\",\"0\",\"23�444 Ko\"\r\n\"fontdrvhost.exe\",\"1588\",\"Services\",\"0\",\"212 Ko\"\r\n\"fontdrvhost.exe\",\"1596\",\"Console\",\"1\",\"724 Ko\"\r\n\"svchost.exe\",\"1676\",\"Services\",\"0\",\"14�748 Ko\"\r\n\"svchost.exe\",\"1760\",\"Services\",\"0\",\"4�176 Ko\"\r\n\"dwm.exe\",\"1840\",\"Console\",\"1\",\"125�776 Ko\"\r\n\"svchost.exe\",\"1940\",\"Services\",\"0\",\"1�292 Ko\"\r\n\"svchost.exe\",\"1968\",\"Services\",\"0\",\"1�324 Ko\"\r\n\"svchost.exe\",\"1100\",\"Services\",\"0\",\"1�068 Ko\"\r\n\"svchost.exe\",\"1084\",\"Services\",\"0\",\"1�612 Ko\"\r\n\"svchost.exe\",\"1124\",\"Services\",\"0\",\"6�768 Ko\"\r\n\"svchost.exe\",\"1120\",\"Services\",\"0\",\"7�232 Ko\"\r\n\"svchost.exe\",\"2108\",\"Services\",\"0\",\"9�764 Ko\"\r\n\"svchost.exe\",\"2116\",\"Services\",\"0\",\"3�740 Ko\"\r\n\"svchost.exe\",\"2164\",\"Services\",\"0\",\"2�628 Ko\"\r\n\"svchost.exe\",\"2172\",\"Services\",\"0\",\"5�516 Ko\"\r\n\"svchost.exe\",\"2180\",\"Services\",\"0\",\"5�204 Ko\"\r\n\"svchost.exe\",\"2260\",\"Services\",\"0\",\"10�444 Ko\"\r\n\"svchost.exe\",\"2372\",\"Services\",\"0\",\"6�976 Ko\"\r\n\"svchost.exe\",\"2396\",\"Services\",\"0\",\"1�316 Ko\"\r\n\"svchost.exe\",\"2472\",\"Services\",\"0\",\"2�168 Ko\"\r\n\"svchost.exe\",\"2860\",\"Services\",\"0\",\"6�356 Ko\"\r\n\"svchost.exe\",\"2900\",\"Services\",\"0\",\"2�628 Ko\"\r\n\"svchost.exe\",\"2052\",\"Services\",\"0\",\"2�820 Ko\"\r\n\"WUDFHost.exe\",\"1800\",\"Services\",\"0\",\"1�696 Ko\"\r\n\"NVDisplay.Container.exe\",\"2496\",\"Services\",\"0\",\"17�368 Ko\"\r\n\"svchost.exe\",\"3108\",\"Services\",\"0\",\"1�836 Ko\"\r\n\"svchost.exe\",\"3152\",\"Services\",\"0\",\"5�568 Ko\"\r\n\"svchost.exe\",\"3208\",\"Services\",\"0\",\"12�456 Ko\"\r\n\"AsusCertService.exe\",\"3216\",\"Services\",\"0\",\"1�548 Ko\"\r\n\"svchost.exe\",\"3332\",\"Services\",\"0\",\"6�820 Ko\"\r\n\"svchost.exe\",\"3340\",\"Services\",\"0\",\"4�960 Ko\"\r\n\"svchost.exe\",\"3348\",\"Services\",\"0\",\"1�476 Ko\"\r\n\"svchost.exe\",\"3420\",\"Services\",\"0\",\"1�188 Ko\"\r\n\"Memory Compression\",\"3520\",\"Services\",\"0\",\"188�500 Ko\"\r\n\"svchost.exe\",\"3572\",\"Services\",\"0\",\"736 Ko\"\r\n\"dasHost.exe\",\"3692\",\"Services\",\"0\",\"1�796 Ko\"\r\n\"svchost.exe\",\"3700\",\"Services\",\"0\",\"5�316 Ko\"\r\n\"svchost.exe\",\"3708\",\"Services\",\"0\",\"3�508 Ko\"\r\n\"svchost.exe\",\"3756\",\"Services\",\"0\",\"9�936 Ko\"\r\n\"svchost.exe\",\"3784\",\"Services\",\"0\",\"1�648 Ko\"\r\n\"svchost.exe\",\"3892\",\"Services\",\"0\",\"11�284 Ko\"\r\n\"atkexComSvc.exe\",\"3920\",\"Services\",\"0\",\"1�624 Ko\"\r\n\"svchost.exe\",\"3976\",\"Services\",\"0\",\"15�836 Ko\"\r\n\"svchost.exe\",\"3192\",\"Services\",\"0\",\"28�412 Ko\"\r\n\"svchost.exe\",\"4144\",\"Services\",\"0\",\"908 Ko\"\r\n\"audiodg.exe\",\"4180\",\"Services\",\"0\",\"21�144 Ko\"\r\n\"NVDisplay.Container.exe\",\"4484\",\"Console\",\"1\",\"57�040 Ko\"\r\n\"WmiPrvSE.exe\",\"4532\",\"Services\",\"0\",\"19�060 Ko\"\r\n\"svchost.exe\",\"4732\",\"Services\",\"0\",\"3�908 Ko\"\r\n\"svchost.exe\",\"4912\",\"Services\",\"0\",\"3�500 Ko\"\r\n\"svchost.exe\",\"4940\",\"Services\",\"0\",\"3�704 Ko\"\r\n\"svchost.exe\",\"5808\",\"Services\",\"0\",\"2�024 Ko\"\r\n\"svchost.exe\",\"5828\",\"Services\",\"0\",\"1�552 Ko\"\r\n\"svchost.exe\",\"5836\",\"Services\",\"0\",\"1�232 Ko\"\r\n\"ctfmon.exe\",\"5904\",\"Console\",\"1\",\"12�572 Ko\"\r\n\"svchost.exe\",\"5956\",\"Services\",\"0\",\"3�100 Ko\"\r\n\"svchost.exe\",\"5964\",\"Services\",\"0\",\"6�900 Ko\"\r\n\"svchost.exe\",\"6136\",\"Services\",\"0\",\"8�688 Ko\"\r\n\"svchost.exe\",\"5032\",\"Services\",\"0\",\"3�852 Ko\"\r\n\"spoolsv.exe\",\"5024\",\"Services\",\"0\",\"2�248 Ko\"\r\n\"svchost.exe\",\"4300\",\"Console\",\"1\",\"8�664 Ko\"\r\n\"svchost.exe\",\"5328\",\"Console\",\"1\",\"1�224 Ko\"\r\n\"svchost.exe\",\"3804\",\"Services\",\"0\",\"2�796 Ko\"\r\n\"svchost.exe\",\"6204\",\"Console\",\"1\",\"16�408 Ko\"\r\n\"svchost.exe\",\"6212\",\"Services\",\"0\",\"11�340 Ko\"\r\n\"svchost.exe\",\"6220\",\"Services\",\"0\",\"43�164 Ko\"\r\n\"svchost.exe\",\"6228\",\"Services\",\"0\",\"41�028 Ko\"\r\n\"GigabyteUpdateService.exe\",\"6236\",\"Services\",\"0\",\"1�100 Ko\"\r\n\"sihost.exe\",\"6244\",\"Console\",\"1\",\"17�948 Ko\"\r\n\"RemoteMouseService.exe\",\"6252\",\"Services\",\"0\",\"8�536 Ko\"\r\n\"svchost.exe\",\"6260\",\"Services\",\"0\",\"652 Ko\"\r\n\"svchost.exe\",\"6268\",\"Services\",\"0\",\"5�380 Ko\"\r\n\"svchost.exe\",\"6276\",\"Services\",\"0\",\"1�420 Ko\"\r\n\"svchost.exe\",\"6284\",\"Services\",\"0\",\"1�928 Ko\"\r\n\"svchost.exe\",\"6292\",\"Services\",\"0\",\"15�468 Ko\"\r\n\"remoting_host.exe\",\"6300\",\"Services\",\"0\",\"3�176 Ko\"\r\n\"taskhostw.exe\",\"6540\",\"Console\",\"1\",\"11�288 Ko\"\r\n\"mDNSResponder.exe\",\"6556\",\"Services\",\"0\",\"3�748 Ko\"\r\n\"MsMpEng.exe\",\"6564\",\"Services\",\"0\",\"334�568 Ko\"\r\n\"GameSDK.exe\",\"6580\",\"Services\",\"0\",\"1�552 Ko\"\r\n\"MpDefenderCoreService.exe\",\"6592\",\"Services\",\"0\",\"11�892 Ko\"\r\n\"AorusLcdService.exe\",\"6604\",\"Services\",\"0\",\"3�328 Ko\"\r\n\"nvcontainer.exe\",\"6704\",\"Services\",\"0\",\"17�792 Ko\"\r\n\"RtkAudUService64.exe\",\"6712\",\"Services\",\"0\",\"6�720 Ko\"\r\n\"wslservice.exe\",\"6732\",\"Services\",\"0\",\"8�336 Ko\"\r\n\"ROG Armoury.exe\",\"6796\",\"Console\",\"1\",\"15�968 Ko\"\r\n\"wampmanager.exe\",\"6852\",\"Console\",\"1\",\"2�704 Ko\"\r\n\"SignalRgbService.exe\",\"6864\",\"Services\",\"0\",\"5�140 Ko\"\r\n\"AcPowerNotification.exe\",\"6936\",\"Console\",\"1\",\"9�344 Ko\"\r\n\"AUEPMaster.exe\",\"7120\",\"Console\",\"1\",\"3�896 Ko\"\r\n\"ArmourySocketServer.exe\",\"7140\",\"Console\",\"1\",\"3�880 Ko\"\r\n\"gamingservices.exe\",\"7672\",\"Services\",\"0\",\"15�956 Ko\"\r\n\"gamingservicesnet.exe\",\"7680\",\"Services\",\"0\",\"1�748 Ko\"\r\n\"svchost.exe\",\"7992\",\"Services\",\"0\",\"18�984 Ko\"\r\n\"wlanext.exe\",\"7828\",\"Services\",\"0\",\"2�968 Ko\"\r\n\"Intel_PIE_Service.exe\",\"8824\",\"Services\",\"0\",\"2�124 Ko\"\r\n\"remoting_host.exe\",\"7960\",\"Services\",\"0\",\"776�024 Ko\"\r\n\"svchost.exe\",\"9280\",\"Services\",\"0\",\"11�172 Ko\"\r\n\"RemoteMouseCore.exe\",\"9292\",\"Console\",\"1\",\"4�316 Ko\"\r\n\"RemoteMouse.exe\",\"9320\",\"Console\",\"1\",\"11�448 Ko\"\r\n\"ShellHost.exe\",\"9720\",\"Console\",\"1\",\"7�864 Ko\"\r\n\"svchost.exe\",\"10076\",\"Services\",\"0\",\"1�764 Ko\"\r\n\"AggregatorHost.exe\",\"10120\",\"Services\",\"0\",\"7�224 Ko\"\r\n\"CrossDeviceResume.exe\",\"10216\",\"Console\",\"1\",\"5�012 Ko\"\r\n\"svchost.exe\",\"9248\",\"Services\",\"0\",\"2�340 Ko\"\r\n\"nvcontainer.exe\",\"10312\",\"Console\",\"1\",\"51�672 Ko\"\r\n\"nvcontainer.exe\",\"10360\",\"Console\",\"1\",\"5�880 Ko\"\r\n\"nvcontainer.exe\",\"10436\",\"Console\",\"1\",\"27�820 Ko\"\r\n\"svchost.exe\",\"10552\",\"Services\",\"0\",\"1�172 Ko\"\r\n\"svchost.exe\",\"10888\",\"Services\",\"0\",\"3�572 Ko\"\r\n\"NgcIso.exe\",\"10932\",\"Services\",\"0\",\"672 Ko\"\r\n\"svchost.exe\",\"10204\",\"Services\",\"0\",\"5�032 Ko\"\r\n\"svchost.exe\",\"2504\",\"Services\",\"0\",\"10�280 Ko\"\r\n\"svchost.exe\",\"10928\",\"Services\",\"0\",\"3�104 Ko\"\r\n\"svchost.exe\",\"11488\",\"Console\",\"1\",\"17�372 Ko\"\r\n\"Widgets.exe\",\"12576\",\"Console\",\"1\",\"42�204 Ko\"\r\n\"RuntimeBroker.exe\",\"12680\",\"Console\",\"1\",\"11�756 Ko\"\r\n\"svchost.exe\",\"12696\",\"Console\",\"1\",\"2�892 Ko\"\r\n\"WidgetService.exe\",\"12924\",\"Console\",\"1\",\"3�516 Ko\"\r\n\"svchost.exe\",\"13328\",\"Services\",\"0\",\"14�112 Ko\"\r\n\"svchost.exe\",\"14108\",\"Services\",\"0\",\"24�200 Ko\"\r\n\"nvsphelper64.exe\",\"14524\",\"Console\",\"1\",\"2�516 Ko\"\r\n\"NVIDIA Overlay.exe\",\"14592\",\"Console\",\"1\",\"46�664 Ko\"\r\n\"LockApp.exe\",\"15348\",\"Console\",\"1\",\"700 Ko\"\r\n\"svchost.exe\",\"15024\",\"Services\",\"0\",\"3�184 Ko\"\r\n\"RuntimeBroker.exe\",\"8304\",\"Console\",\"1\",\"9�568 Ko\"\r\n\"NVIDIA Overlay.exe\",\"10452\",\"Console\",\"1\",\"44�292 Ko\"\r\n\"NVIDIA Overlay.exe\",\"8356\",\"Console\",\"1\",\"15�484 Ko\"\r\n\"NVIDIA Overlay.exe\",\"15444\",\"Console\",\"1\",\"4�300 Ko\"\r\n\"NisSrv.exe\",\"15640\",\"Services\",\"0\",\"5�460 Ko\"\r\n\"svchost.exe\",\"15736\",\"Console\",\"1\",\"8�624 Ko\"\r\n\"svchost.exe\",\"16116\",\"Services\",\"0\",\"11�660 Ko\"\r\n\"NVIDIA Overlay.exe\",\"16284\",\"Console\",\"1\",\"16�036 Ko\"\r\n\"SearchIndexer.exe\",\"16460\",\"Services\",\"0\",\"23�956 Ko\"\r\n\"PhoneExperienceHost.exe\",\"8376\",\"Console\",\"1\",\"20�880 Ko\"\r\n\"Mutually Exclusive AURA Agent.exe\",\"17392\",\"Console\",\"1\",\"2�100 Ko\"\r\n\"svchost.exe\",\"17732\",\"Services\",\"0\",\"5�948 Ko\"\r\n\"CastSrv.exe\",\"18364\",\"Console\",\"1\",\"4�456 Ko\"\r\n\"svchost.exe\",\"18224\",\"Services\",\"0\",\"4�696 Ko\"\r\n\"httpd.exe\",\"8568\",\"Services\",\"0\",\"2�356 Ko\"\r\n\"GBT_DL_LIB.exe\",\"9020\",\"Console\",\"1\",\"5�180 Ko\"\r\n\"httpd.exe\",\"15356\",\"Services\",\"0\",\"3�608 Ko\"\r\n\"mysqld.exe\",\"19120\",\"Services\",\"0\",\"1�544 Ko\"\r\n\"mysqld.exe\",\"17196\",\"Services\",\"0\",\"3�236 Ko\"\r\n\"conhost.exe\",\"17520\",\"Services\",\"0\",\"760 Ko\"\r\n\"SecurityHealthSystray.exe\",\"18376\",\"Console\",\"1\",\"4�028 Ko\"\r\n\"SecurityHealthService.exe\",\"1400\",\"Services\",\"0\",\"9�188 Ko\"\r\n\"svchost.exe\",\"9344\",\"Services\",\"0\",\"10�212 Ko\"\r\n\"mysqld.exe\",\"4160\",\"Services\",\"0\",\"3�056 Ko\"\r\n\"RtkAudUService64.exe\",\"1072\",\"Console\",\"1\",\"2�564 Ko\"\r\n\"SignalRgbLauncher.exe\",\"17460\",\"Console\",\"1\",\"2�132 Ko\"\r\n\"com.docker.backend.exe\",\"4456\",\"Console\",\"1\",\"22�004 Ko\"\r\n\"conhost.exe\",\"13836\",\"Console\",\"1\",\"760 Ko\"\r\n\"com.docker.backend.exe\",\"1644\",\"Console\",\"1\",\"109�108 Ko\"\r\n\"SignalRgb.exe\",\"14408\",\"Console\",\"1\",\"166�720 Ko\"\r\n\"crashpad_handler.exe\",\"18004\",\"Console\",\"1\",\"1�660 Ko\"\r\n\"com.docker.build.exe\",\"3900\",\"Console\",\"1\",\"21�584 Ko\"\r\n\"Docker Desktop.exe\",\"19532\",\"Console\",\"1\",\"39�336 Ko\"\r\n\"vmcompute.exe\",\"20136\",\"Services\",\"0\",\"2�656 Ko\"\r\n\"vmwp.exe\",\"20172\",\"Services\",\"0\",\"8�440 Ko\"\r\n\"vmmemWSL\",\"20224\",\"Services\",\"0\",\"744�300 Ko\"\r\n\"dllhost.exe\",\"19628\",\"Console\",\"1\",\"1�664 Ko\"\r\n\"Docker Desktop.exe\",\"19636\",\"Console\",\"1\",\"11�476 Ko\"\r\n\"Docker Desktop.exe\",\"19624\",\"Console\",\"1\",\"6�292 Ko\"\r\n\"dllhost.exe\",\"21140\",\"Console\",\"1\",\"1�664 Ko\"\r\n\"wslrelay.exe\",\"21444\",\"Console\",\"1\",\"2�404 Ko\"\r\n\"wsl.exe\",\"21284\",\"Console\",\"1\",\"952 Ko\"\r\n\"wsl.exe\",\"21276\",\"Console\",\"1\",\"952 Ko\"\r\n\"wsl.exe\",\"20640\",\"Console\",\"1\",\"1�632 Ko\"\r\n\"wsl.exe\",\"20680\",\"Console\",\"1\",\"1�608 Ko\"\r\n\"wslhost.exe\",\"21088\",\"Console\",\"1\",\"1�520 Ko\"\r\n\"conhost.exe\",\"18072\",\"Console\",\"1\",\"2�124 Ko\"\r\n\"wslhost.exe\",\"20048\",\"Console\",\"1\",\"1�472 Ko\"\r\n\"wslhost.exe\",\"20620\",\"Console\",\"1\",\"1�488 Ko\"\r\n\"conhost.exe\",\"20964\",\"Console\",\"1\",\"2�104 Ko\"\r\n\"wslhost.exe\",\"20708\",\"Console\",\"1\",\"1�488 Ko\"\r\n\"msrdc.exe\",\"20900\",\"Console\",\"1\",\"10�476 Ko\"\r\n\"conhost.exe\",\"21064\",\"Console\",\"1\",\"2�108 Ko\"\r\n\"conhost.exe\",\"20096\",\"Console\",\"1\",\"2�092 Ko\"\r\n\"Time.exe\",\"10568\",\"Console\",\"1\",\"109�972 Ko\"\r\n\"CrossDeviceService.exe\",\"1148\",\"Console\",\"1\",\"36�356 Ko\"\r\n\"msedgewebview2.exe\",\"6512\",\"Console\",\"1\",\"7�520 Ko\"\r\n\"msedgewebview2.exe\",\"6652\",\"Console\",\"1\",\"2�196 Ko\"\r\n\"RuntimeBroker.exe\",\"7056\",\"Console\",\"1\",\"2�188 Ko\"\r\n\"svchost.exe\",\"10776\",\"Services\",\"0\",\"2�856 Ko\"\r\n\"msedgewebview2.exe\",\"9288\",\"Console\",\"1\",\"6�840 Ko\"\r\n\"msedgewebview2.exe\",\"9440\",\"Console\",\"1\",\"2�068 Ko\"\r\n\"svchost.exe\",\"10156\",\"Services\",\"0\",\"8�564 Ko\"\r\n\"msedgewebview2.exe\",\"21840\",\"Console\",\"1\",\"1�760 Ko\"\r\n\"msedgewebview2.exe\",\"3380\",\"Console\",\"1\",\"2�084 Ko\"\r\n\"ollama app.exe\",\"24572\",\"Console\",\"1\",\"19�272 Ko\"\r\n\"ollama.exe\",\"13728\",\"Console\",\"1\",\"22�656 Ko\"\r\n\"conhost.exe\",\"14444\",\"Console\",\"1\",\"2�152 Ko\"\r\n\"ApplicationFrameHost.exe\",\"24084\",\"Console\",\"1\",\"14�908 Ko\"\r\n\"SystemSettings.exe\",\"6328\",\"Console\",\"1\",\"1�592 Ko\"\r\n\"svchost.exe\",\"23268\",\"Services\",\"0\",\"1�352 Ko\"\r\n\"svchost.exe\",\"24204\",\"Services\",\"0\",\"10�024 Ko\"\r\n\"svchost.exe\",\"24396\",\"Console\",\"1\",\"1�300 Ko\"\r\n\"svchost.exe\",\"8588\",\"Services\",\"0\",\"1�932 Ko\"\r\n\"UserOOBEBroker.exe\",\"24856\",\"Console\",\"1\",\"1�380 Ko\"\r\n\"svchost.exe\",\"25064\",\"Services\",\"0\",\"3�308 Ko\"\r\n\"svchost.exe\",\"25544\",\"Console\",\"1\",\"1�664 Ko\"\r\n\"AUEPDU.exe\",\"25524\",\"Services\",\"0\",\"1�816 Ko\"\r\n\"svchost.exe\",\"2360\",\"Services\",\"0\",\"9�748 Ko\"\r\n\"EasyTuneEngineService.exe\",\"24760\",\"Services\",\"0\",\"4�144 Ko\"\r\n\"svchost.exe\",\"7592\",\"Services\",\"0\",\"14�396 Ko\"\r\n\"svchost.exe\",\"24656\",\"Services\",\"0\",\"17�652 Ko\"\r\n\"svchost.exe\",\"3116\",\"Services\",\"0\",\"5�476 Ko\"\r\n\"wmpnetwk.exe\",\"23292\",\"Services\",\"0\",\"3�344 Ko\"\r\n\"RuntimeBroker.exe\",\"5372\",\"Console\",\"1\",\"3�000 Ko\"\r\n\"msedgewebview2.exe\",\"4100\",\"Console\",\"1\",\"2�180 Ko\"\r\n\"svchost.exe\",\"8068\",\"Services\",\"0\",\"11�772 Ko\"\r\n\"dllhost.exe\",\"26436\",\"Console\",\"1\",\"12�060 Ko\"\r\n\"taskhostw.exe\",\"23004\",\"Console\",\"1\",\"7�120 Ko\"\r\n\"backgroundTaskHost.exe\",\"24608\",\"Console\",\"1\",\"420 Ko\"\r\n\"smartscreen.exe\",\"13288\",\"Console\",\"1\",\"5�312 Ko\"\r\n\"XboxPcAppFT.exe\",\"24412\",\"Console\",\"1\",\"5�248 Ko\"\r\n\"svchost.exe\",\"1404\",\"Services\",\"0\",\"1�812 Ko\"\r\n\"svchost.exe\",\"18024\",\"Services\",\"0\",\"7�176 Ko\"\r\n\"svchost.exe\",\"26960\",\"Services\",\"0\",\"2�984 Ko\"\r\n\"svchost.exe\",\"14476\",\"Services\",\"0\",\"9�000 Ko\"\r\n\"explorer.exe\",\"26672\",\"Console\",\"1\",\"322�056 Ko\"\r\n\"StartMenuExperienceHost.exe\",\"26040\",\"Console\",\"1\",\"31�068 Ko\"\r\n\"TextInputHost.exe\",\"23192\",\"Console\",\"1\",\"104�992 Ko\"\r\n\"ShellExperienceHost.exe\",\"23412\",\"Console\",\"1\",\"796 Ko\"\r\n\"SearchHost.exe\",\"14840\",\"Console\",\"1\",\"23�852 Ko\"\r\n\"msedgewebview2.exe\",\"22344\",\"Console\",\"1\",\"36�996 Ko\"\r\n\"msedgewebview2.exe\",\"2148\",\"Console\",\"1\",\"2�184 Ko\"\r\n\"msedgewebview2.exe\",\"14988\",\"Console\",\"1\",\"13�344 Ko\"\r\n\"msedgewebview2.exe\",\"24040\",\"Console\",\"1\",\"8�928 Ko\"\r\n\"msedgewebview2.exe\",\"8676\",\"Console\",\"1\",\"4�628 Ko\"\r\n\"msedgewebview2.exe\",\"8764\",\"Console\",\"1\",\"15�932 Ko\"\r\n\"RuntimeBroker.exe\",\"9236\",\"Console\",\"1\",\"2�460 Ko\"\r\n\"OneDrive.Sync.Service.exe\",\"11204\",\"Console\",\"1\",\"5�652 Ko\"\r\n\"remoting_desktop.exe\",\"23468\",\"Console\",\"1\",\"178�172 Ko\"\r\n\"TabTip.exe\",\"14152\",\"Console\",\"1\",\"13�944 Ko\"\r\n\"SnippingTool.exe\",\"28152\",\"Console\",\"1\",\"11�728 Ko\"\r\n\"msedge.exe\",\"1876\",\"Console\",\"1\",\"107�748 Ko\"\r\n\"msedge.exe\",\"3608\",\"Console\",\"1\",\"2�292 Ko\"\r\n\"msedge.exe\",\"22544\",\"Console\",\"1\",\"25�888 Ko\"\r\n\"msedge.exe\",\"11524\",\"Console\",\"1\",\"13�892 Ko\"\r\n\"msedge.exe\",\"25984\",\"Console\",\"1\",\"7�088 Ko\"\r\n\"msedge.exe\",\"21404\",\"Console\",\"1\",\"7�780 Ko\"\r\n\"msedge.exe\",\"27392\",\"Console\",\"1\",\"116�352 Ko\"\r\n\"msedge.exe\",\"8744\",\"Console\",\"1\",\"120�892 Ko\"\r\n\"msedge.exe\",\"25648\",\"Console\",\"1\",\"59�408 Ko\"\r\n\"msedge.exe\",\"17388\",\"Console\",\"1\",\"6�096 Ko\"\r\n\"WindowsTerminal.exe\",\"27720\",\"Console\",\"1\",\"108�496 Ko\"\r\n\"OpenConsole.exe\",\"5268\",\"Console\",\"1\",\"4�108 Ko\"\r\n\"cmd.exe\",\"24928\",\"Console\",\"1\",\"804 Ko\"\r\n\"node.exe\",\"16220\",\"Console\",\"1\",\"198�068 Ko\"\r\n\"msedge.exe\",\"9700\",\"Console\",\"1\",\"109�300 Ko\"\r\n\"bash.exe\",\"12144\",\"Console\",\"1\",\"6�892 Ko\"\r\n\"bash.exe\",\"20132\",\"Console\",\"1\",\"12�528 Ko\"\r\n\"conhost.exe\",\"24568\",\"Console\",\"1\",\"7�040 Ko\"\r\n\"bash.exe\",\"1868\",\"Console\",\"1\",\"9�556 Ko\"\r\n\"node.exe\",\"1248\",\"Console\",\"1\",\"64�088 Ko\"\r\n\"svchost.exe\",\"9876\",\"Services\",\"0\",\"11�360 Ko\"\r\n\"cmd.exe\",\"27452\",\"Console\",\"1\",\"4�860 Ko\"\r\n\"conhost.exe\",\"27416\",\"Console\",\"1\",\"9�956 Ko\"\r\n\"chroma.exe\",\"23652\",\"Console\",\"1\",\"4�300 Ko\"\r\n\"python.exe\",\"5592\",\"Console\",\"1\",\"112�604 Ko\"\r\n\"cmd.exe\",\"12244\",\"Console\",\"1\",\"4�872 Ko\"\r\n\"conhost.exe\",\"10656\",\"Console\",\"1\",\"10�012 Ko\"\r\n\"OpenConsole.exe\",\"16240\",\"Console\",\"1\",\"15�240 Ko\"\r\n\"node.exe\",\"27696\",\"Console\",\"1\",\"496�236 Ko\"\r\n\"cmd.exe\",\"9732\",\"Console\",\"1\",\"6�672 Ko\"\r\n\"conhost.exe\",\"7096\",\"Console\",\"1\",\"10�056 Ko\"\r\n\"cmd.exe\",\"9864\",\"Console\",\"1\",\"4�876 Ko\"\r\n\"conhost.exe\",\"10816\",\"Console\",\"1\",\"10�056 Ko\"\r\n\"OpenConsole.exe\",\"24632\",\"Console\",\"1\",\"15�312 Ko\"\r\n\"OpenConsole.exe\",\"28100\",\"Console\",\"1\",\"15�348 Ko\"\r\n\"node.exe\",\"13632\",\"Console\",\"1\",\"55�912 Ko\"\r\n\"node.exe\",\"24352\",\"Console\",\"1\",\"50�492 Ko\"\r\n\"cmd.exe\",\"7888\",\"Console\",\"1\",\"6�692 Ko\"\r\n\"node.exe\",\"5288\",\"Console\",\"1\",\"112�348 Ko\"\r\n\"esbuild.exe\",\"15376\",\"Console\",\"1\",\"17�580 Ko\"\r\n\"chrome.exe\",\"9056\",\"Console\",\"1\",\"362�384 Ko\"\r\n\"chrome.exe\",\"24336\",\"Console\",\"1\",\"9�708 Ko\"\r\n\"chrome.exe\",\"28092\",\"Console\",\"1\",\"212�816 Ko\"\r\n\"chrome.exe\",\"16168\",\"Console\",\"1\",\"54�288 Ko\"\r\n\"chrome.exe\",\"23952\",\"Console\",\"1\",\"22�168 Ko\"\r\n\"chrome.exe\",\"3440\",\"Console\",\"1\",\"230�096 Ko\"\r\n\"chrome.exe\",\"26980\",\"Console\",\"1\",\"171�760 Ko\"\r\n\"chrome.exe\",\"27340\",\"Console\",\"1\",\"103�052 Ko\"\r\n\"cloudflared.exe\",\"4860\",\"Console\",\"1\",\"37�416 Ko\"\r\n\"cloudflared.exe\",\"17656\",\"Console\",\"1\",\"35�968 Ko\"\r\n\"conhost.exe\",\"23108\",\"Console\",\"1\",\"9�856 Ko\"\r\n\"conhost.exe\",\"9016\",\"Console\",\"1\",\"9�852 Ko\"\r\n\"chrome.exe\",\"28568\",\"Console\",\"1\",\"24�844 Ko\"\r\n\"chrome.exe\",\"21176\",\"Console\",\"1\",\"55�704 Ko\"\r\n\"bash.exe\",\"2768\",\"Console\",\"1\",\"6�896 Ko\"\r\n\"bash.exe\",\"26520\",\"Console\",\"1\",\"12�356 Ko\"\r\n\"conhost.exe\",\"15952\",\"Console\",\"1\",\"7�116 Ko\"\r\n\"bash.exe\",\"3492\",\"Console\",\"1\",\"9�392 Ko\"\r\n\"node.exe\",\"21056\",\"Console\",\"1\",\"66�796 Ko\"\r\n\"bash.exe\",\"11920\",\"Console\",\"1\",\"6�896 Ko\"\r\n\"bash.exe\",\"19552\",\"Console\",\"1\",\"12�352 Ko\"\r\n\"conhost.exe\",\"27436\",\"Console\",\"1\",\"7�116 Ko\"\r\n\"bash.exe\",\"26872\",\"Console\",\"1\",\"9�428 Ko\"\r\n\"node.exe\",\"7452\",\"Console\",\"1\",\"64�392 Ko\"\r\n\"bash.exe\",\"3008\",\"Console\",\"1\",\"6�900 Ko\"\r\n\"bash.exe\",\"21704\",\"Console\",\"1\",\"12�320 Ko\"\r\n\"conhost.exe\",\"1832\",\"Console\",\"1\",\"7�120 Ko\"\r\n\"bash.exe\",\"2160\",\"Console\",\"1\",\"9�432 Ko\"\r\n\"node.exe\",\"24996\",\"Console\",\"1\",\"64�872 Ko\"\r\n\"bash.exe\",\"15168\",\"Console\",\"1\",\"6�904 Ko\"\r\n\"bash.exe\",\"27968\",\"Console\",\"1\",\"12�360 Ko\"\r\n\"conhost.exe\",\"10708\",\"Console\",\"1\",\"7�112 Ko\"\r\n\"bash.exe\",\"5608\",\"Console\",\"1\",\"9�432 Ko\"\r\n\"node.exe\",\"26116\",\"Console\",\"1\",\"64�580 Ko\"\r\n\"bash.exe\",\"9040\",\"Console\",\"1\",\"6�920 Ko\"\r\n\"bash.exe\",\"27144\",\"Console\",\"1\",\"12�344 Ko\"\r\n\"conhost.exe\",\"26304\",\"Console\",\"1\",\"7�152 Ko\"\r\n\"bash.exe\",\"25072\",\"Console\",\"1\",\"9�448 Ko\"\r\n\"node.exe\",\"26648\",\"Console\",\"1\",\"84�568 Ko\"\r\n\"svchost.exe\",\"8728\",\"Services\",\"0\",\"9�772 Ko\"\r\n\"chrome.exe\",\"21568\",\"Console\",\"1\",\"43�024 Ko\"\r\n\"bash.exe\",\"13036\",\"Console\",\"1\",\"6�888 Ko\"\r\n\"bash.exe\",\"11640\",\"Console\",\"1\",\"12�464 Ko\"\r\n\"conhost.exe\",\"25568\",\"Console\",\"1\",\"7�064 Ko\"\r\n\"bash.exe\",\"16904\",\"Console\",\"1\",\"9�416 Ko\"\r\n\"node.exe\",\"16920\",\"Console\",\"1\",\"81�896 Ko\"\r\n\"chrome.exe\",\"27292\",\"Console\",\"1\",\"61�904 Ko\"\r\n\"chrome.exe\",\"11188\",\"Console\",\"1\",\"77�968 Ko\"\r\n\"chrome.exe\",\"27264\",\"Console\",\"1\",\"33�488 Ko\"\r\n\"git.exe\",\"12776\",\"Console\",\"1\",\"32�460 Ko\"\r\n\"cmd.exe\",\"5152\",\"Console\",\"1\",\"4�824 Ko\"\r\n\"tasklist.exe\",\"13968\",\"Console\",\"1\",\"11�696 Ko\"\r\n"
+      },
+      "group": "system"
+    },
+    "list_reminders": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "count": 8,
+        "reminders": [
+          {
+            "id": "1765455879764",
+            "message": "Test reminder",
+            "datetime": "2025-12-31T17:00:00.000Z",
+            "created": "2025-12-11T12:24:39.764Z",
+            "status": "active"
+          },
+          {
+            "id": "1765457367907",
+            "message": "Test reminder",
+            "datetime": "2025-12-31T17:00:00.000Z",
+            "created": "2025-12-11T12:49:27.907Z",
+            "status": "active"
+          },
+          {
+            "id": "1765457718920",
+            "message": "Test reminder",
+            "datetime": "2025-12-31T17:00:00.000Z",
+            "created": "2025-12-11T12:55:18.921Z",
+            "status": "active"
+          },
+          {
+            "id": "1765459014051",
+            "message": "Test reminder",
+            "datetime": "2025-12-31T17:00:00.000Z",
+            "created": "2025-12-11T13:16:54.051Z",
+            "status": "active"
+          },
+          {
+            "id": "1765463155189",
+            "message": "Test reminder",
+            "datetime": "2025-12-31T17:00:00.000Z",
+            "created": "2025-12-11T14:25:55.189Z",
+            "status": "active"
+          },
+          {
+            "id": "1765468496276",
+            "message": "Test reminder",
+            "datetime": "2025-12-31T17:00:00.000Z",
+            "created": "2025-12-11T15:54:56.276Z",
+            "status": "active"
+          },
+          {
+            "id": "1765470630298",
+            "message": "Test reminder",
+            "datetime": "2025-12-31T17:00:00.000Z",
+            "created": "2025-12-11T16:30:30.298Z",
+            "status": "active"
+          },
+          {
+            "id": "1765473875327",
+            "message": "Test reminder",
+            "datetime": "2025-12-31T17:00:00.000Z",
+            "created": "2025-12-11T17:24:35.327Z",
+            "status": "active"
+          }
+        ]
+      },
+      "group": "utils"
+    },
+    "markdown_to_html": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "html": "<h1>Test</h1>\n<p>Paragraphe</p>\n"
+      },
+      "group": "conversion"
+    },
+    "memory_forget": {
+      "status": "skipped",
+      "group": "memory"
+    },
+    "memory_link": {
+      "status": "skipped",
+      "group": "memory"
+    },
+    "memory_query_graph": {
+      "status": "skipped",
+      "group": "memory"
+    },
+    "memory_reflect": {
+      "status": "skipped",
+      "group": "memory"
+    },
+    "memory_update": {
+      "status": "skipped",
+      "group": "memory"
+    },
+    "minify_json": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "minified": "{\"a\":1}"
+      },
+      "group": "conversion"
+    },
+    "move_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "Déplacé: E:\\ANA\\tests\\test_files\\copy_test.txt → E:\\ANA\\tests\\test_files\\moved_test.txt"
+      },
+      "group": "files"
+    },
+    "notebook_edit": {
+      "status": "no_params",
+      "message": "Pas de parametres de test definis",
+      "group": "utils"
+    },
+    "npm_info": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "name": "undefined",
+        "version": "0.1.0",
+        "description": "Just require undefined & everything gonna be defined!",
+        "homepage": "https://github.com/Gozala/undefined",
+        "dependencies": 0
+      },
+      "group": "npm"
+    },
+    "npm_list": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "output": "ana@1.0.0 E:\\ANA\n├── adm-zip@0.5.16\n├── archiver@7.0.1\n├── axios@1.13.2\n├── glob@13.0.0\n├── marked@17.0.1\n├── node-notifier@10.0.1\n├── sharp@0.34.5\n├── socket.io-client@4.8.1\n└── turndown@7.2.2\n\n"
+      },
+      "group": "npm"
+    },
+    "npm_outdated": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "output": "Tous les packages sont à jour"
+      },
+      "group": "npm"
+    },
+    "npm_run": {
+      "status": "failed",
+      "error": "npm error Missing script: \"help\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: C:\\Users\\niwno\\AppData\\Local\\npm-cache\\_logs\\2025-12-16T05_40_44_272Z-debug-0.log\n",
+      "group": "npm"
+    },
+    "npm_search": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "results": [
+          {
+            "name": "express",
+            "keywords": [
+              "express",
+              "framework",
+              "sinatra",
+              "web",
+              "http",
+              "rest",
+              "restful",
+              "router",
+              "app",
+              "api"
+            ],
+            "version": "5.2.1",
+            "description": "Fast, unopinionated, minimalist web framework",
+            "sanitized_name": "express",
+            "publisher": {
+              "email": "npm@jonchurch.com",
+              "username": "jonchurch"
+            },
+            "maintainers": [
+              {
+                "email": "wes@wesleytodd.com",
+                "username": "wesleytodd"
+              },
+              {
+                "email": "npm@jonchurch.com",
+                "username": "jonchurch"
+              },
+              {
+                "email": "c@labsector.com",
+                "username": "ctcpip"
+              },
+              {
+                "email": "ulisesgascondev@gmail.com",
+                "username": "ulisesgascon"
+              },
+              {
+                "email": "jean.burellier@gmail.com",
+                "username": "sheplu"
+              }
+            ],
+            "license": "MIT",
+            "date": "2025-12-01T20:49:43.268Z",
+            "links": {
+              "homepage": "https://expressjs.com/",
+              "repository": "git+https://github.com/expressjs/express.git",
+              "bugs": "https://github.com/expressjs/express/issues",
+              "npm": "https://www.npmjs.com/package/express"
+            }
+          },
+          {
+            "name": "@types/express",
+            "keywords": [],
+            "version": "5.0.6",
+            "description": "TypeScript definitions for express",
+            "sanitized_name": "@types/express",
+            "publisher": {
+              "email": "ts-npm-types@microsoft.com",
+              "username": "types"
+            },
+            "maintainers": [
+              {
+                "email": "ts-npm-types@microsoft.com",
+                "username": "types"
+              }
+            ],
+            "license": "MIT",
+            "date": "2025-12-01T20:35:51.488Z",
+            "links": {
+              "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/express",
+              "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+              "npm": "https://www.npmjs.com/package/@types/express"
+            }
+          },
+          {
+            "name": "swagger-ui-express",
+            "keywords": [
+              "swagger",
+              "express",
+              "ui",
+              "json",
+              "documentation"
+            ],
+            "version": "5.0.1",
+            "description": "Swagger UI Express",
+            "sanitized_name": "swagger-ui-express",
+            "publisher": {
+              "email": "scottie1984@gmail.com",
+              "username": "scottie1984"
+            },
+            "maintainers": [
+              {
+                "email": "scottie1984@gmail.com",
+                "username": "scottie1984"
+              }
+            ],
+            "license": "MIT",
+            "date": "2024-05-31T21:16:32.005Z",
+            "links": {
+              "homepage": "https://github.com/scottie1984/swagger-ui-express",
+              "repository": "git+ssh://git@github.com/scottie1984/swagger-ui-express.git",
+              "bugs": "https://github.com/scottie1984/swagger-ui-express/issues",
+              "npm": "https://www.npmjs.com/package/swagger-ui-express"
+            }
+          },
+          {
+            "name": "express-session",
+            "keywords": [],
+            "version": "1.18.2",
+            "description": "Simple session middleware for Express",
+            "sanitized_name": "express-session",
+            "publisher": {
+              "email": "ulisesgascondev@gmail.com",
+              "username": "ulisesgascon"
+            },
+            "maintainers": [
+              {
+                "email": "doug@somethingdoug.com",
+                "username": "dougwilson"
+              },
+              {
+                "email": "ulisesgascondev@gmail.com",
+                "username": "ulisesgascon"
+              }
+            ],
+            "license": "MIT",
+            "date": "2025-07-17T17:53:20.235Z",
+            "links": {
+              "homepage": "https://github.com/expressjs/session#readme",
+              "repository": "git+https://github.com/expressjs/session.git",
+              "bugs": "https://github.com/expressjs/session/issues",
+              "npm": "https://www.npmjs.com/package/express-session"
+            }
+          },
+          {
+            "name": "@opentelemetry/instrumentation-express",
+            "keywords": [
+              "express",
+              "instrumentation",
+              "nodejs",
+              "opentelemetry",
+              "profiling",
+              "tracing"
+            ],
+            "version": "0.57.0",
+            "description": "OpenTelemetry instrumentation for `express` http web application framework",
+            "sanitized_name": "@opentelemetry/instrumentation-express",
+            "publisher": {
+              "email": "npm-oidc-no-reply@github.com",
+              "actor": {
+                "name": "dyladan",
+                "type": "user",
+                "email": "dyladan@gmail.com"
+              },
+              "trustedPublisher": {
+                "oidcConfigId": "oidc:ac29fe90-f2cc-42f0-ac86-fe860e276470",
+                "id": "github"
+              },
+              "username": "GitHub Actions"
+            },
+            "maintainers": [
+              {
+                "email": "dyladan@gmail.com",
+                "username": "dyladan"
+              },
+              {
+                "email": "marc.pichler@dynatrace.com",
+                "username": "pichlermarc"
+              }
+            ],
+            "license": "Apache-2.0",
+            "date": "2025-11-06T18:01:12.878Z",
+            "links": {
+              "homepage": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express#readme",
+              "repository": "git+https://github.com/open-telemetry/opentelemetry-js-contrib.git",
+              "bugs": "https://github.com/open-telemetry/opentelemetry-js-contrib/issues",
+              "npm": "https://www.npmjs.com/package/@opentelemetry/instrumentation-express"
+            }
+          },
+          {
+            "name": "@types/express-serve-static-core",
+            "keywords": [],
+            "version": "5.1.0",
+            "description": "TypeScript definitions for express-serve-static-core",
+            "sanitized_name": "@types/express-serve-static-core",
+            "publisher": {
+              "email": "ts-npm-types@microsoft.com",
+              "actor": {
+                "name": "types",
+                "type": "user",
+                "email": "ts-npm-types@microsoft.com"
+              },
+              "username": "types"
+            },
+            "maintainers": [
+              {
+                "email": "ts-npm-types@microsoft.com",
+                "username": "types"
+              }
+            ],
+            "license": "MIT",
+            "date": "2025-10-06T21:03:00.374Z",
+            "links": {
+              "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/express-serve-static-core",
+              "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+              "npm": "https://www.npmjs.com/package/@types/express-serve-static-core"
+            }
+          },
+          {
+            "name": "conventional-changelog-express",
+            "keywords": [
+              "conventional-changelog",
+              "express",
+              "preset"
+            ],
+            "version": "5.0.0",
+            "description": "Express preset for conventional-changelog.",
+            "sanitized_name": "conventional-changelog-express",
+            "publisher": {
+              "email": "bencoe+oss-bot@gmail.com",
+              "username": "oss-bot"
+            },
+            "maintainers": [
+              {
+                "email": "bencoe@gmail.com",
+                "username": "bcoe"
+              },
+              {
+                "email": "bencoe+oss-bot@gmail.com",
+                "username": "oss-bot"
+              },
+              {
+                "email": "danon0404@gmail.com",
+                "username": "dangreen"
+              },
+              {
+                "email": "maochenyan@gmail.com",
+                "username": "stevemao"
+              },
+              {
+                "email": "moilanen.tapani@gmail.com",
+                "username": "tapppi"
+              }
+            ],
+            "license": "ISC",
+            "date": "2024-05-03T22:56:37.832Z",
+            "links": {
+              "homepage": "https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-express#readme",
+              "repository": "git+https://github.com/conventional-changelog/conventional-changelog.git",
+              "bugs": "https://github.com/conventional-changelog/conventional-changelog/issues",
+              "npm": "https://www.npmjs.com/package/conventional-changelog-express"
+            }
+          },
+          {
+            "name": "express-validator",
+            "keywords": [
+              "express",
+              "validator",
+              "validation",
+              "validate",
+              "sanitize",
+              "sanitization",
+              "xss"
+            ],
+            "version": "7.3.1",
+            "description": "Express middleware for the validator module.",
+            "sanitized_name": "express-validator",
+            "publisher": {
+              "email": "guhenke@gmail.com",
+              "username": "gustavohenke"
+            },
+            "maintainers": [
+              {
+                "email": "dev@tavan.de",
+                "username": "ctavan"
+              },
+              {
+                "email": "guhenke@gmail.com",
+                "username": "gustavohenke"
+              },
+              {
+                "email": "rustylbailey@gmail.com",
+                "username": "rustybailey"
+              },
+              {
+                "email": "fed.ciardi@gmail.com",
+                "username": "fedeci"
+              }
+            ],
+            "license": "MIT",
+            "date": "2025-11-19T11:00:29.800Z",
+            "links": {
+              "homepage": "https://express-validator.github.io",
+              "repository": "git://github.com/express-validator/express-validator.git",
+              "bugs": "https://github.com/express-validator/express-validator/issues",
+              "npm": "https://www.npmjs.com/package/express-validator"
+            }
+          },
+          {
+            "name": "@types/express-session",
+            "keywords": [],
+            "version": "1.18.2",
+            "description": "TypeScript definitions for express-session",
+            "sanitized_name": "@types/express-session",
+            "publisher": {
+              "email": "ts-npm-types@microsoft.com",
+              "username": "types"
+            },
+            "maintainers": [
+              {
+                "email": "ts-npm-types@microsoft.com",
+                "username": "types"
+              }
+            ],
+            "license": "MIT",
+            "date": "2025-06-07T02:16:51.481Z",
+            "links": {
+              "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/express-session",
+              "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+              "npm": "https://www.npmjs.com/package/@types/express-session"
+            }
+          },
+          {
+            "name": "exegesis-express",
+            "keywords": [
+              "express",
+              "OpenAPI",
+              "oas3",
+              "exegesis"
+            ],
+            "version": "4.0.0",
+            "description": "Express middleware to handle OpenAPI 3.x.",
+            "sanitized_name": "exegesis-express",
+            "publisher": {
+              "email": "npm@lucid.thedreaming.org",
+              "username": "jwalton"
+            },
+            "maintainers": [
+              {
+                "email": "npm@lucid.thedreaming.org",
+                "username": "jwalton"
+              }
+            ],
+            "license": "MIT",
+            "date": "2021-12-12T03:08:51.154Z",
+            "links": {
+              "homepage": "https://github.com/exegesis-js/exegesis-express#readme",
+              "repository": "git+https://github.com/exegesis-js/exegesis-express.git",
+              "bugs": "https://github.com/exegesis-js/exegesis-express/issues",
+              "npm": "https://www.npmjs.com/package/exegesis-express"
+            }
+          }
+        ]
+      },
+      "group": "npm"
+    },
+    "ollama_chat": {
+      "status": "skipped",
+      "group": "ollama"
+    },
+    "ollama_delete": {
+      "status": "skipped",
+      "group": "ollama"
+    },
+    "ollama_list": {
+      "status": "skipped",
+      "group": "ollama"
+    },
+    "ollama_pull": {
+      "status": "skipped",
+      "group": "ollama"
+    },
+    "open_application": {
+      "status": "skipped",
+      "group": "system"
+    },
+    "open_url_in_browser": {
+      "status": "skipped",
+      "group": "system"
+    },
+    "parse_html": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "count": 1,
+        "results": [
+          "Test"
+        ]
+      },
+      "group": "conversion"
+    },
+    "ping": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "output": "\r\nEnvoi d'une requ�te 'Ping'  8.8.8.8 avec 32 octets de donn�es�:\r\nR�ponse de 8.8.8.8�: octets=32 temps=12 ms TTL=120\r\n\r\nStatistiques Ping pour 8.8.8.8:\r\n    Paquets�: envoy�s = 1, re�us = 1, perdus = 0 (perte 0%),\r\nDur�e approximative des boucles en millisecondes :\r\n    Minimum = 12ms, Maximum = 12ms, Moyenne = 12ms\r\n"
+      },
+      "group": "web"
+    },
+    "plan_mode": {
+      "status": "no_params",
+      "message": "Pas de parametres de test definis",
+      "group": "utils"
+    },
+    "play_audio": {
+      "status": "skipped",
+      "group": "audio"
+    },
+    "port_scan": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "host": "localhost",
+        "results": [
+          {
+            "port": 80,
+            "open": true
+          },
+          {
+            "port": 443,
+            "open": true
+          }
+        ]
+      },
+      "group": "web"
+    },
+    "prepend_to_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "Contenu ajouté au début de E:\\ANA\\tests\\test_files\\test_file.txt"
+      },
+      "group": "files"
+    },
+    "random_number": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "result": 93,
+        "min": 1,
+        "max": 100
+      },
+      "group": "datetime"
+    },
+    "read_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files\\test_file.txt",
+        "content": "Premiere ligne\nCeci est un fichier de test.\nLigne 2.\nLigne 3.\n\nNouvelle ligne"
+      },
+      "group": "files"
+    },
+    "read_file_chunk": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files\\test_file.txt",
+        "start_line": 1,
+        "end_line": 3,
+        "total_lines": 6,
+        "content": "1: Premiere ligne\n2: Ceci est un fichier de test.\n3: Ligne 2.",
+        "message": "Lignes 1-3 sur 6 total"
+      },
+      "group": "files"
+    },
+    "resize_image": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "review_code": {
+      "status": "failed",
+      "error": "messages.some is not a function",
+      "group": "agents"
+    },
+    "rotate_image": {
+      "status": "skipped",
+      "group": "image"
+    },
+    "run_background": {
+      "status": "skipped",
+      "group": "system"
+    },
+    "run_shell": {
+      "status": "skipped",
+      "group": "system"
+    },
+    "save_memory": {
+      "status": "skipped",
+      "group": "memory"
+    },
+    "search_codebase": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "query": "function",
+        "results": []
+      },
+      "group": "code"
+    },
+    "search_in_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files\\test_file.txt",
+        "pattern": "Ligne",
+        "total_matches": 4,
+        "matches": [
+          {
+            "line_number": 1,
+            "content": "Premiere ligne",
+            "context": ">>> 1: Premiere ligne\n    2: Ceci est un fichier de test."
+          },
+          {
+            "line_number": 3,
+            "content": "Ligne 2.",
+            "context": "    2: Ceci est un fichier de test.\n>>> 3: Ligne 2.\n    4: Ligne 3."
+          },
+          {
+            "line_number": 4,
+            "content": "Ligne 3.",
+            "context": "    3: Ligne 2.\n>>> 4: Ligne 3.\n    5: "
+          },
+          {
+            "line_number": 6,
+            "content": "Nouvelle ligne",
+            "context": "    5: \n>>> 6: Nouvelle ligne"
+          }
+        ],
+        "message": "Trouvé 4 correspondance(s) pour \"Ligne\""
+      },
+      "group": "files"
+    },
+    "search_memory": {
+      "status": "skipped",
+      "group": "memory"
+    },
+    "search_replace_in_file": {
+      "status": "no_params",
+      "message": "Pas de parametres de test definis",
+      "group": "files"
+    },
+    "send_notification": {
+      "status": "skipped",
+      "group": "utils"
+    },
+    "set_environment_variable": {
+      "status": "skipped",
+      "group": "system"
+    },
+    "set_reminder": {
+      "status": "skipped",
+      "group": "utils"
+    },
+    "sqlite_query": {
+      "status": "skipped",
+      "group": "database"
+    },
+    "sqlite_schema": {
+      "status": "skipped",
+      "group": "database"
+    },
+    "sqlite_tables": {
+      "status": "skipped",
+      "group": "database"
+    },
+    "statistics": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "count": 5,
+        "sum": 15,
+        "mean": 3,
+        "median": 3,
+        "min": 1,
+        "max": 5,
+        "range": 4,
+        "variance": 2,
+        "standardDeviation": 1.4142135623730951
+      },
+      "group": "datetime"
+    },
+    "tail_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "content": "\nNouvelle ligne"
+      },
+      "group": "files"
+    },
+    "take_screenshot": {
+      "status": "skipped",
+      "group": "system"
+    },
+    "test_regex": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "matches": [
+          "123"
+        ],
+        "count": 1,
+        "test": true
+      },
+      "group": "validation"
+    },
+    "text_to_speech": {
+      "status": "skipped",
+      "group": "audio"
+    },
+    "timestamp_to_date": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "date": "2024-12-16T12:00:00.000Z",
+        "local": "2024-12-16 07 h 00 min 00 s"
+      },
+      "group": "datetime"
+    },
+    "todo_write": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "message": "1 tâches enregistrées",
+        "todos": [
+          {
+            "id": 1765863645189,
+            "task": "Test",
+            "status": "pending",
+            "activeForm": "Testing",
+            "created": "2025-12-16T05:40:45.189Z"
+          }
+        ]
+      },
+      "group": "utils"
+    },
+    "tree_view": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "tree": "E:\\ANA\\tests\\test_files\n├── moved_test.txt\n├── new_dir\n├── test.zip\n└── test_file.txt"
+      },
+      "group": "files"
+    },
+    "validate_email": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "email": "test@example.com",
+        "valid": true
+      },
+      "group": "validation"
+    },
+    "validate_json": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "valid": false,
+        "error": "\"undefined\" is not valid JSON"
+      },
+      "group": "validation"
+    },
+    "validate_jsx_syntax": {
+      "status": "failed",
+      "error": "Echec sans message",
+      "group": "code"
+    },
+    "validate_url": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "url": "https://google.com",
+        "valid": true
+      },
+      "group": "validation"
+    },
+    "watch_file": {
+      "status": "skipped",
+      "group": "files"
+    },
+    "web_fetch": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "url": "https://example.com",
+        "title": "Example Domain",
+        "description": null,
+        "charset": "text/html",
+        "statusCode": 200,
+        "text": "Example DomainThis domain is for use in documentation examples without needing permission. Avoid use in operations.Learn more",
+        "textLength": 125,
+        "truncated": false,
+        "links": [
+          {
+            "text": "Learn more",
+            "url": "https://iana.org/domains/example"
+          }
+        ],
+        "headings": [
+          {
+            "level": "h1",
+            "text": "Example Domain"
+          }
+        ]
+      },
+      "group": "web"
+    },
+    "web_search": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "query": "test",
+        "engine": "brave",
+        "results": [
+          {
+            "title": "Speedtest by Ookla - The Global Broadband Speed Test",
+            "url": "https://www.speedtest.net/",
+            "description": "Use Speed<strong>test</strong> on all your devices with our free desktop and mobile apps."
+          },
+          {
+            "title": "TEST Definition & Meaning - Merriam-Webster",
+            "url": "https://www.merriam-webster.com/dictionary/test",
+            "description": "The meaning of TEST is <strong>a means of testing</strong>. How to use test in a sentence."
+          },
+          {
+            "title": "Home | TEST",
+            "url": "https://link.springer.com/journal/11749",
+            "description": "Journal TEST <strong>focuses on cutting-edge research in all areas of Statistics and Probability with significant theoretical, methodological, and applied impact</strong>. ..."
+          },
+          {
+            "title": "Duolingo English Test",
+            "url": "https://englishtest.duolingo.com",
+            "description": "The Duolingo English Test is a fast, affordable online English exam accepted by institutions worldwide. Take it anytime and get results in 2 days"
+          },
+          {
+            "title": "Spectrum Internet Speed Test: Broadband Internet Speed Check",
+            "url": "https://www.spectrum.com/internet/speed-test",
+            "description": "Test your broadband Internet and WiFi speed with the Internet Speed Test. Check your upload and download speeds for your home Internet network."
+          }
+        ],
+        "count": 5
+      },
+      "group": "web"
+    },
+    "whois": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "domain": "google.com",
+        "data": "\r\nWhois v1.21 - Domain information lookup\r\nCopyright (C) 2005-2019 Mark Russinovich\r\nSysinternals - www.sysinternals.com\r\n\r\nConnecting to COM.whois-servers.net...\r\n\r\nWHOIS Server: whois.markmonitor.com\r\r\n   Registrar URL: http://www.markmonitor.com\r\r\n   Updated Date: 2019-09-09T15:39:04Z\r\r\n   Creation Date: 1997-09-15T04:00:00Z\r\r\n   Registry Expiry Date: 2028-09-14T04:00:00Z\r\r\n   Registrar: MarkMonitor Inc.\r\r\n   Registrar IANA ID: 292\r\r\n   Registrar Abuse Contact Email: abusecomplaints@markmonitor.com\r\r\n   Registrar Abuse Contact Phone: +1.2086851750\r\r\n   Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited\r\r\n   Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\r\r\n   Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited\r\r\n   Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited\r\r\n   Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited\r\r\n   Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited\r\r\n   Name Server: NS1.GOOGLE.COM\r\r\n   Name Server: NS2.GOOGLE.COM\r\r\n   Name Server: NS3.GOOGLE.COM\r\r\n   Name Server: NS4.GOOGLE.COM\r\r\n   DNSSEC: unsigned\r\r\n   URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/\r\r\n>>> Last update of whois database: 2025-12-16T05:40:40Z <<<\r\r\n\r\r\nFor more information on Whois status codes, please visit https://icann.org/epp\r\r\n\r\r\nNOTICE: The expiration date displayed in this record is the date the\r\r\nregistrar's sponsorship of the domain name registration in the registry is\r\r\ncurrently set to expire. This date does not necessarily reflect the expiration\r\r\ndate of the domain name registrant's agreement with the sponsoring\r\r\nregistrar.  Users may consult the sponsoring registrar's Whois database to\r\r\nview the registrar's reported date of expiration for this registration.\r\r\n\r\r\nTERMS OF USE: You are not authorized to access or query our Whois\r\r\ndatabase through the use of electronic processes that are high-volume and\r\r\nautomated except as reasonably necessary to register domain names or\r\r\nmodify existing registrations; the Data in VeriSign Global Registry\r\r\nServices' (\"VeriSign\") Whois database is provided by VeriSign for\r\r\ninformation purposes only, and to assist persons in obtaining information\r\r\nabout or related to a domain name registration record. VeriSign does not\r\r\nguarantee its accuracy. By submitting a Whois query, you agree to abide\r\r\nby the following terms of use: You agree that you may use this Data only\r\r\nfor lawful purposes and that under no circumstances will you use this Data\r\r\nto: (1) allow, enable, or otherwise support the transmission of mass\r\r\nunsolicited, commercial advertising or solicitations via e-mail, telephone,\r\r\nor facsimile; or (2) enable high volume, automated, electronic processes\r\r\nthat apply to VeriSign (or its computer systems). The compilation,\r\r\nrepackaging, dissemination or other use of this Data is expressly\r\r\nprohibited without the prior written consent of VeriSign. You agree not to\r\r\nuse electronic processes that are automated and high-volume to access or\r\r\nquery the Whois database except as reasonably necessary to register\r\r\ndomain names or modify existing registrations. VeriSign reserves the right\r\r\nto restrict your access to the Whois database in its sole discretion to ensure\r\r\noperational stability.  VeriSign may restrict or terminate your access to the\r\r\nWhois database for failure to abide by these terms of use. VeriSign\r\r\nreserves the right to modify these terms at any time.\r\r\n\r\r\nThe Registry database contains ONLY .COM, .NET, .EDU domains and\r\r\nRegistrars.\r\r\n\r\nConnecting to whois.markmonitor.com...\r\n\r\nWHOIS Server: whois.markmonitor.com\r\nRegistrar URL: http://www.markmonitor.com\r\nUpdated Date: 2024-08-02T02:17:33+0000\r\nCreation Date: 1997-09-15T07:00:00+0000\r\nRegistrar Registration Expiration Date: 2028-09-13T07:00:00+0000\r\nRegistrar: MarkMonitor, Inc.\r\nRegistrar IANA ID: 292\r\nRegistrar Abuse Contact Email: abusecomplaints@markmonitor.com\r\nRegistrar Abuse Contact Phone: +1.2086851750\r\nDomain Status: clientUpdateProhibited (https://www.icann.org/epp#clientUpdateProhibited)\r\nDomain Status: clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)\r\nDomain Status: clientDeleteProhibited (https://www.icann.org/epp#clientDeleteProhibited)\r\nDomain Status: serverUpdateProhibited (https://www.icann.org/epp#serverUpdateProhibited)\r\nDomain Status: serverTransferProhibited (https://www.icann.org/epp#serverTransferProhibited)\r\nDomain Status: serverDeleteProhibited (https://www.icann.org/epp#serverDeleteProhibited)\r\nRegistrant Organization: Google LLC\r\nRegistrant Country: US\r\nRegistrant Email: Select Request Email Form at https://domains.markmonitor.com/whois/google.com\r\nTech Email: Select Request Email Form at https://domains.markmonitor.com/whois/google.com\r\nName Server: ns3.google.com\r\nName Server: ns2.google.com\r\nName Server: ns1.google.com\r\nName Server: ns4.google.com\r\nDNSSEC: unsigned\r\nURL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/\r\n>>> Last update of WHOIS database: 2025-12-16T05:40:01+0000 <<<\r\n\r\nFor more information on WHOIS status codes, please visit:\r\n  https://www.icann.org/resources/pages/epp-status-codes\r\n\r\nIf you wish to contact this domain’s Registrant or Technical\r\ncontact, and such email address is not visible above, you may do so via our web\r\nform, pursuant to ICANN’s Temporary Specification. To verify that you are not a\r\nrobot, please enter your email address to receive a link to a page that\r\nfacilitates email communication with the relevant contact(s).\r\n\r\nWeb-based WHOIS:\r\n  https://domains.markmonitor.com/whois/contact/google.com\r\n\r\nIf you have a legitimate interest in viewing the non-public WHOIS details, send\r\nyour request and the reasons for your request to whoisrequest@markmonitor.com\r\nand specify the domain name in the subject line. We will review that request and\r\nmay ask for supporting documentation and explanation.\r\n\r\nThe data in MarkMonitor’s WHOIS database is provided for information purposes,\r\nand to assist persons in obtaining information about or related to a domain\r\nname’s registration record. While MarkMonitor believes the data to be accurate,\r\nthe data is provided \"as is\" with no guarantee or warranties regarding its\r\naccuracy.\r\n\r\nBy submitting a WHOIS query, you agree that you will use this data only for\r\nlawful purposes and that, under no circumstances will you use this data to:\r\n  (1) allow, enable, or otherwise support the transmission by email, telephone,\r\nor facsimile of mass, unsolicited, commercial advertising, or spam; or\r\n  (2) enable high volume, automated, or electronic processes that send queries,\r\ndata, or email to MarkMonitor (or its systems) or the domain name contacts (or\r\nits systems).\r\n\r\nMarkMonitor reserves the right to modify these terms at any time.\r\n\r\nBy submitting this query, you agree to abide by this policy.\r\n\r\nMarkMonitor Domain Management(TM)\r\nProtecting companies and consumers in a digital world.\r\n\r\nVisit MarkMonitor at https://www.markmonitor.com\r\nContact us at +1.8007459229\r\nIn Europe, at +44.02032062220\r\n--\r\n\r\n\r\nDomain Name: google.com\r\nRegistry Domain ID: 2138514_DOMAIN_COM-VRSN\r\nRegistrar WHOIS Server: whois.markmonitor.com\r\nRegistrar URL: http://www.markmonitor.com\r\nUpdated Date: 2024-08-02T02:17:33+0000\r\nCreation Date: 1997-09-15T07:00:00+0000\r\nRegistrar Registration Expiration Date: 2028-09-13T07:00:00+0000\r\nRegistrar: MarkMonitor, Inc.\r\nRegistrar IANA ID: 292\r\nRegistrar Abuse Contact Email: abusecomplaints@markmonitor.com\r\nRegistrar Abuse Contact Phone: +1.2086851750\r\nDomain Status: clientUpdateProhibited (https://www.icann.org/epp#clientUpdateProhibited)\r\nDomain Status: clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)\r\nDomain Status: clientDeleteProhibited (https://www.icann.org/epp#clientDeleteProhibited)\r\nDomain Status: serverUpdateProhibited (https://www.icann.org/epp#serverUpdateProhibited)\r\nDomain Status: serverTransferProhibited (https://www.icann.org/epp#serverTransferProhibited)\r\nDomain Status: serverDeleteProhibited (https://www.icann.org/epp#serverDeleteProhibited)\r\nRegistrant Organization: Google LLC\r\nRegistrant Country: US\r\nRegistrant Email: Select Request Email Form at https://domains.markmonitor.com/whois/google.com\r\nTech Email: Select Request Email Form at https://domains.markmonitor.com/whois/google.com\r\nName Server: ns3.google.com\r\nName Server: ns2.google.com\r\nName Server: ns1.google.com\r\nName Server: ns4.google.com\r\nDNSSEC: unsigned\r\nURL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/\r\n>>> Last update of WHOIS database: 2025-12-16T05:40:01+0000 <<<\r\n\r\nFor more information on WHOIS status codes, please visit:\r\n  https://www.icann.org/resources/pages/epp-status-codes\r\n\r\nIf you wish to contact this domain’s Registrant or Technical\r\ncontact, and such email address is not visible above, you may do so via our web\r\nform, pursuant to ICANN’s Temporary Specification. To verify that you are not a\r\nrobot, please enter your email address to receive a link to a page that\r\nfacilitates email communication with the relevant contact(s).\r\n\r\nWeb-based WHOIS:\r\n  https://domains.markmonitor.com/whois/contact/google.com\r\n\r\nIf you have a legitimate interest in viewing the non-public WHOIS details, send\r\nyour request and the reasons for your request to whoisrequest@markmonitor.com\r\nand specify the domain name in the subject line. We will review that request and\r\nmay ask for supporting documentation and explanation.\r\n\r\nThe data in MarkMonitor’s WHOIS database is provided for information purposes,\r\nand to assist persons in obtaining information about or related to a domain\r\nname’s registration record. While MarkMonitor believes the data to be accurate,\r\nthe data is provided \"as is\" with no guarantee or warranties regarding its\r\naccuracy.\r\n\r\nBy submitting a WHOIS query, you agree that you will use this data only for\r\nlawful purposes and that, under no circumstances will you use this data to:\r\n  (1) allow, enable, or otherwise support the transmission by email, telephone,\r\nor facsimile of mass, unsolicited, commercial advertising, or spam; or\r\n  (2) enable high volume, automated, or electronic processes that send queries,\r\ndata, or email to MarkMonitor (or its systems) or the domain name contacts (or\r\nits systems).\r\n\r\nMarkMonitor reserves the right to modify these terms at any time.\r\n\r\nBy submitting this query, you agree to abide by this policy.\r\n\r\nMarkMonitor Domain Management(TM)\r\nProtecting companies and consumers in a digital world.\r\n\r\nVisit MarkMonitor at https://www.markmonitor.com\r\nContact us at +1.8007459229\r\nIn Europe, at +44.02032062220\r\n--\r\n\r\n"
+      },
+      "group": "web"
+    },
+    "wikipedia": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "query": "Montreal",
+        "totalHits": 57501,
+        "results": [
+          {
+            "title": "Montréal",
+            "pageId": 5525,
+            "url": "https://fr.wikipedia.org/wiki/Montr%C3%A9al",
+            "extract": "Montréal (/ˈmɔ̃.ˌʁe.al/ ) est la principale et la plus grande ville du Québec. Grande métropole insulaire et portuaire du fleuve Saint-Laurent, au pied des rapides de Lachine, c'est la deuxième ville du Canada (avec 2 200 807 habitants en 2024), après Toronto, la huitième en Amérique du Nord, et la plus grande ville francophone d'Amérique. Son aire urbaine, la région métropolitaine de Montréal, rassemble près de 4,3 millions d'habitants, soit environ la moitié de la population du Québec. Montréal est l'une des grandes agglomérations d'Amérique du Nord et un important pôle financier, de savoir, de culture et d'aéronautique. Elle est souvent considérée comme l'une des plus belles villes culturelles d'Amérique du Nord.",
+            "touched": "2025-12-16T04:16:41Z"
+          },
+          {
+            "title": "Université de Montréal",
+            "pageId": 41869,
+            "url": "https://fr.wikipedia.org/wiki/Universit%C3%A9_de_Montr%C3%A9al",
+            "extract": "L'Université de Montréal (UdeM) est une université publique canadienne du Québec. Elle est l'un des sept établissements d'enseignement supérieur ayant leur siège social à Montréal, l'une des cinq grandes universités canadiennes et la deuxième en nombre d'étudiants. L'Université de Montréal est aussi la plus importante de tout le monde francophone pour le nombre d'étudiants ainsi que pour la recherche. Elle bénéficie d'une grande réputation, étant reconnue comme l'une des meilleures institutions post-secondaires de langue française.\nL'institution comprend treize facultés, plus de soixante départements et deux écoles affiliées : l'école d'ingénierie Polytechnique Montréal et l'école de commerce HEC Montréal, constituant ainsi un des plus gros complexes universitaires d'Amérique du Nord.",
+            "touched": "2025-12-12T06:26:38Z"
+          },
+          {
+            "title": "Canadiens de Montréal",
+            "pageId": 91869,
+            "url": "https://fr.wikipedia.org/wiki/Canadiens_de_Montr%C3%A9al",
+            "extract": "Les Canadiens de Montréal sont une franchise de hockey sur glace professionnel située à Montréal dans la province de Québec au Canada. L’équipe est membre de la Division Atlantique dans la Ligue nationale de hockey. Bien que le nom le plus utilisé pour désigner cette équipe soit les « Canadiens de Montréal », son nom officiel est le Club de hockey Canadien, inc..\nLes Canadiens disputent leurs matchs à domicile au Centre Bell, connu sous le nom de Centre Molson jusqu’en 2002. Avant 1996, l’équipe était domiciliée au Forum de Montréal, où elle a reçu ses adversaires pendant sept décennies et remporté 22 de ses 24 Coupes Stanley.",
+            "touched": "2025-12-06T16:08:24Z"
+          }
+        ]
+      },
+      "group": "web"
+    },
+    "write_file": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "path": "E:\\ANA\\tests\\test_files\\write_test.txt",
+        "bytesWritten": 10,
+        "backupPath": null
+      },
+      "group": "files"
+    },
+    "xml_to_json": {
+      "status": "failed",
+      "error": "Cannot read properties of undefined (reading 'substring')",
+      "group": "conversion"
+    },
+    "yaml_to_json": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "data": "undefined"
+      },
+      "group": "conversion"
+    },
+    "youtube_search": {
+      "status": "passed",
+      "result": {
+        "success": true,
+        "query": "test video",
+        "count": 2,
+        "videos": [
+          {
+            "title": "Masterpiece of 4K HDR 60FPS🌿Dolby Vision 8K/4K Video TV",
+            "videoId": "JlRs78QS-2w",
+            "url": "https://www.youtube.com/watch?v=JlRs78QS-2w",
+            "channel": "4K Video ULTRA HD",
+            "duration": "1:40:27",
+            "views": "63,078 views"
+          },
+          {
+            "title": "Unseen HDR 4K 60FPS OLED Demo | Dolby Vision 8K/4K Video FOR TV TEST",
+            "videoId": "-BZS9P9LxwI",
+            "url": "https://www.youtube.com/watch?v=-BZS9P9LxwI",
+            "channel": "4K Video ULTRA HD",
+            "duration": "1:28:51",
+            "views": "501,756 views"
+          }
+        ]
+      },
+      "group": "youtube"
+    }
+  }
+}

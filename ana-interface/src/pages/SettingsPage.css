@@ -265,6 +265,30 @@
   align-items: center;
 }
 
+.btn-restart {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #3498db;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-restart:hover:not(:disabled) {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+
+.btn-restart:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .btn-shutdown {
   display: flex;
   align-items: center;

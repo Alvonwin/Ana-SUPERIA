@@ -1,0 +1,9 @@
+{
+  "mode": "permission",
+  "thresholds": {
+    "old_days": 30,
+    "duplicate_similarity": 0.9,
+    "contradiction_confidence": 0.8
+  },
+  "enabled": true
+}

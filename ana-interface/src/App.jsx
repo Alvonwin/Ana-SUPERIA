@@ -14,7 +14,8 @@ import {
   IconBrain,
   IconMaximize,
   IconThumbsUp,
-  IconX
+  IconX,
+  IconGamepad
 } from './components/Icons';
 import { Toaster } from 'sonner';
 import MobileToolbar from './components/MobileToolbar';
@@ -35,6 +36,7 @@ import VoicePage from './pages/VoicePage';
 import BrainsPage from './pages/BrainsPage';
 import UpscalerPage from './pages/UpscalerPage';
 import FeedbackPage from './pages/FeedbackPage';
+import GamesPage from './pages/GamesPage';
 
 // Hooks
 import { useServiceManager } from './hooks/useServiceManager';
@@ -54,6 +56,7 @@ function Sidebar({ isOpen, onClose }) {
     { path: '/memory', icon: IconSearch, label: 'Mémoire', color: '#9b59b6' },
     { path: '/dashboard', icon: IconLayoutDashboard, label: 'Dashboard', color: '#e74c3c' },
     { path: '/manual', icon: IconBookOpen, label: 'Manuel', color: '#f39c12' },
+    { path: '/games', icon: IconGamepad, label: 'Jeux', color: '#e91e63' },
   ];
 
   const additionalPages = [
@@ -170,6 +173,7 @@ function AppLayout() {
           <Route path="/logs" element={<LogsPage />} />
           <Route path="/voice" element={<VoicePage />} />
           <Route path="/feedback" element={<FeedbackPage />} />
+          <Route path="/games" element={<GamesPage />} />
         </Routes>
       </main>
     </div>

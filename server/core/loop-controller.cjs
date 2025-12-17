@@ -191,7 +191,7 @@ class LoopController extends EventEmitter {
         return {
           continue: false,
           reason: 'fatal_error',
-          message: `Erreur irrécupérable: ${errorMsg.substring(0, 100)}`
+          message: `Erreur irrécupérable: ${String(errorMsg).substring(0, 100)}`
         };
       }
 
@@ -230,7 +230,7 @@ class LoopController extends EventEmitter {
           continue: true,
           reason: 'repeated_error',
           needsCorrection: true,
-          message: `Même erreur répétée ${sameErrorCount}x: ${errorMsg.substring(0, 50)}`,
+          message: `Même erreur répétée ${sameErrorCount}x: ${String(errorMsg).substring(0, 50)}`,
           suggestion: 'Appliquer stratégie de correction'
         };
       }
@@ -403,9 +403,9 @@ class LoopController extends EventEmitter {
    * @private
    */
   _countSameErrors(errorMsg) {
-    const errorKey = errorMsg.substring(0, 100);
+    const errorKey = String(errorMsg).substring(0, 100);
     return this.errorHistory.filter(e =>
-      e.error.substring(0, 100) === errorKey
+      String(e.error || '').substring(0, 100) === errorKey
     ).length;
   }
 

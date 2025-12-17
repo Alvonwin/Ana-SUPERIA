@@ -1,0 +1,202 @@
+{
+  "passed": 17,
+  "failed": 4,
+  "passRate": "81.0%",
+  "details": [
+    {
+      "query": "envoie un message à quelqu'un",
+      "status": "failed",
+      "found": [
+        "generate_image",
+        "memory_update",
+        "validate_email",
+        "save_memory",
+        "ping"
+      ],
+      "expected": [
+        "send_notification"
+      ]
+    },
+    {
+      "query": "sauvegarde mes données",
+      "status": "passed",
+      "found": [
+        "create_backup",
+        "save_memory",
+        "get_weather",
+        "memory_update",
+        "file_info"
+      ],
+      "expected": [
+        "create_backup",
+        "write_file"
+      ]
+    },
+    {
+      "query": "trouve des informations sur internet",
+      "status": "passed",
+      "found": [
+        "web_search",
+        "whois",
+        "get_audio_info",
+        "file_info",
+        "web_fetch"
+      ],
+      "expected": [
+        "web_search",
+        "web_fetch"
+      ]
+    },
+    {
+      "query": "analyse le code source",
+      "status": "passed",
+      "found": [
+        "analyze_code_screenshot",
+        "search_codebase",
+        "analyze_component",
+        "execute_code",
+        "review_code"
+      ],
+      "expected": [
+        "search_codebase",
+        "analyze_component",
+        "review_code"
+      ]
+    },
+    {
+      "query": "compresse les fichiers",
+      "status": "passed",
+      "found": [
+        "compress_gzip",
+        "create_zip",
+        "find_files",
+        "list_files",
+        "file_info"
+      ],
+      "expected": [
+        "create_zip",
+        "compress_gzip"
+      ]
+    },
+    {
+      "query": "send an email notification",
+      "status": "passed",
+      "found": [
+        "send_notification",
+        "validate_email",
+        "set_reminder",
+        "cancel_reminder",
+        "ollama_chat"
+      ],
+      "expected": [
+        "send_notification"
+      ]
+    },
+    {
+      "query": "search for files in directory",
+      "status": "passed",
+      "found": [
+        "find_files",
+        "list_files",
+        "search_in_file",
+        "get_directory_size",
+        "create_directory"
+      ],
+      "expected": [
+        "find_files",
+        "list_files",
+        "glob"
+      ]
+    },
+    {
+      "query": "get current weather forecast",
+      "status": "passed",
+      "found": [
+        "get_weather",
+        "get_zodiac_sign",
+        "get_time",
+        "find_files",
+        "search_in_file"
+      ],
+      "expected": [
+        "get_weather"
+      ]
+    },
+    {
+      "query": "execute shell command",
+      "status": "passed",
+      "found": [
+        "run_shell",
+        "execute_voice_command",
+        "execute_code",
+        "npm_run",
+        "open_application"
+      ],
+      "expected": [
+        "run_shell",
+        "run_background"
+      ]
+    },
+    {
+      "query": "create a new React component",
+      "status": "passed",
+      "found": [
+        "create_react_component",
+        "add_route",
+        "analyze_component",
+        "review_code",
+        "memory_update"
+      ],
+      "expected": [
+        "create_react_component"
+      ]
+    },
+    {
+      "query": "mets ça de côté",
+      "status": "failed",
+      "found": [
+        "ping",
+        "get_weather",
+        "memory_update",
+        "get_zodiac_sign",
+        "base64_decode"
+      ],
+      "expected": [
+        "save_memory",
+        "create_backup",
+        "write_file"
+      ]
+    },
+    {
+      "query": "regarde ce qui se passe",
+      "status": "failed",
+      "found": [
+        "memory_reflect",
+        "generate_password",
+        "copy_file",
+        "kill_process",
+        "save_memory"
+      ],
+      "expected": [
+        "get_system_info",
+        "list_processes",
+        "git_status"
+      ]
+    },
+    {
+      "query": "fais le ménage",
+      "status": "passed",
+      "found": [
+        "ping",
+        "tail_file",
+        "head_file",
+        "read_file",
+        "download_file"
+      ],
+      "expected": [
+        "delete_file",
+        "list_files"
+      ]
+    }
+  ]
+}

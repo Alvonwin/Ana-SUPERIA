@@ -1,0 +1,11 @@
+{
+  "groupe": 1,
+  "total_outils": 36,
+  "date_debut": "2025-12-12T00:01:00",
+  "status": "en_cours",
+  "outils_testes": 0,
+  "outils_reussis": 0,
+  "outils_echoues": 0,
+  "pourcentage_succes": 0,
+  "tests": []
+}

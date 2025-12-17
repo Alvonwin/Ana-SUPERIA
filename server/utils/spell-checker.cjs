@@ -26,9 +26,9 @@ async function initialize() {
     // dictionary-fr exports { aff, dic } directly as Buffers
     spellChecker = nspell(dict);
     isInitialized = true;
-    console.log('✅ Correcteur orthographique français initialisé');
+    console.log('Correcteur orthographique francais initialise');
   } catch (error) {
-    console.error('❌ Erreur import dictionary-fr:', error.message);
+    console.error('Erreur import dictionary-fr:', error.message);
     throw error;
   }
 }
@@ -54,112 +54,158 @@ function suggest(word) {
 }
 
 /**
+ * Mots anglais courants a NE PAS corriger (FIX 2025-12-16)
+ * Ces mots sont souvent utilises en franglais quebecois
+ */
+const ENGLISH_WORDS_TO_PRESERVE = [
+  // Jeux
+  'memory', 'game', 'games', 'chess', 'blackjack', 'hangman', 'battleship', 'backgammon',
+  // Tech
+  'file', 'files', 'folder', 'folders', 'bug', 'bugs', 'fix', 'update', 'backup', 'reset',
+  'server', 'client', 'backend', 'frontend', 'database', 'cache', 'config', 'settings',
+  'start', 'stop', 'restart', 'shutdown', 'login', 'logout', 'username', 'password',
+  'email', 'download', 'upload', 'install', 'uninstall', 'debug', 'test', 'tests',
+  // General
+  'ok', 'okay', 'cool', 'nice', 'sorry', 'please', 'thanks', 'yes', 'no', 'maybe',
+  'hello', 'hi', 'bye', 'good', 'bad', 'best', 'worst', 'top', 'bottom',
+  'check', 'click', 'scroll', 'drag', 'drop', 'copy', 'paste', 'cut', 'delete',
+  'search', 'find', 'replace', 'save', 'load', 'open', 'close', 'new', 'old',
+  'input', 'output', 'data', 'info', 'error', 'warning', 'success', 'fail', 'failed',
+  'online', 'offline', 'status', 'mode', 'option', 'options', 'feature', 'features',
+  'tool', 'tools', 'prompt', 'chat', 'voice', 'audio', 'video', 'image', 'images',
+  'list', 'array', 'string', 'number', 'boolean', 'null', 'undefined', 'true', 'false',
+  'loop', 'break', 'continue', 'return', 'function', 'class', 'object', 'method'
+];
+
+/**
  * Correct spelling in a text
  * @param {string} text - Text to correct
  * @returns {string} Corrected text
  */
 function correctText(text) {
-  if (!spellChecker || !text) return text;
+  if (!text) return text;
+
+  // === PROTECTION DES MOTS ANGLAIS (FIX 2025-12-16) ===
+  const englishPlaceholders = [];
+  const englishPattern = new RegExp('\\b(' + ENGLISH_WORDS_TO_PRESERVE.join('|') + ')\\b', 'gi');
+  text = text.replace(englishPattern, (match) => {
+    const placeholder = '__ENG_' + englishPlaceholders.length + '__';
+    englishPlaceholders.push(match);
+    return placeholder;
+  });
+
+  // === PROTECTION DES CHEMINS DE FICHIERS (FIX 2025-12-16) ===
+  // Les chemins comme C:/Users/niwno/Desktop ne doivent PAS etre corriges
+  const pathPlaceholders = [];
+  const pathPattern = /([A-Za-z]:[\x2F\x5C][^\s\"'<>|*?]+)/g;
+  text = text.replace(pathPattern, (match) => {
+    const placeholder = '__PATH_' + pathPlaceholders.length + '__';
+    pathPlaceholders.push(match);
+    return placeholder;
+  });
+
+  // === PROTECTION DES EXTENSIONS DE FICHIERS (FIX 2025-12-16) ===
+  // Les extensions comme .txt, .cjs, .json ne doivent PAS etre corrigees
+  const extPlaceholders = [];
+  const extPattern = /\.(txt|cjs|js|json|md|html|css|py|sh|bat|xml|yaml|yml|csv|log|ini|cfg|conf|exe|dll|zip|tar|gz|jpg|jpeg|png|gif|svg|pdf|doc|docx|xls|xlsx)\b/gi;
+  text = text.replace(extPattern, (match) => {
+    const placeholder = '__EXT_' + extPlaceholders.length + '__';
+    extPlaceholders.push(match);
+    return placeholder;
+  });
+
+  // === CORRECTIONS CONTEXTUELLES (erreurs LLM connues) ===
+  text = text.replace(/puisage/gi, 'puis-je');
+  text = text.replace(/ajoure['']?fui/gi, "aujourd'hui");
+  text = text.replace(/connecte/g, 'connectee');
+  text = text.replace(/Anna/g, 'Ana');
+  text = text.replace(/astuce/gi, 'est-ce');
+
+  // Si pas de dictionnaire, restaurer les chemins et retourner
+  if (!spellChecker) {
+    pathPlaceholders.forEach((path, i) => {
+      text = text.replace('__PATH_' + i + '__', path);
+    });
+    return text;
+  }
 
   // Split text into words while preserving punctuation and whitespace
   const wordPattern = /([a-zA-ZÀ-ÿ'-]+)|([^a-zA-ZÀ-ÿ'-]+)/g;
   const tokens = text.match(wordPattern) || [];
 
   const correctedTokens = tokens.map(token => {
-    // Skip non-word tokens (punctuation, whitespace, numbers)
     if (!/^[a-zA-ZÀ-ÿ'-]+$/.test(token)) {
       return token;
     }
-
-    // Skip short words (likely abbreviations or intentional)
     if (token.length <= 2) {
       return token;
     }
-
-    // Skip words that start with uppercase (proper nouns)
     if (/^[A-ZÀ-Ý]/.test(token) && token.length > 1) {
       return token;
     }
-
-    // Check if word is correct
     if (spellChecker.correct(token)) {
       return token;
     }
-
-    // Get suggestions
     const suggestions = spellChecker.suggest(token);
-
-    // Use first suggestion if available and reasonable
     if (suggestions.length > 0) {
       const suggestion = suggestions[0];
-
-      // Only use suggestion if it's similar enough (prevent drastic changes)
       if (isSimilarEnough(token, suggestion)) {
         return suggestion;
       }
     }
-
-    // Return original if no good suggestion
     return token;
   });
 
-  return correctedTokens.join('');
+  // Restaurer les chemins de fichiers
+  let result = correctedTokens.join('');
+  pathPlaceholders.forEach((path, i) => {
+    result = result.replace('__PATH_' + i + '__', path);
+  });
+  
+  // Restaurer les mots anglais
+  englishPlaceholders.forEach((word, i) => {
+    result = result.replace('__ENG_' + i + '__', word);
+  });
+
+  // Restaurer les extensions de fichiers
+  extPlaceholders.forEach((ext, i) => {
+    result = result.replace('__EXT_' + i + '__', ext);
+  });
+
+  return result;
 }
 
-/**
- * Check if two words are similar enough for auto-correction
- * Uses Levenshtein distance ratio
- * @param {string} original - Original word
- * @param {string} suggestion - Suggested correction
- * @returns {boolean} True if similar enough
- */
 function isSimilarEnough(original, suggestion) {
   const distance = levenshteinDistance(original.toLowerCase(), suggestion.toLowerCase());
   const maxLength = Math.max(original.length, suggestion.length);
   const similarity = 1 - (distance / maxLength);
-
-  // Require at least 60% similarity
   return similarity >= 0.6;
 }
 
-/**
- * Calculate Levenshtein distance between two strings
- * @param {string} a - First string
- * @param {string} b - Second string
- * @returns {number} Edit distance
- */
 function levenshteinDistance(a, b) {
   const matrix = [];
-
   for (let i = 0; i <= b.length; i++) {
     matrix[i] = [i];
   }
-
   for (let j = 0; j <= a.length; j++) {
     matrix[0][j] = j;
   }
-
   for (let i = 1; i <= b.length; i++) {
     for (let j = 1; j <= a.length; j++) {
       if (b.charAt(i - 1) === a.charAt(j - 1)) {
         matrix[i][j] = matrix[i - 1][j - 1];
       } else {
         matrix[i][j] = Math.min(
-          matrix[i - 1][j - 1] + 1, // substitution
-          matrix[i][j - 1] + 1,     // insertion
-          matrix[i - 1][j] + 1      // deletion
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
         );
       }
     }
   }
-
   return matrix[b.length][a.length];
 }
 
-/**
- * Get spell checker status
- * @returns {object} Status info
- */
 function getStatus() {
   return {
     initialized: isInitialized,

@@ -1,0 +1,261 @@
+﻿/**
+ * ANA MEMORY MANAGER - ChromaDB Integration
+ *
+ * Gere la memoire semantique d Ana avec ChromaDB pour:
+ * - Recherche vectorielle dans conversations
+ * - RAG (Retrieval Augmented Generation)
+ * - Memoire a long terme avec embeddings
+ *
+ * Best Practices 2025:
+ * - Persistent storage local
+ * - Server-side embeddings (ChromaDB HTTP server handles it)
+ * - Metadata filtering (date, model, topic)
+ * - Text chunking 1000 tokens (200 overlap)
+ */
+
+const { ChromaClient, OllamaEmbeddingFunction } = require('chromadb');
+// Using Ollama nomic-embed-text for embeddings
+const path = require('path');
+const fs = require('fs');
+
+class AnaMemoryManager {
+  constructor() {
+    this.client = null;
+    this.collection = null;
+    this.collectionName = 'ana_memory';
+    this.storagePath = path.join('E:', 'ANA', 'server', 'memory', 'chroma_data');
+    this.initialized = false;
+    this.logPath = path.join('E:', 'Memoire Claude', 'memory_manager.log');
+  }
+
+  async initialize() {
+    try {
+      this.log('Initializing ChromaDB client...');
+
+      if (!fs.existsSync(this.storagePath)) {
+        fs.mkdirSync(this.storagePath, { recursive: true });
+        this.log('Created storage directory: ' + this.storagePath);
+      }
+
+      // Connect to ChromaDB HTTP server on port 8000
+      this.client = new ChromaClient({
+        path: 'http://localhost:8000'
+      });
+
+      // Ollama embedding function using nomic-embed-text
+      const embedder = new OllamaEmbeddingFunction({
+        url: 'http://localhost:11434/api/embeddings',
+        model: 'nomic-embed-text'
+      });
+
+      this.collection = await this.client.getOrCreateCollection({
+        name: this.collectionName,
+        embeddingFunction: embedder,
+        metadata: {
+          description: 'Ana SUPERIA memory with semantic search',
+          created: new Date().toISOString()
+        }
+      });
+      this.log('Collection "' + this.collectionName + '" ready');
+
+      this.initialized = true;
+      this.log('ChromaDB initialized successfully');
+
+      return { success: true };
+    } catch (error) {
+      this.log('Initialization error: ' + error.message, 'error');
+      return { success: false, error: error.message };
+    }
+  }
+
+  async addConversation(data) {
+    if (!this.initialized) {
+      await this.initialize();
+    }
+
+    if (!this.collection) {
+      this.log('ChromaDB not connected - cannot add conversation', 'warn');
+      return { success: false, error: 'ChromaDB not connected' };
+    }
+
+    try {
+      const { userMessage, anaResponse, model, metadata = {} } = data;
+      const timestamp = new Date().toISOString();
+      const exchangeId = 'exchange_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      const combinedText = 'Alain: ' + userMessage + '\nAna (' + model + '): ' + anaResponse;
+      const chunks = this.chunkText(combinedText, 4000, 800);
+
+      const ids = [];
+      const documents = [];
+      const metadatas = [];
+
+      chunks.forEach((chunk, index) => {
+        const chunkId = exchangeId + '_chunk_' + index;
+        ids.push(chunkId);
+        documents.push(chunk);
+        metadatas.push({
+          timestamp,
+          model,
+          chunkIndex: index,
+          totalChunks: chunks.length,
+          exchangeId,
+          userMessage: userMessage.substring(0, 200),
+          ...metadata
+        });
+      });
+
+      await this.collection.add({
+        ids,
+        documents,
+        metadatas
+      });
+
+      this.log('Added conversation: ' + ids.length + ' chunk(s) | Model: ' + model + ' | ID: ' + exchangeId);
+
+      return {
+        success: true,
+        exchangeId,
+        chunksCount: chunks.length
+      };
+    } catch (error) {
+      this.log('Add conversation error: ' + error.message, 'error');
+      return { success: false, error: error.message };
+    }
+  }
+
+  async search(query, nResults = 5, where = null) {
+    if (!this.initialized) {
+      await this.initialize();
+    }
+
+    if (!this.collection) {
+      this.log('Searching for: "' + query.substring(0, 50) + '..." (n=' + nResults + ')');
+      this.log('ChromaDB not connected - returning empty results', 'warn');
+      return {
+        query,
+        count: 0,
+        results: [],
+        error: 'ChromaDB not connected'
+      };
+    }
+
+    try {
+      this.log('Searching for: "' + query.substring(0, 50) + '..." (n=' + nResults + ')');
+
+      const queryParams = {
+        queryTexts: [query],
+        nResults
+      };
+
+      if (where) {
+        queryParams.where = where;
+      }
+
+      const results = await this.collection.query(queryParams);
+
+      const formattedResults = {
+        query,
+        count: results.ids[0]?.length || 0,
+        results: []
+      };
+
+      if (results.ids[0]) {
+        results.ids[0].forEach((id, index) => {
+          formattedResults.results.push({
+            id,
+            document: results.documents[0][index],
+            metadata: results.metadatas[0][index],
+            distance: results.distances[0][index]
+          });
+        });
+      }
+
+      this.log('Search complete: ' + formattedResults.count + ' result(s)');
+
+      return formattedResults;
+    } catch (error) {
+      this.log('Search error: ' + error.message, 'error');
+      return { success: false, error: error.message };
+    }
+  }
+
+  async getStats() {
+    if (!this.initialized) {
+      await this.initialize();
+    }
+
+    if (!this.collection) {
+      return {
+        success: false,
+        error: 'ChromaDB not connected (server not running?)',
+        collectionName: this.collectionName,
+        totalDocuments: 0,
+        storagePath: this.storagePath
+      };
+    }
+
+    try {
+      const count = await this.collection.count();
+
+      return {
+        success: true,
+        collectionName: this.collectionName,
+        totalDocuments: count,
+        storagePath: this.storagePath
+      };
+    } catch (error) {
+      this.log('Stats error: ' + error.message, 'error');
+      return { success: false, error: error.message };
+    }
+  }
+
+  chunkText(text, chunkSize = 4000, overlap = 800) {
+    if (text.length <= chunkSize) {
+      return [text];
+    }
+
+    const chunks = [];
+    let start = 0;
+
+    while (start < text.length) {
+      const end = Math.min(start + chunkSize, text.length);
+      chunks.push(text.substring(start, end));
+      start += chunkSize - overlap;
+    }
+
+    return chunks;
+  }
+
+  log(message, level = 'info') {
+    const timestamp = new Date().toISOString();
+    const logMessage = '[' + timestamp + '] [' + level.toUpperCase() + '] ' + message + '\n';
+
+    console.log(logMessage.trim());
+
+    try {
+      fs.appendFileSync(this.logPath, logMessage, 'utf-8');
+    } catch (error) {
+      console.error('Failed to write to log file:', error.message);
+    }
+  }
+
+  async clearCollection() {
+    if (!this.initialized) {
+      await this.initialize();
+    }
+
+    try {
+      await this.client.deleteCollection({ name: this.collectionName });
+      this.log('Collection cleared');
+
+      await this.initialize();
+
+      return { success: true };
+    } catch (error) {
+      this.log('Clear error: ' + error.message, 'error');
+      return { success: false, error: error.message };
+    }
+  }
+}
+
+module.exports = new AnaMemoryManager();

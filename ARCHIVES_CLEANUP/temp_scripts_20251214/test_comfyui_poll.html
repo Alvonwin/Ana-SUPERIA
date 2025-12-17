@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test ComfyUI Poll</title></head>
+<body>
+<h1>Test ComfyUI Poll Result</h1>
+<button onclick="testPoll()">Test avec dernier prompt</button>
+<pre id="result"></pre>
+<img id="testimg" style="max-width:400px">
+
+<script>
+const COMFYUI_URL = 'http://localhost:8188';
+
+async function testPoll() {
+    const result = document.getElementById('result');
+    const testimg = document.getElementById('testimg');
+
+    try {
+        // Get history
+        const histResp = await fetch(`${COMFYUI_URL}/history`);
+        const history = await histResp.json();
+        const promptIds = Object.keys(history);
+
+        if (promptIds.length === 0) {
+            result.textContent = 'Pas de prompts dans l\'historique';
+            return;
+        }
+
+        const promptId = promptIds[0];
+        result.textContent = `Testing promptId: ${promptId}\n\n`;
+
+        // Get specific prompt
+        const resp = await fetch(`${COMFYUI_URL}/history/${promptId}`);
+        const data = await resp.json();
+
+        result.textContent += `Data: ${JSON.stringify(data, null, 2)}\n\n`;
+
+        if (data[promptId]?.outputs) {
+            const outputs = data[promptId].outputs;
+
+            for (const nodeId of Object.keys(outputs)) {
+                const nodeOutput = outputs[nodeId];
+                if (nodeOutput.images) {
+                    const img = nodeOutput.images[0];
+                    const url = `${COMFYUI_URL}/view?filename=${encodeURIComponent(img.filename)}&subfolder=${encodeURIComponent(img.subfolder || '')}&type=${img.type || 'output'}`;
+
+                    result.textContent += `\nURL construite: ${url}\n`;
+                    testimg.src = url;
+                    testimg.onload = () => result.textContent += '\nIMAGE CHARGÉE AVEC SUCCÈS!';
+                    testimg.onerror = () => result.textContent += '\nERREUR: Image non chargée!';
+                }
+            }
+        }
+    } catch (e) {
+        result.textContent = 'Erreur: ' + e.message;
+    }
+}
+</script>
+</body>
+</html>

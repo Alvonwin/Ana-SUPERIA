@@ -129,6 +129,7 @@ const vramManager = require('./services/vram-manager.cjs');
 const orchestrator = require('../intelligence/orchestrator.cjs');
 const n8nIntegration = require('./services/n8n-integration.cjs');
 const spellChecker = require('./utils/spell-checker.cjs');
+const grammarService = require('./services/grammar-service.cjs');
 const groqService = require('./services/groq-service.cjs');
 const cerebrasService = require('./services/cerebras-service.cjs');
 const skillLearner = require('./intelligence/skill-learner.cjs');
@@ -137,6 +138,7 @@ const contextSelector = require('./intelligence/context-selector.cjs');
 const tieredMemory = require('./memory/tiered-memory.cjs');
 const langchainWebSearch = require('./services/langchain-web-search.cjs');
 const factClassifier = require('./memory/fact-classifier.cjs');
+const llmProfiles = require('./config/llm-profiles.cjs');
 
 // === NEW MEMORY MODULES (14 Dec 2025) - Ana Consciente Phase ===
 const memoryCurator = require('./memory/memory-curator.cjs');
@@ -503,7 +505,7 @@ class IntelligenceRouter {
     // FIX 2025-12-14: Retiré 'ma voiture', 'voiture', 'mon ', 'ma ', 'mes ', 'quelle est' - gérés par tools/search_memory
     const memoryKeywords = ['souviens', 'rappelle', 'dit', 'conversation', 'mémoire', 'historique', 'regarde', 'précédemment', 'avant', 'déjà', 'marque'];
     if (memoryKeywords.some(kw => msgLower.includes(kw))) {
-      return { model: LLMS.FRENCH, reason: 'Question de mémoire - French model' };
+      return { model: llmProfiles.getDisplayName(), reason: 'Question de mémoire - French model' };
     }
 
     // Math tasks - Qwen
@@ -513,7 +515,7 @@ class IntelligenceRouter {
     }
 
     // Default - French model (tutoiement obligatoire)
-    const result = { model: LLMS.FRENCH, reason: 'Conversation générale - French tutoiement' };
+    const result = { model: llmProfiles.getDisplayName(), reason: 'Conversation générale - French tutoiement' };
 
     // PERF OPTIM: Cache the routing decision
     if (routingCache.size >= ROUTING_CACHE_MAX) {
@@ -854,6 +856,91 @@ app.post('/api/voice/history', (req, res) => {
       success: false,
       error: error.message,
       timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// ================== TTS API (16-Dec-2025) ==================
+// Synthese vocale avec voix quebecoise
+const ttsService = require('./services/tts-service.cjs');
+
+// POST - Synthetiser du texte en audio
+app.post('/api/tts/synthesize', async (req, res) => {
+  try {
+    const { text } = req.body;
+
+    if (!text || typeof text !== 'string' || text.trim().length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'Le champ text est requis et doit etre une chaine non vide'
+      });
+    }
+
+    const audioPath = await ttsService.synthesize(text.trim());
+
+    if (audioPath) {
+      res.sendFile(audioPath);
+    } else {
+      res.status(500).json({
+        success: false,
+        error: 'Erreur de synthese vocale'
+      });
+    }
+  } catch (error) {
+    console.error('[TTS API] Erreur:', error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// GET - Statistiques TTS
+app.get('/api/tts/stats', (req, res) => {
+  res.json({
+    success: true,
+    stats: ttsService.getStats()
+  });
+});
+
+// GET - Lister les voix disponibles
+app.get('/api/tts/voices', async (req, res) => {
+  try {
+    const voices = await ttsService.listVoices();
+    res.json({
+      success: true,
+      voices,
+      current: ttsService.voice
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// POST - Changer la voix
+app.post('/api/tts/voice', (req, res) => {
+  try {
+    const { voice } = req.body;
+
+    if (!voice || typeof voice !== 'string') {
+      return res.status(400).json({
+        success: false,
+        error: 'Le champ voice est requis'
+      });
+    }
+
+    ttsService.setVoice(voice);
+    res.json({
+      success: true,
+      voice: ttsService.voice
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
     });
   }
 });
@@ -1695,13 +1782,58 @@ app.post('/api/shutdown', async (req, res) => {
     await killByPort(3336, 'Agents');
     await killByPort(8188, 'ComfyUI');
 
-    // Note: La fenêtre de démarrage se ferme automatiquement après 5s (exit dans START_ANA.bat)
-    // Les autres terminaux utilisent cmd /c donc se ferment quand leur processus meurt
+    // FIX 2025-12-15: Fermer les fenêtres cmd par leur titre
+    // NOTE: "Ana Core Backend" pas dans la liste - process.exit(0) s'en charge à la fin
+    const windowTitles = [
+      'ChromaDB Server',
+      'Ana Interface Frontend',
+      'Ana Agents Autonomes',
+      'ComfyUI'
+    ];
+
+    for (const title of windowTitles) {
+      try {
+        await execPromise(`taskkill /FI "WINDOWTITLE eq ${title}*" /F /T`);
+        console.log(`[SHUTDOWN] ✅ Fenêtre "${title}" fermée`);
+      } catch (e) {
+        // Fenêtre déjà fermée ou non trouvée
+      }
+    }
 
     console.log('[SHUTDOWN] 👋 Arrêt du backend Ana Core...');
 
     // Fermer ce processus (le backend sur port 3338)
     process.exit(0);
+  }, 500);
+});
+
+// ==================== RESTART ENDPOINT ====================
+// Redémarre Ana en lançant START_ANA.bat - 16 Dec 2025
+app.post('/api/restart', async (req, res) => {
+  console.log('[RESTART] 🔄 Redémarrage demandé depuis interface...');
+
+  // Répondre immédiatement avant de redémarrer
+  res.json({ success: true, message: 'Redémarrage de Ana en cours...' });
+
+  // Attendre 500ms pour que la réponse HTTP soit envoyée
+  setTimeout(async () => {
+    const { exec, spawn } = require('child_process');
+
+    console.log('[RESTART] Lancement de START_ANA.bat...');
+
+    // Lancer START_ANA.bat dans une nouvelle fenêtre (il nettoie les ports)
+    spawn('cmd', ['/c', 'start', '', 'E:\\ANA\\START_ANA.bat'], {
+      detached: true,
+      stdio: 'ignore',
+      shell: true,
+      cwd: 'E:\\ANA'
+    });
+
+    // Attendre 2 secondes puis quitter (START_ANA.bat tuera ce processus de toute façon)
+    setTimeout(() => {
+      console.log('[RESTART] 👋 Fermeture du backend actuel...');
+      process.exit(0);
+    }, 2000);
   }, 500);
 });
 
@@ -1960,6 +2092,17 @@ ${chromaMemories}
             sessionId: req.body.sessionId || 'chat_main',
             context: memoryContext
           });
+          // FIX 2025-12-17: Extraire tool patterns pour apprentissage
+          const toolsUsed = toolResult?.stats?.toolCallCounts || {};
+          if (Object.keys(toolsUsed).length > 0) {
+            skillLearner.extractSkillsFromConversation({
+              userMessage: message,
+              anaResponse: toolResult.answer || '',
+              model: toolResult.model || 'tool-agent',
+              success: toolResult.success,
+              toolsUsed: toolsUsed
+            }).catch(e => console.log('📚 Skill extraction skipped:', e.message));
+          }
           return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur outil';
         }
         else if (expertType === 'research') {
@@ -1967,10 +2110,21 @@ ${chromaMemories}
           // FIX 2025-12-13: Passer MESSAGE original (pas expertQuery qui contient instructions)
           try {
             const toolResult = await toolAgent.runToolAgentV2(message, {
-              model: 'ana-superia-v6',  // 2025-12-13: Utilise le modèle principal
+              // FIX 2025-12-15: Pas de model hardcodé - orchestrateur décide
               sessionId: req.body.sessionId || 'chat_main',
               context: memoryContext
             });
+            // FIX 2025-12-17: Extraire tool patterns pour apprentissage
+            const toolsUsedResearch = toolResult?.stats?.toolCallCounts || {};
+            if (Object.keys(toolsUsedResearch).length > 0) {
+              skillLearner.extractSkillsFromConversation({
+                userMessage: message,
+                anaResponse: toolResult.answer || '',
+                model: toolResult.model || 'tool-agent',
+                success: toolResult.success,
+                toolsUsed: toolsUsedResearch
+              }).catch(e => console.log('📚 Skill extraction skipped:', e.message));
+            }
             return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur recherche';
           } catch (e) {
             return `Erreur recherche: ${e.message}`;
@@ -1989,14 +2143,8 @@ ${chromaMemories}
       };
 
       try {
-        // Émettre le modèle actif à l'interface (dynamique, pas hardcodé)
-        // FIX 2025-12-13: Vérifier que socket existe avant emit (HTTP requests n'ont pas socket)
-        if (typeof socket !== 'undefined' && socket && socket.emit) {
-          socket.emit('chat:model_selected', {
-            model: anaConsciousness.CONSCIOUSNESS_MODEL || 'ana-superia-v6',
-            reason: 'Conscience Supérieure'
-          });
-        }
+        // FIX 2025-12-15: SUPPRIMÉ l'émission prématurée du modèle
+        // Le vrai modèle sera émis APRÈS avoir reçu la réponse de l'orchestrateur
 
         // Appel DIRECT à Ana (1 seul LLM call au lieu de 3)
         const consciousnessResult = await anaDirect.processDirectly(
@@ -2006,12 +2154,15 @@ ${chromaMemories}
 
         if (consciousnessResult.success && consciousnessResult.response) {
           response = { response: consciousnessResult.response };
-          console.log('✅ [CONSCIOUSNESS] Traitement réussi via conscience supérieure');
-          // Log des phases pour debug
-          console.log('[CONSCIOUSNESS] Phases:', {
-            expertCalled: consciousnessResult.phases?.expertCalled,
-            expertType: consciousnessResult.phases?.expertType
-          });
+          // FIX 2025-12-15: Utiliser le model/provider RÉEL de l'orchestrateur
+          if (consciousnessResult.provider && consciousnessResult.model) {
+            model = `${consciousnessResult.provider}/${consciousnessResult.model}`;
+            reason = 'Modèle réel';
+          } else if (consciousnessResult.model) {
+            model = consciousnessResult.model;
+            reason = 'Modèle réel';
+          }
+          console.log(`✅ [CONSCIOUSNESS] Traitement réussi - Modèle RÉEL: ${model}`);
         } else {
           // Fallback: réponse directe classique si conscience échoue
           console.log('⚠️ [CONSCIOUSNESS] Fallback vers routing classique');
@@ -2040,7 +2191,17 @@ Tu DOIS donner une réponse DIFFÉRENTE et ORIGINALE. NE RÉPÈTE PAS "${repetit
 
 ${fullPrompt}`;
 
-      response = await router.query(model, antiRepetitionPrompt, false);
+      // FIX 2025-12-17: Utiliser le bon service selon le provider (Cerebras vs Ollama)
+      const isCerebrasModel = model && (model.includes('cerebras') || model === 'llama-3.3-70b');
+      if (isCerebrasModel) {
+        const cerebrasResult = await cerebrasService.chat(antiRepetitionPrompt, {
+          model: 'llama-3.3-70b',
+          systemPrompt: currentSystemPrompt
+        });
+        response = { response: cerebrasResult.response || cerebrasResult.content };
+      } else {
+        response = await router.query(model, antiRepetitionPrompt, false);
+      }
       repetitionCheck = globalDetector.check(response.response, 'chat_main');
     }
 
@@ -2053,12 +2214,25 @@ ${fullPrompt}`;
       globalDetector.record(response.response, 'chat_main');
     }
 
-    // 4. Save to memory
-    memory.appendToContext(`Alain: ${message}\nAna (${model}): ${response.response}`);
+    // 4. Apply spell checker to response (FIX 2025-12-15: puisage -> puis-je)
+    let finalResponse = spellChecker.correctText(response.response);
+    // FIX INLINE 2025-12-16: Correction directe
+    finalResponse = finalResponse.replace(/puisage/gi, 'puis-je');
+    finalResponse = finalResponse.replace(/qu'estoque/gi, "qu'est-ce que");
 
-    // 5. Send response
+    // 4.5. Apply grammar correction (LanguageTool API)
+    try {
+      finalResponse = await grammarService.correct(finalResponse);
+    } catch (gramErr) {
+      console.error('[Grammar] Erreur:', gramErr.message);
+    }
+
+    // 5. Save to memory
+    memory.appendToContext(`Alain: ${message}\nAna (${model}): ${finalResponse}`);
+
+    // 6. Send response
     res.json({
-      response: response.response,
+      response: finalResponse,
       model: model,
       reason: reason,
       memory_loaded: memoryContext.length > 0
@@ -3377,14 +3551,36 @@ app.post('/api/chat/v2', async (req, res) => {
             sessionId: 'chat_v2',
             context: memoryContext
           });
+          // FIX 2025-12-17: Extraire tool patterns pour apprentissage
+          const toolsUsedV2 = toolResult?.stats?.toolCallCounts || {};
+          if (Object.keys(toolsUsedV2).length > 0) {
+            skillLearner.extractSkillsFromConversation({
+              userMessage: message,
+              anaResponse: toolResult.answer || '',
+              model: toolResult.model || 'tool-agent',
+              success: toolResult.success,
+              toolsUsed: toolsUsedV2
+            }).catch(e => console.log('📚 Skill extraction skipped:', e.message));
+          }
           return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur outil';
         }
         else if (expertType === 'research') {
           const toolResult = await toolAgent.runToolAgentV2(message, {
-            model: 'ana-superia-v6',
+            // FIX 2025-12-15: Pas de model hardcodé
             sessionId: 'chat_v2',
             context: memoryContext
           });
+          // FIX 2025-12-17: Extraire tool patterns pour apprentissage
+          const toolsUsedV2Research = toolResult?.stats?.toolCallCounts || {};
+          if (Object.keys(toolsUsedV2Research).length > 0) {
+            skillLearner.extractSkillsFromConversation({
+              userMessage: message,
+              anaResponse: toolResult.answer || '',
+              model: toolResult.model || 'tool-agent',
+              success: toolResult.success,
+              toolsUsed: toolsUsedV2Research
+            }).catch(e => console.log('📚 Skill extraction skipped:', e.message));
+          }
           return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur recherche';
         }
         else if (expertType === 'code') {
@@ -3458,7 +3654,17 @@ app.post('/api/chat/v2', async (req, res) => {
     // V2: Capture to dedicated Ana memory (E:\ANA\memory\)
     memoryCaptureV2.capture({ userMessage: message, anaResponse: result.response, model: result.modelKey }).catch(err => console.error("Memory V2 capture error:", err.message));
 
-    // 5. Send response
+    // 5. Fix common French errors
+    result.response = result.response.replace(/puisage/gi, 'puis-je').replace(/qu'estoque/gi, "qu'est-ce que").replace(/Je suis Ana SUPERIA[^!.]*[!.]/gi, '').replace(/Comment puis-je/gi, 'Comment puis-je').trim();
+    
+    // 5.5. Apply grammar correction (LanguageTool API)
+    try {
+      result.response = await grammarService.correct(result.response);
+    } catch (gramErr) {
+      console.error('[Grammar] Erreur V2:', gramErr.message);
+    }
+
+    // 6. Send response
     res.json({
       success: true,
       response: result.response,
@@ -4930,6 +5136,12 @@ io.on('connection', (socket) => {
   console.log('? Client WebSocket connect�:', socket.id);
   console.log('   Origin:', socket.handshake.headers.origin);
 
+  // FIX 2025-12-16: Ne plus envoyer model_selected à la connexion
+  // Cela ajoutait un message système qui faisait disparaître les suggestions
+  // socket.emit('chat:model_selected', {
+  //   model: llmProfiles.getDisplayName(),
+  //   reason: 'Modèle par défaut'
+  // });
   // Chat streaming
   socket.on('chat:message', async (data) => {
     let { message, context, images } = data;
@@ -4943,11 +5155,7 @@ io.on('connection', (socket) => {
       console.log('🌟 [CONSCIOUSNESS-WS] Activation conscience supérieure...');
 
       try {
-        // Émettre le modèle actif à l'interface
-        socket.emit('chat:model_selected', {
-          model: anaConsciousness.CONSCIOUSNESS_MODEL || 'ana-superia-v6',
-          reason: 'Conscience Supérieure'
-        });
+        // FIX 2025-12-15: SUPPRIMÉ l'émission prématurée - le vrai modèle sera émis après réponse
 
         // Récupérer contexte mémoire + conversation récente
         const sessionContext = memory.getSessionContext(); // 20 derniers messages
@@ -4965,14 +5173,36 @@ io.on('connection', (socket) => {
               sessionId: 'chat_main',
               context: memoryContext
             });
+            // FIX 2025-12-17: Extraire tool patterns pour apprentissage
+            const toolsUsedMain = toolResult?.stats?.toolCallCounts || {};
+            if (Object.keys(toolsUsedMain).length > 0) {
+              skillLearner.extractSkillsFromConversation({
+                userMessage: message,
+                anaResponse: toolResult.answer || '',
+                model: toolResult.model || 'tool-agent',
+                success: toolResult.success,
+                toolsUsed: toolsUsedMain
+              }).catch(e => console.log('📚 Skill extraction skipped:', e.message));
+            }
             return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur outil';
           }
           else if (expertType === 'research') {
             const toolResult = await toolAgent.runToolAgentV2(message, {
-              model: 'ana-superia-v6',
+              // FIX 2025-12-15: Pas de model hardcodé
               sessionId: 'chat_main',
               context: memoryContext
             });
+            // FIX 2025-12-17: Extraire tool patterns pour apprentissage
+            const toolsUsedMainResearch = toolResult?.stats?.toolCallCounts || {};
+            if (Object.keys(toolsUsedMainResearch).length > 0) {
+              skillLearner.extractSkillsFromConversation({
+                userMessage: message,
+                anaResponse: toolResult.answer || '',
+                model: toolResult.model || 'tool-agent',
+                success: toolResult.success,
+                toolsUsed: toolsUsedMainResearch
+              }).catch(e => console.log('📚 Skill extraction skipped:', e.message));
+            }
             return toolResult.success ? toolResult.answer : toolResult.error || 'Erreur recherche';
           }
           else if (expertType === 'code') {
@@ -5008,14 +5238,20 @@ io.on('connection', (socket) => {
             await new Promise(resolve => setTimeout(resolve, 50));
           }
 
+          // FIX 2025-12-15: VÉRITÉ SEULEMENT - pas de hardcoding
+          const realModel = consciousnessResult.model || 'unknown';
+          const realProvider = consciousnessResult.provider || 'unknown';
+          const displayModel = realProvider !== 'unknown' && realModel !== 'unknown'
+            ? `${realProvider}/${realModel}`
+            : realModel;
+
           socket.emit('chat:complete', {
             response: finalResponse,
-            model: consciousnessResult.model || 'ana-superia-v6'
+            model: displayModel
           });
 
-          // Émettre le vrai modèle utilisé
           socket.emit('chat:model_selected', {
-            model: consciousnessResult.model || 'ana-superia-v6',
+            model: llmProfiles.getDisplayName(),
             reason: 'Modèle réel'
           });
 
@@ -5062,7 +5298,8 @@ io.on('connection', (socket) => {
           });
 
           if (result.success && result.answer) {
-            const filteredAnswer = forceTutoiement(result.answer);
+            let filteredAnswer = forceTutoiement(result.answer);
+            filteredAnswer = spellChecker.correctText(filteredAnswer);
             console.log(`🛠 [ToolAgent] Réponse: "${filteredAnswer.substring(0, 100)}..."`);
             socket.emit('chat:chunk', { chunk: filteredAnswer });
             socket.emit('chat:complete', {});
@@ -5112,7 +5349,8 @@ io.on('connection', (socket) => {
           });
 
           if (groqResult.success) {
-            const filteredGroq = forceTutoiement(groqResult.response);
+            let filteredGroq = forceTutoiement(groqResult.response);
+            filteredGroq = spellChecker.correctText(filteredGroq);
             console.log(`⚡ [GROQ] Réponse: ${filteredGroq.substring(0, 100)}...`);
             socket.emit('chat:chunk', { chunk: filteredGroq });
             socket.emit('chat:complete', { model: model, provider: 'groq' });
@@ -5147,7 +5385,8 @@ io.on('connection', (socket) => {
           });
 
           if (cerebrasResult.success) {
-            const filteredCerebras = forceTutoiement(cerebrasResult.response);
+            let filteredCerebras = forceTutoiement(cerebrasResult.response);
+            filteredCerebras = spellChecker.correctText(filteredCerebras);
             console.log(`🧠 [CEREBRAS] Réponse: ${filteredCerebras.substring(0, 100)}...`);
             socket.emit('chat:chunk', { chunk: filteredCerebras });
             socket.emit('chat:complete', { model: model, provider: 'cerebras' });
@@ -5885,8 +6124,9 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
 
               // �mettre uniquement si content existe ET que ce n'est pas le message final done:true
               if (content && json.done !== true) {
-                // Appliquer filtre tutoiement au streaming (vous→tu)
-                const filteredContent = forceTutoiement(content);
+                // Appliquer filtre tutoiement au streaming (vous→tu) + correction puisage
+                let filteredContent = forceTutoiement(content);
+                filteredContent = filteredContent.replace(/puisage/gi, 'puis-je');
                 fullResponse += filteredContent;
                 console.log('🔵 Backend emit chunk:', filteredContent);
                 socket.emit('chat:chunk', { chunk: filteredContent });

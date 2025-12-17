@@ -132,10 +132,13 @@ class SkillLearner {
   }
 
   /**
-   * Search across all skills (dynamic + static) - Phase 2 - 30 Nov 2025
+   * Search across all skills - Phase 3 FIX 2025-12-14
+   * PRIORITÉ ABSOLUE aux skills appris (dynamic)
+   * Static skills = FALLBACK seulement si pas assez de dynamic
+   *
    * @param {string} query - Search term
    * @param {number} limit - Max results (default 100)
-   * @returns {Array} Matching skills
+   * @returns {Array} Matching skills with priority to learned ones
    */
   searchSkills(query, limit = 100) {
     if (!query || typeof query !== 'string') {
@@ -147,34 +150,52 @@ class SkillLearner {
       return [];
     }
 
-    const results = [];
+    const dynamicResults = [];
+    const staticResults = [];
 
-    // Search dynamic skills first (fallback protection)
+    // 1. Search dynamic skills (APPRIS par Ana) - PRIORITÉ ABSOLUE
     const dynamicSkills = this.skills?.skills || [];
     for (const skill of dynamicSkills) {
-      if (results.length >= limit) break;
-
       const nameMatch = (skill.name || '').toLowerCase().includes(searchTerm);
       const descMatch = (skill.description || '').toLowerCase().includes(searchTerm);
       const typeMatch = (skill.type || '').toLowerCase().includes(searchTerm);
 
       if (nameMatch || descMatch || typeMatch) {
-        results.push({ ...skill, source: 'dynamic' });
+        // Score: plus d'occurrences = plus important
+        const score = (skill.occurrences || 1) + (skill.confidence === 'high' ? 10 : 0);
+        dynamicResults.push({ ...skill, source: 'dynamic', priority: 1, score });
       }
     }
 
-    // Search static skills
-    for (const skill of this.staticSkills) {
-      if (results.length >= limit) break;
+    // Trier dynamic par score décroissant
+    dynamicResults.sort((a, b) => b.score - a.score);
 
-      const nameMatch = (skill.name || '').toLowerCase().includes(searchTerm);
-      const descMatch = (skill.description || '').toLowerCase().includes(searchTerm);
-      const catMatch = (skill.category || '').toLowerCase().includes(searchTerm);
+    // 2. FALLBACK: Static skills SEULEMENT si pas assez de dynamic
+    const dynamicCount = dynamicResults.length;
+    const needStatic = dynamicCount < Math.min(limit, 5); // Fallback si moins de 5 dynamic
 
-      if (nameMatch || descMatch || catMatch) {
-        results.push({ ...skill, source: 'static' });
+    if (needStatic) {
+      for (const skill of this.staticSkills) {
+        if (staticResults.length >= (limit - dynamicCount)) break;
+
+        const nameMatch = (skill.name || '').toLowerCase().includes(searchTerm);
+        const descMatch = (skill.description || '').toLowerCase().includes(searchTerm);
+        const catMatch = (skill.category || '').toLowerCase().includes(searchTerm);
+
+        if (nameMatch || descMatch || catMatch) {
+          staticResults.push({ ...skill, source: 'static', priority: 2, score: 0 });
+        }
       }
     }
+
+    // 3. Combiner: Dynamic d'abord, puis static en fallback
+    const results = [...dynamicResults.slice(0, limit)];
+    const remaining = limit - results.length;
+    if (remaining > 0 && staticResults.length > 0) {
+      results.push(...staticResults.slice(0, remaining));
+    }
+
+    console.log(`[SkillLearner] Search "${searchTerm}": ${dynamicResults.length} dynamic, ${needStatic ? staticResults.length : 0} static fallback`);
 
     return results;
   }
@@ -184,34 +205,51 @@ class SkillLearner {
    * Uses LLM to analyze what skills were demonstrated/learned
    */
   async extractSkillsFromConversation(exchange) {
-    const { userMessage, anaResponse, model, success = true } = exchange;
+    const { userMessage, anaResponse, model, success = true, toolsUsed = {} } = exchange;
+
+    // FIX 2025-12-17: Extraire tool patterns si des outils ont ete utilises
+    if (Object.keys(toolsUsed).length > 0) {
+      try {
+        await this.extractToolPattern(userMessage, toolsUsed, success);
+      } catch (e) {
+        console.log('[SkillLearner] Tool pattern extraction skipped:', e.message);
+      }
+    }
 
     try {
-      // Use PHI3 for skill extraction (fast + reasoning)
-      const extractionPrompt = `Analyze this conversation and extract any skills demonstrated or learned.
+      // FIX 2025-12-14: Extraction dynamique améliorée (style Mem0)
+      // Focus sur ce qui MÉRITE d'être retenu, pas tout
+      const extractionPrompt = `Tu es un analyseur de mémoire. Analyse cette conversation et extrait SEULEMENT ce qui mérite d'être retenu pour le futur.
 
-USER: ${userMessage}
+CONVERSATION:
+Alain: ${userMessage}
+Ana: ${anaResponse}
 
-ASSISTANT RESPONSE: ${anaResponse}
+RÈGLES D'EXTRACTION:
+- NE RETIENS PAS les choses banales (salutations, questions sur l'heure, etc.)
+- RETIENS: faits personnels sur Alain, préférences, erreurs à éviter, solutions qui ont marché
+- RETIENS: patterns réutilisables, leçons apprises
+- Si RIEN ne mérite d'être retenu, réponds {"skills": [], "reason": "Rien de notable"}
 
-Extract:
-1. SKILL_TYPE: (coding, debugging, reasoning, creativity, research, communication)
-2. SKILL_NAME: Short descriptive name
-3. SKILL_DESCRIPTION: What was demonstrated/learned
-4. CONFIDENCE: (high, medium, low)
-5. PATTERN: Reusable pattern if any
+CATÉGORIES:
+- personal_fact: Info sur Alain (anniversaire, voiture, préférences...)
+- preference: Ce qu'Alain aime/n'aime pas
+- learned_solution: Solution à un problème
+- pattern: Pattern réutilisable
+- mistake_to_avoid: Erreur à ne pas répéter
 
-Respond in JSON format:
+Réponds en JSON:
 {
   "skills": [
     {
-      "type": "...",
-      "name": "...",
-      "description": "...",
-      "confidence": "...",
-      "pattern": "..."
+      "type": "personal_fact|preference|learned_solution|pattern|mistake_to_avoid",
+      "name": "Nom court et descriptif",
+      "description": "Ce qui a été appris",
+      "confidence": "high|medium|low",
+      "importance": 1-10
     }
-  ]
+  ],
+  "reason": "Pourquoi ces éléments sont importants (ou pourquoi rien)"
 }`;
 
       const response = await axios.post(`${OLLAMA_URL}/api/generate`, {
@@ -690,6 +728,104 @@ Respond in JSON:
       timestamp: new Date().toISOString()
     };
   }
+
+  // ========================================================
+  // FIX 2025-12-17: Methodes pour apprentissage tool patterns
+  // ========================================================
+
+  /**
+   * Utilise semantic-router pour classifier le type de tache
+   */
+  async getTaskType(message) {
+    try {
+      const semanticRouter = require('./semantic-router.cjs');
+      if (!semanticRouter.initialized) {
+        await semanticRouter.initialize();
+      }
+      const result = await semanticRouter.route(message);
+      return result.taskType || 'conversation';
+    } catch (e) {
+      console.log('[SkillLearner] getTaskType fallback:', e.message);
+      return 'conversation';
+    }
+  }
+
+  /**
+   * Extrait et stocke les patterns d'utilisation d'outils
+   */
+  async extractToolPattern(userMessage, toolsUsed, success) {
+    const taskType = await this.getTaskType(userMessage);
+
+    for (const [toolName, count] of Object.entries(toolsUsed)) {
+      const pattern = {
+        id: 'tp_' + Date.now() + '_' + toolName,
+        type: 'tool_pattern',
+        name: toolName + '_for_' + taskType,
+        description: 'Outil ' + toolName + ' efficace pour taches ' + taskType,
+        toolName: toolName,
+        taskType: taskType,
+        confidence: success ? 'high' : 'low',
+        importance: 7,
+        occurrences: 1,
+        successCount: success ? 1 : 0,
+        failureCount: success ? 0 : 1,
+        learnedAt: new Date().toISOString(),
+        lastSeen: new Date().toISOString()
+      };
+
+      // Verifier si pattern similaire existe
+      const existing = this.findSimilarToolPattern(toolName, taskType);
+      if (existing) {
+        existing.occurrences++;
+        if (success) existing.successCount = (existing.successCount || 0) + 1;
+        else existing.failureCount = (existing.failureCount || 0) + 1;
+        existing.lastSeen = new Date().toISOString();
+        // Ajuster confidence base sur taux de succes
+        const rate = existing.successCount / (existing.successCount + existing.failureCount);
+        existing.confidence = rate > 0.8 ? 'high' : rate > 0.5 ? 'medium' : 'low';
+      } else {
+        if (!this.skills.skills) this.skills.skills = [];
+        this.skills.skills.push(pattern);
+      }
+    }
+
+    this.saveSkills();
+    console.log('[SkillLearner] Pattern appris: ' + Object.keys(toolsUsed).join(', ') + ' pour ' + taskType);
+  }
+
+  /**
+   * Trouve un tool pattern similaire existant
+   */
+  findSimilarToolPattern(toolName, taskType) {
+    if (!this.skills || !this.skills.skills) return null;
+    return this.skills.skills.find(s =>
+      s.type === 'tool_pattern' &&
+      s.toolName === toolName &&
+      s.taskType === taskType
+    );
+  }
+
+  /**
+   * Retourne les outils les plus efficaces pour un taskType
+   */
+  getRecommendedTools(taskType, limit = 5) {
+    if (!this.skills || !this.skills.skills) return [];
+
+    return this.skills.skills
+      .filter(s => s.type === 'tool_pattern' && s.taskType === taskType)
+      .map(s => ({
+        ...s,
+        successRate: s.successCount / ((s.successCount || 0) + (s.failureCount || 0) || 1)
+      }))
+      .sort((a, b) => {
+        // Priorite 1: taux de succes
+        if (b.successRate !== a.successRate) return b.successRate - a.successRate;
+        // Priorite 2: nombre d'occurrences (experience)
+        return (b.occurrences || 0) - (a.occurrences || 0);
+      })
+      .slice(0, limit);
+  }
+
 }
 
 module.exports = new SkillLearner();

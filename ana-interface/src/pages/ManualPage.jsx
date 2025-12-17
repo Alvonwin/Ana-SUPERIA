@@ -50,7 +50,7 @@ function ManualPage() {
     const contents = {
       'quick-start': { title: 'Bienvenue dans Ana SUPERIA!', text: 'Ana est ton assistante IA locale avec 12 cerveaux.', steps: ['Lancer Ana - Double-clic sur START_ANA.bat', 'Ouvrir http://localhost:3339', 'Commencer a discuter'] },
       'chat': { title: 'Page Chat', text: 'Interface principale pour discuter avec Ana.', features: ['Envoi de messages - Enter pour envoyer', 'Mode streaming - Reponses temps reel', 'Upload fichiers - Images et documents', 'TTS - Ana lit ses reponses', 'Mode vocal - Bouton micro'] },
-      'brains': { title: 'Page Cerveaux', text: '12 modeles IA disponibles.', providers: [['Ollama','Local','DeepSeek, Phi-3, Qwen, Llama Vision'],['GROQ','Cloud','Llama, Mixtral'],['CEREBRAS','Cloud','Llama 1000 tok/s']] },
+      'brains': { title: 'Page Cerveaux', text: '12 modeles IA disponibles.', providers: [['Ollama','Local','DeepSeek, Phi-3, Llama Vision'],['CEREBRAS','Cloud','Llama 1000 tok/s']] },
       'voice': { title: 'Mode Vocal', text: 'Conversation vocale bidirectionnelle.', features: ['Microphone - Clic pour parler', 'Mode conversation - Boucle vocale continue', 'TTS - Ana lit a voix haute', 'Parametres: langue, vitesse, voix'] },
       'coding': { title: 'Editeur de Code', text: 'Editeur Monaco avec execution.', features: ['Ouvrir/Sauvegarder fichiers', 'Formater avec Prettier', 'Executer le code', 'Langages: JS, Python, Java, C++, Go, Rust'] },
       'memory': { title: 'Recherche Memoire', text: 'Cherche dans toutes les conversations.', filters: ['Repertoire', 'Periode', 'Type', 'Projet', 'Tags'] },

@@ -1,0 +1,62 @@
+[
+  {
+    "test": "web_search",
+    "statut": "OK",
+    "duree": 19360,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  },
+  {
+    "test": "get_weather",
+    "statut": "OK",
+    "duree": 9923,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  },
+  {
+    "test": "get_time",
+    "statut": "OK",
+    "duree": 6354,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  },
+  {
+    "test": "read_file",
+    "statut": "OK",
+    "duree": 5,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  },
+  {
+    "test": "list_files",
+    "statut": "OK",
+    "duree": 6,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  },
+  {
+    "test": "file_info",
+    "statut": "OK",
+    "duree": 14797,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  },
+  {
+    "test": "get_cpu_usage",
+    "statut": "OK",
+    "duree": 13961,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  },
+  {
+    "test": "get_memory_usage",
+    "statut": "OK",
+    "duree": 14323,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  },
+  {
+    "test": "get_disk_usage",
+    "statut": "OK",
+    "duree": 11972,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  },
+  {
+    "test": "git_status",
+    "statut": "OK",
+    "duree": 22359,
+    "model": "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
+  }
+]

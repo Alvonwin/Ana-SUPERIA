@@ -30,6 +30,7 @@ function SettingsPage() {
   // Shutdown state
   const [shutdownConfirm, setShutdownConfirm] = useState(false);
   const [shuttingDown, setShuttingDown] = useState(false);
+  const [restarting, setRestarting] = useState(false);
 
   // Tunnel URLs state - 07 Dec 2025
   const [tunnelUrls, setTunnelUrls] = useState({ frontend: null, backend: null, generated: null });
@@ -203,11 +204,24 @@ function SettingsPage() {
     setShutdownConfirm(false);
   };
 
+    // Restart Ana - 16 Dec 2025
+  const handleRestart = async () => {
+    setRestarting(true);
+    try {
+      await fetch(`${API_BASE}/api/restart`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+    } catch (err) {
+      console.log('[SettingsPage] Restart initiated');
+    }
+  };
+
   const llmOptions = [
     { value: 'auto', label: 'Automatique (recommandé)', desc: 'Ana choisit le meilleur LLM' },
     { value: 'phi3', label: 'Phi-3 Mini', desc: 'Conversation rapide' },
     { value: 'deepseek', label: 'DeepSeek-Coder', desc: 'Code et programmation' },
-    { value: 'qwen', label: 'Qwen2.5-Coder', desc: 'Math et calculs' },
+    
     { value: 'llama_vision', label: 'Llama Vision', desc: 'Images et vision' },
   ];
 
@@ -435,16 +449,24 @@ function SettingsPage() {
           <h3><IconPower size={20} /> Zone Système</h3>
           <p>Arrêter proprement tous les processus Ana (Backend, ChromaDB, Tunnels, Agents).</p>
 
-          {shuttingDown ? (
+          {shuttingDown || restarting ? (
             <div className="shutdown-message">
-              <span className="spinner"></span> Ana s'arrête... Vous pouvez fermer cette fenêtre.
+              <span className="spinner"></span> {restarting ? 'Ana redémarre...' : "Ana s'arrête..."} Veuillez patienter.
             </div>
           ) : (
             <div className="shutdown-actions">
               <button
+                className="btn-restart"
+                onClick={handleRestart}
+                disabled={shuttingDown || restarting}
+              >
+                <IconRotateCcw size={16} />
+                Redémarrer Ana
+              </button>
+              <button
                 className={`btn-shutdown ${shutdownConfirm ? 'confirming' : ''}`}
                 onClick={handleShutdown}
-                disabled={shuttingDown}
+                disabled={shuttingDown || restarting}
               >
                 <IconPower size={16} />
                 {shutdownConfirm ? 'Confirmer l\'arrêt' : 'Fermer Ana'}

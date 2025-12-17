@@ -1,0 +1,638 @@
+/**
+ * Tool Agent - Agent avec Tool Calling pour Ana
+ *
+ * Permet à Ana (Ollama) d'appeler des outils (web, fichiers, shell, météo, etc.)
+ * via une boucle ReAct: LLM → Tool → LLM → ... → Réponse finale
+ *
+ * Créé: 2 Décembre 2025
+ * Source: Perplexity recommendation
+ */
+
+const axios = require('axios');
+const WebTools = require('../tools/web-tools.cjs');
+const FileTools = require('../tools/file-tools.cjs');
+const BashTools = require('../tools/bash-tools.cjs');
+
+const OLLAMA_URL = 'http://localhost:11434';
+const DEFAULT_MODEL = 'qwen2.5-coder:7b';
+
+/**
+ * FIX 2025-12-03: Extraction robuste de JSON tool calls
+ * L'ancienne regex ne gérait pas les objets vides {} dans arguments
+ * Cette méthode compte les parenthèses pour trouver les blocs JSON valides
+ */
+function findToolCallJSON(content) {
+  const results = [];
+  let startIdx = 0;
+
+  // Trouver toutes les positions de '{' et essayer de parser
+  while ((startIdx = content.indexOf('{', startIdx)) !== -1) {
+    // Trouver le '}' correspondant en comptant la profondeur
+    let depth = 0;
+    let endIdx = startIdx;
+
+    for (let i = startIdx; i < content.length; i++) {
+      if (content[i] === '{') depth++;
+      if (content[i] === '}') {
+        depth--;
+        if (depth === 0) {
+          endIdx = i;
+          break;
+        }
+      }
+    }
+
+    if (depth === 0 && endIdx > startIdx) {
+      const candidate = content.substring(startIdx, endIdx + 1);
+      try {
+        const parsed = JSON.parse(candidate);
+        // Vérifier que c'est un tool call valide
+        if (parsed.name && typeof parsed.arguments !== 'undefined') {
+          results.push(candidate);
+        }
+      } catch (e) {
+        // Pas du JSON valide, continuer
+      }
+    }
+    startIdx++;
+  }
+
+  return results;
+}
+
+// 1) Définition des outils côté LLM (schémas JSON)
+const TOOL_DEFINITIONS = [
+  {
+    type: 'function',
+    function: {
+      name: 'web_search',
+      description: 'Recherche d\'information générale sur le web (DuckDuckGo).',
+      parameters: {
+        type: 'object',
+        properties: {
+          query: { type: 'string', description: 'Requête de recherche en texte libre.' },
+          limit: { type: 'integer', description: 'Nombre max de résultats', default: 5 }
+        },
+        required: ['query']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_weather',
+      description: 'Obtenir la météo actuelle pour une ville donnée.',
+      parameters: {
+        type: 'object',
+        properties: {
+          location: { type: 'string', description: 'Ville ou lieu, ex: "Longueuil".' },
+          lang: { type: 'string', description: 'Langue de la réponse météo', default: 'fr' }
+        },
+        required: ['location']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_time',
+      description: 'Obtenir l\'heure et la date actuelles du système.',
+      parameters: {
+        type: 'object',
+        properties: {
+          timezone: { type: 'string', description: 'Fuseau horaire (ex: "America/Montreal")', default: 'America/Montreal' }
+        },
+        required: []
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'read_file',
+      description: 'Lire un fichier texte sur le disque.',
+      parameters: {
+        type: 'object',
+        properties: {
+          path: { type: 'string', description: 'Chemin absolu du fichier.' },
+          limit: { type: 'integer', description: 'Longueur max du contenu retourné', default: 4000 }
+        },
+        required: ['path']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'write_file',
+      description: 'Écrire du contenu dans un fichier.',
+      parameters: {
+        type: 'object',
+        properties: {
+          path: { type: 'string', description: 'Chemin absolu du fichier.' },
+          content: { type: 'string', description: 'Contenu à écrire.' }
+        },
+        required: ['path', 'content']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'list_files',
+      description: 'Lister les fichiers d\'un répertoire.',
+      parameters: {
+        type: 'object',
+        properties: {
+          path: { type: 'string', description: 'Chemin du répertoire.' },
+          recursive: { type: 'boolean', description: 'Inclure sous-dossiers', default: false }
+        },
+        required: ['path']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'run_shell',
+      description: 'Exécuter une commande shell.',
+      parameters: {
+        type: 'object',
+        properties: {
+          command: { type: 'string', description: 'Commande shell à exécuter.' },
+          timeout: { type: 'integer', description: 'Timeout en ms', default: 10000 }
+        },
+        required: ['command']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'web_fetch',
+      description: 'Récupérer le contenu d\'une page web.',
+      parameters: {
+        type: 'object',
+        properties: {
+          url: { type: 'string', description: 'URL de la page à récupérer.' },
+          selector: { type: 'string', description: 'Sélecteur CSS optionnel pour extraire une partie.' }
+        },
+        required: ['url']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'wikipedia',
+      description: 'Rechercher sur Wikipedia FR.',
+      parameters: {
+        type: 'object',
+        properties: {
+          query: { type: 'string', description: 'Terme à rechercher.' }
+        },
+        required: ['query']
+      }
+    }
+  },
+  // === CLOUD LLM TOOLS ===
+  {
+    type: 'function',
+    function: {
+      name: 'ask_groq',
+      description: 'Poser une question complexe à Groq (ultra-rapide, Llama 70B). Pour raisonnement avancé, recherches, analyses.',
+      parameters: {
+        type: 'object',
+        properties: {
+          question: { type: 'string', description: 'Question à poser à Groq.' },
+          model: { type: 'string', enum: ['llama-3.1-70b-versatile', 'llama-3.1-8b-instant', 'mixtral-8x7b-32768'], description: 'Modèle Groq', default: 'llama-3.1-70b-versatile' }
+        },
+        required: ['question']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'ask_cerebras',
+      description: 'Poser une question à Cerebras (le plus rapide du monde, ~1000 tok/s). Pour tâches critiques, coding, math.',
+      parameters: {
+        type: 'object',
+        properties: {
+          question: { type: 'string', description: 'Question à poser à Cerebras.' },
+          model: { type: 'string', enum: ['llama3.1-8b', 'llama3.1-70b'], description: 'Modèle Cerebras', default: 'llama3.1-8b' }
+        },
+        required: ['question']
+      }
+    }
+  },
+  // === MEMORY SEARCH TOOL ===
+  {
+    type: 'function',
+    function: {
+      name: 'search_memory',
+      description: 'Rechercher dans ma mémoire des conversations passées avec Alain. Utiliser quand Alain demande "tu te rappelles?", "on avait parlé de...", "cherche dans ta mémoire".',
+      parameters: {
+        type: 'object',
+        properties: {
+          query: { type: 'string', description: 'Ce que je cherche dans ma mémoire (mots-clés, sujet, nom).' },
+          limit: { type: 'integer', description: 'Nombre max de résultats', default: 5 }
+        },
+        required: ['query']
+      }
+    }
+  }
+];
+
+// 2) Mapping des outils → fonctions Node réelles
+const TOOL_IMPLEMENTATIONS = {
+  async web_search(args) {
+    const { query, limit } = args;
+    console.log(`🔧 [ToolAgent] web_search: "${query}"`);
+    const result = await WebTools.search(query, { limit: limit || 5 });
+    return result;
+  },
+
+  async get_weather(args) {
+    const { location, lang } = args;
+    console.log(`🔧 [ToolAgent] get_weather: "${location}"`);
+    const result = await WebTools.weather(location, { lang: lang || 'fr' });
+    return result;
+  },
+
+  async get_time(args) {
+    const { timezone } = args;
+    console.log(`🔧 [ToolAgent] get_time`);
+    const now = new Date();
+    const options = {
+      timeZone: timezone || 'America/Montreal',
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    };
+    return {
+      success: true,
+      datetime: now.toLocaleString('fr-CA', options),
+      iso: now.toISOString(),
+      timestamp: now.getTime(),
+      timezone: timezone || 'America/Montreal'
+    };
+  },
+
+  async read_file(args) {
+    const { path, limit } = args;
+    console.log(`🔧 [ToolAgent] read_file: "${path}"`);
+    const res = await FileTools.read(path, { encoding: 'utf-8', limit: limit || 4000 });
+    return {
+      success: res.success,
+      path: res.path,
+      content: res.content,
+      error: res.error
+    };
+  },
+
+  async write_file(args) {
+    const { path, content } = args;
+    console.log(`🔧 [ToolAgent] write_file: "${path}"`);
+    const res = await FileTools.write(path, content, { backup: true });
+    return res;
+  },
+
+  async list_files(args) {
+    const { path, recursive } = args;
+    console.log(`🔧 [ToolAgent] list_files: "${path}"`);
+    const res = await FileTools.list(path, { recursive: recursive || false, details: true });
+    return res;
+  },
+
+  async run_shell(args) {
+    const { command, timeout } = args;
+    console.log(`🔧 [ToolAgent] run_shell: "${command}"`);
+    const res = await BashTools.execute(command, { timeout: timeout || 10000 });
+    return res;
+  },
+
+  async web_fetch(args) {
+    const { url, selector } = args;
+    console.log(`🔧 [ToolAgent] web_fetch: "${url}"`);
+    const res = await WebTools.fetch(url, { selector });
+    return res;
+  },
+
+  async wikipedia(args) {
+    const { query } = args;
+    console.log(`🔧 [ToolAgent] wikipedia: "${query}"`);
+    const res = await WebTools.wikipedia(query);
+    return res;
+  },
+
+  // === CLOUD LLM IMPLEMENTATIONS ===
+  async ask_groq(args) {
+    const { question, model = 'llama-3.1-70b-versatile' } = args;
+    console.log(`🔧 [ToolAgent] ask_groq: "${question.substring(0, 50)}..."`);
+    const groqService = require('../services/groq-service.cjs');
+    const result = await groqService.chat(question, { model });
+    return {
+      success: result.success,
+      provider: 'groq',
+      model,
+      answer: result.response || result.error,
+      tokens: result.usage?.total_tokens || 0,
+      latencyMs: result.latencyMs
+    };
+  },
+
+  async ask_cerebras(args) {
+    const { question, model = 'llama3.1-8b' } = args;
+    console.log(`🔧 [ToolAgent] ask_cerebras: "${question.substring(0, 50)}..."`);
+    const cerebrasService = require('../services/cerebras-service.cjs');
+    const result = await cerebrasService.chat(question, { model });
+    return {
+      success: result.success,
+      provider: 'cerebras',
+      model,
+      answer: result.response || result.error,
+      tokens: result.usage?.total_tokens || 0,
+      latencyMs: result.latencyMs
+    };
+  },
+
+  // === MEMORY SEARCH IMPLEMENTATION ===
+  async search_memory(args) {
+    const { query, limit = 5 } = args;
+    console.log(`🧠 [ToolAgent] search_memory: "${query}"`);
+
+    const fs = require('fs');
+    const path = require('path');
+    const results = [];
+
+    // 1. Recherche dans le fichier de conversation Ana (texte simple)
+    const conversationPath = 'E:/ANA/memory/current_conversation_ana.txt';
+    if (fs.existsSync(conversationPath)) {
+      try {
+        const content = fs.readFileSync(conversationPath, 'utf-8');
+        const lines = content.split('\n');
+        const queryLower = query.toLowerCase();
+        const matches = [];
+
+        for (let i = 0; i < lines.length; i++) {
+          if (lines[i].toLowerCase().includes(queryLower)) {
+            // Inclure contexte (2 lignes avant/après)
+            const start = Math.max(0, i - 2);
+            const end = Math.min(lines.length, i + 3);
+            const context = lines.slice(start, end).join('\n');
+            matches.push({
+              lineNumber: i + 1,
+              context: context.substring(0, 400)
+            });
+            if (matches.length >= limit) break;
+          }
+        }
+
+        if (matches.length > 0) {
+          results.push({
+            source: 'ana_conversation_file',
+            matchCount: matches.length,
+            matches: matches
+          });
+        }
+      } catch (err) {
+        console.log(`⚠️ [search_memory] Text search error: ${err.message}`);
+      }
+    }
+
+    // 2. Recherche dans TieredMemory (ChromaDB sémantique) si disponible
+    try {
+      const TieredMemory = require('../memory/tiered-memory.cjs');
+      if (TieredMemory && TieredMemory.initialized) {
+        const semanticResults = await TieredMemory.search(query, { limit });
+        if (semanticResults && semanticResults.length > 0) {
+          results.push({
+            source: 'chromadb_semantic',
+            matchCount: semanticResults.length,
+            matches: semanticResults.map(r => ({
+              document: r.document?.substring(0, 400),
+              tier: r.tier,
+              distance: r.distance
+            }))
+          });
+        }
+      }
+    } catch (err) {
+      // TieredMemory pas dispo, continuer sans
+      console.log(`⚠️ [search_memory] ChromaDB skipped: ${err.message}`);
+    }
+
+    // 3. Résultat formaté pour Ana
+    const totalMatches = results.reduce((sum, r) => sum + r.matchCount, 0);
+
+    return {
+      success: true,
+      query: query,
+      found: totalMatches > 0,
+      totalMatches: totalMatches,
+      sources: results,
+      message: totalMatches > 0
+        ? `J'ai trouvé ${totalMatches} souvenir(s) correspondant à "${query}".`
+        : `Je n'ai rien trouvé pour "${query}" dans ma mémoire.`
+    };
+  }
+};
+
+// 3) Boucle agent (multi-turn tools)
+async function runToolAgent(userMessage, options = {}) {
+  const maxLoops = options.maxLoops || 10;
+  const model = options.model || DEFAULT_MODEL;
+  let loopCount = 0;
+
+  // System prompt optimisé pour forcer le format JSON des tool calls
+  const toolNames = TOOL_DEFINITIONS.map(t => t.function.name).join(', ');
+  const systemPrompt = options.systemPrompt ||
+    `Tu es Ana, l'assistante IA personnelle d'Alain à Longueuil, Québec.
+
+Outils disponibles: ${toolNames}
+
+RÈGLES CRITIQUES:
+1. Pour appeler un outil, réponds EXACTEMENT avec ce format JSON, RIEN D'AUTRE:
+{"name": "nom_outil", "arguments": {...}}
+
+2. AUCUN texte avant ou après le JSON quand tu appelles un outil.
+3. Après avoir reçu le résultat de l'outil, réponds en français naturel.
+4. Utilise les outils quand c'est nécessaire (heure, météo, fichiers, web).`;
+
+  const messages = [
+    { role: 'system', content: systemPrompt },
+    { role: 'user', content: userMessage }
+  ];
+
+  console.log(`🤖 [ToolAgent] Démarrage - Message: "${userMessage.substring(0, 50)}..."`);
+
+  while (loopCount < maxLoops) {
+    loopCount++;
+    console.log(`🔄 [ToolAgent] Boucle ${loopCount}/${maxLoops}`);
+
+    try {
+      const response = await axios.post(`${OLLAMA_URL}/api/chat`, {
+        model: model,
+        messages: messages,
+        tools: TOOL_DEFINITIONS,
+        stream: false
+      });
+
+      const msg = response.data.message || response.data;
+      let toolCalls = msg.tool_calls || [];
+
+      // FIX: Parser JSON brut dans content si pas de tool_calls structurés
+      // Bug connu Ollama: Qwen2.5-coder retourne {"name":..., "arguments":...} dans content
+      // au lieu de msg.tool_calls structurés.
+      if ((!toolCalls || toolCalls.length === 0) && msg.content) {
+        const content = msg.content.trim();
+        console.log(`🔍 [ToolAgent] Parsing content: "${content.substring(0, 100)}..."`);
+
+        // FIX 2025-12-03: Utiliser la nouvelle méthode avec comptage de parenthèses
+        // L'ancienne regex ne gérait pas les objets vides {} dans "arguments"
+        const jsonBlocks = findToolCallJSON(content);
+
+        for (const block of jsonBlocks) {
+          try {
+            const parsed = JSON.parse(block);
+            // Vérifier structure valide tool call (arguments peut être {})
+            if (parsed.name && typeof parsed.arguments !== 'undefined' && TOOL_IMPLEMENTATIONS[parsed.name]) {
+              toolCalls.push({
+                function: {
+                  name: parsed.name,
+                  arguments: parsed.arguments || parsed.args || {}
+                }
+              });
+              console.log(`✅ [ToolAgent] Parsed tool: ${parsed.name}`);
+            }
+          } catch (e) {
+            console.log(`⚠️ [ToolAgent] Invalid JSON block: ${block.substring(0, 100)}...`);
+          }
+        }
+
+        if (toolCalls.length > 0) {
+          console.log(`🔧 [ToolAgent] Found ${toolCalls.length} tool calls:`, toolCalls.map(tc => tc.function.name));
+        }
+
+        // Fallback: regex pour <tool_call>JSON</tool_call>
+        if (toolCalls.length === 0) {
+          const jsonMatch = content.match(/<tool_call>\s*(\{[\s\S]*?\})\s*<\/tool_call>/i);
+          if (jsonMatch) {
+            try {
+              const parsed = JSON.parse(jsonMatch[1]);
+              if (parsed.name && TOOL_IMPLEMENTATIONS[parsed.name]) {
+                console.log(`✅ [ToolAgent] XML tag parsé: ${parsed.name}`);
+                toolCalls = [{
+                  function: {
+                    name: parsed.name,
+                    arguments: parsed.arguments || {}
+                  }
+                }];
+              }
+            } catch (e) {
+              console.log(`⚠️ [ToolAgent] XML parse failed: ${e.message}`);
+            }
+          }
+        }
+      }
+
+      // Aucun tool_call → réponse finale
+      if (!toolCalls || toolCalls.length === 0) {
+        const finalAnswer = msg.content || '';
+        console.log(`✅ [ToolAgent] Réponse finale (${finalAnswer.length} chars)`);
+
+        messages.push({
+          role: 'assistant',
+          content: finalAnswer
+        });
+
+        return {
+          success: true,
+          answer: finalAnswer,
+          messages: messages,
+          loopsUsed: loopCount,
+          model: model
+        };
+      }
+
+      // Il y a des tool_calls → on les exécute
+      console.log(`🔧 [ToolAgent] ${toolCalls.length} tool(s) à exécuter`);
+
+      for (const tc of toolCalls) {
+        const toolName = tc.function?.name;
+        const rawArgs = tc.function?.arguments || {};
+        let parsedArgs = rawArgs;
+
+        if (typeof rawArgs === 'string') {
+          try {
+            parsedArgs = JSON.parse(rawArgs);
+          } catch {
+            parsedArgs = {};
+          }
+        }
+
+        const impl = TOOL_IMPLEMENTATIONS[toolName];
+        if (!impl) {
+          console.warn(`⚠️ [ToolAgent] Outil inconnu: ${toolName}`);
+          messages.push({
+            role: 'tool',
+            tool_call_id: tc.id || toolName,
+            content: JSON.stringify({
+              error: `Outil "${toolName}" non implémenté.`
+            })
+          });
+          continue;
+        }
+
+        try {
+          const result = await impl(parsedArgs);
+          messages.push({
+            role: 'tool',
+            tool_call_id: tc.id || toolName,
+            content: JSON.stringify(result)
+          });
+          console.log(`✅ [ToolAgent] ${toolName} exécuté avec succès`);
+        } catch (err) {
+          console.error(`❌ [ToolAgent] Erreur ${toolName}:`, err.message);
+          messages.push({
+            role: 'tool',
+            tool_call_id: tc.id || toolName,
+            content: JSON.stringify({
+              error: err.message || 'Erreur pendant l\'exécution'
+            })
+          });
+        }
+      }
+
+    } catch (error) {
+      console.error(`❌ [ToolAgent] Erreur Ollama:`, error.message);
+      return {
+        success: false,
+        error: error.message,
+        messages: messages,
+        loopsUsed: loopCount
+      };
+    }
+  }
+
+  // Max loops atteint
+  console.warn(`⚠️ [ToolAgent] Max loops (${maxLoops}) atteint`);
+  return {
+    success: false,
+    error: `Nombre maximum de boucles (${maxLoops}) atteint sans réponse finale.`,
+    messages: messages,
+    loopsUsed: loopCount
+  };
+}
+
+// Export
+module.exports = {
+  runToolAgent,
+  TOOL_DEFINITIONS,
+  TOOL_IMPLEMENTATIONS
+};

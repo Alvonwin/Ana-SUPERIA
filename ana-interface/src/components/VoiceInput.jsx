@@ -1,5 +1,27 @@
 import { useState, useRef } from 'react';
 import './VoiceInput.css';
+import { BACKEND_URL } from '../config.js';
+
+// Correction orthographique via backend (Anna -> Ana, etc.)
+async function correctSpelling(text) {
+  try {
+    const response = await fetch(`${BACKEND_URL}/api/spellcheck`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text })
+    });
+    const data = await response.json();
+    if (data.success && data.corrected) {
+      if (data.changed) {
+        console.log('Correction:', text, '->', data.corrected);
+      }
+      return data.corrected;
+    }
+  } catch (e) {
+    console.warn('Spell check failed:', e.message);
+  }
+  return text;
+}
 
 function VoiceInput({ onTranscript, onAutoSubmit, disabled = false }) {
   const [isRecording, setIsRecording] = useState(false);
@@ -22,7 +44,7 @@ function VoiceInput({ onTranscript, onAutoSubmit, disabled = false }) {
 
     try {
       const recognition = new SpeechRecognition();
-      recognition.lang = 'fr-FR';
+      recognition.lang = 'fr-CA' // Canadian French - plus tolerant aux mots anglais;
       recognition.continuous = false;
       recognition.interimResults = false;
       recognition.maxAlternatives = 1;
@@ -33,8 +55,9 @@ function VoiceInput({ onTranscript, onAutoSubmit, disabled = false }) {
         console.log('🎤 Enregistrement démarré');
       };
 
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
+      recognition.onresult = async (event) => {
+        const rawTranscript = event.results[0][0].transcript;
+        const transcript = await correctSpelling(rawTranscript);
         console.log('📝 Transcription:', transcript);
 
         if (onTranscript) {

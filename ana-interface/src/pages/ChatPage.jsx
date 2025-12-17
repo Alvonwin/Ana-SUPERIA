@@ -31,6 +31,9 @@ import VoiceLoopButton from '../components/VoiceLoopButton';
 import './ChatPage.css';
 import { BACKEND_URL } from '../config';
 
+// Constante pour la voix Sylvie (edge-tts)
+const SYLVIE_VOICE = 'Sylvie (Québec)';
+
 // MessageContent component with markdown + syntax highlighting + copy button
 // Source: https://github.com/remarkjs/react-markdown
 function MessageContent({ text, sender }) {
@@ -403,21 +406,14 @@ function ChatPage() {
       });
 
       // Déclencher l'audio après un délai pour laisser React mettre à jour le state
-      setTimeout(() => {
-        if (finalText && window.speechSynthesis) {
+      setTimeout(async () => {
+        if (finalText) {
           // PAUSE la reconnaissance vocale pendant le TTS
           if (voiceLoopRef.current) {
             voiceLoopRef.current.pause();
           }
-          
-          window.speechSynthesis.cancel();
-          const utterance = new SpeechSynthesisUtterance(finalText);
-          utterance.lang = 'fr-FR';
-          utterance.rate = playbackRate;
-          if (selectedVoice) utterance.voice = selectedVoice;
 
-          // Callback quand Ana finit de parler
-          utterance.onend = () => {
+          const onTTSEnd = () => {
             setPlayingAudio(null);
             console.log('✅ TTS terminé');
             // RESUME la reconnaissance vocale après le TTS
@@ -426,8 +422,20 @@ function ChatPage() {
             }
           };
 
-          window.speechSynthesis.speak(utterance);
-          setPlayingAudio(finalMessageId);
+          // Utiliser Sylvie (edge-tts) ou voix navigateur
+          if (selectedVoice?.name === SYLVIE_VOICE || !selectedVoice) {
+            setPlayingAudio(finalMessageId);
+            await speakWithEdgeTTS(finalText, onTTSEnd, onTTSEnd);
+          } else if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(finalText);
+            utterance.lang = 'fr-FR';
+            utterance.rate = playbackRate;
+            if (selectedVoice) utterance.voice = selectedVoice;
+            utterance.onend = onTTSEnd;
+            window.speechSynthesis.speak(utterance);
+            setPlayingAudio(finalMessageId);
+          }
         }
       }, 100);
 
@@ -652,79 +660,49 @@ function ChatPage() {
     addSystemMessage('📝 Message copié dans le champ de saisie');
   };
 
-  const handlePlayPause = (messageId, text) => {
-    // Browser compatibility check
-    if (!window.speechSynthesis) {
-      addSystemMessage('❌ Synthèse vocale non supportée par ce navigateur', 'error');
-      return;
-    }
-
+  const handlePlayPause = async (messageId, text) => {
+    // Si déjà en lecture, arrêter
     if (playingAudio === messageId) {
-      // Stop audio proprement
-      window.speechSynthesis.cancel();
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
       setPlayingAudio(null);
       return;
     }
 
-    // Cancel toute lecture en cours
-    window.speechSynthesis.cancel();
+    // Arrêter toute lecture en cours
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
 
-    try {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'fr-FR';
-      utterance.rate = playbackRate;
-      utterance.pitch = 1.0;
-      utterance.volume = 1.0;
-
-      // Use selected voice if available
-      if (selectedVoice) {
-        utterance.voice = selectedVoice;
-      }
-
-      // Event: Démarrage lecture
-      utterance.onstart = () => {
-        console.log('🔊 Lecture audio démarrée');
-      };
-
-      // Event: Fin lecture
-      utterance.onend = () => {
-        setPlayingAudio(null);
-        console.log('✅ Lecture audio terminée');
-      };
-
-      // Event: Erreur
-      utterance.onerror = (event) => {
-        console.error('❌ Erreur synthèse vocale:', event.error);
-        setPlayingAudio(null);
-
-        // Messages erreur utilisateur
-        const errorMessages = {
-          'canceled': 'Lecture annulée',
-          'interrupted': 'Lecture interrompue',
-          'audio-busy': 'Audio occupé',
-          'audio-hardware': 'Problème matériel audio',
-          'network': 'Erreur réseau',
-          'synthesis-unavailable': 'Synthèse vocale indisponible',
-          'synthesis-failed': 'Échec synthèse vocale',
-          'language-unavailable': 'Langue non disponible',
-          'voice-unavailable': 'Voix non disponible',
-          'text-too-long': 'Texte trop long',
-          'invalid-argument': 'Argument invalide',
-          'not-allowed': 'Lecture non autorisée'
-        };
-
-        const userMessage = errorMessages[event.error] || `Erreur: ${event.error}`;
-        addSystemMessage(`🔊 ${userMessage}`, 'error');
-      };
-
-      // Démarrer lecture
-      window.speechSynthesis.speak(utterance);
-      setPlayingAudio(messageId);
-
-    } catch (error) {
-      console.error('❌ Exception synthèse vocale:', error);
-      addSystemMessage('❌ Erreur lors du démarrage de la lecture audio', 'error');
+    const onEnd = () => {
       setPlayingAudio(null);
+      console.log('✅ Lecture audio terminée');
+    };
+
+    const onError = (err) => {
+      console.error('❌ Erreur TTS:', err);
+      setPlayingAudio(null);
+      addSystemMessage('❌ Erreur synthèse vocale', 'error');
+    };
+
+    // Utiliser Sylvie (edge-tts) ou voix navigateur
+    if (selectedVoice?.name === SYLVIE_VOICE || !selectedVoice) {
+      setPlayingAudio(messageId);
+      await speakWithEdgeTTS(text, onEnd, onError);
+    } else if (window.speechSynthesis) {
+      try {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'fr-FR';
+        utterance.rate = playbackRate;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+        if (selectedVoice) utterance.voice = selectedVoice;
+        utterance.onend = onEnd;
+        utterance.onerror = (event) => onError(event.error);
+        window.speechSynthesis.speak(utterance);
+        setPlayingAudio(messageId);
+      } catch (error) {
+        onError(error);
+      }
+    } else {
+      addSystemMessage('❌ Synthèse vocale non supportée', 'error');
     }
   };
 
@@ -734,6 +712,14 @@ function ChatPage() {
   };
 
   const handleVoiceChange = (voiceName) => {
+    // Cas spécial: Sylvie (edge-tts)
+    if (voiceName === SYLVIE_VOICE) {
+      setSelectedVoice({ name: SYLVIE_VOICE });
+      localStorage.setItem('ana_tts_voice', voiceName);
+      console.log('🎤 Voix changée: Sylvie (Québec) via edge-tts');
+      return;
+    }
+    // Voix navigateur standard
     const voice = availableVoices.find(v => v.name === voiceName);
     if (voice) {
       setSelectedVoice(voice);
@@ -746,6 +732,37 @@ function ChatPage() {
     setPlaybackRate(rate);
     localStorage.setItem('ana_tts_rate', rate.toString());
     console.log('⚡ Vitesse changée:', rate + 'x');
+  };
+
+  // Fonction TTS avec edge-tts (voix Sylvie Québec)
+  const speakWithEdgeTTS = async (text, onEnd, onError) => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/tts/synthesize`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+
+      if (!response.ok) {
+        throw new Error(`TTS error: ${response.status}`);
+      }
+
+      const blob = await response.blob();
+      const audio = new Audio(URL.createObjectURL(blob));
+      audio.onended = () => {
+        URL.revokeObjectURL(audio.src);
+        if (onEnd) onEnd();
+      };
+      audio.onerror = (err) => {
+        URL.revokeObjectURL(audio.src);
+        if (onError) onError(err);
+      };
+      audio.play();
+      return audio;
+    } catch (error) {
+      console.error('❌ Edge-TTS error:', error);
+      if (onError) onError(error);
+    }
   };
 
   // Feedback handler - Phase 5B/5C - 01 Dec 2025
@@ -930,20 +947,21 @@ function ChatPage() {
                   </button>
 
                   {/* Voice selection */}
-                  {availableVoices.length > 0 && (
-                    <select
-                      className="voice-select"
-                      value={selectedVoice?.name || ''}
-                      onChange={(e) => handleVoiceChange(e.target.value)}
-                      title="Sélectionner une voix"
-                    >
-                      {availableVoices.map(voice => (
-                        <option key={voice.name} value={voice.name}>
-                          {voice.name.split(' ')[0]}
-                        </option>
-                      ))}
-                    </select>
-                  )}
+                  <select
+                    className="voice-select"
+                    value={selectedVoice?.name || SYLVIE_VOICE}
+                    onChange={(e) => handleVoiceChange(e.target.value)}
+                    title="Sélectionner une voix"
+                  >
+                    <option key="sylvie-quebec" value={SYLVIE_VOICE}>
+                      Sylvie (Québec)
+                    </option>
+                    {availableVoices.map(voice => (
+                      <option key={voice.name} value={voice.name}>
+                        {voice.name.split(' ')[0]}
+                      </option>
+                    ))}
+                  </select>
 
                   {/* Speed control */}
                   <div className="speed-controls">

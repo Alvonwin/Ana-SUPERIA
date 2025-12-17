@@ -1,0 +1,20 @@
+● RÈGLES DU CYCLE TEST:
+
+  1. Objectif: Atteindre 100% fonctionnel - tous les outils du groupe marchent sans erreur
+  2. Méthode:
+    - Langage naturel (questions humaines, pas de commandes)
+    - Tester un outil à la fois
+    - Questions distinctes (pas 2× météo par exemple)
+  3. Processus:
+    - Test → Si erreur: RÉPARER → Retester
+    - Continuer jusqu'à cycle complet à 100% SANS modification
+  4. Qui répond:
+    - ANA répond (pas moi)
+    - Je dois voir ses réponses pour valider FACTUELLEMENT!
+  5. Condition d'arrêt:
+    - Quand tout le groupe passe sans faute ET sans que j'aie dû modifier
+  6. Permissions:
+    - ✅ JE PEUX modifier pour réparer
+    - ❌ NE PAS CASSER ANA
+    - ❌ Pas de scripts automatisés
+    - ❌ Pas d'improvisation

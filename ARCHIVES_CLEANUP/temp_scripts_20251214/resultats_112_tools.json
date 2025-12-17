@@ -1,0 +1,626 @@
+[
+  {
+    "outil": "web_search",
+    "statut": "OK",
+    "duree": 15578,
+    "question": "Cherche sur le web: test search"
+  },
+  {
+    "outil": "get_time",
+    "statut": "OK",
+    "duree": 6170,
+    "question": "Quelle heure maintenant?"
+  },
+  {
+    "outil": "read_file",
+    "statut": "OK",
+    "duree": 6,
+    "question": "Lis E:/ANA/package.json"
+  },
+  {
+    "outil": "search_in_file",
+    "statut": "OK",
+    "duree": 19442,
+    "question": "Cherche \"test\" dans E:/ANA/package.json"
+  },
+  {
+    "outil": "read_file_chunk",
+    "statut": "OK",
+    "duree": 12150,
+    "question": "Lis lignes 1-10 de E:/ANA/package.json"
+  },
+  {
+    "outil": "file_info",
+    "statut": "OK",
+    "duree": 19581,
+    "question": "Info E:/ANA/package.json"
+  },
+  {
+    "outil": "write_file",
+    "statut": "OK",
+    "duree": 17244,
+    "question": "Écris \"test\" dans E:/ANA/temp/test1.txt"
+  },
+  {
+    "outil": "list_files",
+    "statut": "OK",
+    "duree": 20201,
+    "question": "Liste E:/ANA/temp/"
+  },
+  {
+    "outil": "run_shell",
+    "statut": "OK",
+    "duree": 22751,
+    "question": "Execute: echo test"
+  },
+  {
+    "outil": "web_fetch",
+    "statut": "OK",
+    "duree": 38011,
+    "question": "Fetch https://example.com"
+  },
+  {
+    "outil": "wikipedia",
+    "statut": "OK",
+    "duree": 42846,
+    "question": "Wikipédia Montreal"
+  },
+  {
+    "outil": "ask_groq",
+    "statut": "OK",
+    "duree": 5914,
+    "question": "Demande Groq: test"
+  },
+  {
+    "outil": "ask_cerebras",
+    "statut": "OK",
+    "duree": 15,
+    "question": "Demande Cerebras: test"
+  },
+  {
+    "outil": "search_memory",
+    "statut": "OK",
+    "duree": 23631,
+    "question": "Cherche mémoire: test"
+  },
+  {
+    "outil": "save_memory",
+    "statut": "OK",
+    "duree": 13528,
+    "question": "Sauve mémoire: Test save"
+  },
+  {
+    "outil": "edit_file",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Modifie E:/ANA/temp/test1.txt"
+  },
+  {
+    "outil": "glob",
+    "statut": "OK",
+    "duree": 24,
+    "question": "Trouve fichiers *.json dans E:/ANA/"
+  },
+  {
+    "outil": "grep",
+    "statut": "OK",
+    "duree": 10,
+    "question": "Cherche \"name\" dans E:/ANA/package.json"
+  },
+  {
+    "outil": "run_background",
+    "statut": "OK",
+    "duree": 22523,
+    "question": "Lance en background: ping localhost -n 2"
+  },
+  {
+    "outil": "todo_write",
+    "statut": "OK",
+    "duree": 10,
+    "question": "Écris TODO: Task 1"
+  },
+  {
+    "outil": "execute_code",
+    "statut": "OK",
+    "duree": 19806,
+    "question": "Execute: console.log(\"test\")"
+  },
+  {
+    "outil": "http_request",
+    "statut": "OK",
+    "duree": 14004,
+    "question": "HTTP GET https://api.github.com"
+  },
+  {
+    "outil": "git_status",
+    "statut": "OK",
+    "duree": 16447,
+    "question": "Git status E:/ANA/"
+  },
+  {
+    "outil": "git_log",
+    "statut": "OK",
+    "duree": 16285,
+    "question": "Git log E:/ANA/"
+  },
+  {
+    "outil": "git_branch",
+    "statut": "OK",
+    "duree": 18961,
+    "question": "Git branch E:/ANA/"
+  },
+  {
+    "outil": "search_codebase",
+    "statut": "OK",
+    "duree": 23,
+    "question": "Cherche code: function"
+  },
+  {
+    "outil": "get_project_structure",
+    "statut": "OK",
+    "duree": 21088,
+    "question": "Structure projet"
+  },
+  {
+    "outil": "describe_image",
+    "statut": "OK",
+    "duree": 38892,
+    "question": "Décris image test.jpg"
+  },
+  {
+    "outil": "execute_voice_command",
+    "statut": "OK",
+    "duree": 38140,
+    "question": "Commande vocale \"test\""
+  },
+  {
+    "outil": "ask_architect",
+    "statut": "OK",
+    "duree": 41533,
+    "question": "Demande architecte: design"
+  },
+  {
+    "outil": "review_code",
+    "statut": "OK",
+    "duree": 50970,
+    "question": "Révise code: function test(){}"
+  },
+  {
+    "outil": "analyze_component",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "Analyse component Button"
+  },
+  {
+    "outil": "hot_reload_check",
+    "statut": "OK",
+    "duree": 53953,
+    "question": "Check hot reload"
+  },
+  {
+    "outil": "list_available_icons",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "Liste icônes"
+  },
+  {
+    "outil": "get_css_variables",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "Variables CSS"
+  },
+  {
+    "outil": "create_backup",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "Backup E:/ANA/package.json"
+  },
+  {
+    "outil": "copy_file",
+    "statut": "OK",
+    "duree": 47583,
+    "question": "Copie E:/ANA/temp/test1.txt vers E:/ANA/temp/test2.txt"
+  },
+  {
+    "outil": "create_directory",
+    "statut": "OK",
+    "duree": 6104,
+    "question": "Crée dossier E:/ANA/temp/test_dir/"
+  },
+  {
+    "outil": "get_file_stats",
+    "statut": "OK",
+    "duree": 14732,
+    "question": "Stats E:/ANA/package.json"
+  },
+  {
+    "outil": "compare_files",
+    "statut": "OK",
+    "duree": 21422,
+    "question": "Compare E:/ANA/temp/test1.txt et E:/ANA/temp/test2.txt"
+  },
+  {
+    "outil": "get_directory_size",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "Utilise l'outil get_directory_size"
+  },
+  {
+    "outil": "tree_view",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "Arbre E:/ANA/temp/"
+  },
+  {
+    "outil": "ping",
+    "statut": "OK",
+    "duree": 21974,
+    "question": "Ping google.com"
+  },
+  {
+    "outil": "check_url",
+    "statut": "OK",
+    "duree": 22639,
+    "question": "Vérifie URL https://google.com"
+  },
+  {
+    "outil": "get_public_ip",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "Mon IP publique?"
+  },
+  {
+    "outil": "dns_lookup",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "DNS lookup google.com"
+  },
+  {
+    "outil": "port_scan",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "Utilise l'outil port_scan"
+  },
+  {
+    "outil": "hash_file",
+    "statut": "ERROR",
+    "erreur": "timeout of 60000ms exceeded",
+    "question": "Hash E:/ANA/package.json"
+  },
+  {
+    "outil": "hash_text",
+    "statut": "OK",
+    "duree": 47393,
+    "question": "Hash \"hello world\""
+  },
+  {
+    "outil": "generate_uuid",
+    "statut": "OK",
+    "duree": 18104,
+    "question": "Génère UUID"
+  },
+  {
+    "outil": "generate_password",
+    "statut": "OK",
+    "duree": 17,
+    "question": "Génère mot de passe"
+  },
+  {
+    "outil": "encrypt_text",
+    "statut": "OK",
+    "duree": 19,
+    "question": "Chiffre \"secret\""
+  },
+  {
+    "outil": "base64_encode",
+    "statut": "OK",
+    "duree": 8,
+    "question": "Base64 encode \"hello\""
+  },
+  {
+    "outil": "base64_decode",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Base64 decode \"aGVsbG8=\""
+  },
+  {
+    "outil": "get_system_info",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Info système?"
+  },
+  {
+    "outil": "get_cpu_usage",
+    "statut": "OK",
+    "duree": 24,
+    "question": "Usage CPU?"
+  },
+  {
+    "outil": "get_memory_usage",
+    "statut": "OK",
+    "duree": 8,
+    "question": "Usage RAM?"
+  },
+  {
+    "outil": "get_disk_usage",
+    "statut": "OK",
+    "duree": 13,
+    "question": "Espace disque E:?"
+  },
+  {
+    "outil": "list_processes",
+    "statut": "OK",
+    "duree": 22,
+    "question": "Liste processus"
+  },
+  {
+    "outil": "get_environment_variable",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Variable PATH?"
+  },
+  {
+    "outil": "get_network_interfaces",
+    "statut": "OK",
+    "duree": 8,
+    "question": "Interfaces réseau?"
+  },
+  {
+    "outil": "json_to_csv",
+    "statut": "OK",
+    "duree": 7,
+    "question": "JSON to CSV data.json"
+  },
+  {
+    "outil": "xml_to_json",
+    "statut": "OK",
+    "duree": 8,
+    "question": "XML to JSON data.xml"
+  },
+  {
+    "outil": "json_to_xml",
+    "statut": "OK",
+    "duree": 7,
+    "question": "JSON to XML data.json"
+  },
+  {
+    "outil": "yaml_to_json",
+    "statut": "OK",
+    "duree": 7,
+    "question": "YAML to JSON config.yaml"
+  },
+  {
+    "outil": "json_to_yaml",
+    "statut": "OK",
+    "duree": 7,
+    "question": "JSON to YAML config.json"
+  },
+  {
+    "outil": "parse_html",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Parse HTML <div>test</div>"
+  },
+  {
+    "outil": "format_json",
+    "statut": "OK",
+    "duree": 8,
+    "question": "Format JSON {\"a\":1}"
+  },
+  {
+    "outil": "minify_json",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Minify JSON {\"a\": 1}"
+  },
+  {
+    "outil": "count_lines",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Compte lignes E:/ANA/package.json"
+  },
+  {
+    "outil": "count_words",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Compte mots E:/ANA/README.md"
+  },
+  {
+    "outil": "head_file",
+    "statut": "OK",
+    "duree": 18,
+    "question": "Head 5 lignes E:/ANA/package.json"
+  },
+  {
+    "outil": "tail_file",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Tail 5 lignes E:/ANA/package.json"
+  },
+  {
+    "outil": "format_date",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Formate date aujourd'hui"
+  },
+  {
+    "outil": "date_diff",
+    "statut": "OK",
+    "duree": 8,
+    "question": "Différence entre 2025-01-01 et 2025-12-12"
+  },
+  {
+    "outil": "add_to_date",
+    "statut": "OK",
+    "duree": 9,
+    "question": "Ajoute 5 jours à aujourd'hui"
+  },
+  {
+    "outil": "timestamp_to_date",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Timestamp 1700000000 to date"
+  },
+  {
+    "outil": "date_to_timestamp",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Date 2025-12-12 to timestamp"
+  },
+  {
+    "outil": "calculate",
+    "statut": "OK",
+    "duree": 6,
+    "question": "Calcule 2+2*3"
+  },
+  {
+    "outil": "convert_units",
+    "statut": "OK",
+    "duree": 6,
+    "question": "Convertis 5 km en miles"
+  },
+  {
+    "outil": "random_number",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Nombre aléatoire 1-100"
+  },
+  {
+    "outil": "statistics",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Stats de [1,2,3,4,5]"
+  },
+  {
+    "outil": "npm_list",
+    "statut": "OK",
+    "duree": 7,
+    "question": "NPM list"
+  },
+  {
+    "outil": "npm_outdated",
+    "statut": "OK",
+    "duree": 6,
+    "question": "NPM outdated"
+  },
+  {
+    "outil": "npm_search",
+    "statut": "OK",
+    "duree": 7,
+    "question": "NPM search express"
+  },
+  {
+    "outil": "npm_info",
+    "statut": "OK",
+    "duree": 6,
+    "question": "NPM info express"
+  },
+  {
+    "outil": "dom_query",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Query DOM: div.main"
+  },
+  {
+    "outil": "dom_get_element_by_id",
+    "statut": "OK",
+    "duree": 8,
+    "question": "Element ID: header"
+  },
+  {
+    "outil": "dom_get_elements_by_class",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Elements classe: nav-item"
+  },
+  {
+    "outil": "dom_get_elements_by_tag",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Elements tag: p"
+  },
+  {
+    "outil": "docker_ps",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Docker PS"
+  },
+  {
+    "outil": "docker_images",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Docker images"
+  },
+  {
+    "outil": "docker_logs",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Docker logs container1"
+  },
+  {
+    "outil": "ollama_list",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Ollama list"
+  },
+  {
+    "outil": "ollama_pull",
+    "statut": "OK",
+    "duree": 8,
+    "question": "Ollama pull llama2"
+  },
+  {
+    "outil": "ollama_chat",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Ollama chat: bonjour"
+  },
+  {
+    "outil": "clipboard_read",
+    "statut": "OK",
+    "duree": 22,
+    "question": "Lis clipboard"
+  },
+  {
+    "outil": "clipboard_write",
+    "statut": "OK",
+    "duree": 6,
+    "question": "Écris clipboard \"test\""
+  },
+  {
+    "outil": "set_reminder",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Rappel dans 5 min \"Test\""
+  },
+  {
+    "outil": "list_reminders",
+    "statut": "OK",
+    "duree": 6,
+    "question": "Liste rappels"
+  },
+  {
+    "outil": "test_regex",
+    "statut": "OK",
+    "duree": 25,
+    "question": "Test regex /[0-9]+/ sur \"123\""
+  },
+  {
+    "outil": "validate_json",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Valide JSON {\"a\":1}"
+  },
+  {
+    "outil": "validate_email",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Valide email test@example.com"
+  },
+  {
+    "outil": "validate_url",
+    "statut": "OK",
+    "duree": 7,
+    "question": "Valide URL https://google.com"
+  }
+]
