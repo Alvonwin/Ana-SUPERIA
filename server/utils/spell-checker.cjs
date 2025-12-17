@@ -74,7 +74,26 @@ const ENGLISH_WORDS_TO_PRESERVE = [
   'online', 'offline', 'status', 'mode', 'option', 'options', 'feature', 'features',
   'tool', 'tools', 'prompt', 'chat', 'voice', 'audio', 'video', 'image', 'images',
   'list', 'array', 'string', 'number', 'boolean', 'null', 'undefined', 'true', 'false',
-  'loop', 'break', 'continue', 'return', 'function', 'class', 'object', 'method'
+  'loop', 'break', 'continue', 'return', 'function', 'class', 'object', 'method',
+  // === CODE/PROGRAMMING (FIX 2025-12-17) ===
+  // React/JSX
+  'jsx', 'tsx', 'react', 'component', 'components', 'props', 'state', 'hook', 'hooks',
+  'button', 'div', 'span', 'form', 'label', 'select', 'textarea', 'checkbox',
+  'className', 'style', 'ref', 'key', 'children', 'render', 'export', 'import', 'default',
+  // HTML/CSS
+  'html', 'css', 'scss', 'sass', 'padding', 'margin', 'border', 'radius', 'color',
+  'background', 'display', 'flex', 'grid', 'width', 'height', 'font', 'size', 'weight',
+  'cursor', 'pointer', 'hover', 'active', 'focus', 'disabled', 'none', 'block', 'inline',
+  // Paths/Files
+  'src', 'dist', 'build', 'node', 'modules', 'package', 'index', 'app', 'main', 'utils',
+  'pages', 'layouts', 'assets', 'public', 'static', 'lib', 'api', 'routes', 'middleware',
+  // JavaScript/TypeScript
+  'const', 'let', 'var', 'async', 'await', 'promise', 'then', 'catch', 'finally',
+  'map', 'filter', 'reduce', 'some', 'every', 'includes',
+  'push', 'pop', 'shift', 'slice', 'splice', 'concat', 'join', 'split',
+  'console', 'log', 'warn', 'require', 'module', 'exports', 'type', 'interface',
+  // Git
+  'git', 'commit', 'push', 'pull', 'merge', 'branch', 'checkout', 'clone', 'fetch', 'rebase'
 ];
 
 /**
@@ -84,6 +103,31 @@ const ENGLISH_WORDS_TO_PRESERVE = [
  */
 function correctText(text) {
   if (!text) return text;
+
+  // === PROTECTION DES BLOCS DE CODE (FIX 2025-12-17) ===
+  // Tout ce qui est entre backticks ne doit PAS être corrigé
+  const codeBlockPlaceholders = [];
+  // Blocs de code multi-lignes ```...```
+  text = text.replace(/```[\s\S]*?```/g, (match) => {
+    const placeholder = '__CODEBLOCK_' + codeBlockPlaceholders.length + '__';
+    codeBlockPlaceholders.push(match);
+    return placeholder;
+  });
+  // Code inline `...`
+  text = text.replace(/`[^`]+`/g, (match) => {
+    const placeholder = '__CODEBLOCK_' + codeBlockPlaceholders.length + '__';
+    codeBlockPlaceholders.push(match);
+    return placeholder;
+  });
+
+  // === PROTECTION DES IDENTIFIANTS CAMELCASE/PASCALCASE (FIX 2025-12-17) ===
+  // Les mots comme onClick, useState, MyComponent ne doivent PAS être corrigés
+  const camelCasePlaceholders = [];
+  text = text.replace(/\b[a-z]+[A-Z][a-zA-Z]*\b|\b[A-Z][a-z]+[A-Z][a-zA-Z]*\b/g, (match) => {
+    const placeholder = '__CAMEL_' + camelCasePlaceholders.length + '__';
+    camelCasePlaceholders.push(match);
+    return placeholder;
+  });
 
   // === PROTECTION DES MOTS ANGLAIS (FIX 2025-12-16) ===
   const englishPlaceholders = [];
@@ -170,6 +214,16 @@ function correctText(text) {
   // Restaurer les extensions de fichiers
   extPlaceholders.forEach((ext, i) => {
     result = result.replace('__EXT_' + i + '__', ext);
+  });
+
+  // Restaurer les identifiants camelCase/PascalCase
+  camelCasePlaceholders.forEach((word, i) => {
+    result = result.replace('__CAMEL_' + i + '__', word);
+  });
+
+  // Restaurer les blocs de code
+  codeBlockPlaceholders.forEach((block, i) => {
+    result = result.replace('__CODEBLOCK_' + i + '__', block);
   });
 
   return result;

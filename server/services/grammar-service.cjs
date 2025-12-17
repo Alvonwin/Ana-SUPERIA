@@ -3,6 +3,7 @@
  * Utilise l'API publique LanguageTool
  *
  * Créé: 16 Décembre 2025
+ * FIX 2025-12-17: Protection du code contre corrections LanguageTool
  */
 
 const axios = require('axios');
@@ -16,7 +17,8 @@ class GrammarService {
     this.stats = {
       checks: 0,
       corrections: 0,
-      errors: 0
+      errors: 0,
+      skipped_code: 0
     };
   }
 
@@ -28,6 +30,33 @@ class GrammarService {
   async correct(text) {
     if (!this.enabled || !text || text.length < 5) {
       return text;
+    }
+
+    // === FIX 2025-12-17: Détecter et sauter les réponses de code ===
+    // Si le texte contient des blocs de code ou du JSX, ne pas corriger
+    const codeIndicators = [
+      /```/,                          // Code blocks
+      /`[^`]+`/,                       // Inline code
+      /<[A-Z][a-zA-Z]*/,               // JSX components like <Button
+      /className=/,                    // JSX attribute
+      /onClick=/,                      // Event handler
+      /import .* from/,                // Import statement
+      /export (default|const|function)/, // Export
+      /const .* = /,                   // Variable declaration
+      /function \w+\(/,                // Function declaration
+      /=> \{/,                         // Arrow function
+      /\.(jsx|tsx|js|ts|cjs)\b/,       // File extensions
+      /Button/,                        // Common component names
+      /Component/,
+      /useState|useEffect|useRef/,     // React hooks
+    ];
+
+    for (const pattern of codeIndicators) {
+      if (pattern.test(text)) {
+        // Texte contient du code - ne pas corriger
+        this.stats.skipped_code++;
+        return text;
+      }
     }
 
     try {
