@@ -14,8 +14,8 @@ const path = require('path');
 const WebTools = require('../tools/web-tools.cjs');
 const FileTools = require('../tools/file-tools.cjs');
 const BashTools = require('../tools/bash-tools.cjs');
-const LlamaVisionHandler = require('../../intelligence/vision/llama_vision_handler.cjs');
-const visionHandler = new LlamaVisionHandler();
+// Vision Router - Sélection intelligente Moondream (rapide) vs Llama Vision (puissant)
+const visionRouter = require('../../intelligence/vision/vision-router.cjs');
 const voiceParser = require('../core/voice-command-parser.cjs');
 const architectAgent = require('./architect-agent.cjs');
 const MemoryTools = require('../tools/memory-tools.cjs');
@@ -4493,10 +4493,12 @@ const projectIndexer = require('../core/project-indexer.cjs');
     const { image_path, image_base64, prompt } = args;
     console.log(`👁️ [ToolAgent] describe_image: ${image_path || 'base64 image'}`);
     try {
-      const result = await visionHandler.analyzeImage({
+      // Utilise vision-router avec sélection automatique du modèle
+      const result = await visionRouter.analyze({
         imagePath: image_path,
         imageBase64: image_base64,
-        prompt: prompt || 'Décris cette image en détail.'
+        prompt: prompt || 'Décris cette image en détail.',
+        taskType: 'description'  // Moondream (rapide) par défaut
       });
       return result;
     } catch (error) {
@@ -4518,10 +4520,13 @@ Instructions:
 4. Explique la cause probable
 5. Propose une solution concrète avec le code corrigé`;
 
-      const result = await visionHandler.analyzeImage({
+      // Utilise Llama Vision (puissant) pour analyse de debug
+      const result = await visionRouter.analyze({
         imagePath: image_path,
         imageBase64: image_base64,
-        prompt: prompt
+        prompt: prompt,
+        taskType: 'code',
+        forceModel: 'powerful'  // Debug nécessite Llama Vision
       });
       return result;
     } catch (error) {
@@ -4533,7 +4538,8 @@ Instructions:
     const { image_path, image_base64 } = args;
     console.log(`💻 [ToolAgent] analyze_code_screenshot`);
     try {
-      const result = await visionHandler.analyzeCodeScreenshot(image_path || { imageBase64: image_base64 });
+      // Utilise Llama Vision pour analyse de code
+      const result = await visionRouter.analyzeCode(image_path);
       return result;
     } catch (error) {
       return { success: false, error: error.message };
