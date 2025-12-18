@@ -3549,7 +3549,8 @@ app.post('/api/chat/v2', async (req, res) => {
         if (expertType === 'tools') {
           const toolResult = await toolAgent.runToolAgentV2(message, {
             sessionId: 'chat_v2',
-            context: memoryContext
+            context: memoryContext,
+            images: images  // FIX 2025-12-18: Passer les images uploadées
           });
           // FIX 2025-12-17: Extraire tool patterns pour apprentissage
           const toolsUsedV2 = toolResult?.stats?.toolCallCounts || {};
@@ -5420,7 +5421,8 @@ io.on('connection', (socket) => {
           // V2: Utilise LoopController intelligent au lieu de maxLoops fixe
           const result = await toolAgent.runToolAgentV2(message, {
             model: model,
-            useLoopController: true  // Active boucle intelligente sans limite fixe
+            useLoopController: true,  // Active boucle intelligente sans limite fixe
+            images: images  // FIX 2025-12-18: Passer les images uploadées
           });
 
           if (result.success) {

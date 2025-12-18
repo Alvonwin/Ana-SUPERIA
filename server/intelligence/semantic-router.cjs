@@ -301,18 +301,25 @@ class SemanticRouter {
 
   async route(message, context = {}) {
     this.stats.totalRoutes++;
-    if (context.hasImage || context.images?.length > 0) {
+    const msgLower = message.toLowerCase();
+
+    // FIX 2025-12-18: Detecter les demandes de vision meme sans image uploadee
+    // L'utilisateur peut donner un chemin d'image dans son message
+    const hasImagePath = /\.(jpg|jpeg|png|gif|webp|bmp)\b/i.test(message);
+    const visionKeywords = ['regarde', 'vois', 'cette image', "l'image", 'photo', 'decris', 'describe', 'analyser'];
+    const isVisionRequest = hasImagePath || visionKeywords.some(kw => msgLower.includes(kw));
+
+    if (context.hasImage || context.images?.length > 0 || isVisionRequest) {
       this.updateStats('VISION');
+      console.log('[SemanticRouter] 👁️ VISION detected:', hasImagePath ? 'image path in message' : 'vision keywords');
       return {
         model: TASK_TYPES.VISION.preferredModel,
         taskType: 'vision',
-        reason: 'Image detected in context',
+        reason: hasImagePath ? 'Image path in message' : 'Vision keywords detected',
         confidence: 1.0,
-        method: 'context_override'
+        method: 'tools'  // FIX: Route vers tool-agent pour describe_image
       };
     }
-
-    const msgLower = message.toLowerCase();
 
     // FIX 2025-12-17: Check CODING FIRST (before TOOLS)
     // "Crée un composant React" = CODING, pas TOOLS

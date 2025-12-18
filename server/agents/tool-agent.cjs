@@ -4489,14 +4489,23 @@ const projectIndexer = require('../core/project-indexer.cjs');
   },
 
   // ============ VISION TOOLS - Phase 3.2 ANA CODE ============
-  async describe_image(args) {
+  async describe_image(args, context = {}) {
     const { image_path, image_base64, prompt } = args;
-    console.log(`👁️ [ToolAgent] describe_image: ${image_path || 'base64 image'}`);
+
+    // FIX 2025-12-18: Utiliser l'image uploadée si disponible
+    let imageToUse = image_base64;
+    if (!imageToUse && context.images && context.images.length > 0) {
+      imageToUse = context.images[0];
+      console.log('👁️ [ToolAgent] describe_image: Utilisation image uploadée');
+    } else {
+      console.log(`👁️ [ToolAgent] describe_image: ${image_path || 'base64 image'}`);
+    }
+
     try {
       // Utilise vision-router avec sélection automatique du modèle
       const result = await visionRouter.analyze({
-        imagePath: image_path,
-        imageBase64: image_base64,
+        imagePath: imageToUse ? null : image_path,  // Ignorer path si on a base64
+        imageBase64: imageToUse,
         prompt: prompt || 'Décris cette image en détail.',
         taskType: 'description'  // Moondream (rapide) par défaut
       });
@@ -7765,6 +7774,7 @@ GESTION INTELLIGENTE DE MA MÉMOIRE (Self-Editing):
 async function runToolAgentV2(userMessage, options = {}) {
   const model = options.model || DEFAULT_MODEL;
   const timeoutMs = options.timeoutMs || LOOP_CONFIG.globalTimeoutMs;
+  const images = options.images || [];  // FIX 2025-12-18: Images uploadees
   const useSelfCorrection = options.useSelfCorrection !== false;
   const useContextManager = false; // DISABLED 2025-12-15: Broken compression increases size
 
