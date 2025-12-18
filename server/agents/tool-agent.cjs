@@ -948,7 +948,7 @@ const TOOL_DEFINITIONS = [
     type: 'function',
     function: {
       name: 'describe_image',
-      description: 'Analyser une image LOCALE sur le PC. REGLE CRITIQUE: Quand l\'utilisateur fournit un chemin comme "C:\\Users\\...\\image.jpg", tu DOIS utiliser CE CHEMIN EXACT dans image_path. NE JAMAIS inventer de chemin ni d\'URL. Copie EXACTEMENT le chemin fourni.',
+      description: 'Analyser une image LOCALE. REGLES STRICTES: 1) Tu ne peux appeler cet outil QUE si l\'utilisateur a fourni un chemin EXACT et COMPLET (ex: C:\\Users\\niwno\\Desktop\\photo.jpg). 2) Si l\'utilisateur dit juste "regarde cette image" SANS chemin, tu DOIS lui DEMANDER le chemin avant d\'appeler cet outil. 3) NE JAMAIS inventer de chemin comme "C:\\Users\\nom\\..." - demande TOUJOURS le vrai chemin.',
       parameters: {
         type: 'object',
         properties: {

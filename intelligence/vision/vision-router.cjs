@@ -93,11 +93,50 @@ class VisionRouter {
   }
 
   /**
+   * Patterns de chemins inventés/placeholders à rejeter
+   * Le LLM invente souvent ces chemins au lieu de demander le vrai
+   */
+  static PLACEHOLDER_PATTERNS = [
+    /[\\\/]nom[\\\/]/i,              // C:\Users\nom\...
+    /[\\\/]username[\\\/]/i,         // C:\Users\username\...
+    /[\\\/]user[\\\/](?!niwno)/i,    // C:\Users\user\... (mais pas niwno)
+    /[\\\/]exemple[\\\/]/i,          // ...\exemple\...
+    /[\\\/]example[\\\/]/i,          // ...\example\...
+    /nom_de_l[_']?image/i,           // nom_de_l_image.jpg
+    /^image\d*\.jpg$/i,              // image.jpg, image1.jpg (seul)
+    /placeholder/i,                   // placeholder
+    /\[.*\]/,                         // [chemin] ou [image]
+    /<.*>/,                           // <chemin> ou <image>
+  ];
+
+  /**
+   * Vérifie si un chemin est un placeholder inventé par le LLM
+   */
+  isPlaceholderPath(imagePath) {
+    for (const pattern of VisionRouter.PLACEHOLDER_PATTERNS) {
+      if (pattern.test(imagePath)) {
+        this.log(`Chemin placeholder détecté: "${imagePath}" (pattern: ${pattern})`, 'warn');
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
    * Convertit une image locale en base64
    * @param {string} imagePath - Chemin vers l'image
    * @returns {string} - Image en base64
    */
   imageToBase64(imagePath) {
+    // === FIX 2025-12-17: Détecter les chemins inventés/placeholders ===
+    if (this.isPlaceholderPath(imagePath)) {
+      throw new Error(
+        `CHEMIN INVALIDE: "${imagePath}" semble être un chemin inventé. ` +
+        `DEMANDE à l'utilisateur le chemin EXACT de l'image. ` +
+        `Exemple: "Quel est le chemin complet de l'image? (ex: C:\\Users\\niwno\\Desktop\\photo.jpg)"`
+      );
+    }
+
     // Rejeter les URLs
     if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
       throw new Error(`Cette fonction ne supporte que les images LOCALES. "${imagePath}" est une URL.`);
