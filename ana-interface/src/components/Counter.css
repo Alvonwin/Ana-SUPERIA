@@ -1,0 +1,10 @@
+.counter-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.counter-container h1 {
+  color: var(--primary-color, #007bff);
+  margin-bottom: 20px;
+}

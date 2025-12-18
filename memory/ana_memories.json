@@ -345,8 +345,8 @@
     "valid_from": "2025-12-15T00:17:44.398Z",
     "valid_until": null,
     "supersedes": null,
-    "access_count": 300,
-    "last_accessed": "2025-12-17T19:08:31.764Z",
+    "access_count": 302,
+    "last_accessed": "2025-12-18T12:38:49.104Z",
     "embedding": [
       0.7729189395904541,
       -0.3546707034111023,
@@ -1140,8 +1140,8 @@
     "category": "préférence",
     "timestamp": "2025-12-16T17:40:57.671Z",
     "source": "user_request",
-    "access_count": 3,
-    "last_accessed": "2025-12-17T16:03:55.508Z"
+    "access_count": 4,
+    "last_accessed": "2025-12-18T12:41:23.072Z"
   },
   {
     "id": "1765941038818",
@@ -1156,8 +1156,8 @@
     "category": "informations personnelles",
     "timestamp": "2025-12-17T04:38:35.590Z",
     "source": "user_request",
-    "access_count": 5,
-    "last_accessed": "2025-12-17T17:30:11.962Z"
+    "access_count": 6,
+    "last_accessed": "2025-12-18T12:41:23.072Z"
   },
   {
     "id": "1765948982534",
@@ -1165,8 +1165,8 @@
     "category": "informations personnelles",
     "timestamp": "2025-12-17T05:23:02.534Z",
     "source": "user_request",
-    "access_count": 2,
-    "last_accessed": "2025-12-17T17:30:11.962Z"
+    "access_count": 3,
+    "last_accessed": "2025-12-18T12:41:23.072Z"
   },
   {
     "id": "1765949189868",
@@ -1174,5 +1174,14 @@
     "category": "préférence",
     "timestamp": "2025-12-17T05:26:29.868Z",
     "source": "user_request"
+  },
+  {
+    "id": "1766061660576",
+    "content": "Le numéro de téléphone d'Alain est 1-514-713-5645",
+    "category": "contact",
+    "timestamp": "2025-12-18T12:41:00.576Z",
+    "source": "user_request",
+    "access_count": 1,
+    "last_accessed": "2025-12-18T12:41:23.072Z"
   }
 ]

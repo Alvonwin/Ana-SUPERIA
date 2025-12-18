@@ -1,0 +1,28 @@
+{
+  "name": "ana",
+  "version": "1.0.0",
+  "description": "**Ἀναστασία** - \"Résurrection\" - Celle qui renaît",
+  "main": "test_integration.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^1.13.2",
+    "socket.io-client": "^4.8.1"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "archiver": "^7.0.1",
+    "glob": "^13.0.0",
+    "marked": "^17.0.1",
+    "node-notifier": "^10.0.1",
+    "sharp": "^0.34.5",
+    "turndown": "^7.2.2"
+  }
+}

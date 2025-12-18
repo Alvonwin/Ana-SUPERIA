@@ -1,0 +1,287 @@
+/**
+ * Llama Vision Handler - Spécialiste Analyse d'Images
+ *
+ * ANA SUPERIA - Cerveau visuel
+ *
+ * Modèle: llama3.2-vision:11b
+ * Spécialités: image analysis, OCR, visual reasoning, multimodal
+ *
+ * Date: 25 Novembre 2025
+ */
+
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
+class LlamaVisionHandler {
+  constructor(config = {}) {
+    this.modelName = config.model || 'llama3.2-vision:11b';
+    this.ollamaUrl = config.ollamaUrl || 'http://localhost:11434';
+    this.timeout = config.timeout || 180000; // 3 min for image processing
+    this.logPath = path.join('E:', 'ANA', 'logs', 'llama_vision_handler.log');
+
+    // Vision-specific settings
+    this.options = {
+      temperature: 0.5, // Lower for precise analysis
+      top_p: 0.9,
+      num_ctx: 8192
+    };
+
+    // Supported image formats
+    this.supportedFormats = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp'];
+
+    // Ensure logs directory
+    const logsDir = path.dirname(this.logPath);
+    if (!fs.existsSync(logsDir)) {
+      fs.mkdirSync(logsDir, { recursive: true });
+    }
+  }
+
+  /**
+   * Convert image file to base64
+   * @param {string} imagePath - Path to image file
+   * @returns {string} - Base64 encoded image
+   */
+  imageToBase64(imagePath) {
+    const ext = path.extname(imagePath).toLowerCase();
+    if (!this.supportedFormats.includes(ext)) {
+      throw new Error(`Unsupported image format: ${ext}. Supported: ${this.supportedFormats.join(', ')}`);
+    }
+
+    const imageBuffer = fs.readFileSync(imagePath);
+    return imageBuffer.toString('base64');
+  }
+
+  /**
+   * Analyze image with prompt
+   * @param {Object} params - Parameters
+   * @returns {Promise<Object>} - Response
+   */
+  async analyzeImage(params) {
+    const { imagePath, imageBase64, prompt = 'Décris cette image en détail.' } = params;
+
+    const startTime = Date.now();
+    this.log(`Analyzing image...`);
+
+    // Get base64 image
+    let base64;
+    try {
+      if (imageBase64) {
+        base64 = imageBase64;
+      } else if (imagePath) {
+        base64 = this.imageToBase64(imagePath);
+      } else {
+        throw new Error('Either imagePath or imageBase64 must be provided');
+      }
+    } catch (error) {
+      this.log(`Image error: ${error.message}`, 'error');
+      return { success: false, error: error.message };
+    }
+
+    try {
+      const response = await axios.post(
+        `${this.ollamaUrl}/api/generate`,
+        {
+          model: this.modelName,
+          prompt: prompt,
+          images: [base64],
+          stream: false,
+          options: this.options
+        },
+        { timeout: this.timeout }
+      );
+
+      const latency = Date.now() - startTime;
+      this.log(`Image analyzed in ${latency}ms`);
+
+      return {
+        success: true,
+        response: response.data.response,
+        model: this.modelName,
+        latencyMs: latency
+      };
+    } catch (error) {
+      this.log(`Error: ${error.message}`, 'error');
+      return {
+        success: false,
+        error: error.message,
+        model: this.modelName
+      };
+    }
+  }
+
+  /**
+   * Stream image analysis
+   * @param {Object} params - Parameters
+   * @param {Function} onChunk - Callback per chunk
+   */
+  async streamAnalyzeImage(params, onChunk) {
+    const { imagePath, imageBase64, prompt = 'Décris cette image en détail.' } = params;
+
+    let base64;
+    if (imageBase64) {
+      base64 = imageBase64;
+    } else if (imagePath) {
+      base64 = this.imageToBase64(imagePath);
+    } else {
+      throw new Error('Either imagePath or imageBase64 must be provided');
+    }
+
+    const response = await axios.post(
+      `${this.ollamaUrl}/api/generate`,
+      {
+        model: this.modelName,
+        prompt: prompt,
+        images: [base64],
+        stream: true,
+        options: this.options
+      },
+      {
+        timeout: this.timeout,
+        responseType: 'stream'
+      }
+    );
+
+    return new Promise((resolve, reject) => {
+      let fullResponse = '';
+
+      response.data.on('data', chunk => {
+        try {
+          const lines = chunk.toString().split('\n').filter(l => l.trim());
+          for (const line of lines) {
+            const data = JSON.parse(line);
+            if (data.response) {
+              fullResponse += data.response;
+              onChunk(data.response);
+            }
+            if (data.done) {
+              resolve({
+                success: true,
+                response: fullResponse,
+                model: this.modelName
+              });
+            }
+          }
+        } catch (e) {
+          // Ignore parse errors
+        }
+      });
+
+      response.data.on('error', reject);
+    });
+  }
+
+  /**
+   * Extract text from image (OCR)
+   * @param {string} imagePath - Path to image
+   */
+  async extractText(imagePath) {
+    const prompt = `Extrais TOUT le texte visible dans cette image.
+Format la sortie proprement, préserve la structure (listes, paragraphes, etc.).
+Si l'image ne contient pas de texte, indique-le clairement.`;
+
+    return this.analyzeImage({ imagePath, prompt });
+  }
+
+  /**
+   * Describe image for accessibility
+   * @param {string} imagePath - Path to image
+   */
+  async describeForAccessibility(imagePath) {
+    const prompt = `Fournis une description détaillée de cette image pour une personne malvoyante.
+Inclus:
+- Les éléments principaux
+- Les couleurs et textures
+- Les actions ou mouvements
+- L'ambiance générale
+- Le texte visible s'il y en a`;
+
+    return this.analyzeImage({ imagePath, prompt });
+  }
+
+  /**
+   * Analyze code screenshot
+   * @param {string} imagePath - Path to screenshot
+   */
+  async analyzeCodeScreenshot(imagePath) {
+    const prompt = `Cette image contient du code. Analyse-la:
+1. Extrais le code visible
+2. Identifie le langage de programmation
+3. Explique ce que fait le code
+4. Signale les erreurs éventuelles visibles`;
+
+    return this.analyzeImage({ imagePath, prompt });
+  }
+
+  /**
+   * Compare two images
+   * @param {string} imagePath1 - First image
+   * @param {string} imagePath2 - Second image
+   */
+  async compareImages(imagePath1, imagePath2) {
+    // Note: Ollama supports multiple images in some models
+    // For now, analyze sequentially
+    const analysis1 = await this.analyzeImage({
+      imagePath: imagePath1,
+      prompt: 'Décris cette première image en détail, incluant tous les éléments visibles.'
+    });
+
+    const analysis2 = await this.analyzeImage({
+      imagePath: imagePath2,
+      prompt: 'Décris cette deuxième image en détail, incluant tous les éléments visibles.'
+    });
+
+    return {
+      success: analysis1.success && analysis2.success,
+      image1: analysis1.response,
+      image2: analysis2.response,
+      model: this.modelName
+    };
+  }
+
+  /**
+   * Detect objects in image
+   * @param {string} imagePath - Path to image
+   */
+  async detectObjects(imagePath) {
+    const prompt = `Liste tous les objets visibles dans cette image.
+Format: Une liste numérotée avec:
+- Nom de l'objet
+- Position approximative (haut, bas, gauche, droite, centre)
+- Taille relative (grand, moyen, petit)`;
+
+    return this.analyzeImage({ imagePath, prompt });
+  }
+
+  /**
+   * Analyze screenshot for UI elements
+   * @param {string} imagePath - Path to screenshot
+   */
+  async analyzeUI(imagePath) {
+    const prompt = `Analyse cette capture d'écran d'interface utilisateur:
+1. Identifie l'application/site web
+2. Liste les éléments UI visibles (boutons, menus, formulaires)
+3. Décris la disposition générale
+4. Note les problèmes d'UX potentiels`;
+
+    return this.analyzeImage({ imagePath, prompt });
+  }
+
+  /**
+   * Log message
+   */
+  log(message, level = 'info') {
+    const timestamp = new Date().toISOString();
+    const logMessage = `[${timestamp}] [LLAMA_VISION] [${level.toUpperCase()}] ${message}`;
+
+    console.log(logMessage);
+
+    try {
+      fs.appendFileSync(this.logPath, logMessage + '\n', 'utf-8');
+    } catch (error) {
+      // Silently fail
+    }
+  }
+}
+
+module.exports = LlamaVisionHandler;
