@@ -44,6 +44,8 @@ class CerebrasService {
     if (process.env.CEREBRAS_API_KEY) this.apiKeys.push(process.env.CEREBRAS_API_KEY);
     if (process.env.CEREBRAS_API_KEY_2) this.apiKeys.push(process.env.CEREBRAS_API_KEY_2);
     if (process.env.CEREBRAS_API_KEY_3) this.apiKeys.push(process.env.CEREBRAS_API_KEY_3);
+    if (process.env.CEREBRAS_API_KEY_4) this.apiKeys.push(process.env.CEREBRAS_API_KEY_4);
+    if (process.env.CEREBRAS_API_KEY_5) this.apiKeys.push(process.env.CEREBRAS_API_KEY_5);
 
     if (this.apiKeys.length === 0) {
       console.log('CEREBRAS_API_KEY not found - disabled');
@@ -139,6 +141,14 @@ class CerebrasService {
 
     } catch (error) {
       this.stats.errors++;
+      const status = error.response?.status;
+
+      // Auto-rotate key on rate limit (429) or auth error (401)
+      if ((status === 429 || status === 401) && this.rotateKey()) {
+        console.log(`🔄 Cerebras: Key rotated after ${status} error, retrying...`);
+        return this.chat(message, options); // Retry with new key
+      }
+
       console.error('❌ Cerebras chat error:', error.response?.data || error.message);
       return {
         success: false,
@@ -233,14 +243,15 @@ class CerebrasService {
 
     } catch (error) {
       this.stats.errors++;
+      const status = error.response?.status;
 
-      // ROTATION AUTO sur 429 rate limit
-      if (error.response?.status === 429 && this.rotateKey()) {
-        console.log('[Cerebras] 429 rate limit - rotating to next key...');
+      // Auto-rotate key on rate limit (429) or auth error (401)
+      if ((status === 429 || status === 401) && this.rotateKey()) {
+        console.log(`🔄 Cerebras: Key rotated after ${status} error, retrying...`);
         return this.chatWithTools(messages, tools, options);
       }
 
-      console.error('Cerebras error:', error.response?.status || '', error.message);
+      console.error('Cerebras error:', status || '', error.message);
       return {
         success: false,
         error: error.response?.data?.error?.message || error.message,

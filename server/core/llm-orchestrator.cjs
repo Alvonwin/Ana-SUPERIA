@@ -5,7 +5,8 @@
  */
 
 const axios = require('axios');
-const groqService = require('../services/groq-service.cjs');
+// DISABLED 2025-12-19: Alain a dit "JAMAIS PLUS D'AUTRES LLM" - Cerebras uniquement
+// const groqService = require('../services/groq-service.cjs');
 const cerebrasService = require('../services/cerebras-service.cjs');
 
 const OLLAMA_URL = 'http://localhost:11434';

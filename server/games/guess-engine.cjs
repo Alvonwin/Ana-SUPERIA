@@ -1,13 +1,72 @@
 /**
  * Guess the Number Engine for Ana
  * Ana choisit un nombre, le joueur devine avec des indices chaud/froid
+ * Supporte mode vsAna et vsHuman (J1 choisit le nombre, J2 devine)
  */
 
 const games = new Map();
 
-function newGame(sessionId, max = 100) {
+/**
+ * Nouvelle partie
+ * @param {string} sessionId - ID de session
+ * @param {number} max - Maximum du nombre à deviner (défaut 100)
+ * @param {string} mode - 'vsAna' (défaut) ou 'vsHuman'
+ * @param {number} customSecret - Nombre personnalisé pour mode vsHuman
+ */
+function newGame(sessionId, max = 100, mode = 'vsAna', customSecret = null) {
+  // Mode vsHuman: attente du nombre de J1
+  if (mode === 'vsHuman' && !customSecret) {
+    const game = {
+      mode: 'vsHuman',
+      phase: 'setup', // setup = J1 entre le nombre
+      secret: null,
+      max,
+      guesses: [],
+      status: 'setup'
+    };
+    games.set(sessionId, game);
+
+    return {
+      success: true,
+      mode: 'vsHuman',
+      phase: 'setup',
+      max,
+      status: 'setup',
+      message: `Joueur 1: Choisis un nombre secret entre 1 et ${max}!`
+    };
+  }
+
+  // Mode vsHuman avec nombre fourni
+  if (mode === 'vsHuman' && customSecret) {
+    const n = parseInt(customSecret);
+    if (isNaN(n) || n < 1 || n > max) {
+      return { success: false, error: `Le nombre doit être entre 1 et ${max}!` };
+    }
+
+    const game = {
+      mode: 'vsHuman',
+      phase: 'playing',
+      secret: n,
+      max,
+      guesses: [],
+      status: 'playing'
+    };
+    games.set(sessionId, game);
+
+    return {
+      success: true,
+      mode: 'vsHuman',
+      phase: 'playing',
+      max,
+      status: 'playing',
+      message: "Nombre enregistré! Passe l'écran à Joueur 2."
+    };
+  }
+
+  // Mode vsAna (original)
   const secret = Math.floor(Math.random() * max) + 1;
   const game = {
+    mode: 'vsAna',
     secret,
     max,
     guesses: [],
@@ -17,9 +76,38 @@ function newGame(sessionId, max = 100) {
 
   return {
     success: true,
+    mode: 'vsAna',
     max,
     status: 'playing',
     message: `J'ai choisi un nombre entre 1 et ${max}. À toi de deviner!`
+  };
+}
+
+/**
+ * Définit le nombre secret en mode vsHuman (appelé par J1)
+ */
+function setNumber(sessionId, number) {
+  const game = games.get(sessionId);
+  if (!game) return { success: false, error: "Pas de partie en cours" };
+  if (game.mode !== 'vsHuman') return { success: false, error: "Cette fonction est pour le mode 2 joueurs" };
+  if (game.phase !== 'setup') return { success: false, error: "Le nombre a déjà été défini" };
+
+  const n = parseInt(number);
+  if (isNaN(n) || n < 1 || n > game.max) {
+    return { success: false, error: `Le nombre doit être entre 1 et ${game.max}!` };
+  }
+
+  game.secret = n;
+  game.phase = 'playing';
+  game.status = 'playing';
+
+  return {
+    success: true,
+    mode: 'vsHuman',
+    phase: 'playing',
+    max: game.max,
+    status: 'playing',
+    message: "Nombre enregistré! Passe l'écran à Joueur 2."
   };
 }
 
@@ -50,6 +138,9 @@ function guess(sessionId, number) {
   const game = games.get(sessionId);
   if (!game) return { success: false, error: "Pas de partie en cours" };
   if (game.status !== 'playing') return { success: false, error: "Partie terminée" };
+  if (game.mode === 'vsHuman' && game.phase === 'setup') {
+    return { success: false, error: "En attente du nombre de Joueur 1" };
+  }
 
   const n = parseInt(number);
   if (isNaN(n) || n < 1 || n > game.max) {
@@ -63,14 +154,18 @@ function guess(sessionId, number) {
 
   if (n === game.secret) {
     game.status = 'won';
+    // En mode vsHuman, le gagnant est player2 (celui qui devine)
+    const winner = game.mode === 'vsHuman' ? 'player2' : 'player';
     return {
       success: true,
+      mode: game.mode,
       guess: n,
       correct: true,
       attempts: game.guesses.length,
       status: 'won',
       gameOver: true,
-      secret: game.secret
+      secret: game.secret,
+      winner
     };
   }
 
@@ -100,6 +195,7 @@ function guess(sessionId, number) {
 
   return {
     success: true,
+    mode: game.mode,
     guess: n,
     correct: false,
     hint: hint.temperature,
@@ -115,12 +211,16 @@ function giveUp(sessionId) {
   if (!game) return { success: false, error: "Pas de partie en cours" };
 
   game.status = 'gave_up';
+  // En mode vsHuman, si J2 abandonne, J1 gagne
+  const winner = game.mode === 'vsHuman' ? 'player1' : 'ana';
   return {
     success: true,
+    mode: game.mode,
     secret: game.secret,
     attempts: game.guesses.length,
     status: 'gave_up',
-    gameOver: true
+    gameOver: true,
+    winner
   };
 }
 
@@ -137,4 +237,4 @@ function getState(sessionId) {
   };
 }
 
-module.exports = { newGame, guess, giveUp, getState };
+module.exports = { newGame, setNumber, guess, giveUp, getState };

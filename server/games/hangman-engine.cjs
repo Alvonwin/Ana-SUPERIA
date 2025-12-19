@@ -1,5 +1,6 @@
 /**
  * Hangman (Pendu) Engine for Ana
+ * Supporte mode vsAna et vsHuman (J1 choisit le mot, J2 devine)
  */
 
 const games = new Map();
@@ -74,12 +75,74 @@ const HANGMAN_STAGES = [
 =========`
 ];
 
-function newGame(sessionId, category = null) {
+/**
+ * Nouvelle partie
+ * @param {string} sessionId - ID de session
+ * @param {string} category - Catégorie pour mode vsAna
+ * @param {string} mode - 'vsAna' (défaut) ou 'vsHuman'
+ * @param {string} customWord - Mot personnalisé pour mode vsHuman
+ */
+function newGame(sessionId, category = null, mode = 'vsAna', customWord = null) {
+  // Mode vsHuman: attente du mot de J1
+  if (mode === 'vsHuman' && !customWord) {
+    const game = {
+      mode: 'vsHuman',
+      phase: 'setup', // setup = J1 entre le mot
+      word: null,
+      guessed: [],
+      errors: 0,
+      status: 'setup'
+    };
+    games.set(sessionId, game);
+
+    return {
+      success: true,
+      mode: 'vsHuman',
+      phase: 'setup',
+      status: 'setup',
+      message: "Joueur 1: Entre un mot secret pour Joueur 2!"
+    };
+  }
+
+  // Mode vsHuman avec mot fourni
+  if (mode === 'vsHuman' && customWord) {
+    const word = customWord.toUpperCase().replace(/[^A-Z]/g, '');
+    if (word.length < 2) {
+      return { success: false, error: "Le mot doit avoir au moins 2 lettres!" };
+    }
+
+    const game = {
+      mode: 'vsHuman',
+      phase: 'playing',
+      word,
+      category: 'custom',
+      guessed: [],
+      errors: 0,
+      status: 'playing'
+    };
+    games.set(sessionId, game);
+
+    return {
+      success: true,
+      mode: 'vsHuman',
+      phase: 'playing',
+      wordLength: word.length,
+      display: word.split('').map(() => '_').join(' '),
+      hangman: HANGMAN_STAGES[0],
+      errorsLeft: MAX_ERRORS,
+      status: 'playing',
+      guessed: [],
+      message: "Mot enregistré! Passe l'écran à Joueur 2."
+    };
+  }
+
+  // Mode vsAna (original)
   const cat = category && WORDS[category] ? category : Object.keys(WORDS)[Math.floor(Math.random() * Object.keys(WORDS).length)];
   const wordList = WORDS[cat];
   const word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase();
 
   const game = {
+    mode: 'vsAna',
     word,
     category: cat,
     guessed: [],
@@ -90,6 +153,7 @@ function newGame(sessionId, category = null) {
 
   return {
     success: true,
+    mode: 'vsAna',
     category: cat,
     wordLength: word.length,
     display: word.split('').map(() => '_').join(' '),
@@ -104,10 +168,45 @@ function getMaskedWord(word, guessed) {
   return word.split('').map(c => guessed.includes(c) ? c : '_').join(' ');
 }
 
+/**
+ * Définit le mot secret en mode vsHuman (appelé par J1)
+ */
+function setWord(sessionId, customWord) {
+  const game = games.get(sessionId);
+  if (!game) return { success: false, error: "Pas de partie en cours" };
+  if (game.mode !== 'vsHuman') return { success: false, error: "Cette fonction est pour le mode 2 joueurs" };
+  if (game.phase !== 'setup') return { success: false, error: "Le mot a déjà été défini" };
+
+  const word = customWord.toUpperCase().replace(/[^A-Z]/g, '');
+  if (word.length < 2) {
+    return { success: false, error: "Le mot doit avoir au moins 2 lettres!" };
+  }
+
+  game.word = word;
+  game.phase = 'playing';
+  game.status = 'playing';
+
+  return {
+    success: true,
+    mode: 'vsHuman',
+    phase: 'playing',
+    wordLength: word.length,
+    display: word.split('').map(() => '_').join(' '),
+    hangman: HANGMAN_STAGES[0],
+    errorsLeft: MAX_ERRORS,
+    status: 'playing',
+    guessed: [],
+    message: "Mot enregistré! Passe l'écran à Joueur 2."
+  };
+}
+
 function guess(sessionId, letter) {
   const game = games.get(sessionId);
   if (!game) return { success: false, error: "Pas de partie en cours" };
   if (game.status !== 'playing') return { success: false, error: "Partie terminée" };
+  if (game.mode === 'vsHuman' && game.phase === 'setup') {
+    return { success: false, error: "En attente du mot de Joueur 1" };
+  }
 
   const l = letter.toUpperCase().charAt(0);
   if (!/[A-Z]/.test(l)) return { success: false, error: "Entre une lettre valide (A-Z)" };
@@ -127,8 +226,14 @@ function guess(sessionId, letter) {
   if (isWon) game.status = 'won';
   if (isLost) game.status = 'lost';
 
+  // En mode vsHuman, le gagnant est player2 (celui qui devine) ou player1 (celui qui a choisi le mot)
+  const winner = game.mode === 'vsHuman'
+    ? (isWon ? 'player2' : (isLost ? 'player1' : null))
+    : (isWon ? 'player' : (isLost ? 'ana' : null));
+
   return {
     success: true,
+    mode: game.mode,
     letter: l,
     correct: isCorrect,
     display,
@@ -139,7 +244,7 @@ function guess(sessionId, letter) {
     status: game.status,
     gameOver: isWon || isLost,
     word: (isWon || isLost) ? game.word : null,
-    winner: isWon ? 'player' : (isLost ? 'ana' : null)
+    winner
   };
 }
 
@@ -162,4 +267,4 @@ function getCategories() {
   return Object.keys(WORDS);
 }
 
-module.exports = { newGame, guess, getState, getCategories, MAX_ERRORS };
+module.exports = { newGame, setWord, guess, getState, getCategories, MAX_ERRORS };

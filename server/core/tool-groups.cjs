@@ -152,10 +152,17 @@ async function getRelevantToolsHybrid(allTools, query, topN = 10) {
     // Silencieux: continuer sans boost
   }
 
+  // 2025-12-18: ChromaDB PRIMAIRE - Keywords en fallback seulement
+  // Concept: Ana n'a pas besoin de traîner tous ses outils, elle sait où les trouver
+  const MIN_SEMANTIC_TOOLS = 3;  // Si ChromaDB trouve au moins 3 outils, pas besoin de keywords
+  const MAX_TOOLS = 10;  // Réduit de 20 à 10 (économie tokens)
+
   const toolNamesSet = new Set();
   const boostedTools = [];
   const normalTools = [];
-  for (const tool of [...semanticResult.tools, ...keywordResult.tools]) {
+
+  // Experience boost en premier (outils qui ont déjà fonctionné)
+  for (const tool of semanticResult.tools) {
     const name = tool.function?.name || tool.name;
     if (!toolNamesSet.has(name)) {
       toolNamesSet.add(name);
@@ -163,13 +170,27 @@ async function getRelevantToolsHybrid(allTools, query, topN = 10) {
       else normalTools.push(tool);
     }
   }
+
+  // Keywords en FALLBACK seulement si ChromaDB n'a pas assez trouvé
+  const semanticCount = boostedTools.length + normalTools.length;
+  if (semanticCount < MIN_SEMANTIC_TOOLS) {
+    console.log(`[ToolGroups] ChromaDB found only ${semanticCount} tools, adding keyword fallback...`);
+    for (const tool of keywordResult.tools) {
+      const name = tool.function?.name || tool.name;
+      if (!toolNamesSet.has(name)) {
+        toolNamesSet.add(name);
+        if (recommendedToolNames.has(name)) boostedTools.push(tool);
+        else normalTools.push(tool);
+      }
+    }
+  }
+
   const combinedTools = [...boostedTools, ...normalTools];
-  const MAX_TOOLS = 20;
   if (combinedTools.length > MAX_TOOLS) {
     console.log(`[ToolGroups] Limiting tools: ${combinedTools.length} → ${MAX_TOOLS}`);
     combinedTools.length = MAX_TOOLS;
   }
-  console.log(`[ToolGroups] Hybrid search: ${keywordResult.tools.length} kw + ${semanticResult.tools.length} sem + ${boostedTools.length} boost = ${combinedTools.length} (max ${MAX_TOOLS})`);
+  console.log(`[ToolGroups] 🎯 ChromaDB-first: ${semanticResult.tools.length} sem + ${boostedTools.length} boost + ${keywordResult.tools.length} kw(fallback) = ${combinedTools.length} (max ${MAX_TOOLS})`);
   return {
     tools: combinedTools,
     groups: keywordResult.groups,

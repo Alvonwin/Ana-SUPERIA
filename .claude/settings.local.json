@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "Bash(git -C /e/ANA status)",
+      "Bash(git -C /e/ANA add CLAUDE.md)",
+      "Bash(git -C /e/ANA commit -m \"$\\(cat <<''EOF''\ndocs: Ajout CLAUDE.md pour Claude Code\n\nGuide complet pour travailler avec le codebase ANA SUPERIA:\n- Commandes de démarrage et développement\n- Architecture backend/frontend/LLM/mémoire\n- Système d''outils \\(180+\\)\n- Contraintes critiques \\(français, tutoiement\\)\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /e/ANA push)",
+      "Bash(git -C /e/ANA remote:*)",
+      "Bash(git -C /e/ANA push --set-upstream origin master)"
+    ]
+  }
+}

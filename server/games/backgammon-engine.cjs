@@ -1,6 +1,7 @@
 /**
  * Backgammon Engine pour Ana SUPERIA
  * 16 Dec 2025
+ * Supporte mode vsAna et vsHuman (2 joueurs)
  *
  * REGLE CRITIQUE: Toujours retourner phase + board dans chaque reponse!
  */
@@ -42,13 +43,20 @@ function rollDice() {
   return [d1, d2];
 }
 
-function newGame(sessionId) {
+/**
+ * Démarre une nouvelle partie
+ * @param {string} sessionId - ID de session
+ * @param {string} mode - 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+ */
+function newGame(sessionId, mode = 'vsAna') {
   const game = {
     sessionId,
     board: createInitialBoard(),
     bar: { white: 0, black: 0 },
     off: { white: 0, black: 0 },
-    currentPlayer: 'white', // white = joueur, black = Ana
+    currentPlayer: 'white', // white = joueur/player1, black = Ana/player2
+    playerTurn: 'player1',  // Pour mode vsHuman
+    mode,  // 'vsAna' ou 'vsHuman'
     dice: [],
     movesLeft: [],
     phase: 'rolling', // rolling, moving, gameover
@@ -58,7 +66,16 @@ function newGame(sessionId) {
 
   games.set(sessionId, game);
 
-  return getGameState(game);
+  const message = mode === 'vsHuman'
+    ? "Backgammon 2 joueurs! Joueur 1 (Blancs) vs Joueur 2 (Noirs). Joueur 1 lance les dés!"
+    : "Backgammon! Tu joues les blancs. Lance les dés!";
+
+  return {
+    ...getGameState(game),
+    mode,
+    playerTurn: 'player1',
+    message
+  };
 }
 
 function getGameState(game) {
@@ -70,6 +87,8 @@ function getGameState(game) {
     bar: { ...game.bar },
     off: { ...game.off },
     currentPlayer: game.currentPlayer,
+    playerTurn: game.playerTurn,
+    mode: game.mode,
     dice: [...game.dice],
     movesLeft: [...game.movesLeft],
     winner: game.winner,
@@ -111,9 +130,18 @@ function roll(sessionId) {
     game.movesLeft = [];
     game.dice = [];
     game.currentPlayer = game.currentPlayer === 'white' ? 'black' : 'white';
+    game.playerTurn = game.playerTurn === 'player1' ? 'player2' : 'player1';
     game.phase = 'rolling';
 
-    // Si c'est au tour de Ana, elle joue automatiquement
+    // Mode vsHuman: pas de jeu automatique d'Ana
+    if (game.mode === 'vsHuman') {
+      return {
+        ...getGameState(game),
+        message: `Pas de mouvement possible. Au tour de ${game.playerTurn === 'player1' ? 'Joueur 1 (Blancs)' : 'Joueur 2 (Noirs)'}!`
+      };
+    }
+
+    // Mode vsAna: Si c'est au tour de Ana, elle joue automatiquement
     if (game.currentPlayer === 'black') {
       return anaPlay(game);
     }
@@ -203,6 +231,10 @@ function canBearOffCheck(game, isWhite) {
   return true;
 }
 
+/**
+ * Joue un mouvement
+ * Supporte mode vsAna et vsHuman (2 joueurs)
+ */
 function move(sessionId, from, to, die) {
   const game = games.get(sessionId);
   if (!game) {
@@ -218,7 +250,9 @@ function move(sessionId, from, to, die) {
     };
   }
 
-  if (game.currentPlayer !== 'white') {
+  // En mode vsAna, seul le joueur blanc peut jouer directement
+  // En mode vsHuman, les deux joueurs peuvent jouer
+  if (game.mode === 'vsAna' && game.currentPlayer !== 'white') {
     return {
       success: false,
       error: 'Ce nest pas votre tour',
@@ -226,6 +260,8 @@ function move(sessionId, from, to, die) {
       board: [...game.board]
     };
   }
+
+  const isWhite = game.currentPlayer === 'white';
 
   // Valider le mouvement
   const validMoves = getValidMoves(game);
@@ -244,7 +280,7 @@ function move(sessionId, from, to, die) {
   }
 
   // Executer le mouvement
-  executeMove(game, from, to, true);
+  executeMove(game, from, to, isWhite);
 
   // Retirer le de utilise
   const dieIndex = game.movesLeft.indexOf(die);
@@ -253,10 +289,21 @@ function move(sessionId, from, to, die) {
   }
 
   // Verifier victoire
-  if (game.off.white >= 15) {
+  if (isWhite && game.off.white >= 15) {
     game.phase = 'gameover';
-    game.winner = 'white';
-    return getGameState(game);
+    game.winner = game.mode === 'vsHuman' ? 'player1' : 'white';
+    return {
+      ...getGameState(game),
+      message: game.mode === 'vsHuman' ? 'Joueur 1 gagne!' : 'Tu gagnes!'
+    };
+  }
+  if (!isWhite && game.off.black >= 15) {
+    game.phase = 'gameover';
+    game.winner = game.mode === 'vsHuman' ? 'player2' : 'black';
+    return {
+      ...getGameState(game),
+      message: game.mode === 'vsHuman' ? 'Joueur 2 gagne!' : 'Ana gagne!'
+    };
   }
 
   // Verifier s'il reste des mouvements
@@ -264,10 +311,19 @@ function move(sessionId, from, to, die) {
     // Tour suivant
     game.movesLeft = [];
     game.dice = [];
-    game.currentPlayer = 'black';
+    game.currentPlayer = game.currentPlayer === 'white' ? 'black' : 'white';
+    game.playerTurn = game.playerTurn === 'player1' ? 'player2' : 'player1';
     game.phase = 'rolling';
 
-    // Ana joue
+    // Mode vsHuman: pas de jeu automatique d'Ana
+    if (game.mode === 'vsHuman') {
+      return {
+        ...getGameState(game),
+        message: `Au tour de ${game.playerTurn === 'player1' ? 'Joueur 1 (Blancs)' : 'Joueur 2 (Noirs)'} de lancer les dés!`
+      };
+    }
+
+    // Mode vsAna: Ana joue automatiquement
     return anaPlay(game);
   }
 

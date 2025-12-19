@@ -1,6 +1,7 @@
 /**
  * Memory/Concentration Game Engine for Ana
  * Version simplifiée - synchrone, pas de setTimeout
+ * Supporte mode vsAna et vsHuman (2 joueurs)
  */
 
 const games = new Map();
@@ -21,7 +22,14 @@ function shuffle(array) {
   return arr;
 }
 
-function newGame(sessionId, theme = 'emojis', size = 4) {
+/**
+ * Démarre une nouvelle partie
+ * @param {string} sessionId - ID de session
+ * @param {string} theme - Thème des cartes
+ * @param {number} size - Taille de la grille (4x4 par défaut)
+ * @param {string} mode - 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+ */
+function newGame(sessionId, theme = 'emojis', size = 4, mode = 'vsAna') {
   const totalCards = size * size;
   const pairsNeeded = totalCards / 2;
 
@@ -37,27 +45,44 @@ function newGame(sessionId, theme = 'emojis', size = 4) {
     })),
     size,
     theme,
+    mode,  // 'vsAna' ou 'vsHuman'
     totalPairs: pairsNeeded,
     playerMatches: 0,
     anaMatches: 0,
+    player1Matches: 0,  // Pour mode 2 joueurs
+    player2Matches: 0,  // Pour mode 2 joueurs
+    currentPlayer: 'player1',
     status: 'playing',
     firstCard: null // Pour tracking de la première carte retournée
   };
 
   games.set(sessionId, game);
 
+  const message = mode === 'vsHuman'
+    ? "Partie 2 joueurs! Trouvez des paires. Si vous trouvez une paire, vous rejouez! Joueur 1 commence!"
+    : "Memory! Trouve les paires. Si tu trouves, tu rejoues!";
+
   return {
     success: true,
     size,
     theme,
+    mode,
     totalPairs: pairsNeeded,
     board: game.cards.map(c => ({ id: c.id, matched: false, symbol: null })),
     status: 'playing',
+    currentPlayer: 'player1',
     playerMatches: 0,
-    anaMatches: 0
+    anaMatches: 0,
+    player1Matches: 0,
+    player2Matches: 0,
+    message
   };
 }
 
+/**
+ * Retourne une carte
+ * Supporte mode vsAna et vsHuman (2 joueurs)
+ */
 function flip(sessionId, cardId) {
   const game = games.get(sessionId);
   if (!game) return { success: false, error: "Pas de partie en cours" };
@@ -66,6 +91,8 @@ function flip(sessionId, cardId) {
   const card = game.cards[cardId];
   if (!card) return { success: false, error: "Carte invalide" };
   if (card.matched) return { success: false, error: "Carte déjà trouvée!" };
+
+  const isPlayer1Turn = game.currentPlayer === 'player1';
 
   // Première carte
   if (game.firstCard === null) {
@@ -81,8 +108,12 @@ function flip(sessionId, cardId) {
         revealed: c.id === cardId
       })),
       status: 'playing',
+      mode: game.mode,
+      currentPlayer: game.currentPlayer,
       playerMatches: game.playerMatches,
-      anaMatches: game.anaMatches
+      anaMatches: game.anaMatches,
+      player1Matches: game.player1Matches,
+      player2Matches: game.player2Matches
     };
   }
 
@@ -100,13 +131,37 @@ function flip(sessionId, cardId) {
   if (firstCard.symbol === secondCard.symbol) {
     firstCard.matched = true;
     secondCard.matched = true;
-    game.playerMatches++;
+
+    // Comptage selon le mode
+    if (game.mode === 'vsHuman') {
+      if (isPlayer1Turn) {
+        game.player1Matches++;
+      } else {
+        game.player2Matches++;
+      }
+      // En cas de paire, le joueur rejoue (on ne change pas currentPlayer)
+    } else {
+      game.playerMatches++;
+    }
 
     // Vérifier fin de partie
-    if (game.playerMatches + game.anaMatches === game.totalPairs) {
-      game.status = game.playerMatches > game.anaMatches ? 'player_wins' :
-                    game.anaMatches > game.playerMatches ? 'ana_wins' : 'draw';
+    const totalMatches = game.mode === 'vsHuman'
+      ? game.player1Matches + game.player2Matches
+      : game.playerMatches + game.anaMatches;
+
+    if (totalMatches === game.totalPairs) {
+      if (game.mode === 'vsHuman') {
+        game.status = game.player1Matches > game.player2Matches ? 'player1_wins' :
+                      game.player2Matches > game.player1Matches ? 'player2_wins' : 'draw';
+      } else {
+        game.status = game.playerMatches > game.anaMatches ? 'player_wins' :
+                      game.anaMatches > game.playerMatches ? 'ana_wins' : 'draw';
+      }
     }
+
+    const matchMessage = game.mode === 'vsHuman'
+      ? `Paire trouvée! ${game.currentPlayer === 'player1' ? 'Joueur 1' : 'Joueur 2'} rejoue!`
+      : "Paire trouvée! Tu rejoues!";
 
     return {
       success: true,
@@ -120,13 +175,44 @@ function flip(sessionId, cardId) {
         revealed: false
       })),
       status: game.status,
+      mode: game.mode,
+      currentPlayer: game.currentPlayer,
       playerMatches: game.playerMatches,
       anaMatches: game.anaMatches,
-      gameOver: game.status !== 'playing'
+      player1Matches: game.player1Matches,
+      player2Matches: game.player2Matches,
+      gameOver: game.status !== 'playing',
+      message: game.status === 'playing' ? matchMessage : undefined
     };
   }
 
-  // Pas de match - Ana joue
+  // Pas de match
+  if (game.mode === 'vsHuman') {
+    // Changer de joueur
+    game.currentPlayer = isPlayer1Turn ? 'player2' : 'player1';
+
+    return {
+      success: true,
+      action: 'no_match',
+      card1: { id: firstCardId, symbol: firstCard.symbol },
+      card2: { id: cardId, symbol: secondCard.symbol },
+      board: game.cards.map(c => ({
+        id: c.id,
+        matched: c.matched,
+        symbol: c.matched ? c.symbol : null,
+        revealed: false
+      })),
+      status: 'playing',
+      mode: 'vsHuman',
+      currentPlayer: game.currentPlayer,
+      player1Matches: game.player1Matches,
+      player2Matches: game.player2Matches,
+      gameOver: false,
+      message: `Pas de paire. Au tour de ${game.currentPlayer === 'player1' ? 'Joueur 1' : 'Joueur 2'}!`
+    };
+  }
+
+  // MODE VS ANA : Ana joue
   const anaResult = anaPlay(game);
 
   return {
@@ -142,6 +228,8 @@ function flip(sessionId, cardId) {
       revealed: false
     })),
     status: game.status,
+    mode: 'vsAna',
+    currentPlayer: 'player1',
     playerMatches: game.playerMatches,
     anaMatches: game.anaMatches,
     gameOver: game.status !== 'playing'

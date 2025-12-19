@@ -42,6 +42,36 @@ const { getRelevantTools, getRelevantToolsHybrid } = require('../core/tool-group
 const DEFAULT_MODEL = null;
 
 /**
+ * FIX 2025-12-18: Corriger les chemins Windows après JSON.parse
+ * Le problème: \r dans "E:\ANA\...\resurrection.txt" devient un carriage return
+ * Solution: Détecter et corriger les caractères échappés mal interprétés
+ */
+function fixWindowsPaths(args) {
+  if (!args || typeof args !== 'object') return args;
+
+  const pathKeys = ['file_path', 'path', 'filePath', 'directory', 'dir', 'folder',
+                    'source', 'destination', 'src', 'dest', 'image_path', 'notebook_path'];
+
+  for (const key of pathKeys) {
+    if (args[key] && typeof args[key] === 'string') {
+      let fixed = args[key];
+      // Remplacer les caractères échappés mal interprétés par des backslashes
+      fixed = fixed.replace(/\r/g, '\\r');  // carriage return → \r
+      fixed = fixed.replace(/\n/g, '\\n');  // newline → \n
+      fixed = fixed.replace(/\t/g, '\\t');  // tab → \t
+      fixed = fixed.replace(/\f/g, '\\f');  // form feed → \f
+      fixed = fixed.replace(/\v/g, '\\v');  // vertical tab → \v
+      // Normaliser les slashes (forward → back pour Windows)
+      if (fixed.match(/^[A-Za-z]:/)) {
+        fixed = fixed.replace(/\//g, '\\');
+      }
+      args[key] = fixed;
+    }
+  }
+  return args;
+}
+
+/**
  * FIX 2025-12-08: Parse tool calls - supports multiple LLM formats
  * - Standard JSON: {"name": "tool", "arguments": {...}}
  * - GLM-4 format: "tool_name\n{}" or "tool_name\n{args}"
@@ -7681,6 +7711,8 @@ GESTION INTELLIGENTE DE MA MÉMOIRE (Self-Editing):
             parsedArgs = {};
           }
         }
+        // FIX 2025-12-18: Corriger les chemins Windows (\r → \\r, etc.)
+        parsedArgs = fixWindowsPaths(parsedArgs);
 
         const impl = TOOL_IMPLEMENTATIONS[toolName];
         if (!impl) {
@@ -7987,6 +8019,8 @@ RÈGLES:
             parsedArgs = {};
           }
         }
+        // FIX 2025-12-18: Corriger les chemins Windows (\r → \\r, etc.)
+        parsedArgs = fixWindowsPaths(parsedArgs);
 
         const impl = TOOL_IMPLEMENTATIONS[toolName];
         if (!impl) {

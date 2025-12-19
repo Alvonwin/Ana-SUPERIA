@@ -171,10 +171,23 @@ function correctText(text) {
   text = text.replace(/Anna/g, 'Ana');
   text = text.replace(/astuce/gi, 'est-ce');
 
-  // Si pas de dictionnaire, restaurer les chemins et retourner
+  // Si pas de dictionnaire, restaurer TOUS les placeholders et retourner
+  // FIX 2025-12-18: Bug - retournait sans restaurer EXT, ENG, CAMEL, CODEBLOCK
   if (!spellChecker) {
     pathPlaceholders.forEach((path, i) => {
       text = text.replace('__PATH_' + i + '__', path);
+    });
+    englishPlaceholders.forEach((word, i) => {
+      text = text.replace('__ENG_' + i + '__', word);
+    });
+    extPlaceholders.forEach((ext, i) => {
+      text = text.replace('__EXT_' + i + '__', ext);
+    });
+    camelCasePlaceholders.forEach((word, i) => {
+      text = text.replace('__CAMEL_' + i + '__', word);
+    });
+    codeBlockPlaceholders.forEach((block, i) => {
+      text = text.replace('__CODEBLOCK_' + i + '__', block);
     });
     return text;
   }

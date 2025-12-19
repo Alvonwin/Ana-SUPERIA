@@ -1,6 +1,7 @@
 /**
  * Chess Engine for Ana
  * Jeu d'échecs complet avec IA minimax
+ * Supporte mode vsAna et vsHuman (2 joueurs)
  */
 
 const games = new Map();
@@ -309,12 +310,20 @@ function formatMove(move) {
   return toNotation(move.fromRow, move.fromCol) + '-' + toNotation(move.toRow, move.toCol);
 }
 
-function newGame(sessionId, difficulty = 'normal') {
+/**
+ * Démarre une nouvelle partie
+ * @param {string} sessionId - ID de session
+ * @param {string} difficulty - Difficulté IA (easy/normal/hard)
+ * @param {string} mode - 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+ */
+function newGame(sessionId, difficulty = 'normal', mode = 'vsAna') {
   const depths = { easy: 1, normal: 2, hard: 3 };
 
   const game = {
     board: createInitialBoard(),
     isWhiteTurn: true,
+    currentPlayer: 'player1',  // player1 = blancs, player2 = noirs
+    mode,  // 'vsAna' ou 'vsHuman'
     status: 'playing',
     difficulty,
     depth: depths[difficulty] || 2,
@@ -324,21 +333,37 @@ function newGame(sessionId, difficulty = 'normal') {
 
   games.set(sessionId, game);
 
+  const message = mode === 'vsHuman'
+    ? "Échecs 2 joueurs! Joueur 1 (Blancs) vs Joueur 2 (Noirs). Joueur 1 commence!"
+    : "Échecs! Tu joues les blancs. À toi!";
+
   return {
     success: true,
     board: game.board,
     boardDisplay: game.board.map(row => row.map(p => PIECE_SYMBOLS[p] || '')),
     isWhiteTurn: true,
+    currentPlayer: 'player1',
+    mode,
     status: 'playing',
-    legalMoves: getAllLegalMoves(game.board, true, null).map(formatMove)
+    legalMoves: getAllLegalMoves(game.board, true, null).map(formatMove),
+    message
   };
 }
 
+/**
+ * Joue un coup
+ * Supporte mode vsAna et vsHuman (2 joueurs)
+ */
 function play(sessionId, moveStr) {
   const game = games.get(sessionId);
   if (!game) return { success: false, error: "Pas de partie en cours" };
   if (game.status !== 'playing') return { success: false, error: "Partie terminée" };
-  if (!game.isWhiteTurn) return { success: false, error: "Ce n'est pas ton tour" };
+
+  // Vérifier que c'est le bon tour
+  const isPlayer1Turn = game.currentPlayer === 'player1';
+  if (game.mode === 'vsAna' && !game.isWhiteTurn) {
+    return { success: false, error: "Ce n'est pas ton tour" };
+  }
 
   // Parser le coup: e2-e4 ou e2e4
   const parts = moveStr.toLowerCase().replace(/[^a-h1-8]/g, '');
@@ -349,7 +374,7 @@ function play(sessionId, moveStr) {
 
   if (!from || !to) return { success: false, error: "Coordonnées invalides" };
 
-  const legalMoves = getAllLegalMoves(game.board, true, game.enPassant);
+  const legalMoves = getAllLegalMoves(game.board, game.isWhiteTurn, game.enPassant);
   const move = legalMoves.find(m =>
     m.fromRow === from.row && m.fromCol === from.col &&
     m.toRow === to.row && m.toCol === to.col
@@ -357,7 +382,7 @@ function play(sessionId, moveStr) {
 
   if (!move) return { success: false, error: "Coup illégal" };
 
-  // Appliquer le coup du joueur
+  // Appliquer le coup
   const capturedPiece = game.board[move.toRow][move.toCol];
   applyMoveToBoard(game.board, move);
   game.moves.push(formatMove(move));
@@ -366,13 +391,21 @@ function play(sessionId, moveStr) {
   game.enPassant = move.special === 'double' ?
     { row: (move.fromRow + move.toRow) / 2, col: move.toCol } : null;
 
-  // Vérifier échec/mat contre Ana
-  const anaInCheck = isInCheck(game.board, false);
-  const anaLegalMoves = getAllLegalMoves(game.board, false, game.enPassant);
+  // Changer de couleur
+  game.isWhiteTurn = !game.isWhiteTurn;
 
-  if (anaLegalMoves.length === 0) {
-    game.status = anaInCheck ? 'player_wins' : 'stalemate';
-    game.isWhiteTurn = false;
+  // Vérifier échec/mat contre l'adversaire
+  const opponentInCheck = isInCheck(game.board, game.isWhiteTurn);
+  const opponentLegalMoves = getAllLegalMoves(game.board, game.isWhiteTurn, game.enPassant);
+
+  if (opponentLegalMoves.length === 0) {
+    if (game.mode === 'vsHuman') {
+      game.status = opponentInCheck
+        ? (isPlayer1Turn ? 'player1_wins' : 'player2_wins')
+        : 'stalemate';
+    } else {
+      game.status = opponentInCheck ? 'player_wins' : 'stalemate';
+    }
 
     return {
       success: true,
@@ -381,14 +414,40 @@ function play(sessionId, moveStr) {
       board: game.board,
       boardDisplay: game.board.map(row => row.map(p => PIECE_SYMBOLS[p] || '')),
       status: game.status,
+      mode: game.mode,
       gameOver: true,
-      inCheck: anaInCheck
+      inCheck: opponentInCheck,
+      message: game.status === 'stalemate' ? "Pat!" :
+               (game.mode === 'vsHuman'
+                 ? `Échec et mat! ${isPlayer1Turn ? 'Joueur 1' : 'Joueur 2'} gagne!`
+                 : "Échec et mat! Tu gagnes!")
     };
   }
 
-  // Tour d'Ana
-  game.isWhiteTurn = false;
+  // MODE 2 JOUEURS : alterner les tours
+  if (game.mode === 'vsHuman') {
+    game.currentPlayer = isPlayer1Turn ? 'player2' : 'player1';
 
+    return {
+      success: true,
+      playerMove: formatMove(move),
+      captured: capturedPiece ? PIECE_SYMBOLS[capturedPiece] : null,
+      board: game.board,
+      boardDisplay: game.board.map(row => row.map(p => PIECE_SYMBOLS[p] || '')),
+      status: 'playing',
+      mode: 'vsHuman',
+      isWhiteTurn: game.isWhiteTurn,
+      currentPlayer: game.currentPlayer,
+      legalMoves: opponentLegalMoves.map(formatMove),
+      inCheck: opponentInCheck,
+      gameOver: false,
+      message: opponentInCheck
+        ? `Échec! Au tour de ${game.currentPlayer === 'player1' ? 'Joueur 1 (Blancs)' : 'Joueur 2 (Noirs)'}`
+        : `Au tour de ${game.currentPlayer === 'player1' ? 'Joueur 1 (Blancs)' : 'Joueur 2 (Noirs)'}`
+    };
+  }
+
+  // MODE VS ANA : Ana joue automatiquement
   const result = minimax(game.board, game.depth, -Infinity, Infinity, false, game.enPassant);
 
   if (!result.move) {
@@ -399,6 +458,7 @@ function play(sessionId, moveStr) {
       board: game.board,
       boardDisplay: game.board.map(row => row.map(p => PIECE_SYMBOLS[p] || '')),
       status: 'stalemate',
+      mode: 'vsAna',
       gameOver: true
     };
   }
@@ -411,6 +471,7 @@ function play(sessionId, moveStr) {
     { row: (result.move.fromRow + result.move.toRow) / 2, col: result.move.toCol } : null;
 
   game.isWhiteTurn = true;
+  game.currentPlayer = 'player1';
 
   // Vérifier échec/mat contre le joueur
   const playerInCheck = isInCheck(game.board, true);
@@ -429,7 +490,9 @@ function play(sessionId, moveStr) {
     board: game.board,
     boardDisplay: game.board.map(row => row.map(p => PIECE_SYMBOLS[p] || '')),
     status: game.status,
+    mode: 'vsAna',
     isWhiteTurn: true,
+    currentPlayer: 'player1',
     legalMoves: playerLegalMoves.map(formatMove),
     inCheck: playerInCheck,
     gameOver: game.status !== 'playing'

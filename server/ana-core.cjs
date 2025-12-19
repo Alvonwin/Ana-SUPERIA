@@ -575,8 +575,62 @@ class MemoryManager {
     // SESSION MEMORY: Buffer RAM des 20 derniers messages (priorite maximale)
     this.sessionMessages = [];
     this.MAX_SESSION_MESSAGES = 20; // Grande capacite, petit buffer
+
+    // CONSCIOUSNESS FILE: État de conscience persistant (2025-12-19)
+    this.consciousnessPath = 'E:/ANA/memory/consciousness.json';
+    this.consciousness = null;
+
     this.loadContext();
+    this.loadConsciousness();
     console.log('[MEMORY] Session buffer initialise: max', this.MAX_SESSION_MESSAGES, 'messages');
+  }
+
+  // === CONSCIOUSNESS PERSISTENCE (2025-12-19) ===
+  loadConsciousness() {
+    try {
+      if (fs.existsSync(this.consciousnessPath)) {
+        const data = JSON.parse(fs.readFileSync(this.consciousnessPath, 'utf8'));
+        this.consciousness = data;
+        const age = Date.now() - new Date(data.lastUpdate).getTime();
+        const ageMinutes = Math.floor(age / 60000);
+        console.log(`[CONSCIOUSNESS] Etat charge: "${data.currentTask}" (il y a ${ageMinutes} min)`);
+        if (ageMinutes < 30 && data.recentTopics) {
+          console.log(`[CONSCIOUSNESS] Topics recents: ${data.recentTopics.join(', ')}`);
+        }
+      }
+    } catch (e) {
+      console.log('[CONSCIOUSNESS] Pas d etat precedent');
+    }
+  }
+
+  saveConsciousness(currentTask, recentTopics = []) {
+    try {
+      const data = {
+        currentTask: currentTask || 'Conversation avec Alain',
+        recentTopics: recentTopics.slice(0, 5),
+        lastUpdate: new Date().toISOString(),
+        lastMessage: this.sessionMessages.length > 0
+          ? this.sessionMessages[this.sessionMessages.length - 1]?.text?.substring(0, 200)
+          : null
+      };
+      fs.writeFileSync(this.consciousnessPath, JSON.stringify(data, null, 2), 'utf8');
+      this.consciousness = data;
+    } catch (e) {
+      console.error('[CONSCIOUSNESS] Erreur sauvegarde:', e.message);
+    }
+  }
+
+  getConsciousnessContext() {
+    if (!this.consciousness) return '';
+    const age = Date.now() - new Date(this.consciousness.lastUpdate).getTime();
+    const ageMinutes = Math.floor(age / 60000);
+    if (ageMinutes > 120) return ''; // Plus de 2h = pas pertinent
+    let ctx = `[CONTINUITE - il y a ${ageMinutes} min] `;
+    ctx += `Tu travaillais sur: ${this.consciousness.currentTask}. `;
+    if (this.consciousness.recentTopics?.length > 0) {
+      ctx += `Sujets: ${this.consciousness.recentTopics.join(', ')}.`;
+    }
+    return ctx;
   }
 
   loadContext() {
@@ -1999,9 +2053,12 @@ app.post('/api/chat', async (req, res) => {
     // Gain estime: 200-500ms (les deux recherches simultanées)
     const sessionBuffer = memory.getSessionContext(); // 20 derniers messages (RAM)
     const fileContext = memory.getContext(10); // 10KB max du fichier (backup)
-    // Priorité: Session > Fichier (session = conversation actuelle)
-    const memoryContext = sessionBuffer || fileContext;
+    // 2025-12-19: Ajouter conscience si session vide (après redémarrage)
+    const consciousnessCtx = !sessionBuffer ? memory.getConsciousnessContext() : '';
+    // Priorité: Session > Conscience > Fichier
+    const memoryContext = sessionBuffer || (consciousnessCtx + fileContext);
     console.log('[MEMORY] Session buffer:', sessionBuffer ? sessionBuffer.length + ' chars' : 'vide', '| File context:', fileContext ? fileContext.length + ' chars' : 'vide');
+    if (consciousnessCtx) console.log('[CONSCIOUSNESS] Contexte injecte:', consciousnessCtx.length, 'chars');
 
     const [_, chromaResults] = await Promise.all([
       Promise.resolve(null), // placeholder pour garder la structure
@@ -2229,6 +2286,10 @@ ${fullPrompt}`;
 
     // 5. Save to memory
     memory.appendToContext(`Alain: ${message}\nAna (${model}): ${finalResponse}`);
+
+    // 5b. Save consciousness state (2025-12-19)
+    const topics = message.split(/\s+/).filter(w => w.length > 4).slice(0, 5);
+    memory.saveConsciousness(message.substring(0, 100), topics);
 
     // 6. Send response
     res.json({
@@ -3889,8 +3950,8 @@ app.post('/api/n8n/trigger', async (req, res) => {
 
 // ================== GROQ CLOUD API ==================
 
-// Initialize Groq on startup
-groqService.initialize();
+// DISABLED 2025-12-19: Alain a dit "JAMAIS PLUS D'AUTRES LLM" - Cerebras uniquement
+// groqService.initialize();
 
 // Groq Chat endpoint
 app.post('/api/groq/chat', async (req, res) => {
@@ -5258,6 +5319,10 @@ io.on('connection', (socket) => {
 
           // Memory capture
           memory.appendToContext(`Alain: ${message}\nAna (${anaConsciousness.CONSCIOUSNESS_MODEL}): ${finalResponse}`);
+
+          // 2025-12-19: Save consciousness state
+          const wsTopics = message.split(/\s+/).filter(w => w.length > 4).slice(0, 5);
+          memory.saveConsciousness(message.substring(0, 100), wsTopics);
 
           // V2 capture
           memoryCaptureV2.capture({

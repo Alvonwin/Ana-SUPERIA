@@ -45,7 +45,12 @@ router.get('/checkers/state', async (req, res) => {
 
 router.post('/checkers/new', async (req, res) => {
   try {
-    const result = await playCheckers({ action: 'new', difficulty: req.body.difficulty }, req.body.session || 'default');
+    // mode: 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+    const result = await playCheckers({
+      action: 'new',
+      difficulty: req.body.difficulty,
+      mode: req.body.mode || 'vsAna'
+    }, req.body.session || 'default');
     const state = checkersEngine.getGameState(req.body.session || 'default');
     result.legalMoves = state.legalMoves;
     res.json(result);
@@ -70,11 +75,30 @@ router.get('/checkers/hint', async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// DEBUG 2025-12-19: Test des mouvements de dame
+router.get('/checkers/test-dame', (req, res) => {
+  try {
+    const result = checkersEngine.testDameMoves();
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// DEBUG 2025-12-19: Test des captures longue distance
+router.get('/checkers/test-capture', (req, res) => {
+  try {
+    const result = checkersEngine.testDameCaptures();
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ==================== TIC-TAC-TOE ====================
 router.post('/tictactoe/new', (req, res) => {
   try {
-    const result = tictactoeEngine.newGame(req.body.session || 'default');
-    result.reaction = randomReaction('start');
+    // mode: 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+    const result = tictactoeEngine.newGame(req.body.session || 'default', req.body.mode || 'vsAna');
+    result.reaction = result.mode === 'vsHuman'
+      ? "Partie 2 joueurs! Joueur 1 (X) commence! 🎮"
+      : randomReaction('start');
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -102,8 +126,11 @@ router.get('/tictactoe/state', (req, res) => {
 // ==================== CONNECT 4 ====================
 router.post('/connect4/new', (req, res) => {
   try {
-    const result = connect4Engine.newGame(req.body.session || 'default');
-    result.reaction = randomReaction('start');
+    // mode: 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+    const result = connect4Engine.newGame(req.body.session || 'default', req.body.mode || 'vsAna');
+    result.reaction = result.mode === 'vsHuman'
+      ? "Partie 2 joueurs! Joueur 1 (Rouge) commence! 🎮"
+      : randomReaction('start');
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -112,8 +139,15 @@ router.post('/connect4/play', (req, res) => {
   try {
     const result = connect4Engine.play(req.body.session || 'default', req.body.col);
     if (result.gameOver) {
-      result.reaction = result.winner === 'player' ? randomReaction('win') :
-                        result.winner === 'ana' ? randomReaction('lose') : randomReaction('tie');
+      if (result.mode === 'vsHuman') {
+        result.reaction = result.winner === 'player1' ? "Joueur 1 gagne! 🎉" :
+                          result.winner === 'player2' ? "Joueur 2 gagne! 🎉" : randomReaction('tie');
+      } else {
+        result.reaction = result.winner === 'player' ? randomReaction('win') :
+                          result.winner === 'ana' ? randomReaction('lose') : randomReaction('tie');
+      }
+    } else if (result.mode === 'vsHuman') {
+      result.reaction = result.message;
     } else if (result.anaMove) {
       result.reaction = randomReaction('thinking');
     }
@@ -130,8 +164,11 @@ router.get('/connect4/state', (req, res) => {
 // ==================== ROCK-PAPER-SCISSORS ====================
 router.post('/rps/new', (req, res) => {
   try {
-    const result = rpsEngine.newGame(req.body.session || 'default');
-    result.reaction = "Pierre, Feuille ou Ciseaux? 🎯";
+    const { session = 'default', mode = 'vsAna' } = req.body;
+    const result = rpsEngine.newGame(session, mode);
+    result.reaction = mode === 'vsHuman'
+      ? "Shifumi 2 joueurs! J1: fais ton choix (caché)"
+      : "Pierre, Feuille ou Ciseaux? 🎯";
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -140,12 +177,26 @@ router.post('/rps/play', (req, res) => {
   try {
     const result = rpsEngine.play(req.body.session || 'default', req.body.choice);
     if (result.success) {
-      if (result.winner === 'player') {
-        result.reaction = `${result.anaName} contre ${result.playerName}... Tu gagnes! 😅`;
-      } else if (result.winner === 'ana') {
-        result.reaction = `${result.anaName} contre ${result.playerName}... Je gagne! 😄`;
+      if (result.mode === 'vsHuman') {
+        if (result.phase === 'player2') {
+          result.reaction = "J1 a choisi! Passe l'écran à J2.";
+        } else if (result.phase === 'reveal') {
+          if (result.winner === 'player1') {
+            result.reaction = `${result.player1Name} vs ${result.player2Name}: J1 gagne!`;
+          } else if (result.winner === 'player2') {
+            result.reaction = `${result.player1Name} vs ${result.player2Name}: J2 gagne!`;
+          } else {
+            result.reaction = `${result.player1Name} vs ${result.player2Name}: Égalité!`;
+          }
+        }
       } else {
-        result.reaction = `${result.anaName} contre ${result.playerName}... Égalité! 🤝`;
+        if (result.winner === 'player') {
+          result.reaction = `${result.anaName} contre ${result.playerName}... Tu gagnes! 😅`;
+        } else if (result.winner === 'ana') {
+          result.reaction = `${result.anaName} contre ${result.playerName}... Je gagne! 😄`;
+        } else {
+          result.reaction = `${result.anaName} contre ${result.playerName}... Égalité! 🤝`;
+        }
       }
     }
     res.json(result);
@@ -161,8 +212,24 @@ router.get('/rps/state', (req, res) => {
 // ==================== HANGMAN ====================
 router.post('/hangman/new', (req, res) => {
   try {
-    const result = hangmanEngine.newGame(req.body.session || 'default', req.body.category);
-    result.reaction = `J'ai choisi un mot de la catégorie "${result.category}"! ${result.wordLength} lettres. À toi! 🎯`;
+    const { session = 'default', category, mode = 'vsAna' } = req.body;
+    const result = hangmanEngine.newGame(session, category, mode);
+
+    if (mode === 'vsHuman') {
+      result.reaction = "Pendu 2 joueurs! J1: Entre un mot secret.";
+    } else {
+      result.reaction = `J'ai choisi un mot de la catégorie "${result.category}"! ${result.wordLength} lettres. À toi! 🎯`;
+    }
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/hangman/setword', (req, res) => {
+  try {
+    const result = hangmanEngine.setWord(req.body.session || 'default', req.body.word);
+    if (result.success) {
+      result.reaction = `Mot de ${result.wordLength} lettres enregistré! Passe l'écran à J2.`;
+    }
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -172,9 +239,15 @@ router.post('/hangman/guess', (req, res) => {
     const result = hangmanEngine.guess(req.body.session || 'default', req.body.letter);
     if (result.success) {
       if (result.gameOver) {
-        result.reaction = result.winner === 'player' ?
-          `Bravo! C'était "${result.word}"! 🎉` :
-          `Perdu! Le mot était "${result.word}" 😅`;
+        if (result.mode === 'vsHuman') {
+          result.reaction = result.winner === 'player2'
+            ? `J2 gagne! C'était "${result.word}"! 🎉`
+            : `J1 gagne! Le mot était "${result.word}"`;
+        } else {
+          result.reaction = result.winner === 'player' ?
+            `Bravo! C'était "${result.word}"! 🎉` :
+            `Perdu! Le mot était "${result.word}" 😅`;
+        }
       } else if (result.correct) {
         result.reaction = `Oui! Il y a des "${result.letter}"! 👍`;
       } else {
@@ -198,10 +271,16 @@ router.get('/hangman/categories', (req, res) => {
 // ==================== BLACKJACK ====================
 router.post('/blackjack/new', (req, res) => {
   try {
-    const result = blackjackEngine.newGame(req.body.session || 'default');
-    result.reaction = result.isBlackjack ?
-      "Blackjack! Tu as 21! 🎉" :
-      `Tu as ${result.playerScore}. Hit ou Stand? 🃏`;
+    const { session = 'default', mode = 'vsAna' } = req.body;
+    const result = blackjackEngine.newGame(session, mode);
+
+    if (mode === 'vsHuman') {
+      result.reaction = `J1: ${result.player1Score}, J2: ${result.player2Score}. Joueur 1 joue!`;
+    } else {
+      result.reaction = result.isBlackjack ?
+        "Blackjack! Tu as 21! 🎉" :
+        `Tu as ${result.playerScore}. Hit ou Stand? 🃏`;
+    }
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -210,10 +289,22 @@ router.post('/blackjack/hit', (req, res) => {
   try {
     const result = blackjackEngine.hit(req.body.session || 'default');
     if (result.success) {
-      if (result.gameOver) {
-        result.reaction = `Tu as tiré ${result.card} et tu as ${result.playerScore}... Bust! Je gagne! 😄`;
+      if (result.mode === 'vsHuman') {
+        if (result.gameOver) {
+          result.reaction = `Partie terminée! Ana: ${result.anaScore}`;
+        } else if (result.message) {
+          result.reaction = result.message;
+        } else {
+          const player = result.currentPlayer === 'player1' ? 'J1' : 'J2';
+          const score = result.currentPlayer === 'player1' ? result.player1Score : result.player2Score;
+          result.reaction = `${result.card}! ${player}: ${score}. Encore?`;
+        }
       } else {
-        result.reaction = `${result.card}! Tu as ${result.playerScore}. Encore? 🃏`;
+        if (result.gameOver) {
+          result.reaction = `Tu as tiré ${result.card} et tu as ${result.playerScore}... Bust! Je gagne! 😄`;
+        } else {
+          result.reaction = `${result.card}! Tu as ${result.playerScore}. Encore? 🃏`;
+        }
       }
     }
     res.json(result);
@@ -224,12 +315,22 @@ router.post('/blackjack/stand', (req, res) => {
   try {
     const result = blackjackEngine.stand(req.body.session || 'default');
     if (result.success) {
-      if (result.winner === 'player') {
-        result.reaction = `J'ai ${result.anaScore}. Tu gagnes avec ${result.playerScore}! 🎉`;
-      } else if (result.winner === 'ana') {
-        result.reaction = `J'ai ${result.anaScore}. Je gagne! 😄`;
+      if (result.mode === 'vsHuman') {
+        if (result.gameOver) {
+          const p1 = result.player1Result === 'win' ? '✅' : result.player1Result === 'push' ? '🤝' : '❌';
+          const p2 = result.player2Result === 'win' ? '✅' : result.player2Result === 'push' ? '🤝' : '❌';
+          result.reaction = `Ana: ${result.anaScore}. J1 ${p1}, J2 ${p2}`;
+        } else if (result.message) {
+          result.reaction = result.message;
+        }
       } else {
-        result.reaction = `Égalité à ${result.playerScore}! 🤝`;
+        if (result.winner === 'player') {
+          result.reaction = `J'ai ${result.anaScore}. Tu gagnes avec ${result.playerScore}! 🎉`;
+        } else if (result.winner === 'ana') {
+          result.reaction = `J'ai ${result.anaScore}. Je gagne! 😄`;
+        } else {
+          result.reaction = `Égalité à ${result.playerScore}! 🤝`;
+        }
       }
     }
     res.json(result);
@@ -245,8 +346,11 @@ router.get('/blackjack/state', (req, res) => {
 // ==================== MEMORY ====================
 router.post('/memory/new', (req, res) => {
   try {
-    const result = memoryEngine.newGame(req.body.session || 'default', req.body.theme, req.body.size || 4);
-    result.reaction = `Memory ${result.size}x${result.size} avec le thème ${result.theme}! Trouve les ${result.totalPairs} paires! 🎯`;
+    // mode: 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+    const result = memoryEngine.newGame(req.body.session || 'default', req.body.theme, req.body.size || 4, req.body.mode || 'vsAna');
+    result.reaction = result.mode === 'vsHuman'
+      ? `Memory 2 joueurs ${result.size}x${result.size}! Trouvez les ${result.totalPairs} paires! 🎮`
+      : `Memory ${result.size}x${result.size} avec le thème ${result.theme}! Trouve les ${result.totalPairs} paires! 🎯`;
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -255,14 +359,28 @@ router.post('/memory/flip', (req, res) => {
   try {
     const result = memoryEngine.flip(req.body.session || 'default', req.body.cardId);
     if (result.success) {
-      if (result.action === 'match') {
-        result.reaction = "Bien joué, une paire! 👏";
-      } else if (result.action === 'no_match') {
-        result.reaction = "Pas de match... À mon tour! 😏";
-      }
-      if (result.gameOver) {
-        result.reaction = result.status === 'player_wins' ? "Tu as gagné! 🎉" :
-                          result.status === 'ana_wins' ? "J'ai gagné! 😄" : "Égalité! 🤝";
+      if (result.mode === 'vsHuman') {
+        // Mode 2 joueurs
+        if (result.action === 'match') {
+          result.reaction = result.message || `Paire trouvée! ${result.currentPlayer === 'player1' ? 'Joueur 1' : 'Joueur 2'} rejoue! 👏`;
+        } else if (result.action === 'no_match') {
+          result.reaction = result.message || `Au tour de ${result.currentPlayer === 'player1' ? 'Joueur 1' : 'Joueur 2'}!`;
+        }
+        if (result.gameOver) {
+          result.reaction = result.status === 'player1_wins' ? "Joueur 1 gagne! 🎉" :
+                            result.status === 'player2_wins' ? "Joueur 2 gagne! 🎉" : "Égalité! 🤝";
+        }
+      } else {
+        // Mode vs Ana
+        if (result.action === 'match') {
+          result.reaction = "Bien joué, une paire! 👏";
+        } else if (result.action === 'no_match') {
+          result.reaction = "Pas de match... À mon tour! 😏";
+        }
+        if (result.gameOver) {
+          result.reaction = result.status === 'player_wins' ? "Tu as gagné! 🎉" :
+                            result.status === 'ana_wins' ? "J'ai gagné! 😄" : "Égalité! 🤝";
+        }
       }
     }
     res.json(result);
@@ -279,8 +397,11 @@ router.get('/memory/state', (req, res) => {
 router.post('/nim/new', (req, res) => {
   try {
     const piles = req.body.piles || [3, 5, 7];
-    const result = nimEngine.newGame(req.body.session || 'default', piles);
-    result.reaction = `Nim avec ${result.piles.length} piles: ${result.piles.join(', ')} bâtonnets. Celui qui prend le dernier perd! 🎯`;
+    // mode: 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+    const result = nimEngine.newGame(req.body.session || 'default', piles, req.body.mode || 'vsAna');
+    result.reaction = result.mode === 'vsHuman'
+      ? `Partie 2 joueurs! ${result.piles.length} piles: ${result.piles.join(', ')}. Celui qui prend le dernier perd! 🎮`
+      : `Nim avec ${result.piles.length} piles: ${result.piles.join(', ')} bâtonnets. Celui qui prend le dernier perd! 🎯`;
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -290,9 +411,15 @@ router.post('/nim/play', (req, res) => {
     const result = nimEngine.play(req.body.session || 'default', req.body.pile, req.body.take);
     if (result.success) {
       if (result.gameOver) {
-        result.reaction = result.winner === 'player' ?
-          "J'ai pris le dernier! Tu gagnes! 🎉" :
-          "Tu as pris le dernier... Je gagne! 😄";
+        if (result.mode === 'vsHuman') {
+          result.reaction = result.message || `${result.winner === 'player1' ? 'Joueur 1' : 'Joueur 2'} gagne! 🎉`;
+        } else {
+          result.reaction = result.winner === 'player' ?
+            "J'ai pris le dernier! Tu gagnes! 🎉" :
+            "Tu as pris le dernier... Je gagne! 😄";
+        }
+      } else if (result.mode === 'vsHuman') {
+        result.reaction = result.message;
       } else if (result.anaMove) {
         result.reaction = `Je prends ${result.anaMove.take} de la pile ${result.anaMove.pile + 1}. À toi! 🎯`;
       }
@@ -311,8 +438,27 @@ router.get('/nim/state', (req, res) => {
 router.post('/guess/new', (req, res) => {
   try {
     const max = req.body.max || 100;
-    const result = guessEngine.newGame(req.body.session || 'default', max);
-    result.reaction = result.message;
+    // mode: 'vsAna' (défaut) ou 'vsHuman' (J1 choisit le nombre, J2 devine)
+    const mode = req.body.mode || 'vsAna';
+    const result = guessEngine.newGame(req.body.session || 'default', max, mode);
+    if (result.success) {
+      if (mode === 'vsHuman' && result.phase === 'setup') {
+        result.reaction = `Devinette 2 joueurs! Joueur 1: Entre un nombre secret entre 1 et ${max}!`;
+      } else {
+        result.reaction = result.message;
+      }
+    }
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Route pour que J1 définisse le nombre secret en mode vsHuman
+router.post('/guess/setnumber', (req, res) => {
+  try {
+    const result = guessEngine.setNumber(req.body.session || 'default', req.body.number);
+    if (result.success) {
+      result.reaction = "Nombre enregistré! Passe l'écran à Joueur 2. 🎯";
+    }
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -322,7 +468,11 @@ router.post('/guess/try', (req, res) => {
     const result = guessEngine.guess(req.body.session || 'default', req.body.number);
     if (result.success) {
       if (result.correct) {
-        result.reaction = `🎉 Bravo! C'était bien ${result.secret}! Tu as trouvé en ${result.attempts} essais!`;
+        if (result.mode === 'vsHuman') {
+          result.reaction = `🎉 Joueur 2 a trouvé! C'était ${result.secret}! Trouvé en ${result.attempts} essais!`;
+        } else {
+          result.reaction = `🎉 Bravo! C'était bien ${result.secret}! Tu as trouvé en ${result.attempts} essais!`;
+        }
       } else {
         result.reaction = result.message;
       }
@@ -335,7 +485,11 @@ router.post('/guess/giveup', (req, res) => {
   try {
     const result = guessEngine.giveUp(req.body.session || 'default');
     if (result.success) {
-      result.reaction = `Le nombre était ${result.secret}. Tu as essayé ${result.attempts} fois! 😊`;
+      if (result.mode === 'vsHuman') {
+        result.reaction = `Joueur 2 abandonne! Le nombre de Joueur 1 était ${result.secret}. Joueur 1 gagne! 🏆`;
+      } else {
+        result.reaction = `Le nombre était ${result.secret}. Tu as essayé ${result.attempts} fois! 😊`;
+      }
     }
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
@@ -350,8 +504,11 @@ router.get('/guess/state', (req, res) => {
 // ==================== CHESS ====================
 router.post('/chess/new', (req, res) => {
   try {
-    const result = chessEngine.newGame(req.body.session || 'default', req.body.difficulty || 'normal');
-    result.reaction = `Échecs! ${req.body.difficulty === 'hard' ? 'Mode difficile!' : 'Que le meilleur gagne!'} Tu joues les blancs. ♔`;
+    // mode: 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+    const result = chessEngine.newGame(req.body.session || 'default', req.body.difficulty || 'normal', req.body.mode || 'vsAna');
+    result.reaction = result.mode === 'vsHuman'
+      ? "Échecs 2 joueurs! Joueur 1 (Blancs) vs Joueur 2 (Noirs). Joueur 1 commence! ♔"
+      : `Échecs! ${req.body.difficulty === 'hard' ? 'Mode difficile!' : 'Que le meilleur gagne!'} Tu joues les blancs. ♔`;
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -361,13 +518,25 @@ router.post('/chess/play', (req, res) => {
     const result = chessEngine.play(req.body.session || 'default', req.body.move);
     if (result.success) {
       if (result.gameOver) {
-        if (result.status === 'player_wins') {
-          result.reaction = "Échec et mat! Tu m'as battue! 🎉";
-        } else if (result.status === 'ana_wins') {
-          result.reaction = "Échec et mat! J'ai gagné! ♛";
+        if (result.mode === 'vsHuman') {
+          if (result.status === 'player1_wins') {
+            result.reaction = "Échec et mat! Joueur 1 gagne! 🎉";
+          } else if (result.status === 'player2_wins') {
+            result.reaction = "Échec et mat! Joueur 2 gagne! 🎉";
+          } else {
+            result.reaction = "Pat! Match nul! 🤝";
+          }
         } else {
-          result.reaction = "Pat! Match nul! 🤝";
+          if (result.status === 'player_wins') {
+            result.reaction = "Échec et mat! Tu m'as battue! 🎉";
+          } else if (result.status === 'ana_wins') {
+            result.reaction = "Échec et mat! J'ai gagné! ♛";
+          } else {
+            result.reaction = "Pat! Match nul! 🤝";
+          }
         }
+      } else if (result.mode === 'vsHuman') {
+        result.reaction = result.message || `Au tour de ${result.currentPlayer === 'player1' ? 'Joueur 1' : 'Joueur 2'}`;
       } else if (result.inCheck) {
         result.reaction = `${result.anaMove}... Échec! 👑`;
       } else if (result.anaCaptured) {
@@ -399,8 +568,14 @@ router.get('/chess/hint', (req, res) => {
 // ==================== BATTLESHIP ====================
 router.post('/battleship/new', (req, res) => {
   try {
-    const result = battleshipEngine.newGame(req.body.session || 'default');
-    result.reaction = "Bataille Navale! 🚢 Place tes 5 bateaux. Commence par le Porte-avions (5 cases). Donne une coordonnée (ex: A1) et l'orientation (horizontal/vertical).";
+    const { session = 'default', mode = 'vsAna' } = req.body;
+    const result = battleshipEngine.newGame(session, mode);
+
+    if (mode === 'vsHuman') {
+      result.reaction = "Bataille Navale 2 joueurs! Joueur 1 place ses bateaux. Commence par le Porte-avions (5 cases).";
+    } else {
+      result.reaction = "Bataille Navale! 🚢 Place tes 5 bateaux. Commence par le Porte-avions (5 cases). Donne une coordonnée (ex: A1) et l'orientation (horizontal/vertical).";
+    }
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -413,10 +588,20 @@ router.post('/battleship/place', (req, res) => {
       : (req.body.orientation !== 'vertical' && req.body.orientation !== 'v');
     const result = battleshipEngine.placePlayerShip(req.body.session || 'default', req.body.coord, horizontal);
     if (result.success) {
-      if (result.phase === 'battle') {
-        result.reaction = "Parfait! Tous tes bateaux sont en place! 🎯 À l'attaque! Donne une coordonnée pour tirer (ex: E5)";
+      if (result.mode === 'vsHuman') {
+        if (result.phase === 'battle') {
+          result.reaction = "Tous les bateaux sont placés! La bataille commence! Joueur 1 tire en premier.";
+        } else if (result.phase === 'placement2') {
+          result.reaction = `Joueur 1 terminé! Passe l'écran à Joueur 2.`;
+        } else {
+          result.reaction = `${result.placed.ship} placé! Place le ${result.currentShip.name}.`;
+        }
       } else {
-        result.reaction = `${result.placed.ship} placé en ${result.placed.positions.join('-')}! 📍 Place maintenant le ${result.currentShip.name}.`;
+        if (result.phase === 'battle') {
+          result.reaction = "Parfait! Tous tes bateaux sont en place! 🎯 À l'attaque! Donne une coordonnée pour tirer (ex: E5)";
+        } else {
+          result.reaction = `${result.placed.ship} placé en ${result.placed.positions.join('-')}! 📍 Place maintenant le ${result.currentShip.name}.`;
+        }
       }
     } else {
       result.reaction = `Hmm, impossible de placer là... ${result.error}`;
@@ -429,38 +614,48 @@ router.post('/battleship/fire', (req, res) => {
   try {
     const result = battleshipEngine.fire(req.body.session || 'default', req.body.coord);
     if (result.success) {
-      let reaction = '';
-      // Tir du joueur
-      if (result.playerShot.hit) {
-        if (result.playerShot.sunk) {
-          reaction = `💥 COULÉ! Tu as coulé mon ${result.playerShot.shipName}! `;
+      // Mode vsHuman
+      if (result.mode === 'vsHuman') {
+        if (result.gameOver) {
+          result.reaction = `🎉 ${result.winner === 'player1' ? 'Joueur 1' : 'Joueur 2'} gagne!`;
         } else {
-          reaction = `💥 Touché! `;
+          result.reaction = result.message;
         }
       } else {
-        reaction = `💦 À l'eau... `;
-      }
-      // Tir d'Ana
-      if (result.anaShot) {
-        if (result.anaShot.hit) {
-          if (result.anaShot.sunk) {
-            reaction += `Mon tour: ${result.anaShot.coord}... COULÉ! J'ai coulé ton ${result.anaShot.shipName}! 😄`;
+        // Mode vsAna
+        let reaction = '';
+        // Tir du joueur
+        if (result.playerShot.hit) {
+          if (result.playerShot.sunk) {
+            reaction = `💥 COULÉ! Tu as coulé mon ${result.playerShot.shipName}! `;
           } else {
-            reaction += `Mon tour: ${result.anaShot.coord}... Touché! 😏`;
+            reaction = `💥 Touché! `;
           }
         } else {
-          reaction += `Mon tour: ${result.anaShot.coord}... Raté! 😅`;
+          reaction = `💦 À l'eau... `;
         }
-      }
-      // Fin de partie
-      if (result.gameOver) {
-        if (result.winner === 'player') {
-          reaction = `🎉 VICTOIRE! Tu as coulé toute ma flotte! Précision: ${result.stats.player.accuracy}%`;
-        } else {
-          reaction = `🚢 J'ai gagné! Toute ta flotte est coulée! Ma précision: ${result.stats.ana.accuracy}%`;
+        // Tir d'Ana
+        if (result.anaShot) {
+          if (result.anaShot.hit) {
+            if (result.anaShot.sunk) {
+              reaction += `Mon tour: ${result.anaShot.coord}... COULÉ! J'ai coulé ton ${result.anaShot.shipName}! 😄`;
+            } else {
+              reaction += `Mon tour: ${result.anaShot.coord}... Touché! 😏`;
+            }
+          } else {
+            reaction += `Mon tour: ${result.anaShot.coord}... Raté! 😅`;
+          }
         }
+        // Fin de partie
+        if (result.gameOver) {
+          if (result.winner === 'player') {
+            reaction = `🎉 VICTOIRE! Tu as coulé toute ma flotte! Précision: ${result.stats.player.accuracy}%`;
+          } else {
+            reaction = `🚢 J'ai gagné! Toute ta flotte est coulée! Ma précision: ${result.stats.ana.accuracy}%`;
+          }
+        }
+        result.reaction = reaction;
       }
-      result.reaction = reaction;
     }
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
@@ -476,8 +671,11 @@ router.get('/battleship/state', (req, res) => {
 // ==================== BACKGAMMON ====================
 router.post('/backgammon/new', (req, res) => {
   try {
-    const result = backgammonEngine.newGame(req.body.session || 'default');
-    result.reaction = "Backgammon! Tu joues les blancs (positifs). Lance les dés pour commencer! 🎲";
+    // mode: 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+    const result = backgammonEngine.newGame(req.body.session || 'default', req.body.mode || 'vsAna');
+    result.reaction = result.mode === 'vsHuman'
+      ? "Backgammon 2 joueurs! Joueur 1 (Blancs) vs Joueur 2 (Noirs). Joueur 1 lance les dés! 🎲"
+      : "Backgammon! Tu joues les blancs (positifs). Lance les dés pour commencer! 🎲";
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -486,7 +684,13 @@ router.post('/backgammon/roll', (req, res) => {
   try {
     const result = backgammonEngine.roll(req.body.session || 'default');
     if (result.success) {
-      if (result.anaDice && result.anaMoves) {
+      if (result.mode === 'vsHuman') {
+        if (result.message) {
+          result.reaction = result.message;
+        } else {
+          result.reaction = `${result.playerTurn === 'player1' ? 'Joueur 1' : 'Joueur 2'} a lancé ${result.dice.join('+')}! 🎯`;
+        }
+      } else if (result.anaDice && result.anaMoves) {
         result.reaction = "Ana a lancé " + result.anaDice.join('+') + " et joué " + result.anaMoves.length + " coups. À toi de lancer! 🎲";
       } else {
         result.reaction = "Tu as lancé " + result.dice.join('+') + "! Choisis tes mouvements. 🎯";
@@ -502,7 +706,13 @@ router.post('/backgammon/move', (req, res) => {
     const result = backgammonEngine.move(req.body.session || 'default', from, to, die);
     if (result.success) {
       if (result.phase === 'gameover') {
-        result.reaction = result.winner === 'white' ? "Bravo! Tu as gagné! 🎉" : "Ana a gagné! 😄";
+        if (result.mode === 'vsHuman') {
+          result.reaction = result.winner === 'player1' ? "Joueur 1 gagne! 🎉" : "Joueur 2 gagne! 🎉";
+        } else {
+          result.reaction = result.winner === 'white' ? "Bravo! Tu as gagné! 🎉" : "Ana a gagné! 😄";
+        }
+      } else if (result.mode === 'vsHuman') {
+        result.reaction = result.message || `Au tour de ${result.playerTurn === 'player1' ? 'Joueur 1' : 'Joueur 2'}!`;
       } else if (result.anaMoves && result.anaMoves.length > 0) {
         result.reaction = "Bien joué! Ana a lancé et fait " + result.anaMoves.length + " mouvements. À toi! 🎲";
       } else if (result.movesLeft && result.movesLeft.length > 0) {

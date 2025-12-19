@@ -1,12 +1,13 @@
 /**
  * Connect 4 (Puissance 4) Engine for Ana
+ * Supporte mode vsAna et vsHuman (2 joueurs)
  */
 
 const games = new Map();
 
 const EMPTY = 0;
-const PLAYER = 1;  // Rouge
-const ANA = 2;     // Jaune
+const PLAYER1 = 1;  // Rouge (Joueur 1)
+const PLAYER2 = 2;  // Jaune (Ana ou Joueur 2)
 
 const ROWS = 6;
 const COLS = 7;
@@ -15,16 +16,34 @@ function createBoard() {
   return Array(ROWS).fill(null).map(() => Array(COLS).fill(EMPTY));
 }
 
-function newGame(sessionId) {
+/**
+ * Démarre une nouvelle partie
+ * @param {string} sessionId - ID de session
+ * @param {string} mode - 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+ */
+function newGame(sessionId, mode = 'vsAna') {
   const game = {
     board: createBoard(),
-    currentPlayer: 'player',
+    currentPlayer: 'player1',
+    mode,  // 'vsAna' ou 'vsHuman'
     status: 'playing',
     winner: null,
     lastMove: null
   };
   games.set(sessionId, game);
-  return { success: true, board: game.board, status: 'playing' };
+
+  const message = mode === 'vsHuman'
+    ? "Partie 2 joueurs! Joueur 1 (Rouge) vs Joueur 2 (Jaune). Joueur 1 commence!"
+    : "Puissance 4! Tu joues les rouges, je joue les jaunes. À toi!";
+
+  return {
+    success: true,
+    board: game.board,
+    status: 'playing',
+    mode,
+    currentPlayer: 'player1',
+    message
+  };
 }
 
 function dropPiece(board, col, piece) {
@@ -71,7 +90,7 @@ function checkWinner(board, lastRow, lastCol) {
 }
 
 function evaluateWindow(window, piece) {
-  const opponent = piece === ANA ? PLAYER : ANA;
+  const opponent = piece === PLAYER2 ? PLAYER1 : PLAYER2;
   const pieceCount = window.filter(c => c === piece).length;
   const emptyCount = window.filter(c => c === EMPTY).length;
   const oppCount = window.filter(c => c === opponent).length;
@@ -88,14 +107,14 @@ function evaluateBoard(board) {
 
   // Centre
   const centerCol = Math.floor(COLS / 2);
-  const centerCount = board.filter(row => row[centerCol] === ANA).length;
+  const centerCount = board.filter(row => row[centerCol] === PLAYER2).length;
   score += centerCount * 3;
 
   // Horizontal
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS - 3; c++) {
       const window = [board[r][c], board[r][c+1], board[r][c+2], board[r][c+3]];
-      score += evaluateWindow(window, ANA);
+      score += evaluateWindow(window, PLAYER2);
     }
   }
 
@@ -103,7 +122,7 @@ function evaluateBoard(board) {
   for (let c = 0; c < COLS; c++) {
     for (let r = 0; r < ROWS - 3; r++) {
       const window = [board[r][c], board[r+1][c], board[r+2][c], board[r+3][c]];
-      score += evaluateWindow(window, ANA);
+      score += evaluateWindow(window, PLAYER2);
     }
   }
 
@@ -111,13 +130,13 @@ function evaluateBoard(board) {
   for (let r = 0; r < ROWS - 3; r++) {
     for (let c = 0; c < COLS - 3; c++) {
       const window = [board[r][c], board[r+1][c+1], board[r+2][c+2], board[r+3][c+3]];
-      score += evaluateWindow(window, ANA);
+      score += evaluateWindow(window, PLAYER2);
     }
   }
   for (let r = 0; r < ROWS - 3; r++) {
     for (let c = 3; c < COLS; c++) {
       const window = [board[r][c], board[r+1][c-1], board[r+2][c-2], board[r+3][c-3]];
-      score += evaluateWindow(window, ANA);
+      score += evaluateWindow(window, PLAYER2);
     }
   }
 
@@ -140,8 +159,8 @@ function minimax(board, depth, alpha, beta, isMax) {
     for (let r = 0; r < ROWS; r++) {
       if (board[r][c] !== EMPTY) {
         const winner = checkWinner(board, r, c);
-        if (winner === ANA) return 10000;
-        if (winner === PLAYER) return -10000;
+        if (winner === PLAYER2) return 10000;
+        if (winner === PLAYER1) return -10000;
         if (winner === 'draw') return 0;
         break;
       }
@@ -155,7 +174,7 @@ function minimax(board, depth, alpha, beta, isMax) {
     let value = -Infinity;
     for (const col of validCols) {
       const newBoard = board.map(r => [...r]);
-      const row = dropPiece(newBoard, col, ANA);
+      const row = dropPiece(newBoard, col, PLAYER2);
       value = Math.max(value, minimax(newBoard, depth - 1, alpha, beta, false));
       alpha = Math.max(alpha, value);
       if (alpha >= beta) break;
@@ -165,7 +184,7 @@ function minimax(board, depth, alpha, beta, isMax) {
     let value = Infinity;
     for (const col of validCols) {
       const newBoard = board.map(r => [...r]);
-      const row = dropPiece(newBoard, col, PLAYER);
+      const row = dropPiece(newBoard, col, PLAYER1);
       value = Math.min(value, minimax(newBoard, depth - 1, alpha, beta, true));
       beta = Math.min(beta, value);
       if (alpha >= beta) break;
@@ -185,7 +204,7 @@ function anaPlay(game) {
 
   for (const col of validCols) {
     const newBoard = board.map(r => [...r]);
-    const row = dropPiece(newBoard, col, ANA);
+    const row = dropPiece(newBoard, col, PLAYER2);
     const score = minimax(newBoard, 4, -Infinity, Infinity, false);
     if (score > bestScore) {
       bestScore = score;
@@ -193,10 +212,14 @@ function anaPlay(game) {
     }
   }
 
-  const row = dropPiece(board, bestCol, ANA);
+  const row = dropPiece(board, bestCol, PLAYER2);
   return { row, col: bestCol };
 }
 
+/**
+ * Joue un coup
+ * Supporte mode vsAna et vsHuman (2 joueurs)
+ */
 function play(sessionId, col) {
   const game = games.get(sessionId);
   if (!game) return { success: false, error: "Pas de partie en cours" };
@@ -204,26 +227,72 @@ function play(sessionId, col) {
   if (col < 0 || col >= COLS) return { success: false, error: "Colonne invalide (0-6)" };
   if (game.board[0][col] !== EMPTY) return { success: false, error: "Colonne pleine!" };
 
-  // Coup du joueur
-  const playerRow = dropPiece(game.board, col, PLAYER);
+  // Déterminer quelle pièce placer selon le joueur courant
+  const isPlayer1Turn = game.currentPlayer === 'player1';
+  const pieceToPlace = isPlayer1Turn ? PLAYER1 : PLAYER2;
 
+  // Placer la pièce
+  const playerRow = dropPiece(game.board, col, pieceToPlace);
+
+  // Vérifier victoire
   let winner = checkWinner(game.board, playerRow, col);
   if (winner) {
-    game.status = winner === 'draw' ? 'draw' : (winner === PLAYER ? 'player_wins' : 'ana_wins');
-    game.winner = winner === 'draw' ? null : (winner === PLAYER ? 'player' : 'ana');
-    return { success: true, board: game.board, status: game.status, winner: game.winner, gameOver: true };
+    if (winner === 'draw') {
+      game.status = 'draw';
+      game.winner = null;
+    } else {
+      const winnerPlayer = winner === PLAYER1 ? 'player1' : 'player2';
+      game.status = winnerPlayer + '_wins';
+      game.winner = winnerPlayer;
+    }
+
+    const winMessage = game.mode === 'vsHuman'
+      ? (winner === 'draw' ? "Match nul!" : `${game.winner === 'player1' ? 'Joueur 1 (Rouge)' : 'Joueur 2 (Jaune)'} gagne!`)
+      : (winner === 'draw' ? "Match nul!" : (winner === PLAYER1 ? "Tu as gagné!" : "J'ai gagné!"));
+
+    return {
+      success: true,
+      board: game.board,
+      status: game.status,
+      winner: game.winner,
+      gameOver: true,
+      mode: game.mode,
+      message: winMessage
+    };
   }
 
-  // Ana joue
+  // MODE 2 JOUEURS : alterner les tours
+  if (game.mode === 'vsHuman') {
+    game.currentPlayer = isPlayer1Turn ? 'player2' : 'player1';
+    return {
+      success: true,
+      board: game.board,
+      playerMove: { row: playerRow, col },
+      status: 'playing',
+      gameOver: false,
+      mode: 'vsHuman',
+      currentPlayer: game.currentPlayer,
+      message: `Au tour de ${game.currentPlayer === 'player1' ? 'Joueur 1 (Rouge)' : 'Joueur 2 (Jaune)'}`
+    };
+  }
+
+  // MODE VS ANA : Ana joue automatiquement
   const anaMove = anaPlay(game);
 
   if (anaMove) {
     winner = checkWinner(game.board, anaMove.row, anaMove.col);
     if (winner) {
-      game.status = winner === 'draw' ? 'draw' : (winner === PLAYER ? 'player_wins' : 'ana_wins');
-      game.winner = winner === 'draw' ? null : (winner === PLAYER ? 'player' : 'ana');
+      if (winner === 'draw') {
+        game.status = 'draw';
+        game.winner = null;
+      } else {
+        game.status = winner === PLAYER1 ? 'player_wins' : 'ana_wins';
+        game.winner = winner === PLAYER1 ? 'player' : 'ana';
+      }
     }
   }
+
+  game.currentPlayer = 'player1';
 
   return {
     success: true,
@@ -232,7 +301,9 @@ function play(sessionId, col) {
     anaMove,
     status: game.status,
     winner: game.winner,
-    gameOver: !!winner
+    gameOver: !!winner,
+    mode: 'vsAna',
+    currentPlayer: 'player1'
   };
 }
 

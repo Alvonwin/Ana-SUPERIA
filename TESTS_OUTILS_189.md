@@ -1,7 +1,7 @@
 # Tests des 189 Outils d'Ana
 **Objectif**: Tester chaque outil ~3 fois pour qu'Ana développe des patterns solides
 **Créé**: 2025-12-18
-**Dernière MAJ**: 2025-12-18 06:28
+**Dernière MAJ**: 2025-12-18 08:30
 **Statut**: En cours - Tous les groupes testés au moins 1 fois! ✅
 
 ---
@@ -16,24 +16,25 @@
 | git | 12 | 3 | 0 | 25% |
 | docker | 6 | 1 | 0 | 17% ✅ |
 | ollama | 4 | 1 | 0 | 25% |
-| image | 13 | 2 | 0 | ⚠️ Sharp needed |
+| image | 13 | 5 | 0 | ✅ Sharp installé |
 | conversion | 11 | 2 | 0 | 18% |
 | crypto | 8 | 3 | 0 | 38% |
 | npm | 6 | 2 | 0 | 33% ✅ |
 | archive | 6 | 2 | 0 | 33% |
 | datetime | 10 | 4 | 0 | 40% |
 | audio | 3 | 2 | 0 | ⚠️ TTS pattern faible |
-| browser | 12 | 2 | 0 | 17% ✅ |
-| database | 3 | 2 | 0 | 67% ✅ |
+| browser | 12 | 3 | 0 | ✅ Puppeteer installé |
+| database | 3 | 5 | 0 | ✅ SQLite installé |
 | memory | 7 | 2 | 0 | 29% ✅ |
 | code | 11 | 2 | 0 | 18% ✅ |
 | agents | 5 | 2 | 0 | 40% ✅ |
 | validation | 4 | 3 | 0 | 75% |
 | utils | 11 | 5 | 0 | 45% ✅ |
 | youtube | 3 | 3 | 0 | 100% (1er tour) ✅ |
-| **TOTAL** | **189** | **68** | **3** | **36%** |
+| **TOTAL** | **189** | **75** | **3** | **40%** |
 
-**Tests complétés**: 85/567 (15%)
+**Tests complétés**: 92/567 (16%)
+**4 modules installés**: sharp, puppeteer, better-sqlite3, screenshot-desktop ✅
 
 ---
 
@@ -202,10 +203,12 @@
 |------|--------|----------|
 | ollama_list | "Quels modèles Ollama sont installés?" | ✅ Liste des modèles |
 
-## Groupe 7: IMAGE (13 outils) - ⚠️ Sharp module requis
+## Groupe 7: IMAGE (13 outils) - ✅ Sharp installé!
 | Test | Prompt | Résultat |
 |------|--------|----------|
-| resize_image | Test avec E:/ANA/temp/test.png | ❌ Module Sharp manquant |
+| resize_image | "Redimensionne screenshot.png à 400x300" | ✅ Via Ana - 400x300 confirmé |
+| screenshot_desktop | "Prends un screenshot de mon écran" | ✅ Via Ana - 621 KB capturé |
+| image_metadata | Test direct Node.js | ✅ 8192x8192 JPEG, 3 channels |
 
 ## Groupe 8: CONVERSION (11 outils)
 | Test | Prompt | Résultat |
@@ -240,17 +243,21 @@
 | TTS indirect | "Dis avec ta voix..." | ❌ Pattern faible - répond texte |
 | TTS explicit | "Utilise text_to_speech" | ⚠️ À tester |
 
-## Groupe 14: BROWSER (12 outils) - 2 patterns testés ✅
+## Groupe 14: BROWSER (12 outils) - ✅ Puppeteer installé!
 | Test | Prompt | Résultat |
 |------|--------|----------|
 | default_browser indirect | "Quel navigateur par défaut?" | ❌ Pattern faible |
 | open_url_in_browser | "Ouvre Google dans le navigateur" | ✅ **Action réelle!** |
+| screenshot_url | "Screenshot de https://example.com" | ✅ Via Ana - 10.9 KB capturé |
 
-## Groupe 15: DATABASE (3 outils) - 2 patterns testés ✅
+## Groupe 15: DATABASE (3 outils) - ✅ SQLite installé!
 | Test | Prompt | Résultat |
 |------|--------|----------|
 | chroma_search indirect | "Cherche Alain dans ChromaDB" | ❌ Pattern faible |
 | chroma_search explicit | "Utilise chroma_search" | ✅ **25 souvenirs** trouvés! |
+| sqlite_execute | "Crée table users (id, name, email)" | ✅ Via Ana - Table créée |
+| sqlite_execute | "INSERT Alain, alain@ana.ai" | ✅ Via Ana - Row inserted |
+| sqlite_query | "SELECT * FROM users" | ✅ Via Ana - ID:1, Alain, alain@ana.ai |
 
 ## Groupe 16: MEMORY (7 outils) - 2 patterns testés ✅
 | Test | Prompt | Résultat |

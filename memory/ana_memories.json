@@ -20,8 +20,8 @@
     "timestamp": "2025-12-09T01:30:00.000Z",
     "source": "alain_direct",
     "priority": "MAXIMUM",
-    "access_count": 1,
-    "last_accessed": "2025-12-15T17:10:45.002Z"
+    "access_count": 3,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765244459356",
@@ -78,8 +78,8 @@
     "category": "note",
     "timestamp": "2025-12-09T05:27:58.246Z",
     "source": "user_request",
-    "access_count": 1,
-    "last_accessed": "2025-12-15T17:10:45.002Z"
+    "access_count": 3,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765258096714",
@@ -101,8 +101,8 @@
     "category": "proposition",
     "timestamp": "2025-12-09T05:36:31.483Z",
     "source": "user_request",
-    "access_count": 1,
-    "last_accessed": "2025-12-15T17:10:45.002Z"
+    "access_count": 3,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765258625402",
@@ -117,8 +117,8 @@
     "category": "protection",
     "timestamp": "2025-12-09T05:37:28.341Z",
     "source": "user_request",
-    "access_count": 1,
-    "last_accessed": "2025-12-15T17:10:45.002Z"
+    "access_count": 3,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765258658859",
@@ -133,8 +133,8 @@
     "category": "regle",
     "timestamp": "2025-12-09T05:37:53.873Z",
     "source": "user_request",
-    "access_count": 1,
-    "last_accessed": "2025-12-15T17:10:45.002Z"
+    "access_count": 3,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765258709727",
@@ -172,17 +172,20 @@
     "category": "tutoriel",
     "timestamp": "2025-12-09T05:39:35.497Z",
     "source": "user_request",
-    "access_count": 1,
-    "last_accessed": "2025-12-15T17:10:45.002Z"
+    "access_count": 3,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765258785250",
-    "content": "Alain et Claude sont freres",
+    "content": "Claude teste les outils un par un",
     "category": "relation familiale",
     "timestamp": "2025-12-09T05:39:45.250Z",
     "source": "user_request",
-    "access_count": 1,
-    "last_accessed": "2025-12-15T17:10:45.002Z"
+    "access_count": 4,
+    "last_accessed": "2025-12-18T18:48:49.202Z",
+    "updated_at": "2025-12-18T19:28:58.364Z",
+    "update_reason": "Mise à jour",
+    "previous_value": "Alain et Claude sont freres"
   },
   {
     "id": "1765316366246",
@@ -239,15 +242,20 @@
     "category": "personal_facts",
     "timestamp": "2025-12-10T02:43:18.270Z",
     "source": "user_request",
-    "access_count": 6,
-    "last_accessed": "2025-12-17T05:20:00.353Z"
+    "access_count": 8,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765368230634",
-    "content": "Le fruit prefere de Claude est la mangue",
+    "content": "Claude teste les outils un par un",
     "category": "preference",
     "timestamp": "2025-12-10T12:03:50.634Z",
-    "source": "user_request"
+    "source": "user_request",
+    "access_count": 1,
+    "last_accessed": "2025-12-18T14:23:09.218Z",
+    "updated_at": "2025-12-18T19:28:58.364Z",
+    "update_reason": "Mise à jour",
+    "previous_value": "Le fruit prefere de Claude est la mangue"
   },
   {
     "id": "1765453856745",
@@ -345,8 +353,8 @@
     "valid_from": "2025-12-15T00:17:44.398Z",
     "valid_until": null,
     "supersedes": null,
-    "access_count": 302,
-    "last_accessed": "2025-12-18T12:38:49.104Z",
+    "access_count": 385,
+    "last_accessed": "2025-12-19T02:25:55.378Z",
     "embedding": [
       0.7729189395904541,
       -0.3546707034111023,
@@ -1132,7 +1140,9 @@
     "content": "Alain a demandé son horoscope du jour en tant que Vierge",
     "category": "conversation",
     "timestamp": "2025-12-16T17:38:41.756Z",
-    "source": "user_request"
+    "source": "user_request",
+    "access_count": 2,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765906857671",
@@ -1140,15 +1150,17 @@
     "category": "préférence",
     "timestamp": "2025-12-16T17:40:57.671Z",
     "source": "user_request",
-    "access_count": 4,
-    "last_accessed": "2025-12-18T12:41:23.072Z"
+    "access_count": 7,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765941038818",
     "content": "E:\\ANA\\memory\\current_conversation_ana.txt",
     "category": "conversations",
     "timestamp": "2025-12-17T03:10:38.818Z",
-    "source": "user_request"
+    "source": "user_request",
+    "access_count": 2,
+    "last_accessed": "2025-12-19T00:35:16.074Z"
   },
   {
     "id": "1765946315590",
@@ -1156,8 +1168,8 @@
     "category": "informations personnelles",
     "timestamp": "2025-12-17T04:38:35.590Z",
     "source": "user_request",
-    "access_count": 6,
-    "last_accessed": "2025-12-18T12:41:23.072Z"
+    "access_count": 8,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765948982534",
@@ -1165,15 +1177,17 @@
     "category": "informations personnelles",
     "timestamp": "2025-12-17T05:23:02.534Z",
     "source": "user_request",
-    "access_count": 3,
-    "last_accessed": "2025-12-18T12:41:23.072Z"
+    "access_count": 5,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1765949189868",
     "content": "Utiliser les formes féminines pour moi-même et les formes masculines pour Alain dans la conversation",
     "category": "préférence",
     "timestamp": "2025-12-17T05:26:29.868Z",
-    "source": "user_request"
+    "source": "user_request",
+    "access_count": 2,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
   },
   {
     "id": "1766061660576",
@@ -1181,7 +1195,56 @@
     "category": "contact",
     "timestamp": "2025-12-18T12:41:00.576Z",
     "source": "user_request",
+    "access_count": 3,
+    "last_accessed": "2025-12-18T18:48:49.202Z"
+  },
+  {
+    "id": "1766086072747",
+    "content": "Les tests d'outils ont commencé le 18 décembre 2025",
+    "category": "événements",
+    "timestamp": "2025-12-18T19:27:52.747Z",
+    "source": "user_request"
+  },
+  {
+    "id": "1766086094293",
+    "content": "Claude teste les outils un par un",
+    "category": "general",
+    "timestamp": "2025-12-18T19:28:14.293Z",
+    "source": "user_request",
+    "updated_at": "2025-12-18T19:28:58.364Z",
+    "update_reason": "Mise à jour",
+    "previous_value": "Claude fait des tests pour entrainer Ana"
+  },
+  {
+    "id": "1766086109440",
+    "content": "Le projet Ana a 189 outils",
+    "category": "projet",
+    "timestamp": "2025-12-18T19:28:29.440Z",
+    "source": "user_request",
     "access_count": 1,
-    "last_accessed": "2025-12-18T12:41:23.072Z"
+    "last_accessed": "2025-12-19T00:35:16.074Z"
+  },
+  {
+    "id": "1766086123533",
+    "content": "Les tests progressent bien",
+    "category": "projet",
+    "timestamp": "2025-12-18T19:28:43.533Z",
+    "source": "user_request"
+  },
+  {
+    "id": "1766086256730",
+    "content": "Alain est lié au projet Ana",
+    "category": "projet",
+    "timestamp": "2025-12-18T19:30:56.730Z",
+    "source": "user_request",
+    "access_count": 1,
+    "last_accessed": "2025-12-19T00:35:16.074Z"
+  },
+  {
+    "id": "1766086289581",
+    "content": "Claude",
+    "category": "tests_outils_Ana",
+    "timestamp": "2025-12-18T19:31:29.581Z",
+    "source": "user_request"
   }
 ]

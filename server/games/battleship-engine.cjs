@@ -1,6 +1,7 @@
 /**
  * Battleship (Bataille Navale) Engine for Ana
  * Un jeu avec placement de bateaux et combat strategique
+ * Supporte mode vsAna et vsHuman (2 joueurs)
  *
  * CORRIGE: 15 dec 2025
  * - IA pattern damier corrige
@@ -102,8 +103,59 @@ function placeShipsRandomly(grid) {
   return ships;
 }
 
-// Nouvelle partie
-function newGame(sessionId) {
+/**
+ * Nouvelle partie
+ * @param {string} sessionId - ID de session
+ * @param {string} mode - 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+ */
+function newGame(sessionId, mode = 'vsAna') {
+  const shipsToPlace = Object.keys(SHIPS);
+  const firstShipKey = shipsToPlace[0];
+  const firstShip = SHIPS[firstShipKey];
+
+  if (mode === 'vsHuman') {
+    // Mode 2 joueurs
+    const game = {
+      mode: 'vsHuman',
+      player1Grid: createGrid(),
+      player2Grid: createGrid(),
+      player1Shots: createGrid(),
+      player2Shots: createGrid(),
+      player1Ships: {},
+      player2Ships: {},
+      phase: 'placement1', // placement1, placement2, battle
+      currentPlayer: 'player1',
+      shipsToPlace,
+      currentShipIndex: 0,
+      gameOver: false,
+      winner: null,
+      lastActivity: Date.now()
+    };
+
+    games.set(sessionId, game);
+
+    return {
+      success: true,
+      mode: 'vsHuman',
+      phase: 'placement1',
+      currentPlayer: 'player1',
+      gridSize: GRID_SIZE,
+      playerGrid: formatGridForPlayer(game.player1Grid),
+      shipsToPlace: Object.entries(SHIPS).map(([key, ship]) => ({
+        id: key,
+        name: ship.name,
+        size: ship.size
+      })),
+      currentShip: {
+        id: firstShipKey,
+        name: firstShip.name,
+        size: firstShip.size
+      },
+      message: `Joueur 1: Place tes bateaux! Commence par le ${firstShip.name} (${firstShip.size} cases).`
+    };
+  }
+
+  // Mode vsAna (original)
   const playerGrid = createGrid();
   const anaGrid = createGrid();
   const playerShots = createGrid();
@@ -112,11 +164,8 @@ function newGame(sessionId) {
   // Ana place ses bateaux
   const anaShips = placeShipsRandomly(anaGrid);
 
-  const shipsToPlace = Object.keys(SHIPS);
-  const firstShipKey = shipsToPlace[0];
-  const firstShip = SHIPS[firstShipKey];
-
   const game = {
+    mode: 'vsAna',
     playerGrid,
     anaGrid,
     playerShots,
@@ -140,6 +189,7 @@ function newGame(sessionId) {
 
   return {
     success: true,
+    mode: 'vsAna',
     phase: 'placement',
     gridSize: GRID_SIZE,
     playerGrid: formatGridForPlayer(playerGrid),
@@ -161,10 +211,99 @@ function newGame(sessionId) {
 function placePlayerShip(sessionId, coord, horizontal = true) {
   const game = games.get(sessionId);
   if (!game) return { success: false, error: "Pas de partie en cours" };
-  if (game.phase !== 'placement') return { success: false, error: "Phase de placement terminee" };
   if (game.gameOver) return { success: false, error: "La partie est terminee" };
 
   game.lastActivity = Date.now();
+
+  // Mode vsHuman
+  if (game.mode === 'vsHuman') {
+    if (game.phase !== 'placement1' && game.phase !== 'placement2') {
+      return { success: false, error: "Phase de placement terminee" };
+    }
+
+    const pos = parseCoord(coord);
+    if (!pos) return { success: false, error: "Coordonnee invalide (ex: A1, B5, J10)" };
+
+    const shipKey = game.shipsToPlace[game.currentShipIndex];
+    if (!shipKey) return { success: false, error: "Tous les bateaux sont deja places" };
+
+    const ship = SHIPS[shipKey];
+    const isPlayer1 = game.phase === 'placement1';
+    const currentGrid = isPlayer1 ? game.player1Grid : game.player2Grid;
+    const currentShips = isPlayer1 ? game.player1Ships : game.player2Ships;
+
+    if (!canPlaceShip(currentGrid, pos.row, pos.col, ship.size, horizontal)) {
+      return {
+        success: false,
+        error: `Impossible de placer le ${ship.name} ici.`
+      };
+    }
+
+    const positions = placeShip(currentGrid, pos.row, pos.col, ship.size, horizontal, ship.symbol);
+    currentShips[shipKey] = { ...ship, positions, hits: 0, sunk: false };
+    game.currentShipIndex++;
+
+    // Tous les bateaux places pour ce joueur?
+    if (game.currentShipIndex >= game.shipsToPlace.length) {
+      if (isPlayer1) {
+        // Passer à J2
+        game.phase = 'placement2';
+        game.currentPlayer = 'player2';
+        game.currentShipIndex = 0;
+        const nextShipKey = game.shipsToPlace[0];
+        const nextShip = SHIPS[nextShipKey];
+        return {
+          success: true,
+          mode: 'vsHuman',
+          placed: { ship: ship.name, positions: positions.map(p => toCoord(p.row, p.col)) },
+          phase: 'placement2',
+          currentPlayer: 'player2',
+          playerGrid: formatGridForPlayer(game.player2Grid), // Grille vide de J2
+          currentShip: {
+            id: nextShipKey,
+            name: nextShip.name,
+            size: nextShip.size
+          },
+          message: `Joueur 1 a termine! Passe l'ecran a Joueur 2. J2: Place le ${nextShip.name}.`
+        };
+      } else {
+        // Tous les bateaux places, bataille!
+        game.phase = 'battle';
+        game.currentPlayer = 'player1';
+        return {
+          success: true,
+          mode: 'vsHuman',
+          placed: { ship: ship.name, positions: positions.map(p => toCoord(p.row, p.col)) },
+          phase: 'battle',
+          currentPlayer: 'player1',
+          currentShip: null,
+          message: "Tous les bateaux sont places! La bataille commence! Joueur 1 tire en premier."
+        };
+      }
+    }
+
+    const nextShipKey = game.shipsToPlace[game.currentShipIndex];
+    const nextShip = SHIPS[nextShipKey];
+    const playerLabel = isPlayer1 ? 'J1' : 'J2';
+
+    return {
+      success: true,
+      mode: 'vsHuman',
+      placed: { ship: ship.name, positions: positions.map(p => toCoord(p.row, p.col)) },
+      phase: game.phase,
+      currentPlayer: game.currentPlayer,
+      playerGrid: formatGridForPlayer(currentGrid),
+      currentShip: {
+        id: nextShipKey,
+        name: nextShip.name,
+        size: nextShip.size
+      },
+      message: `${playerLabel}: ${ship.name} place! Place le ${nextShip.name} (${nextShip.size} cases).`
+    };
+  }
+
+  // Mode vsAna (original)
+  if (game.phase !== 'placement') return { success: false, error: "Phase de placement terminee" };
 
   const pos = parseCoord(coord);
   if (!pos) return { success: false, error: "Coordonnee invalide (ex: A1, B5, J10)" };
@@ -190,6 +329,7 @@ function placePlayerShip(sessionId, coord, horizontal = true) {
     game.phase = 'battle';
     return {
       success: true,
+      mode: 'vsAna',
       placed: { ship: ship.name, positions: positions.map(p => toCoord(p.row, p.col)) },
       phase: 'battle',
       playerGrid: formatGridForPlayer(game.playerGrid),
@@ -203,6 +343,7 @@ function placePlayerShip(sessionId, coord, horizontal = true) {
 
   return {
     success: true,
+    mode: 'vsAna',
     placed: { ship: ship.name, positions: positions.map(p => toCoord(p.row, p.col)) },
     phase: 'placement',
     playerGrid: formatGridForPlayer(game.playerGrid),
@@ -247,6 +388,86 @@ function fire(sessionId, coord) {
   const pos = parseCoord(coord);
   if (!pos) return { success: false, error: "Coordonnee invalide (ex: A1, B5, J10)" };
 
+  // Mode vsHuman
+  if (game.mode === 'vsHuman') {
+    const isPlayer1 = game.currentPlayer === 'player1';
+    const shooterShots = isPlayer1 ? game.player1Shots : game.player2Shots;
+    const targetGrid = isPlayer1 ? game.player2Grid : game.player1Grid;
+    const targetShips = isPlayer1 ? game.player2Ships : game.player1Ships;
+
+    // Deja tire ici?
+    if (shooterShots[pos.row][pos.col]) {
+      return { success: false, error: "Deja tire ici!" };
+    }
+
+    // Resultat du tir
+    const target = targetGrid[pos.row][pos.col];
+    let result = { coord, hit: false, sunk: false, shipName: null };
+
+    if (target && target !== 'hit' && target !== 'miss') {
+      // Touche!
+      shooterShots[pos.row][pos.col] = 'hit';
+      targetGrid[pos.row][pos.col] = 'hit';
+      result.hit = true;
+
+      // Trouver le bateau touche
+      for (const [key, ship] of Object.entries(targetShips)) {
+        if (ship.positions.some(p => p.row === pos.row && p.col === pos.col)) {
+          ship.hits++;
+          result.shipName = ship.name;
+          if (ship.hits >= ship.size) {
+            ship.sunk = true;
+            result.sunk = true;
+          }
+          break;
+        }
+      }
+    } else {
+      // Manque
+      shooterShots[pos.row][pos.col] = 'miss';
+    }
+
+    // Verifier victoire
+    const allTargetSunk = Object.values(targetShips).every(s => s.sunk);
+    if (allTargetSunk) {
+      game.gameOver = true;
+      game.winner = isPlayer1 ? 'player1' : 'player2';
+      game.phase = 'finished';
+      return {
+        success: true,
+        mode: 'vsHuman',
+        shot: result,
+        gameOver: true,
+        winner: game.winner,
+        currentPlayer: game.currentPlayer,
+        shotsGrid: formatShotsGrid(shooterShots),
+        myShipsStatus: getShipsStatus(isPlayer1 ? game.player1Ships : game.player2Ships),
+        enemyShipsStatus: getShipsStatus(targetShips, false),
+        message: `${isPlayer1 ? 'Joueur 1' : 'Joueur 2'} gagne!`
+      };
+    }
+
+    // Changer de joueur
+    game.currentPlayer = isPlayer1 ? 'player2' : 'player1';
+    const nextPlayer = game.currentPlayer;
+    const nextShooterShots = nextPlayer === 'player1' ? game.player1Shots : game.player2Shots;
+
+    return {
+      success: true,
+      mode: 'vsHuman',
+      phase: 'battle',
+      shot: result,
+      currentPlayer: nextPlayer,
+      shotsGrid: formatShotsGrid(nextShooterShots),
+      myShipsStatus: getShipsStatus(nextPlayer === 'player1' ? game.player1Ships : game.player2Ships),
+      enemyShipsStatus: getShipsStatus(nextPlayer === 'player1' ? game.player2Ships : game.player1Ships, true),
+      message: result.hit
+        ? `${result.sunk ? 'Coule!' : 'Touche!'} Au tour de ${nextPlayer === 'player1' ? 'Joueur 1' : 'Joueur 2'}.`
+        : `Manque! Au tour de ${nextPlayer === 'player1' ? 'Joueur 1' : 'Joueur 2'}.`
+    };
+  }
+
+  // Mode vsAna (original)
   // Deja tire ici?
   if (game.playerShots[pos.row][pos.col]) {
     return { success: false, error: "Tu as deja tire ici!" };
@@ -287,6 +508,7 @@ function fire(sessionId, coord) {
     game.phase = 'finished';
     return {
       success: true,
+      mode: 'vsAna',
       playerShot: result,
       gameOver: true,
       winner: 'player',
@@ -309,6 +531,7 @@ function fire(sessionId, coord) {
     game.phase = 'finished';
     return {
       success: true,
+      mode: 'vsAna',
       playerShot: result,
       anaShot: anaResult,
       gameOver: true,
@@ -323,6 +546,7 @@ function fire(sessionId, coord) {
 
   return {
     success: true,
+    mode: 'vsAna',
     phase: 'battle',  // FIX 2025-12-16: CRUCIAL
     playerShot: result,
     anaShot: anaResult,

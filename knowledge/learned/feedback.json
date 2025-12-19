@@ -1555,6 +1555,30 @@
       "llmModel": null,
       "question": null,
       "responseSummary": null
+    },
+    {
+      "id": "fb_1766059249178_rqg5s",
+      "timestamp": "2025-12-18T12:00:49.179Z",
+      "type": "positive",
+      "messageId": "1766059237392",
+      "conversationId": null,
+      "comment": null,
+      "source": "chat",
+      "llmModel": null,
+      "question": null,
+      "responseSummary": null
+    },
+    {
+      "id": "fb_1766105421820_ayinm",
+      "timestamp": "2025-12-19T00:50:21.820Z",
+      "type": "positive",
+      "messageId": "1766105300913",
+      "conversationId": null,
+      "comment": null,
+      "source": "chat",
+      "llmModel": null,
+      "question": null,
+      "responseSummary": null
     }
   ],
   "negative": [
@@ -2392,15 +2416,27 @@
       "llmModel": null,
       "question": null,
       "responseSummary": null
+    },
+    {
+      "id": "fb_1766066980529_29jwx",
+      "timestamp": "2025-12-18T14:09:40.529Z",
+      "type": "negative",
+      "messageId": "1766066968677",
+      "conversationId": null,
+      "comment": null,
+      "source": "chat",
+      "llmModel": null,
+      "question": null,
+      "responseSummary": null
     }
   ],
   "improvements": [],
   "stats": {
-    "totalFeedback": 199,
-    "positiveCount": 130,
-    "negativeCount": 69
+    "totalFeedback": 202,
+    "positiveCount": 132,
+    "negativeCount": 70
   },
-  "lastUpdated": "2025-12-16T18:39:58.308Z",
+  "lastUpdated": "2025-12-19T00:50:21.820Z",
   "suggestions": [
     {
       "id": "fb_1765153223056",
