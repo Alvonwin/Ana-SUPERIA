@@ -503,15 +503,27 @@ function getState(sessionId) {
   const game = games.get(sessionId);
   if (!game) return { exists: false };
 
-  const legalMoves = game.isWhiteTurn ?
-    getAllLegalMoves(game.board, true, game.enPassant).map(formatMove) : [];
+  // En mode vsHuman, les deux joueurs peuvent voir leurs mouvements légaux
+  // En mode vsAna, seul le joueur blanc (humain) voit les mouvements
+  let legalMoves;
+  if (game.mode === 'vsHuman') {
+    // Mouvements légaux pour le joueur actuel
+    legalMoves = getAllLegalMoves(game.board, game.isWhiteTurn, game.enPassant).map(formatMove);
+  } else {
+    // Mode vsAna: seulement les blancs (humain)
+    legalMoves = game.isWhiteTurn ?
+      getAllLegalMoves(game.board, true, game.enPassant).map(formatMove) : [];
+  }
 
   return {
     exists: true,
+    mode: game.mode,
     board: game.board,
     boardDisplay: game.board.map(row => row.map(p => PIECE_SYMBOLS[p] || '')),
     isWhiteTurn: game.isWhiteTurn,
+    currentPlayer: game.isWhiteTurn ? 'player1' : 'player2',
     status: game.status,
+    gameOver: game.status !== 'playing',
     legalMoves,
     inCheck: isInCheck(game.board, game.isWhiteTurn),
     moves: game.moves

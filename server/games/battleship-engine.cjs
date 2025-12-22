@@ -741,8 +741,28 @@ function getState(sessionId) {
     size: SHIPS[currentShipKey].size
   } : null;
 
+  // Mode vsHuman
+  if (game.mode === 'vsHuman') {
+    const isPlayer1 = game.currentPlayer === 'player1';
+    return {
+      exists: true,
+      mode: 'vsHuman',
+      phase: game.phase,
+      currentPlayer: game.currentPlayer,
+      gameOver: game.gameOver,
+      winner: game.winner,
+      playerGrid: formatGridForPlayer(isPlayer1 ? game.player1Grid : game.player2Grid),
+      shotsGrid: formatShotsGrid(isPlayer1 ? game.player1Shots : game.player2Shots),
+      myShipsStatus: getShipsStatus(isPlayer1 ? game.player1Ships : game.player2Ships),
+      enemyShipsStatus: getShipsStatus(isPlayer1 ? game.player2Ships : game.player1Ships, !game.gameOver),
+      currentShip
+    };
+  }
+
+  // Mode vsAna
   return {
     exists: true,
+    mode: 'vsAna',
     phase: game.phase,
     gameOver: game.gameOver,
     winner: game.winner,

@@ -9,12 +9,14 @@ const games = new Map();
 /**
  * Démarre une nouvelle partie
  * @param {string} sessionId - ID de session
- * @param {number[]} piles - Configuration des piles (défaut: [3, 5, 7])
+ * @param {string} difficulty - Difficulté (ignoré pour Nim, pour cohérence API)
  * @param {string} mode - 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
+ * @param {number[]} piles - Configuration des piles (défaut: [3, 5, 7])
  */
-function newGame(sessionId, piles = [3, 5, 7], mode = 'vsAna') {
+function newGame(sessionId, difficulty = 'normal', mode = 'vsAna', piles = [3, 5, 7]) {
+  const pilesArray = Array.isArray(piles) ? piles : [3, 5, 7];
   const game = {
-    piles: [...piles],
+    piles: [...pilesArray],
     currentPlayer: 'player1',
     mode,  // 'vsAna' ou 'vsHuman'
     status: 'playing',
@@ -32,7 +34,7 @@ function newGame(sessionId, piles = [3, 5, 7], mode = 'vsAna') {
     currentPlayer: 'player1',
     mode,
     status: 'playing',
-    totalSticks: piles.reduce((a, b) => a + b, 0),
+    totalSticks: pilesArray.reduce((a, b) => a + b, 0),
     message
   };
 }
@@ -184,9 +186,11 @@ function getState(sessionId) {
   if (!game) return { exists: false };
   return {
     exists: true,
+    mode: game.mode,
     piles: game.piles,
     currentPlayer: game.currentPlayer,
     status: game.status,
+    gameOver: game.status !== 'playing',
     winner: game.winner
   };
 }

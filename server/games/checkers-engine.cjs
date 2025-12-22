@@ -9,6 +9,41 @@
  * - Promotion en dame sur la dernière rangée
  */
 
+const fs = require('fs');
+const path = require('path');
+
+// Fichier de debug - réinitialisé à chaque nouvelle partie
+const DEBUG_LOG_PATH = path.join(__dirname, 'checkers-debug.log');
+
+/**
+ * Écrit dans le fichier de debug
+ */
+function debugLog(message, data = null) {
+  const timestamp = new Date().toISOString();
+  let logEntry = `[${timestamp}] ${message}\n`;
+  if (data) {
+    logEntry += JSON.stringify(data, null, 2) + '\n';
+  }
+  logEntry += '---\n';
+
+  try {
+    fs.appendFileSync(DEBUG_LOG_PATH, logEntry);
+  } catch (e) {
+    console.error('Erreur écriture debug log:', e.message);
+  }
+}
+
+/**
+ * Réinitialise le fichier de debug
+ */
+function resetDebugLog() {
+  try {
+    fs.writeFileSync(DEBUG_LOG_PATH, `=== NOUVELLE PARTIE DE DAMES ===\nDémarrée: ${new Date().toISOString()}\n\n`);
+  } catch (e) {
+    console.error('Erreur reset debug log:', e.message);
+  }
+}
+
 // Constantes
 const EMPTY = 0;
 const PLAYER_PION = 1;      // Pion du joueur (Alain)
@@ -61,14 +96,18 @@ function createInitialBoard() {
  * @param {string} mode - Mode de jeu: 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
  */
 function newGame(sessionId, difficulty = 'normal', mode = 'vsAna') {
+  // Réinitialiser le fichier de debug
+  resetDebugLog();
+  debugLog('Nouvelle partie créée', { sessionId, difficulty, mode });
+
   const game = {
     board: createInitialBoard(),
     currentPlayer: 'player1',  // Joueur 1 commence (noirs ●)
     difficulty,                // easy, normal, hard
     mode,                      // 'vsAna' ou 'vsHuman'
     history: [],
-    capturedByPlayer1: 0,      // Renommé pour clarté
-    capturedByPlayer2: 0,      // Player2 = Ana ou Joueur 2
+    capturedByPlayer: 0,
+    capturedByAna: 0,
     status: 'playing',         // playing, player1_wins, player2_wins, draw
     moveCount: 0,
     createdAt: new Date().toISOString()
@@ -347,6 +386,32 @@ function findCaptures(board, row, col, forPlayer, piece) {
 
           if (chainCaptures.length > 0) {
             for (const chain of chainCaptures) {
+              // VALIDATION 2025-12-21: Un pion se déplace de 2 cases par capture
+              // Chaque saut = ±2 en row et ±2 en col
+              // Donc les distances totales doivent être PAIRES et ≤ 2*N
+              const totalCaptures = 1 + chain.captures.length;
+              const totalDistRow = Math.abs(chain.to[0] - row);
+              const totalDistCol = Math.abs(chain.to[1] - col);
+              const maxDist = totalCaptures * 2;
+
+              const isValidRow = totalDistRow % 2 === 0 && totalDistRow <= maxDist;
+              const isValidCol = totalDistCol % 2 === 0 && totalDistCol <= maxDist;
+
+              if (!isValidRow || !isValidCol) {
+                console.error('❌ BUG DÉTECTÉ: Pion atterrit à une position invalide!', {
+                  piece: 'PION',
+                  from: toNotation(row, col),
+                  to: toNotation(chain.to[0], chain.to[1]),
+                  captures: totalCaptures,
+                  distRow: totalDistRow,
+                  distCol: totalDistCol,
+                  maxDist,
+                  isValidRow,
+                  isValidCol
+                });
+                continue; // Ignorer ce mouvement invalide
+              }
+
               captures.push({
                 from: [row, col],
                 to: chain.to,
@@ -452,8 +517,24 @@ function anaPlay(game) {
   const difficulty = game.difficulty;
   const legalMoves = getLegalMoves(game.board, false);
 
+  // DEBUG: Log état avant le coup d'Ana
+  debugLog('=== TOUR D\'ANA ===', {
+    moveCount: game.moveCount,
+    difficulty,
+    boardState: formatBoard(game.board),
+    legalMovesCount: legalMoves.length,
+    legalMoves: legalMoves.map(m => ({
+      notation: m.notation,
+      from: toNotation(m.from[0], m.from[1]),
+      to: toNotation(m.to[0], m.to[1]),
+      captures: m.captures.map(c => toNotation(c[0], c[1])),
+      pieceType: game.board[m.from[0]][m.from[1]] === ANA_DAME ? 'DAME' : 'PION'
+    }))
+  });
+
   if (legalMoves.length === 0) {
     game.status = 'player_wins';
+    debugLog('Ana n\'a plus de coups - Joueur gagne');
     return {
       success: true,
       gameOver: true,
@@ -482,6 +563,16 @@ function anaPlay(game) {
   // Appliquer le coup d'Ana
   const board = game.board;
   const piece = board[selectedMove.from[0]][selectedMove.from[1]];
+
+  // DEBUG: Log le coup sélectionné
+  debugLog('Ana joue', {
+    move: selectedMove.notation,
+    from: toNotation(selectedMove.from[0], selectedMove.from[1]),
+    to: toNotation(selectedMove.to[0], selectedMove.to[1]),
+    pieceType: piece === ANA_DAME ? 'DAME' : 'PION',
+    pieceValue: piece,
+    captures: selectedMove.captures.map(c => toNotation(c[0], c[1]))
+  });
 
   board[selectedMove.to[0]][selectedMove.to[1]] = piece;
   board[selectedMove.from[0]][selectedMove.from[1]] = EMPTY;
@@ -646,6 +737,14 @@ function play(sessionId, moveNotation) {
   // Déterminer qui joue (pour les pièces)
   const forPlayer1 = isPlayer1Turn;
 
+  // DEBUG: Log le coup du joueur
+  debugLog('=== TOUR DU JOUEUR ===', {
+    moveCount: game.moveCount,
+    player: forPlayer1 ? 'player1' : 'player2',
+    moveNotation,
+    boardStateBefore: formatBoard(game.board)
+  });
+
   // Appliquer le coup
   const result = applyMoveGeneric(game, moveNotation, forPlayer1);
 
@@ -655,16 +754,23 @@ function play(sessionId, moveNotation) {
 
   // Mettre à jour les captures
   if (forPlayer1) {
-    game.capturedByPlayer1 = (game.capturedByPlayer1 || 0) + result.capturesCount;
+    game.capturedByPlayer = (game.capturedByPlayer || 0) + result.capturesCount;
   } else {
-    game.capturedByPlayer2 = (game.capturedByPlayer2 || 0) + result.capturesCount;
+    game.capturedByAna = (game.capturedByAna || 0) + result.capturesCount;
   }
 
   // Vérifier si l'adversaire peut encore jouer
   const opponentMoves = getLegalMoves(game.board, !forPlayer1);
   if (opponentMoves.length === 0) {
-    const winner = forPlayer1 ? 'player1' : 'player2';
-    game.status = winner + '_wins';
+    let winner, status;
+    if (game.mode === 'vsHuman') {
+      winner = forPlayer1 ? 'player1' : 'player2';
+      status = winner + '_wins';
+    } else {
+      winner = forPlayer1 ? 'player' : 'ana';
+      status = forPlayer1 ? 'player_wins' : 'ana_wins';
+    }
+    game.status = status;
     const winMessage = game.mode === 'vsHuman'
       ? `${forPlayer1 ? 'Joueur 1' : 'Joueur 2'} gagne! 🎉`
       : (forPlayer1 ? "Tu m'as battue! Bien joué! 🎉" : "Je gagne! Meilleure chance la prochaine fois! 😊");
@@ -676,11 +782,11 @@ function play(sessionId, moveNotation) {
       boardData: game.board,
       gameOver: true,
       winner,
-      status: game.status,
+      status,
       message: winMessage,
       mode: game.mode,
       currentPlayer: null,
-      score: { player1: game.capturedByPlayer1 || 0, player2: game.capturedByPlayer2 || 0 },
+      score: { player: game.capturedByPlayer || 0, ana: game.capturedByAna || 0 },
       legalMoves: []
     };
   }
@@ -700,7 +806,7 @@ function play(sessionId, moveNotation) {
       mode: 'vsHuman',
       currentPlayer: game.currentPlayer,
       message: `Au tour de ${game.currentPlayer === 'player1' ? 'Joueur 1 (●)' : 'Joueur 2 (○)'}`,
-      score: { player1: game.capturedByPlayer1 || 0, player2: game.capturedByPlayer2 || 0 },
+      score: { player: game.capturedByPlayer || 0, ana: game.capturedByAna || 0 },
       legalMoves: nextMoves
     };
   }
@@ -724,7 +830,7 @@ function play(sessionId, moveNotation) {
     message: anaResult.message || null,
     mode: 'vsAna',
     currentPlayer: 'player1',
-    score: { player1: game.capturedByPlayer1 || 0, player2: game.capturedByPlayer2 || 0 },
+    score: { player: game.capturedByPlayer || 0, ana: game.capturedByAna || 0 },
     legalMoves: newLegalMoves
   };
 }
@@ -825,7 +931,7 @@ function getGameState(sessionId) {
     currentPlayer: game.currentPlayer,
     mode: game.mode || 'vsAna',
     status: game.status,
-    score: { player1: game.capturedByPlayer1 || 0, player2: game.capturedByPlayer2 || 0 },
+    score: { player: game.capturedByPlayer || 0, ana: game.capturedByAna || 0 },
     moveCount: game.moveCount,
     history: game.history,
     legalMoves

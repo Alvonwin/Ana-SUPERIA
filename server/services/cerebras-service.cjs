@@ -181,9 +181,9 @@ class CerebrasService {
       maxTokens = 4096
     } = options;
 
+    const startTime = Date.now();
     try {
       this.stats.totalRequests++;
-      const startTime = Date.now();
 
       // LOG DIAGNOSTIC 2025-12-16: Voir exactement ce qui est envoyé
       console.log(`[Cerebras] Sending ${tools ? tools.length : 0} tools, ${messages.length} messages`);
@@ -193,20 +193,72 @@ class CerebrasService {
 
       // FIX 2025-12-16: Ajouter strict:true selon documentation officielle Cerebras
       // https://inference-docs.cerebras.ai/capabilities/tool-use
-      const formattedTools = tools ? tools.map(tool => ({
-        type: 'function',
-        function: {
-          ...tool.function,
-          strict: true  // REQUIS par Cerebras
+      // FIX 2025-12-20: Cerebras strict mode exige:
+      // - TOUTES les propriétés dans required
+      // FIX 2025-12-20: Simplifier le schema - ne garder QUE les propriétés required
+      // Le pattern anyOf génère None (Python) au lieu de null (JSON) avec Llama
+      const formattedTools = tools ? tools.map(tool => {
+        const params = tool.function.parameters || { type: 'object', properties: {} };
+        const properties = params.properties || {};
+        const required = params.required || [];
+
+        // Ne garder QUE les propriétés obligatoires
+        const newProperties = {};
+
+        for (const [key, prop] of Object.entries(properties)) {
+          if (required.includes(key)) {
+            // Propriété obligatoire - nettoyer (supprimer default)
+            const cleanProp = {
+              type: prop.type,
+              description: prop.description
+            };
+            if (prop.enum) cleanProp.enum = prop.enum;
+            newProperties[key] = cleanProp;
+          }
+          // Propriétés optionnelles ignorées - Llama ne les gère pas bien
         }
-      })) : undefined;
+
+        // FIX 2025-12-20: Désactiver strict mode - Llama génère Python au lieu de JSON en strict
+        return {
+          type: 'function',
+          function: {
+            name: tool.function.name,
+            description: tool.function.description,
+            parameters: {
+              type: 'object',
+              properties: newProperties,
+              required: required.length > 0 ? required : undefined
+            }
+          }
+        };
+      }) : undefined;
+
+      // FIX 2025-12-20: Respecter limite stricte 5000 chars pour schemas Cerebras
+      // Réduire automatiquement le nombre d'outils si nécessaire
+      let finalTools = formattedTools;
+      if (formattedTools && formattedTools.length > 0) {
+        let schemaSize = JSON.stringify(formattedTools).length;
+        const originalCount = formattedTools.length;
+
+        // Limite stricte < 5000, pas ≤ 5000
+        while (schemaSize >= 5000 && finalTools.length > 1) {
+          finalTools = finalTools.slice(0, finalTools.length - 1);
+          schemaSize = JSON.stringify(finalTools).length;
+        }
+
+        if (finalTools.length < originalCount) {
+          console.log(`[Cerebras] Schema reduced: ${originalCount} → ${finalTools.length} tools (${schemaSize} chars)`);
+        } else {
+          console.log(`[Cerebras] Schema size: ${schemaSize} chars, ${finalTools.length} tools`);
+        }
+      }
 
       const response = await axios.post(
         `${this.baseUrl}/chat/completions`,
         {
           model,
           messages,
-          tools: formattedTools,
+          tools: finalTools,
           tool_choice: 'auto',
           parallel_tool_calls: false,  // Recommandé pour llama-3.3-70b
           temperature,
@@ -251,13 +303,88 @@ class CerebrasService {
         return this.chatWithTools(messages, tools, options);
       }
 
+      // FIX 2025-12-20: Récupérer les tool_calls depuis failed_generation
+      // Llama génère parfois Python au lieu de JSON, ex: describe_image(image_path=/tmp/test.jpg)
+      const errorData = error.response?.data;
+
+      if (errorData?.code === 'tool_use_failed' && errorData?.failed_generation) {
+        const parsed = this.parsePythonToolCall(errorData.failed_generation);
+        if (parsed) {
+          console.log(`[Cerebras] Recovered tool_call from failed_generation: ${parsed.function.name}`);
+          return {
+            success: true,
+            message: { tool_calls: [parsed] },
+            tool_calls: [parsed],
+            content: '',
+            model: options.model || this.defaultModel,
+            latencyMs: Date.now() - startTime,
+            provider: 'cerebras',
+            recovered: true
+          };
+        }
+      }
+
       console.error('Cerebras error:', status || '', error.message);
+      if (errorData) {
+        console.error('Cerebras error details:', JSON.stringify(errorData, null, 2));
+      }
       return {
         success: false,
-        error: error.response?.data?.error?.message || error.message,
+        error: errorData?.error?.message || errorData?.message || error.message,
         provider: 'cerebras'
       };
     }
+  }
+
+  /**
+   * Parse une syntaxe Python en tool_call JSON
+   * Ex: describe_image(image_path=/tmp/test.jpg, prompt=None)
+   * → { name: 'describe_image', arguments: '{"image_path": "/tmp/test.jpg"}' }
+   */
+  parsePythonToolCall(pythonStr) {
+    if (!pythonStr || typeof pythonStr !== 'string') return null;
+
+    // Pattern: function_name(arg1=val1, arg2=val2, ...)
+    const match = pythonStr.match(/^(\w+)\((.*)\)$/s);
+    if (!match) return null;
+
+    const name = match[1];
+    const argsStr = match[2].trim();
+
+    if (!argsStr) {
+      // Pas d'arguments
+      return {
+        id: Math.random().toString(36).substring(2, 11),
+        type: 'function',
+        function: { name, arguments: '{}' }
+      };
+    }
+
+    // Parser les arguments key=value
+    const args = {};
+    // Gérer les valeurs avec guillemets et sans guillemets
+    const argPattern = /(\w+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^,\)]+))/g;
+    let argMatch;
+
+    while ((argMatch = argPattern.exec(argsStr)) !== null) {
+      const key = argMatch[1];
+      // Valeur: guillemets doubles, simples, ou sans guillemets
+      let value = argMatch[2] ?? argMatch[3] ?? argMatch[4]?.trim();
+
+      // Ignorer None/null
+      if (value === 'None' || value === 'null') continue;
+
+      args[key] = value;
+    }
+
+    return {
+      id: Math.random().toString(36).substring(2, 11),
+      type: 'function',
+      function: {
+        name,
+        arguments: JSON.stringify(args)
+      }
+    };
   }
 
   getModels() {

@@ -1,8 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { BACKEND_URL } from '../config';
 import './GamesPage.css';
 import VoiceInput from '../components/VoiceInput';
 import VoiceLoopButton from '../components/VoiceLoopButton';
+import { IconSend } from '../components/Icons';
+import ScrabbleGame from '../components/ScrabbleGame';
+import DefinitionMysteryGame from '../components/DefinitionMysteryGame';
 
 // Constante pour la voix Sylvie (edge-tts) - FIX 2025-12-19
 const SYLVIE_VOICE = 'Sylvie (Québec)';
@@ -20,7 +24,9 @@ const GAMES_LIST = [
   { id: 'guess', name: 'Devinette', icon: '🎯', description: 'Trouve le nombre!' },
   { id: 'chess', name: 'Échecs', icon: '♟', description: 'Le roi des jeux!' },
   { id: 'battleship', name: 'Bataille Navale', icon: '🚢', description: 'Coule la flotte!' },
-  { id: 'backgammon', name: 'Backgammon', icon: '🎲', description: 'Classique!' }
+  { id: 'backgammon', name: 'Backgammon', icon: '🎲', description: 'Classique!' },
+  { id: 'scrabble', name: 'Scrabble', icon: '🔠', description: 'Roi des mots!' },
+  { id: 'definition-mystery', name: 'Définition Mystère', icon: '🔮', description: 'Devine le mot!' }
 ];
 
 function GamesPage() {
@@ -33,6 +39,14 @@ function GamesPage() {
   const messagesEndRef = useRef(null);
   const voiceLoopRef = useRef(null);
   const [isVoiceListening, setIsVoiceListening] = useState(false);
+  const location = useLocation();
+
+  // Retour au menu quand on clique sur "Jeux" dans la sidebar
+  useEffect(() => {
+    setSelectedGame(null);
+    setGameState(null);
+    setMessages([]);
+  }, [location.key]);
 
   // TTS - Ana parle avec EdgeTTS (Sylvie Québec) - FIX 2025-12-19
   const speak = async (text) => {
@@ -540,8 +554,8 @@ function GamesPage() {
           </div>
         )}
         <div className="mode-selector" style={{marginTop: '1rem'}}>
-          <button className={`mode-btn ${(gameState.mode || mode) === 'vsAna' ? 'active' : ''}`} onClick={() => setMode('vsAna')}>vs Ana</button>
-          <button className={`mode-btn ${(gameState.mode || mode) === 'vsHuman' ? 'active' : ''}`} onClick={() => setMode('vsHuman')}>2 Joueurs</button>
+          <button className={`mode-btn ${mode === 'vsAna' ? 'active' : ''}`} onClick={() => setMode('vsAna')}>vs Ana</button>
+          <button className={`mode-btn ${mode === 'vsHuman' ? 'active' : ''}`} onClick={() => setMode('vsHuman')}>2 Joueurs</button>
         </div>
         <button className="btn-new-game" onClick={startGame}>Nouvelle partie</button>
       </>
@@ -649,8 +663,14 @@ function GamesPage() {
             </div>
           )}
 
+          {result?.phase === 'reveal' && (
+            <button className="btn-continue" onClick={() => { setPhase('player1'); setResult(null); }}>
+              Manche suivante
+            </button>
+          )}
+
           <button className="btn-new-game" onClick={startGame}>
-            {result?.phase === 'reveal' ? 'Rejouer' : 'Nouvelle partie'}
+            Nouvelle partie
           </button>
         </div>
       );
@@ -1185,8 +1205,8 @@ function GamesPage() {
           </div>
         )}
         <div className="mode-selector" style={{marginTop: '1rem'}}>
-          <button className={`mode-btn ${(gameState.mode || mode) === 'vsAna' ? 'active' : ''}`} onClick={() => setMode('vsAna')}>vs Ana</button>
-          <button className={`mode-btn ${(gameState.mode || mode) === 'vsHuman' ? 'active' : ''}`} onClick={() => setMode('vsHuman')}>2 Joueurs</button>
+          <button className={`mode-btn ${mode === 'vsAna' ? 'active' : ''}`} onClick={() => setMode('vsAna')}>vs Ana</button>
+          <button className={`mode-btn ${mode === 'vsHuman' ? 'active' : ''}`} onClick={() => setMode('vsHuman')}>2 Joueurs</button>
         </div>
         <button className="btn-new-game" onClick={startGame}>Nouvelle partie</button>
       </div>
@@ -1290,8 +1310,8 @@ function GamesPage() {
           </div>
         )}
         <div className="mode-selector" style={{marginTop: '1rem'}}>
-          <button className={`mode-btn ${(gameState.mode || mode) === 'vsAna' ? 'active' : ''}`} onClick={() => setMode('vsAna')}>vs Ana</button>
-          <button className={`mode-btn ${(gameState.mode || mode) === 'vsHuman' ? 'active' : ''}`} onClick={() => setMode('vsHuman')}>2 Joueurs</button>
+          <button className={`mode-btn ${mode === 'vsAna' ? 'active' : ''}`} onClick={() => setMode('vsAna')}>vs Ana</button>
+          <button className={`mode-btn ${mode === 'vsHuman' ? 'active' : ''}`} onClick={() => setMode('vsHuman')}>2 Joueurs</button>
         </div>
         <button className="btn-new-game" onClick={startGame}>Nouvelle partie</button>
       </div>
@@ -1658,8 +1678,8 @@ function GamesPage() {
           </div>
         )}
         <div className="mode-selector" style={{marginTop: '1rem'}}>
-          <button className={`mode-btn ${(gameState.mode || mode) === 'vsAna' ? 'active' : ''}`} onClick={() => setMode('vsAna')}>vs Ana</button>
-          <button className={`mode-btn ${(gameState.mode || mode) === 'vsHuman' ? 'active' : ''}`} onClick={() => setMode('vsHuman')}>2 Joueurs</button>
+          <button className={`mode-btn ${mode === 'vsAna' ? 'active' : ''}`} onClick={() => setMode('vsAna')}>vs Ana</button>
+          <button className={`mode-btn ${mode === 'vsHuman' ? 'active' : ''}`} onClick={() => setMode('vsHuman')}>2 Joueurs</button>
         </div>
         <button className="btn-new-game" onClick={startGame}>Nouvelle partie</button>
       </div>
@@ -2128,6 +2148,8 @@ function GamesPage() {
       case 'chess': return <ChessGame />;
       case 'battleship': return <BattleshipGame />;
       case 'backgammon': return <BackgammonGame />;
+      case 'scrabble': return <ScrabbleGame session="default" mode="vsAna" onReaction={addMessage} />;
+      case 'definition-mystery': return <DefinitionMysteryGame session="default" onReaction={addMessage} />;
       default: return null;
     }
   };
@@ -2189,8 +2211,12 @@ function GamesPage() {
                 onAutoSubmit={handleVoiceAutoSubmit}
                 disabled={isChatLoading}
               />
-              <button onClick={() => sendChatMessage()} disabled={isChatLoading || !chatInput.trim()}>
-                Envoyer
+              <button
+                className="btn-send"
+                onClick={() => sendChatMessage()}
+                disabled={isChatLoading || !chatInput.trim()}
+              >
+                <IconSend size={20} />
               </button>
             </div>
           </div>

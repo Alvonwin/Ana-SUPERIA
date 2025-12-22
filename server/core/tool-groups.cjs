@@ -32,7 +32,7 @@ const TOOL_GROUPS = {
   git: ['git_status', 'git_commit', 'git_log', 'git_branch', 'git_diff', 'git_stash', 'git_pull', 'git_push', 'git_clone', 'git_checkout', 'git_merge', 'git_reset'],
   docker: ['docker_ps', 'docker_images', 'docker_logs', 'docker_exec', 'docker_start', 'docker_stop'],
   ollama: ['ollama_list', 'ollama_pull', 'ollama_delete', 'ollama_chat'],
-  image: ['generate_image', 'generate_animation', 'generate_video', 'image_to_image', 'inpaint_image', 'describe_image', 'debug_screenshot', 'analyze_code_screenshot', 'resize_image', 'convert_image', 'get_image_info', 'crop_image', 'rotate_image'],
+  image: ['generate_image', 'generate_animation', 'generate_video', 'image_to_image', 'inpaint_image', 'describe_image', 'extract_text', 'debug_screenshot', 'analyze_code_screenshot', 'resize_image', 'convert_image', 'get_image_info', 'crop_image', 'rotate_image'],
   conversion: ['json_to_csv', 'csv_to_json', 'xml_to_json', 'json_to_xml', 'yaml_to_json', 'json_to_yaml', 'parse_html', 'markdown_to_html', 'html_to_markdown', 'format_json', 'minify_json'],
   crypto: ['hash_file', 'hash_text', 'generate_uuid', 'generate_password', 'encrypt_text', 'decrypt_text', 'base64_encode', 'base64_decode'],
   npm: ['npm_list', 'npm_outdated', 'npm_run', 'npm_search', 'npm_info', 'install_npm_package'],
@@ -46,7 +46,8 @@ const TOOL_GROUPS = {
   agents: ['ask_groq', 'ask_cerebras', 'launch_agent', 'ask_architect', 'review_code'],
   validation: ['test_regex', 'validate_json', 'validate_email', 'validate_url'],
   utils: ['ask_user', 'todo_write', 'notebook_edit', 'plan_mode', 'send_notification', 'clipboard_read', 'clipboard_write', 'set_reminder', 'list_reminders', 'cancel_reminder', 'execute_voice_command'],
-  youtube: ['youtube_search', 'get_yt_transcript', 'get_news']
+  youtube: ['youtube_search', 'get_yt_transcript', 'get_news'],
+  python: ['execute_python', 'create_excel', 'create_word', 'create_pdf', 'create_powerpoint', 'create_gif']
 };
 
 const GROUP_KEYWORDS = {
@@ -56,7 +57,7 @@ const GROUP_KEYWORDS = {
   git: ['git', 'commit', 'branch', 'branche', 'diff', 'stash', 'pull', 'push', 'clone', 'checkout', 'merge', 'reset', 'version'],
   docker: ['docker', 'container', 'conteneur', 'image docker'],
   ollama: ['ollama', 'modèle', 'model', 'llm local', 'pull model'],
-  image: ['image', 'photo', 'générer image', 'generate image', 'animation', 'vidéo', 'video', 'inpaint', 'décrire image', 'describe', 'resize', 'crop', 'rotate'],
+  image: ['image', 'photo', 'générer image', 'generate image', 'animation', 'vidéo', 'video', 'inpaint', 'décrire image', 'describe', 'resize', 'crop', 'rotate', 'ocr', 'texte', 'extraire texte', 'extract text', 'lire le texte'],
   conversion: ['convertir', 'convert', 'json', 'csv', 'xml', 'yaml', 'html', 'markdown', 'format', 'minify'],
   crypto: ['hash', 'uuid', 'password', 'mot de passe', 'encrypt', 'decrypt', 'chiffrer', 'base64'],
   npm: ['npm', 'package', 'node module', 'installer', 'install'],
@@ -70,7 +71,8 @@ const GROUP_KEYWORDS = {
   agents: ['groq', 'cerebras', 'agent', 'architecte', 'architect', 'review', 'révision'],
   validation: ['valider', 'validate', 'regex', 'email', 'url'],
   utils: ['notification', 'clipboard', 'presse-papier', 'rappel', 'reminder', 'todo', 'plan', 'voice command'],
-  youtube: ['youtube', 'vidéo youtube', 'transcript', 'news', 'actualité']
+  youtube: ['youtube', 'vidéo youtube', 'transcript', 'news', 'actualité'],
+  python: ['python', 'excel', 'xlsx', 'word', 'docx', 'pdf', 'powerpoint', 'pptx', 'gif', 'tableur', 'spreadsheet', 'document word', 'présentation', 'slides']
 };
 
 function detectToolGroups(query) {

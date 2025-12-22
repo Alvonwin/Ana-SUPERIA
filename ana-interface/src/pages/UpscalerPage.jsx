@@ -24,9 +24,9 @@ const OUTPUT_FOLDER = 'E:/ANA/output/upscaled';
 // Available upscale models in ComfyUI
 const UPSCALE_MODELS = [
   { name: 'RealESRGAN_x2plus.pth', label: 'RealESRGAN x2', scale: 2 },
-  { name: 'RealESRGAN_x4plus.pth', label: 'RealESRGAN x4', scale: 4 },
-  { name: '4x_NMKD-Siax_200k.pth', label: 'NMKD Siax x4', scale: 4 },
-  { name: '4x-UltraSharp.pth', label: 'UltraSharp x4', scale: 4 }
+  { name: '4x-UltraSharp.pth', label: 'UltraSharp x4', scale: 4 },
+  { name: '4x_NMKD-Superscale-SP_178000_G.pth', label: 'NMKD Superscale x4', scale: 4 },
+  { name: '4xNMKDSuperscale_4xNMKDSuperscale.pt', label: 'NMKD Superscale Alt x4', scale: 4 }
 ];
 
 function UpscalerPage() {
@@ -56,7 +56,7 @@ function UpscalerPage() {
     setIsCheckingConnection(true);
     try {
       const response = await fetch(`${COMFYUI_URL}/system_stats`, {
-        signal: AbortSignal.timeout(5000)
+        signal: AbortSignal.timeout(10000)
       });
       if (response.ok) {
         setIsConnected(true);
@@ -245,7 +245,7 @@ function UpscalerPage() {
   };
 
   // Poll ComfyUI for result
-  const pollForResult = async (promptId, maxAttempts = 60) => {
+  const pollForResult = async (promptId, maxAttempts = 300) => {
     for (let i = 0; i < maxAttempts; i++) {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -257,15 +257,25 @@ function UpscalerPage() {
         const response = await fetch(`${COMFYUI_URL}/history/${promptId}`);
         const data = await response.json();
 
-        if (data[promptId]?.status?.status_str === 'error') {
+        const promptData = data[promptId];
+        if (!promptData) continue;
+
+        // Check for error with detailed message
+        if (promptData.status?.status_str === 'error') {
+          const messages = promptData.status?.messages || [];
+          const errorMsg = messages.find(m => m[0] === 'execution_error');
+          if (errorMsg && errorMsg[1]?.exception_message) {
+            throw new Error(errorMsg[1].exception_message.trim());
+          }
           throw new Error('Erreur ComfyUI');
         }
 
-        if (data[promptId]?.outputs) {
-          const outputs = data[promptId].outputs;
+        // Check for completed outputs
+        if (promptData.outputs && Object.keys(promptData.outputs).length > 0) {
+          const outputs = promptData.outputs;
           for (const nodeId of Object.keys(outputs)) {
             const nodeOutput = outputs[nodeId];
-            if (nodeOutput.images) {
+            if (nodeOutput.images && nodeOutput.images.length > 0) {
               return {
                 images: nodeOutput.images.map(img => ({
                   url: `${COMFYUI_URL}/view?filename=${img.filename}&subfolder=${img.subfolder || ''}&type=${img.type}`,
@@ -276,10 +286,14 @@ function UpscalerPage() {
           }
         }
       } catch (error) {
+        // Re-throw real errors, only continue on network errors
+        if (error.message && !error.message.includes('fetch')) {
+          throw error;
+        }
         if (i === maxAttempts - 1) throw error;
       }
     }
-    throw new Error('Timeout - ComfyUI ne repond pas');
+    throw new Error('Timeout - traitement trop long (5 min max)');
   };
 
   // Download result image

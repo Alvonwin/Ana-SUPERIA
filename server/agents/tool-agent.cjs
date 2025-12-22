@@ -16,9 +16,12 @@ const FileTools = require('../tools/file-tools.cjs');
 const BashTools = require('../tools/bash-tools.cjs');
 // Vision Router - Sélection intelligente Moondream (rapide) vs Llama Vision (puissant)
 const visionRouter = require('../../intelligence/vision/vision-router.cjs');
+// Tesseract OCR - Extraction de texte rapide (< 1 seconde) - Ajouté 2025-12-20
+const Tesseract = require('tesseract.js');
 const voiceParser = require('../core/voice-command-parser.cjs');
 const architectAgent = require('./architect-agent.cjs');
 const MemoryTools = require('../tools/memory-tools.cjs');
+const PythonTools = require('../tools/python-tools.cjs');
 
 // GIT et PROJECT INDEXER - Global imports
 const gitManager = require('../core/git-manager.cjs');
@@ -26,6 +29,9 @@ const projectIndexer = require('../core/project-indexer.cjs');
 
 // ORCHESTRATEUR LLM - Added 2025-12-08
 const groqService = require('../services/groq-service.cjs');
+
+// SKILL LOADER - OpenSkills integration - Added 2025-12-21
+const skillLoader = require('../services/skill-loader.cjs');
 
 // V2 Core Modules - Added 2025-12-07
 const {
@@ -42,9 +48,39 @@ const { getRelevantTools, getRelevantToolsHybrid } = require('../core/tool-group
 const DEFAULT_MODEL = null;
 
 /**
+ * FIX 2025-12-20: Extraire un chemin de fichier depuis le message utilisateur
+ * Cerebras corrompt souvent les chemins Windows (backslashes perdus, caractères unicode)
+ * Solution: Extraire le chemin original du message avant corruption
+ */
+function extractPathFromMessage(message) {
+  if (!message) return null;
+
+  // Pattern pour chemins Windows: C:\...\file.ext ou "C:\...\file.ext"
+  const windowsPathPattern = /[A-Za-z]:\\[^"'\s<>|*?]+\.[a-zA-Z0-9]+/g;
+
+  const matches = message.match(windowsPathPattern);
+  if (matches && matches.length > 0) {
+    // Retourner le premier chemin trouvé (le plus probable pour une image)
+    return matches[0];
+  }
+
+  // Pattern pour chemins Unix (au cas où)
+  const unixPathPattern = /\/[^"'\s<>|*?]+\.[a-zA-Z0-9]+/g;
+  const unixMatches = message.match(unixPathPattern);
+  if (unixMatches && unixMatches.length > 0) {
+    return unixMatches[0];
+  }
+
+  return null;
+}
+
+/**
  * FIX 2025-12-18: Corriger les chemins Windows après JSON.parse
  * Le problème: \r dans "E:\ANA\...\resurrection.txt" devient un carriage return
  * Solution: Détecter et corriger les caractères échappés mal interprétés
+ *
+ * FIX 2025-12-20: Corriger les chemins corrompus par Cerebras
+ * Le problème: "C:\Users\niwno" devient "C:Users/iwno" (backslashes perdus)
  */
 function fixWindowsPaths(args) {
   if (!args || typeof args !== 'object') return args;
@@ -55,16 +91,27 @@ function fixWindowsPaths(args) {
   for (const key of pathKeys) {
     if (args[key] && typeof args[key] === 'string') {
       let fixed = args[key];
+
       // Remplacer les caractères échappés mal interprétés par des backslashes
       fixed = fixed.replace(/\r/g, '\\r');  // carriage return → \r
       fixed = fixed.replace(/\n/g, '\\n');  // newline → \n
       fixed = fixed.replace(/\t/g, '\\t');  // tab → \t
       fixed = fixed.replace(/\f/g, '\\f');  // form feed → \f
       fixed = fixed.replace(/\v/g, '\\v');  // vertical tab → \v
+
+      // FIX 2025-12-20: Corriger "C:Users" → "C:\Users" (backslash manquant après drive)
+      fixed = fixed.replace(/^([A-Za-z]):(?![\\\/])/, '$1:\\');
+
       // Normaliser les slashes (forward → back pour Windows)
       if (fixed.match(/^[A-Za-z]:/)) {
         fixed = fixed.replace(/\//g, '\\');
       }
+
+      // FIX 2025-12-20: Corriger les noms d'utilisateur corrompus connus
+      // "iwno" → "niwno" (n manquant au début)
+      fixed = fixed.replace(/\\iwno\\/gi, '\\niwno\\');
+      fixed = fixed.replace(/\/iwno\//gi, '/niwno/');
+
       args[key] = fixed;
     }
   }
@@ -94,8 +141,8 @@ function findToolCallJSON(content) {
     'docker_ps', 'docker_images', 'docker_logs', 'docker_exec', 'docker_start', 'docker_stop',
     // OLLAMA (4)
     'ollama_list', 'ollama_pull', 'ollama_delete', 'ollama_chat',
-    // IMAGE (13)
-    'generate_image', 'generate_animation', 'generate_video', 'image_to_image', 'inpaint_image', 'describe_image', 'debug_screenshot', 'analyze_code_screenshot', 'resize_image', 'convert_image', 'get_image_info', 'crop_image', 'rotate_image',
+    // IMAGE (15) - animate_image ajouté 2025-12-21
+    'generate_image', 'generate_animation', 'generate_video', 'animate_image', 'image_to_image', 'inpaint_image', 'describe_image', 'extract_text', 'debug_screenshot', 'analyze_code_screenshot', 'resize_image', 'convert_image', 'get_image_info', 'crop_image', 'rotate_image',
     // CONVERSION (11)
     'json_to_csv', 'csv_to_json', 'xml_to_json', 'json_to_xml', 'yaml_to_json', 'json_to_yaml', 'parse_html', 'markdown_to_html', 'html_to_markdown', 'format_json', 'minify_json',
     // CRYPTO (8)
@@ -767,6 +814,24 @@ const TOOL_DEFINITIONS = [
   {
     type: 'function',
     function: {
+      name: 'animate_image',
+      description: 'Animer une image existante avec Stable Video Diffusion (SVD). Transforme une image statique en video/gif animee.',
+      parameters: {
+        type: 'object',
+        properties: {
+          image_path: { type: 'string', description: 'Chemin vers l\'image PNG/JPG a animer' },
+          frames: { type: 'integer', description: 'Nombre de frames (14-25)', default: 25 },
+          fps: { type: 'integer', description: 'Images par seconde pour le GIF', default: 8 },
+          motion_bucket_id: { type: 'integer', description: 'Intensite du mouvement (1-255, plus haut = plus de mouvement)', default: 127 },
+          augmentation_level: { type: 'number', description: 'Niveau de bruit ajoute (0.0-1.0)', default: 0.0 }
+        },
+        required: ['image_path']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
       name: 'image_to_image',
       description: 'Transformer une image existante avec un nouveau prompt (img2img).',
       parameters: {
@@ -978,13 +1043,28 @@ const TOOL_DEFINITIONS = [
     type: 'function',
     function: {
       name: 'describe_image',
-      description: 'Analyser une image LOCALE. REGLES STRICTES: 1) Tu ne peux appeler cet outil QUE si l\'utilisateur a fourni un chemin EXACT et COMPLET (ex: C:\\Users\\niwno\\Desktop\\photo.jpg). 2) Si l\'utilisateur dit juste "regarde cette image" SANS chemin, tu DOIS lui DEMANDER le chemin avant d\'appeler cet outil. 3) NE JAMAIS inventer de chemin comme "C:\\Users\\nom\\..." - demande TOUJOURS le vrai chemin.',
+      description: 'Analyser visuellement une image LOCALE (objets, couleurs, scène). Pour EXTRAIRE DU TEXTE, utilise extract_text à la place.',
       parameters: {
         type: 'object',
         properties: {
-          image_path: { type: 'string', description: 'Chemin EXACT vers l\'image locale fourni par l\'utilisateur. OBLIGATOIRE. Ne pas modifier ni inventer. Exemple: C:\\Users\\nom\\Photos\\315.jpg' },
+          image_path: { type: 'string', description: 'Chemin EXACT vers l\'image locale fourni par l\'utilisateur. OBLIGATOIRE.' },
           image_base64: { type: 'string', description: 'Image en base64 (uniquement pour images web ou captures)' },
           prompt: { type: 'string', description: 'Question specifique pour l\'analyse (optionnel)' }
+        },
+        required: ['image_path']
+      }
+    }
+  },
+  // FIX 2025-12-20: Outil OCR dédié pour extraction de texte
+  {
+    type: 'function',
+    function: {
+      name: 'extract_text',
+      description: 'EXTRAIRE LE TEXTE (OCR) d\'une image. Utilise ce tool quand l\'utilisateur demande: extraire texte, lire le texte, OCR, lister le contenu textuel, écrire le texte ici.',
+      parameters: {
+        type: 'object',
+        properties: {
+          image_path: { type: 'string', description: 'Chemin EXACT vers l\'image. OBLIGATOIRE.' }
         },
         required: ['image_path']
       }
@@ -3129,6 +3209,102 @@ const TOOL_DEFINITIONS = [
         required: ['url']
       }
     }
+  },
+  // === PYTHON TOOLS - Added 2025-12-21 ===
+  {
+    type: 'function',
+    function: {
+      name: 'execute_python',
+      description: 'Exécute du code Python. Utile pour créer des fichiers, manipuler des données, générer des graphiques.',
+      parameters: {
+        type: 'object',
+        properties: {
+          code: { type: 'string', description: 'Le code Python à exécuter' },
+          timeout: { type: 'number', description: 'Timeout en ms (défaut: 60000)' }
+        },
+        required: ['code']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'create_excel',
+      description: 'Crée un fichier Excel (.xlsx) avec des données tabulaires. Première ligne = headers.',
+      parameters: {
+        type: 'object',
+        properties: {
+          file_path: { type: 'string', description: 'Chemin complet du fichier Excel à créer' },
+          data: { type: 'array', description: 'Tableau 2D de données. Ex: [["Nom", "Age"], ["Alice", 30]]' }
+        },
+        required: ['file_path', 'data']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'create_word',
+      description: 'Crée un document Word (.docx) avec un titre et des paragraphes.',
+      parameters: {
+        type: 'object',
+        properties: {
+          file_path: { type: 'string', description: 'Chemin complet du fichier Word à créer' },
+          title: { type: 'string', description: 'Titre du document' },
+          paragraphs: { type: 'array', description: 'Liste des paragraphes' }
+        },
+        required: ['file_path', 'title', 'paragraphs']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'create_pdf',
+      description: 'Crée un fichier PDF simple avec un titre et du contenu texte.',
+      parameters: {
+        type: 'object',
+        properties: {
+          file_path: { type: 'string', description: 'Chemin complet du fichier PDF à créer' },
+          title: { type: 'string', description: 'Titre du PDF' },
+          content: { type: 'string', description: 'Contenu texte du PDF' }
+        },
+        required: ['file_path', 'title', 'content']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'create_powerpoint',
+      description: 'Crée une présentation PowerPoint (.pptx) avec des slides.',
+      parameters: {
+        type: 'object',
+        properties: {
+          file_path: { type: 'string', description: 'Chemin complet du fichier PowerPoint à créer' },
+          title: { type: 'string', description: 'Titre de la présentation (slide 1)' },
+          slides: { type: 'array', description: 'Liste des slides: [{title: "Slide 2", points: ["Point 1"]}]' }
+        },
+        required: ['file_path', 'title', 'slides']
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'create_gif',
+      description: 'Crée un GIF animé avec du texte qui change de couleur.',
+      parameters: {
+        type: 'object',
+        properties: {
+          file_path: { type: 'string', description: 'Chemin complet du fichier GIF à créer' },
+          text: { type: 'string', description: 'Texte à afficher dans le GIF' },
+          width: { type: 'number', description: 'Largeur en pixels (défaut: 400)' },
+          height: { type: 'number', description: 'Hauteur en pixels (défaut: 200)' }
+        },
+        required: ['file_path', 'text']
+      }
+    }
   }
 ];
 
@@ -4070,6 +4246,77 @@ const projectIndexer = require('../core/project-indexer.cjs');
     });
   },
 
+  // === Helper pour attendre la fin de génération ComfyUI ===
+  async pollComfyUIResult(promptId, maxAttempts = 300, intervalMs = 1000) {
+    const axios = require('axios');
+    const COMFYUI_URL = 'http://127.0.0.1:8188';
+
+    for (let i = 0; i < maxAttempts; i++) {
+      await new Promise(resolve => setTimeout(resolve, intervalMs));
+
+      try {
+        const response = await axios.get(`${COMFYUI_URL}/history/${promptId}`);
+        const data = response.data;
+        const promptData = data[promptId];
+
+        if (!promptData) continue;
+
+        // Vérifier les erreurs
+        if (promptData.status?.status_str === 'error') {
+          const messages = promptData.status?.messages || [];
+          const errorMsg = messages.find(m => m[0] === 'execution_error');
+          if (errorMsg && errorMsg[1]?.exception_message) {
+            throw new Error(errorMsg[1].exception_message.trim());
+          }
+          throw new Error('Erreur ComfyUI');
+        }
+
+        // Vérifier si terminé
+        if (promptData.outputs && Object.keys(promptData.outputs).length > 0) {
+          const outputs = promptData.outputs;
+          for (const nodeId of Object.keys(outputs)) {
+            const nodeOutput = outputs[nodeId];
+            // Images (SaveImage)
+            if (nodeOutput.images && nodeOutput.images.length > 0) {
+              const img = nodeOutput.images[0];
+              const subfolder = img.subfolder || '';
+              const filePath = subfolder
+                ? `E:/AI_Tools/ComfyUI/ComfyUI/output/${subfolder}/${img.filename}`
+                : `E:/AI_Tools/ComfyUI/ComfyUI/output/${img.filename}`;
+              return {
+                success: true,
+                filename: img.filename,
+                filepath: filePath,
+                type: 'image'
+              };
+            }
+            // GIFs/Videos (ADE_AnimateDiffCombine, SaveAnimatedWEBP)
+            if (nodeOutput.gifs && nodeOutput.gifs.length > 0) {
+              const gif = nodeOutput.gifs[0];
+              const subfolder = gif.subfolder || '';
+              const filePath = subfolder
+                ? `E:/AI_Tools/ComfyUI/ComfyUI/output/${subfolder}/${gif.filename}`
+                : `E:/AI_Tools/ComfyUI/ComfyUI/output/${gif.filename}`;
+              return {
+                success: true,
+                filename: gif.filename,
+                filepath: filePath,
+                type: 'animation'
+              };
+            }
+          }
+        }
+      } catch (error) {
+        // Re-throw les vraies erreurs
+        if (error.message && !error.message.includes('ECONNREFUSED')) {
+          throw error;
+        }
+        if (i === maxAttempts - 1) throw error;
+      }
+    }
+    throw new Error('Timeout - génération trop longue (5 min max)');
+  },
+
   async generate_image(args) {
     const { prompt, negative_prompt = '', width = 512, height = 512 } = args;
     console.log(`🔧 [ToolAgent] generate_image: "${prompt.substring(0, 50)}..."`);
@@ -4115,11 +4362,18 @@ const projectIndexer = require('../core/project-indexer.cjs');
 
     try {
       const response = await axios.post('http://127.0.0.1:8188/prompt', workflow);
+      const promptId = response.data.prompt_id;
+      console.log(`🔧 [ToolAgent] generate_image: En attente du résultat (prompt_id: ${promptId})...`);
+
+      // Attendre la fin de génération
+      const result = await this.pollComfyUIResult(promptId, 120, 1000); // 2 min max pour image
+
       return {
         success: true,
-        message: 'Image en cours de génération',
-        prompt_id: response.data.prompt_id,
-        output_dir: 'E:/AI_Tools/ComfyUI/output'
+        message: `Image générée avec succès!`,
+        filepath: result.filepath,
+        filename: result.filename,
+        prompt_id: promptId
       };
     } catch (err) {
       return { success: false, error: err.message };
@@ -4156,7 +4410,20 @@ const projectIndexer = require('../core/project-indexer.cjs');
 
     try {
       const response = await axios.post('http://127.0.0.1:8188/prompt', workflow);
-      return { success: true, message: 'Animation en cours de generation', prompt_id: response.data.prompt_id, output_dir: 'E:/AI_Tools/ComfyUI/ComfyUI/output' };
+      const promptId = response.data.prompt_id;
+      console.log(`[ToolAgent] generate_animation: En attente du résultat (prompt_id: ${promptId})...`);
+
+      // Attendre la fin de génération (5 min max pour animations)
+      const result = await this.pollComfyUIResult(promptId, 300, 1000);
+
+      return {
+        success: true,
+        message: `Animation générée avec succès!`,
+        filepath: result.filepath,
+        filename: result.filename,
+        format: format,
+        prompt_id: promptId
+      };
     } catch (err) {
       return { success: false, error: err.message };
     }
@@ -4192,7 +4459,133 @@ const projectIndexer = require('../core/project-indexer.cjs');
 
     try {
       const response = await axios.post('http://127.0.0.1:8188/prompt', workflow);
-      return { success: true, message: 'Video Mochi en cours (peut prendre plusieurs minutes)', prompt_id: response.data.prompt_id, output_dir: 'E:/AI_Tools/ComfyUI/ComfyUI/output' };
+      const promptId = response.data.prompt_id;
+      console.log(`[ToolAgent] generate_video: En attente du résultat (prompt_id: ${promptId})...`);
+
+      // Attendre la fin de génération (10 min max pour vidéos Mochi)
+      const result = await this.pollComfyUIResult(promptId, 600, 1000);
+
+      return {
+        success: true,
+        message: `Vidéo générée avec succès!`,
+        filepath: result.filepath,
+        filename: result.filename,
+        duration: duration,
+        prompt_id: promptId
+      };
+    } catch (err) {
+      return { success: false, error: err.message };
+    }
+  },
+
+  // === ANIMATE IMAGE avec SVD (Stable Video Diffusion) ===
+  async animate_image(args) {
+    const { image_path, frames = 25, fps = 8, motion_bucket_id = 127, augmentation_level = 0.0 } = args;
+    console.log(`[ToolAgent] animate_image (SVD): ${image_path}`);
+
+    const axios = require('axios');
+    const fs = require('fs');
+    const path = require('path');
+
+    // Vérifier que l'image existe
+    if (!fs.existsSync(image_path)) {
+      return { success: false, error: `Image non trouvée: ${image_path}` };
+    }
+
+    // Vérifier ComfyUI
+    try {
+      await axios.get('http://127.0.0.1:8188/system_stats', { timeout: 2000 });
+    } catch (e) {
+      return { success: false, error: 'ComfyUI n\'est pas démarré.' };
+    }
+
+    // Copier l'image dans le dossier input de ComfyUI
+    const filename = path.basename(image_path);
+    const destPath = `E:/AI_Tools/ComfyUI/ComfyUI/input/${filename}`;
+    fs.copyFileSync(image_path, destPath);
+
+    const seed = Math.floor(Math.random() * 1000000000);
+    const timestamp = Date.now();
+
+    // Workflow SVD (Stable Video Diffusion)
+    const workflow = {
+      prompt: {
+        "1": {
+          "class_type": "ImageOnlyCheckpointLoader",
+          "inputs": { "ckpt_name": "svd_xt_1_1.safetensors" }
+        },
+        "2": {
+          "class_type": "LoadImage",
+          "inputs": { "image": filename }
+        },
+        "3": {
+          "class_type": "SVD_img2vid_Conditioning",
+          "inputs": {
+            "width": 1024,
+            "height": 576,
+            "video_frames": frames,
+            "motion_bucket_id": motion_bucket_id,
+            "fps": 6,
+            "augmentation_level": augmentation_level,
+            "clip_vision": ["1", 1],
+            "init_image": ["2", 0],
+            "vae": ["1", 2]
+          }
+        },
+        "4": {
+          "class_type": "KSampler",
+          "inputs": {
+            "seed": seed,
+            "steps": 20,
+            "cfg": 2.5,
+            "sampler_name": "euler",
+            "scheduler": "karras",
+            "denoise": 1,
+            "model": ["1", 0],
+            "positive": ["3", 0],
+            "negative": ["3", 1],
+            "latent_image": ["3", 2]
+          }
+        },
+        "5": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": ["4", 0],
+            "vae": ["1", 2]
+          }
+        },
+        "6": {
+          "class_type": "VHS_VideoCombine",
+          "inputs": {
+            "images": ["5", 0],
+            "frame_rate": fps,
+            "loop_count": 0,
+            "filename_prefix": `ana_svd_${timestamp}`,
+            "format": "image/gif",
+            "pingpong": false,
+            "save_output": true
+          }
+        }
+      }
+    };
+
+    try {
+      const response = await axios.post('http://127.0.0.1:8188/prompt', workflow);
+      const promptId = response.data.prompt_id;
+      console.log(`[ToolAgent] animate_image: En attente du résultat (prompt_id: ${promptId})...`);
+
+      // Attendre la fin (SVD peut prendre 3-5 min)
+      const result = await this.pollComfyUIResult(promptId, 360, 1000);
+
+      return {
+        success: true,
+        message: `Animation créée avec succès!`,
+        filepath: result.filepath,
+        filename: result.filename,
+        source_image: image_path,
+        frames: frames,
+        prompt_id: promptId
+      };
     } catch (err) {
       return { success: false, error: err.message };
     }
@@ -4238,7 +4631,19 @@ const projectIndexer = require('../core/project-indexer.cjs');
 
     try {
       const response = await axios.post('http://127.0.0.1:8188/prompt', workflow);
-      return { success: true, message: 'Transformation img2img en cours', prompt_id: response.data.prompt_id, output_dir: 'E:/AI_Tools/ComfyUI/ComfyUI/output' };
+      const promptId = response.data.prompt_id;
+      console.log(`[ToolAgent] image_to_image: En attente du résultat (prompt_id: ${promptId})...`);
+
+      // Attendre la fin de génération
+      const result = await this.pollComfyUIResult(promptId, 120, 1000);
+
+      return {
+        success: true,
+        message: `Image transformée avec succès!`,
+        filepath: result.filepath,
+        filename: result.filename,
+        prompt_id: promptId
+      };
     } catch (err) {
       return { success: false, error: err.message };
     }
@@ -4289,7 +4694,19 @@ const projectIndexer = require('../core/project-indexer.cjs');
 
     try {
       const response = await axios.post('http://127.0.0.1:8188/prompt', workflow);
-      return { success: true, message: 'Inpainting en cours', prompt_id: response.data.prompt_id, output_dir: 'E:/AI_Tools/ComfyUI/ComfyUI/output' };
+      const promptId = response.data.prompt_id;
+      console.log(`[ToolAgent] inpaint_image: En attente du résultat (prompt_id: ${promptId})...`);
+
+      // Attendre la fin de génération
+      const result = await this.pollComfyUIResult(promptId, 120, 1000);
+
+      return {
+        success: true,
+        message: `Inpainting terminé avec succès!`,
+        filepath: result.filepath,
+        filename: result.filename,
+        prompt_id: promptId
+      };
     } catch (err) {
       return { success: false, error: err.message };
     }
@@ -4531,16 +4948,71 @@ const projectIndexer = require('../core/project-indexer.cjs');
       console.log(`👁️ [ToolAgent] describe_image: ${image_path || 'base64 image'}`);
     }
 
+    // FIX 2025-12-20: Détecter si OCR/extraction de texte demandé
+    const promptLower = (prompt || '').toLowerCase();
+    const ocrKeywords = ['texte', 'text', 'ocr', 'lire', 'lister', 'extraire', 'extract', 'écrire', 'liste', 'read'];
+    const needsOcr = ocrKeywords.some(kw => promptLower.includes(kw));
+    const taskType = needsOcr ? 'ocr' : 'description';
+
+    if (needsOcr) {
+      console.log('👁️ [ToolAgent] describe_image: OCR détecté → Llama Vision');
+    }
+
     try {
       // Utilise vision-router avec sélection automatique du modèle
       const result = await visionRouter.analyze({
         imagePath: imageToUse ? null : image_path,  // Ignorer path si on a base64
         imageBase64: imageToUse,
         prompt: prompt || 'Décris cette image en détail.',
-        taskType: 'description'  // Moondream (rapide) par défaut
+        taskType: taskType  // 'ocr' pour Llama Vision, 'description' pour Moondream
       });
       return result;
     } catch (error) {
+      return { success: false, error: error.message };
+    }
+  },
+
+  // FIX 2025-12-20: Outil OCR avec Tesseract.js - rapide (< 5 secondes)
+  async extract_text(args, context = {}) {
+    const { image_path } = args;
+    console.log(`📝 [ToolAgent] extract_text (Tesseract OCR): ${image_path}`);
+
+    try {
+      // Vérifier que le fichier existe
+      if (!fs.existsSync(image_path)) {
+        return { success: false, error: `Fichier introuvable: ${image_path}` };
+      }
+
+      const startTime = Date.now();
+
+      // Utiliser Tesseract.js pour OCR rapide
+      // Langues: fra (français) + eng (anglais)
+      const result = await Tesseract.recognize(
+        image_path,
+        'fra+eng',
+        {
+          logger: m => {
+            if (m.status === 'recognizing text') {
+              console.log(`📝 [Tesseract] Progress: ${Math.round(m.progress * 100)}%`);
+            }
+          }
+        }
+      );
+
+      const elapsed = Date.now() - startTime;
+      const text = result.data.text.trim();
+
+      console.log(`✅ [Tesseract] OCR terminé en ${elapsed}ms - ${text.length} caractères`);
+
+      return {
+        success: true,
+        text: text,
+        confidence: result.data.confidence,
+        elapsed_ms: elapsed,
+        method: 'tesseract'
+      };
+    } catch (error) {
+      console.error(`❌ [Tesseract] Erreur OCR:`, error.message);
       return { success: false, error: error.message };
     }
   },
@@ -4618,7 +5090,8 @@ Instructions:
       }
 
       // Exécuter le tool
-      const result = await TOOL_IMPLEMENTATIONS[parsed.tool](parsed.args);
+      // FIX 2025-12-20: Cohérence - passer contexte vide
+      const result = await TOOL_IMPLEMENTATIONS[parsed.tool](parsed.args, {});
 
       return {
         success: true,
@@ -7468,6 +7941,85 @@ app.${method.toLowerCase()}('${path}', async (req, res) => {
     } catch {
       return { success: true, url, valid: false };
     }
+  },
+
+  // === PYTHON TOOLS - Added 2025-12-21 ===
+  async execute_python(args) {
+    const { code, timeout } = args;
+    console.log(`🐍 [ToolAgent] execute_python: ${code.substring(0, 50)}...`);
+    try {
+      const result = await PythonTools.executePython(code, timeout || 60000);
+      return result.success
+        ? { success: true, output: result.output }
+        : { success: false, error: result.error, output: result.output };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  },
+
+  async create_excel(args) {
+    const { file_path, data } = args;
+    console.log(`📊 [ToolAgent] create_excel: ${file_path}`);
+    try {
+      const result = await PythonTools.createExcel(file_path, data);
+      return result.success
+        ? { success: true, message: `Fichier Excel créé: ${file_path}` }
+        : { success: false, error: result.error };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  },
+
+  async create_word(args) {
+    const { file_path, title, paragraphs } = args;
+    console.log(`📝 [ToolAgent] create_word: ${file_path}`);
+    try {
+      const result = await PythonTools.createWord(file_path, title, paragraphs);
+      return result.success
+        ? { success: true, message: `Document Word créé: ${file_path}` }
+        : { success: false, error: result.error };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  },
+
+  async create_pdf(args) {
+    const { file_path, title, content } = args;
+    console.log(`📄 [ToolAgent] create_pdf: ${file_path}`);
+    try {
+      const result = await PythonTools.createPdf(file_path, title, content);
+      return result.success
+        ? { success: true, message: `PDF créé: ${file_path}` }
+        : { success: false, error: result.error };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  },
+
+  async create_powerpoint(args) {
+    const { file_path, title, slides } = args;
+    console.log(`📽️ [ToolAgent] create_powerpoint: ${file_path}`);
+    try {
+      const result = await PythonTools.createPowerPoint(file_path, title, slides);
+      return result.success
+        ? { success: true, message: `PowerPoint créé: ${file_path}` }
+        : { success: false, error: result.error };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  },
+
+  async create_gif(args) {
+    const { file_path, text, width, height } = args;
+    console.log(`🎬 [ToolAgent] create_gif: ${file_path}`);
+    try {
+      const result = await PythonTools.createGif(file_path, text, width || 400, height || 200);
+      return result.success
+        ? { success: true, message: `GIF créé: ${file_path}` }
+        : { success: false, error: result.error };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
   }
 };
 
@@ -7483,6 +8035,15 @@ async function runToolAgent(userMessage, options = {}) {
   const toolNames = filteredTools.map(t => t.function.name).join(', ');
   // FIX 2025-12-14: Envoyer les descriptions d'outils, pas juste les noms
   const toolDescriptions = filteredTools.map(t => `- ${t.function.name}: ${t.function.description}`).join('\n');
+
+  // 2025-12-21: Détection et chargement de skills OpenSkills
+  const skillInfo = skillLoader.getSkillInstructions(userMessage);
+  let skillInstructions = '';
+  if (skillInfo) {
+    console.log(`[ToolAgent] 🎯 Skill détecté: ${skillInfo.skillId}`);
+    skillInstructions = `\n\n=== INSTRUCTIONS SPÉCIALISÉES (Skill: ${skillInfo.skillName}) ===\n${skillInfo.instructions}\n=== FIN DES INSTRUCTIONS SPÉCIALISÉES ===\n`;
+  }
+
   const systemPrompt = options.systemPrompt ||
     `Tu es Ana, l'assistante IA personnelle d'Alain à Longueuil, Québec.
 LANGUE: Tu réponds TOUJOURS en français québécois. JAMAIS en anglais.
@@ -7571,7 +8132,8 @@ GESTION INTELLIGENTE DE MA MÉMOIRE (Self-Editing):
 - memory_forget: Si une info est obsolète ou incorrecte → proposer d'oublier (demande permission)
 - memory_reflect: Pour analyser ce que je sais, trouver patterns et contradictions
 - memory_link: Créer des relations entre concepts (Alain --aime--> jeux)
-- memory_query_graph: Interroger mes relations pour faire des connexions`;
+- memory_query_graph: Interroger mes relations pour faire des connexions
+${skillInstructions}`;
 
   const messages = [
     { role: 'system', content: systemPrompt },
@@ -7714,6 +8276,15 @@ GESTION INTELLIGENTE DE MA MÉMOIRE (Self-Editing):
         // FIX 2025-12-18: Corriger les chemins Windows (\r → \\r, etc.)
         parsedArgs = fixWindowsPaths(parsedArgs);
 
+        // FIX 2025-12-20: Si le chemin est corrompu, extraire du message original
+        if (toolName === 'describe_image' && parsedArgs.image_path) {
+          const originalPath = extractPathFromMessage(userMessage);
+          if (originalPath && originalPath !== parsedArgs.image_path) {
+            console.log(`🔧 [ToolAgent] Path correction: "${parsedArgs.image_path}" → "${originalPath}"`);
+            parsedArgs.image_path = originalPath;
+          }
+        }
+
         const impl = TOOL_IMPLEMENTATIONS[toolName];
         if (!impl) {
           console.warn(`⚠️ [ToolAgent] Outil inconnu: ${toolName}`);
@@ -7728,7 +8299,8 @@ GESTION INTELLIGENTE DE MA MÉMOIRE (Self-Editing):
         }
 
         try {
-          const result = await impl(parsedArgs);
+          // FIX 2025-12-20: Cohérence avec V2 - passer contexte (vide ici car pas d'images)
+          const result = await impl(parsedArgs, {});
           // FIX 2025-12-13: Appel SANS outils pour forcer la synthèse
           const resultStr = JSON.stringify(result, null, 2);
           messages.push({
@@ -7823,6 +8395,14 @@ async function runToolAgentV2(userMessage, options = {}) {
   const { tools: filteredTools } = await getRelevantToolsHybrid(TOOL_DEFINITIONS, userMessage);
   console.log('[ToolAgentV2] Filtered to', filteredTools.length, 'tools for:', userMessage.substring(0, 40) + '...');
 
+  // 2025-12-21: Détection et chargement de skills OpenSkills
+  const skillInfo = skillLoader.getSkillInstructions(userMessage);
+  let skillInstructions = '';
+  if (skillInfo) {
+    console.log(`[ToolAgentV2] 🎯 Skill détecté: ${skillInfo.skillId}`);
+    skillInstructions = `\n\n=== INSTRUCTIONS SPÉCIALISÉES (Skill: ${skillInfo.skillName}) ===\n${skillInfo.instructions}\n=== FIN DES INSTRUCTIONS SPÉCIALISÉES ===`;
+  }
+
   // System prompt with FILTERED tools only
   const toolNames = filteredTools.map(t => t.function.name).join(', ');
   const toolDescriptions = filteredTools.map(t => `- ${t.function.name}: ${t.function.description}`).join('\n');
@@ -7837,7 +8417,8 @@ RÈGLES:
 - Utilise l'outil approprié pour chaque demande
 - Réponds en français après avoir reçu les résultats
 - Si success=false, dis-le clairement
-- Tu as accès à la mémoire d'Alain via search_memory`;
+- Tu as accès à la mémoire d'Alain via search_memory
+${skillInstructions}`;
 
   // FIX 2025-12-15: Injection du contexte de conversation
   const contextMessages = [];
@@ -8022,6 +8603,15 @@ RÈGLES:
         // FIX 2025-12-18: Corriger les chemins Windows (\r → \\r, etc.)
         parsedArgs = fixWindowsPaths(parsedArgs);
 
+        // FIX 2025-12-20: Si le chemin est corrompu, extraire du message original
+        if (toolName === 'describe_image' && parsedArgs.image_path) {
+          const originalPath = extractPathFromMessage(userMessage);
+          if (originalPath && originalPath !== parsedArgs.image_path) {
+            console.log(`🔧 [ToolAgentV2] Path correction: "${parsedArgs.image_path}" → "${originalPath}"`);
+            parsedArgs.image_path = originalPath;
+          }
+        }
+
         const impl = TOOL_IMPLEMENTATIONS[toolName];
         if (!impl) {
           console.warn(`⚠️ [ToolAgentV2] Outil inconnu: ${toolName}`);
@@ -8033,7 +8623,9 @@ RÈGLES:
         }
 
         try {
-          const result = await impl(parsedArgs);
+          // FIX 2025-12-20: Passer le contexte avec les images uploadées aux outils
+          const toolContext = { images };
+          const result = await impl(parsedArgs, toolContext);
           // FIX 2025-12-13: Utiliser role='user' et forcer synthèse
           const resultStr = JSON.stringify(result, null, 2);
           messages.push({

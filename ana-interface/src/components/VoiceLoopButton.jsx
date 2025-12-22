@@ -118,12 +118,12 @@ const VoiceLoopButton = forwardRef(function VoiceLoopButton({
 
       recognition.onend = () => {
         console.log('🎤 Écoute terminée');
-        setIsListening(false);
 
-        // Redémarrer automatiquement si mode vocal toujours actif ET pas en pause TTS
+        // FIX 2025-12-21: Ne pas mettre isListening à false si on va redémarrer
+        // Cela évite le "flash" du bouton pendant le cycle de redémarrage
         if (isEnabledRef.current && !isPausedRef.current) {
-          // Mobile: délai plus long pour éviter boucle agressive
-          const restartDelay = isMobile ? 1500 : 500;
+          // Redémarrer automatiquement - garder l'indicateur actif
+          const restartDelay = isMobile ? 1500 : 300;
           console.log(`🔄 Redémarrage automatique dans ${restartDelay}ms...`);
           setTimeout(() => {
             if (isEnabledRef.current && recognitionRef.current && !isPausedRef.current) {
@@ -131,11 +131,18 @@ const VoiceLoopButton = forwardRef(function VoiceLoopButton({
                 recognitionRef.current.start();
               } catch (e) {
                 console.warn('⚠️ Impossible de redémarrer:', e.message);
+                setIsListening(false);  // Seulement si échec
               }
+            } else {
+              setIsListening(false);  // Mode désactivé entre-temps
             }
           }, restartDelay);
-        } else if (isPausedRef.current) {
-          console.log('⏸️ Pas de redémarrage - TTS en cours');
+        } else {
+          // Mode désactivé ou TTS en cours - vraiment arrêter
+          setIsListening(false);
+          if (isPausedRef.current) {
+            console.log('⏸️ Pas de redémarrage - TTS en cours');
+          }
         }
       };
 

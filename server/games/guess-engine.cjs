@@ -229,11 +229,14 @@ function getState(sessionId) {
   if (!game) return { exists: false };
   return {
     exists: true,
+    mode: game.mode,
+    phase: game.phase,
     max: game.max,
     guesses: game.guesses,
     attempts: game.guesses.length,
     status: game.status,
-    secret: game.status !== 'playing' ? game.secret : null
+    gameOver: game.status !== 'playing' && game.status !== 'setup',
+    secret: game.status !== 'playing' && game.status !== 'setup' ? game.secret : null
   };
 }
 

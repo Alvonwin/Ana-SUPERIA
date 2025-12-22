@@ -1,7 +1,11 @@
-﻿.settings-page {
+.settings-page {
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(102, 126, 234, 0.04) 0%, transparent 50%),
+    transparent;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .settings-header {
@@ -10,17 +14,32 @@
   gap: 1rem;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color, #333);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.15);
+  position: relative;
+}
+
+.settings-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
 }
 
 .settings-header h1 {
   margin: 0;
   font-size: 1.8rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .settings-header .subtitle {
   margin: 0;
-  color: var(--text-secondary, #888);
+  color: var(--text-secondary, #a0a0b0);
   font-size: 0.9rem;
 }
 
@@ -31,10 +50,16 @@
 }
 
 .settings-section {
-  background: var(--card-bg, #1a1a2e);
-  border-radius: 12px;
+  background: linear-gradient(145deg, #16162a 0%, #1a1a2e 100%);
+  border-radius: 16px;
   padding: 1.5rem;
-  border: 1px solid var(--border-color, #333);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease;
+}
+
+.settings-section:hover {
+  border-color: rgba(102, 126, 234, 0.15);
 }
 
 .settings-section h2 {
@@ -106,9 +131,10 @@
 }
 
 .theme-btn.active {
-  background: var(--accent-color, #3498db);
-  border-color: var(--accent-color, #3498db);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
   color: #fff;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 /* Toggle switch */
@@ -150,7 +176,7 @@
 }
 
 .toggle input:checked + .toggle-slider {
-  background-color: var(--accent-color, #3498db);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .toggle input:checked + .toggle-slider:before {
@@ -177,13 +203,15 @@
 }
 
 .btn-save {
-  background: var(--accent-color, #3498db);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   border: none;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .btn-save:hover {
-  background: var(--accent-hover, #2980b9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
 .btn-reset {
@@ -199,10 +227,12 @@
 
 /* Info box */
 .settings-info-box {
-  background: var(--card-bg, #1a1a2e);
-  border-radius: 8px;
+  background: linear-gradient(145deg, #16162a 0%, #1a1a2e 100%);
+  border-radius: 10px;
   padding: 1rem;
-  border-left: 3px solid var(--accent-color, #3498db);
+  border-left: 3px solid #667eea;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #667eea;
 }
 
 .settings-info-box p {
@@ -425,8 +455,9 @@
 
 /* Tunnel URLs Section */
 .tunnel-section {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border: 1px solid #4a90d9;
+  background: linear-gradient(145deg, #16162a 0%, #1a1a2e 100%);
+  border: 1px solid rgba(74, 144, 217, 0.3);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
 }
 
 .tunnel-info {

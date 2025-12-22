@@ -121,6 +121,7 @@ function ChatPage() {
   const [memoryStats, setMemoryStats] = useState({ sizeKB: 0, lines: 0 });
   const [socket, setSocket] = useState(null);
   const [playingAudio, setPlayingAudio] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
   const [availableVoices, setAvailableVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
   const [playbackRate, setPlaybackRate] = useState(1.0);
@@ -132,6 +133,7 @@ function ChatPage() {
   const [isVoiceListening, setIsVoiceListening] = useState(false);
   const [feedbackGiven, setFeedbackGiven] = useState({}); // Track feedback per message - Phase 5B
   const messagesEndRef = useRef(null);
+  const currentAudioRef = useRef(null); // Référence audio pour pause/resume
   const voiceLoopRef = useRef(null);
   const fileInputRef = useRef(null);
 
@@ -414,6 +416,7 @@ function ChatPage() {
           }
 
           const onTTSEnd = () => {
+            currentAudioRef.current = null;
             setPlayingAudio(null);
             console.log('✅ TTS terminé');
             // RESUME la reconnaissance vocale après le TTS
@@ -425,7 +428,8 @@ function ChatPage() {
           // Utiliser Sylvie (edge-tts) ou voix navigateur
           if (selectedVoice?.name === SYLVIE_VOICE || !selectedVoice) {
             setPlayingAudio(finalMessageId);
-            await speakWithEdgeTTS(finalText, onTTSEnd, onTTSEnd);
+            const audio = await speakWithEdgeTTS(finalText, onTTSEnd, onTTSEnd);
+            currentAudioRef.current = audio;
           } else if (window.speechSynthesis) {
             window.speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance(finalText);
@@ -661,31 +665,53 @@ function ChatPage() {
   };
 
   const handlePlayPause = async (messageId, text) => {
-    // Si déjà en lecture, arrêter
-    if (playingAudio === messageId) {
-      if (window.speechSynthesis) window.speechSynthesis.cancel();
-      setPlayingAudio(null);
+    // Cas 1: Même message, en pause → REPRENDRE
+    if (playingAudio === messageId && isPaused && currentAudioRef.current) {
+      currentAudioRef.current.play();
+      setIsPaused(false);
       return;
     }
 
-    // Arrêter toute lecture en cours
+    // Cas 2: Même message, en lecture → PAUSE (garder la référence!)
+    if (playingAudio === messageId && !isPaused) {
+      if (currentAudioRef.current) {
+        currentAudioRef.current.pause();
+        setIsPaused(true);
+      } else if (window.speechSynthesis) {
+        window.speechSynthesis.pause();
+        setIsPaused(true);
+      }
+      return;
+    }
+
+    // Cas 3: Nouveau message → arrêter l'ancien, démarrer le nouveau
+    if (currentAudioRef.current) {
+      currentAudioRef.current.pause();
+      currentAudioRef.current = null;
+    }
     if (window.speechSynthesis) window.speechSynthesis.cancel();
+    setIsPaused(false);
 
     const onEnd = () => {
+      currentAudioRef.current = null;
       setPlayingAudio(null);
+      setIsPaused(false);
       console.log('✅ Lecture audio terminée');
     };
 
     const onError = (err) => {
       console.error('❌ Erreur TTS:', err);
+      currentAudioRef.current = null;
       setPlayingAudio(null);
+      setIsPaused(false);
       addSystemMessage('❌ Erreur synthèse vocale', 'error');
     };
 
     // Utiliser Sylvie (edge-tts) ou voix navigateur
     if (selectedVoice?.name === SYLVIE_VOICE || !selectedVoice) {
       setPlayingAudio(messageId);
-      await speakWithEdgeTTS(text, onEnd, onError);
+      const audio = await speakWithEdgeTTS(text, onEnd, onError);
+      currentAudioRef.current = audio;
     } else if (window.speechSynthesis) {
       try {
         const utterance = new SpeechSynthesisUtterance(text);
@@ -894,10 +920,10 @@ function ChatPage() {
         {messages.map((message) => (
           <div key={message.id} className={`message message-${message.sender}`}>
             {message.sender === 'user' && (
-              <div className="message-avatar">👤</div>
+              <div className="message-avatar"><img src="/avatar-alain.jpg" alt="Alain" /></div>
             )}
             {message.sender === 'ana' && (
-              <div className="message-avatar">🤖</div>
+              <div className="message-avatar"><img src="/avatar-ana.jpg" alt="Ana" /></div>
             )}
             <div className="message-content">
               <div className="message-header">
@@ -929,11 +955,11 @@ function ChatPage() {
                     <span>Répéter</span>
                   </button>
                   <button
-                    className={`btn-action ${playingAudio === message.id ? 'playing' : ''}`}
+                    className={`btn-action ${playingAudio === message.id && !isPaused ? 'playing' : ''}`}
                     onClick={() => handlePlayPause(message.id, message.text)}
-                    title={playingAudio === message.id ? "Arrêter la lecture" : "Lire à voix haute"}
+                    title={playingAudio === message.id && !isPaused ? "Pause" : "Lire"}
                   >
-                    {playingAudio === message.id ? (
+                    {playingAudio === message.id && !isPaused ? (
                       <>
                         <IconPause size={14} />
                         <span>Pause</span>
@@ -941,7 +967,7 @@ function ChatPage() {
                     ) : (
                       <>
                         <IconPlay size={14} />
-                        <span>Lire</span>
+                        <span>{playingAudio === message.id && isPaused ? 'Reprendre' : 'Lire'}</span>
                       </>
                     )}
                   </button>

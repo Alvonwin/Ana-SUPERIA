@@ -162,9 +162,15 @@ function play(sessionId, row, col) {
       game.status = 'draw';
       game.winner = null;
     } else {
-      const winnerPlayer = winner === PLAYER1 ? 'player1' : 'player2';
-      game.status = winnerPlayer + '_wins';
-      game.winner = winnerPlayer;
+      if (game.mode === 'vsHuman') {
+        const winnerPlayer = winner === PLAYER1 ? 'player1' : 'player2';
+        game.status = winnerPlayer + '_wins';
+        game.winner = winnerPlayer;
+      } else {
+        // Mode vsAna: 'player' ou 'ana' pour la route
+        game.status = winner === PLAYER1 ? 'player_wins' : 'ana_wins';
+        game.winner = winner === PLAYER1 ? 'player' : 'ana';
+      }
     }
 
     const winMessage = game.mode === 'vsHuman'

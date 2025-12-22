@@ -8,6 +8,7 @@ import parserTypescript from 'prettier/parser-typescript';
 import parserHtml from 'prettier/parser-html';
 import parserCss from 'prettier/parser-postcss';
 import { toast, Toaster } from 'sonner';
+// TODO: Remplacer ChatWidget par le chat de GamesPage
 import ChatWidget from '../components/ChatWidget';
 import './CodingPage.css';
 import { BACKEND_URL } from '../config';

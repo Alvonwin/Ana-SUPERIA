@@ -1,0 +1,10 @@
+.spiralecolorée-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.spiralecolorée-container h1 {
+  color: var(--primary-color, #007bff);
+  margin-bottom: 20px;
+}

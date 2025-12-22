@@ -107,7 +107,8 @@ async function playCheckers(args, sessionId = 'default') {
       };
 
       // Réaction au coup du joueur
-      if (result.playerMove && result.playerMove.captures.length > 0) {
+      const playerCaptures = result.playerMove?.captures || [];
+      if (result.playerMove && playerCaptures.length > 0) {
         response.playerReaction = randomReaction('playerCapture');
       } else if (result.playerMove) {
         response.playerReaction = randomReaction('playerGoodMove');
@@ -116,7 +117,8 @@ async function playCheckers(args, sessionId = 'default') {
       // Réaction au coup d'Ana
       if (result.anaMove) {
         response.thinkingReaction = randomReaction('anaThinking');
-        if (result.anaMove.captures.length > 0) {
+        const anaCaptures = result.anaMove.captures || [];
+        if (anaCaptures.length > 0) {
           response.anaReaction = randomReaction('anaCapture');
         }
       }

@@ -1,33 +1,39 @@
 /* CSS Variables - Theme */
 :root, [data-theme="dark"] {
-  /* Background colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #252535;
-  --bg-tertiary: #2c3e50;
-  --card-bg: #1a1a2e;
-  --input-bg: #16213e;
+  /* Background colors - Palette plus riche */
+  --bg-primary: #0a0a12;
+  --bg-secondary: #12121e;
+  --bg-tertiary: #1a1a2e;
+  --card-bg: linear-gradient(145deg, #16162a 0%, #1a1a2e 100%);
+  --input-bg: #0f0f1a;
 
-  /* Text colors */
-  --text-primary: #e0e0e0;
-  --text-secondary: #95a5a6;
-  --text-tertiary: #6b7280;
-  --text-muted: #888;
+  /* Text colors - Meilleur contraste */
+  --text-primary: #f0f0f5;
+  --text-secondary: #a0a0b0;
+  --text-tertiary: #6b6b7a;
+  --text-muted: #555566;
 
-  /* Border colors */
-  --border: #333;
-  --border-color: #333;
-  --border-light: rgba(255, 255, 255, 0.1);
+  /* Border colors - Plus subtiles */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.05);
 
-  /* Primary color variants */
-  --primary: #3498db;
-  --primary-hover: #2980b9;
-  --primary-light: rgba(52, 152, 219, 0.1);
-  --primary-dark: #2563eb;
+  /* Primary color - Violet/Bleu distinctif */
+  --primary: #667eea;
+  --primary-hover: #5a6fd6;
+  --primary-light: rgba(102, 126, 234, 0.15);
+  --primary-dark: #4f5fc1;
 
-  /* Accent color (alias for primary) */
-  --accent: #8b5cf6;
-  --accent-color: #3498db;
-  --accent-hover: #2980b9;
+  /* Accent color - Violet profond */
+  --accent: #764ba2;
+  --accent-color: #8b5cf6;
+  --accent-hover: #7c3aed;
+
+  /* Gradient préfabriqués */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-success: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  --gradient-danger: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  --gradient-warm: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
 
   /* Semantic colors */
   --success: #2ecc71;
@@ -35,9 +41,14 @@
   --danger: #e74c3c;
   --warning: #f39c12;
 
-  /* Sidebar */
-  --sidebar-bg: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
-  --sidebar-border: #1a252f;
+  /* Sidebar - Dégradé plus élégant */
+  --sidebar-bg: linear-gradient(180deg, #16162a 0%, #1a1a2e 50%, #12121e 100%);
+  --sidebar-border: rgba(102, 126, 234, 0.2);
+
+  /* Effets de verre */
+  --glass-bg: rgba(22, 22, 42, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Light Theme */
@@ -90,12 +101,66 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg-primary);
+  font-family: 'Outfit', system-ui, sans-serif;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(102, 126, 234, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(118, 75, 162, 0.04) 0%, transparent 50%),
+    var(--bg-primary);
   color: var(--text-primary);
   overflow: hidden;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.4s ease, color 0.3s ease;
 }
+
+/* Animations d'entrée globales */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Classe utilitaire pour animations échelonnées */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
 
 /* ==================== LAYOUT ==================== */
 .app-layout {
@@ -106,15 +171,29 @@ body {
 
 /* ==================== SIDEBAR - DESKTOP ==================== */
 .sidebar {
-  width: 250px;
+  width: 260px;
   height: 100%;
   background: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border);
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-  transition: background 0.3s ease;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
   z-index: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effet de lueur subtile en haut */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .sidebar-header {
@@ -168,35 +247,40 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 15px;
-  margin: 5px 0;
-  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 4px 8px;
+  border-radius: 10px;
   color: var(--text-primary);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  border: 1px solid transparent;
 }
 
 .nav-item:hover {
-  background: rgba(255,255,255,0.1);
-  transform: translateX(5px);
+  background: rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.2);
+  transform: translateX(4px);
 }
 
 .nav-item.active {
-  background: var(--item-color, #3498db);
+  background: var(--gradient-primary);
   font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  border-color: transparent;
 }
 
 .nav-item.active::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0;
-  bottom: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 4px;
+  height: 60%;
   background: white;
   border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .sidebar-footer {

@@ -157,9 +157,17 @@ function play(sessionId, choice) {
 function getState(sessionId) {
   const game = games.get(sessionId);
   if (!game) return { exists: false };
+
+  // Score selon le mode
+  const score = game.mode === 'vsHuman'
+    ? { player1: game.player1Score, player2: game.player2Score, ties: game.ties }
+    : { player: game.playerScore, ana: game.anaScore, ties: game.ties };
+
   return {
     exists: true,
-    score: { player: game.playerScore, ana: game.anaScore, ties: game.ties },
+    mode: game.mode,
+    phase: game.phase,
+    score,
     rounds: game.rounds.length,
     lastRound: game.rounds[game.rounds.length - 1] || null
   };

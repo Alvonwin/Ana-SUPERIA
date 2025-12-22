@@ -52,25 +52,25 @@ for /f "tokens=5" %%a in ('netstat -ano 2^>nul ^| findstr ":8000" ^| findstr "LI
 )
 
 REM D�marrer ChromaDB (m�moire vectorielle)
-echo [1/3] ?? D�marrage ChromaDB (port 8000)...
+echo [1/5] ?? D�marrage ChromaDB (port 8000)...
 start "ChromaDB Server" /MIN cmd /c ""C:\Users\niwno\AppData\Local\Programs\Python\Python310\Scripts\chroma.exe" run --path "E:\ANA\server\memory\chroma_data" --host localhost --port 8000"
 echo    Attente de ChromaDB...
 timeout /t 3 /nobreak >nul
 
 REM D�marrer le backend (ports d�j� nettoy�s plus haut)
 echo [2/5] ?? D�marrage Ana Core Backend (port 3338)...
-start "Ana Core Backend" cmd /c "cd /d E:\ANA\server && node ana-core.cjs"
+start "Ana Core Backend" /MIN cmd /c "cd /d E:\ANA\server && node ana-core.cjs"
 echo    Attente du backend...
 timeout /t 5 /nobreak >nul
 
 echo [3/5] ?? D�marrage Interface React (port 5173)...
-start "Ana Interface Frontend" cmd /c "cd /d E:\ANA\ana-interface && npm run dev"
+start "Ana Interface Frontend" /MIN cmd /c "cd /d E:\ANA\ana-interface && npm run dev"
 
 echo [4/5] ?? D�marrage Agents Autonomes (port 3336)...
-start "Ana Agents Autonomes" cmd /c "cd /d E:\ANA\agents && node start_agents.cjs"
+start "Ana Agents Autonomes" /MIN cmd /c "cd /d E:\ANA\agents && node start_agents.cjs"
 
 echo [5/5] ?? D�marrage ComfyUI (port 8188)...
-start "ComfyUI" cmd /c "cd /d E:\AI_Tools\ComfyUI && run_nvidia_gpu.bat"
+start "ComfyUI" /MIN cmd /c "cd /d E:\AI_Tools\ComfyUI && run_nvidia_gpu.bat"
 
 echo.
 echo ? ANA est en cours de d�marrage!

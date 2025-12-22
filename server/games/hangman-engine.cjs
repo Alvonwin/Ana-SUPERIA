@@ -1,17 +1,231 @@
 /**
  * Hangman (Pendu) Engine for Ana
  * Supporte mode vsAna et vsHuman (J1 choisit le mot, J2 devine)
+ * Catégories thématiques avec indices pour aider le joueur
  */
 
 const games = new Map();
 
-// Mots français par catégorie
+// Catégories thématiques étendues (beaucoup plus de mots!)
 const WORDS = {
-  animaux: ['elephant', 'girafe', 'hippopotame', 'crocodile', 'papillon', 'dauphin', 'kangourou', 'pingouin'],
-  fruits: ['framboise', 'ananas', 'mangue', 'pasteque', 'fraise', 'cerise', 'abricot', 'orange'],
-  pays: ['france', 'espagne', 'allemagne', 'italie', 'portugal', 'belgique', 'suisse', 'canada'],
-  metiers: ['architecte', 'boulanger', 'musicien', 'professeur', 'informaticien', 'medecin', 'avocat'],
-  objets: ['ordinateur', 'telephone', 'television', 'refrigerateur', 'aspirateur', 'machine']
+  animaux: [
+    // Mammifères
+    'elephant', 'girafe', 'hippopotame', 'rhinoceros', 'crocodile', 'dauphin', 'kangourou',
+    'lion', 'tigre', 'leopard', 'panthere', 'jaguar', 'guepard', 'lynx', 'puma',
+    'loup', 'renard', 'ours', 'sanglier', 'cerf', 'biche', 'chevreuil', 'elan',
+    'singe', 'gorille', 'chimpanze', 'orang-outan', 'babouin', 'macaque',
+    'elephant', 'mammouth', 'morse', 'phoque', 'otarie', 'baleine', 'orque',
+    'cheval', 'poney', 'ane', 'zebre', 'chameau', 'dromadaire', 'lama', 'alpaga',
+    'vache', 'taureau', 'bison', 'buffle', 'yack', 'mouton', 'chevre', 'antilope',
+    'cochon', 'sanglier', 'hippopotame', 'tapir', 'rhinoceros',
+    'lapin', 'lievre', 'hamster', 'cobaye', 'chinchilla', 'ecureuil', 'castor',
+    'souris', 'rat', 'herisson', 'taupe', 'chauve-souris', 'koala', 'paresseux',
+    'tatou', 'fourmilier', 'suricate', 'mangouste', 'blaireau', 'loutre', 'belette',
+    // Oiseaux
+    'aigle', 'faucon', 'vautour', 'hibou', 'chouette', 'corbeau', 'corneille',
+    'pigeon', 'colombe', 'tourterelle', 'moineau', 'merle', 'rossignol',
+    'perroquet', 'perruche', 'cacatoes', 'toucan', 'colibri', 'martin-pecheur',
+    'flamant', 'heron', 'cigogne', 'pelican', 'cormoran', 'albatros', 'mouette',
+    'pingouin', 'manchot', 'autruche', 'emeu', 'kiwi', 'paon', 'faisan', 'dindon',
+    'canard', 'oie', 'cygne', 'poule', 'coq', 'poussin',
+    // Reptiles et amphibiens
+    'serpent', 'python', 'cobra', 'vipere', 'couleuvre', 'anaconda',
+    'crocodile', 'alligator', 'caiman', 'lezard', 'iguane', 'cameleon', 'gecko',
+    'tortue', 'grenouille', 'crapaud', 'salamandre', 'triton',
+    // Poissons
+    'requin', 'dauphin', 'baleine', 'orque', 'raie', 'thon', 'saumon', 'truite',
+    'carpe', 'brochet', 'perche', 'sardine', 'anchois', 'maquereau', 'morue',
+    'espadon', 'marlin', 'hippocampe', 'poisson-clown', 'piranha', 'murene',
+    // Insectes et autres
+    'papillon', 'abeille', 'guepe', 'frelon', 'bourdon', 'mouche', 'moustique',
+    'fourmi', 'termite', 'scarabee', 'coccinelle', 'libellule', 'cigale', 'grillon',
+    'sauterelle', 'mante', 'phasme', 'cafard', 'puce', 'araignee', 'scorpion',
+    'escargot', 'limace', 'ver', 'sangsue', 'pieuvre', 'calamar', 'meduse'
+  ],
+
+  fruits: [
+    'pomme', 'poire', 'peche', 'abricot', 'prune', 'cerise', 'griotte',
+    'fraise', 'framboise', 'mure', 'myrtille', 'cassis', 'groseille',
+    'raisin', 'figue', 'datte', 'banane', 'ananas', 'mangue', 'papaye',
+    'orange', 'citron', 'mandarine', 'clementine', 'pamplemousse', 'kumquat',
+    'kiwi', 'grenade', 'litchi', 'longane', 'ramboutan', 'fruit-de-la-passion',
+    'melon', 'pasteque', 'cantaloup', 'avocat', 'noix-de-coco',
+    'pomelo', 'bergamote', 'yuzu', 'carambole', 'durian', 'jacquier',
+    'goyave', 'pitaya', 'acerola', 'physalis', 'nectarine', 'brugnon',
+    'coing', 'nefle', 'kaki', 'jujube', 'tamarin', 'sapotille',
+    'airelle', 'canneberge', 'sureau', 'arbouse', 'cynorhodon'
+  ],
+
+  legumes: [
+    'carotte', 'pomme-de-terre', 'tomate', 'concombre', 'courgette', 'aubergine',
+    'poivron', 'piment', 'oignon', 'ail', 'echalote', 'poireau', 'celeri',
+    'salade', 'laitue', 'mache', 'roquette', 'epinard', 'blette', 'chou',
+    'brocoli', 'chou-fleur', 'artichaut', 'asperge', 'fenouil', 'endive',
+    'radis', 'navet', 'betterave', 'panais', 'rutabaga', 'topinambour',
+    'haricot', 'petit-pois', 'feve', 'lentille', 'pois-chiche', 'soja',
+    'mais', 'champignon', 'citrouille', 'potiron', 'courge', 'butternut',
+    'gingembre', 'curcuma', 'rhubarbe', 'patate-douce', 'igname', 'manioc'
+  ],
+
+  pays: [
+    // Europe
+    'france', 'allemagne', 'espagne', 'italie', 'portugal', 'belgique', 'suisse',
+    'autriche', 'pays-bas', 'luxembourg', 'monaco', 'andorre', 'liechtenstein',
+    'royaume-uni', 'irlande', 'islande', 'norvege', 'suede', 'finlande', 'danemark',
+    'pologne', 'tchequie', 'slovaquie', 'hongrie', 'roumanie', 'bulgarie',
+    'grece', 'turquie', 'chypre', 'malte', 'croatie', 'slovenie', 'serbie',
+    'ukraine', 'russie', 'bielorussie', 'moldavie', 'estonie', 'lettonie', 'lituanie',
+    // Amériques
+    'canada', 'etats-unis', 'mexique', 'guatemala', 'honduras', 'nicaragua',
+    'costa-rica', 'panama', 'cuba', 'jamaique', 'haiti', 'dominicaine',
+    'colombie', 'venezuela', 'equateur', 'perou', 'bolivie', 'chili',
+    'argentine', 'uruguay', 'paraguay', 'bresil', 'guyane', 'suriname',
+    // Asie
+    'chine', 'japon', 'coree', 'vietnam', 'thailande', 'cambodge', 'laos',
+    'birmanie', 'malaisie', 'singapour', 'indonesie', 'philippines',
+    'inde', 'pakistan', 'bangladesh', 'nepal', 'bhoutan', 'sri-lanka',
+    'afghanistan', 'iran', 'irak', 'syrie', 'liban', 'israel', 'jordanie',
+    'arabie-saoudite', 'emirats', 'qatar', 'koweit', 'oman', 'yemen',
+    // Afrique
+    'maroc', 'algerie', 'tunisie', 'libye', 'egypte', 'soudan', 'ethiopie',
+    'kenya', 'tanzanie', 'ouganda', 'rwanda', 'congo', 'cameroun', 'nigeria',
+    'ghana', 'senegal', 'mali', 'niger', 'burkina-faso', 'cote-d-ivoire',
+    'afrique-du-sud', 'namibie', 'botswana', 'zimbabwe', 'mozambique', 'madagascar',
+    // Océanie
+    'australie', 'nouvelle-zelande', 'papouasie', 'fidji', 'samoa', 'tonga'
+  ],
+
+  villes: [
+    // France
+    'paris', 'marseille', 'lyon', 'toulouse', 'nice', 'nantes', 'strasbourg',
+    'montpellier', 'bordeaux', 'lille', 'rennes', 'reims', 'toulon', 'grenoble',
+    // Monde
+    'londres', 'berlin', 'madrid', 'rome', 'lisbonne', 'amsterdam', 'bruxelles',
+    'vienne', 'prague', 'budapest', 'varsovie', 'moscou', 'stockholm', 'oslo',
+    'new-york', 'los-angeles', 'chicago', 'toronto', 'montreal', 'vancouver',
+    'mexico', 'rio-de-janeiro', 'buenos-aires', 'santiago', 'lima', 'bogota',
+    'tokyo', 'pekin', 'shanghai', 'hong-kong', 'seoul', 'bangkok', 'singapour',
+    'dubai', 'istanbul', 'jerusalem', 'le-caire', 'casablanca', 'johannesburg',
+    'sydney', 'melbourne', 'auckland', 'mumbai', 'delhi', 'calcutta'
+  ],
+
+  metiers: [
+    // Santé
+    'medecin', 'chirurgien', 'dentiste', 'pharmacien', 'infirmier', 'sage-femme',
+    'kinesitherapeute', 'osteopathe', 'psychologue', 'psychiatre', 'veterinaire',
+    // Enseignement
+    'professeur', 'instituteur', 'enseignant', 'formateur', 'educateur', 'moniteur',
+    // Justice et sécurité
+    'avocat', 'juge', 'notaire', 'huissier', 'policier', 'gendarme', 'pompier',
+    // Construction et artisanat
+    'architecte', 'ingenieur', 'maçon', 'plombier', 'electricien', 'menuisier',
+    'charpentier', 'couvreur', 'carreleur', 'peintre', 'serrurier', 'vitrier',
+    // Alimentation
+    'boulanger', 'patissier', 'boucher', 'charcutier', 'poissonnier', 'fromager',
+    'cuisinier', 'chef', 'serveur', 'barman', 'sommelier', 'traiteur',
+    // Commerce et services
+    'vendeur', 'caissier', 'commercial', 'comptable', 'banquier', 'assureur',
+    'coiffeur', 'estheticienne', 'fleuriste', 'libraire', 'antiquaire',
+    // Informatique et tech
+    'informaticien', 'programmeur', 'developpeur', 'webmaster', 'graphiste',
+    // Arts et spectacle
+    'musicien', 'chanteur', 'comedien', 'acteur', 'danseur', 'peintre',
+    'sculpteur', 'photographe', 'cineaste', 'realisateur', 'journaliste',
+    // Transports
+    'pilote', 'chauffeur', 'conducteur', 'routier', 'marin', 'capitaine',
+    // Autres
+    'agriculteur', 'jardinier', 'paysagiste', 'bucheron', 'viticulteur',
+    'secretaire', 'assistant', 'receptionniste', 'concierge', 'gardien'
+  ],
+
+  sports: [
+    'football', 'basketball', 'volleyball', 'handball', 'rugby', 'tennis',
+    'badminton', 'squash', 'ping-pong', 'golf', 'hockey', 'cricket',
+    'baseball', 'softball', 'boxe', 'judo', 'karate', 'taekwondo',
+    'escrime', 'lutte', 'athletisme', 'marathon', 'sprint', 'saut',
+    'natation', 'plongeon', 'waterpolo', 'aviron', 'canoe', 'kayak',
+    'voile', 'surf', 'planche-a-voile', 'kitesurf', 'ski', 'snowboard',
+    'patinage', 'hockey-sur-glace', 'curling', 'bobsleigh', 'luge',
+    'cyclisme', 'vtt', 'bmx', 'motocross', 'equitation', 'polo',
+    'gymnastique', 'danse', 'escalade', 'alpinisme', 'randonnee',
+    'triathlon', 'pentathlon', 'decathlon', 'haltérophilie', 'musculation'
+  ],
+
+  objets: [
+    // Électronique
+    'ordinateur', 'telephone', 'tablette', 'television', 'radio', 'montre',
+    'appareil-photo', 'camera', 'casque', 'ecouteurs', 'enceinte', 'imprimante',
+    // Mobilier
+    'table', 'chaise', 'fauteuil', 'canape', 'lit', 'armoire', 'commode',
+    'bureau', 'etagere', 'bibliotheque', 'meuble', 'tabouret', 'banc',
+    // Cuisine
+    'refrigerateur', 'four', 'micro-ondes', 'lave-vaisselle', 'cafetiere',
+    'grille-pain', 'mixeur', 'bouilloire', 'poele', 'casserole', 'couteau',
+    'fourchette', 'cuillere', 'assiette', 'verre', 'tasse', 'bol',
+    // Ménager
+    'aspirateur', 'lave-linge', 'seche-linge', 'fer-a-repasser', 'balai',
+    // Vêtements
+    'chemise', 'pantalon', 'jupe', 'robe', 'veste', 'manteau', 'pull',
+    'chaussure', 'botte', 'sandale', 'chapeau', 'casquette', 'echarpe',
+    // Outils
+    'marteau', 'tournevis', 'cle', 'pince', 'scie', 'perceuse', 'niveau',
+    // Transport
+    'voiture', 'moto', 'velo', 'camion', 'bus', 'train', 'avion', 'bateau',
+    // Autres
+    'livre', 'stylo', 'crayon', 'cahier', 'ciseaux', 'lampe', 'miroir',
+    'parapluie', 'valise', 'sac', 'portefeuille', 'lunettes', 'montre'
+  ],
+
+  musique: [
+    // Cordes
+    'guitare', 'violon', 'violoncelle', 'contrebasse', 'harpe', 'banjo',
+    'mandoline', 'ukulele', 'luth', 'cithare', 'balalaika',
+    // Vents
+    'flute', 'clarinette', 'saxophone', 'trompette', 'trombone', 'tuba',
+    'hautbois', 'basson', 'cor', 'harmonica', 'accordeon', 'cornemuse',
+    // Claviers
+    'piano', 'orgue', 'clavecin', 'synthetiseur', 'xylophone', 'vibraphone',
+    // Percussions
+    'batterie', 'tambour', 'djembe', 'bongo', 'congas', 'cymbale',
+    'triangle', 'maracas', 'castagnettes', 'gong', 'tam-tam', 'timbales',
+    // Genres
+    'rock', 'jazz', 'blues', 'classique', 'pop', 'rap', 'reggae',
+    'electro', 'techno', 'metal', 'funk', 'soul', 'country', 'folk'
+  ],
+
+  nature: [
+    // Arbres
+    'chene', 'sapin', 'pin', 'bouleau', 'hetre', 'erable', 'platane',
+    'peuplier', 'saule', 'olivier', 'palmier', 'sequoia', 'baobab', 'cedre',
+    // Fleurs
+    'rose', 'tulipe', 'marguerite', 'tournesol', 'orchidee', 'lys', 'jasmin',
+    'lavande', 'violette', 'pivoine', 'dahlia', 'iris', 'lilas', 'muguet',
+    // Paysages
+    'montagne', 'colline', 'vallee', 'plaine', 'plateau', 'falaise', 'canyon',
+    'foret', 'jungle', 'savane', 'desert', 'toundra', 'prairie', 'marais',
+    'ocean', 'mer', 'lac', 'riviere', 'fleuve', 'cascade', 'source', 'glacier',
+    'plage', 'ile', 'archipel', 'volcan', 'grotte', 'caverne', 'recif',
+    // Météo
+    'soleil', 'lune', 'etoile', 'nuage', 'pluie', 'neige', 'grele', 'brouillard',
+    'orage', 'tonnerre', 'eclair', 'arc-en-ciel', 'vent', 'tempete', 'ouragan'
+  ],
+
+  cuisine: [
+    // Plats français
+    'blanquette', 'cassoulet', 'ratatouille', 'bouillabaisse', 'choucroute',
+    'quiche', 'crepe', 'galette', 'soufflé', 'gratin', 'fondue', 'raclette',
+    'croissant', 'baguette', 'brioche', 'pain-au-chocolat', 'macaron', 'eclair',
+    // Plats internationaux
+    'pizza', 'pasta', 'risotto', 'lasagne', 'gnocchi', 'tiramisu',
+    'paella', 'tapas', 'gazpacho', 'tortilla', 'churros',
+    'sushi', 'ramen', 'tempura', 'teriyaki', 'miso', 'tofu',
+    'curry', 'tandoori', 'naan', 'samosa', 'biryani',
+    'hamburger', 'hot-dog', 'brownie', 'cheesecake', 'pancake',
+    'couscous', 'tajine', 'falafel', 'houmous', 'kebab',
+    // Ingrédients et bases
+    'sauce', 'bouillon', 'soupe', 'salade', 'vinaigrette', 'mayonnaise',
+    'omelette', 'quenelle', 'terrine', 'pate', 'mousse', 'creme'
+  ]
 };
 
 const MAX_ERRORS = 6;
@@ -136,10 +350,11 @@ function newGame(sessionId, category = null, mode = 'vsAna', customWord = null) 
     };
   }
 
-  // Mode vsAna (original)
-  const cat = category && WORDS[category] ? category : Object.keys(WORDS)[Math.floor(Math.random() * Object.keys(WORDS).length)];
+  // Mode vsAna - choisir un mot d'une catégorie thématique
+  const categories = Object.keys(WORDS);
+  const cat = category && WORDS[category] ? category : categories[Math.floor(Math.random() * categories.length)];
   const wordList = WORDS[cat];
-  const word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase();
+  const word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase().replace(/-/g, '');
 
   const game = {
     mode: 'vsAna',
@@ -251,8 +466,20 @@ function guess(sessionId, letter) {
 function getState(sessionId) {
   const game = games.get(sessionId);
   if (!game) return { exists: false };
+
+  // En phase setup, word est null
+  if (game.phase === 'setup') {
+    return {
+      exists: true,
+      mode: game.mode,
+      phase: 'setup',
+      status: 'setup'
+    };
+  }
+
   return {
     exists: true,
+    mode: game.mode,
     category: game.category,
     display: getMaskedWord(game.word, game.guessed),
     hangman: HANGMAN_STAGES[game.errors],
@@ -267,4 +494,12 @@ function getCategories() {
   return Object.keys(WORDS);
 }
 
-module.exports = { newGame, setWord, guess, getState, getCategories, MAX_ERRORS };
+function getWordCount() {
+  let total = 0;
+  for (const cat of Object.keys(WORDS)) {
+    total += WORDS[cat].length;
+  }
+  return { categories: Object.keys(WORDS).length, totalWords: total };
+}
+
+module.exports = { newGame, setWord, guess, getState, getCategories, getWordCount, MAX_ERRORS };

@@ -14,6 +14,32 @@ const PYTHON_PATH = 'C:\\Users\\niwno\\AppData\\Local\\Programs\\Python\\Python3
 const VOICE = 'fr-CA-SylvieNeural'; // Voix québécoise féminine
 const OUTPUT_DIR = path.join(__dirname, '../../temp/tts');
 
+// Conversion chiffres → mots pour une meilleure prononciation
+const CHIFFRES_EN_MOTS = {
+  '0': 'zéro',
+  '1': 'un',
+  '2': 'deux',
+  '3': 'trois',
+  '4': 'quatre',
+  '5': 'cinq',
+  '6': 'six',
+  '7': 'sept',
+  '8': 'huit',
+  '9': 'neuf',
+  '10': 'dix'
+};
+
+/**
+ * Convertit les chiffres isolés en mots pour une meilleure prononciation TTS
+ * Ex: "Joueur 1" → "Joueur un", "Au tour de Joueur 2" → "Au tour de Joueur deux"
+ */
+function convertirChiffresEnMots(text) {
+  // Remplacer les chiffres isolés (entourés d'espaces ou en fin de phrase)
+  return text.replace(/\b(\d+)\b/g, (match) => {
+    return CHIFFRES_EN_MOTS[match] || match;
+  });
+}
+
 class TTSService {
   constructor() {
     this.voice = VOICE;
@@ -50,10 +76,13 @@ class TTSService {
     }
 
     return new Promise((resolve, reject) => {
+      // Convertir les chiffres en mots pour une meilleure prononciation
+      const textePrononcable = convertirChiffresEnMots(text);
+
       const args = [
         '-m', 'edge_tts',
         '--voice', this.voice,
-        '--text', text,
+        '--text', textePrononcable,
         '--write-media', outputFile
       ];
 

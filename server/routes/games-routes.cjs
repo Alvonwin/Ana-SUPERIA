@@ -19,6 +19,8 @@ const guessEngine = require('../games/guess-engine.cjs');
 const chessEngine = require('../games/chess-engine.cjs');
 const battleshipEngine = require('../games/battleship-engine.cjs');
 const backgammonEngine = require('../games/backgammon-engine.cjs');
+const scrabbleEngine = require('../games/scrabble-engine.cjs');
+const definitionMysteryEngine = require('../games/definition-mystery-engine.cjs');
 const { playCheckers } = require('../games/games-tools.cjs');
 
 // Réactions génériques d'Ana
@@ -108,7 +110,7 @@ router.post('/tictactoe/play', (req, res) => {
     const { row, col } = req.body;
     const result = tictactoeEngine.play(req.body.session || 'default', row, col);
     if (result.gameOver) {
-      result.reaction = result.winner === 'player' ? randomReaction('win') :
+      result.reaction = (['player', 'player1', 'player2'].includes(result.winner)) ? randomReaction('win') :
                         result.winner === 'ana' ? randomReaction('lose') : randomReaction('tie');
     } else if (result.anaMove) {
       result.reaction = randomReaction('thinking');
@@ -143,7 +145,7 @@ router.post('/connect4/play', (req, res) => {
         result.reaction = result.winner === 'player1' ? "Joueur 1 gagne! 🎉" :
                           result.winner === 'player2' ? "Joueur 2 gagne! 🎉" : randomReaction('tie');
       } else {
-        result.reaction = result.winner === 'player' ? randomReaction('win') :
+        result.reaction = (['player', 'player1', 'player2'].includes(result.winner)) ? randomReaction('win') :
                           result.winner === 'ana' ? randomReaction('lose') : randomReaction('tie');
       }
     } else if (result.mode === 'vsHuman') {
@@ -190,7 +192,7 @@ router.post('/rps/play', (req, res) => {
           }
         }
       } else {
-        if (result.winner === 'player') {
+        if (['player', 'player1', 'player2'].includes(result.winner)) {
           result.reaction = `${result.anaName} contre ${result.playerName}... Tu gagnes! 😅`;
         } else if (result.winner === 'ana') {
           result.reaction = `${result.anaName} contre ${result.playerName}... Je gagne! 😄`;
@@ -218,7 +220,8 @@ router.post('/hangman/new', (req, res) => {
     if (mode === 'vsHuman') {
       result.reaction = "Pendu 2 joueurs! J1: Entre un mot secret.";
     } else {
-      result.reaction = `J'ai choisi un mot de la catégorie "${result.category}"! ${result.wordLength} lettres. À toi! 🎯`;
+      // Message avec la catégorie thématique comme indice
+      result.reaction = `J'ai choisi un mot! Catégorie: ${result.category}. ${result.wordLength} lettres. À toi! 🎯`;
     }
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
@@ -244,14 +247,14 @@ router.post('/hangman/guess', (req, res) => {
             ? `J2 gagne! C'était "${result.word}"! 🎉`
             : `J1 gagne! Le mot était "${result.word}"`;
         } else {
-          result.reaction = result.winner === 'player' ?
+          result.reaction = (['player', 'player1', 'player2'].includes(result.winner)) ?
             `Bravo! C'était "${result.word}"! 🎉` :
             `Perdu! Le mot était "${result.word}" 😅`;
         }
       } else if (result.correct) {
-        result.reaction = `Oui! Il y a des "${result.letter}"! 👍`;
+        result.reaction = `Oui! La lettre ${result.letter} est dans le mot! 👍`;
       } else {
-        result.reaction = `Non, pas de "${result.letter}"... ${result.errorsLeft} erreurs restantes! 😬`;
+        result.reaction = `Non, pas de ${result.letter}... ${result.errorsLeft} erreur${result.errorsLeft > 1 ? 's' : ''} restante${result.errorsLeft > 1 ? 's' : ''}! 😬`;
       }
     }
     res.json(result);
@@ -324,7 +327,7 @@ router.post('/blackjack/stand', (req, res) => {
           result.reaction = result.message;
         }
       } else {
-        if (result.winner === 'player') {
+        if (['player', 'player1', 'player2'].includes(result.winner)) {
           result.reaction = `J'ai ${result.anaScore}. Tu gagnes avec ${result.playerScore}! 🎉`;
         } else if (result.winner === 'ana') {
           result.reaction = `J'ai ${result.anaScore}. Je gagne! 😄`;
@@ -398,7 +401,8 @@ router.post('/nim/new', (req, res) => {
   try {
     const piles = req.body.piles || [3, 5, 7];
     // mode: 'vsAna' (défaut) ou 'vsHuman' (2 joueurs)
-    const result = nimEngine.newGame(req.body.session || 'default', piles, req.body.mode || 'vsAna');
+    // Signature: newGame(sessionId, difficulty, mode, piles)
+    const result = nimEngine.newGame(req.body.session || 'default', 'normal', req.body.mode || 'vsAna', piles);
     result.reaction = result.mode === 'vsHuman'
       ? `Partie 2 joueurs! ${result.piles.length} piles: ${result.piles.join(', ')}. Celui qui prend le dernier perd! 🎮`
       : `Nim avec ${result.piles.length} piles: ${result.piles.join(', ')} bâtonnets. Celui qui prend le dernier perd! 🎯`;
@@ -414,7 +418,7 @@ router.post('/nim/play', (req, res) => {
         if (result.mode === 'vsHuman') {
           result.reaction = result.message || `${result.winner === 'player1' ? 'Joueur 1' : 'Joueur 2'} gagne! 🎉`;
         } else {
-          result.reaction = result.winner === 'player' ?
+          result.reaction = (['player', 'player1', 'player2'].includes(result.winner)) ?
             "J'ai pris le dernier! Tu gagnes! 🎉" :
             "Tu as pris le dernier... Je gagne! 😄";
         }
@@ -648,7 +652,7 @@ router.post('/battleship/fire', (req, res) => {
         }
         // Fin de partie
         if (result.gameOver) {
-          if (result.winner === 'player') {
+          if (['player', 'player1', 'player2'].includes(result.winner)) {
             reaction = `🎉 VICTOIRE! Tu as coulé toute ma flotte! Précision: ${result.stats.player.accuracy}%`;
           } else {
             reaction = `🚢 J'ai gagné! Toute ta flotte est coulée! Ma précision: ${result.stats.ana.accuracy}%`;
@@ -739,6 +743,133 @@ router.post('/backgammon/reset', (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// ==================== SCRABBLE ====================
+router.post('/scrabble/new', (req, res) => {
+  try {
+    const { session = 'default', mode = 'vsAna' } = req.body;
+    const result = scrabbleEngine.newGame(session, mode);
+    result.reaction = mode === 'vsHuman'
+      ? "Scrabble 2 joueurs! Joueur 1 commence. Place tes lettres! 🎯"
+      : "Scrabble! Place ton premier mot en passant par le centre. À toi! 📝";
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/scrabble/play', (req, res) => {
+  try {
+    const { session = 'default', tiles } = req.body;
+    const result = scrabbleEngine.playMove(session, 'player1', tiles);
+    if (result.success) {
+      if (result.wordsPlayed && result.wordsPlayed.length > 0) {
+        const words = result.wordsPlayed.map(w => w.word).join(', ');
+        result.reaction = `+${result.pointsScored} pts! Mots: ${words} 📝`;
+      }
+      if (result.anaMove) {
+        if (result.anaMove.type === 'play') {
+          result.reaction += ` Ana joue: ${result.anaMove.words.join(', ')} (+${result.anaMove.score} pts)`;
+        } else {
+          result.reaction += ' Ana passe son tour.';
+        }
+      }
+      if (result.status === 'finished') {
+        const winner = result.winner === 'player1' ? 'Tu gagnes' :
+                       result.winner === 'player2' ? 'Ana gagne' : 'Égalité';
+        result.reaction = `🏆 Partie terminée! ${winner}! Score: ${result.scores.player1}-${result.scores.player2}`;
+      }
+    }
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/scrabble/pass', (req, res) => {
+  try {
+    const { session = 'default' } = req.body;
+    const result = scrabbleEngine.pass(session, 'player1');
+    if (result.success) {
+      result.reaction = 'Tu passes ton tour.';
+      if (result.anaMove && result.anaMove.type === 'play') {
+        result.reaction += ` Ana joue: ${result.anaMove.words.join(', ')} (+${result.anaMove.score} pts)`;
+      } else if (result.anaMove) {
+        result.reaction += ' Ana passe aussi.';
+      }
+      if (result.status === 'finished') {
+        result.reaction = `🏆 Partie terminée! 2 passes consécutifs.`;
+      }
+    }
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/scrabble/exchange', (req, res) => {
+  try {
+    const { session = 'default', tiles } = req.body;
+    const result = scrabbleEngine.exchangeTiles(session, 'player1', tiles);
+    if (result.success) {
+      result.reaction = `${tiles.length} tuile(s) échangée(s)! 🔄`;
+      if (result.anaMove && result.anaMove.type === 'play') {
+        result.reaction += ` Ana joue: ${result.anaMove.words.join(', ')} (+${result.anaMove.score} pts)`;
+      }
+    }
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.get('/scrabble/state', (req, res) => {
+  try {
+    res.json(scrabbleEngine.getState(req.query.session || 'default', 'player1'));
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.get('/scrabble/letters', (req, res) => {
+  try {
+    res.json({ values: scrabbleEngine.getLetterValues() });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ==================== DEFINITION MYSTERY ====================
+router.get('/definition-mystery/state', (req, res) => {
+  try {
+    const result = definitionMysteryEngine.getState(req.query.session || 'default');
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/definition-mystery/new', (req, res) => {
+  try {
+    const result = definitionMysteryEngine.newGame(req.body.session || 'default');
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/definition-mystery/guess', (req, res) => {
+  try {
+    const { session = 'default', answer } = req.body;
+    const result = definitionMysteryEngine.guess(session, answer);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/definition-mystery/next-clue', (req, res) => {
+  try {
+    const result = definitionMysteryEngine.nextClue(req.body.session || 'default');
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/definition-mystery/reveal', (req, res) => {
+  try {
+    const result = definitionMysteryEngine.reveal(req.body.session || 'default');
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/definition-mystery/new-round', (req, res) => {
+  try {
+    const result = definitionMysteryEngine.newRound(req.body.session || 'default');
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ==================== GAMES LIST ====================
 router.get('/list', (req, res) => {
   res.json({
@@ -754,7 +885,9 @@ router.get('/list', (req, res) => {
       { id: 'guess', name: 'Devinette', description: 'Trouve le nombre secret!', icon: '🎯', available: true },
       { id: 'chess', name: 'Échecs', description: 'Le roi des jeux!', icon: '♟', available: true },
       { id: 'battleship', name: 'Bataille Navale', description: 'Coule la flotte ennemie!', icon: '🚢', available: true },
-      { id: 'backgammon', name: 'Backgammon', description: 'Le classique jeu de des!', icon: '🎲', available: true }
+      { id: 'backgammon', name: 'Backgammon', description: 'Le classique jeu de des!', icon: '🎲', available: true },
+      { id: 'scrabble', name: 'Scrabble', description: 'Le roi des jeux de mots!', icon: '🔠', available: true },
+      { id: 'definition-mystery', name: 'Définition Mystère', description: 'Devine le mot à partir des indices d\'Ana!', icon: '🔮', available: true }
     ]
   });
 });

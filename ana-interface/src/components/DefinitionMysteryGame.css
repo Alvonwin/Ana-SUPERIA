@@ -1,0 +1,431 @@
+/**
+ * Définition Mystère Game Styles
+ */
+
+.definition-mystery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==================== ÉCRAN DE DÉMARRAGE ==================== */
+.definition-mystery-start {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #2d3436 0%, #1a1a2e 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+.definition-mystery-start h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #dfe6ed;
+}
+
+.definition-mystery-start p {
+  color: #b2bec3;
+  margin-bottom: 25px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.points-explanation {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.point-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.point-row:last-child {
+  border-bottom: none;
+}
+
+.clue-num {
+  color: #74b9ff;
+}
+
+.points {
+  color: #ffeaa7;
+  font-weight: bold;
+}
+
+.start-button {
+  padding: 15px 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.5);
+}
+
+.start-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==================== HEADER ==================== */
+.definition-mystery-header {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #2d3436 0%, #1a1a2e 100%);
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.score-display,
+.category-display,
+.rounds-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.definition-mystery-header .label {
+  font-size: 0.8rem;
+  color: #b2bec3;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.definition-mystery-header .value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffeaa7;
+}
+
+.category-display .value {
+  color: #74b9ff;
+  text-transform: capitalize;
+}
+
+/* ==================== RÉSULTAT ==================== */
+.result-card {
+  width: 100%;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-card.success {
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+}
+
+.result-card.revealed,
+.result-card.giveup {
+  background: linear-gradient(135deg, #636e72 0%, #2d3436 100%);
+}
+
+.result-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.result-card h3 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.result-word {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.result-word strong {
+  color: #ffeaa7;
+  font-size: 1.4rem;
+}
+
+.result-details {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+}
+
+.next-round-btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: white;
+  color: #2d3436;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.next-round-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ==================== ZONE DE JEU ==================== */
+.game-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Indices */
+.clues-section {
+  background: linear-gradient(135deg, #2d3436 0%, #1a1a2e 100%);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.clues-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #b2bec3;
+  font-size: 0.9rem;
+}
+
+.possible-points {
+  color: #ffeaa7;
+  font-weight: bold;
+}
+
+.clues-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.clue-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.clue-number {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.clue-text {
+  color: #dfe6e9;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.next-clue-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #74b9ff;
+  border: 1px solid rgba(116, 185, 255, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.next-clue-btn:hover {
+  background: rgba(116, 185, 255, 0.2);
+}
+
+.next-clue-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Info mot */
+.word-info {
+  text-align: center;
+  padding: 15px;
+  background: rgba(108, 92, 231, 0.2);
+  border-radius: 10px;
+  color: #dfe6e9;
+  font-size: 1.1rem;
+}
+
+.word-info strong {
+  color: #ffeaa7;
+  font-size: 1.3rem;
+}
+
+/* Message */
+.message {
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.message.error {
+  background: rgba(255, 107, 107, 0.2);
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+}
+
+.message .hint {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Formulaire */
+.guess-form {
+  display: flex;
+  gap: 10px;
+}
+
+.guess-form input {
+  flex: 1;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  background: #2d3436;
+  border: 2px solid #636e72;
+  border-radius: 12px;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.guess-form input:focus {
+  border-color: #6c5ce7;
+}
+
+.guess-form input::placeholder {
+  color: #636e72;
+}
+
+.guess-form button {
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.guess-form button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.guess-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Bouton abandonner */
+.give-up-btn {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  background: transparent;
+  color: #b2bec3;
+  border: 1px solid #636e72;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: center;
+}
+
+.give-up-btn:hover {
+  background: rgba(255, 107, 107, 0.1);
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+/* Bouton nouvelle partie */
+.new-game-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  font-size: 0.9rem;
+  background: linear-gradient(135deg, #636e72 0%, #2d3436 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.new-game-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 500px) {
+  .definition-mystery-container {
+    padding: 10px;
+  }
+
+  .definition-mystery-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .guess-form {
+    flex-direction: column;
+  }
+
+  .guess-form button {
+    width: 100%;
+  }
+}

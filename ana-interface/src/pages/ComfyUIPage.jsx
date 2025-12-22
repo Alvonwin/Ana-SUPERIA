@@ -28,7 +28,8 @@ import { BACKEND_URL, COMFYUI_URL } from '../config';
 const MODES = {
   TEXT_TO_IMAGE: 'text2img',
   IMAGE_TO_IMAGE: 'img2img',
-  ANIMATE_DIFF: 'animatediff'
+  ANIMATE_DIFF: 'animatediff',
+  IMAGE_TO_GIF: 'image_to_gif'
 };
 
 // Available models (will be populated from ComfyUI)
@@ -91,6 +92,12 @@ function ComfyUIPage() {
   const [fps, setFps] = useState(8);
   const [motionScale, setMotionScale] = useState(1.0);
   const [videoFormat, setVideoFormat] = useState('gif'); // gif, mp4, webm
+
+  // Settings - Image to GIF (SVD - Stable Video Diffusion)
+  const [motionBucketId, setMotionBucketId] = useState(127);
+  const [augmentationLevel, setAugmentationLevel] = useState(0.0);
+  const [svdFrames, setSvdFrames] = useState(25);
+  const [svdFps, setSvdFps] = useState(8);
 
   // Advanced settings toggle
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -284,13 +291,19 @@ function ComfyUIPage() {
 
   // Generate image
   const generateImage = async () => {
-    if (!prompt.trim()) {
+    // Prompt required for all modes except IMAGE_TO_GIF
+    if (mode !== MODES.IMAGE_TO_GIF && !prompt.trim()) {
       toast.error('Entre un prompt');
       return;
     }
 
     if (mode === MODES.IMAGE_TO_IMAGE && !uploadedImage) {
       toast.error('Upload une image pour img2img');
+      return;
+    }
+
+    if (mode === MODES.IMAGE_TO_GIF && !uploadedImage) {
+      toast.error('Upload une image à animer');
       return;
     }
 
@@ -318,6 +331,9 @@ function ComfyUIPage() {
         case MODES.ANIMATE_DIFF:
           workflow = buildAnimateDiffWorkflow();
           break;
+        case MODES.IMAGE_TO_GIF:
+          workflow = await buildImageToGifWorkflow();
+          break;
         default:
           workflow = buildText2ImgWorkflow();
       }
@@ -331,9 +347,10 @@ function ComfyUIPage() {
       const data = await response.json();
       const promptId = data.prompt_id;
 
-      // Poll for result
+      // Poll for result (SVD takes longer: 6 min vs 2 min for others)
+      const maxPollAttempts = mode === MODES.IMAGE_TO_GIF ? 360 : 120;
       console.log("[ComfyUI] Polling for promptId:", promptId);
-      const result = await pollForResult(promptId);
+      const result = await pollForResult(promptId, maxPollAttempts);
 
       if (result.images && result.images.length > 0) {
         setGeneratedImages(result.images);
@@ -584,6 +601,90 @@ function ComfyUIPage() {
     };
   };
 
+  // Build Image to GIF workflow (SVD - Stable Video Diffusion)
+  const buildImageToGifWorkflow = async () => {
+    // Upload image to ComfyUI
+    const formData = new FormData();
+    const blob = await fetch(uploadedImage.data).then(r => r.blob());
+    formData.append('image', blob, uploadedImage.name);
+
+    const uploadResponse = await fetch(`${COMFYUI_URL}/upload/image`, {
+      method: 'POST',
+      body: formData
+    });
+    const uploadData = await uploadResponse.json();
+
+    const actualSeed = seed === -1 ? Math.floor(Math.random() * 1000000000) : seed;
+    const timestamp = Date.now();
+
+    return {
+      prompt: {
+        // Node 1: Load SVD model
+        "1": {
+          "class_type": "ImageOnlyCheckpointLoader",
+          "inputs": { "ckpt_name": "svd_xt_1_1.safetensors" }
+        },
+        // Node 2: Load uploaded image
+        "2": {
+          "class_type": "LoadImage",
+          "inputs": { "image": uploadData.name }
+        },
+        // Node 3: SVD Conditioning
+        "3": {
+          "class_type": "SVD_img2vid_Conditioning",
+          "inputs": {
+            "width": 1024,
+            "height": 576,
+            "video_frames": svdFrames,
+            "motion_bucket_id": motionBucketId,
+            "fps": 6,
+            "augmentation_level": augmentationLevel,
+            "clip_vision": ["1", 1],
+            "init_image": ["2", 0],
+            "vae": ["1", 2]
+          }
+        },
+        // Node 4: KSampler
+        "4": {
+          "class_type": "KSampler",
+          "inputs": {
+            "seed": actualSeed,
+            "steps": 20,
+            "cfg": 2.5,
+            "sampler_name": "euler",
+            "scheduler": "karras",
+            "denoise": 1,
+            "model": ["1", 0],
+            "positive": ["3", 0],
+            "negative": ["3", 1],
+            "latent_image": ["3", 2]
+          }
+        },
+        // Node 5: VAE Decode
+        "5": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": ["4", 0],
+            "vae": ["1", 2]
+          }
+        },
+        // Node 6: Create GIF
+        "6": {
+          "class_type": "ADE_AnimateDiffCombine",
+          "inputs": {
+            "images": ["5", 0],
+            "frame_rate": svdFps,
+            "loop_count": 0,
+            "filename_prefix": `Ana_svd_${timestamp}`,
+            "format": "image/gif",
+            "pingpong": false,
+            "save_image": true
+          }
+        }
+      }
+    };
+  };
+
 
   // Poll for generation result
   const pollForResult = async (promptId, maxAttempts = 120) => {
@@ -741,6 +842,13 @@ function ComfyUIPage() {
           <IconVideo size={18} />
           AnimateDiff
         </button>
+        <button
+          className={`mode-tab ${mode === MODES.IMAGE_TO_GIF ? 'active' : ''}`}
+          onClick={() => setMode(MODES.IMAGE_TO_GIF)}
+        >
+          <IconZap size={18} />
+          Image to GIF
+        </button>
       </div>
 
       <div className="comfyui-content">
@@ -760,6 +868,34 @@ function ComfyUIPage() {
                   <>
                     <IconUpload size={32} />
                     <span>Clique pour upload</span>
+                  </>
+                )}
+              </div>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleFileUpload}
+                style={{ display: 'none' }}
+              />
+            </div>
+          )}
+
+          {/* Image Upload for Image to GIF (SVD) */}
+          {mode === MODES.IMAGE_TO_GIF && (
+            <div className="upload-section">
+              <label>Image à animer</label>
+              <div
+                className={`upload-zone ${uploadedImage ? 'has-image' : ''}`}
+                onClick={() => fileInputRef.current?.click()}
+              >
+                {uploadedImage ? (
+                  <img src={uploadedImage.data} alt="Upload" className="preview-image" />
+                ) : (
+                  <>
+                    <IconUpload size={32} />
+                    <span>Clique pour upload une image</span>
+                    <small>PNG ou JPG - sera animé en GIF</small>
                   </>
                 )}
               </div>
@@ -897,6 +1033,55 @@ function ComfyUIPage() {
                   <option value="mp4">MP4 (compact)</option>
                   <option value="webm">WebM (quality)</option>
                 </select>
+              </div>
+            </div>
+          )}
+
+          {/* Image to GIF (SVD) Settings */}
+          {mode === MODES.IMAGE_TO_GIF && (
+            <div className="settings-grid image-to-gif-settings">
+              <div className="setting-item">
+                <label>Frames: {svdFrames}</label>
+                <input
+                  type="range"
+                  min="14"
+                  max="25"
+                  value={svdFrames}
+                  onChange={(e) => setSvdFrames(+e.target.value)}
+                />
+              </div>
+              <div className="setting-item">
+                <label>FPS: {svdFps}</label>
+                <input
+                  type="range"
+                  min="4"
+                  max="16"
+                  value={svdFps}
+                  onChange={(e) => setSvdFps(+e.target.value)}
+                />
+              </div>
+              <div className="setting-item">
+                <label>Mouvement: {motionBucketId}</label>
+                <input
+                  type="range"
+                  min="1"
+                  max="255"
+                  value={motionBucketId}
+                  onChange={(e) => setMotionBucketId(+e.target.value)}
+                />
+                <small>1 = subtil, 255 = dynamique</small>
+              </div>
+              <div className="setting-item">
+                <label>Variation: {augmentationLevel.toFixed(2)}</label>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.05"
+                  value={augmentationLevel}
+                  onChange={(e) => setAugmentationLevel(+e.target.value)}
+                />
+                <small>0 = fidèle, 1 = créatif</small>
               </div>
             </div>
           )}

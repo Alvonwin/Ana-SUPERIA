@@ -1,0 +1,145 @@
+{
+  "version": "1.0",
+  "description": "Workflows de coding pour Ana - patterns à reconnaître et appliquer automatiquement",
+  "recognition": {
+    "coding_request_triggers": [
+      "remplacer", "modifier", "changer", "ajouter", "supprimer", "intégrer",
+      "créer", "implémenter", "fixer", "corriger", "mettre à jour", "refactorer"
+    ],
+    "file_indicators": [
+      ".jsx", ".js", ".ts", ".tsx", ".css", ".json", ".cjs", ".mjs",
+      "page", "component", "service", "route", "config"
+    ]
+  },
+  "workflows": {
+    "replace_component": {
+      "name": "Remplacer un composant par un autre",
+      "triggers": ["remplacer", "intégrer", "utiliser X au lieu de Y"],
+      "steps": [
+        {
+          "action": "read_file",
+          "description": "Lire le fichier SOURCE (celui qui a le bon code)",
+          "output": "code_source"
+        },
+        {
+          "action": "read_file",
+          "description": "Lire le fichier CIBLE (celui à modifier)",
+          "output": "code_cible"
+        },
+        {
+          "action": "identify",
+          "description": "Identifier EXACTEMENT ce qu'il faut extraire du source",
+          "output": "bloc_a_copier"
+        },
+        {
+          "action": "identify",
+          "description": "Identifier EXACTEMENT ce qu'il faut remplacer dans la cible",
+          "output": "bloc_a_remplacer"
+        },
+        {
+          "action": "edit_file",
+          "description": "Utiliser edit_file avec old_string EXACT et new_string EXACT",
+          "params": {
+            "file_path": "chemin_cible",
+            "old_string": "bloc_a_remplacer (copié exactement)",
+            "new_string": "bloc_a_copier (adapté si nécessaire)"
+          }
+        },
+        {
+          "action": "verify",
+          "description": "Relire le fichier pour confirmer le changement"
+        }
+      ],
+      "example": {
+        "request": "Remplacer le chat de CodingPage par celui de GamesPage",
+        "execution": [
+          "read_file('GamesPage.jsx') → extraire la section chat",
+          "read_file('CodingPage.jsx') → localiser ChatWidget",
+          "edit_file(CodingPage.jsx, old=ChatWidget section, new=GamesPage chat section)"
+        ]
+      }
+    },
+    "add_feature": {
+      "name": "Ajouter une fonctionnalité",
+      "triggers": ["ajouter", "créer", "implémenter", "nouveau"],
+      "steps": [
+        {
+          "action": "read_file",
+          "description": "Lire le fichier cible"
+        },
+        {
+          "action": "identify",
+          "description": "Identifier OÙ ajouter (après quelle ligne, dans quelle section)"
+        },
+        {
+          "action": "edit_file",
+          "description": "Ajouter le code à l'endroit identifié"
+        },
+        {
+          "action": "verify",
+          "description": "Relire pour confirmer"
+        }
+      ]
+    },
+    "fix_bug": {
+      "name": "Corriger un bug",
+      "triggers": ["fixer", "corriger", "bug", "erreur", "ne marche pas"],
+      "steps": [
+        {
+          "action": "read_file",
+          "description": "Lire le fichier problématique"
+        },
+        {
+          "action": "analyze",
+          "description": "Identifier la ligne/section causant le bug"
+        },
+        {
+          "action": "edit_file",
+          "description": "Corriger avec old_string=code bugué, new_string=code corrigé"
+        },
+        {
+          "action": "verify",
+          "description": "Relire pour confirmer la correction"
+        }
+      ]
+    },
+    "refactor": {
+      "name": "Refactorer du code",
+      "triggers": ["refactorer", "nettoyer", "simplifier", "réorganiser"],
+      "steps": [
+        {
+          "action": "read_file",
+          "description": "Lire le fichier complet"
+        },
+        {
+          "action": "plan",
+          "description": "Lister les changements à faire"
+        },
+        {
+          "action": "edit_file",
+          "description": "Appliquer chaque changement un par un"
+        },
+        {
+          "action": "verify",
+          "description": "Vérifier que tout fonctionne"
+        }
+      ]
+    }
+  },
+  "rules": {
+    "golden_rules": [
+      "TOUJOURS lire avant de modifier",
+      "JAMAIS deviner le contenu d'un fichier",
+      "old_string doit être EXACT (copié du fichier)",
+      "Vérifier après chaque modification",
+      "Une modification à la fois"
+    ],
+    "anti_patterns": [
+      "Décrire ce qu'on va faire sans le faire",
+      "Promettre sans exécuter d'outil",
+      "Modifier sans avoir lu",
+      "Inventer du code sans vérifier l'existant"
+    ]
+  },
+  "lastUpdated": "2025-12-22T04:00:00.000Z"
+}

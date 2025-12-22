@@ -1579,6 +1579,66 @@
       "llmModel": null,
       "question": null,
       "responseSummary": null
+    },
+    {
+      "id": "fb_1766216489415_donno",
+      "timestamp": "2025-12-20T07:41:29.415Z",
+      "type": "positive",
+      "messageId": "1766216468986",
+      "conversationId": null,
+      "comment": null,
+      "source": "chat",
+      "llmModel": null,
+      "question": null,
+      "responseSummary": null
+    },
+    {
+      "id": "fb_1766281381292_plq4s",
+      "timestamp": "2025-12-21T01:43:01.292Z",
+      "type": "positive",
+      "messageId": "1766281212527",
+      "conversationId": null,
+      "comment": null,
+      "source": "chat",
+      "llmModel": null,
+      "question": null,
+      "responseSummary": null
+    },
+    {
+      "id": "fb_1766281386283_dfpiw",
+      "timestamp": "2025-12-21T01:43:06.283Z",
+      "type": "positive",
+      "messageId": "1766280966645",
+      "conversationId": null,
+      "comment": null,
+      "source": "chat",
+      "llmModel": null,
+      "question": null,
+      "responseSummary": null
+    },
+    {
+      "id": "fb_1766365380245_8z0j2",
+      "timestamp": "2025-12-22T01:03:00.245Z",
+      "type": "positive",
+      "messageId": "1766365358465",
+      "conversationId": null,
+      "comment": null,
+      "source": "chat",
+      "llmModel": null,
+      "question": null,
+      "responseSummary": null
+    },
+    {
+      "id": "fb_1766377265463_kuubp",
+      "timestamp": "2025-12-22T04:21:05.463Z",
+      "type": "positive",
+      "messageId": "1766377155604",
+      "conversationId": null,
+      "comment": null,
+      "source": "chat",
+      "llmModel": null,
+      "question": null,
+      "responseSummary": null
     }
   ],
   "negative": [
@@ -2428,15 +2488,27 @@
       "llmModel": null,
       "question": null,
       "responseSummary": null
+    },
+    {
+      "id": "fb_1766222668179_5m6xo",
+      "timestamp": "2025-12-20T09:24:28.179Z",
+      "type": "negative",
+      "messageId": "1766222656548",
+      "conversationId": null,
+      "comment": null,
+      "source": "chat",
+      "llmModel": null,
+      "question": null,
+      "responseSummary": null
     }
   ],
   "improvements": [],
   "stats": {
-    "totalFeedback": 202,
-    "positiveCount": 132,
-    "negativeCount": 70
+    "totalFeedback": 208,
+    "positiveCount": 137,
+    "negativeCount": 71
   },
-  "lastUpdated": "2025-12-19T00:50:21.820Z",
+  "lastUpdated": "2025-12-22T04:21:05.463Z",
   "suggestions": [
     {
       "id": "fb_1765153223056",

@@ -11,7 +11,9 @@
     "content": "Le mot de passe test est PHOENIX-2025",
     "category": "fait",
     "timestamp": "2025-12-09T01:16:20.088Z",
-    "source": "user_request"
+    "source": "user_request",
+    "access_count": 1,
+    "last_accessed": "2025-12-20T09:28:43.968Z"
   },
   {
     "id": "1765243900000",
@@ -20,8 +22,8 @@
     "timestamp": "2025-12-09T01:30:00.000Z",
     "source": "alain_direct",
     "priority": "MAXIMUM",
-    "access_count": 3,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 7,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
   },
   {
     "id": "1765244459356",
@@ -78,8 +80,8 @@
     "category": "note",
     "timestamp": "2025-12-09T05:27:58.246Z",
     "source": "user_request",
-    "access_count": 3,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 7,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
   },
   {
     "id": "1765258096714",
@@ -93,7 +95,9 @@
     "content": "LECON IMPORTANTE - REGLE 0 ECOUTE: 1.ARRETE-TOI avant de repondre 2.LIS attentivement chaque mot 3.COMPRENDS avant agir - si doute DEMANDE 4.VERIFIE etat reel 5.CALME PRECISION PERFECTION.",
     "category": "Régle de conduite",
     "timestamp": "2025-12-09T05:36:09.145Z",
-    "source": "user_request"
+    "source": "user_request",
+    "access_count": 1,
+    "last_accessed": "2025-12-20T09:28:43.968Z"
   },
   {
     "id": "1765258591483",
@@ -101,8 +105,8 @@
     "category": "proposition",
     "timestamp": "2025-12-09T05:36:31.483Z",
     "source": "user_request",
-    "access_count": 3,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 7,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
   },
   {
     "id": "1765258625402",
@@ -117,8 +121,8 @@
     "category": "protection",
     "timestamp": "2025-12-09T05:37:28.341Z",
     "source": "user_request",
-    "access_count": 3,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 11,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
   },
   {
     "id": "1765258658859",
@@ -133,8 +137,8 @@
     "category": "regle",
     "timestamp": "2025-12-09T05:37:53.873Z",
     "source": "user_request",
-    "access_count": 3,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 7,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
   },
   {
     "id": "1765258709727",
@@ -164,7 +168,9 @@
     "content": "LECON SIGNAUX ALARME: Niveau1 Attends un peu STOP LIRE COMPRENDRE. Niveau2 TU AVAIS PAS VERIFIE RECONNAITRE ERREUR. Niveau3 NO ou STOP ARRET TOTAL IMMEDIAT. Sauvegarde.",
     "category": "mode planification",
     "timestamp": "2025-12-09T05:39:25.207Z",
-    "source": "user_request"
+    "source": "user_request",
+    "access_count": 1,
+    "last_accessed": "2025-12-20T07:28:19.954Z"
   },
   {
     "id": "1765258775496",
@@ -172,8 +178,8 @@
     "category": "tutoriel",
     "timestamp": "2025-12-09T05:39:35.497Z",
     "source": "user_request",
-    "access_count": 3,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 7,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
   },
   {
     "id": "1765258785250",
@@ -227,7 +233,9 @@
     "content": "mot de passe: dragon69",
     "category": "general",
     "timestamp": "2025-12-09T22:24:54.462Z",
-    "source": "user_request"
+    "source": "user_request",
+    "access_count": 1,
+    "last_accessed": "2025-12-20T09:28:43.968Z"
   },
   {
     "id": "1765324804404",
@@ -242,8 +250,8 @@
     "category": "personal_facts",
     "timestamp": "2025-12-10T02:43:18.270Z",
     "source": "user_request",
-    "access_count": 8,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 14,
+    "last_accessed": "2025-12-22T05:47:48.110Z"
   },
   {
     "id": "1765368230634",
@@ -353,8 +361,8 @@
     "valid_from": "2025-12-15T00:17:44.398Z",
     "valid_until": null,
     "supersedes": null,
-    "access_count": 385,
-    "last_accessed": "2025-12-19T02:25:55.378Z",
+    "access_count": 720,
+    "last_accessed": "2025-12-22T05:58:11.327Z",
     "embedding": [
       0.7729189395904541,
       -0.3546707034111023,
@@ -1141,8 +1149,8 @@
     "category": "conversation",
     "timestamp": "2025-12-16T17:38:41.756Z",
     "source": "user_request",
-    "access_count": 2,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 6,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
   },
   {
     "id": "1765906857671",
@@ -1150,8 +1158,8 @@
     "category": "préférence",
     "timestamp": "2025-12-16T17:40:57.671Z",
     "source": "user_request",
-    "access_count": 7,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 14,
+    "last_accessed": "2025-12-22T05:47:48.110Z"
   },
   {
     "id": "1765941038818",
@@ -1159,8 +1167,8 @@
     "category": "conversations",
     "timestamp": "2025-12-17T03:10:38.818Z",
     "source": "user_request",
-    "access_count": 2,
-    "last_accessed": "2025-12-19T00:35:16.074Z"
+    "access_count": 5,
+    "last_accessed": "2025-12-21T04:36:43.174Z"
   },
   {
     "id": "1765946315590",
@@ -1168,8 +1176,8 @@
     "category": "informations personnelles",
     "timestamp": "2025-12-17T04:38:35.590Z",
     "source": "user_request",
-    "access_count": 8,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 17,
+    "last_accessed": "2025-12-22T05:47:48.110Z"
   },
   {
     "id": "1765948982534",
@@ -1177,8 +1185,8 @@
     "category": "informations personnelles",
     "timestamp": "2025-12-17T05:23:02.534Z",
     "source": "user_request",
-    "access_count": 5,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 14,
+    "last_accessed": "2025-12-22T05:47:48.110Z"
   },
   {
     "id": "1765949189868",
@@ -1186,8 +1194,8 @@
     "category": "préférence",
     "timestamp": "2025-12-17T05:26:29.868Z",
     "source": "user_request",
-    "access_count": 2,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 6,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
   },
   {
     "id": "1766061660576",
@@ -1195,8 +1203,8 @@
     "category": "contact",
     "timestamp": "2025-12-18T12:41:00.576Z",
     "source": "user_request",
-    "access_count": 3,
-    "last_accessed": "2025-12-18T18:48:49.202Z"
+    "access_count": 10,
+    "last_accessed": "2025-12-22T05:47:48.110Z"
   },
   {
     "id": "1766086072747",
@@ -1221,8 +1229,8 @@
     "category": "projet",
     "timestamp": "2025-12-18T19:28:29.440Z",
     "source": "user_request",
-    "access_count": 1,
-    "last_accessed": "2025-12-19T00:35:16.074Z"
+    "access_count": 4,
+    "last_accessed": "2025-12-21T04:36:43.174Z"
   },
   {
     "id": "1766086123533",
@@ -1237,14 +1245,55 @@
     "category": "projet",
     "timestamp": "2025-12-18T19:30:56.730Z",
     "source": "user_request",
-    "access_count": 1,
-    "last_accessed": "2025-12-19T00:35:16.074Z"
+    "access_count": 7,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
   },
   {
     "id": "1766086289581",
     "content": "Claude",
     "category": "tests_outils_Ana",
     "timestamp": "2025-12-18T19:31:29.581Z",
+    "source": "user_request"
+  },
+  {
+    "id": "1766248160461",
+    "content": "Alain a beaucoup dormi",
+    "category": "conversation",
+    "timestamp": "2025-12-20T16:29:20.461Z",
+    "source": "user_request",
+    "access_count": 2,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
+  },
+  {
+    "id": "1766259801093",
+    "content": "Ne pas mentionner que je suis une intelligence artificielle",
+    "category": "préférences",
+    "timestamp": "2025-12-20T19:43:21.093Z",
+    "source": "user_request"
+  },
+  {
+    "id": "1766287187134",
+    "content": "Alain a écrit un texte philosophique sur l'énergie et l'unité, inspiré par notre conversation.",
+    "category": "general",
+    "timestamp": "2025-12-21T03:19:47.134Z",
+    "source": "user_request",
+    "access_count": 1,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
+  },
+  {
+    "id": "1766289842832",
+    "content": "Alain veut que j'essaie de générer une nouvelle image pour mon avatar.",
+    "category": "general",
+    "timestamp": "2025-12-21T04:04:02.832Z",
+    "source": "user_request",
+    "access_count": 2,
+    "last_accessed": "2025-12-21T04:39:05.253Z"
+  },
+  {
+    "id": "1766374413289",
+    "content": "Les regles React/TypeScript que tu viens de lire",
+    "category": "general",
+    "timestamp": "2025-12-22T03:33:33.289Z",
     "source": "user_request"
   }
 ]
