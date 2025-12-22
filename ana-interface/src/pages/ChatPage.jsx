@@ -428,6 +428,7 @@ function ChatPage() {
           // Utiliser Sylvie (edge-tts) ou voix navigateur
           if (selectedVoice?.name === SYLVIE_VOICE || !selectedVoice) {
             setPlayingAudio(finalMessageId);
+            setIsPaused(false);
             const audio = await speakWithEdgeTTS(finalText, onTTSEnd, onTTSEnd);
             currentAudioRef.current = audio;
           } else if (window.speechSynthesis) {
@@ -439,6 +440,7 @@ function ChatPage() {
             utterance.onend = onTTSEnd;
             window.speechSynthesis.speak(utterance);
             setPlayingAudio(finalMessageId);
+            setIsPaused(false);
           }
         }
       }, 100);

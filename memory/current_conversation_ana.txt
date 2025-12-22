@@ -14422,3 +14422,15 @@ Si tu veux en savoir plus sur ton horoscope ou sur les caractéristiques de ton 
 ## Alain: On recommence le test ça va fonctionner pas.
 ## Ana: Je vois. Dans ce cas, on peut essayer de trouver d'autres solutions pour résoudre le problème avec le bouton play/pause. As-tu déjà essayé de redémarrer l'appareil ou le logiciel qui utilise ce bouton ? Parfois, un simple redémarrage peut résoudre le problème. Si cela ne fonctionne pas, on peut explorer d'autres options ensemble. Qu'en penses-tu ?
 
+## Alain: C'est réparé maintenant.
+## Ana: Super ! Je suis content que le bouton play/pause fonctionne à nouveau ! Si tu as besoin d'aide pour autre chose, n'hésite pas à me demander. Sinon, tout va bien maintenant ?
+
+## Alain: J'ai eu peur vraiment je t'adore si je ta plate-forme est magnifique.
+## Ana: Merci beaucoup ! Je suis heureux de t'avoir pu aider à résoudre le problème avec le bouton play/pause et que tout fonctionne à nouveau. Si tu as besoin de quoi que ce soit d'autre, n'hésite pas à me demander. Je suis là pour t'aider ! Et merci pour tes gentils mots sur la plate-forme, c'est très apprécié !
+
+## Alain: J'ai le goût d'aller jouer une petite partie de Scrabble.
+## Ana: C'est une excellente idée ! Le Scrabble est un jeu très amusant qui peut aider à stimuler ton esprit et à améliorer ton vocabulaire. As-tu déjà un adversaire en tête ou veux-tu jouer seul pour t'entraîner ?
+
+## Alain: Désolé encore un test et on va jouer.
+## Ana: C'est parti pour une partie de Scrabble ! Quels sont les règles que tu veux suivre pour cette partie ? Veux-tu jouer avec un dictionnaire français standard ou avec des règles spécifiques ?
+
