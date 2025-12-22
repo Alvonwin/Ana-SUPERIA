@@ -8395,12 +8395,21 @@ async function runToolAgentV2(userMessage, options = {}) {
   const { tools: filteredTools } = await getRelevantToolsHybrid(TOOL_DEFINITIONS, userMessage);
   console.log('[ToolAgentV2] Filtered to', filteredTools.length, 'tools for:', userMessage.substring(0, 40) + '...');
 
-  // 2025-12-21: Détection et chargement de skills OpenSkills
-  const skillInfo = skillLoader.getSkillInstructions(userMessage);
+  // 2025-12-22: Détection coding workflows (PRIORITÉ) puis skills OpenSkills
   let skillInstructions = '';
-  if (skillInfo) {
-    console.log(`[ToolAgentV2] 🎯 Skill détecté: ${skillInfo.skillId}`);
-    skillInstructions = `\n\n=== INSTRUCTIONS SPÉCIALISÉES (Skill: ${skillInfo.skillName}) ===\n${skillInfo.instructions}\n=== FIN DES INSTRUCTIONS SPÉCIALISÉES ===`;
+
+  // 1. D'abord chercher un workflow de coding (plus spécifique)
+  const codingWorkflow = skillLoader.getCodingWorkflowInstructions(userMessage);
+  if (codingWorkflow) {
+    console.log(`[ToolAgentV2] 🔧 Coding workflow détecté: ${codingWorkflow.skillId}`);
+    skillInstructions = `\n\n${codingWorkflow.instructions}`;
+  } else {
+    // 2. Sinon chercher un skill OpenSkills
+    const skillInfo = skillLoader.getSkillInstructions(userMessage);
+    if (skillInfo) {
+      console.log(`[ToolAgentV2] 🎯 Skill détecté: ${skillInfo.skillId}`);
+      skillInstructions = `\n\n=== INSTRUCTIONS SPÉCIALISÉES (Skill: ${skillInfo.skillName}) ===\n${skillInfo.instructions}\n=== FIN DES INSTRUCTIONS SPÉCIALISÉES ===`;
+    }
   }
 
   // System prompt with FILTERED tools only

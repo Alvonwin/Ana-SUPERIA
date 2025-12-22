@@ -21,6 +21,7 @@ const battleshipEngine = require('../games/battleship-engine.cjs');
 const backgammonEngine = require('../games/backgammon-engine.cjs');
 const scrabbleEngine = require('../games/scrabble-engine.cjs');
 const definitionMysteryEngine = require('../games/definition-mystery-engine.cjs');
+const motusEngine = require('../games/motus-engine.cjs');
 const { playCheckers } = require('../games/games-tools.cjs');
 
 // Réactions génériques d'Ana
@@ -870,6 +871,48 @@ router.post('/definition-mystery/new-round', (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// ==================== MOTUS ====================
+router.post('/motus/new', (req, res) => {
+  try {
+    const { session = 'default', wordLength = 6, mode = 'vsAna', customWord } = req.body;
+    const result = motusEngine.newGame(session, wordLength, mode, customWord);
+    result.reaction = `🟩 MOTUS! Trouve le mot de ${result.wordLength} lettres commençant par ${result.firstLetter}!`;
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/motus/guess', (req, res) => {
+  try {
+    const { session = 'default', word } = req.body;
+    if (!word) {
+      return res.status(400).json({ error: 'Le mot est requis' });
+    }
+    const result = motusEngine.guess(session, word);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.get('/motus/state', (req, res) => {
+  try {
+    const result = motusEngine.getState(req.query.session || 'default');
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/motus/abandon', (req, res) => {
+  try {
+    const result = motusEngine.abandon(req.body.session || 'default');
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/motus/hint', (req, res) => {
+  try {
+    const result = motusEngine.getHint(req.body.session || 'default');
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ==================== GAMES LIST ====================
 router.get('/list', (req, res) => {
   res.json({
@@ -887,7 +930,8 @@ router.get('/list', (req, res) => {
       { id: 'battleship', name: 'Bataille Navale', description: 'Coule la flotte ennemie!', icon: '🚢', available: true },
       { id: 'backgammon', name: 'Backgammon', description: 'Le classique jeu de des!', icon: '🎲', available: true },
       { id: 'scrabble', name: 'Scrabble', description: 'Le roi des jeux de mots!', icon: '🔠', available: true },
-      { id: 'definition-mystery', name: 'Définition Mystère', description: 'Devine le mot à partir des indices d\'Ana!', icon: '🔮', available: true }
+      { id: 'definition-mystery', name: 'Définition Mystère', description: 'Devine le mot à partir des indices d\'Ana!', icon: '🔮', available: true },
+      { id: 'motus', name: 'Motus', description: 'Trouve le mot en 6 essais!', icon: '🟩', available: true }
     ]
   });
 });

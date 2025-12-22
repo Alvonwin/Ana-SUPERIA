@@ -4,7 +4,7 @@
   "recognition": {
     "coding_request_triggers": [
       "remplacer", "modifier", "changer", "ajouter", "supprimer", "intégrer",
-      "créer", "implémenter", "fixer", "corriger", "mettre à jour", "refactorer"
+      "créer", "implémenter", "fixer", "corriger", "mettre à jour", "refactorer", "refactoriser"
     ],
     "file_indicators": [
       ".jsx", ".js", ".ts", ".tsx", ".css", ".json", ".cjs", ".mjs",
@@ -105,7 +105,7 @@
     },
     "refactor": {
       "name": "Refactorer du code",
-      "triggers": ["refactorer", "nettoyer", "simplifier", "réorganiser"],
+      "triggers": ["refactorer", "refactoriser", "nettoyer", "simplifier", "réorganiser"],
       "steps": [
         {
           "action": "read_file",

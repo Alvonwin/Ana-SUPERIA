@@ -10,6 +10,11 @@ const fs = require('fs');
 const path = require('path');
 
 const SKILLS_DIR = path.join(__dirname, '../../skills');
+const CODING_WORKFLOWS_PATH = path.join(__dirname, '../../knowledge/learned/coding-workflows.json');
+
+// Cache des workflows de coding
+let codingWorkflowsCache = null;
+let workflowsCacheTime = 0;
 
 // Cache des métadonnées de skills
 let skillsCache = null;
@@ -180,11 +185,155 @@ function listSkills() {
   return loadSkillsMetadata();
 }
 
+// ============================================================
+// CODING WORKFLOWS - Injection automatique pour requêtes coding
+// Ajouté: 22 Décembre 2025
+// ============================================================
+
+/**
+ * Charge les workflows de coding depuis coding-workflows.json
+ */
+function loadCodingWorkflows() {
+  const now = Date.now();
+  if (codingWorkflowsCache && (now - workflowsCacheTime) < CACHE_TTL) {
+    return codingWorkflowsCache;
+  }
+
+  try {
+    if (!fs.existsSync(CODING_WORKFLOWS_PATH)) {
+      console.log('[SkillLoader] Fichier coding-workflows.json non trouvé');
+      return null;
+    }
+
+    const content = fs.readFileSync(CODING_WORKFLOWS_PATH, 'utf-8');
+    codingWorkflowsCache = JSON.parse(content);
+    workflowsCacheTime = now;
+    console.log('[SkillLoader] Coding workflows chargés:', Object.keys(codingWorkflowsCache.workflows || {}).length, 'workflows');
+    return codingWorkflowsCache;
+  } catch (err) {
+    console.error('[SkillLoader] Erreur chargement coding-workflows.json:', err.message);
+    return null;
+  }
+}
+
+/**
+ * Détecte si un message est une requête de coding et quel workflow appliquer
+ * @param {string} message - Le message utilisateur
+ * @returns {object|null} - { workflowId, workflow } ou null
+ */
+function detectCodingWorkflow(message) {
+  if (!message) return null;
+
+  const workflows = loadCodingWorkflows();
+  if (!workflows || !workflows.workflows) return null;
+
+  const msgLower = message.toLowerCase();
+
+  // Vérifier d'abord les triggers généraux de coding
+  const triggers = workflows.recognition?.coding_request_triggers || [];
+  const fileIndicators = workflows.recognition?.file_indicators || [];
+
+  const hasCodingTrigger = triggers.some(t => msgLower.includes(t.toLowerCase()));
+  const hasFileIndicator = fileIndicators.some(f => msgLower.includes(f.toLowerCase()));
+
+  // Si pas de contexte coding, pas de workflow
+  if (!hasCodingTrigger && !hasFileIndicator) {
+    return null;
+  }
+
+  // Trouver le workflow le plus approprié
+  for (const [workflowId, workflow] of Object.entries(workflows.workflows)) {
+    const workflowTriggers = workflow.triggers || [];
+    if (workflowTriggers.some(t => msgLower.includes(t.toLowerCase()))) {
+      console.log(`[SkillLoader] 🔧 Coding workflow détecté: ${workflowId}`);
+      return { workflowId, workflow, rules: workflows.rules };
+    }
+  }
+
+  // Fallback: si c'est du coding mais pas de workflow spécifique, utiliser les règles générales
+  if (hasCodingTrigger || hasFileIndicator) {
+    console.log('[SkillLoader] 🔧 Requête coding détectée (règles générales)');
+    return { workflowId: 'general', workflow: null, rules: workflows.rules };
+  }
+
+  return null;
+}
+
+/**
+ * Formate un workflow en instructions claires pour le LLM
+ * @param {object} workflowData - { workflowId, workflow, rules }
+ * @returns {string} - Instructions formatées
+ */
+function formatCodingWorkflowInstructions(workflowData) {
+  if (!workflowData) return '';
+
+  const { workflowId, workflow, rules } = workflowData;
+  let instructions = '';
+
+  // Titre du workflow
+  if (workflow) {
+    instructions += `=== WORKFLOW DE CODING: ${workflow.name} ===\n\n`;
+    instructions += `Tu DOIS suivre ces étapes dans l'ORDRE:\n`;
+
+    // Étapes numérotées
+    workflow.steps.forEach((step, index) => {
+      instructions += `${index + 1}. ${step.action}: ${step.description}\n`;
+    });
+
+    instructions += '\n';
+  } else {
+    instructions += `=== WORKFLOW DE CODING ===\n\n`;
+  }
+
+  // Règles d'or (toujours incluses)
+  if (rules?.golden_rules) {
+    instructions += `RÈGLES D'OR:\n`;
+    rules.golden_rules.forEach(rule => {
+      instructions += `- ${rule}\n`;
+    });
+    instructions += '\n';
+  }
+
+  // Anti-patterns (toujours inclus)
+  if (rules?.anti_patterns) {
+    instructions += `❌ INTERDIT:\n`;
+    rules.anti_patterns.forEach(pattern => {
+      instructions += `- ${pattern}\n`;
+    });
+  }
+
+  instructions += `\n=== FIN WORKFLOW ===`;
+
+  return instructions;
+}
+
+/**
+ * Obtient les instructions de coding workflow pour un message
+ * @param {string} message - Le message utilisateur
+ * @returns {object|null} - { skillId, skillName, instructions } ou null
+ */
+function getCodingWorkflowInstructions(message) {
+  const workflowData = detectCodingWorkflow(message);
+  if (!workflowData) return null;
+
+  const instructions = formatCodingWorkflowInstructions(workflowData);
+
+  return {
+    skillId: `coding-workflow-${workflowData.workflowId}`,
+    skillName: workflowData.workflow?.name || 'Workflow de Coding',
+    instructions: instructions
+  };
+}
+
 module.exports = {
   loadSkillsMetadata,
   detectRelevantSkill,
   loadSkillContent,
   getSkillInstructions,
   listSkills,
-  SKILLS_DIR
+  SKILLS_DIR,
+  // Coding workflows
+  loadCodingWorkflows,
+  detectCodingWorkflow,
+  getCodingWorkflowInstructions
 };

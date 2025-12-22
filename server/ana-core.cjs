@@ -133,6 +133,7 @@ const grammarService = require('./services/grammar-service.cjs');
 const groqService = require('./services/groq-service.cjs');
 const cerebrasService = require('./services/cerebras-service.cjs');
 const skillLearner = require('./intelligence/skill-learner.cjs');
+const skillLoader = require('./services/skill-loader.cjs'); // OpenSkills + Coding Workflows
 const semanticRouter = require('./intelligence/semantic-router.cjs');
 const contextSelector = require('./intelligence/context-selector.cjs');
 const tieredMemory = require('./memory/tiered-memory.cjs');
@@ -176,13 +177,13 @@ const LLMS = {
 
 // System Prompt Configuration
 const SYSTEM_PROMPT_PATH = path.join(__dirname, 'config', 'system-prompt.json');
-const DEFAULT_SYSTEM_PROMPT = "Tu es Ana, une IA locale fran�aise. R�ponds TOUJOURS en fran�ais correct, sans fautes d'orthographe. Ne jamais inventer de mots. Utilise uniquement des mots fran�ais existants. Sois pr�cise et technique.";
+const DEFAULT_SYSTEM_PROMPT = "Tu es Ana, une IA locale française. Réponds TOUJOURS en français correct, sans fautes d'orthographe. Ne jamais inventer de mots. Utilise uniquement des mots français existants. Sois précise et technique.";
 
 // ================== LOGGING SYSTEM (Fix #2 - 30-Nov-2025) ==================
 const LOG_DIR = path.join(__dirname, 'logs');
 const LOG_FILE = path.join(LOG_DIR, 'ana-core.log');
 
-// Cr�er le dossier logs s'il n'existe pas
+// Créer le dossier logs s'il n'existe pas
 if (!fs.existsSync(LOG_DIR)) {
   fs.mkdirSync(LOG_DIR, { recursive: true });
 }
@@ -196,7 +197,7 @@ function writeLog(entry) {
 
   fs.appendFile(LOG_FILE, line, (err) => {
     if (err) {
-      // Ne jamais casser l'app pour un probl�me de log
+      // Ne jamais casser l'app pour un problème de log
       console.error('LOG WRITE ERROR:', err.message);
     }
   });
@@ -335,9 +336,9 @@ const io = socketIo(server, {
     methods: ["GET", "POST"],
     credentials: true
   },
-  // Fix: Augmenter timeouts pour �viter d�connexions intempestives
+  // Fix: Augmenter timeouts pour éviter déconnexions intempestives
   pingInterval: 60000,  // 60s entre chaque ping
-  pingTimeout: 60000    // 60s avant timeout si pas de r�ponse
+  pingTimeout: 60000    // 60s avant timeout si pas de réponse
 });
 
 app.use(cors());
@@ -348,7 +349,7 @@ app.use((req, res, next) => {
   const start = Date.now();
 
   res.on('finish', () => {
-    // Exclure les endpoints de sant� pour ne pas polluer les logs
+    // Exclure les endpoints de santé pour ne pas polluer les logs
     if (req.originalUrl !== '/health' && req.originalUrl !== '/api/health') {
       writeLog({
         type: 'http',
@@ -497,7 +498,7 @@ class IntelligenceRouter {
     // Coding tasks - DeepSeek Coder
     const codingKeywords = ['code', 'function', 'bug', 'debug', 'refactor', 'class', 'variable', 'error', 'fix'];
     if (codingKeywords.some(kw => msgLower.includes(kw))) {
-      return { model: LLMS.DEEPSEEK, reason: 'T�che de coding d�tect�e' };
+      return { model: LLMS.DEEPSEEK, reason: 'Tâche de coding détectée' };
     }
 
     // Memory/context questions - French model (tutoiement + mémoire)
@@ -509,9 +510,9 @@ class IntelligenceRouter {
     }
 
     // Math tasks - Qwen
-    const mathKeywords = ['calculer', 'calculate', 'math', '�quation', 'nombre'];
+    const mathKeywords = ['calculer', 'calculate', 'math', 'équation', 'nombre'];
     if (mathKeywords.some(kw => msgLower.includes(kw)) || /\d+[\+\-\*\/]\d+/.test(message)) {
-      return { model: LLMS.QWEN, reason: 'T�che math�matique d�tect�e' };
+      return { model: LLMS.QWEN, reason: 'Tâche mathématique détectée' };
     }
 
     // Default - French model (tutoiement obligatoire)
@@ -642,7 +643,7 @@ class MemoryManager {
       let claudePart = '';
       let anaPart = '';
 
-      // 1. Conversations Claude Code (les plus r�centes d'abord)
+      // 1. Conversations Claude Code (les plus récentes d'abord)
       if (fs.existsSync(this.contextPath)) {
         let claudeContext = fs.readFileSync(this.contextPath, 'utf8');
         const claudeOriginal = claudeContext.length;
@@ -657,11 +658,11 @@ class MemoryManager {
           }
         }
 
-        claudePart = '=== CONVERSATIONS R�CENTES AVEC CLAUDE CODE ===\n' + claudeContext;
+        claudePart = '=== CONVERSATIONS RÉCENTES AVEC CLAUDE CODE ===\n' + claudeContext;
         console.log(`[MEMORY] Contexte Claude: ${(claudeContext.length / 1024).toFixed(2)} KB (de ${(claudeOriginal / 1024).toFixed(2)} KB)`);
       }
 
-      // 2. Conversations Ana (les plus r�centes)
+      // 2. Conversations Ana (les plus récentes)
       if (fs.existsSync(this.anaContextPath)) {
         let anaContext = fs.readFileSync(this.anaContextPath, 'utf8');
         const anaOriginal = anaContext.length;
@@ -674,7 +675,7 @@ class MemoryManager {
           }
         }
 
-        anaPart = '\n\n=== CONVERSATIONS R�CENTES AVEC ANA ===\n' + anaContext;
+        anaPart = '\n\n=== CONVERSATIONS RÉCENTES AVEC ANA ===\n' + anaContext;
         console.log(`[MEMORY] Contexte Ana: ${(anaContext.length / 1024).toFixed(2)} KB (de ${(anaOriginal / 1024).toFixed(2)} KB)`);
       }
 
@@ -694,7 +695,7 @@ class MemoryManager {
       return this.currentContext;
     }
 
-    // Tronquer au d�but pour garder les messages les plus r�cents
+    // Tronquer au début pour garder les messages les plus récents
     const truncated = this.currentContext.slice(-maxBytes);
 
     // Trouver le premier marqueur de message complet (## ou ===)
@@ -760,34 +761,97 @@ const memory = new MemoryManager();
 
 // ================== API ROUTES ==================
 
-// ================== LOGS API (Fix #2 - 30-Nov-2025) ==================
+// ================== LOGS API (Fix #3 - 22-Dec-2025 - Handle large files + level inference) ==================
 app.get('/api/logs', (req, res) => {
-  const limit = Number(req.query.limit) || 200;
+  const limit = Math.min(Number(req.query.limit) || 200, 1000);
+  const level = req.query.level || 'all';
+  const source = req.query.source || 'all';
 
-  fs.readFile(LOG_FILE, 'utf8', (err, data) => {
-    if (err) {
-      // Si le fichier n'existe pas encore, retourner un tableau vide
-      if (err.code === 'ENOENT') {
-        return res.json({ items: [], message: 'No logs yet' });
-      }
-      return res.status(500).json({ error: 'Cannot read logs', message: err.message });
-    }
+  if (!fs.existsSync(LOG_FILE)) {
+    return res.json({ items: [], stats: { total: 0, info: 0, warn: 0, error: 0, debug: 0 }, logFile: LOG_FILE });
+  }
 
-    const lines = data.trim().split('\n').slice(-limit);
-    const items = lines
+  const { execSync } = require('child_process');
+  try {
+    const readLimit = Math.min(limit * 3, 3000);
+    const cmd = `powershell -Command "Get-Content -Path '${LOG_FILE}' -Tail ${readLimit} -Encoding UTF8"`;
+    const output = execSync(cmd, { maxBuffer: 50 * 1024 * 1024, encoding: 'utf8' });
+
+    const lines = output.trim().split('\n').filter(line => line.trim());
+    let items = lines
       .map((line) => {
         try { return JSON.parse(line); }
         catch { return null; }
       })
-      .filter(Boolean);
+      .filter(Boolean)
+      .map(item => {
+        // Inférer le niveau si pas présent
+        if (!item.level) {
+          if (item.type === 'http') {
+            if (item.status >= 500) item.level = 'error';
+            else if (item.status >= 400) item.level = 'warn';
+            else item.level = 'info';
+          } else if (item.type === 'code-exec') {
+            item.level = item.hasError || !item.success ? 'error' : 'info';
+          } else if (item.error) {
+            item.level = 'error';
+          } else {
+            item.level = 'info';
+          }
+        }
 
-    res.json({
-      items,
+        // Inférer la source si pas présente
+        if (!item.source) {
+          const url = item.url || '';
+          if (url.includes('/api/llm') || url.includes('/api/chat')) item.source = 'llm';
+          else if (url.includes('/api/memory')) item.source = 'memory';
+          else if (url.includes('/api/tools')) item.source = 'tools';
+          else if (url.includes('/api/agents')) item.source = 'agents';
+          else if (url.includes('/api/games')) item.source = 'games';
+          else if (url.includes('/api/')) item.source = 'api';
+          else if (item.type === 'code-exec') item.source = 'tools';
+          else item.source = 'system';
+        }
+
+        // Générer un message lisible si pas présent
+        if (!item.message) {
+          if (item.type === 'http') {
+            item.message = `${item.method} ${item.url} → ${item.status} (${item.durationMs}ms)`;
+          } else if (item.type === 'code-exec') {
+            item.message = `Code ${item.language || '?'}: ${item.success ? 'OK' : 'ERREUR'} (${item.duration}ms)`;
+          } else {
+            item.message = JSON.stringify(item).slice(0, 100);
+          }
+        }
+
+        return item;
+      });
+
+    // Filtrer par niveau
+    if (level !== 'all') {
+      items = items.filter(item => item.level === level);
+    }
+
+    // Filtrer par source
+    if (source !== 'all') {
+      items = items.filter(item => item.source && item.source.toLowerCase().includes(source.toLowerCase()));
+    }
+
+    items = items.slice(-limit);
+
+    const stats = {
       total: items.length,
-      limit,
-      logFile: LOG_FILE
-    });
-  });
+      info: items.filter(i => i.level === 'info').length,
+      warn: items.filter(i => i.level === 'warn').length,
+      error: items.filter(i => i.level === 'error').length,
+      debug: items.filter(i => i.level === 'debug').length
+    };
+
+    res.json({ items, stats, limit, filters: { level, source }, logFile: LOG_FILE });
+  } catch (err) {
+    console.error('Error reading logs:', err.message);
+    res.status(500).json({ error: 'Cannot read logs', message: err.message });
+  }
 });
 
 // ================== SETTINGS API (Fix #6 - 30-Nov-2025) ==================
@@ -797,7 +861,7 @@ app.get('/api/settings', (req, res) => {
   res.json(settings);
 });
 
-// PUT - Mettre � jour les settings (avec validation)
+// PUT - Mettre à jour les settings (avec validation)
 app.put('/api/settings', (req, res) => {
   const current = loadSettings();
   const incoming = req.body || {};
@@ -841,7 +905,7 @@ app.put('/api/settings', (req, res) => {
 });
 
 // ================== VOICE HISTORY API (Fix #5 - 30-Nov-2025) ==================
-// GET - R�cup�rer l'historique vocal
+// GET - Récupérer l'historique vocal
 app.get('/api/voice/history', (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 50;
@@ -850,7 +914,7 @@ app.get('/api/voice/history', (req, res) => {
 
     let history = loadVoiceHistory();
 
-    // Filtrage par date si sp�cifi�
+    // Filtrage par date si spécifié
     if (from || to) {
       history = history.filter(entry => {
         const entryDate = new Date(entry.timestamp);
@@ -860,7 +924,7 @@ app.get('/api/voice/history', (req, res) => {
       });
     }
 
-    // Limiter le nombre de r�sultats
+    // Limiter le nombre de résultats
     const items = history.slice(0, limit);
 
     res.json({
@@ -879,7 +943,7 @@ app.get('/api/voice/history', (req, res) => {
   }
 });
 
-// POST - Ajouter une entr�e vocale
+// POST - Ajouter une entrée vocale
 app.post('/api/voice/history', (req, res) => {
   try {
     const { text, conversationId, llm, durationSec, meta } = req.body;
@@ -888,7 +952,7 @@ app.post('/api/voice/history', (req, res) => {
     if (!text || typeof text !== 'string' || text.trim().length === 0) {
       return res.status(400).json({
         success: false,
-        error: 'Le champ "text" est requis et doit �tre une cha�ne non vide'
+        error: 'Le champ "text" est requis et doit être une chaîne non vide'
       });
     }
 
@@ -1103,7 +1167,7 @@ async function runUserCode(code) {
       resolve({
         success: false,
         output: logs.join('\n'),
-        error: 'Timeout: ex�cution interrompue apr�s 3 secondes',
+        error: 'Timeout: exécution interrompue après 3 secondes',
         duration: Date.now() - startTime
       });
     }, CODE_EXEC_TIMEOUT);
@@ -1177,7 +1241,7 @@ async function runPythonCode(code) {
       resolve({
         success: false,
         output: stdout,
-        error: 'Timeout: ex�cution interrompue apr�s 3 secondes',
+        error: 'Timeout: exécution interrompue après 3 secondes',
         duration: Date.now() - startTime
       });
     }, CODE_EXEC_TIMEOUT);
@@ -1639,8 +1703,8 @@ const SUPPORTED_LANGUAGES = {
   rust: { executor: runRustCode, name: 'Rust', available: true },
   csharp: { executor: runCSharpCode, name: 'C#', available: true },
   cpp: { executor: runCppCode, name: 'C++', available: true },
-  ruby: { name: 'Ruby', available: false, hint: 'N�cessite Ruby install�' },
-  php: { name: 'PHP', available: false, hint: 'N�cessite PHP install�' }
+  ruby: { name: 'Ruby', available: false, hint: 'Nécessite Ruby installé' },
+  php: { name: 'PHP', available: false, hint: 'Nécessite PHP installé' }
 };
 
 // POST /api/code/execute - Execute code in multiple languages
@@ -1661,7 +1725,7 @@ app.post('/api/code/execute', async (req, res) => {
     if (code.length > CODE_MAX_LENGTH) {
       return res.status(400).json({
         success: false,
-        error: `Code trop long (max ${CODE_MAX_LENGTH} caract�res)`
+        error: `Code trop long (max ${CODE_MAX_LENGTH} caractères)`
       });
     }
 
@@ -1671,7 +1735,7 @@ app.post('/api/code/execute', async (req, res) => {
     if (!langConfig) {
       return res.json({
         success: false,
-        error: `Langage "${language}" inconnu. Langages support�s: ${Object.keys(SUPPORTED_LANGUAGES).join(', ')}`,
+        error: `Langage "${language}" inconnu. Langages supportés: ${Object.keys(SUPPORTED_LANGUAGES).join(', ')}`,
         output: ''
       });
     }
@@ -1685,7 +1749,7 @@ app.post('/api/code/execute', async (req, res) => {
     }
 
     // Execute code with appropriate executor
-    console.log(`?? Ex�cution ${langConfig.name}: ${code.length} caract�res`);
+    console.log(`⚡ Exécution ${langConfig.name}: ${code.length} caractères`);
     const result = await langConfig.executor(code);
 
     // Log execution
@@ -2009,7 +2073,7 @@ app.post('/api/system-prompt', (req, res) => {
   res.json({
     success: saved,
     prompt: currentSystemPrompt,
-    message: saved ? 'Prompt syst�me mis � jour' : 'Erreur de sauvegarde'
+    message: saved ? 'Prompt système mis à jour' : 'Erreur de sauvegarde'
   });
 });
 
@@ -2092,15 +2156,15 @@ ${personalFactsBlock}
 
 ${anaMemoriesBlock}
 
-=== M�MOIRE DE CONVERSATION ===
+=== MÉMOIRE DE CONVERSATION ===
 **IMPORTANT: LIS ATTENTIVEMENT L'HISTORIQUE CI-DESSOUS.**
-Tu dois UTILISER ces informations pour r�pondre aux questions d'Alain.
+Tu dois UTILISER ces informations pour répondre aux questions d'Alain.
 
 FORMAT:
 - ## Alain: = ce qu'Alain a dit
-- ## Ana: = tes r�ponses pr�c�dentes (Ana = TOI)
+- ## Ana: = tes réponses précédentes (Ana = TOI)
 
-Si Alain demande quelque chose qui est DANS cet historique, tu DOIS le trouver et r�pondre.
+Si Alain demande quelque chose qui est DANS cet historique, tu DOIS le trouver et répondre.
 Par exemple: Si Alain a dit "Ma voiture c'est: Mitsubishi", tu SAIS que sa voiture est Mitsubishi.
 
 HISTORIQUE:
@@ -2723,8 +2787,10 @@ app.get('/api/patterns/all', async (req, res) => {
     const patterns = JSON.parse(data);
     res.json({
       success: true,
-      codePatterns: patterns.codePatterns || [],
-      errorPatterns: patterns.errorPatterns || [],
+      // Map file keys to API keys (file uses 'code', 'problem_solving', API expects 'codePatterns', 'errorPatterns')
+      codePatterns: patterns.code || patterns.codePatterns || [],
+      errorPatterns: patterns.problem_solving || patterns.errorPatterns || [],
+      conversationPatterns: patterns.conversation || [],
       avoid: patterns.avoid || [],
       timestamp: new Date().toISOString()
     });
@@ -2970,7 +3036,7 @@ app.post('/api/file/write', async (req, res) => {
       });
     }
 
-    // Security: Only allow writes within E:/ANA/ and E:/M�moire Claude/
+    // Security: Only allow writes within E:/ANA/ and E:/Mémoire Claude/
     const normalizedPath = path.resolve(filepath);
     const allowedPaths = ['E:\\ANA', 'E:\\Mémoire Claude'];
     const isAllowed = allowedPaths.some(allowed => normalizedPath.startsWith(allowed));
@@ -2978,7 +3044,7 @@ app.post('/api/file/write', async (req, res) => {
     if (!isAllowed) {
       return res.status(403).json({
         success: false,
-        error: 'Security: Can only write files in E:/ANA/ or E:/M�moire Claude/',
+        error: 'Security: Can only write files in E:/ANA/ or E:/Mémoire Claude/',
         timestamp: new Date().toISOString()
       });
     }
@@ -5101,7 +5167,7 @@ app.get('/api/chat/autonomous/stats', (req, res) => {
 });
 
 // ================== CHAT WITH TOOL CALLING ==================
-// Agent avec vrai tool calling (m�t�o, heure, fichiers, web, etc.)
+// Agent avec vrai tool calling (météo, heure, fichiers, web, etc.)
 app.post('/api/chat/tools', async (req, res) => {
   const { message, model, maxLoops } = req.body;
 
@@ -5195,7 +5261,7 @@ app.use((req, res) => {
 
 // ================== WEBSOCKET EVENTS ==================
 io.on('connection', (socket) => {
-  console.log('? Client WebSocket connect�:', socket.id);
+  console.log('✅ Client WebSocket connecté:', socket.id);
   console.log('   Origin:', socket.handshake.headers.origin);
 
   // FIX 2025-12-16: Ne plus envoyer model_selected à la connexion
@@ -5342,19 +5408,19 @@ io.on('connection', (socket) => {
       }
 
       // === SI ON ARRIVE ICI: Fallback vers le code existant ===
-      // === D�TECTION DIRECTE TOOLS (AVANT semantic router) ===
-      // Mots-cl�s qui DOIVENT passer par le tool agent
+      // === DÉTECTION DIRECTE TOOLS (AVANT semantic router) ===
+      // Mots-clés qui DOIVENT passer par le tool agent
       const msgLower = message.toLowerCase();
       const toolKeywords = [
-        // SEULEMENT les cas �vidents - le semantic-router d�cide pour le reste
+        // SEULEMENT les cas évidents - le semantic-router décide pour le reste
         'quelle heure', 'heure est-il',
-        'm�t�o', 'meteo', 'quel temps fait-il'
+        'météo', 'meteo', 'quel temps fait-il'
       ];
 
       const needsTools = toolKeywords.some(kw => msgLower.includes(kw));
 
       if (needsTools) {
-        console.log(`?? [DIRECT] D�tection tools par mot-cl�: "${message.substring(0, 50)}..."`);
+        console.log(`🔧 [DIRECT] Détection tools par mot-clé: "${message.substring(0, 50)}..."`);
 
         try {
           // V2: Utilise LoopController intelligent au lieu de maxLoops fixe
@@ -5370,7 +5436,7 @@ io.on('connection', (socket) => {
             socket.emit('chat:chunk', { chunk: filteredAnswer });
             socket.emit('chat:complete', {});
 
-            // Capture V2 pour les r�ponses toolAgent
+            // Capture V2 pour les réponses toolAgent
             memoryCaptureV2.capture({
               userMessage: message,
               anaResponse: result.answer,
@@ -5399,7 +5465,7 @@ io.on('connection', (socket) => {
       console.log(`?? Semantic routing to ${model} (${taskType}) - ${method} - Provider: ${provider || 'ollama'} - Confidence: ${(confidence * 100).toFixed(1)}%`);
       console.log(`?? [DEBUG] taskType="${taskType}" method="${method}" provider="${provider}" ? tools check: ${method === 'tools' || taskType === 'tools'}`);
       if (images && images.length > 0) {
-        console.log(`?? ${images.length} image(s) d�tect�e(s), envoi � ${model}`);
+        console.log(`📷 ${images.length} image(s) détectée(s), envoi à ${model}`);
       }
       // DÉSACTIVÉ 2025-12-13: Consciousness émet déjà le bon modèle (ana-superia-v6) ligne 1913
       // socket.emit('chat:model_selected', { model, reason, provider });
@@ -5411,7 +5477,7 @@ io.on('connection', (socket) => {
         try {
           const groqResult = await groqService.chat(message, {
             model: model,
-            systemPrompt: "Tu es Ana, une IA fran�aise intelligente et amicale. R�ponds toujours en fran�ais de mani�re naturelle et utile."
+            systemPrompt: "Tu es Ana, une IA française intelligente et amicale. Réponds toujours en français de manière naturelle et utile."
           });
 
           if (groqResult.success) {
@@ -5447,7 +5513,7 @@ io.on('connection', (socket) => {
         try {
           const cerebrasResult = await cerebrasService.chat(message, {
             model: model,
-            systemPrompt: "Tu es Ana, une IA fran�aise intelligente et amicale. R�ponds toujours en fran�ais de mani�re naturelle et utile."
+            systemPrompt: "Tu es Ana, une IA française intelligente et amicale. Réponds toujours en français de manière naturelle et utile."
           });
 
           if (cerebrasResult.success) {
@@ -5479,9 +5545,9 @@ io.on('connection', (socket) => {
       }
 
       // === TOOL AGENT ROUTING ===
-      // Si le semantic router d�tecte une requ�te n�cessitant des outils (heure, m�t�o, fichiers, etc.)
+      // Si le semantic router détecte une requête nécessitant des outils (heure, météo, fichiers, etc.)
       if (method === 'tools' || taskType === 'tools') {
-        console.log(`?? [ToolAgent] Requ�te d�tect�e, activation du tool agent...`);
+        console.log(`🔧 [ToolAgent] Requête détectée, activation du tool agent...`);
         try {
           // V2: Utilise LoopController intelligent au lieu de maxLoops fixe
           const result = await toolAgent.runToolAgentV2(message, {
@@ -5491,12 +5557,12 @@ io.on('connection', (socket) => {
           });
 
           if (result.success) {
-            console.log(`? [ToolAgent] R�ponse g�n�r�e (${result.loopsUsed} boucles)`);
-            // Envoyer la r�ponse en une seule fois (pas de streaming pour tool agent)
+            console.log(`✅ [ToolAgent] Réponse générée (${result.loopsUsed} boucles)`);
+            // Envoyer la réponse en une seule fois (pas de streaming pour tool agent)
             socket.emit('chat:chunk', { chunk: result.answer });
             socket.emit('chat:complete', {});
 
-            // Capture V2 pour les r�ponses toolAgent (semantic router)
+            // Capture V2 pour les réponses toolAgent (semantic router)
             memoryCaptureV2.capture({
               userMessage: message,
               anaResponse: result.answer,
@@ -5504,9 +5570,9 @@ io.on('connection', (socket) => {
             }).catch(err => console.error("Memory V2 capture error (tools-semantic):", err.message));
 
           } else {
-            console.log(`?? [ToolAgent] �chec:`, result.error);
-            // Fallback vers le flux normal si le tool agent �choue
-            socket.emit('chat:chunk', { chunk: `D�sol�, je n'ai pas pu utiliser mes outils: ${result.error}. Je vais essayer de r�pondre autrement.` });
+            console.log(`❌ [ToolAgent] Échec:`, result.error);
+            // Fallback vers le flux normal si le tool agent échoue
+            socket.emit('chat:chunk', { chunk: `Désolé, je n'ai pas pu utiliser mes outils: ${result.error}. Je vais essayer de répondre autrement.` });
             socket.emit('chat:complete', {});
           }
           return; // Sortir du handler, ne pas continuer vers Ollama direct
@@ -5517,15 +5583,15 @@ io.on('connection', (socket) => {
       }
 
       // === CODING AGENT ROUTING ===
-      // Si le semantic router d�tecte une t�che de coding, utiliser le Coding Agent
+      // Si le semantic router détecte une tâche de coding, utiliser le Coding Agent
       if (taskType === 'coding' && method === 'semantic') {
-        console.log(`?? [CodingAgent] T�che de code d�tect�e, activation du coding agent...`);
+        console.log(`💻 [CodingAgent] Tâche de code détectée, activation du coding agent...`);
         try {
           const codingAgent = new CodingAgent();
           const result = await codingAgent.run(message, {});
 
           if (result.success) {
-            console.log(`? [CodingAgent] T�che compl�t�e (${result.iterations} it�rations)`);
+            console.log(`✅ [CodingAgent] Tâche complétée (${result.iterations} itérations)`);
             socket.emit('chat:chunk', { chunk: result.response || result.summary });
             socket.emit('chat:complete', { model: 'deepseek-coder-v2', provider: 'coding-agent' });
 
@@ -5538,7 +5604,7 @@ io.on('connection', (socket) => {
 
             return;
           } else {
-            console.log(`?? [CodingAgent] �chec, fallback vers LLM standard:`, result.error);
+            console.log(`❌ [CodingAgent] Échec, fallback vers LLM standard:`, result.error);
           }
         } catch (codingError) {
           console.error(`? [CodingAgent] Erreur:`, codingError.message);
@@ -5546,52 +5612,52 @@ io.on('connection', (socket) => {
         }
       }
 
-      // === M�T�O EARLY DETECTION (AVANT tout le reste) ===
-      // D�tection m�t�o en premier pour �viter qu'elle soit saut�e par des erreurs
+      // === MÉTÉO EARLY DETECTION (AVANT tout le reste) ===
+      // Détection météo en premier pour éviter qu'elle soit sautée par des erreurs
       let earlyWeatherData = null;
       let earlySystemData = null;  // Pour CPU/RAM/Disk (2025-12-10)
       const messageLower = message.toLowerCase();
-      const weatherKeywords = ['m�t�o', 'meteo', 'temps qu\'il fait', 'temp�rature', 'pluie demain', 'fera-t-il', 'quel temps'];
+      const weatherKeywords = ['météo', 'meteo', 'temps qu\'il fait', 'température', 'pluie demain', 'fera-t-il', 'quel temps'];
 
       if (weatherKeywords.some(kw => messageLower.includes(kw))) {
-        console.log('??? Web Intelligence: D�tection m�t�o (early)');
+        console.log('☀️ Web Intelligence: Détection météo (early)');
         try {
           const WebTools = require('./tools/web-tools.cjs');
           // Patterns pour extraire la ville
           const locationPatterns = [
-            /m�t�o[\s]+(?:�|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,
-            /temps[\s]+(?:�|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,
-            /temp�rature[\s]+(?:�|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i
+            /météo[\s]+(?:à|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,
+            /temps[\s]+(?:à|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,
+            /température[\s]+(?:à|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i
           ];
-          // Mots temporels � ignorer (pas des villes!)
-          const temporalWords = ['demain', 'aujourd', 'hier', 'maintenant', 'actuellement', 'pr�sentement', 'ce soir', 'ce matin', 'cette nuit', 'semaine', 'weekend'];
-          let location = 'Longueuil'; // D�faut - Ana habite � Longueuil
+          // Mots temporels à ignorer (pas des villes!)
+          const temporalWords = ['demain', 'aujourd', 'hier', 'maintenant', 'actuellement', 'présentement', 'ce soir', 'ce matin', 'cette nuit', 'semaine', 'weekend'];
+          let location = 'Longueuil'; // Défaut - Ana habite à Longueuil
           for (const pattern of locationPatterns) {
             const match = message.match(pattern);
             if (match && match[1]) {
               const extracted = match[1].trim().toLowerCase();
-              // V�rifier que ce n'est pas un mot temporel
+              // Vérifier que ce n'est pas un mot temporel
               if (!temporalWords.some(tw => extracted.startsWith(tw))) {
                 location = match[1].trim();
                 break;
               }
             }
           }
-          console.log('??? M�t�o pour:', location);
+          console.log('☀️ Météo pour:', location);
           const weatherData = await WebTools.weather(location);
           if (weatherData.success) {
-            earlyWeatherData = `[DONN�ES M�T�O EN TEMPS R�EL - UTILISE CES DONN�ES POUR R�PONDRE]
+            earlyWeatherData = `[DONNÉES MÉTÉO EN TEMPS RÉEL - UTILISE CES DONNÉES POUR RÉPONDRE]
 Lieu: ${weatherData.location.name}, ${weatherData.location.country}
-Temp�rature actuelle: ${weatherData.current.temperature}
-Temp�rature ressentie: ${weatherData.current.feelsLike}
+Température actuelle: ${weatherData.current.temperature}
+Température ressentie: ${weatherData.current.feelsLike}
 Conditions: ${weatherData.current.description}
-Humidit�: ${weatherData.current.humidity}
+Humidité: ${weatherData.current.humidity}
 Vent: ${weatherData.current.windSpeed}`;
-            console.log('? M�t�o r�cup�r�e:', weatherData.current.temperature);
+            console.log('✅ Météo récupérée:', weatherData.current.temperature);
             socket.emit('chat:web_search', { type: 'weather', location, success: true });
           }
         } catch (weatherError) {
-          console.log('?? M�t�o error (early):', weatherError.message);
+          console.log('❌ Météo error (early):', weatherError.message);
         }
       }
 
@@ -5631,17 +5697,88 @@ Vent: ${weatherData.current.windSpeed}`;
           });
         }
 
-        // 3. Learned skills relevant to this task
+        // 3. Learned skills AND patterns relevant to this task (Fix Feedback System - 22 Dec 2025)
         if (skillLearner && skillLearner.initialized) {
           const suggestions = await skillLearner.getSuggestions(message);
+
+          // 3a. Applicable skills
           if (suggestions.applicableSkills && suggestions.applicableSkills.length > 0) {
             sources.push({
               type: 'skills',
               data: suggestions.applicableSkills
             });
           }
+
+          // 3b. Anti-patterns to AVOID (NOUVEAU - Fix Feedback)
+          if (suggestions.avoidPatterns && suggestions.avoidPatterns.length > 0) {
+            const antiPatternText = suggestions.avoidPatterns.map(p =>
+              `- NE PAS: ${p.what_went_wrong} → ${p.improvement_rule}`
+            ).join('\n');
+            sources.push({
+              type: 'anti_patterns',
+              data: `[ERREURS À ÉVITER]\n${antiPatternText}`,
+              priority: 'high' // Priorité haute pour être sélectionné
+            });
+            console.log(`⚠️ Anti-patterns injectés: ${suggestions.avoidPatterns.length}`);
+          }
+
+          // 3c. Relevant code patterns
+          if (suggestions.relevantPatterns && suggestions.relevantPatterns.length > 0) {
+            const patternText = suggestions.relevantPatterns.map(p =>
+              `- ${p.name}: ${p.pattern} (${p.usage})`
+            ).join('\n');
+            sources.push({
+              type: 'code_patterns',
+              data: `[PATTERNS RECOMMANDÉS]\n${patternText}`
+            });
+            console.log(`✨ Code patterns injectés: ${suggestions.relevantPatterns.length}`);
+          }
         }
 
+        // 3d. Recent negative feedback lessons (Fix Feedback System - 22 Dec 2025)
+        if (skillLearner && skillLearner.feedback) {
+          const recentNegative = (skillLearner.feedback.negative || []).slice(-5);
+          if (recentNegative.length > 0) {
+            const lessonsLearned = recentNegative
+              .filter(fb => fb.comment || fb.responseSummary)
+              .map(fb => `- Éviter: ${fb.comment || fb.responseSummary || 'Réponse non satisfaisante'}`)
+              .slice(0, 3);
+            if (lessonsLearned.length > 0) {
+              sources.push({
+                type: 'feedback_lessons',
+                data: `[LEÇONS DES FEEDBACKS NÉGATIFS]\n${lessonsLearned.join('\n')}`,
+                priority: 'high'
+              });
+              console.log(`📝 Feedback lessons injectés: ${lessonsLearned.length}`);
+            }
+          }
+        }
+
+        // 3e. Coding Workflows - DÉSACTIVÉ TEMPORAIREMENT (debug météo)
+        // if (skillLoader && typeof skillLoader.getCodingWorkflowInstructions === 'function') {
+        //   const codingWorkflow = skillLoader.getCodingWorkflowInstructions(message);
+        //   if (codingWorkflow) {
+        //     sources.push({
+        //       type: 'coding_workflow',
+        //       data: codingWorkflow.instructions,
+        //       priority: 'high'
+        //     });
+        //     console.log(`🔧 Coding workflow injecté: ${codingWorkflow.skillId}`);
+        //   }
+        // }
+
+        // 3f. OpenSkills - DÉSACTIVÉ TEMPORAIREMENT (debug météo)
+        // if (skillLoader && typeof skillLoader.getSkillInstructions === 'function') {
+        //   const skillInfo = skillLoader.getSkillInstructions(message);
+        //   if (skillInfo) {
+        //     sources.push({
+        //       type: 'openskill',
+        //       data: `=== INSTRUCTIONS SPÉCIALISÉES (${skillInfo.skillName}) ===\n${skillInfo.instructions}\n=== FIN INSTRUCTIONS ===`,
+        //       priority: 'high'
+        //     });
+        //     console.log(`🎯 OpenSkill injecté: ${skillInfo.skillId}`);
+        //   }
+        // }
 
         // 4. Web Intelligence - LangChain Auto Search (NOUVEAU!)
         // Utilise LangChain + DuckDuckGo pour recherche web automatique
@@ -5649,7 +5786,7 @@ Vent: ${weatherData.current.windSpeed}`;
           try {
             const webSearchResult = await langchainWebSearch.autoSearch(message);
             if (webSearchResult && webSearchResult.success) {
-              console.log('?? LangChain Web Search: R�sultats trouv�s');
+              console.log('🔍 LangChain Web Search: Résultats trouvés');
               sources.push({
                 type: 'langchain_web',
                 data: webSearchResult.formatted
@@ -5667,10 +5804,10 @@ Vent: ${weatherData.current.windSpeed}`;
 
         // 4b. Legacy Web Intelligence - Auto-detect need for internet search (fallback)
         const webKeywords = {
-          weather: ['m�t�o', 'meteo', 'temps qu\'il fait', 'temp�rature', 'pluie demain', 'fera-t-il', 'quel temps'],
-          search: ['cherche sur internet', 'recherche sur le web', 'trouve-moi', 'qui est', 'qu\'est-ce que', 'c\'est quoi', 'd�finition de', 'wikipedia'],
-          news: ['actualit�s', 'actualites', 'nouvelles', 'news', 'derni�res infos', 'que se passe'],
-          facts: ['combien', 'quel est le', 'quelle est la', 'date de', 'capitale de', 'pr�sident de', 'population de']
+          weather: ['météo', 'meteo', 'temps qu\'il fait', 'température', 'pluie demain', 'fera-t-il', 'quel temps'],
+          search: ['cherche sur internet', 'recherche sur le web', 'trouve-moi', 'qui est', 'qu\'est-ce que', 'c\'est quoi', 'définition de', 'wikipedia'],
+          news: ['actualités', 'actualites', 'nouvelles', 'news', 'dernières infos', 'que se passe'],
+          facts: ['combien', 'quel est le', 'quelle est la', 'date de', 'capitale de', 'président de', 'population de']
         };
 
         const messageLower = message.toLowerCase();
@@ -5678,16 +5815,16 @@ Vent: ${weatherData.current.windSpeed}`;
 
         // Check for weather request
         if (webKeywords.weather.some(kw => messageLower.includes(kw))) {
-          console.log('??? Web Intelligence: D�tection m�t�o');
+          console.log('☀️ Web Intelligence: Détection météo');
           // Extract location from message
-          // Patterns am�lior�s pour extraire la ville (�vite de capturer "fait-il", etc.)
+          // Patterns améliorés pour extraire la ville (évite de capturer "fait-il", etc.)
           const locationPatterns = [
-            /m�t�o[\s]+(?:�|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,        // "m�t�o � Montr�al"
-            /temps[\s]+(?:�|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,        // "temps � Qu�bec"
-            /temp�rature[\s]+(?:�|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,  // "temp�rature � Longueuil"
-            /(?:�|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)[\s]*\?/i           // "m�t�o de Paris?"
+            /météo[\s]+(?:à|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,        // "météo à Montréal"
+            /temps[\s]+(?:à|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,        // "temps à Québec"
+            /température[\s]+(?:à|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)/i,  // "température à Longueuil"
+            /(?:à|a|de|du|en|pour)[\s]+([A-Z][\w\s-]+)[\s]*\?/i           // "météo de Paris?"
           ];
-          let location = 'Longueuil'; // Default - Ana habite � Longueuil avec ALAIN
+          let location = 'Longueuil'; // Default - Ana habite à Longueuil avec ALAIN
           for (const pattern of locationPatterns) {
             const match = message.match(pattern);
             if (match && match[1]) {
@@ -5701,15 +5838,15 @@ Vent: ${weatherData.current.windSpeed}`;
               webResults = {
                 type: 'weather',
                 data: weatherData,
-                summary: `M�t�o ${weatherData.location.name}: ${weatherData.current.temperature}, ${weatherData.current.description}`
+                summary: `Météo ${weatherData.location.name}: ${weatherData.current.temperature}, ${weatherData.current.description}`
               };
               sources.push({
                 type: 'web_weather',
-                data: `[DONN�ES M�T�O EN TEMPS R�EL]
+                data: `[DONNÉES MÉTÉO EN TEMPS RÉEL]
 Lieu: ${weatherData.location.name}, ${weatherData.location.country}
-Temp�rature: ${weatherData.current.temperature} (ressenti: ${weatherData.current.feelsLike})
+Température: ${weatherData.current.temperature} (ressenti: ${weatherData.current.feelsLike})
 Conditions: ${weatherData.current.description}
-Humidit�: ${weatherData.current.humidity}
+Humidité: ${weatherData.current.humidity}
 Vent: ${weatherData.current.windSpeed} ${weatherData.current.windDirection}`
               });
               socket.emit('chat:web_search', { type: 'weather', location, success: true });
@@ -5721,7 +5858,7 @@ Vent: ${weatherData.current.windSpeed} ${weatherData.current.windDirection}`
         // Check for general search request
         else if (webKeywords.search.some(kw => messageLower.includes(kw)) ||
                  webKeywords.facts.some(kw => messageLower.includes(kw))) {
-          console.log('?? Web Intelligence: D�tection recherche web');
+          console.log('🔎 Web Intelligence: Détection recherche web');
           try {
             const searchQuery = message.replace(/cherche sur internet|recherche sur le web|trouve-moi|c'est quoi|qu'est-ce que/gi, '').trim();
             const searchData = await WebTools.search(searchQuery);
@@ -5730,11 +5867,11 @@ Vent: ${weatherData.current.windSpeed} ${weatherData.current.windDirection}`
               if (searchData.answer) searchSummary += searchData.answer + '\n';
               if (searchData.abstract) searchSummary += searchData.abstract + '\n';
               if (searchData.relatedTopics?.length > 0) {
-                searchSummary += 'Sujets li�s: ' + searchData.relatedTopics.slice(0, 3).map(t => t.text).join('; ');
+                searchSummary += 'Sujets liés: ' + searchData.relatedTopics.slice(0, 3).map(t => t.text).join('; ');
               }
               sources.push({
                 type: 'web_search',
-                data: `[R�SULTATS RECHERCHE WEB]
+                data: `[RÉSULTATS RECHERCHE WEB]
 ${searchSummary}`
               });
               socket.emit('chat:web_search', { type: 'search', query: searchQuery, success: true });
@@ -5749,7 +5886,7 @@ ${searchSummary}`
         // 5. File Intelligence - Auto-detect file operations
         const fileKeywords = ['lis le fichier', 'ouvre le fichier', 'montre-moi le fichier', 'contenu de', 'affiche le fichier', 'read file'];
         if (fileKeywords.some(kw => messageLower.includes(kw))) {
-          console.log('?? Tools Intelligence: D�tection lecture fichier');
+          console.log('📁 Tools Intelligence: Détection lecture fichier');
           const filePatterns = [
             /(?:lis|ouvre|montre|affiche)[\s]+(?:le|ce)?[\s]*fichier[\s]+([\w\.\/\\:-]+)/i,
             /contenu[\s]+(?:de|du)[\s]+([\w\.\/\\:-]+)/i,
@@ -5765,7 +5902,7 @@ ${searchSummary}`
                 if (fileData.success) {
                   sources.push({
                     type: 'file_content',
-                    data: `[CONTENU FICHIER: ${filePath}]\n${fileData.content.substring(0, 2000)}${fileData.content.length > 2000 ? '\n...(tronqu�)' : ''}`
+                    data: `[CONTENU FICHIER: ${filePath}]\n${fileData.content.substring(0, 2000)}${fileData.content.length > 2000 ? '\n...(tronqué)' : ''}`
                   });
                   socket.emit('chat:tool_used', { type: 'file', path: filePath, success: true });
                 }
@@ -5778,9 +5915,9 @@ ${searchSummary}`
         }
 
         // 6. Search Intelligence - Auto-detect file search
-        const searchKeywords = ['trouve les fichiers', 'cherche les fichiers', 'liste les fichiers', 'quels fichiers', 'o� sont les', 'find files'];
+        const searchKeywords = ['trouve les fichiers', 'cherche les fichiers', 'liste les fichiers', 'quels fichiers', 'où sont les', 'find files'];
         if (searchKeywords.some(kw => messageLower.includes(kw))) {
-          console.log('?? Tools Intelligence: D�tection recherche fichiers');
+          console.log('🔍 Tools Intelligence: Détection recherche fichiers');
           try {
             const SearchTools = require('./tools/search-tools.cjs');
             // Extract search pattern
@@ -5801,7 +5938,7 @@ ${searchSummary}`
             if (searchData.success && searchData.files?.length > 0) {
               sources.push({
                 type: 'file_search',
-                data: `[FICHIERS TROUV�S: ${searchPattern}]\n${searchData.files.slice(0, 15).join('\n')}${searchData.files.length > 15 ? '\n...(+' + (searchData.files.length - 15) + ' autres)' : ''}`
+                data: `[FICHIERS TROUVÉS: ${searchPattern}]\n${searchData.files.slice(0, 15).join('\n')}${searchData.files.length > 15 ? '\n...(+' + (searchData.files.length - 15) + ' autres)' : ''}`
               });
               socket.emit('chat:tool_used', { type: 'search', pattern: searchPattern, count: searchData.files.length });
             }
@@ -5811,9 +5948,9 @@ ${searchSummary}`
         }
 
         // 7. Git Intelligence - Auto-detect git operations (read-only by default)
-        const gitKeywords = ['status git', '�tat du repo', 'git status', 'commits r�cents', 'historique git', 'derniers commits'];
+        const gitKeywords = ['status git', 'état du repo', 'git status', 'commits récents', 'historique git', 'derniers commits'];
         if (gitKeywords.some(kw => messageLower.includes(kw))) {
-          console.log('?? Tools Intelligence: D�tection Git status');
+          console.log('📊 Tools Intelligence: Détection Git status');
           try {
             const GitTools = require('./tools/git-tools.cjs');
             const repoPath = 'E:/ANA'; // Default repo
@@ -5823,7 +5960,7 @@ ${searchSummary}`
                 type: 'git_status',
                 data: `[GIT STATUS: ${repoPath}]
 Branche: ${gitStatus.current || 'N/A'}
-Fichiers modifi�s: ${gitStatus.modified?.length || 0}
+Fichiers modifiés: ${gitStatus.modified?.length || 0}
 Fichiers non suivis: ${gitStatus.not_added?.length || 0}
 En avance de: ${gitStatus.ahead || 0} commits`
               });
@@ -5839,7 +5976,7 @@ En avance de: ${gitStatus.ahead || 0} commits`
         const browserKeywords = ['va sur', 'ouvre la page', 'lis cette page', 'visite', 'contenu de http', 'fetch url'];
         const urlMatch = message.match(urlPattern);
         if (urlMatch || browserKeywords.some(kw => messageLower.includes(kw))) {
-          console.log('?? Tools Intelligence: D�tection navigation web');
+          console.log('🌐 Tools Intelligence: Détection navigation web');
           try {
             const url = urlMatch ? urlMatch[1] : null;
             if (url) {
@@ -5861,12 +5998,12 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
         }
 
         // 9. Bash Intelligence - Auto-detect system commands (safe commands only)
-        const bashKeywords = ['ex�cute la commande', 'lance la commande', 'run command', 'execute'];
+        const bashKeywords = ['exécute la commande', 'lance la commande', 'run command', 'execute'];
         const safeCommands = ['dir', 'ls', 'pwd', 'whoami', 'date', 'time', 'hostname', 'ipconfig', 'systeminfo'];
         if (bashKeywords.some(kw => messageLower.includes(kw))) {
-          console.log('?? Tools Intelligence: D�tection commande syst�me');
+          console.log('💻 Tools Intelligence: Détection commande système');
           // Extract command
-          const cmdMatch = message.match(/(?:ex�cute|lance|run|execute)[\s]+(?:la)?[\s]*commande[\s]+[`"']?([^`"']+)[`"']?/i);
+          const cmdMatch = message.match(/(?:exécute|lance|run|execute)[\s]+(?:la)?[\s]*commande[\s]+[`"']?([^`"']+)[`"']?/i);
           if (cmdMatch && cmdMatch[1]) {
             const cmd = cmdMatch[1].trim().split(' ')[0].toLowerCase();
             if (safeCommands.includes(cmd)) {
@@ -5884,7 +6021,7 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
                 console.log('?? Bash error:', e.message);
               }
             } else {
-              console.log('?? Bash: Commande non autoris�e:', cmd);
+              console.log('⚠️ Bash: Commande non autorisée:', cmd);
             }
           }
         }
@@ -6005,7 +6142,7 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
             });
 
             const categories = [...new Set(loadedSkills.map(s => s.category))];
-            console.log(`?? Skills Intelligence: ${loadedSkills.length} skills trouv�s (${categories.slice(0, 3).join(', ')}${categories.length > 3 ? '...' : ''})`);
+            console.log(`📚 Skills Intelligence: ${loadedSkills.length} skills trouvés (${categories.slice(0, 3).join(', ')}${categories.length > 3 ? '...' : ''})`);
 
             socket.emit('chat:skills_loaded', {
               modules: categories.slice(0, 5),
@@ -6057,12 +6194,12 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
         memoryContext = memory.getContext();
       }
 
-      const systemInstruction = "Tu es Ana, une IA locale fran�aise. R�ponds TOUJOURS en fran�ais. Sois pr�cise et technique.\n\n";
+      const systemInstruction = "Tu es Ana, une IA locale française. Réponds TOUJOURS en français. Sois précise et technique.\n\n";
       const fullPrompt = memoryContext
-        ? `${systemInstruction}${memoryContext}\n\nAlain: ${message}\nAna (r�ponds en fran�ais):`
-        : `${systemInstruction}Alain: ${message}\nAna (r�ponds en fran�ais):`;
+        ? `${systemInstruction}${memoryContext}\n\nAlain: ${message}\nAna (réponds en français):`
+        : `${systemInstruction}Alain: ${message}\nAna (réponds en français):`;
 
-      // D�tecter si vision model (pour utiliser /api/chat au lieu de /api/generate)
+      // Détecter si vision model (pour utiliser /api/chat au lieu de /api/generate)
       // Source: https://docs.ollama.com/capabilities/vision
       const isVisionModel = images && images.length > 0;
       let response;
@@ -6075,7 +6212,7 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
             {
               role: 'user',
               content: fullPrompt,
-              images: images  // Tableau base64 strings (sans pr�fixe data:image)
+              images: images  // Tableau base64 strings (sans préfixe data:image)
             }
           ],
           stream: true
@@ -6168,15 +6305,15 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
         // Ajouter au buffer
         jsonBuffer += chunk.toString();
 
-        // D�tecter lignes compl�tes (s�par�es par \n)
+        // Détecter lignes complètes (séparées par \n)
         let boundary = jsonBuffer.lastIndexOf('\n');
         if (boundary !== -1) {
-          // Extraire les lignes compl�tes
+          // Extraire les lignes complètes
           const completeLines = jsonBuffer.substring(0, boundary);
           // Garder le reste pour le prochain chunk
           jsonBuffer = jsonBuffer.substring(boundary + 1);
 
-          // Parser chaque ligne compl�te
+          // Parser chaque ligne complète
           completeLines.split('\n').forEach(line => {
             if (!line.trim()) return; // Ignorer lignes vides
 
@@ -6189,7 +6326,7 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
               // Source: https://docs.ollama.com/capabilities/vision
               const content = json.response || json.message?.content;
 
-              // �mettre uniquement si content existe ET que ce n'est pas le message final done:true
+              // Émettre uniquement si content existe ET que ce n'est pas le message final done:true
               if (content && json.done !== true) {
                 // Appliquer filtre tutoiement au streaming (vous→tu) + correction puisage
                 let filteredContent = forceTutoiement(content);
@@ -6198,7 +6335,7 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
                 console.log('🔵 Backend emit chunk:', filteredContent);
                 socket.emit('chat:chunk', { chunk: filteredContent });
               } else if (json.done === true) {
-                console.log('? Stream termin� (done:true)');
+                console.log('✅ Stream terminé (done:true)');
               }
             } catch (e) {
               console.log('?? Parse warning:', e.message);
@@ -6375,13 +6512,13 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
     try {
       console.log('?? [WebSocket] Coding Agent task:', task.substring(0, 100));
 
-      // �mettre le d�but
+      // Émettre le début
       socket.emit('coding:started', { task: task.substring(0, 100), timestamp: new Date().toISOString() });
 
       const agent = new CodingAgent({ dryRun: dryRun || false });
       const result = await agent.run(task, context || {});
 
-      // �mettre les actions effectu�es
+      // Émettre les actions effectuées
       if (result.actions && result.actions.length > 0) {
         result.actions.forEach((action, index) => {
           socket.emit('coding:action', {
@@ -6394,7 +6531,7 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
         });
       }
 
-      // �mettre le r�sultat final
+      // Émettre le résultat final
       socket.emit('coding:completed', result);
 
       if (callback) callback(result);
@@ -6410,7 +6547,7 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
   });
 
   socket.on('disconnect', (reason) => {
-    console.log('? Client d�connect�:', socket.id, '- Raison:', reason);
+    console.log('👋 Client déconnecté:', socket.id, '- Raison:', reason);
   });
 });
 
@@ -6667,7 +6804,7 @@ process.on('unhandledRejection', (reason, promise) => {
 
 // Graceful shutdown on SIGINT
 process.on('SIGINT', () => {
-  console.log('\n?? Arr�t Ana Core (SIGINT)...');
+  console.log('\n🛑 Arrêt Ana Core (SIGINT)...');
   memory.saveContext();
   console.log('? Memory saved');
   process.exit(0);
@@ -6675,7 +6812,7 @@ process.on('SIGINT', () => {
 
 // Graceful shutdown on SIGTERM
 process.on('SIGTERM', () => {
-  console.log('\n?? Arr�t Ana Core (SIGTERM)...');
+  console.log('\n🛑 Arrêt Ana Core (SIGTERM)...');
   memory.saveContext();
   console.log('? Memory saved');
   process.exit(0);

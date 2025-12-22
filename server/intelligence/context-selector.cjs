@@ -271,11 +271,18 @@ class ContextSelector {
       })
     );
 
-    // Filter by minimum relevance
-    const filteredCandidates = scoredCandidates.filter(c => c.combinedScore >= minRelevance);
+    // Filter by minimum relevance BUT always include mustInclude items (Fix Feedback - 22 Dec 2025)
+    const filteredCandidates = scoredCandidates.filter(c =>
+      c.combinedScore >= minRelevance || c.metadata?.mustInclude === true
+    );
 
-    // Sort by combined score (highest first)
-    filteredCandidates.sort((a, b) => b.combinedScore - a.combinedScore);
+    // Sort by combined score (highest first), but mustInclude items get priority boost
+    filteredCandidates.sort((a, b) => {
+      // Priority boost for mustInclude items
+      const aBoost = a.metadata?.mustInclude ? 1 : 0;
+      const bBoost = b.metadata?.mustInclude ? 1 : 0;
+      return (b.combinedScore + bBoost) - (a.combinedScore + aBoost);
+    });
 
     // ================== RAG 2-STAGE: RERANKING (6 Dec 2025) ==================
     // Step 1: Take top N candidates from embedding similarity
@@ -456,6 +463,46 @@ class ContextSelector {
           source: 'skills_knowledge',
           timestamp: new Date().toISOString(),
           metadata: { type: 'skills_knowledge' }
+        });
+      } else if (source.type === 'anti_patterns' && source.data) {
+        // Anti-patterns - HIGH PRIORITY - Always include (Fix Feedback System - 22 Dec 2025)
+        allCandidates.unshift({  // unshift = début du tableau = priorité haute
+          content: source.data,
+          source: 'anti_patterns',
+          timestamp: new Date().toISOString(),
+          metadata: { type: 'anti_patterns', priority: 'high', mustInclude: true }
+        });
+      } else if (source.type === 'code_patterns' && source.data) {
+        // Code patterns - Include for coding tasks (Fix Feedback System - 22 Dec 2025)
+        allCandidates.push({
+          content: source.data,
+          source: 'code_patterns',
+          timestamp: new Date().toISOString(),
+          metadata: { type: 'code_patterns' }
+        });
+      } else if (source.type === 'feedback_lessons' && source.data) {
+        // Feedback lessons - HIGH PRIORITY (Fix Feedback System - 22 Dec 2025)
+        allCandidates.unshift({  // unshift = début = priorité haute
+          content: source.data,
+          source: 'feedback_lessons',
+          timestamp: new Date().toISOString(),
+          metadata: { type: 'feedback_lessons', priority: 'high', mustInclude: true }
+        });
+      } else if (source.type === 'coding_workflow' && source.data) {
+        // Coding Workflows - HIGH PRIORITY for code requests (Fix 22 Dec 2025)
+        allCandidates.unshift({
+          content: source.data,
+          source: 'coding_workflow',
+          timestamp: new Date().toISOString(),
+          metadata: { type: 'coding_workflow', priority: 'high', mustInclude: true }
+        });
+      } else if (source.type === 'openskill' && source.data) {
+        // OpenSkills - HIGH PRIORITY specialized instructions (Fix 22 Dec 2025)
+        allCandidates.unshift({
+          content: source.data,
+          source: 'openskill',
+          timestamp: new Date().toISOString(),
+          metadata: { type: 'openskill', priority: 'high', mustInclude: true }
         });
       } else if (source.type === 'custom') {
         // Custom context provided directly

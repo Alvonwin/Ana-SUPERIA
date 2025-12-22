@@ -270,6 +270,26 @@ Déléguer aux sous-agents **uniquement** quand la tâche bénéficie clairement
 | Dashboard Agents | 3336 |
 | ComfyUI | 8188 |
 
+## Communication Claude → Ana
+
+**IMPORTANT:** Pour communiquer avec Ana depuis Claude Code, utiliser un fichier JSON (le JSON direct dans curl échoue sur Windows à cause des échappements).
+
+**Méthode:**
+```bash
+# 1. Créer le fichier JSON
+# E:\ANA\temp\message.json contient: {"message":"Ton message ici"}
+
+# 2. Envoyer avec curl
+curl -X POST http://localhost:3338/api/chat -H "Content-Type: application/json" --data "@E:\ANA\temp\message.json"
+```
+
+**Notes:**
+- Ana met 30-40 secondes à répondre (normal)
+- Vérifier qu'Ana tourne: `curl http://localhost:3338/api/health`
+- Le chemin du fichier doit être entre guillemets: `"@E:\ANA\temp\fichier.json"`
+
+**❌ Ne PAS faire:** JSON direct dans curl (`-d '{"message":"test"}'`) → erreur d'échappement Windows
+
 ## Scripts Utilitaires (`scripts/`)
 
 | Script | Usage |

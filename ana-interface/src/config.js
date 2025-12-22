@@ -5,7 +5,7 @@ const isLocalhost = window.location.hostname === 'localhost' || window.location.
 
 export const BACKEND_URL = isLocalhost
   ? 'http://localhost:3338'
-  : 'https://wisdom-problems-peripherals-alien.trycloudflare.com';
+  : 'https://influences-commissions-handles-plots.trycloudflare.com';
 
 export const COMFYUI_URL = 'http://localhost:8188';
 
