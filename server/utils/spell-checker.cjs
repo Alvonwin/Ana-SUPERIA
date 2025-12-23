@@ -7,6 +7,8 @@
  */
 
 const nspell = require('nspell');
+const fs = require('fs');
+const path = require('path');
 
 let spellChecker = null;
 let isInitialized = false;
@@ -19,16 +21,19 @@ async function initialize() {
   if (isInitialized) return;
 
   try {
-    // Dynamic import for ESM module dictionary-fr
-    const dictionary = await import('dictionary-fr');
-    const dict = dictionary.default;
+    // FIX 2025-12-23: Lire les fichiers directement (evite conflit ESM/CommonJS)
+    const dictPath = path.dirname(require.resolve('dictionary-fr'));
+    const affPath = path.join(dictPath, 'index.aff');
+    const dicPath = path.join(dictPath, 'index.dic');
 
-    // dictionary-fr exports { aff, dic } directly as Buffers
-    spellChecker = nspell(dict);
+    const aff = fs.readFileSync(affPath);
+    const dic = fs.readFileSync(dicPath);
+
+    spellChecker = nspell({ aff, dic });
     isInitialized = true;
     console.log('Correcteur orthographique francais initialise');
   } catch (error) {
-    console.error('Erreur import dictionary-fr:', error.message);
+    console.error('Erreur init spell-checker:', error.message);
     throw error;
   }
 }

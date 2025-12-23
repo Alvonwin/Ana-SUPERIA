@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2025-12-23T09:03:54.726Z",
+    "updated": "2025-12-23T09:41:02.609Z",
     "version": "1.0.1"
   },
   "skills": [
@@ -88,11 +88,11 @@
       "taskType": "conversation",
       "confidence": "high",
       "importance": 7,
-      "occurrences": 35,
-      "successCount": 35,
+      "occurrences": 36,
+      "successCount": 36,
       "failureCount": 0,
       "learnedAt": "2025-12-17T16:03:56.213Z",
-      "lastSeen": "2025-12-23T08:33:33.276Z"
+      "lastSeen": "2025-12-23T09:40:24.038Z"
     },
     {
       "id": "tp_1765987468121_search_in_file",
@@ -12097,6 +12097,30 @@
       "confidence": "medium",
       "importance": 7,
       "learnedAt": "2025-12-23T09:03:54.726Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766482862583_pnvz0",
+      "type": "learned_solution",
+      "name": "Demander des légendes spécifiques à Alain",
+      "description": "Alinéa a exprimé son intérêt pour les légendes et demande de raconter une, précisément celle qu'il souhaite entendre.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-23T09:41:02.580Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766482862609_h1cfg",
+      "type": "pattern",
+      "name": "Préparer des légendes pour Alain",
+      "description": "Il est prévu de préparer une légende spécifique à ses goûts, ce qui indique un intérêt clair et déterminé.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-23T09:41:02.609Z",
       "sourceModel": "llama-3.3-70b",
       "successfulExecution": true,
       "occurrences": 1
