@@ -5315,6 +5315,22 @@ io.on('connection', (socket) => {
   //   model: llmProfiles.getDisplayName(),
   //   reason: 'Modèle par défaut'
   // });
+
+  // === PONT AGENTS AUTONOMES ===
+  // Recevoir les insights des agents connectes via socket.io
+  socket.on('agent:insight', (data) => {
+    console.log('[SOCKET] Agent insight recu:', data.agent);
+    agentInsights.push({
+      ...data,
+      receivedAt: new Date().toISOString()
+    });
+    if (agentInsights.length > MAX_INSIGHTS) agentInsights.shift();
+  });
+
+  socket.on('agents:connected', (data) => {
+    console.log('[SOCKET] Agents connectes:', data.agentCount);
+  });
+
   // Chat streaming
   socket.on('chat:message', async (data) => {
     let { message, context, images } = data;
@@ -5343,7 +5359,16 @@ io.on('connection', (socket) => {
         const fileContext = memory.getContext(); // Mémoire long terme
         const memoryContext = sessionContext || fileContext;
         console.log('[WS-MEMORY] Session:', sessionContext ? sessionContext.length + ' chars' : 'vide');
-        const fullPrompt = memoryContext ? `${memoryContext}\n\nQuestion: ${message}` : message;
+        // === INJECTION INSIGHTS AGENTS AUTONOMES ===
+        let agentInsightsContext = '';
+        if (agentInsights.length > 0) {
+          agentInsightsContext = '\n[INSIGHTS AGENTS - PRENDS EN COMPTE]\n' +
+            agentInsights.slice(-5).map(i => `- [${i.agent}] ${i.insight}`).join('\n') + '\n';
+          console.log('[WS] Agent insights injectes:', agentInsights.length);
+        }
+        const fullPrompt = memoryContext
+          ? `${memoryContext}${agentInsightsContext}\n\nQuestion: ${message}`
+          : agentInsightsContext + `Question: ${message}`;
 
         // Callback pour appeler les experts quand Ana en a besoin
         const expertCallback = async (expertType, expertQuery) => {

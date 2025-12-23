@@ -53,6 +53,48 @@ const dashboard = require('./dashboard_server.cjs')
 
 // Ancien coordinator (conservé pour compatibilité dashboard)
 const coordinator = require('./agent_coordinator.cjs')
+// ═══════════════════════════════════════════════════════════
+// PONT VERS ANA-CORE - Transmet les insights des agents
+// ═══════════════════════════════════════════════════════════
+let anaCoreSocket = null;
+
+function connectToAnaCore() {
+  try {
+    const io = require('socket.io-client');
+    anaCoreSocket = io('http://localhost:3338', {
+      transports: ['websocket'],
+      reconnection: true,
+      reconnectionDelay: 5000,
+      reconnectionAttempts: 10
+    });
+
+    anaCoreSocket.on('connect', () => {
+      console.log('🔗 [BRIDGE] Connecté à ana-core (port 3338)');
+      anaCoreSocket.emit('agents:connected', { agentCount: 16, timestamp: new Date().toISOString() });
+    });
+
+    anaCoreSocket.on('disconnect', () => console.log('⚠️  [BRIDGE] Déconnecté de ana-core'));
+    anaCoreSocket.on('connect_error', () => { /* Silencieux */ });
+
+    // Relayer les événements ana:* de ana-core vers le bus local
+    anaCoreSocket.on('ana:message_received', (data) => eventBus.emit('ana:message_received', data));
+    anaCoreSocket.on('ana:response_complete', (data) => eventBus.emit('ana:response_complete', data));
+
+    // Écouter les insights locaux et les transmettre à ana-core
+    eventBus.on('agent:insight', (data) => {
+      if (anaCoreSocket && anaCoreSocket.connected) {
+        anaCoreSocket.emit('agent:insight', data);
+        console.log();
+      }
+    });
+
+    console.log('🌉 [BRIDGE] Pont agents ↔ ana-core initialisé');
+  } catch (error) {
+    console.log('⚠️  [BRIDGE] socket.io-client non disponible');
+  }
+}
+
+
 
 const colors = {
   reset: '\x1b[0m',
@@ -267,6 +309,9 @@ async function startAllAgents() {
 
     await coordinator.start()
     await dashboard.start()
+    
+    // Connecter le pont vers ana-core pour transmettre les insights
+    connectToAnaCore()
     console.log()
 
     // ═══════════════════════════════════════════════════════════
