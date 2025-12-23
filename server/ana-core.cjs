@@ -960,6 +960,7 @@ app.post('/api/voice/history', (req, res) => {
 // ================== TTS API (16-Dec-2025) ==================
 // Synthese vocale avec voix quebecoise
 const ttsService = require('./services/tts-service.cjs');
+const sadtalkerService = require('./services/sadtalker-service.cjs');
 
 // POST - Synthetiser du texte en audio
 app.post('/api/tts/synthesize', async (req, res) => {
@@ -1040,6 +1041,82 @@ app.post('/api/tts/voice', (req, res) => {
       error: error.message
     });
   }
+});
+
+
+// ================== AVATAR ANIMATION API (23-Dec-2025) ==================
+// Animation lip-sync avec SadTalker
+
+// POST - Générer une vidéo animée d'Ana (avec CACHE)
+app.post('/api/avatar/animate', async (req, res) => {
+  try {
+    const { text } = req.body;
+
+    if (!text || typeof text !== 'string' || text.trim().length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'Le champ text est requis'
+      });
+    }
+
+    const cleanText = text.trim();
+    console.log('[Avatar] Demande pour:', cleanText.substring(0, 50) + '...');
+
+    // 1. Vérifier le CACHE d'abord
+    const cachedVideo = sadtalkerService.getFromCache(cleanText);
+    if (cachedVideo) {
+      console.log('[Avatar] Vidéo en CACHE, envoi instantané');
+      return res.sendFile(cachedVideo);
+    }
+
+    // 2. Pas en cache - Générer l'audio TTS
+    console.log('[Avatar] Pas en cache, génération...');
+    const audioPath = await ttsService.synthesize(cleanText);
+    if (!audioPath) {
+      return res.status(500).json({
+        success: false,
+        error: 'Erreur génération audio TTS'
+      });
+    }
+
+    console.log('[Avatar] Audio TTS généré:', audioPath);
+
+    // 3. Générer la vidéo avec SadTalker
+    const videoPath = await sadtalkerService.animate(audioPath);
+
+    console.log('[Avatar] Vidéo générée:', videoPath);
+
+    // 4. Ajouter au CACHE pour la prochaine fois
+    const cachedPath = sadtalkerService.addToCache(cleanText, videoPath);
+
+    // 5. Envoyer la vidéo
+    res.sendFile(cachedPath);
+
+  } catch (error) {
+    console.error('[Avatar API] Erreur:', error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// GET - Statistiques SadTalker
+app.get('/api/avatar/stats', (req, res) => {
+  res.json({
+    success: true,
+    stats: sadtalkerService.getStats()
+  });
+});
+
+// GET - Status du service
+app.get('/api/avatar/status', (req, res) => {
+  const stats = sadtalkerService.getStats();
+  res.json({
+    success: true,
+    enabled: stats.enabled,
+    processing: stats.processing
+  });
 });
 
 // ================== SPELL CHECK API (13-Dec-2025) ==================

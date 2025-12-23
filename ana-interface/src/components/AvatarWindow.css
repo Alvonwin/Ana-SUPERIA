@@ -1,0 +1,138 @@
+.avatar-window {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 280px;
+  background: #1a1a2e;
+  border: 1px solid #2d2d44;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.avatar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #16162a;
+  border-bottom: 1px solid #2d2d44;
+}
+
+.avatar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #ecf0f1;
+  font-size: 14px;
+}
+
+/* Switch toggle */
+.avatar-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+}
+
+.avatar-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.avatar-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #4a4a5a;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.avatar-switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.avatar-switch input:checked + .slider {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.avatar-switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.avatar-content {
+  padding: 12px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-video-main {
+  width: 100%;
+  border-radius: 8px;
+  background: #000;
+}
+
+.avatar-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-static {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2d2d44;
+}
+
+.avatar-hint {
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+.avatar-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #9b59b6;
+}
+
+.avatar-loading .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #2d2d44;
+  border-top-color: #9b59b6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.avatar-error {
+  color: #e74c3c;
+  font-size: 12px;
+  text-align: center;
+  padding: 10px;
+}

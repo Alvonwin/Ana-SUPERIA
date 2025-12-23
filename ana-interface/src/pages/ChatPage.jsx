@@ -18,7 +18,8 @@ import {
   IconChevronUp,
   IconThumbsUp,
   IconThumbsDown,
-  IconLoader2
+  IconLoader2,
+  IconVideo
 } from '../components/Icons';
 import { useDropzone } from 'react-dropzone';
 import ReactMarkdown from 'react-markdown';
@@ -28,6 +29,7 @@ import remarkGfm from 'remark-gfm';
 import soundSystem from '../utils/soundSystem';
 import VoiceInput from '../components/VoiceInput';
 import VoiceLoopButton from '../components/VoiceLoopButton';
+import AvatarWindow from '../components/AvatarWindow';
 import './ChatPage.css';
 import { BACKEND_URL } from '../config';
 
@@ -132,6 +134,9 @@ function ChatPage() {
   const [promptSaving, setPromptSaving] = useState(false);
   const [isVoiceListening, setIsVoiceListening] = useState(false);
   const [feedbackGiven, setFeedbackGiven] = useState({}); // Track feedback per message - Phase 5B
+  const [generatingVideo, setGeneratingVideo] = useState(null); // ID du message en cours de génération
+  const [videoUrls, setVideoUrls] = useState({}); // URLs des vidéos générées par message
+  const [avatarEnabled, setAvatarEnabled] = useState(true); // Switch on/off fenêtre avatar
   const messagesEndRef = useRef(null);
   const currentAudioRef = useRef(null); // Référence audio pour pause/resume
   const voiceLoopRef = useRef(null);
@@ -836,6 +841,43 @@ function ChatPage() {
     }
   };
 
+  // Génère une vidéo animée d'Ana avec SadTalker
+  const generateAvatarVideo = async (messageId, text) => {
+    if (generatingVideo) {
+      addSystemMessage('⏳ Une vidéo est déjà en cours de génération', 'warning');
+      return;
+    }
+
+    setGeneratingVideo(messageId);
+    addSystemMessage('🎬 Génération de la vidéo d\'Ana en cours (~20s)...');
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/avatar/animate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Erreur génération vidéo');
+      }
+
+      const blob = await response.blob();
+      const videoUrl = URL.createObjectURL(blob);
+      setVideoUrls(prev => ({ ...prev, [messageId]: videoUrl }));
+      addSystemMessage('✅ Vidéo générée avec succès!');
+    } catch (error) {
+      console.error('Erreur génération vidéo:', error);
+      addSystemMessage(`❌ Erreur: ${error.message}`, 'error');
+    } finally {
+      setGeneratingVideo(null);
+    }
+  };
+
+  // Obtenir le dernier message d'Ana (pour AvatarWindow)
+  const lastAnaMessage = messages.filter(m => m.sender === 'ana').slice(-1)[0] || null;
+
   return (
     <div className="chat-page">
       <div className="chat-header">
@@ -1016,6 +1058,41 @@ function ChatPage() {
                     </button>
                   </div>
 
+                  {/* Avatar Animation Button */}
+                  <button
+                    className={`btn-action btn-avatar ${generatingVideo === message.id ? 'generating' : ''}`}
+                    onClick={() => generateAvatarVideo(message.id, message.text)}
+                    disabled={generatingVideo !== null}
+                    title="Voir Ana parler"
+                  >
+                    <IconVideo size={14} />
+                    <span>{generatingVideo === message.id ? 'Génération...' : 'Voir Ana'}</span>
+                  </button>
+
+                  {/* Affichage vidéo générée */}
+                  {videoUrls[message.id] && (
+                    <div className="avatar-video-container">
+                      <video
+                        src={videoUrls[message.id]}
+                        controls
+                        autoPlay
+                        className="avatar-video"
+                      />
+                      <button
+                        className="btn-close-video"
+                        onClick={() => setVideoUrls(prev => {
+                          const newUrls = { ...prev };
+                          URL.revokeObjectURL(newUrls[message.id]);
+                          delete newUrls[message.id];
+                          return newUrls;
+                        })}
+                        title="Fermer la vidéo"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
+
                   {/* Feedback buttons - Phase 5B */}
                   <div className="feedback-buttons">
                     {feedbackGiven[message.id] ? (
@@ -1123,6 +1200,13 @@ function ChatPage() {
           </button>
         </div>
       </div>
+
+      {/* Fenêtre Avatar dédiée */}
+      <AvatarWindow
+        lastAnaMessage={lastAnaMessage}
+        enabled={avatarEnabled}
+        onToggle={setAvatarEnabled}
+      />
     </div>
   );
 }
