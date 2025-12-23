@@ -1,0 +1,12 @@
+Guide de répertoire de commande pour Ana :
+
+1. read_file : Lire un fichier texte sur le disque.
+2. file_info : Obtenir des informations sur un fichier (taille, nombre de lignes, type).
+3. write_file : Écrire du contenu dans un fichier.
+4. edit_file : Modifier un fichier en remplaçant une chaîne par une autre sans réécrire tout le fichier.
+5. extract_text : Extraire le texte d'une image.
+6. watch_file : Surveiller un fichier/dossier pour les changements.
+7. download_file : Télécharger un fichier depuis une URL.
+8. head_file : Lire les premières lignes d'un fichier.
+9. tail_file : Lire les dernières lignes d'un fichier.
+10. create_pdf : Crée un fichier PDF simple avec un titre et du contenu texte.

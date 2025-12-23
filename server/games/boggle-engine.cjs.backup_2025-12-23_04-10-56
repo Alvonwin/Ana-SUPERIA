@@ -1,0 +1,5 @@
+// Code pour le jeu Boggle
+// Génération grille 4x4
+// Validation mots adjacents
+// Scoring (1pt=3-4 lettres, 2pt=5 lettres, 3pt=6 lettres, 5pt=7+ lettres)
+// Timer 3 minutes

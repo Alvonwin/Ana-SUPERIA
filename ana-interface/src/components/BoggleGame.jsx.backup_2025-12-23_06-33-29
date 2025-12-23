@@ -1,0 +1,49 @@
+import React, { useState } from 'react';
+
+const BoggleGame = () => {
+  const [grille, setGrille] = useState([
+    ['', '', '', ''],
+    ['', '', '', ''],
+    ['', '', '', ''],
+    ['', '', '', '']
+  ]);
+  const [mot, setMot] = useState('');
+  const [score, setScore] = useState(0);
+
+  const handleInputChange = (e) => {
+    setMot(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Vérifier si le mot est dans la grille
+    const trouve = grille.flat().includes(mot);
+    if (trouve) {
+      setScore(score + 1);
+    }
+  };
+
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <h1>Boggle Game</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={mot} onChange={handleInputChange} />
+        <button type="submit">Soumettre</button>
+      </form>
+      <p>Score : {score}</p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+        {grille.map((ligne, indexLigne) => (
+          <div key={indexLigne}>
+            {ligne.map((lettre, indexLettre) => (
+              <div key={indexLettre} style={{ border: '1px solid black' }}>
+                {lettre}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BoggleGame;

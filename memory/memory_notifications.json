@@ -4,5 +4,17 @@
     "fact": "Ma voiture est blanche",
     "timestamp": "2025-12-15T00:17:47.253Z",
     "read": false
+  },
+  {
+    "type": "ADD",
+    "fact": "\"Alain est un homme de 30 ans\"",
+    "timestamp": "2025-12-23T08:28:11.654Z",
+    "read": false
+  },
+  {
+    "type": "ADD",
+    "fact": "\"Ana est une assistante IA\"",
+    "timestamp": "2025-12-23T08:28:11.654Z",
+    "read": false
   }
 ]

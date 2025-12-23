@@ -1,3107 +1,5 @@
 [
   {
-    "timestamp": "2025-12-20T10:45:41.607Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T11:15:41.611Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T11:45:41.622Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T12:15:41.633Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T12:45:41.633Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T13:15:41.638Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T13:45:44.242Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T14:15:44.243Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T14:45:44.258Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T15:15:44.273Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T15:45:44.282Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T16:15:44.287Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T16:43:03.662Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T17:08:03.653Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T17:38:03.659Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T18:08:03.665Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T18:38:03.670Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T19:08:03.677Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T19:24:11.219Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T19:53:47.239Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T20:00:50.154Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T20:25:50.150Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T20:37:09.176Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T21:02:09.187Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T21:18:05.385Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T21:43:05.377Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T22:13:05.389Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T22:38:04.286Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T23:06:15.396Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-20T23:31:15.377Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T00:01:15.383Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T00:31:15.395Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T01:01:15.402Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T01:31:15.413Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T02:05:52.545Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T03:16:25.877Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T03:41:25.876Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T04:11:25.891Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T04:41:25.893Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T05:11:25.894Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T05:41:25.909Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T05:57:00.578Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T06:17:50.012Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T06:42:50.004Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T06:48:47.016Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T06:57:10.020Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T07:07:23.161Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T07:22:57.005Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T07:55:42.180Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T08:06:01.160Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T08:32:38.997Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T08:57:38.996Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T09:05:12.995Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T09:18:03.177Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T09:43:03.178Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T10:00:17.182Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T10:25:17.193Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T10:55:17.206Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T11:25:17.214Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T11:55:17.221Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T12:25:17.226Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T12:55:17.229Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T13:25:17.231Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T13:55:17.246Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T14:25:17.249Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T14:55:17.260Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
     "timestamp": "2025-12-21T15:25:17.265Z",
     "steps": [
       {
@@ -4696,6 +1594,3108 @@
       "duplicates_removed": 0,
       "embeddings_generated": 0,
       "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T06:23:33.928Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T06:53:33.940Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T07:23:33.974Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T07:53:33.958Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T08:23:33.965Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T08:53:33.967Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T09:23:33.980Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T09:53:33.995Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T10:23:34.008Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T10:53:34.021Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T11:23:34.029Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T11:53:34.030Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T12:23:34.035Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T12:53:34.046Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T13:23:34.056Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T13:53:34.060Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T14:23:34.075Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T14:53:34.077Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T15:23:34.086Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T15:53:34.097Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T16:23:34.105Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T16:53:38.527Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T17:23:38.530Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T17:53:38.534Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T18:23:38.538Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T18:41:02.703Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T19:06:02.700Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T19:36:02.709Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T19:41:57.447Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T20:03:31.795Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T20:10:38.199Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T20:35:38.200Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T20:41:14.819Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T21:06:14.812Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T21:45:59.411Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T22:02:08.941Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T22:14:42.480Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T22:26:21.098Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T22:52:57.917Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T23:17:57.924Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-22T23:47:57.928Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T00:17:57.933Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T00:48:13.215Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T01:11:44.008Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T01:18:53.120Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T01:33:11.756Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T01:50:10.720Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T01:57:37.446Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T02:24:39.845Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T02:33:49.068Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T02:58:49.069Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T03:28:49.078Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T03:39:22.856Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T04:04:22.855Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T04:34:22.867Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T05:04:22.879Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T05:36:02.149Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T05:48:50.739Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T06:03:04.935Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T06:11:07.239Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T06:35:17.673Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T07:04:16.705Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T07:16:18.897Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T07:41:18.897Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T08:20:22.614Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T08:45:22.618Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 2
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 2,
       "memories_archived": 0
     }
   }

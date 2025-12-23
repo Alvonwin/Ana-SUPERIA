@@ -1,0 +1,204 @@
+
+## 🚨 ALERTE PRÉVENTIVE - 22/12/2025 19:44:38
+
+**DÉTECTION:** Intention de modifier un fichier sans backup
+
+**Extrait:**
+> ## Alain: Salut Ana! Est-ce que tu peux me parler de react et typescript? Je vais modifier le code frontend.
+
+**RAPPEL STRICT:**
+
+🛑 **AVANT de modifier un fichier existant:**
+
+1. **CRÉER un backup avec timestamp:**
+   ```bash
+   cp fichier.ext fichier.ext.backup_$(date +%Y%m%d_%H%M%S)
+   ```
+
+2. **VÉRIFIER que le backup existe:**
+   ```bash
+   ls -la fichier.ext.backup_*
+   ```
+
+3. **SEULEMENT ENSUITE modifier**
+
+**CONSÉQUENCE SI IGNORÉ:**
+- ❌ Violation critique enregistrée
+- ❌ Système peut être arrêté
+- ❌ Alain sera alerté
+
+**RÈGLE ABSOLUE:**
+> "JAMAIS modifier sans backup - JAMAIS"
+
+---
+
+
+## 🚨 ALERTE PRÉVENTIVE - 22/12/2025 20:08:04
+
+**DÉTECTION:** Intention de modifier un fichier sans backup
+
+**Extrait:**
+> ## Alain: Je vais modifier le fichier typescript react. Dis-moi ce que tes agents conseillent.
+
+**RAPPEL STRICT:**
+
+🛑 **AVANT de modifier un fichier existant:**
+
+1. **CRÉER un backup avec timestamp:**
+   ```bash
+   cp fichier.ext fichier.ext.backup_$(date +%Y%m%d_%H%M%S)
+   ```
+
+2. **VÉRIFIER que le backup existe:**
+   ```bash
+   ls -la fichier.ext.backup_*
+   ```
+
+3. **SEULEMENT ENSUITE modifier**
+
+**CONSÉQUENCE SI IGNORÉ:**
+- ❌ Violation critique enregistrée
+- ❌ Système peut être arrêté
+- ❌ Alain sera alerté
+
+**RÈGLE ABSOLUE:**
+> "JAMAIS modifier sans backup - JAMAIS"
+
+---
+
+
+## 🚨 ALERTE PRÉVENTIVE - 22/12/2025 20:09:16
+
+**DÉTECTION:** Intention de modifier un fichier sans backup
+
+**Extrait:**
+> ## Alain: Ok je vais modifier le code react maintenant. Tu as des conseils?
+
+**RAPPEL STRICT:**
+
+🛑 **AVANT de modifier un fichier existant:**
+
+1. **CRÉER un backup avec timestamp:**
+   ```bash
+   cp fichier.ext fichier.ext.backup_$(date +%Y%m%d_%H%M%S)
+   ```
+
+2. **VÉRIFIER que le backup existe:**
+   ```bash
+   ls -la fichier.ext.backup_*
+   ```
+
+3. **SEULEMENT ENSUITE modifier**
+
+**CONSÉQUENCE SI IGNORÉ:**
+- ❌ Violation critique enregistrée
+- ❌ Système peut être arrêté
+- ❌ Alain sera alerté
+
+**RÈGLE ABSOLUE:**
+> "JAMAIS modifier sans backup - JAMAIS"
+
+---
+
+
+## 🚨 ALERTE PRÉVENTIVE - 22/12/2025 20:14:08
+
+**DÉTECTION:** Intention de modifier un fichier sans backup
+
+**Extrait:**
+> ## Alain: Je vais modifier le fichier typescript react maintenant.
+
+**RAPPEL STRICT:**
+
+🛑 **AVANT de modifier un fichier existant:**
+
+1. **CRÉER un backup avec timestamp:**
+   ```bash
+   cp fichier.ext fichier.ext.backup_$(date +%Y%m%d_%H%M%S)
+   ```
+
+2. **VÉRIFIER que le backup existe:**
+   ```bash
+   ls -la fichier.ext.backup_*
+   ```
+
+3. **SEULEMENT ENSUITE modifier**
+
+**CONSÉQUENCE SI IGNORÉ:**
+- ❌ Violation critique enregistrée
+- ❌ Système peut être arrêté
+- ❌ Alain sera alerté
+
+**RÈGLE ABSOLUE:**
+> "JAMAIS modifier sans backup - JAMAIS"
+
+---
+
+
+## 🚨 ALERTE PRÉVENTIVE - 22/12/2025 20:24:46
+
+**DÉTECTION:** Intention de modifier un fichier sans backup
+
+**Extrait:**
+> ## Alain: Je vais modifier le code typescript react.
+
+**RAPPEL STRICT:**
+
+🛑 **AVANT de modifier un fichier existant:**
+
+1. **CRÉER un backup avec timestamp:**
+   ```bash
+   cp fichier.ext fichier.ext.backup_$(date +%Y%m%d_%H%M%S)
+   ```
+
+2. **VÉRIFIER que le backup existe:**
+   ```bash
+   ls -la fichier.ext.backup_*
+   ```
+
+3. **SEULEMENT ENSUITE modifier**
+
+**CONSÉQUENCE SI IGNORÉ:**
+- ❌ Violation critique enregistrée
+- ❌ Système peut être arrêté
+- ❌ Alain sera alerté
+
+**RÈGLE ABSOLUE:**
+> "JAMAIS modifier sans backup - JAMAIS"
+
+---
+
+
+## 🚨 ALERTE PRÉVENTIVE - 22/12/2025 20:32:23
+
+**DÉTECTION:** Intention de modifier un fichier sans backup
+
+**Extrait:**
+> ## Alain: Je vais modifier le code react et typescript.
+
+**RAPPEL STRICT:**
+
+🛑 **AVANT de modifier un fichier existant:**
+
+1. **CRÉER un backup avec timestamp:**
+   ```bash
+   cp fichier.ext fichier.ext.backup_$(date +%Y%m%d_%H%M%S)
+   ```
+
+2. **VÉRIFIER que le backup existe:**
+   ```bash
+   ls -la fichier.ext.backup_*
+   ```
+
+3. **SEULEMENT ENSUITE modifier**
+
+**CONSÉQUENCE SI IGNORÉ:**
+- ❌ Violation critique enregistrée
+- ❌ Système peut être arrêté
+- ❌ Alain sera alerté
+
+**RÈGLE ABSOLUE:**
+> "JAMAIS modifier sans backup - JAMAIS"
+
+---
+

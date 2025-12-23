@@ -1,0 +1,14 @@
+1. Créer [jeu]-engine.cjs dans server/games/
+2. Importer dans games-routes.cjs
+3. Ajouter les routes POST/GET
+4. Ajouter à /games/list
+5. Ajouter à GAMES_LIST dans GamesPage.jsx
+6. Créer le composant [Jeu]Game
+7. Ajouter le case dans renderGame()
+1. Créer boggle-engine.cjs dans server/games/
+2. Importer dans games-routes.cjs
+3. Ajouter les routes POST/GET
+4. Ajouter à /games/list
+5. Ajouter à GAMES_LIST dans GamesPage.jsx
+6. Créer le composant BoggleGame
+7. Ajouter le case dans renderGame()

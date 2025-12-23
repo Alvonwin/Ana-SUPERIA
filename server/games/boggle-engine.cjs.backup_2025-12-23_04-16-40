@@ -1,0 +1,76 @@
+
+class BoggleEngine {
+  constructor() {
+    this.grid = [];
+    this.dictionary = [];
+  }
+
+  generateGrid() {
+    // Générer une grille 4x4 de lettres aléatoires
+    for (let i = 0; i < 4; i++) {
+      this.grid[i] = [];
+      for (let j = 0; j < 4; j++) {
+        this.grid[i][j] = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+      }
+    }
+  }
+
+  validateWord(word) {
+    // Vérifier si le mot est dans le dictionnaire
+    return this.dictionary.includes(word);
+  }
+
+  calculateScore(word) {
+    // Calculer le score du mot en fonction de sa longueur
+    if (word.length >= 7) {
+      return 5;
+    } else if (word.length === 6) {
+      return 3;
+    } else if (word.length === 5) {
+      return 2;
+    } else if (word.length >= 3 && word.length <= 4) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  findWords() {
+    // Trouver tous les mots possibles dans la grille
+    const words = [];
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        const word = this.findWordFromPosition(i, j);
+        if (word !== '') {
+          words.push(word);
+        }
+      }
+    }
+    return words;
+  }
+
+  findWordFromPosition(i, j) {
+    // Trouver un mot à partir d'une position donnée dans la grille
+    const word = '';
+    const visited = [];
+    this.findWordFromPositionRecursive(i, j, word, visited);
+    return word;
+  }
+
+  findWordFromPositionRecursive(i, j, word, visited) {
+    // Fonction récursive pour trouver un mot à partir d'une position donnée
+    if (i < 0 || i >= 4 || j < 0 || j >= 4 || visited.includes(`${i},${j}`)) {
+      return;
+    }
+    visited.push(`${i},${j}`);
+    word += this.grid[i][j];
+    if (this.validateWord(word)) {
+      return word;
+    }
+    this.findWordFromPositionRecursive(i - 1, j, word, visited);
+    this.findWordFromPositionRecursive(i + 1, j, word, visited);
+    this.findWordFromPositionRecursive(i, j - 1, word, visited);
+    this.findWordFromPositionRecursive(i, j + 1, word, visited);
+  }
+}
+module.exports = BoggleEngine;

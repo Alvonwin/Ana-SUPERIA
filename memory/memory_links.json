@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "link_1766479522630_t62i9",
+    "source_id": "fact_1765757867236_0ux40",
+    "target_id": "fact_1766478491653_f8kb0",
+    "relation": "related_to",
+    "strength": 0.7039035602185292,
+    "created_at": "2025-12-23T08:45:22.630Z",
+    "source": "auto_consolidation"
+  },
+  {
+    "id": "link_1766479522630_4hnx9",
+    "source_id": "fact_1766478491610_3d2or",
+    "target_id": "fact_1766478491653_f8kb0",
+    "relation": "related_to",
+    "strength": 0.7182656398983917,
+    "created_at": "2025-12-23T08:45:22.630Z",
+    "source": "auto_consolidation"
+  }
+]

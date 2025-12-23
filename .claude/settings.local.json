@@ -1,19 +1,4 @@
 {
-  "hooks": {
-    "PreToolUse": [{
-      "matcher": "Edit",
-      "hooks": [{
-        "type": "command",
-        "command": "cd /e/ANA && git add -A && git commit -m \"Auto-backup avant modification\" --allow-empty 2>/dev/null || true"
-      }]
-    }, {
-      "matcher": "Write",
-      "hooks": [{
-        "type": "command",
-        "command": "cd /e/ANA && git add -A && git commit -m \"Auto-backup avant modification\" --allow-empty 2>/dev/null || true"
-      }]
-    }]
-  },
   "permissions": {
     "allow": [
       "Bash(cd:*)",
@@ -81,7 +66,75 @@
       "Bash(git -C /e/ANA show:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(xargs ls:*)",
+      "Bash(npm run lint:*)",
+      "Bash(git -C /e/ANA diff --stat)",
+      "Bash(server/ana-core.cjs )",
+      "Bash(server/intelligence/context-selector.cjs )",
+      "Bash(server/services/skill-loader.cjs )",
+      "Bash(server/routes/games-routes.cjs )",
+      "Bash(server/agents/tool-agent.cjs )",
+      "Bash(server/games/motus-engine.cjs )",
+      "Bash(server/games/motus.cjs )",
+      "Bash(ana-interface/src/pages/LogsPage.jsx )",
+      "Bash(ana-interface/src/pages/LogsPage.css )",
+      "Bash(ana-interface/src/pages/GamesPage.jsx )",
+      "Bash(ana-interface/src/pages/GamesPage.css )",
+      "Bash(ana-interface/src/components/MotusGame.jsx )",
+      "Bash(ana-interface/src/components/MotusGame.css )",
+      "Bash(ana-interface/src/components/Icons.jsx )",
+      "Bash(ana-interface/src/config.js )",
+      "Bash(knowledge/learned/coding-workflows.json )",
+      "Bash(CLAUDE.md)",
+      "Bash(git -C /e/ANA add agents/agent_action_monitor.cjs agents/agent_assumption_detector.cjs agents/agent_doc_updater.cjs agents/agent_emotion_analyzer.cjs agents/agent_learning_monitor.cjs agents/agent_memory_manager.cjs agents/agent_methodology_checker.cjs agents/agent_research_reminder.cjs agents/agent_strict_backup_enforcer.cjs agents/agent_system_monitor.cjs agents/start_agents.cjs server/ana-core.cjs)",
+      "Bash(git -C /e/ANA commit -m \"$\\(cat <<''EOF''\nfeat: Intégration RÉELLE des 16 agents autonomes dans Ana SUPERIA\n\n- Connexion ana-core au shared event bus des agents\n- Émission événements ana:message_received, ana:response_complete\n- Écoute agent:insight et injection dans contexte LLM\n- Correction chemins agents: E:/ANA/memory/ au lieu de E:/Mémoire Claude/\n\nAgents adaptés pour Ana:\n- emotion_analyzer: détection émotions, émet insights sur ton utilisateur\n- action_monitor: détecte actions répétées/inefficaces\n- research_reminder: rappelle recherche web avant modification\n- methodology_checker: vérifie TodoList, détecte précipitation\n- strict_backup_enforcer: alerte modifications sans backup\n- doc_updater: détecte nouvelles connaissances à documenter\n- system_monitor: surveille ports Ana \\(3338, 5173, 8000, 3336\\)\n\nLes agents INFLUENCENT maintenant les réponses via injection contexte!\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /e/ANA status --short)",
+      "Bash(git -C /e/ANA add:*)",
+      "Bash(git -C /e/ANA commit -m \"$\\(cat <<''EOF''\nfeat: Pont socket.io agents ↔ ana-core pour injection d''insights\n\nPROBLÈME RÉSOLU:\n- Les agents \\(port 3336\\) et ana-core \\(port 3338\\) sont des processus séparés\n- Le SharedEventBus est un singleton PAR processus\n- Les insights des agents n''étaient pas transmis à ana-core\n\nSOLUTION:\n1. Bridge socket.io dans start_agents.cjs:\n   - Connexion au WebSocket ana-core \\(port 3338\\)\n   - Écoute agent:insight local → transmission via socket.io\n   - Relai ana:* events de ana-core vers bus local\n\n2. Handlers socket.io dans ana-core.cjs:\n   - Écoute agent:insight depuis clients socket.io\n   - Stockage dans tableau agentInsights \\(max 20\\)\n\n3. Injection dans flux WebSocket chat:\n   - Les insights sont ajoutés au fullPrompt avant appel LLM\n   - Affichage log [WS] Agent insights injectes: N\n\nFLUX COMPLET:\nMessage 1 → Agents analysent → Insight émis → Stocké\nMessage 2 → Insight injecté → LLM répond avec conscience\n\nTESTÉ:\n- research_reminder détecte \"react typescript\"\n- Insight: \"AVANT de modifier typescript: fais une recherche web!\"\n- Ana répond: \"n 'oubliez pas de faire une recherche web\"\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(del E:anafix_insights.cjs)",
+      "Bash(git -C /e/ANA diff --stat 73b7191 HEAD)",
+      "Bash(git -C /e/ANA diff 73b7191 HEAD -- server/ana-core.cjs server/services/skill-loader.cjs server/intelligence/context-selector.cjs server/core/tool-groups.cjs)",
+      "Bash(git -C /e/ANA diff 73b7191 HEAD -- server/services/skill-loader.cjs server/intelligence/context-selector.cjs)",
+      "Bash(git -C /e/ANA diff 73b7191 HEAD -- server/ana-core.cjs)",
+      "Bash(git -C /e/ANA diff server/ana-core.cjs)",
+      "Bash(git -C /e/ANA checkout:*)",
+      "Bash(git -C /e/ANA diff --name-only HEAD~3)",
+      "Bash(git -C /e/ANA diff 3fddb82 HEAD -- server/core/tool-groups.cjs)",
+      "Bash(cp:*)",
+      "Bash(python:*)",
+      "Bash(echo \"Pas de /api/status\" curl -s -X POST http://localhost:3338/chat -H \"Content-Type: application/json\" -d '{\"\"message\"\":\"\"test\"\"}')",
+      "Bash(tasklist:*)",
+      "Bash(python3:*)",
+      "Bash(server/services/cerebras-service.cjs )",
+      "Bash(server/agents/coding-agent.cjs )",
+      "Bash(server/services/tool-executor.cjs )",
+      "Bash(ana-interface/src/components/BoggleGame.jsx )",
+      "Bash(server/games/boggle-engine.cjs )",
+      "Bash(server/routes/games-routes.cjs)",
+      "Bash(git -C /e/ANA commit -m \"$\\(cat <<''EOF''\nfix: Correction génération code complexe Ana + Boggle game\n\nCorrections LLM:\n- max_tokens 4096 → 8192 \\(cerebras-service.cjs\\)\n- Validation content vide dans write_file \\(3 fichiers\\)\n- Logging erreurs JSON parse pour debug truncation\n\nBoggle game:\n- BoggleGame.jsx: composant React complet\n- boggle-engine.cjs: moteur backend\n- games-routes.cjs: endpoints API\n- GamesPage.jsx: fix import path\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /e/ANA && git add -A && git commit -m \"Auto-backup avant modification\" --allow-empty 2>/dev/null || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /e/ANA && git add -A && git commit -m \"Auto-backup avant modification\" --allow-empty 2>/dev/null || true"
+          }
+        ]
+      }
     ]
   }
 }

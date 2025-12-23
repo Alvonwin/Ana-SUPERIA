@@ -1,0 +1,47 @@
+
+● Tous les workflows sont détectés correctement. L'implémentation est complète.
+
+● Implémentation terminée
+
+  Le système de routing et injection automatique de workflows coding est maintenant fonctionnel.
+
+  Fichiers modifiés
+
+  | Fichier                                 | Modification                                                                                         |
+  |-----------------------------------------|------------------------------------------------------------------------------------------------------|
+  | server/services/skill-loader.cjs        | Ajout de 3 fonctions: loadCodingWorkflows(), detectCodingWorkflow(), getCodingWorkflowInstructions() |
+  | server/agents/tool-agent.cjs            | Priorité aux coding workflows avant les skills OpenSkills (ligne 8398-8413)                          |
+  | knowledge/learned/coding-workflows.json | Ajout de "refactoriser" aux triggers                                                                 |
+
+  Résultat
+
+  Quand Ana reçoit une requête coding comme "Remplacer le chat de CodingPage par celui de GamesPage", elle injecte automatiquement dans son contexte:
+
+  === WORKFLOW DE CODING: Remplacer un composant par un autre ===
+
+  Tu DOIS suivre ces étapes dans l'ORDRE:
+  1. read_file: Lire le fichier SOURCE (celui qui a le bon code)
+  2. read_file: Lire le fichier CIBLE (celui à modifier)
+  3. identify: Identifier EXACTEMENT ce qu'il faut extraire du source
+  4. identify: Identifier EXACTEMENT ce qu'il faut remplacer dans la cible
+  5. edit_file: Utiliser edit_file avec old_string EXACT et new_string EXACT
+  6. verify: Relire le fichier pour confirmer le changement
+
+  RÈGLES D'OR:
+  - TOUJOURS lire avant de modifier
+  - JAMAIS deviner le contenu d'un fichier
+  - old_string doit être EXACT (copié du fichier)
+  - Vérifier après chaque modification
+  - Une modification à la fois
+
+  === FIN WORKFLOW ===
+
+  Workflows disponibles
+
+  - replace_component - Remplacer un composant par un autre
+  - add_feature - Ajouter une fonctionnalité
+  - fix_bug - Corriger un bug
+  - refactor - Refactorer du code
+
+  Le système applique automatiquement les règles d'or à toutes les requêtes coding détectées.
+
