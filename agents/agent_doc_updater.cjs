@@ -28,12 +28,12 @@ class DocUpdaterAgent extends EventEmitter {
     this.running = false
     this.name = 'doc_updater'
 
-    // Chemins documentation
+    // Chemins documentation - Ana SUPERIA
     this.paths = {
-      manuel: path.join('E:', 'Mémoire Claude', 'MANUEL_UTILISATEUR_COMPLET.html'),
-      agentsDir: path.join('E:', 'Mémoire Claude', 'agents'),
-      docsDir: path.join('E:', 'Mémoire Claude', '06_COMPÉTENCES'),
-      indexDir: path.join('E:', 'Mémoire Claude', '04_INDEX_RAPIDE')
+      manuel: path.join('E:', 'ANA', 'docs', 'MANUEL_UTILISATEUR.html'),
+      agentsDir: path.join('E:', 'ANA', 'agents'),
+      docsDir: path.join('E:', 'ANA', 'knowledge', 'skills'),
+      indexDir: path.join('E:', 'ANA', 'knowledge', 'learned')
     }
 
     // État de la documentation
@@ -89,6 +89,46 @@ class DocUpdaterAgent extends EventEmitter {
       type: 'documentation',
       timestamp: Date.now()
     })
+
+    // === INTÉGRATION ANA SUPERIA ===
+    // Écouter les nouvelles compétences apprises
+    eventBus.on('ana:response_complete', (data) => {
+      this.detectNewKnowledge(data)
+    })
+  }
+
+  /**
+   * Détecte nouvelles connaissances dans les réponses (Ana SUPERIA)
+   */
+  detectNewKnowledge(data) {
+    const response = data.anaResponse || ''
+
+    // Détecter patterns d'apprentissage
+    const learningPatterns = [
+      /j'ai appris/i,
+      /nouvelle technique/i,
+      /je comprends maintenant/i,
+      /solution trouvée/i
+    ]
+
+    const hasLearning = learningPatterns.some(p => p.test(response))
+
+    if (hasLearning && response.length > 500) {
+      // Potentielle nouvelle connaissance à documenter
+      eventBus.emit('agent:insight', {
+        agent: 'doc_updater',
+        insight: `📝 Nouvelle connaissance détectée! Considère documenter cette solution pour référence future.`,
+        type: 'documentation',
+        timestamp: new Date().toISOString()
+      })
+
+      // Marquer pour documentation
+      this.documentation.pendingUpdates.push({
+        source: 'learning_detected',
+        content: response.substring(0, 500),
+        requestedAt: Date.now()
+      })
+    }
   }
 
   /**
@@ -530,7 +570,7 @@ class DocUpdaterAgent extends EventEmitter {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manuel Utilisateur Complet - Ana</title>
+  <title>Manuel Utilisateur - Ana SUPERIA</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -568,7 +608,7 @@ class DocUpdaterAgent extends EventEmitter {
   </style>
 </head>
 <body>
-  <h1>📚 Manuel Utilisateur Complet - Ana</h1>
+  <h1>📚 Manuel Utilisateur - Ana SUPERIA</h1>
 
   <div class="update-info">
     <strong>Dernière mise à jour:</strong> ${new Date().toLocaleString('fr-FR')}

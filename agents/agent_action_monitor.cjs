@@ -52,9 +52,10 @@ class ActionMonitor {
     // Patterns d'actions répétitives
     this.repeatedPatterns = []
 
-    this.conversationPath = 'E:\\Mémoire Claude\\02_MÉMOIRE_COURT_TERME\\current_conversation.txt'
-    this.rappelsPath = 'E:\\Mémoire Claude\\RAPPELS_ACTIFS.md'
-    this.actionLogPath = 'E:\\Mémoire Claude\\03_METAMEMOIRE\\action_log.jsonl'
+    // Chemins - Ana SUPERIA
+    this.conversationPath = 'E:/ANA/memory/current_conversation_ana.txt'
+    this.rappelsPath = 'E:/ANA/memory/rappels_actifs.md'
+    this.actionLogPath = 'E:/ANA/logs/action_log.jsonl'
 
     this.startTime = Date.now()
     this.lastPosition = 0
@@ -79,6 +80,17 @@ class ActionMonitor {
       eventBus.on(`tool:${tool.toLowerCase()}`, (data) => {
         this.recordAction(tool, data)
       })
+    })
+
+    // === INTÉGRATION ANA SUPERIA ===
+    // Écouter les messages utilisateur pour tracker le contexte
+    eventBus.on('ana:message_received', (data) => {
+      this.recordAction('UserMessage', { message: data.message?.substring(0, 100) })
+    })
+
+    // Écouter les réponses pour analyser les patterns d'action
+    eventBus.on('ana:response_complete', (data) => {
+      this.analyzeResponseActions(data)
     })
 
     // Initialiser position lecture
@@ -221,6 +233,33 @@ class ActionMonitor {
   }
 
   /**
+   * Analyse les actions dans une réponse Ana (Intégration Ana SUPERIA)
+   */
+  async analyzeResponseActions(data) {
+    const response = data.anaResponse || ''
+
+    // Détecter outils mentionnés dans la réponse
+    const toolMentions = {
+      edit: (response.match(/Edit\(/g) || []).length,
+      write: (response.match(/Write\(/g) || []).length,
+      bash: (response.match(/Bash\(/g) || []).length,
+      read: (response.match(/Read\(/g) || []).length
+    }
+
+    const totalActions = Object.values(toolMentions).reduce((a, b) => a + b, 0)
+
+    if (totalActions > 5) {
+      // Beaucoup d'actions dans une réponse - insight pour Ana
+      eventBus.emit('agent:insight', {
+        agent: 'action_monitor',
+        insight: `Réponse avec ${totalActions} actions détectées. Considère grouper ou simplifier.`,
+        data: toolMentions,
+        timestamp: new Date().toISOString()
+      })
+    }
+  }
+
+  /**
    * Gère la détection d'actions répétées
    */
   async handleRepeatedAction(action, count) {
@@ -241,6 +280,14 @@ class ActionMonitor {
     console.log(`   Contexte:`, action.context)
 
     eventBus.emit('action:repeated', alert)
+
+    // === ÉMETTRE INSIGHT POUR ANA ===
+    eventBus.emit('agent:insight', {
+      agent: 'action_monitor',
+      insight: `⚠️ Action répétée ${count}x: ${action.tool} sur ${action.context.file || action.context.pattern || 'même cible'}. Change d'approche!`,
+      severity: 'warning',
+      timestamp: new Date().toISOString()
+    })
 
     try {
       const reminder = `
@@ -353,6 +400,14 @@ Tu répètes la même action plusieurs fois. Cela peut indiquer:
 
     eventBus.emit('action:inefficient', alert)
 
+    // === ÉMETTRE INSIGHT POUR ANA ===
+    eventBus.emit('agent:insight', {
+      agent: 'action_monitor',
+      insight: `💡 Inefficacité: beaucoup de recherches sans action concrète. Définis ton objectif et agis!`,
+      type: 'efficiency',
+      timestamp: new Date().toISOString()
+    })
+
     if (type === 'too_much_searching') {
       try {
         const reminder = `
@@ -444,7 +499,7 @@ L'analyse est importante, mais l'action l'est aussi. Trouve l'équilibre.
         }
       }
 
-      const statsPath = 'E:\\Mémoire Claude\\03_METAMEMOIRE\\session_stats.jsonl'
+      const statsPath = 'E:/ANA/logs/session_stats.jsonl'
       const statsEntry = JSON.stringify(sessionStats) + '\n'
 
       await fs.appendFile(statsPath, statsEntry, 'utf-8')

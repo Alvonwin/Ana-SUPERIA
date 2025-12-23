@@ -24,12 +24,13 @@ class SystemMonitor {
     this._serviceTimerId = null
     this._diskTimerId = null
 
-    // Services à surveiller
+    // Services Ana SUPERIA à surveiller
     this.services = {
-      vite: { ports: [5173, 5174], name: 'Vite Dev Server' },
-      backend: { ports: [3334], name: 'Backend API' },
-      voice: { ports: [5000], name: 'Voice Platform' },
-      ollama: { ports: [11434], name: 'Ollama' }
+      vite: { ports: [5173], name: 'Vite Dev Server (Frontend)' },
+      backend: { ports: [3338], name: 'Ana Core Backend' },
+      chromadb: { ports: [8000], name: 'ChromaDB Memory' },
+      ollama: { ports: [11434], name: 'Ollama LLM' },
+      agents: { ports: [3336], name: 'Agents Dashboard' }
     }
 
     // État actuel

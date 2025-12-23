@@ -15,6 +15,9 @@ const socketIo = require('socket.io');
 const cors = require('cors');
 const axios = require('axios');
 
+// === AGENTS EVENT BUS - Connexion aux agents autonomes ===
+const agentEventBus = require('../agents/shared_event_bus.cjs');
+
 // === PERSONAL FACTS LOADER (for memory questions) ===
 const PERSONAL_FACTS_PATH = require('path').join(__dirname, '..', 'memory', 'personal_facts.json');
 
@@ -2032,20 +2035,62 @@ app.get('/api/agents', (req, res) => {
   res.json({ count: Object.keys(agents).length, agents, timestamp: new Date().toISOString() });
 });
 
+// === EVENT BUS - Connecté aux agents autonomes ===
 const eventBus = [];
 const MAX_EVENTS = 100;
 
 function addEvent(type, agent, data = {}) {
-  const event = { id: 'evt_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9), type, agent, data, timestamp: new Date().toLocaleTimeString('fr-FR') };
+  const event = {
+    id: 'evt_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+    type, agent, data,
+    timestamp: new Date().toISOString()
+  };
   eventBus.unshift(event);
   if (eventBus.length > MAX_EVENTS) eventBus.pop();
   agentChecks[agent] = (agentChecks[agent] || 0) + 1;
+
+  // Émettre sur le bus partagé avec les agents autonomes
+  agentEventBus.emit(`ana:${type}`, event);
+
   return event;
 }
+
+// === AGENT INSIGHTS - Collecteur d'insights des agents ===
+const agentInsights = [];
+const MAX_INSIGHTS = 20;
+
+agentEventBus.on('agent:insight', (data) => {
+  console.log('📊 Agent insight reçu:', data.agent, '-', data.insight?.substring(0, 50));
+  agentInsights.push({
+    ...data,
+    receivedAt: new Date().toISOString()
+  });
+  if (agentInsights.length > MAX_INSIGHTS) agentInsights.shift();
+});
+
+// Écouter les événements critiques des agents
+agentEventBus.on('system:service_down', (data) => {
+  console.log('⚠️ Agent alert - Service down:', data.service);
+  addEvent('SERVICE_DOWN', 'system_monitor', data);
+});
+
+agentEventBus.on('memory:size_critical', (data) => {
+  console.log('⚠️ Agent alert - Memory critical:', data.sizeMB, 'MB');
+  addEvent('MEMORY_CRITICAL', 'memory_manager', data);
+});
 
 app.get('/api/events', (req, res) => {
   const limit = parseInt(req.query.limit) || 10;
   res.json({ events: eventBus.slice(0, limit), total: eventBus.length, timestamp: new Date().toISOString() });
+});
+
+// Endpoint pour voir les insights agents
+app.get('/api/agent-insights', (req, res) => {
+  res.json({
+    count: agentInsights.length,
+    insights: agentInsights.slice(-10),
+    timestamp: new Date().toISOString()
+  });
 });
 
 addEvent('SYSTEM_START', 'system_monitor', { message: 'Ana Core started' });
@@ -5277,6 +5322,14 @@ io.on('connection', (socket) => {
     // Appliquer corrections orthographiques au message entrant (astuce → est-ce, etc.)
     message = spellChecker.correctText(message);
 
+    // === ÉMETTRE ÉVÉNEMENT POUR AGENTS AUTONOMES ===
+    agentEventBus.emit('ana:message_received', {
+      message,
+      sessionId: socket.id,
+      hasImages: images?.length > 0,
+      timestamp: new Date().toISOString()
+    });
+
     try {
       // === CONSCIENCE SUPÉRIEURE (2025-12-13) ===
       // Ana-superia-v5 pense, consulte ses experts, puis répond
@@ -5752,6 +5805,19 @@ Vent: ${weatherData.current.windSpeed}`;
               console.log(`📝 Feedback lessons injectés: ${lessonsLearned.length}`);
             }
           }
+        }
+
+        // 3f. AGENT INSIGHTS - Insights des agents autonomes (Intégration 22 Dec 2025)
+        if (agentInsights.length > 0) {
+          const recentInsights = agentInsights.slice(-5).map(i =>
+            `- [${i.agent}] ${i.insight}`
+          ).join('\n');
+          sources.push({
+            type: 'agent_insights',
+            data: `[INSIGHTS AGENTS AUTONOMES]\n${recentInsights}`,
+            priority: 'medium'
+          });
+          console.log(`🤖 Agent insights injectés: ${agentInsights.length}`);
         }
 
         // 3e. Coding Workflows - DÉSACTIVÉ TEMPORAIREMENT (debug météo)
@@ -6353,7 +6419,16 @@ ${pageData.text?.substring(0, 2000) || pageData.content?.substring(0, 2000) || '
 
         memory.appendToContext(`Alain: ${message}\nAna (${model}): ${correctedResponse}`);
         socket.emit('chat:complete', { response: correctedResponse, model });
-        console.log(`? Response complete: ${correctedResponse.length} chars (spell-checked + tutoiement)`);
+        console.log(`✅ Response complete: ${correctedResponse.length} chars (spell-checked + tutoiement)`);
+
+        // === ÉMETTRE ÉVÉNEMENT POUR AGENTS AUTONOMES ===
+        agentEventBus.emit('ana:response_complete', {
+          userMessage: message,
+          anaResponse: correctedResponse,
+          model,
+          responseLength: correctedResponse.length,
+          timestamp: new Date().toISOString()
+        });
 
         // === CODE INJECTION INTO EDITOR ===
         // Detect code blocks in Ana's response and inject them into the Coding page editor

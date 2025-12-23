@@ -53,8 +53,9 @@ class AssumptionDetector {
       uptime: '0s'
     }
 
-    this.conversationPath = 'E:\\Mémoire Claude\\02_MÉMOIRE_COURT_TERME\\current_conversation.txt'
-    this.rappelsPath = 'E:\\Mémoire Claude\\RAPPELS_ACTIFS.md'
+    // Chemins - Ana SUPERIA
+    this.conversationPath = 'E:/ANA/memory/current_conversation_ana.txt'
+    this.rappelsPath = 'E:/ANA/memory/rappels_actifs.md'
 
     this.startTime = Date.now()
   }

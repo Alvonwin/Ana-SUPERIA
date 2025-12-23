@@ -19,10 +19,10 @@ class MemoryManager {
     this.criticalSize = 500000 // 500KB
     this.tempCleanupInterval = 300000 // 5 minutes
 
-    // Chemins
-    this.baseDir = 'E:/Mémoire Claude'
-    this.conversationFile = path.join(this.baseDir, 'current_conversation.txt')
-    this.archiveDir = path.join(this.baseDir, '01_ARCHIVES_VERBATIM')
+    // Chemins - Ana SUPERIA
+    this.baseDir = 'E:/ANA/memory'
+    this.conversationFile = path.join(this.baseDir, 'current_conversation_ana.txt')
+    this.archiveDir = path.join(this.baseDir, 'archives')
     this.stage01Dir = path.join(this.baseDir, 'stages/stage_01')
 
     // Stats

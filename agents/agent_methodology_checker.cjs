@@ -80,8 +80,9 @@ class MethodologyChecker {
       uptime: '0s'
     }
 
-    this.conversationPath = 'E:\\Mémoire Claude\\02_MÉMOIRE_COURT_TERME\\current_conversation.txt'
-    this.rappelsPath = 'E:\\Mémoire Claude\\RAPPELS_ACTIFS.md'
+    // Chemins - Ana SUPERIA
+    this.conversationPath = 'E:/ANA/memory/current_conversation_ana.txt'
+    this.rappelsPath = 'E:/ANA/memory/rappels_actifs.md'
 
     this.startTime = Date.now()
   }
@@ -107,6 +108,12 @@ class MethodologyChecker {
       this.lastTodoMention = Date.now()
     })
 
+    // === INTÉGRATION ANA SUPERIA ===
+    // Écouter les réponses pour vérifier méthodologie
+    eventBus.on('ana:response_complete', async (data) => {
+      await this.checkResponseMethodology(data)
+    })
+
     // Initialiser la position de lecture
     try {
       const stats = await fs.stat(this.conversationPath)
@@ -119,6 +126,37 @@ class MethodologyChecker {
     this.intervalId = setInterval(() => this.checkConversation(), this.checkInterval)
 
     console.log(`✅ [${this.name}] Vérificateur actif - contrôle toutes les ${this.checkInterval/1000}s`)
+  }
+
+  /**
+   * Vérifie la méthodologie dans une réponse Ana (Ana SUPERIA)
+   */
+  async checkResponseMethodology(data) {
+    const response = data.anaResponse || ''
+
+    // Détecter précipitation dans la réponse
+    const hasRush = this.rushPatterns.some(p => p.test(response))
+    if (hasRush) {
+      eventBus.emit('agent:insight', {
+        agent: 'methodology_checker',
+        insight: `⚠️ Précipitation détectée! Rappel: "Étape par étape, pas de précipitation, perfection du premier coup"`,
+        severity: 'warning',
+        timestamp: new Date().toISOString()
+      })
+    }
+
+    // Détecter si tâche complexe sans TodoList
+    const hasMultipleSteps = (response.match(/étape|step|d'abord|ensuite|puis|finalement/gi) || []).length
+    const hasTodo = this.todoPatterns.some(p => p.test(response))
+
+    if (hasMultipleSteps >= 3 && !hasTodo) {
+      eventBus.emit('agent:insight', {
+        agent: 'methodology_checker',
+        insight: `📋 Tâche complexe détectée (${hasMultipleSteps} étapes). Utilise TodoWrite pour organiser et donner visibilité à Alain!`,
+        severity: 'info',
+        timestamp: new Date().toISOString()
+      })
+    }
   }
 
   /**
@@ -255,6 +293,14 @@ class MethodologyChecker {
     console.log(`   Pattern: ${pattern.source}`)
 
     eventBus.emit('methodology:violation', alert)
+
+    // === ÉMETTRE INSIGHT POUR ANA ===
+    eventBus.emit('agent:insight', {
+      agent: 'methodology_checker',
+      insight: `🛑 STOP! Précipitation détectée. "Le temps n'est jamais un problème, la qualité prime." - Alain`,
+      severity: 'high',
+      timestamp: new Date().toISOString()
+    })
 
     try {
       const reminder = `

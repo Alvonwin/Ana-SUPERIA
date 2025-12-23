@@ -18,6 +18,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 const EventEmitter = require('events');
+const eventBus = require('./shared_event_bus.cjs');
 
 class EmotionAnalyzer extends EventEmitter {
   constructor() {
@@ -25,11 +26,21 @@ class EmotionAnalyzer extends EventEmitter {
     this.name = 'Emotion Analyzer';
     this.version = '1.0.0';
     this.checkInterval = 60 * 60 * 1000; // 1 heure
-    this.journalDir = path.join(__dirname, '..', '04_JOURNAL_ÉMOTIONNEL');
-    this.patternsDir = path.join(__dirname, '..', 'PATTERNS_ÉMOTIONNELS');
-    this.emotionVocabulary = new Map(); // Mon vocabulaire émotionnel en construction
+    // Chemins Ana SUPERIA
+    this.journalDir = 'E:/ANA/memory/journal';
+    this.patternsDir = 'E:/ANA/memory/patterns';
+    this.emotionVocabulary = new Map();
     this.running = false;
     this.checkTimer = null;
+
+    // Patterns d'émotion à détecter
+    this.emotionPatterns = {
+      frustration: [/merde/i, /putain/i, /fais chier/i, /imbécile/i, /coupable/i, /toujours pareil/i],
+      satisfaction: [/merci/i, /parfait/i, /excellent/i, /bravo/i, /super/i, /génial/i],
+      urgence: [/urgent/i, /vite/i, /maintenant/i, /immédiatement/i, /pressé/i],
+      curiosité: [/comment/i, /pourquoi/i, /explique/i, /c'est quoi/i, /qu'est-ce/i],
+      confusion: [/comprends pas/i, /pas clair/i, /confus/i, /perdu/i]
+    };
   }
 
   async start() {
@@ -44,6 +55,23 @@ class EmotionAnalyzer extends EventEmitter {
 
     this.running = true;
 
+    // === ÉCOUTER LES MESSAGES ANA ===
+    eventBus.on('ana:message_received', async (data) => {
+      const emotion = this.detectEmotion(data.message);
+      if (emotion.detected) {
+        console.log(`🎭 [${this.name}] Émotion détectée: ${emotion.type} (${emotion.intensity})`);
+
+        // Émettre insight pour injection contexte LLM
+        eventBus.emit('agent:insight', {
+          agent: 'emotion_analyzer',
+          insight: `Ton utilisateur: ${emotion.type} (intensité ${emotion.intensity}/5)`,
+          emotion: emotion.type,
+          intensity: emotion.intensity,
+          timestamp: new Date().toISOString()
+        });
+      }
+    });
+
     // Première analyse immédiate
     await this.analyzeEmotions();
 
@@ -53,11 +81,39 @@ class EmotionAnalyzer extends EventEmitter {
     }, this.checkInterval);
 
     console.log(`🎭 [${this.name}] Agent opérationnel`);
+    console.log(`   - Écoute: ana:message_received`);
     console.log(`   - Check émotions: toutes les heures`);
-    console.log(`   - Journal: ${this.journalDir}`);
-    console.log(`   - Patterns: ${this.patternsDir}`);
 
     this.emit('started');
+  }
+
+  /**
+   * Détecte l'émotion dans un message
+   */
+  detectEmotion(message) {
+    if (!message) return { detected: false };
+
+    for (const [emotionType, patterns] of Object.entries(this.emotionPatterns)) {
+      for (const pattern of patterns) {
+        if (pattern.test(message)) {
+          // Calculer intensité basée sur nombre de matches
+          let intensity = 1;
+          for (const p of patterns) {
+            if (p.test(message)) intensity++;
+          }
+          intensity = Math.min(intensity, 5);
+
+          return {
+            detected: true,
+            type: emotionType,
+            intensity,
+            matchedPattern: pattern.toString()
+          };
+        }
+      }
+    }
+
+    return { detected: false };
   }
 
   async analyzeEmotions() {

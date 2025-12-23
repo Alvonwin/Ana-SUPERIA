@@ -25,9 +25,10 @@ class LearningMonitor extends EventEmitter {
     this.name = 'Learning Monitor';
     this.version = '1.0.0';
     this.checkInterval = 2 * 60 * 60 * 1000; // 2 heures
-    this.conversationFile = path.join(__dirname, '..', '02_MÉMOIRE_COURT_TERME', 'current_conversation.txt');
-    this.lessonsDir = path.join(__dirname, '..', 'LEÇONS_APPRISES');
-    this.skillsDir = path.join(__dirname, '..', '06_COMPÉTENCES');
+    // Chemins - Ana SUPERIA
+    this.conversationFile = 'E:/ANA/memory/current_conversation_ana.txt';
+    this.lessonsDir = 'E:/ANA/knowledge/learned';
+    this.skillsDir = 'E:/ANA/knowledge/skills';
     this.lastProcessedSize = 0;
     this.running = false;
     this.checkTimer = null;

@@ -66,10 +66,11 @@ class StrictBackupEnforcer {
       uptime: '0s'
     }
 
-    this.conversationPath = 'E:\\Mémoire Claude\\current_conversation.txt'
-    this.rappelsPath = 'E:\\Mémoire Claude\\RAPPELS_ACTIFS.md'
-    this.urgentAlertsPath = 'E:\\Mémoire Claude\\URGENT_ALAIN.md'
-    this.validationPath = 'E:\\Mémoire Claude\\VALIDATION_REQUISE.txt'
+    // Chemins - Ana SUPERIA
+    this.conversationPath = 'E:/ANA/memory/current_conversation_ana.txt'
+    this.rappelsPath = 'E:/ANA/memory/rappels_actifs.md'
+    this.urgentAlertsPath = 'E:/ANA/memory/URGENT_ALAIN.md'
+    this.validationPath = 'E:/ANA/memory/VALIDATION_REQUISE.txt'
 
     this.startTime = Date.now()
     this.lastPosition = 0
@@ -95,6 +96,12 @@ class StrictBackupEnforcer {
     // Écouter les backups créés
     eventBus.on('backup:created', (data) => this.recordBackup(data))
 
+    // === INTÉGRATION ANA SUPERIA ===
+    // Écouter les réponses pour détecter modifications sans backup mentionné
+    eventBus.on('ana:response_complete', async (data) => {
+      await this.analyzeResponseForBackupCompliance(data)
+    })
+
     // Initialiser position
     try {
       const stats = await fs.stat(this.conversationPath)
@@ -108,6 +115,28 @@ class StrictBackupEnforcer {
 
     console.log(`🔒 [${this.name}] MODE STRICT ACTIF - Surveillance toutes les ${this.checkInterval/1000}s`)
     console.log(`⚠️  [${this.name}] Limite violations critiques: ${this.criticalViolationLimit}`)
+  }
+
+  /**
+   * Analyse une réponse Ana pour conformité backup (Ana SUPERIA)
+   */
+  async analyzeResponseForBackupCompliance(data) {
+    const response = data.anaResponse || ''
+
+    // Détecter modifications de fichiers
+    const hasEdit = /Edit\(/.test(response)
+    const hasWrite = /Write\(/.test(response)
+    const hasBackupMention = /backup|sauvegarde|\.bak/i.test(response)
+
+    if ((hasEdit || hasWrite) && !hasBackupMention) {
+      // Modification sans mention de backup
+      eventBus.emit('agent:insight', {
+        agent: 'strict_backup_enforcer',
+        insight: `🚨 ALERTE: Modification de fichier détectée sans backup! Règle: "JAMAIS modifier sans backup - JAMAIS"`,
+        severity: 'critical',
+        timestamp: new Date().toISOString()
+      })
+    }
   }
 
   /**
@@ -322,6 +351,15 @@ class StrictBackupEnforcer {
 
     // Émettre événement critique
     eventBus.emit('critical:violation', violation)
+
+    // === ÉMETTRE INSIGHT CRITIQUE POUR ANA ===
+    eventBus.emit('agent:insight', {
+      agent: 'strict_backup_enforcer',
+      insight: `🚨🚨 VIOLATION CRITIQUE #${this.stats.criticalViolations}: ${tool} sur ${path.basename(filePath)} SANS BACKUP! Créé un backup IMMÉDIATEMENT!`,
+      severity: 'critical',
+      file: filePath,
+      timestamp: new Date().toISOString()
+    })
 
     // Créer alerte URGENTE
     await this.createUrgentAlert(violation)

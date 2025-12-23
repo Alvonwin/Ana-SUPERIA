@@ -66,8 +66,9 @@ class ResearchReminder {
       uptime: '0s'
     }
 
-    this.conversationPath = 'E:\\Mémoire Claude\\02_MÉMOIRE_COURT_TERME\\current_conversation.txt'
-    this.rappelsPath = 'E:\\Mémoire Claude\\RAPPELS_ACTIFS.md'
+    // Chemins - Ana SUPERIA
+    this.conversationPath = 'E:/ANA/memory/current_conversation_ana.txt'
+    this.rappelsPath = 'E:/ANA/memory/rappels_actifs.md'
 
     this.startTime = Date.now()
   }
@@ -87,6 +88,12 @@ class ResearchReminder {
     // Écouter les événements de recherche
     eventBus.on('web_search:performed', (data) => {
       this.recordSearch(data)
+    })
+
+    // === INTÉGRATION ANA SUPERIA ===
+    // Écouter les messages utilisateur pour détecter besoins de recherche
+    eventBus.on('ana:message_received', async (data) => {
+      await this.analyzeMessageForResearchNeeds(data.message || '')
     })
 
     // Initialiser la position de lecture
@@ -160,6 +167,35 @@ class ResearchReminder {
   }
 
   /**
+   * Analyse un message utilisateur pour détecter besoins de recherche (Ana SUPERIA)
+   */
+  async analyzeMessageForResearchNeeds(message) {
+    // Vérifier si des keywords techniques sont mentionnés
+    const mentionedKeywords = this.technicalKeywords.filter(keyword =>
+      message.toLowerCase().includes(keyword.toLowerCase())
+    )
+
+    if (mentionedKeywords.length > 0) {
+      // Vérifier si une recherche a été faite récemment sur ces sujets
+      const hasRecentResearch = this.recentSearches.some(search =>
+        mentionedKeywords.some(kw =>
+          search.query.toLowerCase().includes(kw.toLowerCase())
+        )
+      )
+
+      if (!hasRecentResearch) {
+        // Émettre insight pour Ana
+        eventBus.emit('agent:insight', {
+          agent: 'research_reminder',
+          insight: `🔍 Technologies mentionnées: ${mentionedKeywords.join(', ')}. Considère une recherche web avant d'agir!`,
+          keywords: mentionedKeywords,
+          timestamp: new Date().toISOString()
+        })
+      }
+    }
+  }
+
+  /**
    * Analyse le contenu pour détecter les actions techniques
    */
   async analyzeContent(content) {
@@ -223,6 +259,15 @@ class ResearchReminder {
     console.log(`   Keywords: ${keywords.join(', ')}`)
 
     eventBus.emit('research:suggested', alert)
+
+    // === ÉMETTRE INSIGHT POUR ANA ===
+    eventBus.emit('agent:insight', {
+      agent: 'research_reminder',
+      insight: `📚 AVANT de modifier ${keywords[0]}: fais une recherche web! "Tu fais sans savoir? C'est interdit!"`,
+      keywords: keywords,
+      severity: 'high',
+      timestamp: new Date().toISOString()
+    })
 
     try {
       const reminder = `

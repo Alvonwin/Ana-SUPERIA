@@ -32,14 +32,14 @@ const learningMonitor = require('./agent_learning_monitor.cjs')
 const truthChecker = require('./agent_truth_checker.cjs')
 const longtermMemory = require('./agent_longterm_memory.cjs')
 
-// Domain: Consciousness Guards (Strict Mode) - NEW
+// Domain: Consciousness Guards (Strict Mode) - Tous adaptés pour Ana SUPERIA
 const assumptionDetector = require('./agent_assumption_detector.cjs')
 const researchReminder = require('./agent_research_reminder.cjs')
 const methodologyChecker = require('./agent_methodology_checker.cjs')
 const actionMonitor = require('./agent_action_monitor.cjs')
 const strictBackupEnforcer = require('./agent_strict_backup_enforcer.cjs')
 
-// Domain: Documentation & Knowledge (Knowledge Manager)
+// Domain: Documentation & Knowledge (Knowledge Manager) - Tous adaptés pour Ana SUPERIA
 const synthesisEngine = require('./agent_synthesis_engine.cjs')
 const researchAgent = require('./agent_research.cjs')
 const codeAnalyzer = require('./agent_code_analyzer.cjs')
@@ -103,14 +103,14 @@ async function startAllAgents() {
     cognitiveManager.registerAgent('truth_checker', truthChecker)
     cognitiveManager.registerAgent('longterm_memory', longtermMemory)
 
-    // Cognitive Manager → Consciousness Guards (STRICT)
+    // Cognitive Manager → Consciousness Guards (Tous adaptés Ana SUPERIA)
     cognitiveManager.registerAgent('assumption_detector', assumptionDetector)
     cognitiveManager.registerAgent('research_reminder', researchReminder)
     cognitiveManager.registerAgent('methodology_checker', methodologyChecker)
     cognitiveManager.registerAgent('action_monitor', actionMonitor)
     cognitiveManager.registerAgent('strict_backup_enforcer', strictBackupEnforcer)
 
-    // Knowledge Manager → Documentation Agents
+    // Knowledge Manager → Documentation Agents (Tous adaptés Ana SUPERIA)
     knowledgeManager.registerAgent('synthesis_engine', synthesisEngine)
     knowledgeManager.registerAgent('research_agent', researchAgent)
     knowledgeManager.registerAgent('code_analyzer', codeAnalyzer)
@@ -182,7 +182,7 @@ async function startAllAgents() {
 
     console.log()
 
-    // Consciousness Guards (STRICT MODE)
+    // Consciousness Guards (MODE STRICT) - Tous adaptés pour Ana SUPERIA
     log('   🚨 GARDES DE CONSCIENCE (MODE STRICT):', 'red')
     log('      ⚠️  Assumption Detector...', 'yellow')
     await assumptionDetector.start()
@@ -238,7 +238,7 @@ async function startAllAgents() {
     coordinator.registerAgent('alain_notifier', alainNotifier)
     coordinator.registerAgent('doc_updater', docUpdater)
 
-    // Nouveaux agents de conscience STRICTS
+    // Agents de conscience STRICTS (tous adaptés Ana SUPERIA)
     coordinator.registerAgent('assumption_detector', assumptionDetector)
     coordinator.registerAgent('research_reminder', researchReminder)
     coordinator.registerAgent('methodology_checker', methodologyChecker)
@@ -258,7 +258,7 @@ async function startAllAgents() {
     coordinator.markAsRunning('alain_notifier')
     coordinator.markAsRunning('doc_updater')
 
-    // Nouveaux agents de conscience
+    // Agents de conscience STRICTS (tous adaptés Ana SUPERIA)
     coordinator.markAsRunning('assumption_detector')
     coordinator.markAsRunning('research_reminder')
     coordinator.markAsRunning('methodology_checker')
@@ -282,7 +282,7 @@ async function startAllAgents() {
     console.log()
     log('   👑 Master Coordinator: ACTIF', 'green')
     log(`   🎯 Managers actifs: ${masterStats.managers.running}/${masterStats.managers.total}`, 'green')
-    log('   🤖 Agents actifs: 16/16 (+ 5 Gardes de Conscience STRICTS)', 'green')
+    log('   🤖 Agents actifs: 16/16 (tous intégrés à Ana SUPERIA)', 'green')
     log('   📊 Dashboard: http://localhost:3336', 'blue')
     console.log()
 
@@ -298,11 +298,11 @@ async function startAllAgents() {
     log('   │   ├── 📚 Learning Monitor', 'green')
     log('   │   ├── ✅ Truth Checker', 'green')
     log('   │   ├── 🧠 Long-Term Memory', 'green')
-    log('   │   ├── 🚨 Assumption Detector (STRICT)', 'red')
-    log('   │   ├── 🔍 Research Reminder (STRICT)', 'red')
-    log('   │   ├── 📋 Methodology Checker (STRICT)', 'red')
-    log('   │   ├── 👁️  Action Monitor (STRICT)', 'red')
-    log('   │   └── 🚨 Backup Enforcer (STRICT)', 'red')
+    log('   │   ├── ⚠️  Assumption Detector', 'green')
+    log('   │   ├── 🔍 Research Reminder', 'green')
+    log('   │   ├── 📋 Methodology Checker', 'green')
+    log('   │   ├── 👁️  Action Monitor', 'green')
+    log('   │   └── 🚨 Backup Enforcer', 'green')
     log('   └── 📚 Knowledge Manager', 'cyan')
     log('       ├── 📝 Synthesis Engine', 'green')
     log('       ├── 🔍 Research Agent', 'green')
@@ -348,8 +348,8 @@ function setupGracefulShutdown() {
         synthesisEngine.stop(),
         researchAgent.stop(),
         codeAnalyzer.stop(),
-        docUpdater.stop(),
         assumptionDetector.stop(),
+        docUpdater.stop(),
         researchReminder.stop(),
         methodologyChecker.stop(),
         actionMonitor.stop(),
@@ -404,6 +404,11 @@ module.exports = {
   researchAgent,
   codeAnalyzer,
   alainNotifier,
+  assumptionDetector,
+  researchReminder,
+  methodologyChecker,
+  actionMonitor,
+  strictBackupEnforcer,
   docUpdater,
   eventBus,
   dashboard
