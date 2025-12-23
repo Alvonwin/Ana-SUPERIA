@@ -8,6 +8,7 @@ import { IconSend } from '../components/Icons';
 import ScrabbleGame from '../components/ScrabbleGame';
 import DefinitionMysteryGame from '../components/DefinitionMysteryGame';
 import MotusGame from '../components/MotusGame';
+import BoggleGame from '../components/BoggleGame';
 
 // Constante pour la voix Sylvie (edge-tts) - FIX 2025-12-19
 const SYLVIE_VOICE = 'Sylvie (Québec)';
@@ -28,7 +29,8 @@ const GAMES_LIST = [
   { id: 'backgammon', name: 'Backgammon', icon: '🎲', description: 'Classique!' },
   { id: 'scrabble', name: 'Scrabble', icon: '🔠', description: 'Roi des mots!' },
   { id: 'definition-mystery', name: 'Définition Mystère', icon: '🔮', description: 'Devine le mot!' },
-  { id: 'motus', name: 'Motus', icon: '🟩', description: 'Trouve le mot!' }
+  { id: 'motus', name: 'Motus', icon: '🟩', description: 'Trouve le mot!' },
+  { id: 'boggle', name: 'Boggle', icon: '🔠', description: 'Mots dans la grille!' }
 ];
 
 function GamesPage() {
@@ -2153,6 +2155,7 @@ function GamesPage() {
       case 'scrabble': return <ScrabbleGame session="default" mode="vsAna" onReaction={addMessage} />;
       case 'definition-mystery': return <DefinitionMysteryGame session="default" onReaction={addMessage} />;
       case 'motus': return <MotusGame session="default" onReaction={addMessage} />;
+      case 'boggle': return <BoggleGame />;
       default: return null;
     }
   };

@@ -1154,7 +1154,7 @@ const TOOL_DEFINITIONS = [
     type: 'function',
     function: {
       name: 'create_react_component',
-      description: 'Créer un nouveau composant React (.jsx) avec son fichier CSS associé. Utilise les patterns du projet Ana.',
+      description: 'Créer un SQUELETTE VIDE de composant React (structure de base uniquement). Pour du code personnalisé ou fonctionnel, UTILISER write_file à la place.',
       parameters: {
         type: 'object',
         properties: {
@@ -3498,8 +3498,16 @@ const TOOL_IMPLEMENTATIONS = {
 
   async write_file(args) {
     const { path, content } = args;
-    console.log(`🔧 [ToolAgent] write_file: "${path}"`);
+    console.log(`[ToolAgent] write_file: "${path}", type: ${typeof content}, len: ${content?.length || 0}`);
+
+    // FIX 2025-12-23: Detecter content vide/undefined (truncation)
+    if (content === undefined || content === null || content === '') {
+      console.error(`[ToolAgent] write_file ECHEC: content vide!`, JSON.stringify(args).substring(0, 300));
+      return { success: false, error: 'Contenu manquant - generation tronquee' };
+    }
+
     const res = await FileTools.write(path, content, { backup: true });
+    console.log(`[ToolAgent] write_file: ${res.bytesWritten || 0} bytes ecrits`);
     return res;
   },
 
@@ -8269,7 +8277,13 @@ ${skillInstructions}`;
         if (typeof rawArgs === 'string') {
           try {
             parsedArgs = JSON.parse(rawArgs);
-          } catch {
+          } catch (parseError) {
+            // FIX 2025-12-23: Log les erreurs de parsing pour debug
+            console.error(`[ToolAgent] JSON parse error for ${toolName}:`, parseError.message);
+            console.error(`[ToolAgent] Raw args (500 chars):`, rawArgs.substring(0, 500));
+            if (rawArgs.length > 1000 && !rawArgs.endsWith('}')) {
+              console.error(`[ToolAgent] TRUNCATION DETECTEE - max_tokens insuffisant`);
+            }
             parsedArgs = {};
           }
         }
@@ -8605,7 +8619,13 @@ ${skillInstructions}`;
         if (typeof rawArgs === 'string') {
           try {
             parsedArgs = JSON.parse(rawArgs);
-          } catch {
+          } catch (parseError) {
+            // FIX 2025-12-23: Log les erreurs de parsing pour debug
+            console.error(`[ToolAgent] JSON parse error for ${toolName}:`, parseError.message);
+            console.error(`[ToolAgent] Raw args (500 chars):`, rawArgs.substring(0, 500));
+            if (rawArgs.length > 1000 && !rawArgs.endsWith('}')) {
+              console.error(`[ToolAgent] TRUNCATION DETECTEE - max_tokens insuffisant`);
+            }
             parsedArgs = {};
           }
         }

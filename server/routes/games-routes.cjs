@@ -937,3 +937,36 @@ router.get('/list', (req, res) => {
 });
 
 module.exports = router;
+const boggleEngine = require('../games/boggle-engine.cjs');
+
+// ==================== BOGGLE ====================
+router.post('/boggle/new', (req, res) => {
+  try {
+    const result = boggleEngine.newGame(req.body.session || 'default');
+    result.reaction = "Boggle ! Trouve des mots dans la grille !";
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/boggle/guess', (req, res) => {
+  try {
+    const { session = 'default', word } = req.body;
+    const result = boggleEngine.guess(session, word);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.get('/boggle/state', (req, res) => {
+  try {
+    res.json(boggleEngine.getState(req.query.session || 'default'));
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.get('/list', (req, res) => {
+  res.json({
+    games: [
+      // ...
+      { id: 'boggle', name: 'Boggle', description: 'Trouve des mots dans la grille!', icon: '🔠', available: true }
+    ]
+  });
+});

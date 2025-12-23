@@ -127,6 +127,12 @@ class ToolExecutor {
       throw new Error('Paramètres requis manquants: file_path, content');
     }
 
+    // FIX 2025-12-23: Detecter content vide (truncation LLM)
+    if (content === null || content === '') {
+      console.error(`[ToolExecutor] writeFile ECHEC: content vide!`);
+      return { success: false, error: 'Contenu manquant - generation tronquee' };
+    }
+
     return await FileTools.write(file_path, content);
   }
 

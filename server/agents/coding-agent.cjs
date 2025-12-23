@@ -261,6 +261,12 @@ const TOOL_EXECUTORS = {
   },
 
   write_file: async (args) => {
+    console.log(`[CodingAgent] write_file: "${args.path}", type: ${typeof args.content}, len: ${args.content?.length || 0}`);
+    // FIX 2025-12-23: Detecter content vide/undefined (truncation)
+    if (args.content === undefined || args.content === null || args.content === '') {
+      console.error(`[CodingAgent] write_file ECHEC: content vide!`);
+      return { success: false, error: 'Contenu manquant - generation tronquee' };
+    }
     return await FileTools.write(args.path, args.content, { backup: true });
   },
 

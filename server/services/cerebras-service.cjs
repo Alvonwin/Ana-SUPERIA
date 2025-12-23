@@ -178,7 +178,7 @@ class CerebrasService {
     const {
       model = this.models.LLAMA_70B,  // 70B pour meilleure qualité
       temperature = 0.1,
-      maxTokens = 4096
+      maxTokens = 8192  // FIX 2025-12-23: Augmenté pour code complexe
     } = options;
 
     const startTime = Date.now();
