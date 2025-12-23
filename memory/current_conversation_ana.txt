@@ -1671,3 +1671,9 @@ J'espère que cela t'aide ! Si tu as d'autres questions, n'hésite pas à me dem
 ## Alain: Enregistre cette commande dans ta mémoire.
 ## Ana: Désolé, mais je n'ai pas pu mettre à jour ma mémoire avec la commande pour récupérer le nom de la carte graphique. Il semblerait que je n'avais pas d'information précédente sur la carte graphique à mettre à jour. Si tu le souhaitez, je peux essayer de mémoriser cette information manuellement. La commande pour récupérer le nom de la carte graphique est `wmic path win32_VideoController get name`. Et selon les résultats, ton carte graphique est une NVIDIA GeForce RTX 3070.
 
+## Alain: Bonne nuit Ana.
+## Ana: Bonne nuit !
+
+## Alain: Bisous bisous.
+## Ana: Bisous à toi aussi !
+

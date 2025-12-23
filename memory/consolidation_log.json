@@ -1,146 +1,5 @@
 [
   {
-    "timestamp": "2025-12-21T15:25:17.265Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T15:55:17.270Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
-    "timestamp": "2025-12-21T16:25:17.277Z",
-    "steps": [
-      {
-        "name": "decay",
-        "result": {
-          "success": true,
-          "updated": 0
-        }
-      },
-      {
-        "name": "dedupe",
-        "result": {
-          "success": true,
-          "removed": 0
-        }
-      },
-      {
-        "name": "embeddings",
-        "result": {
-          "success": true,
-          "generated": 0
-        }
-      },
-      {
-        "name": "links",
-        "result": {
-          "success": true,
-          "created": 0
-        }
-      },
-      {
-        "name": "archive",
-        "result": {
-          "success": true,
-          "archived": 0
-        }
-      }
-    ],
-    "summary": {
-      "decay_applied": 0,
-      "duplicates_removed": 0,
-      "embeddings_generated": 0,
-      "links_created": 0,
-      "memories_archived": 0
-    }
-  },
-  {
     "timestamp": "2025-12-21T16:35:35.575Z",
     "steps": [
       {
@@ -4696,6 +4555,147 @@
       "duplicates_removed": 0,
       "embeddings_generated": 0,
       "links_created": 2,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T08:56:58.510Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T09:11:56.234Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
+      "memories_archived": 0
+    }
+  },
+  {
+    "timestamp": "2025-12-23T09:33:13.603Z",
+    "steps": [
+      {
+        "name": "decay",
+        "result": {
+          "success": true,
+          "updated": 0
+        }
+      },
+      {
+        "name": "dedupe",
+        "result": {
+          "success": true,
+          "removed": 0
+        }
+      },
+      {
+        "name": "embeddings",
+        "result": {
+          "success": true,
+          "generated": 0
+        }
+      },
+      {
+        "name": "links",
+        "result": {
+          "success": true,
+          "created": 0
+        }
+      },
+      {
+        "name": "archive",
+        "result": {
+          "success": true,
+          "archived": 0
+        }
+      }
+    ],
+    "summary": {
+      "decay_applied": 0,
+      "duplicates_removed": 0,
+      "embeddings_generated": 0,
+      "links_created": 0,
       "memories_archived": 0
     }
   }

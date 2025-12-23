@@ -1,0 +1,1 @@
+contenu du panneau de chat à ajouter

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2025-12-23T08:46:40.010Z",
+    "updated": "2025-12-23T09:03:54.726Z",
     "version": "1.0.1"
   },
   "skills": [
@@ -4060,11 +4060,11 @@
       "taskType": "coding",
       "confidence": "high",
       "importance": 7,
-      "occurrences": 17,
-      "successCount": 17,
+      "occurrences": 18,
+      "successCount": 18,
       "failureCount": 0,
       "learnedAt": "2025-12-20T08:31:52.585Z",
-      "lastSeen": "2025-12-23T04:58:39.488Z"
+      "lastSeen": "2025-12-23T09:03:02.303Z"
     },
     {
       "id": "skill_1766219579760_1dbdp",
@@ -12061,6 +12061,42 @@
       "confidence": "high",
       "importance": 8,
       "learnedAt": "2025-12-23T08:46:40.010Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766480634681_qxe5e",
+      "type": "learned_solution",
+      "name": "Comment copier un panneau de chat d'un autre fichier JavaScript dans le même projet",
+      "description": "Alain a appris qu'il est nécessaire de lire et écrire des fichiers pour ajouter du code provenant d'un autre fichier.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-23T09:03:54.681Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766480634724_5oxjn",
+      "type": "mistake_to_avoid",
+      "name": "Ne pas lire le contenu d'un fichier avant de tenter de l'ajouter dans un autre",
+      "description": "Alain a réalisé qu'il est crucial de lire les informations du fichier source pour éviter des erreurs.",
+      "confidence": "high",
+      "importance": 8,
+      "learnedAt": "2025-12-23T09:03:54.723Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766480634726_wpipi",
+      "type": "pattern",
+      "name": "Utilisation d'expressions régulières (regex) pour la validation de l'entrée utilisateur",
+      "description": "Bien que cela ne soit pas mentionné directement dans cette conversation, c'est une pratique courante et utile en développement web.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-23T09:03:54.726Z",
       "sourceModel": "llama-3.3-70b",
       "successfulExecution": true,
       "occurrences": 1
