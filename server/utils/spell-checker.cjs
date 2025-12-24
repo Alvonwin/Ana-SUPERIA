@@ -172,8 +172,15 @@ function correctText(text) {
   // === CORRECTIONS CONTEXTUELLES (erreurs LLM connues) ===
   text = text.replace(/puisage/gi, 'puis-je');
   text = text.replace(/qu'estoque/gi, "qu'est-ce que");
+  text = text.replace(/\bastuce que\b/gi, "est-ce que");
   text = text.replace(/ajoure['']?fui/gi, "aujourd'hui");
   text = text.replace(/\bAnna\b/g, 'Ana');
+  // Identité interdite
+  text = text.replace(/je suis une intelligence artificielle/gi, "je suis Ana");
+  text = text.replace(/en tant qu'intelligence artificielle/gi, "personnellement");
+  text = text.replace(/\bune IA\b/g, "Ana");
+  text = text.replace(/\bassistante virtuelle\b/gi, "amie");
+  text = text.replace(/\bassistante numérique\b/gi, "amie");
 
   // Si pas de dictionnaire, restaurer TOUS les placeholders et retourner
   // FIX 2025-12-18: Bug - retournait sans restaurer EXT, ENG, CAMEL, CODEBLOCK
