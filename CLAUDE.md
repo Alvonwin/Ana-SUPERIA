@@ -56,8 +56,8 @@ node start_agents.cjs
 - `agents/` - Implémentations tool-agent, coding-agent, research-agent
 - `intelligence/` - Routeur sémantique, sélecteur de contexte, apprentissage de compétences
 - `memory/` - Intégration ChromaDB, mémoire à niveaux, classificateur de faits, systèmes épisodique/sémantique/zettelkasten
-- `tools/` - 180+ outils : fichiers, git, bash, recherche, web, mémoire
-- `games/` - Moteurs de jeux : dames, échecs, backgammon, bataille navale, etc.
+- `tools/` - 195+ outils : fichiers, git, bash, recherche, web, mémoire
+- `games/` - 16 moteurs de jeux : dames, échecs, backgammon, bataille navale, morpion, puissance 4, pendu, memory, nim, blackjack, boggle, motus, scrabble, définition mystère, etc.
 - `config/` - Prompts système, profils LLM, définitions d'outils
 - `routes/` - Points d'API incluant games-routes
 
@@ -98,7 +98,7 @@ Interface agent :
 
 ## Système d'Outils
 
-180+ outils organisés dans `server/core/tool-groups.cjs` avec sélection hybride :
+195+ outils organisés dans `server/core/tool-groups.cjs` avec sélection hybride :
 1. Correspondance par mots-clés
 2. Recherche sémantique via embeddings ChromaDB
 3. Boost d'expérience depuis l'apprentissage de compétences
@@ -311,7 +311,6 @@ Pour les tâches de recherche complexes, utiliser la méthodologie structurée:
 - `METHODOLOGIE.md` - Guide complet
 - `TEMPLATE_RECHERCHE.md` - Template pour nouvelles recherches
 - `ARBRE_HYPOTHESES.md` - Structure des hypothèses
-- `actives/` - Recherches en cours
 
 **Principes:**
 1. **Hypothèses concurrentes** - Toujours maintenir 2-3 hypothèses alternatives
