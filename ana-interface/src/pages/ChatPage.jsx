@@ -19,7 +19,9 @@ import {
   IconThumbsUp,
   IconThumbsDown,
   IconLoader2,
-  IconVideo
+  IconVideo,
+  IconVolume2,
+  IconVolumeX
 } from '../components/Icons';
 import { useDropzone } from 'react-dropzone';
 import ReactMarkdown from 'react-markdown';
@@ -137,6 +139,12 @@ function ChatPage() {
   const [generatingVideo, setGeneratingVideo] = useState(null); // ID du message en cours de génération
   const [videoUrls, setVideoUrls] = useState({}); // URLs des vidéos générées par message
   const [avatarEnabled, setAvatarEnabled] = useState(true); // Switch on/off fenêtre avatar
+  const [ttsMuted, setTtsMuted] = useState(() => {
+    // Charger préférence depuis localStorage
+    const saved = localStorage.getItem('ana_tts_muted');
+    return saved === 'true';
+  }); // Mute TTS auto (garder audio vidéo)
+  const ttsMutedRef = useRef(ttsMuted); // Ref pour accès dans socket handlers
   const messagesEndRef = useRef(null);
   const currentAudioRef = useRef(null); // Référence audio pour pause/resume
   const voiceLoopRef = useRef(null);
@@ -413,8 +421,9 @@ function ChatPage() {
       });
 
       // Déclencher l'audio après un délai pour laisser React mettre à jour le state
+      // Seulement si TTS n'est pas muté
       setTimeout(async () => {
-        if (finalText) {
+        if (finalText && !ttsMutedRef.current) {
           // PAUSE la reconnaissance vocale pendant le TTS
           if (voiceLoopRef.current) {
             voiceLoopRef.current.pause();
@@ -767,6 +776,17 @@ function ChatPage() {
     console.log('⚡ Vitesse changée:', rate + 'x');
   };
 
+  // Toggle mute TTS (garder audio vidéo avatar)
+  const toggleTtsMute = () => {
+    setTtsMuted(prev => {
+      const newValue = !prev;
+      ttsMutedRef.current = newValue; // Sync ref
+      localStorage.setItem('ana_tts_muted', newValue.toString());
+      console.log(newValue ? '🔇 TTS muté' : '🔊 TTS activé');
+      return newValue;
+    });
+  };
+
   // Fonction TTS avec edge-tts (voix Sylvie Québec)
   const speakWithEdgeTTS = async (text, onEnd, onError) => {
     try {
@@ -894,6 +914,15 @@ function ChatPage() {
             disabled={isLoading}
             soundSystem={soundSystem}
           />
+          {/* Bouton Mute TTS */}
+          <button
+            className={`tts-mute-btn ${ttsMuted ? 'muted' : ''}`}
+            onClick={toggleTtsMute}
+            title={ttsMuted ? 'Activer TTS' : 'Muter TTS (garder audio vidéo)'}
+          >
+            {ttsMuted ? <IconVolumeX size={16} /> : <IconVolume2 size={16} />}
+            <span>{ttsMuted ? 'TTS OFF' : 'TTS ON'}</span>
+          </button>
           <button
             className="prompt-toggle-btn"
             onClick={() => setShowPromptPanel(!showPromptPanel)}

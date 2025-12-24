@@ -171,10 +171,9 @@ function correctText(text) {
 
   // === CORRECTIONS CONTEXTUELLES (erreurs LLM connues) ===
   text = text.replace(/puisage/gi, 'puis-je');
+  text = text.replace(/qu'estoque/gi, "qu'est-ce que");
   text = text.replace(/ajoure['']?fui/gi, "aujourd'hui");
-  text = text.replace(/connecte/g, 'connectee');
-  text = text.replace(/Anna/g, 'Ana');
-  text = text.replace(/astuce/gi, 'est-ce');
+  text = text.replace(/\bAnna\b/g, 'Ana');
 
   // Si pas de dictionnaire, restaurer TOUS les placeholders et retourner
   // FIX 2025-12-18: Bug - retournait sans restaurer EXT, ENG, CAMEL, CODEBLOCK

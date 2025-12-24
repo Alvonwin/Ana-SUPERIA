@@ -634,6 +634,38 @@ class MemoryManager {
     return ctx;
   }
 
+  // Nettoie les erreurs grammaticales du contexte pour eviter l'auto-renforcement
+  cleanContextGrammar(text) {
+    if (!text) return text;
+    return text
+      // Pronoms mal utilises
+      .replace(/\bpour tu\b/gi, 'pour toi')
+      .replace(/\bavec tu\b/gi, 'avec toi')
+      .replace(/\bje tu\b/gi, 'je te')
+      .replace(/\bà tu\b/gi, 'à toi')
+      .replace(/\bde tu\b/gi, 'de toi')
+      .replace(/\bchez tu\b/gi, 'chez toi')
+      .replace(/\bsans tu\b/gi, 'sans toi')
+      // Melange vous/tu
+      .replace(/\bPourriez-tu\b/g, 'Pourrais-tu')
+      .replace(/\bpourriez-tu\b/g, 'pourrais-tu')
+      .replace(/\bPouvez-tu\b/g, 'Peux-tu')
+      .replace(/\bpouvez-tu\b/g, 'peux-tu')
+      // Conjugaisons incorrectes avec tu
+      .replace(/\btu recherchez\b/gi, 'tu recherches')
+      .replace(/\btu avez\b/gi, 'tu as')
+      .replace(/\btu pouvez\b/gi, 'tu peux')
+      .replace(/\btu voulez\b/gi, 'tu veux')
+      // Identite incorrecte
+      .replace(/\bassistante virtuelle\b/gi, 'amie')
+      .replace(/\bassistante numérique\b/gi, 'amie')
+      .replace(/\ben tant qu'IA\b/gi, 'personnellement')
+      .replace(/\bje suis une IA\b/gi, 'je suis Ana')
+      // Autres erreurs LLM
+      .replace(/qu'estoque/gi, "qu'est-ce que")
+      .replace(/puisage/gi, 'puis-je');
+  }
+
   loadContext() {
     // ANA SEULE: 80 KB pour Ana (avant: 40 KB x 2 sources)
     const MAX_ANA_CONTEXT_KB = 80;
@@ -654,6 +686,9 @@ class MemoryManager {
             anaContext = anaContext.slice(firstMarker);
           }
         }
+
+        // FIX: Nettoyer les erreurs grammaticales pour eviter l'auto-renforcement
+        anaContext = this.cleanContextGrammar(anaContext);
 
         console.log(`[MEMORY] Contexte Ana: ${(anaContext.length / 1024).toFixed(2)} KB (de ${(anaOriginal / 1024).toFixed(2)} KB)`);
       }

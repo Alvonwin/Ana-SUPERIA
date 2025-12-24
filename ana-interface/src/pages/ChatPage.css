@@ -65,6 +65,37 @@
   color: white;
 }
 
+/* TTS Mute Button */
+.tts-mute-btn {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #2ecc71 !important;
+  border: none;
+  border-radius: 6px;
+  color: white !important;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.tts-mute-btn:hover {
+  background: rgba(46, 204, 113, 0.5);
+  color: white;
+}
+
+.tts-mute-btn.muted {
+  background: #e74c3c !important;
+  color: white !important;
+}
+
+.tts-mute-btn.muted:hover {
+  background: #c0392b !important;
+  color: white;
+}
+
 /* System Prompt Panel */
 .system-prompt-panel {
   background: linear-gradient(135deg, #16162a 0%, #1a252f 100%);
