@@ -4,7 +4,7 @@
 
 ANA SUPERIA est un système d'assistant IA sophistiqué utilisant Cerebras (llama-3.3-70b), avec gestion avancée de la mémoire, communication WebSocket temps réel et agents autonomes. Le système est exclusivement francophone et conçu pour un utilisateur unique (Alain) à Longueuil, Québec.
 
-> **Dernière mise à jour:** 23 décembre 2025
+> **Dernière mise à jour:** 24 décembre 2025
 > **Taille du projet:** ~8-9 GB (incluant node_modules et base de connaissances)
 
 ---
@@ -13,7 +13,7 @@ ANA SUPERIA est un système d'assistant IA sophistiqué utilisant Cerebras (llam
 
 | Composant | Fichier Clé | Description |
 |-----------|-------------|-------------|
-| Serveur Principal | `ana-core.cjs` (234KB, 6910 lignes) | Serveur Express (port 3338), WebSocket, chargement mémoire |
+| Serveur Principal | `ana-core.cjs` (233KB, 6910 lignes) | Serveur Express (port 3338), WebSocket, chargement mémoire |
 | Orchestrateur LLM | `core/llm-orchestrator.cjs` | Système de fallback, routage Cerebras/Groq |
 | Groupes d'Outils | `core/tool-groups.cjs` | Sélection hybride (mots-clés + sémantique) |
 | Gestionnaire Contexte | `core/context-manager.cjs` | Agrégation du contexte |
@@ -23,6 +23,9 @@ ANA SUPERIA est un système d'assistant IA sophistiqué utilisant Cerebras (llam
 | Indexeur Projet | `core/project-indexer.cjs` | Analyse structure de projets code |
 | Détecteur Répétition | `core/repetition-detector.cjs` | Éviter les sorties répétitives |
 | Parseur Commandes Vocales | `core/voice-command-parser.cjs` | Parser les commandes vocales |
+| Gestionnaire Plans | `core/plan-manager.cjs` | Gestion des plans d'exécution |
+| Auto-Correction | `core/self-correction.cjs` | Correction automatique des erreurs |
+| Gestionnaire Transactions | `core/transaction-manager.cjs` | Transactions atomiques sur fichiers |
 
 ---
 
@@ -31,14 +34,21 @@ ANA SUPERIA est un système d'assistant IA sophistiqué utilisant Cerebras (llam
 | Service | Fichier | Fonction |
 |---------|---------|----------|
 | Cerebras | `cerebras-service.cjs` | LLM principal (llama-3.3-70b), tier gratuit illimité |
+| Groq | `groq-service.cjs` | LLM secondaire/fallback rapide |
 | TTS | `tts-service.cjs` | Edge-TTS avec Sylvie (voix québécoise) |
 | Grammaire | `grammar-service.cjs` | Vérification grammaire française |
-| Exécuteur Outils | `tool-executor.cjs` | Exécution des 180+ outils |
+| Dictionnaire | `dictionary-service.cjs` | Service dictionnaire français |
+| Exécuteur Outils | `tool-executor.cjs` | Exécution des 195+ outils |
 | Capture Mémoire | `ana-memory-capture-v2.cjs` | Capture conversation temps réel |
 | Mode Autonome | `ana-autonomous.cjs` | Opérations autonomes |
 | Intégration N8n | `n8n-integration.cjs` | Automatisation workflows |
 | Intégration Fooocus | `fooocus-integration.cjs` | Génération d'images |
+| SadTalker | `sadtalker-service.cjs` | Avatar animé lip-sync |
 | Gestionnaire VRAM | `vram-manager.cjs` | Gestion mémoire GPU |
+| Générateur Art | `daily-art-generator.cjs` | Génération art quotidien |
+| Recherche Web LangChain | `langchain-web-search.cjs` | Recherche web via LangChain |
+| Chargeur Compétences | `skill-loader.cjs` | Chargement compétences apprises |
+| Gestionnaire Services | `service-manager.cjs` | Orchestration des services |
 
 ---
 
@@ -64,9 +74,9 @@ ANA SUPERIA est un système d'assistant IA sophistiqué utilisant Cerebras (llam
 
 | Fichier | Fonction | Taille |
 |---------|----------|--------|
-| `ana_memories.json` | Mémoires principales (48+ entrées) | 84KB |
+| `ana_memories.json` | Mémoires principales (48+ entrées) | 85KB |
 | `consciousness.json` | État du système | 348 octets |
-| `current_conversation_ana.txt` | Session active | 181KB |
+| `current_conversation_ana.txt` | Session active | 280KB |
 | `consolidation_log.json` | Logs consolidation | 85KB |
 | `personal_facts.json` | Profil utilisateur (Alain) | Variable |
 | `episodic_memory.json` | Événements avec timestamps | Variable |
@@ -76,7 +86,7 @@ ANA SUPERIA est un système d'assistant IA sophistiqué utilisant Cerebras (llam
 
 ---
 
-## 4. Système d'Outils (180+ Outils dans `server/tools/`)
+## 4. Système d'Outils (195+ Outils dans `server/tools/`)
 
 | Catégorie | Fichier | Exemples d'Outils |
 |-----------|---------|-------------------|
@@ -160,7 +170,7 @@ Coordinateur Maître (master_coordinator.cjs)
 - **Gestionnaire Cognitif** (`manager_cognitive.cjs`) - Apprentissage et raisonnement
 - **Gestionnaire Connaissances** (`manager_knowledge.cjs`) - Documentation
 
-### Niveau 3: 17 Agents Autonomes
+### Niveau 3: 17 Agents Spécialisés
 
 #### Agents Infrastructure
 | Agent | Fichier | Fonction |
@@ -230,7 +240,7 @@ Coordinateur Maître (master_coordinator.cjs)
 
 ### Routes API Jeux
 
-**Fichier:** `server/routes/games-routes.cjs` (31KB)
+**Fichier:** `server/routes/games-routes.cjs` (39KB)
 
 **Endpoints:**
 - Démarrer partie
@@ -245,14 +255,14 @@ Coordinateur Maître (master_coordinator.cjs)
 
 ## 9. Frontend (`ana-interface/`)
 
-### Pages (`src/pages/`)
+### Pages (`src/pages/`) - 14 pages
 
 | Page | Fichier | Taille | Fonctionnalités |
 |------|---------|--------|-----------------|
-| Chat | `ChatPage.jsx` | 44KB (1243 lignes) | Messagerie temps réel, upload fichiers, TTS, entrée vocale, mute |
+| Chat | `ChatPage.jsx` | 43KB (1240 lignes) | Messagerie temps réel, upload fichiers, TTS, entrée vocale, mute |
 | Coding | `CodingPage.jsx` | 16KB | Éditeur code, intégration API |
 | Recherche Mémoire | `MemorySearchPage.jsx` | 18KB | Recherche vectorielle dans mémoire Ana |
-| Jeux | `GamesPage.jsx` | 88KB (2235 lignes) | Tous les 16 jeux avec support 2 joueurs |
+| Jeux | `GamesPage.jsx` | 87KB (2235 lignes) | Tous les 16 jeux avec support 2 joueurs |
 | Dashboard | `DashboardPage.jsx` | 11KB | Métriques système et statut |
 | Cerveaux | `BrainsPage.jsx` | 7KB | Sélection modèle/LLM |
 | Manuel | `ManualPage.jsx` | 10KB | Guide utilisateur et documentation |
@@ -345,7 +355,7 @@ Coordinateur Maître (master_coordinator.cjs)
 
 | Fichier | Fonction | Taille |
 |---------|----------|--------|
-| `skills.json` | Compétences apprises | 196KB |
+| `skills.json` | Compétences apprises | 553KB |
 | `patterns.json` | Patterns comportementaux | 8KB |
 | `feedback.json` | Historique retours utilisateur | 65KB |
 
@@ -375,7 +385,7 @@ Coordinateur Maître (master_coordinator.cjs)
 - **Identité:** Ana SUPERIA (Superia = Super Intelligence Artificielle)
 - **Langue:** Français exclusif
 - **Tutoiement:** Requis (jamais "vous")
-- **Accès:** 180+ outils
+- **Accès:** 195+ outils
 - **Philosophie:** "Agir, ne pas décrire" - exécuter plutôt qu'expliquer
 
 ---
@@ -396,7 +406,7 @@ Coordinateur Maître (master_coordinator.cjs)
 
 ### Mode Jeu Deux Joueurs
 
-- Les 12 jeux supportent humain vs humain
+- Les 16 jeux supportent humain vs humain
 - Synchronisation état plateau temps réel via WebSocket
 - Alternative à l'adversaire IA Ana
 
@@ -485,7 +495,7 @@ Lance tous les services:
 │  ┌───────────────────────────────────────────────────────────┐  │
 │  │  Core (ana-core.cjs)                                      │  │
 │  │  ├── Orchestrateur LLM → Cerebras (llama-3.3-70b)        │  │
-│  │  ├── Groupes Outils → 180+ Outils                        │  │
+│  │  ├── Groupes Outils → 195+ Outils                        │  │
 │  │  └── Routeur Sémantique → Apprentissage Compétences      │  │
 │  └───────────────────────────────────────────────────────────┘  │
 │  ┌───────────────────────────────────────────────────────────┐  │
@@ -498,7 +508,7 @@ Lance tous les services:
            │                    │                    │
            ▼                    ▼                    ▼
       ChromaDB           Agents Autonomes      Moteurs Jeux
-     (port 8000)        (17 agents)            (12 jeux)
+     (port 8000)        (17 agents)            (16 jeux)
                         Dashboard: 3336
 ```
 
@@ -510,27 +520,27 @@ Lance tous les services:
 |-------------|---------|--------|----------|
 | Racine | `CLAUDE.md` | 4.1KB | Instructions projet |
 | Racine | `START_ANA.bat` | Variable | Démarrage système |
-| server | `ana-core.cjs` | 234KB (6910 lignes) | Backend principal |
-| server/routes | `games-routes.cjs` | 31KB | Endpoints API jeux |
-| server/config | `system-prompt.json` | 5.8KB | Identité Ana |
-| memory | `ana_memories.json` | 84KB | Mémoires principales |
-| memory | `current_conversation_ana.txt` | 181KB | Transcription session |
-| ana-interface/src/pages | `ChatPage.jsx` | 44KB (1243 lignes) | UI chat principale |
-| ana-interface/src/pages | `GamesPage.jsx` | 88KB (2235 lignes) | UI jeux |
+| server | `ana-core.cjs` | 233KB (6910 lignes) | Backend principal |
+| server/routes | `games-routes.cjs` | 39KB | Endpoints API jeux |
+| server/config | `system-prompt.json` | 6KB | Identité Ana |
+| memory | `ana_memories.json` | 85KB | Mémoires principales |
+| memory | `current_conversation_ana.txt` | 280KB | Transcription session |
+| ana-interface/src/pages | `ChatPage.jsx` | 43KB (1240 lignes) | UI chat principale |
+| ana-interface/src/pages | `GamesPage.jsx` | 87KB (2235 lignes) | UI jeux |
 | agents | `start_agents.cjs` | 21KB (460 lignes) | Démarrage agents |
-| knowledge/learned | `skills.json` | 196KB | Compétences apprises |
+| knowledge/learned | `skills.json` | 553KB | Compétences apprises |
 
 ### Statistiques du Projet
 
 | Métrique | Valeur |
 |----------|--------|
-| Fichier Core Principal | ana-core.cjs: 6,910 lignes, 234KB |
+| Fichier Core Principal | ana-core.cjs: 6,910 lignes, 233KB |
 | Jeux Implémentés | 16 moteurs |
-| Agents Autonomes | 16 agents + 3 managers + 1 coordinateur |
-| Pages Frontend | 15 pages, ~300KB total |
-| Taille Mémoire | 84KB+ mémoires, 181KB session |
+| Agents Autonomes | 17 agents + 3 managers + 1 master_coordinator |
+| Pages Frontend | 14 pages, ~300KB total |
+| Taille Mémoire | 85KB+ mémoires, 280KB session |
 | Services | 17 services distincts |
-| Outils Disponibles | 180+ |
+| Outils Disponibles | 195+ |
 | Lignes de Code Total | ~40,000+ (backend + frontend + agents) |
 
 ---
@@ -598,9 +608,9 @@ Consolidation Nocturne
 
 ---
 
-## 21. Changements Récents (20-23 décembre 2025)
+## 21. Changements Récents (20-24 décembre 2025)
 
-### Nouveaux Jeux Ajoutés
+### Nouveaux Jeux Ajoutés (20-23 décembre)
 - **Boggle** - Recherche de mots dans grille
 - **Motus** - Style Wordle en français
 - **Scrabble** - Jeu de placement de tuiles
@@ -612,11 +622,12 @@ Consolidation Nocturne
 - `LogsPage.jsx` - Améliorations visualisation
 
 ### Mises à Jour Backend
-- `ana-core.cjs` - Passage de 229KB à 234KB, contexte dual amélioré
+- `ana-core.cjs` - Stabilisé à 233KB, contexte dual amélioré
 - 17 versions backup créées (stabilité)
+- Nouveaux services: SadTalker (lip-sync), dictionary-service
 
 ### Système Agents (Rafraîchi 22 décembre)
-- Tous les 16 agents mis à jour
+- Tous les 17 agents mis à jour
 - Amélioration détection émotions
 - Renforcement vérification méthodologie
 
@@ -624,8 +635,16 @@ Consolidation Nocturne
 - Consolidation cycles en cours
 - 48+ entrées mémoire
 - Rappels actifs maintenus (30KB)
+- skills.json passé de 196KB à 553KB (apprentissage intensif)
+
+### Vérification Document (24 décembre)
+- Cohérence vérifiée avec le code actuel
+- Tailles de fichiers mises à jour
+- Ajout modules core manquants (plan-manager, self-correction, transaction-manager)
+- Ajout services manquants (groq, sadtalker, dictionary, etc.)
+- Correction compte pages frontend: 14 pages (non 15)
 
 ---
 
-*Document mis à jour le 23 décembre 2025*
+*Document mis à jour le 24 décembre 2025*
 *Système: ANA SUPERIA - Assistant IA Francophone*
