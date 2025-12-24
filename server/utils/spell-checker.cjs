@@ -171,8 +171,12 @@ function correctText(text) {
 
   // === CORRECTIONS CONTEXTUELLES (erreurs LLM connues) ===
   text = text.replace(/puisage/gi, 'puis-je');
-  text = text.replace(/qu'estoque/gi, "qu'est-ce que");
+  // FIX 2025-12-23: "qu'estoque que" -> "qu'est-ce que" (apostrophe droite ET courbe)
+  text = text.replace(/qu['']estoque\s*que/gi, "qu'est-ce que");
+  text = text.replace(/qu['']estoque/gi, "qu'est-ce");
+  // FIX 2025-12-24: "astuce que" ET "astuce qu'" (avec apostrophe)
   text = text.replace(/\bastuce que\b/gi, "est-ce que");
+  text = text.replace(/\bastuce qu['']/gi, "est-ce qu'");
   text = text.replace(/ajoure['']?fui/gi, "aujourd'hui");
   text = text.replace(/\bAnna\b/g, 'Ana');
   // Identité interdite

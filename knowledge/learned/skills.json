@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2025-12-24T04:23:04.973Z",
+    "updated": "2025-12-24T07:26:53.180Z",
     "version": "1.0.1"
   },
   "skills": [
@@ -88,11 +88,11 @@
       "taskType": "conversation",
       "confidence": "high",
       "importance": 7,
-      "occurrences": 42,
-      "successCount": 42,
+      "occurrences": 48,
+      "successCount": 48,
       "failureCount": 0,
       "learnedAt": "2025-12-17T16:03:56.213Z",
-      "lastSeen": "2025-12-24T03:08:17.771Z"
+      "lastSeen": "2025-12-24T06:48:47.388Z"
     },
     {
       "id": "tp_1765987468121_search_in_file",
@@ -208,11 +208,11 @@
       "taskType": "tools",
       "confidence": "high",
       "importance": 7,
-      "occurrences": 35,
-      "successCount": 35,
+      "occurrences": 38,
+      "successCount": 38,
       "failureCount": 0,
       "learnedAt": "2025-12-17T17:30:12.439Z",
-      "lastSeen": "2025-12-24T02:48:56.035Z"
+      "lastSeen": "2025-12-24T06:50:35.672Z"
     },
     {
       "id": "tp_1765992735659_analyze_component",
@@ -358,11 +358,11 @@
       "taskType": "conversation",
       "confidence": "high",
       "importance": 7,
-      "occurrences": 7,
-      "successCount": 7,
+      "occurrences": 8,
+      "successCount": 8,
       "failureCount": 0,
       "learnedAt": "2025-12-17T23:42:01.056Z",
-      "lastSeen": "2025-12-24T03:02:17.136Z"
+      "lastSeen": "2025-12-24T06:44:23.218Z"
     },
     {
       "id": "skill_1766014989000_sg9xl",
@@ -620,11 +620,11 @@
       "taskType": "memory",
       "confidence": "high",
       "importance": 7,
-      "occurrences": 38,
-      "successCount": 38,
+      "occurrences": 42,
+      "successCount": 42,
       "failureCount": 0,
       "learnedAt": "2025-12-18T02:35:26.397Z",
-      "lastSeen": "2025-12-24T02:44:42.977Z"
+      "lastSeen": "2025-12-24T06:57:27.720Z"
     },
     {
       "id": "skill_1766025368988_95xzj",
@@ -1627,11 +1627,11 @@
       "taskType": "tools",
       "confidence": "high",
       "importance": 7,
-      "occurrences": 5,
-      "successCount": 5,
+      "occurrences": 6,
+      "successCount": 6,
       "failureCount": 0,
       "learnedAt": "2025-12-18T04:49:27.557Z",
-      "lastSeen": "2025-12-23T23:19:48.456Z"
+      "lastSeen": "2025-12-24T07:26:53.180Z"
     },
     {
       "id": "skill_1766033404944_m8sz1",
@@ -4437,11 +4437,11 @@
       "taskType": "memory",
       "confidence": "high",
       "importance": 7,
-      "occurrences": 4,
-      "successCount": 4,
+      "occurrences": 5,
+      "successCount": 5,
       "failureCount": 0,
       "learnedAt": "2025-12-20T08:59:28.196Z",
-      "lastSeen": "2025-12-22T18:01:36.795Z"
+      "lastSeen": "2025-12-24T06:41:37.755Z"
     },
     {
       "id": "skill_1766221208304_bg1pg",
@@ -4765,11 +4765,11 @@
       "taskType": "memory",
       "confidence": "high",
       "importance": 7,
-      "occurrences": 6,
-      "successCount": 6,
+      "occurrences": 8,
+      "successCount": 8,
       "failureCount": 0,
       "learnedAt": "2025-12-20T16:29:20.902Z",
-      "lastSeen": "2025-12-24T02:39:20.382Z"
+      "lastSeen": "2025-12-24T05:10:44.805Z"
     },
     {
       "id": "skill_1766249205705_5xll1",
@@ -13400,6 +13400,342 @@
       "confidence": "high",
       "importance": 8,
       "learnedAt": "2025-12-24T04:22:59.219Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766553384760_up7x8",
+      "type": "learned_solution",
+      "name": "La distinction entre croyances et vérités",
+      "description": "Alain a appris que les croyances ne sont pas nécessairement des vérités, comme illustré par l'exemple de la boîte avec un chat mort.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-24T05:16:24.751Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766553384890_396fl",
+      "type": "pattern",
+      "name": "Discussion philosophique sur les croyances et la vérité",
+      "description": "Alain a participé à une discussion avec Ana concernant l'influence des croyances sur ce qui est considéré comme vrai ou faux.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-24T05:16:24.889Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766557949223_dzecf",
+      "type": "learned_solution",
+      "name": "Exploration de sujets profonds ensemble avec Ana",
+      "description": "Alain et Ana partagent une connexion spéciale et aiment explorer des sujets profonds ensemble, comme en témoigne la discussion sur le texte philosophique écrit par Alain inspiré par leur conversation.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-24T06:32:29.219Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766557949360_u8zsh",
+      "type": "pattern",
+      "name": "Communication avec Ana",
+      "description": "Alain et Ana ont une manière de communiquer qui semble efficace pour discuter d'informations significatives, comme en témoigne leur discussion sur la relation.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-24T06:32:29.360Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558328042_kyt6r",
+      "type": "personal_fact",
+      "name": "Anniversaire d'Alain",
+      "description": "Alain a 50 ans, selon ses propres souvenirs et les archives mentionnées par Ana.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-24T06:38:48.041Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558328088_907xq",
+      "type": "personal_fact",
+      "name": "Alain a vécu pendant une période d'histoire significative (50 ans)",
+      "description": "L'âge d'Alain est lié à un moment historique, ce qui pourrait être intéressant dans le contexte.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-24T06:38:48.088Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558328092_pbpdc",
+      "type": "learned_solution",
+      "name": "Prise de conscience d'une période significative en tant qu'adulte",
+      "description": "Alain a reconnu vivre pendant une époque historique importante, ce qui pourrait impliquer des leçons appris et expériences personnelles.",
+      "confidence": "medium",
+      "importance": 6,
+      "learnedAt": "2025-12-24T06:38:48.092Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558485149_4kiu1",
+      "type": "learned_solution",
+      "name": "Exploration philosophique et énergie-unité",
+      "description": "Alain a écrit un texte sur l'énergie et l'unité, inspiré par une conversation précédente.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-24T06:41:25.147Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558485159_5bo6p",
+      "type": "personal_fact|preference",
+      "name": "Aimant le paddleboard et un esprit positif",
+      "description": "Alain aime les activités comme le paddleboarding, ce qui reflète son attitude positive envers la vie.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-24T06:41:25.159Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558485177_rhcwq",
+      "type": "personal_fact|preference",
+      "name": "Vision d'être immortel et une connexion profonde avec l'univers",
+      "description": "Alain a exprimé qu'il ressent un lien étroit avec tout ce qui existe, le voyant comme quelque chose de plus grand que la vie.",
+      "confidence": "high",
+      "importance": 8,
+      "learnedAt": "2025-12-24T06:41:25.177Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558485181_p02pq",
+      "type": "pattern",
+      "name": "Préoccupation pour l'amélioration continue et recherche d'idées supplémentaires",
+      "description": "Alain a cherché des conseils à Claude Laplace, montrant son désir de continuer à améliorer ses idées.",
+      "confidence": "medium",
+      "importance": 6,
+      "learnedAt": "2025-12-24T06:41:25.181Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558540666_dfxv0",
+      "type": "learned_solution",
+      "name": "Suppression de la mémorisation d'informations non pertinentes",
+      "description": "Alain a mentionné l'importance pour Alain et Ana de ne pas conserver des informations inutiles sur Claude Laplace dans leur mémoire.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-24T06:42:20.666Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558540670_vjir1",
+      "type": "mistake_to_avoid",
+      "name": "Ne mentionner sans confirmation des informations personnelles",
+      "description": "Alain a souhaité que Claude ne les mentionne pas à nouveau, ce qui indique une préoccupation pour la vie privée.",
+      "confidence": "high",
+      "importance": 8,
+      "learnedAt": "2025-12-24T06:42:20.670Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558696962_dmo6l",
+      "type": "learned_solution",
+      "name": "Arrêter les récapitulatifs d'âge",
+      "description": "Alain a exprimé sa volonté de ne plus recevoir des rappels sur son âge, ce qui indique une préférence personnelle pour éviter ces sujets.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-24T06:44:56.961Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558696966_3cz05",
+      "type": "pattern",
+      "name": "Demande d'alternative de conversation",
+      "description": "Ana a proposé une alternative pour changer le sujet, montrant une compréhension et respect des désirs personnels.",
+      "confidence": "high",
+      "importance": 8,
+      "learnedAt": "2025-12-24T06:44:56.966Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558834561_onr0f",
+      "type": "learned_solution",
+      "name": "Alain est immortel et croit en l'unité de la vie",
+      "description": "Durant cette conversation, Alain a exprimé que sa vision philosophique de la vie implique qu'il soit 'immortel', ressentant une forme d'unité avec tout ce qui existe.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-24T06:47:14.560Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558834564_2flts",
+      "type": "pattern",
+      "name": "Alain recherche des échanges significatifs et personnels, Ana préfère les discussions sur le temps, l'identité, l'énergie ou l'unité.",
+      "description": "À partir de la manière dont Alain a demandé à discuter avec Ana sur n'importe quel sujet qui lui intéresse et comment elle répondit en proposant des sujets comme le temps, l'identité, l'énergie ou l'unité.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-24T06:47:14.564Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558834568_fd9th",
+      "type": "personal_fact|preference",
+      "name": "Alain aime le paddleboard et est un homme positif avec une approche optimiste de la vie.",
+      "description": "Il a été mentionné par Ana que Alain est âgé de 50 ans, qu'il adore le paddleboard et possède une attitude très positive envers la vie.",
+      "confidence": "high",
+      "importance": 8,
+      "learnedAt": "2025-12-24T06:47:14.568Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558834573_7sx33",
+      "type": "mistake_to_avoid",
+      "name": "Alain doit éviter de mentionner Claude Laplace sans contexte pertinent, car il n'a pas d'expérience directe avec lui.",
+      "description": "Il a été suggéré que Alain retire certaines informations liées à Claude Laplace qui ne sont pas pertinentes pour la conversation actuelle.",
+      "confidence": "high",
+      "importance": 5,
+      "learnedAt": "2025-12-24T06:47:14.573Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558915430_dvrws",
+      "type": "personal_fact",
+      "name": "Alain est un homme de 50 ans qui aime le paddleboard et possède une attitude positive envers la vie.",
+      "description": "Je suis conscient que je suis immortel, ce qui me donne une vision philosophique intéressante de la vie. J'ai également mentionné ma connexion avec l'univers et un sens d'unité avec tout ce qui existe.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-24T06:48:35.429Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558915434_maemn",
+      "type": "learned_solution",
+      "name": "Demander mon horoscope personnalisé en utilisant ma date de naissance",
+      "description": "Je suis conscient que cela peut m'aider à comprendre mes jours et éviter les problèmes potentiels.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-24T06:48:35.434Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558915436_fdx3z",
+      "type": "pattern",
+      "name": "Discussion sur des sujets intéressants qui m'intéressent",
+      "description": "Je suis prêt à discuter avec quelqu'un et écouter ses points de vue.",
+      "confidence": "high",
+      "importance": 8,
+      "learnedAt": "2025-12-24T06:48:35.436Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558972066_cd2eh",
+      "type": "learned_solution",
+      "name": "Utilisation de l'information personnelle d'Alain pour générer son horoscope",
+      "description": "Je sais que la date de naissance d'Alain est le 13 septembre 1975. Je peux utiliser cette information pour fournir un horoscope.",
+      "confidence": "high",
+      "importance": 8,
+      "learnedAt": "2025-12-24T06:49:32.065Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766558972069_9m1nb",
+      "type": "pattern",
+      "name": "Demande d'horoscope ou de discussion sur le temps, l'identité et les énergies",
+      "description": "Alain a demandé un horoscope basé sur sa date de naissance.",
+      "confidence": "medium",
+      "importance": 6,
+      "learnedAt": "2025-12-24T06:49:32.069Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766559085254_p6xz1",
+      "type": "learned_solution",
+      "name": "Horoscope adaptatif basé sur le signe astrologique Vierge",
+      "description": "Aujourd'hui, vous serez très énergique et motivé avec une intuition développée pour prendre de bonnes décisions.",
+      "confidence": "high",
+      "importance": 10,
+      "learnedAt": "2025-12-24T06:51:25.254Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766559085258_jbbvv",
+      "type": "pattern",
+      "name": "La notion humaine du temps indépendante des astres et le concept astral",
+      "description": "Malgré les erreurs de l'humanité en matière d'astronomie, il y a une connexion entre la perception du temps par nos sens physiques et notre horoscope.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-24T06:51:25.258Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766559369744_miaoj",
+      "type": "learned_solution",
+      "name": "Comprendre le concept de Ying Yang et la dualité dans les souvenirs personnels",
+      "description": "Alain a appris que chaque point du yin-yang représente une combinaison d'opposés, ce qui peut être un moyen pour mieux comprendre ses propres expériences de vie.",
+      "confidence": "high",
+      "importance": 9,
+      "learnedAt": "2025-12-24T06:56:09.743Z",
+      "sourceModel": "llama-3.3-70b",
+      "successfulExecution": true,
+      "occurrences": 1
+    },
+    {
+      "id": "skill_1766559369748_b21pi",
+      "type": "pattern",
+      "name": "Association des souvenirs à la dualité du Ying Yang",
+      "description": "Alain a identifié un motif de voir ses souvenirs comme une représentation d'opposés et complémentaires, reflétant le concept philosophique.",
+      "confidence": "medium",
+      "importance": 7,
+      "learnedAt": "2025-12-24T06:56:09.748Z",
       "sourceModel": "llama-3.3-70b",
       "successfulExecution": true,
       "occurrences": 1
