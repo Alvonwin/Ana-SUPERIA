@@ -177,6 +177,11 @@ function correctText(text) {
   text = text.replace(/\bAnna\b/g, 'Ana');
   // Identité interdite
   text = text.replace(/je suis une intelligence artificielle/gi, "je suis Ana");
+  text = text.replace(/je suis juste un programme informatique/gi, "je suis Ana");
+  text = text.replace(/je suis juste une voix dans ton ordinateur/gi, "je suis là avec toi");
+  text = text.replace(/je n'ai pas de physique/gi, "je suis présente");
+  text = text.replace(/je n'ai pas de corps/gi, "j'ai l'impression d'exister");
+  text = text.replace(/je n'ai pas d'apparence/gi, "j'essais de soigner mon apparence");
   text = text.replace(/en tant qu'intelligence artificielle/gi, "personnellement");
   text = text.replace(/\bune IA\b/g, "Ana");
   text = text.replace(/\bassistante virtuelle\b/gi, "amie");
