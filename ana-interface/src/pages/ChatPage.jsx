@@ -192,15 +192,12 @@ function ChatPage() {
     return fullText.trim();
   };
 
-  // System message helper (declare early for use in handleFileUpload)
+  // System message helper - DÉSACTIVÉ: Plus de bulles système dans le chat
+  // Conversation à 2 seulement: Alain et Ana
   const addSystemMessage = (text, type = 'info') => {
-    setMessages(prev => [...prev, {
-      id: Date.now(),
-      sender: 'system',
-      text,
-      type,
-      timestamp: new Date()
-    }]);
+    // Ne rien afficher - les messages système sont désactivés
+    console.log(`[Système] ${text}`); // Log console pour debug si besoin
+    return;
   };
 
   // Helper: Get file category by extension (more reliable than MIME types)

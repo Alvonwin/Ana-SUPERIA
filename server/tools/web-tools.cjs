@@ -21,7 +21,7 @@ require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 const CONFIG = {
   timeout: 15000,
   maxContentLength: 500000, // 500KB max
-  userAgent: 'Ana-SUPERIA/1.0 (AI Assistant; +https://ana.local)',
+  userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
   braveApi: 'https://api.search.brave.com/res/v1/web/search', // Brave Search - gratuit 2000 req/jour
   ddgApi: 'https://api.duckduckgo.com/', // Fallback DuckDuckGo
   wikipediaApi: 'https://fr.wikipedia.org/w/api.php'
@@ -278,12 +278,17 @@ class WebTools {
       const response = await axios.get(url, {
         timeout: CONFIG.timeout,
         maxContentLength: CONFIG.maxContentLength,
+        maxRedirects: 10,
         headers: {
           'User-Agent': CONFIG.userAgent,
           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-          'Accept-Language': 'fr-FR,fr;q=0.9,en;q=0.8'
+          'Accept-Language': 'fr-CA,fr;q=0.9,en;q=0.8',
+          'Accept-Encoding': 'gzip, deflate, br',
+          'Referer': 'https://www.google.com/',
+          'Cache-Control': 'no-cache'
         },
-        responseType: 'text'
+        responseType: 'text',
+        decompress: true
       });
 
       const html = response.data;
@@ -371,11 +376,23 @@ class WebTools {
     } catch (error) {
       console.error(`❌ [WebTools] Erreur fetch:`, error.message);
 
+      // Détection spécifique des erreurs de redirection
+      let errorCode = error.response?.status || 'FETCH_ERROR';
+      let errorMessage = error.message;
+
+      if (error.code === 'ERR_FR_TOO_MANY_REDIRECTS' ||
+          error.message.includes('redirect') ||
+          error.message.includes('Redirected')) {
+        errorCode = 'TOO_MANY_REDIRECTS';
+        errorMessage = `Trop de redirections pour ${url}. Le site peut bloquer les requêtes automatisées.`;
+        console.error(`⚠️ [WebTools] Site avec redirections excessives: ${url}`);
+      }
+
       return {
         success: false,
         error: {
-          code: error.response?.status || 'FETCH_ERROR',
-          message: error.message,
+          code: errorCode,
+          message: errorMessage,
           url: url
         }
       };

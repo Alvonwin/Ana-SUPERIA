@@ -12,6 +12,7 @@
 import { useState, useEffect, useRef, useCallback, forwardRef, useImperativeHandle } from 'react';
 import { IconMic, IconMicOff } from './Icons';
 import { BACKEND_URL } from '../config.js';
+import { isSpeaking } from '../utils/ttsService';
 
 // Correction orthographique via backend (Anna -> Ana, majuscule, point)
 async function correctSpelling(text) {
@@ -147,6 +148,12 @@ const VoiceLoopButton = forwardRef(function VoiceLoopButton({
       };
 
       recognition.onresult = async (event) => {
+        // Ignorer les transcriptions si Ana parle (TTS en cours)
+        if (isSpeaking()) {
+          console.log('🔇 Transcription ignorée - TTS en cours');
+          return;
+        }
+
         let finalTranscript = '';
         for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcript = event.results[i][0].transcript;

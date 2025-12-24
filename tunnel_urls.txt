@@ -1,8 +1,8 @@
 # Ana Cloudflare Tunnel URLs
-# Generated: 2025-12-23 03:51:12
+# Generated: 2025-12-23 22:18:22
 #
 # Use the FRONTEND URL on your phone to access Ana
 # The backend URL is updated automatically in config.js
 
-FRONTEND=https://martha-stones-joan-bloggers.trycloudflare.com
-BACKEND=https://reservations-geometry-approach-palm.trycloudflare.com
+FRONTEND=https://dicke-slideshow-remix-margaret.trycloudflare.com
+BACKEND=https://packet-characters-mass-ribbon.trycloudflare.com

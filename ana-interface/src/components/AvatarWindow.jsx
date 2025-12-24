@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { IconVideo } from './Icons';
+import { IconVideo, IconMinus, IconMaximize } from './Icons';
 import { BACKEND_URL } from '../config';
 import './AvatarWindow.css';
 
@@ -11,6 +11,7 @@ function AvatarWindow({ lastAnaMessage, enabled, onToggle }) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
   const [error, setError] = useState(null);
+  const [isMinimized, setIsMinimized] = useState(false);
   const videoRef = useRef(null);
   const lastProcessedId = useRef(null);
 
@@ -78,22 +79,32 @@ function AvatarWindow({ lastAnaMessage, enabled, onToggle }) {
   }, []);
 
   return (
-    <div className="avatar-window">
+    <div className={`avatar-window ${isMinimized ? 'minimized' : ''}`}>
       <div className="avatar-header">
         <span className="avatar-title">
           <IconVideo size={14} />
           Ana
         </span>
-        <label className="avatar-switch">
-          <input
-            type="checkbox"
-            checked={enabled}
-            onChange={(e) => onToggle(e.target.checked)}
-          />
-          <span className="slider"></span>
-        </label>
+        <div className="avatar-controls">
+          <button
+            className="avatar-minimize-btn"
+            onClick={() => setIsMinimized(!isMinimized)}
+            title={isMinimized ? 'Restaurer' : 'Réduire'}
+          >
+            {isMinimized ? <IconMaximize size={14} /> : <IconMinus size={14} />}
+          </button>
+          <label className="avatar-switch">
+            <input
+              type="checkbox"
+              checked={enabled}
+              onChange={(e) => onToggle(e.target.checked)}
+            />
+            <span className="slider"></span>
+          </label>
+        </div>
       </div>
 
+      {!isMinimized && (
       <div className="avatar-content">
         {isGenerating && (
           <div className="avatar-loading">
@@ -126,6 +137,7 @@ function AvatarWindow({ lastAnaMessage, enabled, onToggle }) {
           </div>
         )}
       </div>
+      )}
     </div>
   );
 }

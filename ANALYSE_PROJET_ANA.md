@@ -4,13 +4,16 @@
 
 ANA SUPERIA est un système d'assistant IA sophistiqué utilisant Cerebras (llama-3.3-70b), avec gestion avancée de la mémoire, communication WebSocket temps réel et agents autonomes. Le système est exclusivement francophone et conçu pour un utilisateur unique (Alain) à Longueuil, Québec.
 
+> **Dernière mise à jour:** 23 décembre 2025
+> **Taille du projet:** ~8-9 GB (incluant node_modules et base de connaissances)
+
 ---
 
 ## 1. Système Backend Principal (`server/`)
 
 | Composant | Fichier Clé | Description |
 |-----------|-------------|-------------|
-| Serveur Principal | `ana-core.cjs` (229KB) | Serveur Express (port 3338), WebSocket, chargement mémoire |
+| Serveur Principal | `ana-core.cjs` (234KB, 6910 lignes) | Serveur Express (port 3338), WebSocket, chargement mémoire |
 | Orchestrateur LLM | `core/llm-orchestrator.cjs` | Système de fallback, routage Cerebras/Groq |
 | Groupes d'Outils | `core/tool-groups.cjs` | Sélection hybride (mots-clés + sémantique) |
 | Gestionnaire Contexte | `core/context-manager.cjs` | Agrégation du contexte |
@@ -61,13 +64,15 @@ ANA SUPERIA est un système d'assistant IA sophistiqué utilisant Cerebras (llam
 
 | Fichier | Fonction | Taille |
 |---------|----------|--------|
-| `ana_memories.json` | Mémoires principales | 36KB |
-| `consciousness.json` | État du système | 410 octets |
-| `current_conversation_ana.txt` | Session active | 616KB |
-| `consolidation_log.json` | Logs consolidation | 86KB |
+| `ana_memories.json` | Mémoires principales (48+ entrées) | 84KB |
+| `consciousness.json` | État du système | 348 octets |
+| `current_conversation_ana.txt` | Session active | 181KB |
+| `consolidation_log.json` | Logs consolidation | 85KB |
 | `personal_facts.json` | Profil utilisateur (Alain) | Variable |
 | `episodic_memory.json` | Événements avec timestamps | Variable |
 | `memory_links.json` | Liens graphe de connaissances | Variable |
+| `rappels_actifs.md` | Rappels actifs | 30KB |
+| `memory_notifications.json` | Système d'alertes | Variable |
 
 ---
 
@@ -193,30 +198,35 @@ Coordinateur Maître (master_coordinator.cjs)
 
 | Composant | Fichier | Fonction |
 |-----------|---------|----------|
-| Bus d'Événements | `shared_event_bus.cjs` | Système pub/sub |
-| Serveur Dashboard | `dashboard_server.cjs` | UI Web sur port 3336 |
-| Fichier Démarrage | `start_agents.cjs` (19KB) | Lancement agents |
+| Bus d'Événements | `shared_event_bus.cjs` (3.9KB) | Système pub/sub |
+| Serveur Dashboard | `dashboard_server.cjs` (19KB) | UI Web sur port 3336 |
+| Fichier Démarrage | `start_agents.cjs` (21KB, 460 lignes) | Lancement agents |
+| Coordinateur Maître | `master_coordinator.cjs` (16KB) | Prise de décision stratégique |
 
 ---
 
-## 8. Système de Jeux (12 Jeux avec Mode 2 Joueurs)
+## 8. Système de Jeux (16 Jeux avec Mode 2 Joueurs)
 
 ### Moteurs de Jeux (`server/games/`)
 
 | Jeu | Fichier Moteur | Taille | Caractéristiques |
 |-----|----------------|--------|------------------|
-| Dames | `checkers-engine.cjs` | 27KB | IA, 3 niveaux difficulté, mode 2 joueurs |
-| Échecs | `chess-engine.cjs` | 17KB | Adversaire IA |
-| Morpion | `tictactoe-engine.cjs` | 6KB | Stratégie simple |
-| Puissance 4 | `connect4-engine.cjs` | 8KB | Placement colonnes |
-| Pierre-Feuille-Ciseaux | `rps-engine.cjs` | 5KB | Jeu de gestes |
-| Pendu | `hangman-engine.cjs` | 7KB | Deviner mots |
-| Memory | `memory-engine.cjs` | 9KB | Correspondance paires |
+| Dames | `checkers-engine.cjs` | 31KB | IA sophistiquée, 3 niveaux difficulté, mode 2 joueurs |
+| Échecs | `chess-engine.cjs` | 18KB | Adversaire IA |
+| Morpion | `tictactoe-engine.cjs` | 6.7KB | Stratégie simple |
+| Puissance 4 | `connect4-engine.cjs` | 8.8KB | Placement colonnes |
+| Pierre-Feuille-Ciseaux | `rps-engine.cjs` | 5.5KB | Jeu de gestes |
+| Pendu | `hangman-engine.cjs` | 19KB | Deviner mots |
+| Memory | `memory-engine.cjs` | 9.2KB | Correspondance paires |
 | Nim | `nim-engine.cjs` | 6KB | Stratégie mathématique |
-| Deviner Nombre | `guess-engine.cjs` | 6KB | Deviner nombre |
+| Deviner Nombre | `guess-engine.cjs` | 6.7KB | Deviner nombre |
 | Blackjack | `blackjack-engine.cjs` | 10KB | Jeu de cartes |
 | Bataille Navale | `battleship-engine.cjs` | 25KB | Stratégie navale |
 | Backgammon | `backgammon-engine.cjs` | 11KB | Dés et course |
+| **Boggle** | `boggle-engine.cjs` | 1.3KB | Recherche de mots (NOUVEAU) |
+| **Motus** | `motus-engine.cjs` | 14KB | Deviner mot style Wordle (NOUVEAU) |
+| **Scrabble** | `scrabble-engine.cjs` | 29KB | Placement tuiles mots (NOUVEAU) |
+| **Définition Mystère** | `definition-mystery-engine.cjs` | 17KB | Deviner par définition (NOUVEAU) |
 
 ### Routes API Jeux
 
@@ -239,10 +249,10 @@ Coordinateur Maître (master_coordinator.cjs)
 
 | Page | Fichier | Taille | Fonctionnalités |
 |------|---------|--------|-----------------|
-| Chat | `ChatPage.jsx` | 40KB | Messagerie temps réel, upload fichiers, TTS, entrée vocale |
-| Coding | `CodingPage.jsx` | 15KB | Éditeur code, intégration API |
+| Chat | `ChatPage.jsx` | 44KB (1243 lignes) | Messagerie temps réel, upload fichiers, TTS, entrée vocale, mute |
+| Coding | `CodingPage.jsx` | 16KB | Éditeur code, intégration API |
 | Recherche Mémoire | `MemorySearchPage.jsx` | 18KB | Recherche vectorielle dans mémoire Ana |
-| Jeux | `GamesPage.jsx` | 88KB | Tous les 12 jeux avec support 2 joueurs |
+| Jeux | `GamesPage.jsx` | 88KB (2235 lignes) | Tous les 16 jeux avec support 2 joueurs |
 | Dashboard | `DashboardPage.jsx` | 11KB | Métriques système et statut |
 | Cerveaux | `BrainsPage.jsx` | 7KB | Sélection modèle/LLM |
 | Manuel | `ManualPage.jsx` | 10KB | Guide utilisateur et documentation |
@@ -500,15 +510,28 @@ Lance tous les services:
 |-------------|---------|--------|----------|
 | Racine | `CLAUDE.md` | 4.1KB | Instructions projet |
 | Racine | `START_ANA.bat` | Variable | Démarrage système |
-| server | `ana-core.cjs` | 229KB | Backend principal |
+| server | `ana-core.cjs` | 234KB (6910 lignes) | Backend principal |
 | server/routes | `games-routes.cjs` | 31KB | Endpoints API jeux |
 | server/config | `system-prompt.json` | 5.8KB | Identité Ana |
-| memory | `ana_memories.json` | 36KB | Mémoires principales |
-| memory | `current_conversation_ana.txt` | 616KB | Transcription session |
-| ana-interface/src/pages | `ChatPage.jsx` | 40KB | UI chat principale |
-| ana-interface/src/pages | `GamesPage.jsx` | 88KB | UI jeux |
-| agents | `start_agents.cjs` | 19KB | Démarrage agents |
+| memory | `ana_memories.json` | 84KB | Mémoires principales |
+| memory | `current_conversation_ana.txt` | 181KB | Transcription session |
+| ana-interface/src/pages | `ChatPage.jsx` | 44KB (1243 lignes) | UI chat principale |
+| ana-interface/src/pages | `GamesPage.jsx` | 88KB (2235 lignes) | UI jeux |
+| agents | `start_agents.cjs` | 21KB (460 lignes) | Démarrage agents |
 | knowledge/learned | `skills.json` | 196KB | Compétences apprises |
+
+### Statistiques du Projet
+
+| Métrique | Valeur |
+|----------|--------|
+| Fichier Core Principal | ana-core.cjs: 6,910 lignes, 234KB |
+| Jeux Implémentés | 16 moteurs |
+| Agents Autonomes | 16 agents + 3 managers + 1 coordinateur |
+| Pages Frontend | 15 pages, ~300KB total |
+| Taille Mémoire | 84KB+ mémoires, 181KB session |
+| Services | 17 services distincts |
+| Outils Disponibles | 180+ |
+| Lignes de Code Total | ~40,000+ (backend + frontend + agents) |
 
 ---
 
@@ -573,5 +596,36 @@ Consolidation Nocturne
 
 ---
 
-*Document généré le 20 décembre 2025*
+---
+
+## 21. Changements Récents (20-23 décembre 2025)
+
+### Nouveaux Jeux Ajoutés
+- **Boggle** - Recherche de mots dans grille
+- **Motus** - Style Wordle en français
+- **Scrabble** - Jeu de placement de tuiles
+- **Définition Mystère** - Deviner par définition
+
+### Mises à Jour Frontend
+- `ChatPage.jsx` - Ajout fonctionnalité mute, améliorations UI
+- `GamesPage.jsx` - Support des 16 jeux, refactoring complet
+- `LogsPage.jsx` - Améliorations visualisation
+
+### Mises à Jour Backend
+- `ana-core.cjs` - Passage de 229KB à 234KB, contexte dual amélioré
+- 17 versions backup créées (stabilité)
+
+### Système Agents (Rafraîchi 22 décembre)
+- Tous les 16 agents mis à jour
+- Amélioration détection émotions
+- Renforcement vérification méthodologie
+
+### Mémoire Active
+- Consolidation cycles en cours
+- 48+ entrées mémoire
+- Rappels actifs maintenus (30KB)
+
+---
+
+*Document mis à jour le 23 décembre 2025*
 *Système: ANA SUPERIA - Assistant IA Francophone*

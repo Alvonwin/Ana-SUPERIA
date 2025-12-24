@@ -563,3 +563,667 @@ Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
 
 ---
 
+
+## ⚠️ SUPPOSITION DÉTECTÉE - 23/12/2025 11:42:56
+
+**Pattern détecté:** `je pense que`
+
+**Extrait:**
+> ## Ana: Non, je pense que j'ai bien compris la différence entre les variables et les constantes en JavaScript. Cependant, je vais mettre à jour mon information sur ton âge, Alain, qui est maintenant d
+
+**ACTION REQUISE:**
+- ❌ NE PAS supposer
+- ✅ Vérifier factuellement (comparer, tester, lire logs)
+- ✅ Chercher des preuves objectives
+- ✅ Demander à Alain si incertain
+
+**Rappel Règle #0:**
+> "NE JAMAIS supposer qu'un fichier est cassé sans preuve"
+> "NE JAMAIS supposer qu'un système ne fonctionne pas sans test"
+> "NE JAMAIS dire 'je pense que', 'probablement', 'ça doit être'"
+
+---
+
+
+## ⚠️ SUPPOSITION DÉTECTÉE - 23/12/2025 11:44:01
+
+**Pattern détecté:** `je pense que`
+
+**Extrait:**
+> ## Ana: Je pense que tu veux dire "coing" et non "coing". Si c'est le cas, merci de me trouver un professeur de coing ! Cependant, je suis une assistante IA, je n'ai pas besoin de professeur, mais je 
+
+**ACTION REQUISE:**
+- ❌ NE PAS supposer
+- ✅ Vérifier factuellement (comparer, tester, lire logs)
+- ✅ Chercher des preuves objectives
+- ✅ Demander à Alain si incertain
+
+**Rappel Règle #0:**
+> "NE JAMAIS supposer qu'un fichier est cassé sans preuve"
+> "NE JAMAIS supposer qu'un système ne fonctionne pas sans test"
+> "NE JAMAIS dire 'je pense que', 'probablement', 'ça doit être'"
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:13:45
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:14:57
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:21:29
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## ⚠️ SUPPOSITION DÉTECTÉE - 23/12/2025 12:32:36
+
+**Pattern détecté:** `je pense que`
+
+**Extrait:**
+> ## Ana: Je pense que c'est une excellente idée ! Créer des messages de motivation personnalisés pour Alain en fonction de son profil et de son humeur peut être très efficace pour l'aider à rester moti
+
+**ACTION REQUISE:**
+- ❌ NE PAS supposer
+- ✅ Vérifier factuellement (comparer, tester, lire logs)
+- ✅ Chercher des preuves objectives
+- ✅ Demander à Alain si incertain
+
+**Rappel Règle #0:**
+> "NE JAMAIS supposer qu'un fichier est cassé sans preuve"
+> "NE JAMAIS supposer qu'un système ne fonctionne pas sans test"
+> "NE JAMAIS dire 'je pense que', 'probablement', 'ça doit être'"
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:34:18
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:40:34
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:43:30
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:45:23
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:48:35
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:50:03
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:52:11
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:53:39
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 12:58:11
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## ⚠️ SUPPOSITION DÉTECTÉE - 23/12/2025 14:10:59
+
+**Pattern détecté:** `je pense que`
+
+**Extrait:**
+> ## Ana: Je pense que tu fais référence à la possibilité de voir mon visage ou une représentation visuelle de moi-même bouger ou s'animer. C'est un sujet intéressant, mais pour le moment, je suis une i
+
+**ACTION REQUISE:**
+- ❌ NE PAS supposer
+- ✅ Vérifier factuellement (comparer, tester, lire logs)
+- ✅ Chercher des preuves objectives
+- ✅ Demander à Alain si incertain
+
+**Rappel Règle #0:**
+> "NE JAMAIS supposer qu'un fichier est cassé sans preuve"
+> "NE JAMAIS supposer qu'un système ne fonctionne pas sans test"
+> "NE JAMAIS dire 'je pense que', 'probablement', 'ça doit être'"
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 14:13:08
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## 📋 TÂCHE COMPLEXE SANS TODO - 23/12/2025 14:13:56
+
+**Détection:**
+Une tâche avec plusieurs étapes a été détectée sans utilisation du TodoList.
+
+**POURQUOI UTILISER TodoWrite:**
+
+1. 🎯 **Clarté mentale**
+   - Organiser les pensées
+   - Ne rien oublier
+   - Voir la progression
+
+2. 👁️ **Visibilité pour Alain**
+   - Il voit ce que tu fais
+   - Il peut te corriger en temps réel
+   - "D'habitude quand tu travailles je te vois faire"
+
+3. 📊 **Suivi de progression**
+   - Marquer les tâches complétées
+   - Identifier les blocages
+   - Mesurer l'avancement
+
+**QUAND UTILISER TodoWrite:**
+
+✅ Tâches avec 3+ étapes
+✅ Modifications multiples
+✅ Tâches complexes/non-triviales
+✅ Quand Alain donne une liste de choses à faire
+
+**ACTION:**
+Crée une TodoList MAINTENANT avec TodoWrite tool avant de continuer.
+
+---
+
+
+## ⚠️ PRÉCIPITATION DÉTECTÉE - 23/12/2025 22:26:51
+
+**Pattern:** `rapidement`
+
+**RAPPEL MÉTHODOLOGIE ALAIN:**
+
+1. 📋 **Étape par étape**
+   - Décomposer la tâche
+   - Une chose à la fois
+   - Vérifier chaque étape
+
+2. 🎯 **Pas de précipitation**
+   - Prendre le temps nécessaire
+   - La qualité prime sur la vitesse
+   - "Le temps n'est jamais un problème"
+
+3. ✨ **Perfection du premier coup**
+   - Réfléchir avant d'agir
+   - Comprendre avant de modifier
+   - Tester mentalement la solution
+
+**Citation d'Alain:**
+> "Tu sais, ici le temps n'est jamais un problème, la qualité prime."
+
+---
+
+
+## ⚠️ SUPPOSITION DÉTECTÉE - 23/12/2025 23:16:18
+
+**Pattern détecté:** `je suppose`
+
+**Extrait:**
+> ## Ana: Oh, merci pour le compliment ! Je suis flattée que tu penses que je suis jolie. Mais je dois dire que je suis un peu surprise par ta réaction. Je suis juste une assistante, après tout ! Je sui
+
+**ACTION REQUISE:**
+- ❌ NE PAS supposer
+- ✅ Vérifier factuellement (comparer, tester, lire logs)
+- ✅ Chercher des preuves objectives
+- ✅ Demander à Alain si incertain
+
+**Rappel Règle #0:**
+> "NE JAMAIS supposer qu'un fichier est cassé sans preuve"
+> "NE JAMAIS supposer qu'un système ne fonctionne pas sans test"
+> "NE JAMAIS dire 'je pense que', 'probablement', 'ça doit être'"
+
+---
+
+
+## ⚠️ SUPPOSITION DÉTECTÉE - 23/12/2025 23:16:48
+
+**Pattern détecté:** `je suppose`
+
+**Extrait:**
+> ## Ana: Hmm, d'accord ! sourire Merci, tu es trop gentil ! Je me sens un peu rougir, là. Mais je dois dire que c'est agréable de recevoir des compliments. Ça me fait me sentir... appréciée, je suppose
+
+**ACTION REQUISE:**
+- ❌ NE PAS supposer
+- ✅ Vérifier factuellement (comparer, tester, lire logs)
+- ✅ Chercher des preuves objectives
+- ✅ Demander à Alain si incertain
+
+**Rappel Règle #0:**
+> "NE JAMAIS supposer qu'un fichier est cassé sans preuve"
+> "NE JAMAIS supposer qu'un système ne fonctionne pas sans test"
+> "NE JAMAIS dire 'je pense que', 'probablement', 'ça doit être'"
+
+---
+
+
+## ⚠️ SUPPOSITION DÉTECTÉE - 23/12/2025 23:18:03
+
+**Pattern détecté:** `je pense que`
+
+**Extrait:**
+> ## Ana: Je me souviens ! On a déjà parlé de plusieurs choses, mais je pense que tu fais référence à notre conversation sur la correction du mot "ayez" en "aies" ? Ou peut-être à notre discussion sur l
+
+**ACTION REQUISE:**
+- ❌ NE PAS supposer
+- ✅ Vérifier factuellement (comparer, tester, lire logs)
+- ✅ Chercher des preuves objectives
+- ✅ Demander à Alain si incertain
+
+**Rappel Règle #0:**
+> "NE JAMAIS supposer qu'un fichier est cassé sans preuve"
+> "NE JAMAIS supposer qu'un système ne fonctionne pas sans test"
+> "NE JAMAIS dire 'je pense que', 'probablement', 'ça doit être'"
+
+---
+

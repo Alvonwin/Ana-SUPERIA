@@ -20,6 +20,40 @@
   border-bottom: 1px solid #2d2d44;
 }
 
+.avatar-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-minimize-btn {
+  background: transparent;
+  border: none;
+  color: #7f8c8d;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.avatar-minimize-btn:hover {
+  background: #2d2d44;
+  color: #ecf0f1;
+}
+
+/* État minimisé */
+.avatar-window.minimized {
+  width: auto;
+  min-width: 100px;
+}
+
+.avatar-window.minimized .avatar-header {
+  border-bottom: none;
+}
+
 .avatar-title {
   display: flex;
   align-items: center;

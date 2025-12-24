@@ -40,3 +40,4 @@ __pycache__/
 # Windows special files
 nul
 NUL
+gfpgan/weights/

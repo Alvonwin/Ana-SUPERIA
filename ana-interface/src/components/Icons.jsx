@@ -560,6 +560,13 @@ export const IconMaximize = ({ size = 24, className = '' }) => (
   </svg>
 );
 
+// Minimize icon - Avatar window - 23 Dec 2025
+export const IconMinus = ({ size = 24, className = '' }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+  </svg>
+);
+
 // Power icon - Shutdown button - 07 Dec 2025
 export const IconPower = ({ size = 24, className = '' }) => (
   <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
