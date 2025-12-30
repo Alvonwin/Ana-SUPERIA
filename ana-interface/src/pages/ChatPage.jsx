@@ -32,6 +32,7 @@ import soundSystem from '../utils/soundSystem';
 import VoiceInput from '../components/VoiceInput';
 import VoiceLoopButton from '../components/VoiceLoopButton';
 import AvatarWindow from '../components/AvatarWindow';
+import useTokenCounter from '../hooks/useTokenCounter';
 import './ChatPage.css';
 import { BACKEND_URL } from '../config';
 
@@ -895,6 +896,9 @@ function ChatPage() {
   // Obtenir le dernier message d'Ana (pour AvatarWindow)
   const lastAnaMessage = messages.filter(m => m.sender === 'ana').slice(-1)[0] || null;
 
+  // Token counter
+  const tokenStats = useTokenCounter(inputMessage, messages, systemPrompt);
+
   return (
     <div className="chat-page">
       <div className="chat-header">
@@ -931,6 +935,17 @@ function ChatPage() {
           <div className="memory-info">
             <IconBrain size={16} />
             <span>Mémoire: {memoryStats.sizeKB} KB • {memoryStats.lines} lignes</span>
+          </div>
+          <div className={`token-counter ${tokenStats.percentage > 80 ? 'warning' : ''} ${tokenStats.percentage > 95 ? 'critical' : ''}`}>
+            <div className="token-bar">
+              <div
+                className="token-bar-fill"
+                style={{ width: `${Math.min(100, tokenStats.percentage)}%` }}
+              />
+            </div>
+            <span className="token-text">
+              {tokenStats.isEstimate ? '~' : ''}{tokenStats.display.total} / {tokenStats.display.limit} tokens
+            </span>
           </div>
           {activeModel && (
             <div className="active-model">

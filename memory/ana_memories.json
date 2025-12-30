@@ -24,8 +24,8 @@
     "timestamp": "2025-12-09T01:30:00.000Z",
     "source": "alain_direct",
     "priority": "MAXIMUM",
-    "access_count": 26,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 32,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765244459356",
@@ -88,8 +88,8 @@
     "category": "note",
     "timestamp": "2025-12-09T05:27:58.246Z",
     "source": "user_request",
-    "access_count": 25,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 31,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765258096714",
@@ -113,8 +113,8 @@
     "category": "proposition",
     "timestamp": "2025-12-09T05:36:31.483Z",
     "source": "user_request",
-    "access_count": 25,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 31,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765258625402",
@@ -129,8 +129,8 @@
     "category": "protection",
     "timestamp": "2025-12-09T05:37:28.341Z",
     "source": "user_request",
-    "access_count": 29,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 35,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765258658859",
@@ -145,8 +145,8 @@
     "category": "regle",
     "timestamp": "2025-12-09T05:37:53.873Z",
     "source": "user_request",
-    "access_count": 25,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 31,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765258709727",
@@ -188,8 +188,8 @@
     "category": "tutoriel",
     "timestamp": "2025-12-09T05:39:35.497Z",
     "source": "user_request",
-    "access_count": 25,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 31,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765258785250",
@@ -260,8 +260,8 @@
     "category": "personal_facts",
     "timestamp": "2025-12-10T02:43:18.270Z",
     "source": "user_request",
-    "access_count": 33,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 41,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765368230634",
@@ -371,8 +371,8 @@
     "valid_from": "2025-12-15T00:17:44.398Z",
     "valid_until": null,
     "supersedes": null,
-    "access_count": 1215,
-    "last_accessed": "2025-12-24T04:20:03.559Z",
+    "access_count": 1255,
+    "last_accessed": "2025-12-24T07:26:52.445Z",
     "embedding": [
       0.7729189395904541,
       -0.3546707034111023,
@@ -1159,8 +1159,8 @@
     "category": "conversation",
     "timestamp": "2025-12-16T17:38:41.756Z",
     "source": "user_request",
-    "access_count": 25,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 31,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765906857671",
@@ -1168,8 +1168,8 @@
     "category": "préférence",
     "timestamp": "2025-12-16T17:40:57.671Z",
     "source": "user_request",
-    "access_count": 35,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 43,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765941038818",
@@ -1177,8 +1177,8 @@
     "category": "conversations",
     "timestamp": "2025-12-17T03:10:38.818Z",
     "source": "user_request",
-    "access_count": 8,
-    "last_accessed": "2025-12-22T15:32:41.352Z"
+    "access_count": 9,
+    "last_accessed": "2025-12-24T06:31:49.470Z"
   },
   {
     "id": "1765946315590",
@@ -1186,8 +1186,8 @@
     "category": "informations personnelles",
     "timestamp": "2025-12-17T04:38:35.590Z",
     "source": "user_request",
-    "access_count": 37,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 45,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765948982534",
@@ -1195,8 +1195,8 @@
     "category": "informations personnelles",
     "timestamp": "2025-12-17T05:23:02.534Z",
     "source": "user_request",
-    "access_count": 34,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 42,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1765949189868",
@@ -1204,8 +1204,8 @@
     "category": "préférence",
     "timestamp": "2025-12-17T05:26:29.868Z",
     "source": "user_request",
-    "access_count": 27,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 35,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766061660576",
@@ -1213,8 +1213,8 @@
     "category": "contact",
     "timestamp": "2025-12-18T12:41:00.576Z",
     "source": "user_request",
-    "access_count": 30,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 38,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766086072747",
@@ -1255,8 +1255,8 @@
     "category": "projet",
     "timestamp": "2025-12-18T19:30:56.730Z",
     "source": "user_request",
-    "access_count": 25,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 31,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766086289581",
@@ -1271,8 +1271,8 @@
     "category": "conversation",
     "timestamp": "2025-12-20T16:29:20.461Z",
     "source": "user_request",
-    "access_count": 20,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 26,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766259801093",
@@ -1287,8 +1287,8 @@
     "category": "general",
     "timestamp": "2025-12-21T03:19:47.134Z",
     "source": "user_request",
-    "access_count": 22,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 29,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766289842832",
@@ -1296,8 +1296,8 @@
     "category": "general",
     "timestamp": "2025-12-21T04:04:02.832Z",
     "source": "user_request",
-    "access_count": 20,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 26,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766374413289",
@@ -1312,8 +1312,8 @@
     "category": "general",
     "timestamp": "2025-12-22T07:20:32.258Z",
     "source": "user_request",
-    "access_count": 17,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 26,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766388094394",
@@ -1321,8 +1321,8 @@
     "category": "general",
     "timestamp": "2025-12-22T07:21:34.394Z",
     "source": "user_request",
-    "access_count": 17,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 26,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766388257887",
@@ -1330,8 +1330,8 @@
     "category": "general",
     "timestamp": "2025-12-22T07:24:17.887Z",
     "source": "user_request",
-    "access_count": 17,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 26,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766389889558",
@@ -1378,8 +1378,8 @@
     "category": "general",
     "timestamp": "2025-12-23T02:33:29.159Z",
     "source": "user_request",
-    "access_count": 12,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 18,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766458737293",
@@ -1387,8 +1387,8 @@
     "category": "general",
     "timestamp": "2025-12-23T02:58:57.293Z",
     "source": "user_request",
-    "access_count": 12,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 20,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766461081492",
@@ -1438,8 +1438,8 @@
     "valid_from": "2025-12-23T08:28:11.593Z",
     "valid_until": null,
     "supersedes": null,
-    "access_count": 152,
-    "last_accessed": "2025-12-24T04:20:03.559Z",
+    "access_count": 198,
+    "last_accessed": "2025-12-24T07:26:52.445Z",
     "embedding": [
       -0.035127684473991394,
       0.03201485425233841,
@@ -2226,8 +2226,8 @@
     "valid_from": "2025-12-23T08:28:11.639Z",
     "valid_until": null,
     "supersedes": null,
-    "access_count": 144,
-    "last_accessed": "2025-12-24T04:20:03.559Z",
+    "access_count": 184,
+    "last_accessed": "2025-12-24T07:26:52.445Z",
     "embedding": [
       0.012996206060051918,
       -0.40029144287109375,
@@ -3008,8 +3008,8 @@
     "category": "general",
     "timestamp": "2025-12-23T16:53:30.945Z",
     "source": "user_request",
-    "access_count": 10,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 16,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766543959738",
@@ -3017,8 +3017,8 @@
     "category": "general",
     "timestamp": "2025-12-24T02:39:19.738Z",
     "source": "user_request",
-    "access_count": 5,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 11,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   },
   {
     "id": "1766545336671",
@@ -3026,7 +3026,32 @@
     "category": "general",
     "timestamp": "2025-12-24T03:02:16.671Z",
     "source": "user_request",
-    "access_count": 2,
-    "last_accessed": "2025-12-24T03:08:16.838Z"
+    "access_count": 8,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
+  },
+  {
+    "id": "1766550776443",
+    "content": "remplacer 'qu’estoque que que' par 'qu'est-ce que'",
+    "category": "general",
+    "timestamp": "2025-12-24T04:32:56.443Z",
+    "source": "user_request"
+  },
+  {
+    "id": "1766553044563",
+    "content": "Alain dit qu'il s'en fiche des normes sociales",
+    "category": "general",
+    "timestamp": "2025-12-24T05:10:44.563Z",
+    "source": "user_request",
+    "access_count": 6,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
+  },
+  {
+    "id": "1766558662811",
+    "content": "Ne pas faire de récapitulatif sur l'âge d'Alain",
+    "category": "general",
+    "timestamp": "2025-12-24T06:44:22.811Z",
+    "source": "user_request",
+    "access_count": 4,
+    "last_accessed": "2025-12-24T06:57:26.809Z"
   }
 ]

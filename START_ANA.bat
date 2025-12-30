@@ -66,12 +66,7 @@ timeout /t 5 /nobreak >nul
 echo [3/5] ?? D�marrage Interface React (port 5173)...
 start "Ana Interface Frontend" /MIN cmd /c "cd /d E:\ANA\ana-interface && npm run dev"
 
-echo [4/5] ?? D�marrage Agents Autonomes (port 3336)...
-REM Lib�rer le port 3336 si occup�
-for /f "tokens=5" %%a in ('netstat -ano 2^>nul ^| findstr ":3336" ^| findstr "LISTENING"') do (
-    taskkill /F /PID %%a >nul 2>&1
-)
-start "Ana Agents Autonomes" /MIN cmd /c "cd /d E:\ANA\agents && node start_agents.cjs"
+REM [4/5] Agents Autonomes desactives
 
 echo [5/5] ?? D�marrage ComfyUI (port 8188)...
 start "ComfyUI" /MIN cmd /c "cd /d E:\AI_Tools\ComfyUI && run_nvidia_gpu.bat"
