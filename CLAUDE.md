@@ -333,3 +333,22 @@ scripts\research.bat liste
 - 3/5 - Modéré (preuves partielles)
 - 4/5 - Élevé (preuves convergentes)
 - 5/5 - Très élevé (testé, reproductible)
+
+## Environnement
+
+**Environnement unique:** `E:/ANA` (production et développement)
+
+| Environnement | Chemin | Backend | Frontend |
+|---------------|--------|---------|----------|
+| **Production** | `E:/ANA` | 3338 | 5173 |
+| **Backup** | `E:/ANA_ALL_SAVED` | - | - |
+
+### BACKUPS OBLIGATOIRES
+
+**AVANT de modifier un fichier, TOUJOURS faire un backup:**
+```bash
+cp "chemin/fichier.js" "chemin/fichier.js.backup_AVANT_MODIF"
+```
+
+- **INTERDIT:** Modifier un fichier sans backup préalable
+- **OBLIGATOIRE:** Backup -> Modifier -> Tester -> Valider
